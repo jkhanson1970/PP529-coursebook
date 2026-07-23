@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <title>PubPol 529: Coursebook – Chapter 8: Significance Tests</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Chapter 8: Significance Tests</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section class="slide level2">
+
+<p>In the previous chapter, we introduced confidence intervals as a way to communicate the precision of a sample estimate. A confidence interval tells us how much uncertainty surrounds a point estimate, such as a sample mean or sample proportion.</p>
+<p>We now turn to a second major form of statistical inference: <strong>significance testing</strong>, also called <strong>hypothesis testing</strong>.</p>
+<p>A significance test asks whether sample evidence is strong enough to reject a claim about the population. We begin with a baseline assumption, called the <strong>null hypothesis</strong>, and then use sample data to determine whether that assumption remains plausible.</p>
+<p>The basic logic is:</p>
+<ol type="1">
+<li>State a hypothesis about the population.</li>
+<li>Collect sample data.</li>
+<li>Calculate a sample statistic.</li>
+<li>Ask whether the sample statistic is unusually far from the hypothesized value.</li>
+<li>If it is sufficiently unlikely under the null hypothesis, reject the null hypothesis.</li>
+</ol>
+<p>This chapter introduces the core terminology and logic of significance testing. We begin with the elements of a significance test: null hypotheses, alternative hypotheses, significance levels, test statistics, critical values, and p-values. We then work through examples involving proportions and means. We also discuss the t-distribution, small-sample tests for proportions using the binomial distribution, one-tailed tests, and type I and type II errors.</p>
+<p>The concepts in this chapter will recur throughout the rest of the course. Once you understand the structure of a significance test, you can apply the same logic to many different statistical procedures.</p>
+</section>
+<section class="slide level2">
+
+</section>
+<section>
+<section id="part-i-the-logic-of-significance-testing" class="title-slide slide level1 center">
+<h1>Part I: The Logic of Significance Testing</h1>
+
+</section>
+<section id="what-is-a-significance-test" class="slide level2">
+<h2>1. What Is a Significance Test?</h2>
+<p>A <strong>significance test</strong> is a procedure for evaluating whether sample evidence is strong enough to reject a hypothesis about a population parameter.</p>
+<p>The population parameter might be:</p>
+<ul>
+<li>a population mean, ()</li>
+<li>a population proportion, ()</li>
+<li>a difference between two means</li>
+<li>a difference between two proportions</li>
+<li>a relationship between variables</li>
+<li>a regression coefficient</li>
+</ul>
+<p>For now, we focus on one-sample tests involving either one mean or one proportion.</p>
+<p>Examples of hypotheses include:</p>
+<ul>
+<li>Fewer than 40 percent of Americans approve of a president’s performance.</li>
+<li>The average American watches 2.5 hours of television per day.</li>
+<li>A vaccine education program changes vaccination rates.</li>
+<li>A new gasoline blend reduces average air pollution.</li>
+<li>Support for raising the minimum wage differs by party identification.</li>
+</ul>
+<p>In each case, we use sample data to evaluate a claim about the population.</p>
+</section>
+<section id="the-general-approach" class="slide level2">
+<h2>2. The General Approach</h2>
+<p>The general approach to significance testing is:</p>
+<ol type="1">
+<li>Make a hypothesis about a population parameter.</li>
+<li>Use sample data to estimate that parameter.</li>
+<li>Use sampling distribution theory to determine how unusual the sample statistic would be if the hypothesis were true.</li>
+<li>Reject the hypothesis if the sample statistic is too unlikely under that hypothesis.</li>
+</ol>
+<p>The phrase “too unlikely” is important. Sample statistics vary because of random sampling error. A sample mean or sample proportion will almost never equal the population parameter exactly. Some difference is expected.</p>
+<p>The question is whether the difference is large enough that random sampling error alone becomes an implausible explanation.</p>
+<p>If the sample statistic is close to the hypothesized value, we do not reject the hypothesis.</p>
+<p>If the sample statistic is far from the hypothesized value, we may reject the hypothesis.</p>
+</section>
+<section id="relationships-between-variables" class="slide level2">
+<h2>3. Relationships Between Variables</h2>
+<p>Significance tests become especially useful when we evaluate relationships between variables.</p>
+<p>For example, we might hypothesize that:</p>
+<ul>
+<li>approval of a president is lower among women than among men</li>
+<li>people with more education watch less television</li>
+<li>parents who receive vaccine education are more likely to vaccinate their children</li>
+<li>a new air quality regulation reduces average pollution</li>
+<li>a job training program increases employment rates</li>
+</ul>
+<p>In these cases, we usually begin by assuming there is <strong>no relationship</strong> or <strong>no effect</strong>. That assumption is the null hypothesis.</p>
+<p>Only if the data provide strong enough evidence do we reject the null hypothesis and conclude that the relationship or effect is statistically significant.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-ii-elements-of-a-significance-test" class="title-slide slide level1 center">
+<h1>Part II: Elements of a Significance Test</h1>
+<p>A significance test has several core elements:</p>
+<ol type="1">
+<li>Null hypothesis</li>
+<li>Alternative hypothesis</li>
+<li>Significance level</li>
+<li>Test statistic</li>
+<li>Critical value</li>
+<li>p-value</li>
+<li>Decision rule</li>
+<li>Conclusion</li>
+</ol>
+<p>We discuss each in turn.</p>
+</section>
+<section id="the-null-hypothesis" class="slide level2">
+<h2>4. The Null Hypothesis</h2>
+<p>The <strong>null hypothesis</strong> is the baseline assumption we test against.</p>
+<p>It is written:</p>
+<p>[ H_0 ]</p>
+<p>This is pronounced “H-zero,” not “H-oh.”</p>
+<p>The null hypothesis usually states that nothing has changed, there is no effect, or there is no relationship.</p>
+<p>For example:</p>
+<ul>
+<li>A program has no effect.</li>
+<li>A population mean is equal to a particular value.</li>
+<li>A population proportion is equal to a particular value.</li>
+<li>Two groups have the same mean.</li>
+<li>Two variables are independent.</li>
+</ul>
+<p>The null hypothesis is not necessarily what we believe. In fact, researchers often hope to reject it. But we begin by assuming it is true, and then ask whether the data provide enough evidence to reject it.</p>
+</section>
+<section id="the-alternative-hypothesis" class="slide level2">
+<h2>5. The Alternative Hypothesis</h2>
+<p>The <strong>alternative hypothesis</strong> is the hypothesis we consider if the null hypothesis is rejected.</p>
+<p>It is written:</p>
+<p>[ H_A ]</p>
+<p>The alternative hypothesis usually represents the researcher’s substantive expectation.</p>
+<p>For example, suppose we are evaluating a vaccine education program. The null hypothesis might be:</p>
+<p>[ H_0: = 0.722 ]</p>
+<p>meaning the vaccination rate among families receiving the program is 72.2 percent, the same as the baseline rate.</p>
+<p>The alternative hypothesis might be:</p>
+<p>[ H_A: ]</p>
+<p>meaning the program changes the vaccination rate.</p>
+<p>The alternative could reflect an increase or a decrease. If the program encourages vaccination, the rate may rise. If the program backfires, the rate may fall.</p>
+<p>This is a <strong>two-sided</strong> alternative because it allows for change in either direction.</p>
+</section>
+<section id="example-vaccine-education-program" class="slide level2">
+<h2>6. Example: Vaccine Education Program</h2>
+<p>Suppose public health researchers want to evaluate a vaccine education program.</p>
+<p>The goal is to increase childhood vaccination rates. However, previous research suggests that some attempts to persuade people about vaccination can backfire, especially if they seem judgmental or paternalistic. Therefore, the program might increase vaccination, decrease vaccination, or have no effect.</p>
+<p>Suppose national records show that 72.2 percent of American children aged 19 to 35 months receive the full recommended series of vaccinations.</p>
+<p>We use that as the baseline rate:</p>
+<p>[ _0 = 0.722 ]</p>
+<p>The hypotheses are:</p>
+<p>[ H_0: = 0.722 ]</p>
+<p>[ H_A: ]</p>
+<p>The null hypothesis says the program has no effect.</p>
+<p>The alternative hypothesis says the program changes the vaccination rate.</p>
+</section>
+<section id="significance-level" class="slide level2">
+<h2>7. Significance Level</h2>
+<p>The <strong>significance level</strong> is the threshold for rejecting the null hypothesis.</p>
+<p>It is represented by the Greek letter alpha:</p>
+<p>[ ]</p>
+<p>Alpha is the probability of making a <strong>type I error</strong>, which means rejecting the null hypothesis when it is actually true.</p>
+<p>Common values of alpha include:</p>
+<p>[ = 0.10 ]</p>
+<p>[ = 0.05 ]</p>
+<p>[ = 0.01 ]</p>
+<p>The most common choice is:</p>
+<p>[ = 0.05 ]</p>
+<p>This means we are willing to tolerate a 5 percent probability of rejecting a true null hypothesis.</p>
+<p>Equivalently, we require 95 percent confidence before rejecting the null hypothesis.</p>
+<p>The choice of alpha depends on context. If the consequences of a false positive are serious, we may require a smaller alpha, such as 0.01 or even lower. For example, when testing safety standards for bridges, airplanes, or medical treatments, we may want very strong evidence before rejecting the null hypothesis.</p>
+</section>
+<section id="alpha-and-critical-values" class="slide level2">
+<h2>8. Alpha and Critical Values</h2>
+<p>Alpha defines the <strong>critical value</strong> of the test statistic.</p>
+<p>A critical value is the threshold the test statistic must cross for us to reject the null hypothesis.</p>
+<p>For a two-tailed test using the standard normal distribution:</p>
+<ul>
+<li>If (= 0.05), then the critical values are:</li>
+</ul>
+<p>[ z = -1.96 ]</p>
+<p>and:</p>
+<p>[ z = 1.96 ]</p>
+<p>This is because 95 percent of the standard normal distribution lies between -1.96 and 1.96, leaving 2.5 percent in each tail.</p>
+<p>If our test statistic falls beyond either critical value, we reject the null hypothesis.</p>
+<p>For example, if:</p>
+<p>[ z = 2.47 ]</p>
+<p>then:</p>
+<p>[ |z| &gt; 1.96 ]</p>
+<p>so we reject the null hypothesis at the 0.05 significance level.</p>
+</section>
+<section id="test-statistics" class="slide level2">
+<h2>9. Test Statistics</h2>
+<p>A <strong>test statistic</strong> measures how far the sample statistic is from the null-hypothesized value in standard error units.</p>
+<p>The general form is:</p>
+<p>[ = {} ]</p>
+<p>For a proportion, we usually use a z-statistic:</p>
+<p>[ z = {_{}} ]</p>
+<p>For a mean, we usually use a t-statistic:</p>
+<p>[ t = {_{{Y}}} ]</p>
+<p>The test statistic tells us how many standard errors away our sample statistic is from the null hypothesis.</p>
+<p>A test statistic near zero means the sample statistic is close to the null hypothesis.</p>
+<p>A large positive or negative test statistic means the sample statistic is far from the null hypothesis.</p>
+</section>
+<section id="the-p-value" class="slide level2">
+<h2>10. The p-Value</h2>
+<p>The <strong>p-value</strong> is one of the most important and most commonly misunderstood concepts in statistics.</p>
+<p>The p-value is the probability, assuming the null hypothesis is true, of observing a sample statistic as far from the null hypothesis as the one we observed, or farther.</p>
+<p>More formally:</p>
+<blockquote>
+<p>The p-value is the probability of obtaining a result at least as extreme as the observed result, conditional on the null hypothesis being true.</p>
+</blockquote>
+<p>The p-value is a conditional probability.</p>
+<p>The condition is:</p>
+<p>[ H_0 ]</p>
+<p>A small p-value means the observed result would be unlikely if the null hypothesis were true.</p>
+<p>A large p-value means the observed result is plausible under the null hypothesis.</p>
+</section>
+<section id="p-values-and-alpha" class="slide level2">
+<h2>11. p-Values and Alpha</h2>
+<p>The p-value is compared to alpha.</p>
+<p>Decision rule:</p>
+<p>[ p &lt; H_0 ]</p>
+<p>[ p H_0 ]</p>
+<p>This is equivalent to comparing the test statistic to the critical value.</p>
+<p>For a two-tailed z-test with (= 0.05):</p>
+<p>[ |z| &gt; 1.96 H_0 ]</p>
+<p>At exactly the same point where the test statistic crosses the critical value, the p-value falls below alpha.</p>
+<p>So these two decision rules are equivalent:</p>
+<ol type="1">
+<li>Reject if the test statistic exceeds the critical value in absolute value.</li>
+<li>Reject if the p-value is less than alpha.</li>
+</ol>
+</section>
+<section id="p-value-example" class="slide level2">
+<h2>12. p-Value Example</h2>
+<p>Suppose we conduct a two-tailed z-test and obtain:</p>
+<p>[ z = 1.50 ]</p>
+<p>The area in the upper tail beyond 1.50 is about 0.0668. Because this is a two-tailed test, we also include the lower tail beyond -1.50.</p>
+<p>So:</p>
+<p>[ p = 2(0.0668) = 0.1336 ]</p>
+<p>The p-value is:</p>
+<p>[ p = 0.1336 ]</p>
+<p>If (= 0.05), then:</p>
+<p>[ 0.1336 &gt; 0.05 ]</p>
+<p>So we fail to reject the null hypothesis.</p>
+<p>Now suppose:</p>
+<p>[ z = 2.10 ]</p>
+<p>The two-tailed p-value is about:</p>
+<p>[ p = 0.0358 ]</p>
+<p>If (= 0.05), then:</p>
+<p>[ 0.0358 &lt; 0.05 ]</p>
+<p>So we reject the null hypothesis.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-iii-a-significance-test-for-a-proportion" class="title-slide slide level1 center">
+<h1>Part III: A Significance Test for a Proportion</h1>
+
+</section>
+<section id="vaccine-education-example" class="slide level2">
+<h2>13. Vaccine Education Example</h2>
+<p>Return to the vaccine education program.</p>
+<p>The baseline vaccination rate is:</p>
+<p>[ _0 = 0.722 ]</p>
+<p>The null and alternative hypotheses are:</p>
+<p>[ H_0: = 0.722 ]</p>
+<p>[ H_A: ]</p>
+<p>Suppose we randomly select 400 families to receive the vaccine education program. Three years later, we observe whether their children received the full course of vaccinations.</p>
+<p>The sample proportion vaccinated is:</p>
+<p>[ = 0.751 ]</p>
+<p>The sample size is:</p>
+<p>[ n = 400 ]</p>
+<p>We want to know whether 0.751 is far enough from 0.722 to reject the null hypothesis.</p>
+</section>
+<section id="step-1-choose-alpha" class="slide level2">
+<h2>14. Step 1: Choose Alpha</h2>
+<p>Use:</p>
+<p>[ = 0.05 ]</p>
+<p>This is a two-tailed test, so the critical values are:</p>
+<p>[ z = -1.96 ]</p>
+<p>and:</p>
+<p>[ z = 1.96 ]</p>
+<p>We will reject the null hypothesis if:</p>
+<p>[ |z| &gt; 1.96 ]</p>
+</section>
+<section id="step-2-calculate-the-standard-error-under-the-null" class="slide level2">
+<h2>15. Step 2: Calculate the Standard Error Under the Null</h2>
+<p>For a significance test involving a proportion, we calculate the standard error using the null-hypothesized proportion.</p>
+<p>That is important.</p>
+<p>For a confidence interval, we use ().</p>
+<p>For a significance test, we use (_0), because we assume the null hypothesis is true.</p>
+<p>The standard error is:</p>
+<p>[ _{} = ]</p>
+<p>Substitute values:</p>
+<p>[ _{} = ]</p>
+</section></section>
+<section id="section" class="title-slide slide level1 center">
+<h1>[</h1>
+<p>]</p>
+</section>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1>[</h1>
+<p>]</p>
+</section>
+
+<section>
+<section id="section-2" class="title-slide slide level1 center">
+<h1>[</h1>
+<p>]</p>
+<p>[ ]</p>
+<p>So the estimated standard error under the null is:</p>
+<p>[ 0.0224 ]</p>
+</section>
+<section id="step-3-calculate-the-z-statistic" class="slide level2">
+<h2>16. Step 3: Calculate the z-Statistic</h2>
+<p>Use:</p>
+<p>[ z = {_{}} ]</p>
+<p>Substitute values:</p>
+<p>[ z = ]</p>
+<p>[ z = ]</p>
+<p>[ z ]</p>
+<p>The sample proportion is 1.29 standard errors above the null-hypothesized value.</p>
+</section>
+<section id="step-4-compare-to-the-critical-value" class="slide level2">
+<h2>17. Step 4: Compare to the Critical Value</h2>
+<p>The critical value is:</p>
+<p>[ 1.96 ]</p>
+<p>Our test statistic is:</p>
+<p>[ z = 1.29 ]</p>
+<p>Since:</p>
+<p>[ |1.29| &lt; 1.96 ]</p>
+<p>we fail to reject the null hypothesis.</p>
+<p>The observed vaccination rate is higher than the baseline rate, but not far enough away to be statistically significant at the 0.05 level.</p>
+</section>
+<section id="step-5-calculate-the-p-value" class="slide level2">
+<h2>18. Step 5: Calculate the p-Value</h2>
+<p>Using a z-table, the upper-tail area beyond:</p>
+<p>[ z = 1.29 ]</p>
+<p>is:</p>
+<p>[ 0.0985 ]</p>
+<p>Because this is a two-tailed test, double it:</p>
+<p>[ p = 2(0.0985) ]</p>
+<p>[ p = 0.197 ]</p>
+<p>So:</p>
+<p>[ p = 0.197 ]</p>
+<p>Since:</p>
+<p>[ 0.197 &gt; 0.05 ]</p>
+<p>we fail to reject the null hypothesis.</p>
+<p>Interpretation:</p>
+<blockquote>
+<p>If the true vaccination rate were 0.722, there would be about a 19.7 percent probability of observing a sample proportion as far from 0.722 as 0.751, or farther, in a sample of 400.</p>
+</blockquote>
+<p>That probability is too large for us to reject the null hypothesis at the 0.05 level.</p>
+</section>
+<section id="the-role-of-sample-size" class="slide level2">
+<h2>19. The Role of Sample Size</h2>
+<p>Now suppose the sample size were:</p>
+<p>[ n = 1000 ]</p>
+<p>while the sample proportion remained:</p>
+<p>[ = 0.751 ]</p>
+<p>The standard error becomes:</p>
+<p>[ _{} = ]</p>
+<p>[ ]</p>
+<p>Now the z-statistic is:</p>
+<p>[ z = ]</p>
+<p>[ z ]</p>
+<p>Now:</p>
+<p>[ |2.04| &gt; 1.96 ]</p>
+<p>So we reject the null hypothesis at the 0.05 level.</p>
+<p>The sample proportion did not change. The difference from the null hypothesis did not change. What changed was the sample size.</p>
+<p>Larger samples reduce the standard error, making it easier to detect smaller differences.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-iv-steps-in-a-significance-test" class="title-slide slide level1 center">
+<h1>Part IV: Steps in a Significance Test</h1>
+
+</section>
+<section id="standard-procedure" class="slide level2">
+<h2>20. Standard Procedure</h2>
+<p>When conducting a significance test, follow these steps.</p>
+<h3 id="step-1-check-assumptions">Step 1: Check Assumptions</h3>
+<p>Ask:</p>
+<ul>
+<li>Is the sample random or plausibly representative?</li>
+<li>Are there obvious sources of selection bias or response bias?</li>
+<li>What kind of variable do we have?</li>
+<li>Is this a mean, a proportion, or something else?</li>
+<li>Is the sample size large enough for the test we want to use?</li>
+<li>If testing a mean with (n &lt; 30), can we assume the population is normal?</li>
+<li>If testing a proportion, is the sample large enough for the normal approximation?</li>
+</ul>
+<p>In this course, the most important assumption checks will usually involve sample size and choosing the correct test statistic.</p>
+<h3 id="step-2-state-the-hypotheses">Step 2: State the Hypotheses</h3>
+<p>State:</p>
+<p>[ H_0 ]</p>
+<p>and:</p>
+<p>[ H_A ]</p>
+<p>Be sure hypotheses are about population parameters, not sample statistics.</p>
+<h3 id="step-3-calculate-the-test-statistic">Step 3: Calculate the Test Statistic</h3>
+<p>Use the appropriate formula.</p>
+<p>For a proportion:</p>
+<p>[ z = {} ]</p>
+<p>For a mean:</p>
+<p>[ t = {s/} ]</p>
+<h3 id="step-4-compare-to-the-critical-value-1">Step 4: Compare to the Critical Value</h3>
+<p>Use alpha to determine the critical value.</p>
+<p>For a two-tailed z-test with:</p>
+<p>[ = 0.05 ]</p>
+<p>the critical value is:</p>
+<p>[ 1.96 ]</p>
+<p>Reject if:</p>
+<p>[ |z| &gt; 1.96 ]</p>
+<p>For t-tests, use the t-table with the appropriate degrees of freedom.</p>
+<h3 id="step-5-calculate-the-p-value-1">Step 5: Calculate the p-Value</h3>
+<p>Find the probability of observing a test statistic as extreme as yours, or more extreme, assuming the null hypothesis is true.</p>
+<p>For two-tailed tests, remember to include both tails.</p>
+<h3 id="step-6-state-the-conclusion">Step 6: State the Conclusion</h3>
+<p>Say either:</p>
+<ul>
+<li>Reject the null hypothesis.</li>
+<li>Fail to reject the null hypothesis.</li>
+</ul>
+<p>Do not say “accept the null hypothesis.”</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-v-the-t-distribution" class="title-slide slide level1 center">
+<h1>Part V: The t-Distribution</h1>
+
+</section>
+<section id="why-we-need-the-t-distribution" class="slide level2">
+<h2>21. Why We Need the t-Distribution</h2>
+<p>When testing hypotheses about means, we usually use the t-distribution.</p>
+<p>The t-distribution is similar to the standard normal distribution. It is:</p>
+<ul>
+<li>symmetric</li>
+<li>bell-shaped</li>
+<li>centered at zero</li>
+<li>has declining probability as we move away from the center</li>
+</ul>
+<p>But the t-distribution has more area in the tails, especially when sample size is small.</p>
+<p>Why?</p>
+<p>Because when we test a mean, we usually do not know the population standard deviation (). We estimate it using the sample standard deviation (s). That introduces additional uncertainty.</p>
+<p>The t-distribution accounts for that uncertainty.</p>
+</section>
+<section id="sample-size-and-the-t-distribution" class="slide level2">
+<h2>22. Sample Size and the t-Distribution</h2>
+<p>The shape of the t-distribution depends on degrees of freedom.</p>
+<p>For a one-sample test of a mean:</p>
+<p>[ df = n - 1 ]</p>
+<p>When the sample size is small, the t-distribution has thick tails. This makes it harder to reject the null hypothesis because we need a larger test statistic.</p>
+<p>As the sample size increases, the t-distribution approaches the standard normal distribution.</p>
+<p>For large samples, the t and z distributions are nearly identical.</p>
+</section>
+<section id="when-to-use-t-instead-of-z" class="slide level2">
+<h2>23. When to Use t Instead of z</h2>
+<p>For means, think t.</p>
+<p>Use the t-distribution when testing a hypothesis about a mean, especially when () is unknown.</p>
+<p>If the sample size is large, t and z will be nearly identical. But using t is generally safer.</p>
+<p>If (n &lt; 30), using t requires that the population distribution be approximately normal.</p>
+<p>The t-distribution does not fix a non-normal population when the sample is small.</p>
+<p>That is important.</p>
+<p>If the sample size is small and the population is skewed, the sampling distribution may not be approximately normal, and the usual t-test may not be appropriate.</p>
+</section>
+<section id="reading-the-t-table" class="slide level2">
+<h2>24. Reading the t-Table</h2>
+<p>A t-table differs from a z-table.</p>
+<p>In many t-tables:</p>
+<ul>
+<li>rows correspond to degrees of freedom</li>
+<li>columns correspond to tail areas or confidence levels</li>
+<li>cells contain t critical values</li>
+</ul>
+<p>For a 95 percent confidence interval or a two-tailed test with (= 0.05), each tail contains:</p>
+<p>[ 0.025 ]</p>
+<p>So use the column for 0.025 in the upper tail.</p>
+<p>If:</p>
+<p>[ df = 13 ]</p>
+<p>then the critical value for a two-tailed test with (= 0.05) is approximately:</p>
+<p>[ t^* = 2.16 ]</p>
+<p>This is larger than 1.96 because the t-distribution has heavier tails.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-vi-a-significance-test-for-a-mean" class="title-slide slide level1 center">
+<h1>Part VI: A Significance Test for a Mean</h1>
+
+</section>
+<section id="air-quality-example" class="slide level2">
+<h2>25. Air Quality Example</h2>
+<p>Suppose a city has historically had an average Air Quality Index of:</p>
+<p>[ _0 = 175 ]</p>
+<p>Higher AQI values are worse. The city introduces a new gasoline blend intended to reduce pollution.</p>
+<p>After the new gasoline blend is introduced, researchers observe air quality over 14 days.</p>
+<p>The sample mean AQI is:</p>
+<p>[ {Y} = 155 ]</p>
+<p>The sample standard deviation is:</p>
+<p>[ s = 30 ]</p>
+<p>The sample size is:</p>
+<p>[ n = 14 ]</p>
+<p>We want to test whether the average AQI has changed.</p>
+</section>
+<section id="step-1-check-assumptions-1" class="slide level2">
+<h2>26. Step 1: Check Assumptions</h2>
+<p>We are testing a mean, so we use a t-test.</p>
+<p>The sample size is:</p>
+<p>[ n = 14 ]</p>
+<p>which is less than 30.</p>
+<p>Therefore, to use the t-test, we need to assume that the population distribution of daily AQI values is approximately normal.</p>
+<p>This is not an assumption about the sampling distribution. It is an assumption about the population distribution.</p>
+<p>If the population distribution is not normal and (n &lt; 30), the t-test may not be appropriate.</p>
+</section>
+<section id="step-2-state-the-hypotheses-1" class="slide level2">
+<h2>27. Step 2: State the Hypotheses</h2>
+<p>The null hypothesis is that the mean AQI is unchanged:</p>
+<p>[ H_0: = 175 ]</p>
+<p>The alternative hypothesis is that the mean AQI has changed:</p>
+<p>[ H_A: ]</p>
+<p>This is a two-tailed test.</p>
+</section>
+<section id="step-3-calculate-the-t-statistic" class="slide level2">
+<h2>28. Step 3: Calculate the t-Statistic</h2>
+<p>The formula is:</p>
+<p>[ t = {s/} ]</p>
+<p>Substitute values:</p>
+<p>[ t = {30/} ]</p>
+<p>First calculate the standard error:</p>
+<p>[ ]</p>
+<p>Now calculate:</p>
+<p>[ t = ]</p>
+<p>[ t ]</p>
+<p>The sample mean is 2.49 standard errors below the null-hypothesized mean.</p>
+</section>
+<section id="step-4-compare-to-the-critical-value-2" class="slide level2">
+<h2>29. Step 4: Compare to the Critical Value</h2>
+<p>Degrees of freedom are:</p>
+<p>[ df = n - 1 = 14 - 1 = 13 ]</p>
+<p>For a two-tailed test with:</p>
+<p>[ = 0.05 ]</p>
+<p>and:</p>
+<p>[ df = 13 ]</p>
+<p>the critical value is approximately:</p>
+<p>[ t^* = 2.16 ]</p>
+<p>We compare the absolute value of the test statistic to the critical value:</p>
+<p>[ |-2.49| = 2.49 ]</p>
+<p>Since:</p>
+<p>[ 2.49 &gt; 2.16 ]</p>
+<p>we reject the null hypothesis.</p>
+</section>
+<section id="step-5-calculate-the-p-value-2" class="slide level2">
+<h2>30. Step 5: Calculate the p-Value</h2>
+<p>Using a t-table, we look along the row for:</p>
+<p>[ df = 13 ]</p>
+<p>Our test statistic has magnitude:</p>
+<p>[ 2.49 ]</p>
+<p>In the t-table, 2.49 falls between the critical values associated with upper-tail areas of 0.025 and 0.010.</p>
+<p>Because this is a two-tailed test, double those tail areas.</p>
+<p>So the p-value is between:</p>
+<p>[ 2(0.010) = 0.020 ]</p>
+<p>and:</p>
+<p>[ 2(0.025) = 0.050 ]</p>
+<p>Thus:</p>
+<p>[ 0.020 &lt; p &lt; 0.050 ]</p>
+<p>Using software, the p-value is approximately:</p>
+<p>[ p = 0.027 ]</p>
+<p>Since:</p>
+<p>[ 0.027 &lt; 0.05 ]</p>
+<p>we reject the null hypothesis.</p>
+</section>
+<section id="step-6-state-the-conclusion-1" class="slide level2">
+<h2>31. Step 6: State the Conclusion</h2>
+<p>We reject the null hypothesis at the 0.05 level.</p>
+<p>There is statistically significant evidence that the average AQI changed after the new gasoline blend was introduced.</p>
+<p>Because the sample mean is lower than 175, the evidence is consistent with the gasoline blend reducing AQI.</p>
+<p>A careful conclusion might be:</p>
+<blockquote>
+<p>Assuming the population distribution of AQI is approximately normal, the sample provides statistically significant evidence at the 0.05 level that the mean AQI differs from 175. Because the sample mean is 155, the evidence suggests that AQI decreased after the gasoline blend was introduced.</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-vii-one-tailed-tests" class="title-slide slide level1 center">
+<h1>Part VII: One-Tailed Tests</h1>
+
+</section>
+<section id="two-tailed-versus-one-tailed-tests" class="slide level2">
+<h2>32. Two-Tailed Versus One-Tailed Tests</h2>
+<p>Most significance tests are <strong>two-tailed</strong>.</p>
+<p>A two-tailed test rejects the null hypothesis if the sample statistic is far enough from the null hypothesis in either direction.</p>
+<p>For example:</p>
+<p>[ H_0: = 175 ]</p>
+<p>[ H_A: ]</p>
+<p>This rejects if the mean is much lower or much higher than 175.</p>
+<p>A <strong>one-tailed test</strong> rejects the null hypothesis only in one direction.</p>
+<p>For example, if we specifically predict that AQI decreased, we might write:</p>
+<p>[ H_0: ]</p>
+<p>[ H_A: &lt; 175 ]</p>
+<p>Now we reject only if the sample mean is sufficiently below 175.</p>
+</section>
+<section id="alpha-in-a-one-tailed-test" class="slide level2">
+<h2>33. Alpha in a One-Tailed Test</h2>
+<p>In a two-tailed test with:</p>
+<p>[ = 0.05 ]</p>
+<p>alpha is split between the two tails:</p>
+<p>[ 0.025 ]</p>
+<p>in each tail.</p>
+<p>In a one-tailed test, all of alpha goes into one tail.</p>
+<p>So if:</p>
+<p>[ = 0.05 ]</p>
+<p>then the rejection region is 5 percent in one tail.</p>
+<p>For a z-test, the one-tailed critical value for (= 0.05) is about:</p>
+<p>[ 1.645 ]</p>
+<p>rather than:</p>
+<p>[ 1.96 ]</p>
+<p>This makes it easier to reject the null hypothesis in the predicted direction.</p>
+<p>Because of that, one-tailed tests should be used cautiously and only when the direction of the alternative hypothesis is clearly justified in advance.</p>
+</section>
+<section id="when-to-use-a-one-tailed-test" class="slide level2">
+<h2>34. When to Use a One-Tailed Test</h2>
+<p>A one-tailed test may be appropriate when:</p>
+<ul>
+<li>theory strongly predicts a direction</li>
+<li>only one direction is substantively meaningful</li>
+<li>the researcher specifies the direction before seeing the data</li>
+</ul>
+<p>For example:</p>
+<p>[ H_A: &lt; 175 ]</p>
+<p>would be appropriate if the only meaningful claim is that the policy reduced AQI.</p>
+<p>However, two-tailed tests are standard. If a researcher uses a one-tailed test, they should explain why.</p>
+<p>One-tailed tests can be tempting because they make it easier to find statistical significance. That is precisely why they should not be chosen after looking at the data.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-viii-another-proportion-test" class="title-slide slide level1 center">
+<h1>Part VIII: Another Proportion Test</h1>
+
+</section>
+<section id="environmental-spending-example" class="slide level2">
+<h2>35. Environmental Spending Example</h2>
+<p>Suppose a survey asks whether federal spending on the environment should be:</p>
+<ul>
+<li>increased</li>
+<li>kept about the same</li>
+<li>decreased</li>
+</ul>
+<p>We focus on the proportion who say spending should be increased.</p>
+<p>Suppose:</p>
+<p>[ n = 5884 ]</p>
+<p>and:</p>
+<p>[ = 0.41 ]</p>
+<p>We want to test whether the population proportion differs from 0.40.</p>
+<p>The hypotheses are:</p>
+<p>[ H_0: = 0.40 ]</p>
+<p>[ H_A: ]</p>
+<p>Use:</p>
+<p>[ = 0.05 ]</p>
+</section>
+<section id="check-assumptions" class="slide level2">
+<h2>36. Check Assumptions</h2>
+<p>This is a proportion test, so we need enough cases in both categories.</p>
+<p>The two categories are:</p>
+<ul>
+<li>supports increasing spending</li>
+<li>does not support increasing spending</li>
+</ul>
+<p>The sample is large:</p>
+<p>[ n = 5884 ]</p>
+<p>The null-hypothesized proportion is:</p>
+<p>[ _0 = 0.40 ]</p>
+<p>A rule of thumb is:</p>
+<p>[ n (_0, 1-_0) &gt; 10 ]</p>
+<p>Here:</p>
+<p>[ 5884 (0.40, 0.60) ]</p>
+<p>[ = 5884(0.40) ]</p>
+<p>[ = 2353.6 ]</p>
+<p>This is far greater than 10, so the z-test is appropriate.</p>
+</section>
+<section id="calculate-the-z-statistic" class="slide level2">
+<h2>37. Calculate the z-Statistic</h2>
+<p>The standard error under the null is:</p>
+<p>[ _{} = ]</p>
+<p>Substitute values:</p>
+<p>[ _{} = ]</p>
+</section></section>
+<section>
+<section id="section-3" class="title-slide slide level1 center">
+<h1>[</h1>
+<p>]</p>
+<p>[ ]</p>
+<p>Now calculate:</p>
+<p>[ z = ]</p>
+<p>[ z ]</p>
+<p>The critical value for a two-tailed z-test with (= 0.05) is:</p>
+<p>[ 1.96 ]</p>
+<p>Since:</p>
+<p>[ 1.67 &lt; 1.96 ]</p>
+<p>we fail to reject the null hypothesis.</p>
+</section>
+<section id="calculate-the-p-value" class="slide level2">
+<h2>38. Calculate the p-Value</h2>
+<p>Using a z-table:</p>
+<p>[ P(Z &gt; 1.67) = 0.0475 ]</p>
+<p>Because this is a two-tailed test:</p>
+<p>[ p = 2(0.0475) ]</p>
+<p>[ p = 0.095 ]</p>
+<p>Since:</p>
+<p>[ 0.095 &gt; 0.05 ]</p>
+<p>we fail to reject the null hypothesis.</p>
+<p>Conclusion:</p>
+<blockquote>
+<p>The sample does not provide statistically significant evidence at the 0.05 level that the population proportion differs from 0.40.</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-ix-small-sample-proportions-and-the-binomial-distribution" class="title-slide slide level1 center">
+<h1>Part IX: Small-Sample Proportions and the Binomial Distribution</h1>
+
+</section>
+<section id="why-z-does-not-always-work-for-proportions" class="slide level2">
+<h2>39. Why z Does Not Always Work for Proportions</h2>
+<p>Proportions are based on counts.</p>
+<p>If we toss a coin five times, the possible proportions of heads are:</p>
+<p>[ 0, , , , , 1 ]</p>
+<p>These are discrete values.</p>
+<p>With very small samples, the distribution of possible sample proportions does not look like a smooth normal curve. It looks like a set of distinct probabilities.</p>
+<p>The z-distribution is continuous and symmetric. It is only an approximation to the binomial distribution.</p>
+<p>When the sample is large, the approximation works well. When the sample is small, it may not.</p>
+<p>In small-sample proportion tests, use the <strong>binomial distribution</strong>.</p>
+</section>
+<section id="binomial-test-logic" class="slide level2">
+<h2>40. Binomial Test Logic</h2>
+<p>The binomial distribution gives the exact probability of observing (x) successes in (n) trials if the true probability of success is ():</p>
+<p>[ P(X=x) = <sup>x(1-)</sup>{n-x} ]</p>
+<p>For a binomial significance test, we do not need to convert the sample result into a z-statistic.</p>
+<p>Instead, we calculate the exact probability of getting an outcome as extreme as the observed outcome, assuming the null hypothesis is true.</p>
+<p>That probability is the p-value.</p>
+</section>
+<section id="example-hiring-discrimination" class="slide level2">
+<h2>41. Example: Hiring Discrimination</h2>
+<p>Suppose a workplace discrimination case concerns hiring decisions.</p>
+<p>Assume the applicant pool is 50 percent white and 50 percent nonwhite, and assume all applicants are similarly qualified.</p>
+<p>If hiring is race-neutral, then the probability that a hired applicant is white is:</p>
+<p>[ _0 = 0.50 ]</p>
+<p>Suppose 10 people are hired.</p>
+<p>If hiring is race-neutral, the number of white hires follows a binomial distribution:</p>
+<p>[ X Binomial(n=10, ) ]</p>
+<p>Now suppose the observed hiring outcome is extremely imbalanced, such as 9 or 10 white hires, or 0 or 1 white hires.</p>
+<p>For a two-tailed test, we include both extremes.</p>
+<p>The probability of getting 0 or 1 white hires, or 9 or 10 white hires, under the null hypothesis, is approximately:</p>
+<p>[ p = 0.022 ]</p>
+<p>Since:</p>
+<p>[ 0.022 &lt; 0.05 ]</p>
+<p>we reject the null hypothesis.</p>
+<p>Even with a sample size of only 10, the result is unlikely under race-neutral hiring.</p>
+</section>
+<section id="why-the-binomial-is-exact" class="slide level2">
+<h2>42. Why the Binomial Is Exact</h2>
+<p>The binomial distribution is exact for dichotomous outcomes under the conditions of the binomial model.</p>
+<p>It does not require the sample size to be large.</p>
+<p>It does not approximate a continuous curve.</p>
+<p>It calculates the exact probability of each possible count.</p>
+<p>The z-test is convenient for large samples, but the binomial test is more accurate, especially when:</p>
+<ul>
+<li>sample size is small</li>
+<li>the hypothesized proportion is near 0 or 1</li>
+<li>one category has very few cases</li>
+</ul>
+<p>Software can easily calculate exact binomial probabilities, even when hand calculations would be tedious.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-x-type-i-and-type-ii-errors" class="title-slide slide level1 center">
+<h1>Part X: Type I and Type II Errors</h1>
+
+</section>
+<section id="two-kinds-of-error" class="slide level2">
+<h2>43. Two Kinds of Error</h2>
+<p>A significance test can lead to two types of error.</p>
+<h3 id="type-i-error">Type I Error</h3>
+<p>A <strong>type I error</strong> occurs when we reject the null hypothesis even though it is true.</p>
+<p>This is a false positive.</p>
+<p>The probability of a type I error is:</p>
+<p>[ ]</p>
+<h3 id="type-ii-error">Type II Error</h3>
+<p>A <strong>type II error</strong> occurs when we fail to reject the null hypothesis even though it is false.</p>
+<p>This is a false negative.</p>
+<p>The probability of a type II error is:</p>
+<p>[ ]</p>
+</section>
+<section id="error-table" class="slide level2">
+<h2>44. Error Table</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Reality</th>
+<th>Reject (H_0)</th>
+<th>Fail to Reject (H_0)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(H_0) is true</td>
+<td>Type I error</td>
+<td>Correct decision</td>
+</tr>
+<tr class="even">
+<td>(H_0) is false</td>
+<td>Correct decision</td>
+<td>Type II error</td>
+</tr>
+</tbody>
+</table>
+<p>A type I error is rejecting a true null hypothesis.</p>
+<p>A type II error is failing to reject a false null hypothesis.</p>
+<p>One way to remember:</p>
+<ul>
+<li>Type I error: false positive</li>
+<li>Type II error: false negative</li>
+</ul>
+<p>The story of “the boy who cried wolf” contains both:</p>
+<ul>
+<li>The boy says there is a wolf when there is no wolf: type I error.</li>
+<li>Later, there is a wolf, but no one believes him: type II error.</li>
+</ul>
+</section>
+<section id="reducing-type-i-error" class="slide level2">
+<h2>45. Reducing Type I Error</h2>
+<p>To reduce the probability of a type I error, lower alpha.</p>
+<p>For example, use:</p>
+<p>[ = 0.01 ]</p>
+<p>instead of:</p>
+<p>[ = 0.05 ]</p>
+<p>This makes it harder to reject the null hypothesis.</p>
+<p>However, lowering alpha increases the probability of a type II error, because it becomes harder to reject even a false null hypothesis.</p>
+<p>There is a tradeoff.</p>
+</section>
+<section id="reducing-type-ii-error" class="slide level2">
+<h2>46. Reducing Type II Error</h2>
+<p>To reduce the probability of a type II error, increase sample size.</p>
+<p>Larger samples reduce the standard error, making it easier to detect real differences.</p>
+<p>If the null hypothesis is false, a larger sample makes the sample statistic more likely to cluster around the true value rather than around the null-hypothesized value. This makes rejecting the false null hypothesis more likely.</p>
+<p>The probability of correctly rejecting a false null hypothesis is called <strong>statistical power</strong>.</p>
+<p>Power is:</p>
+<p>[ 1 - ]</p>
+<p>Increasing sample size increases power.</p>
+</section>
+<section id="sample-size-and-type-i-error" class="slide level2">
+<h2>47. Sample Size and Type I Error</h2>
+<p>Increasing sample size does not reduce the type I error rate.</p>
+<p>This may seem counterintuitive.</p>
+<p>The type I error rate is set by alpha. If (= 0.05), then under the scenario that the null hypothesis is true, we reject 5 percent of the time.</p>
+<p>Larger samples make the sampling distribution narrower, but the rejection threshold is defined in standard error units. The type I error rate remains 0.05 because alpha defines the probability of falling in the rejection region.</p>
+<p>Sample size affects type II error and power, not the type I error rate.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-xi-interpreting-significance-tests-carefully" class="title-slide slide level1 center">
+<h1>Part XI: Interpreting Significance Tests Carefully</h1>
+
+</section>
+<section id="statistical-significance-is-probabilistic" class="slide level2">
+<h2>48. Statistical Significance Is Probabilistic</h2>
+<p>A statistically significant result is not definitive proof.</p>
+<p>It means the observed result would be unlikely under the null hypothesis.</p>
+<p>But unlikely events happen.</p>
+<p>If (= 0.05), then even when the null hypothesis is true, about 5 percent of tests will reject it by chance alone.</p>
+<p>That is the meaning of type I error.</p>
+<p>Statistical significance is evidence, not certainty.</p>
+</section>
+<section id="multiple-testing-and-false-positives" class="slide level2">
+<h2>49. Multiple Testing and False Positives</h2>
+<p>If researchers conduct many tests, some will be statistically significant by chance alone.</p>
+<p>Suppose the null hypothesis is true for 20 different tests, and each test uses:</p>
+<p>[ = 0.05 ]</p>
+<p>On average, about 1 of the 20 tests will be statistically significant just by chance.</p>
+<p>This creates a multiple testing problem.</p>
+<p>A famous illustration involves jellybeans and acne. Suppose researchers test whether jellybeans cause acne and find no relationship. Then they test many colors of jellybeans separately: purple, brown, pink, blue, teal, red, yellow, green, and so on. Eventually, one color produces (p &lt; 0.05).</p>
+<p>A headline appears:</p>
+<blockquote>
+<p>Green jellybeans cause acne.</p>
+</blockquote>
+<p>But the result may simply be a false positive caused by repeated testing.</p>
+<p>This is why researchers should be cautious when interpreting isolated significant findings, especially when many tests were conducted.</p>
+</section>
+<section id="publication-bias" class="slide level2">
+<h2>50. Publication Bias</h2>
+<p>Statistically significant results are more likely to be published than null results.</p>
+<p>This creates <strong>publication bias</strong>.</p>
+<p>If journals and media outlets focus mainly on significant findings, the published literature may overrepresent false positives and exaggerated effects.</p>
+<p>Null results are still valuable. If a vaccine education program has no measurable effect, that is important information. If a policy intervention does not work, policymakers should know that.</p>
+<p>But null findings often receive less attention because they are less exciting.</p>
+<p>This is a problem for science and public policy.</p>
+</section>
+<section id="do-not-accept-the-null-hypothesis" class="slide level2">
+<h2>51. Do Not Accept the Null Hypothesis</h2>
+<p>When a significance test does not reject the null hypothesis, we say:</p>
+<blockquote>
+<p>Fail to reject the null hypothesis.</p>
+</blockquote>
+<p>We do not say:</p>
+<blockquote>
+<p>Accept the null hypothesis.</p>
+</blockquote>
+<p>Why?</p>
+<p>Because failing to reject means the data are consistent with the null hypothesis. But they may also be consistent with many nearby alternatives.</p>
+<p>A non-significant result does not prove the null hypothesis is true. It simply means we do not have enough evidence to reject it.</p>
+<p>The correct language is:</p>
+<ul>
+<li>Reject (H_0)</li>
+<li>Fail to reject (H_0)</li>
+</ul>
+<p>Not:</p>
+<ul>
+<li>Accept (H_0)</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="key-terms" class="title-slide slide level1 center">
+<h1>Key Terms</h1>
+<p><strong>Significance test</strong><br>
+A procedure for evaluating whether sample evidence is strong enough to reject a hypothesis about a population parameter.</p>
+<p><strong>Hypothesis test</strong><br>
+Another term for a significance test.</p>
+<p><strong>Null hypothesis</strong><br>
+The baseline assumption tested against the data, written (H_0).</p>
+<p><strong>Alternative hypothesis</strong><br>
+The hypothesis considered if the null hypothesis is rejected, written (H_A).</p>
+<p><strong>Significance level</strong><br>
+The threshold for rejecting the null hypothesis, represented by ().</p>
+<p><strong>Alpha ()</strong><br>
+The probability of a type I error; the probability of rejecting a true null hypothesis.</p>
+<p><strong>Test statistic</strong><br>
+A standardized measure of how far the sample statistic is from the null-hypothesized value.</p>
+<p><strong>Critical value</strong><br>
+The threshold value of the test statistic required to reject the null hypothesis.</p>
+<p><strong>p-value</strong><br>
+The probability, assuming the null hypothesis is true, of observing a result as extreme as the sample result or more extreme.</p>
+<p><strong>Type I error</strong><br>
+Rejecting the null hypothesis when it is true; a false positive.</p>
+<p><strong>Type II error</strong><br>
+Failing to reject the null hypothesis when it is false; a false negative.</p>
+<p><strong>Power</strong><br>
+The probability of correctly rejecting a false null hypothesis; equal to (1-).</p>
+<p><strong>z-test</strong><br>
+A significance test using the standard normal distribution.</p>
+<p><strong>t-test</strong><br>
+A significance test using the t-distribution.</p>
+<p><strong>Binomial test</strong><br>
+An exact test for proportions based on the binomial distribution.</p>
+<p><strong>Two-tailed test</strong><br>
+A test that allows rejection in either direction.</p>
+<p><strong>One-tailed test</strong><br>
+A test that allows rejection in only one direction.</p>
+<p><strong>p-hacking</strong><br>
+The practice of trying many analyses until a statistically significant result appears.</p>
+<p><strong>Publication bias</strong><br>
+The tendency for statistically significant results to be published more often than null results.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="chapter-summary" class="title-slide slide level1 center">
+<h1>Chapter Summary</h1>
+<p>Significance testing allows researchers to evaluate hypotheses about population parameters using sample data.</p>
+<p>A significance test begins with a null hypothesis, which usually states that there is no effect, no relationship, or no change. The alternative hypothesis represents the possibility that the null hypothesis is wrong.</p>
+<p>The significance level, (), defines the probability of type I error we are willing to tolerate. It determines the critical value of the test statistic.</p>
+<p>A test statistic measures how far the sample statistic is from the null-hypothesized value in standard error units. For proportions, we often use a z-statistic. For means, we usually use a t-statistic.</p>
+<p>The p-value tells us the probability of observing a result as extreme as ours, or more extreme, assuming the null hypothesis is true. If the p-value is smaller than alpha, we reject the null hypothesis.</p>
+<p>For large-sample proportions, the z-test works well. For small-sample proportions, the binomial distribution gives exact probabilities. For means, the t-distribution accounts for uncertainty from estimating the population standard deviation.</p>
+<p>Significance tests can produce errors. A type I error is a false positive. A type II error is a false negative. Lowering alpha reduces type I error but can increase type II error. Increasing sample size reduces type II error and increases power.</p>
+<p>Finally, statistical significance should be interpreted carefully. A significant result is not proof. A non-significant result is not proof that the null hypothesis is true. And when many tests are conducted, some statistically significant findings will occur by chance alone. Good statistical reasoning requires both calculation and caution.</p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

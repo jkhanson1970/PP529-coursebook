@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <title>PubPol 529: Coursebook – Chapter 4: Probability</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Chapter 4: Probability</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section class="slide level2">
+
+<p>Probability is the language of statistical inference.</p>
+<p>So far, we have discussed measurement, sampling, and descriptive statistics. We have learned how to define concepts, collect data, describe variables, summarize distributions, and think critically about samples. Probability is the next step because it explains how sample data connect to population claims.</p>
+<p>When we collect a random sample, we know that our sample will probably not perfectly match the population. The sample proportion will not be exactly equal to the population proportion. The sample mean will not be exactly equal to the population mean. There will be random error.</p>
+<p>Probability theory allows us to understand that error.</p>
+<p>It tells us how likely different outcomes are, how sample statistics behave when sampling is random, and how confident we can be when using sample data to estimate population values. Later topics such as confidence intervals, hypothesis tests, p-values, regression, and statistical significance all depend on probability.</p>
+<p>This chapter introduces the core ideas of probability. We begin with the big picture: why probability matters for inference. We then define basic probability concepts such as sample spaces, outcomes, events, unions, intersections, and complements. Next, we examine rules of probability, expected values, gambler’s fallacy, joint probabilities, conditional probabilities, independence, probability trees, and contingency tables.</p>
+<p>Some of the notation may feel unfamiliar at first. That is normal. Probability often feels abstract until the pieces start to connect. The good news is that the logic is systematic. Once you understand the structure, probability becomes one of the most powerful tools in statistics.</p>
+</section>
+<section id="why-probability-matters" class="slide level2">
+<h2>1. Why Probability Matters</h2>
+<p>Probability helps us understand randomness.</p>
+<p>In statistics, randomness is not chaos. Random processes have structure. We may not know what will happen in a single case, but we can often know the long-run pattern of outcomes.</p>
+<p>For example, if we flip a fair coin once, we do not know whether it will land heads or tails. But if we flip it many, many times, we expect about half the flips to be heads and half to be tails.</p>
+<p>Similarly, if we randomly select one voter from a population, we do not know which candidate that person supports. But if we randomly select many voters, the proportions in our sample should begin to resemble the true proportions in the population.</p>
+<p>This is the connection between probability and sampling.</p>
+<p>Suppose 60 percent of voters in a population support Candidate A and 40 percent support Candidate B. If we randomly select one voter, the probability that the person supports Candidate A is 0.60. The probability that the person supports Candidate B is 0.40.</p>
+<p>If we select only a few voters, our sample may not match the population very well. We might, by chance, select more Candidate A supporters or more Candidate B supporters than expected. But as the sample size grows, the sample proportion should move closer to the true population proportion.</p>
+<p>That tendency is one of the foundations of statistical inference.</p>
+</section>
+<section id="probability-as-long-run-frequency" class="slide level2">
+<h2>2. Probability as Long-Run Frequency</h2>
+<p>One useful way to think about probability is as a <strong>long-run frequency</strong>.</p>
+<p>The probability of an outcome is the proportion of times that outcome would occur if we repeated a random process indefinitely.</p>
+<p>For example:</p>
+<ul>
+<li>The probability of heads in a fair coin toss is 0.5 because, in the long run, about half of coin tosses will land heads.</li>
+<li>The probability of rolling a 3 on a fair six-sided die is (1/6) because, in the long run, about one-sixth of rolls will be 3.</li>
+<li>If 75 percent of people in a population have at least six years of schooling, then the probability that a randomly selected person has at least six years of schooling is 0.75.</li>
+</ul>
+<p>This long-run interpretation is crucial for understanding sample data.</p>
+<p>Suppose we ask a survey question about federal child care spending. Respondents can answer:</p>
+<ul>
+<li>We spend too little.</li>
+<li>We spend about the right amount.</li>
+<li>We spend too much.</li>
+</ul>
+<p>If 49 percent of people in our sample say “too little,” that sample percentage reflects an estimate of the underlying probability that a randomly selected person from the population would answer “too little.”</p>
+<p>The true population probability may not be exactly 0.49. But if the sample is large and randomly selected, it is unlikely to be wildly different.</p>
+<p>Probability theory gives us a way to say how unlikely.</p>
+</section>
+<section id="the-law-of-large-numbers" class="slide level2">
+<h2>3. The Law of Large Numbers</h2>
+<p>The <strong>law of large numbers</strong> states that, as the number of observations increases, sample statistics tend to converge toward the true population values.</p>
+<p>For proportions, we can write this idea as:</p>
+<p>[ n ]</p>
+<p>where:</p>
+<ul>
+<li>() is the true population proportion.</li>
+<li>(), pronounced “pi-hat,” is the sample proportion.</li>
+<li>(n) is the sample size.</li>
+<li>The hat indicates that () is an estimator of ().</li>
+</ul>
+<p>If we flip a fair coin repeatedly, the sample proportion of heads, (), will converge toward the true probability of heads, (= 0.5), as the number of flips grows.</p>
+<p>The same logic applies to means:</p>
+<p>[ {X} _X n ]</p>
+<p>where:</p>
+<ul>
+<li>({X}) is the sample mean.</li>
+<li>(_X) is the population mean.</li>
+</ul>
+<p>This does not mean every sample is perfectly accurate. Small samples can deviate substantially from the population. Even large samples can deviate somewhat. But probability theory tells us how those deviations behave.</p>
+<p>This is the basic logic of inference:</p>
+<blockquote>
+<p>We use sample statistics to estimate population parameters, and probability theory tells us how much random error to expect.</p>
+</blockquote>
+</section>
+<section class="slide level2">
+
+</section>
+<section>
+<section id="part-i-basic-elements-of-probability" class="title-slide slide level1 center">
+<h1>Part I: Basic Elements of Probability</h1>
+
+</section>
+<section id="sample-spaces" class="slide level2">
+<h2>4. Sample Spaces</h2>
+<p>A <strong>sample space</strong> is the set of all possible outcomes of a random process.</p>
+<p>We usually denote the sample space with (S).</p>
+<p>For a coin toss, the sample space is:</p>
+<p>[ S = {Heads, Tails} ]</p>
+<p>For a six-sided die roll, the sample space is:</p>
+<p>[ S = {1, 2, 3, 4, 5, 6} ]</p>
+<p>For a survey question with three possible responses, the sample space might be:</p>
+<p>[ S = {Agree, Disagree, Don’t Know} ]</p>
+<p>A valid sample space must be both <strong>mutually exclusive</strong> and <strong>exhaustive</strong>.</p>
+<p><strong>Mutually exclusive</strong> means that only one outcome can occur at a time. A single coin toss cannot be both heads and tails.</p>
+<p><strong>Exhaustive</strong> means that all possible outcomes are included. Something in the sample space must occur.</p>
+<p>If the sample space is properly defined, the probabilities of all outcomes must sum to 1.</p>
+</section>
+<section id="outcomes" class="slide level2">
+<h2>5. Outcomes</h2>
+<p>An <strong>outcome</strong> is one possible result of a random process.</p>
+<p>For a coin toss, “heads” is an outcome and “tails” is an outcome.</p>
+<p>For a die roll, each number is an outcome:</p>
+<p>[ 1, 2, 3, 4, 5, 6 ]</p>
+<p>For a survey question, each possible response is an outcome.</p>
+<p>Each outcome has a probability. If all outcomes are equally likely, calculating probabilities is straightforward.</p>
+<p>For a fair coin:</p>
+<p>[ P(Heads) = ]</p>
+<p>[ P(Tails) = ]</p>
+<p>For a fair six-sided die:</p>
+<p>[ P(1) = P(2) = P(3) = P(4) = P(5) = P(6) = ]</p>
+<p>The probabilities sum to 1:</p>
+<p>[ +++++=1 ]</p>
+</section>
+<section id="probability-as-area" class="slide level2">
+<h2>6. Probability as Area</h2>
+<p>Because probabilities are proportions, we can visualize them as areas.</p>
+<p>Imagine the full sample space as a rectangle with total area 1. Each outcome occupies some portion of that rectangle. The area assigned to an outcome corresponds to its probability.</p>
+<p>For a fair coin, the rectangle is divided into two equal parts:</p>
+<ul>
+<li>Heads: area 0.5</li>
+<li>Tails: area 0.5</li>
+</ul>
+<p>For a fair die, the rectangle is divided into six equal parts:</p>
+<ul>
+<li>1: area (1/6)</li>
+<li>2: area (1/6)</li>
+<li>3: area (1/6)</li>
+<li>4: area (1/6)</li>
+<li>5: area (1/6)</li>
+<li>6: area (1/6)</li>
+</ul>
+<p>This area-based view will be useful when we discuss unions, intersections, complements, and conditional probabilities.</p>
+</section>
+<section id="events" class="slide level2">
+<h2>7. Events</h2>
+<p>An <strong>event</strong> is a set of outcomes.</p>
+<p>Sometimes an event consists of only one outcome. This is called a <strong>simple event</strong>.</p>
+<p>For example, when rolling a die:</p>
+<p>[ A = {3} ]</p>
+<p>The event is “rolling a 3.”</p>
+<p>Other events consist of multiple outcomes. These are called <strong>compound events</strong>.</p>
+<p>For example:</p>
+<p>[ B = {2, 4, 6} ]</p>
+<p>The event is “rolling an even number.”</p>
+<p>Another example:</p>
+<p>[ C = {1, 2, 3, 4} ]</p>
+<p>The event is “rolling a number less than 5.”</p>
+<p>In a survey with responses:</p>
+<p>[ S = {Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree} ]</p>
+<p>we might define an event called “agreement”:</p>
+<p>[ A = {Agree, Strongly Agree} ]</p>
+<p>An event is simply a subset of the sample space.</p>
+</section>
+<section id="probability-of-an-event" class="slide level2">
+<h2>8. Probability of an Event</h2>
+<p>The probability of an event is the sum of the probabilities of the outcomes included in that event.</p>
+<p>Suppose we roll a fair die and define:</p>
+<p>[ A = {2, 4, 6} ]</p>
+<p>This is the event “rolling an even number.”</p>
+<p>Each outcome has probability (1/6), so:</p>
+<p>[ P(A) = P(2) + P(4) + P(6) ]</p>
+<p>[ P(A) = + + ]</p>
+<p>[ P(A) = = ]</p>
+<p>The event occurs if any one of its outcomes occurs.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-ii-unions-intersections-and-complements" class="title-slide slide level1 center">
+<h1>Part II: Unions, Intersections, and Complements</h1>
+
+</section>
+<section id="the-union-of-events-a-or-b" class="slide level2">
+<h2>9. The Union of Events: “A or B”</h2>
+<p>The <strong>union</strong> of two events includes all outcomes that belong to either event.</p>
+<p>The union of (A) and (B) is written:</p>
+<p>[ A B ]</p>
+<p>This means:</p>
+<p>[ A B ]</p>
+<p>Importantly, “or” is inclusive. It means A, or B, or both.</p>
+<p>Suppose we roll a die and define:</p>
+<p>[ A = {2, 4, 6} ]</p>
+<p>the event “rolling an even number,” and:</p>
+<p>[ B = {1, 2, 3, 4} ]</p>
+<p>the event “rolling a number less than 5.”</p>
+<p>Then:</p>
+<p>[ A B = {1, 2, 3, 4, 6} ]</p>
+<p>The only die roll not included is 5.</p>
+<p>So:</p>
+<p>[ P(A B) = ]</p>
+<p>The union expands the set of outcomes. It asks whether at least one of the events occurred.</p>
+</section>
+<section id="the-intersection-of-events-a-and-b" class="slide level2">
+<h2>10. The Intersection of Events: “A and B”</h2>
+<p>The <strong>intersection</strong> of two events includes only outcomes that belong to both events.</p>
+<p>The intersection of (A) and (B) is written:</p>
+<p>[ A B ]</p>
+<p>This means:</p>
+<p>[ A B ]</p>
+<p>This is more restrictive than a union. Both events must occur.</p>
+<p>Using the same example:</p>
+<p>[ A = {2, 4, 6} ]</p>
+<p>[ B = {1, 2, 3, 4} ]</p>
+<p>The outcomes common to both are:</p>
+<p>[ A B = {2, 4} ]</p>
+<p>So:</p>
+<p>[ P(A B) = = ]</p>
+<p>A useful reminder:</p>
+<ul>
+<li>“Or” expands possibilities.</li>
+<li>“And” restricts possibilities.</li>
+</ul>
+<p>This can feel counterintuitive at first. In everyday language, “and” may sound like adding more. In probability, “and” usually means applying an additional condition, so the event becomes narrower.</p>
+</section>
+<section id="disjoint-events" class="slide level2">
+<h2>11. Disjoint Events</h2>
+<p>Two events are <strong>disjoint</strong> if they cannot occur at the same time.</p>
+<p>Disjoint events have no overlap. Their intersection is empty.</p>
+<p>For example, when rolling a die:</p>
+<p>[ A = {1, 3, 5} ]</p>
+<p>is the event “rolling an odd number,” and:</p>
+<p>[ B = {4} ]</p>
+<p>is the event “rolling a 4.”</p>
+<p>These events cannot both occur. A die roll cannot be both odd and 4.</p>
+<p>So:</p>
+<p>[ A B = ]</p>
+<p>and:</p>
+<p>[ P(A B) = 0 ]</p>
+<p>Heads and tails in a single coin toss are also disjoint. One coin toss cannot produce both heads and tails.</p>
+</section>
+<section id="complements" class="slide level2">
+<h2>12. Complements</h2>
+<p>The <strong>complement</strong> of an event consists of all outcomes not in that event.</p>
+<p>If the event is (A), its complement can be written as:</p>
+<p>[ ]</p>
+<p>or sometimes:</p>
+<p>[ A^c ]</p>
+<p>Both mean “not A.”</p>
+<p>Suppose:</p>
+<p>[ A = {2, 4, 6} ]</p>
+<p>the event “rolling an even number.”</p>
+<p>Then the complement is:</p>
+<p>[ = {1, 3, 5} ]</p>
+<p>the event “not rolling an even number,” or rolling an odd number.</p>
+<p>An event and its complement always exhaust the sample space. Either (A) happens or it does not.</p>
+<p>Therefore:</p>
+<p>[ P(A) + P() = 1 ]</p>
+<p>So:</p>
+<p>[ P() = 1 - P(A) ]</p>
+<p>This is called the <strong>complement rule</strong>.</p>
+<p>For example, if the probability that a randomly selected person is eligible to vote is 0.75, then the probability that the person is not eligible to vote is:</p>
+<p>[ 1 - 0.75 = 0.25 ]</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-iii-basic-rules-of-probability" class="title-slide slide level1 center">
+<h1>Part III: Basic Rules of Probability</h1>
+
+</section>
+<section id="probabilities-range-from-0-to-1" class="slide level2">
+<h2>13. Probabilities Range from 0 to 1</h2>
+<p>Every probability must fall between 0 and 1:</p>
+<p>[ 0 P(A) ]</p>
+<p>If:</p>
+<p>[ P(A) = 0 ]</p>
+<p>then event (A) is impossible.</p>
+<p>If:</p>
+<p>[ P(A) = 1 ]</p>
+<p>then event (A) is certain.</p>
+<p>If you calculate a probability and get something like 1.6 or -0.2, something has gone wrong. A probability cannot exceed 1 and cannot be negative.</p>
+<p>The probability of the entire sample space is always 1:</p>
+<p>[ P(S) = 1 ]</p>
+<p>The probability of something outside the sample space is 0.</p>
+</section>
+<section id="addition-rule-for-disjoint-events" class="slide level2">
+<h2>14. Addition Rule for Disjoint Events</h2>
+<p>If two events are disjoint, then the probability of either event occurring is the sum of their probabilities:</p>
+<p>[ P(A B) = P(A) + P(B) ]</p>
+<p>This only works when (A) and (B) do not overlap.</p>
+<p>For example, when rolling a die, let:</p>
+<p>[ A = {1} ]</p>
+<p>[ B = {6} ]</p>
+<p>Since a die roll cannot be both 1 and 6, the events are disjoint.</p>
+<p>So:</p>
+<p>[ P(A B) = P(A) + P(B) ]</p>
+<p>[ P(A B) = + = = ]</p>
+</section>
+<section id="general-addition-rule" class="slide level2">
+<h2>15. General Addition Rule</h2>
+<p>If two events may overlap, we need the general addition rule:</p>
+<p>[ P(A B) = P(A) + P(B) - P(A B) ]</p>
+<p>Why subtract the intersection?</p>
+<p>Because when we add (P(A)) and (P(B)), the overlapping part gets counted twice. Subtracting (P(A B)) removes the double-counting.</p>
+<p>This formula always works. If the events are disjoint, then:</p>
+<p>[ P(A B) = 0 ]</p>
+<p>and the formula reduces to:</p>
+<p>[ P(A B) = P(A) + P(B) ]</p>
+</section>
+<section id="expected-value" class="slide level2">
+<h2>16. Expected Value</h2>
+<p>The <strong>expected value</strong> of a random variable is its probability-weighted average.</p>
+<p>If a variable (Y) can take values (y_1, y_2, , y_k), then:</p>
+<p>[ E(Y) = _i y_i P(Y = y_i) ]</p>
+<p>In words: multiply each possible value by its probability, then add the results.</p>
+<p>For example, suppose (Y) can take four values:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">(Y)</th>
+<th style="text-align: right;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.1</td>
+</tr>
+</tbody>
+</table>
+<p>The expected value is:</p>
+<p>[ E(Y) = 1(0.5) + 2(0.3) + 3(0.1) + 4(0.1) ]</p>
+<p>[ E(Y) = 0.5 + 0.6 + 0.3 + 0.4 ]</p>
+<p>[ E(Y) = 1.8 ]</p>
+<p>The expected value is the mean of the probability distribution.</p>
+<p>It does not need to be a value that can actually occur. Just as the expected value of a die roll is 3.5, even though no one can roll a 3.5, the expected value here is 1.8 even though (Y) only takes whole-number values.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-iv-gamblers-fallacy" class="title-slide slide level1 center">
+<h1>Part IV: Gambler’s Fallacy</h1>
+
+</section>
+<section id="the-fallacy" class="slide level2">
+<h2>17. The Fallacy</h2>
+<p>The <strong>gambler’s fallacy</strong> is the mistaken belief that a random process is “due” to balance out in the short run.</p>
+<p>For example:</p>
+<blockquote>
+<p>I flipped a coin and got heads five times in a row. The next flip has to be tails.</p>
+</blockquote>
+<p>This intuition is understandable, but it is wrong.</p>
+<p>If the coin is fair, each flip is independent. The probability of tails on the next flip is still:</p>
+<p>[ 0.5 ]</p>
+<p>The previous flips do not affect the next one.</p>
+<p>The law of large numbers tells us that, in the long run, the proportion of heads will converge toward 0.5. But it does not say that short-run imbalances must immediately correct themselves.</p>
+<p>The opposite intuition is sometimes called the <strong>hot hand fallacy</strong>:</p>
+<blockquote>
+<p>I flipped heads five times in a row. I’m on a streak, so heads is more likely next time.</p>
+</blockquote>
+<p>For independent coin tosses, this is also wrong.</p>
+<p>Each flip is its own event.</p>
+</section>
+<section id="independence-and-streaks" class="slide level2">
+<h2>18. Independence and Streaks</h2>
+<p>The gambler’s fallacy depends on misunderstanding independence.</p>
+<p>If events are independent, then knowing what happened before does not change the probability of what happens next.</p>
+<p>For example, if we randomly survey voters and happen to select ten supporters of Candidate A in a row, that does not mean the next person is more likely to support Candidate B. The next person’s response is not affected by the previous respondents.</p>
+<p>However, not all real-world events are independent.</p>
+<p>Consider basketball. If a player makes several three-point shots in a row, fans may say the player is “hot.” Is that real? Maybe. Unlike coin tosses, basketball shots are not identical independent trials. The player’s confidence, fatigue, defensive pressure, shot location, and rhythm may all matter. A shot from the corner with no defender nearby is not the same as a contested shot from several feet behind the line.</p>
+<p>Sports analytics often relies on expected value. A three-point shot may be worth attempting even if it is made less often than a two-point shot because the payoff is larger.</p>
+<p>For example, if a player makes 40 percent of three-point shots, the expected value of the shot is:</p>
+<p>[ 3(0.40) = 1.20 ]</p>
+<p>If a player makes 55 percent of two-point shots, the expected value is:</p>
+<p>[ 2(0.55) = 1.10 ]</p>
+<p>Even though the two-point shot is made more often, the three-point shot has the higher expected value.</p>
+<p>The same logic appears in football decisions, such as whether to punt or go for it on fourth down. Teams can estimate the expected value of each choice based on field position, yards to go, time remaining, and historical outcomes.</p>
+<p>Probability is everywhere. Even when people are arguing about sports, they are often arguing about probability. Sometimes loudly. Very loudly.</p>
+</section>
+<section id="real-world-consequences-of-gamblers-fallacy" class="slide level2">
+<h2>19. Real-World Consequences of Gambler’s Fallacy</h2>
+<p>Gambler’s fallacy is not limited to casinos or sports. It can affect serious decisions.</p>
+<p>Researchers have found evidence that decision-makers sometimes behave as if independent cases should “balance out.”</p>
+<p>Examples include:</p>
+<ul>
+<li><strong>Asylum judges</strong>: A judge who granted asylum in the previous case may be slightly less likely to grant asylum in the next case, even if the cases are independent.</li>
+<li><strong>Loan officers</strong>: A loan officer who approved the previous loan may be slightly less likely to approve the next one, holding applicant characteristics constant.</li>
+<li><strong>Baseball umpires</strong>: An umpire who called the previous pitch a strike may be slightly less likely to call the next pitch a strike, even after accounting for pitch location.</li>
+</ul>
+<p>In each case, the decision-maker may unconsciously try to balance previous decisions, even though the current case should be judged on its own merits.</p>
+<p>This is the practical danger of gambler’s fallacy: it can make independent events seem connected when they are not.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-v-joint-probabilities" class="title-slide slide level1 center">
+<h1>Part V: Joint Probabilities</h1>
+
+</section>
+<section id="joint-outcomes" class="slide level2">
+<h2>20. Joint Outcomes</h2>
+<p>A <strong>joint probability</strong> is the probability that two or more events occur together.</p>
+<p>For example:</p>
+<ul>
+<li>The probability that a person is a Democrat and supports raising the minimum wage.</li>
+<li>The probability that a die roll is even and less than 5.</li>
+<li>The probability that two coin tosses both land heads.</li>
+<li>The probability that one die shows 3 and another die shows 4.</li>
+</ul>
+<p>Joint probabilities involve intersections:</p>
+<p>[ P(A B) ]</p>
+<p>This is the probability that both (A) and (B) occur.</p>
+</section>
+<section id="rolling-two-dice" class="slide level2">
+<h2>21. Rolling Two Dice</h2>
+<p>Suppose we roll two dice: one orange and one white.</p>
+<p>Each die has six possible outcomes. Together, there are:</p>
+<p>[ 6 = 36 ]</p>
+<p>possible joint outcomes.</p>
+<p>For example:</p>
+<ul>
+<li>Orange = 1, White = 1</li>
+<li>Orange = 1, White = 2</li>
+<li>Orange = 3, White = 4</li>
+<li>Orange = 6, White = 6</li>
+</ul>
+<p>If both dice are fair, each joint outcome has probability:</p>
+<p>[ ]</p>
+<p>Now suppose we want the probability that the sum of the two dice is less than or equal to 4.</p>
+<p>The favorable outcomes are:</p>
+<p>[ (1,1), (1,2), (2,1), (1,3), (2,2), (3,1) ]</p>
+<p>There are 6 favorable outcomes.</p>
+<p>So:</p>
+<p>[ P( ) = = ]</p>
+<p>This illustrates the basic strategy for joint probabilities:</p>
+<ol type="1">
+<li>Identify all joint outcomes.</li>
+<li>Identify which joint outcomes satisfy the event.</li>
+<li>Add their probabilities.</li>
+</ol>
+</section>
+<section id="joint-frequency-distributions" class="slide level2">
+<h2>22. Joint Frequency Distributions</h2>
+<p>In data analysis, joint probabilities often begin as joint frequency distributions.</p>
+<p>Suppose we survey people and ask two questions:</p>
+<ol type="1">
+<li>What is your party identification?
+<ul>
+<li>Democrat</li>
+<li>Independent</li>
+<li>Republican</li>
+</ul></li>
+<li>Do you support raising the minimum wage?
+<ul>
+<li>Yes</li>
+<li>No</li>
+</ul></li>
+</ol>
+<p>A joint frequency table might look like this:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Minimum Wage Position</th>
+<th style="text-align: right;">Democrat</th>
+<th style="text-align: right;">Independent</th>
+<th style="text-align: right;">Republican</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Yes</td>
+<td style="text-align: right;">1,050</td>
+<td style="text-align: right;">763</td>
+<td style="text-align: right;">407</td>
+<td style="text-align: right;">2,220</td>
+</tr>
+<tr class="even">
+<td>No</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: right;">396</td>
+<td style="text-align: right;">623</td>
+<td style="text-align: right;">1,218</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;">1,249</td>
+<td style="text-align: right;">1,159</td>
+<td style="text-align: right;">1,030</td>
+<td style="text-align: right;">3,438</td>
+</tr>
+</tbody>
+</table>
+<p>The internal cells show combinations of answers.</p>
+<p>For example, 1,050 respondents are Democrats who support raising the minimum wage.</p>
+<p>The joint probability of being a Democrat and supporting the minimum wage increase is:</p>
+<p>[ P(Democrat Yes) = ]</p>
+<p>[ P(Democrat Yes) ]</p>
+<p>This is a joint probability because two things are true at once.</p>
+</section>
+<section id="joint-probability-distributions" class="slide level2">
+<h2>23. Joint Probability Distributions</h2>
+<p>We can convert the frequency table into a joint probability table by dividing every cell by the total sample size.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Minimum Wage Position</th>
+<th style="text-align: right;">Democrat</th>
+<th style="text-align: right;">Independent</th>
+<th style="text-align: right;">Republican</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Yes</td>
+<td style="text-align: right;">0.305</td>
+<td style="text-align: right;">0.222</td>
+<td style="text-align: right;">0.119</td>
+<td style="text-align: right;">0.646</td>
+</tr>
+<tr class="even">
+<td>No</td>
+<td style="text-align: right;">0.058</td>
+<td style="text-align: right;">0.115</td>
+<td style="text-align: right;">0.181</td>
+<td style="text-align: right;">0.354</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;">0.363</td>
+<td style="text-align: right;">0.337</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+</tbody>
+</table>
+<p>The internal cells are joint probabilities.</p>
+<p>For example:</p>
+<p>[ P(Yes Democrat) = 0.305 ]</p>
+<p>[ P(No Republican) = 0.181 ]</p>
+<p>The row and column totals are called <strong>marginal probabilities</strong>.</p>
+<p>For example:</p>
+<p>[ P(Yes) = 0.646 ]</p>
+<p>[ P(No) = 0.354 ]</p>
+<p>[ P(Democrat) = 0.363 ]</p>
+<p>[ P(Independent) = 0.337 ]</p>
+<p>[ P(Republican) = 0.300 ]</p>
+<p>They are called marginal probabilities because they appear in the margins of the table. More importantly, they give the probability of one event without regard to the other variable.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-vi-conditional-probability-and-independence" class="title-slide slide level1 center">
+<h1>Part VI: Conditional Probability and Independence</h1>
+
+</section>
+<section id="conditional-probability" class="slide level2">
+<h2>24. Conditional Probability</h2>
+<p>A <strong>conditional probability</strong> is the probability of one event given that another event has occurred.</p>
+<p>The notation is:</p>
+<p>[ P(A B) ]</p>
+<p>This is read:</p>
+<blockquote>
+<p>The probability of A given B.</p>
+</blockquote>
+<p>The formula is:</p>
+<p>[ P(A B) = ]</p>
+<p>The denominator is the event we know has occurred. The numerator is the joint probability that both events occurred.</p>
+<p>Conceptually, conditional probability restricts the sample space. Once we know (B) happened, we focus only on the part of the sample space where (B) is true. Then we ask what fraction of that space also includes (A).</p>
+</section>
+<section id="conditional-probability-example-minimum-wage-and-party-id" class="slide level2">
+<h2>25. Conditional Probability Example: Minimum Wage and Party ID</h2>
+<p>Using the joint probability table:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Minimum Wage Position</th>
+<th style="text-align: right;">Democrat</th>
+<th style="text-align: right;">Independent</th>
+<th style="text-align: right;">Republican</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Yes</td>
+<td style="text-align: right;">0.305</td>
+<td style="text-align: right;">0.222</td>
+<td style="text-align: right;">0.119</td>
+<td style="text-align: right;">0.646</td>
+</tr>
+<tr class="even">
+<td>No</td>
+<td style="text-align: right;">0.058</td>
+<td style="text-align: right;">0.115</td>
+<td style="text-align: right;">0.181</td>
+<td style="text-align: right;">0.354</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;">0.363</td>
+<td style="text-align: right;">0.337</td>
+<td style="text-align: right;">0.300</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose we want:</p>
+<p>[ P(Yes Democrat) ]</p>
+<p>That is, among Democrats, what is the probability of supporting a minimum wage increase?</p>
+<p>Use the formula:</p>
+<p>[ P(Yes Democrat) = ]</p>
+<p>Substitute values:</p>
+<p>[ P(Yes Democrat) = ]</p>
+<p>[ P(Yes Democrat) ]</p>
+<p>So, given that a respondent is a Democrat, the probability that they support raising the minimum wage is about 0.84.</p>
+<p>Compare that to the unconditional probability:</p>
+<p>[ P(Yes) = 0.646 ]</p>
+<p>Knowing that a person is a Democrat changes our estimate of the probability that they support raising the minimum wage.</p>
+<p>That suggests party identification and minimum wage attitudes are not independent.</p>
+</section>
+<section id="another-conditional-probability-example" class="slide level2">
+<h2>26. Another Conditional Probability Example</h2>
+<p>Now suppose we want:</p>
+<p>[ P(Independent No) ]</p>
+<p>That is, among those who oppose raising the minimum wage, what is the probability that a person is an independent?</p>
+<p>Use the formula:</p>
+<p>[ P(Independent No) = ]</p>
+<p>Substitute values:</p>
+<p>[ P(Independent No) = ]</p>
+<p>[ P(Independent No) ]</p>
+<p>So among people who oppose raising the minimum wage, about 32.5 percent are independents.</p>
+<p>Notice that this is close to the unconditional probability of being an independent:</p>
+<p>[ P(Independent) = 0.337 ]</p>
+<p>That particular conditional probability does not change much. But that alone does not prove independence for the full relationship. Other categories may still differ substantially.</p>
+</section>
+<section id="independence" class="slide level2">
+<h2>27. Independence</h2>
+<p>Two events are <strong>independent</strong> if knowing that one occurred does not change the probability that the other occurred.</p>
+<p>Events (A) and (B) are independent if:</p>
+<p>[ P(A B) = P(A) ]</p>
+<p>Equivalently:</p>
+<p>[ P(B A) = P(B) ]</p>
+<p>If the conditional probability equals the unconditional probability, then the condition did not matter.</p>
+<p>For example, suppose the probability that a randomly selected person has a job is:</p>
+<p>[ P(Job) = 0.60 ]</p>
+<p>Now suppose we condition on having a high school degree. If:</p>
+<p>[ P(Job High School Degree) = 0.60 ]</p>
+<p>then having a high school degree provides no information about whether someone has a job. The two events are independent.</p>
+<p>But if:</p>
+<p>[ P(Job High School Degree) &gt; 0.60 ]</p>
+<p>then employment and high school degree status are dependent. Knowing one changes the probability of the other.</p>
+</section>
+<section id="independence-with-dice" class="slide level2">
+<h2>28. Independence with Dice</h2>
+<p>Suppose we roll two dice, one orange and one white.</p>
+<p>Let:</p>
+<p>[ A = ]</p>
+<p>[ B = ]</p>
+<p>The probability that the orange die is 1 is:</p>
+<p>[ P(A) = ]</p>
+<p>The probability that both happen is:</p>
+<p>[ P(A B) = ]</p>
+<p>The probability that the white die is 3 is:</p>
+<p>[ P(B) = ]</p>
+<p>Now calculate:</p>
+<p>[ P(A B) = ]</p>
+<p>[ P(A B) = ]</p>
+<p>[ P(A B) = ]</p>
+<p>This equals (P(A)). So the events are independent.</p>
+<p>Knowing the white die is 3 does not change the probability that the orange die is 1.</p>
+</section>
+<section id="independence-with-cards" class="slide level2">
+<h2>29. Independence with Cards</h2>
+<p>Suppose we draw one card from a standard 52-card deck.</p>
+<p>There are 26 red cards, so:</p>
+<p>[ P(Red) = = ]</p>
+<p>There are 4 aces, so:</p>
+<p>[ P(Ace) = = ]</p>
+<p>There are 2 red aces, so:</p>
+<p>[ P(Red Ace) = ]</p>
+<p>Now calculate:</p>
+<p>[ P(Red Ace) = ]</p>
+<p>[ P(Red Ace) = ]</p>
+<p>[ P(Red Ace) = ]</p>
+<p>This equals (P(Red)). So being told that the card is an ace does not change the probability that it is red.</p>
+<p>Redness and aceness are independent.</p>
+</section>
+<section id="testing-for-independence-in-tables" class="slide level2">
+<h2>30. Testing for Independence in Tables</h2>
+<p>In a joint probability table, we can test for independence by comparing conditional and unconditional probabilities.</p>
+<p>Using the minimum wage table:</p>
+<p>[ P(Yes) = 0.646 ]</p>
+<p>But:</p>
+<p>[ P(Yes Democrat) = 0.840 ]</p>
+<p>Since:</p>
+<p>[ 0.840 ]</p>
+<p>party identification and support for raising the minimum wage are not independent.</p>
+<p>If two variables have multiple categories, checking one conditional probability may be enough to show dependence. If one conditional probability differs from the unconditional probability, independence fails.</p>
+<p>However, finding one category where the conditional probability matches the unconditional probability is not enough to prove independence. Other categories may differ and counterbalance one another.</p>
+<p>To establish independence across categorical variables, the relevant conditional probabilities must match across the categories.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-vii-multiplication-rules" class="title-slide slide level1 center">
+<h1>Part VII: Multiplication Rules</h1>
+
+</section>
+<section id="general-multiplication-rule" class="slide level2">
+<h2>31. General Multiplication Rule</h2>
+<p>The general multiplication rule gives the probability that two events both occur:</p>
+<p>[ P(A B) = P(A)P(B A) ]</p>
+<p>Equivalently:</p>
+<p>[ P(A B) = P(B)P(A B) ]</p>
+<p>This formula always works.</p>
+<p>It follows directly from the conditional probability formula:</p>
+<p>[ P(B A) = ]</p>
+<p>Rearranging gives:</p>
+<p>[ P(A B) = P(A)P(B A) ]</p>
+<p>This rule is especially useful when events are dependent.</p>
+<p>For example, suppose:</p>
+<p>[ P(Republican) = 0.300 ]</p>
+<p>and:</p>
+<p>[ P(No Republican) = ]</p>
+<p>Then:</p>
+<p>[ P(Republican No) = P(Republican)P(No Republican) ]</p>
+<p>[ P(Republican No) = 0.300 () ]</p>
+<p>[ P(Republican No) = 0.181 ]</p>
+</section>
+<section id="multiplication-rule-for-independent-events" class="slide level2">
+<h2>32. Multiplication Rule for Independent Events</h2>
+<p>If two events are independent, then:</p>
+<p>[ P(B A) = P(B) ]</p>
+<p>So the general multiplication rule becomes:</p>
+<p>[ P(A B) = P(A)P(B) ]</p>
+<p>This formula should only be used when the events are independent.</p>
+<p>For example, if we flip a fair coin twice, the probability of heads on the first flip is 0.5, and the probability of heads on the second flip is also 0.5.</p>
+<p>Because the flips are independent:</p>
+<p>[ P(Heads Heads) = 0.5 = 0.25 ]</p>
+<p>For eight heads in a row:</p>
+<p>[ P(8 ) = 0.5^8 ]</p>
+<p>[ P(8 ) = 0.0039 ]</p>
+<p>That is:</p>
+<p>[ ]</p>
+<p>The probability is small, but not impossible.</p>
+</section>
+<section id="permutations-and-repeated-trials" class="slide level2">
+<h2>33. Permutations and Repeated Trials</h2>
+<p>Suppose we flip a fair coin eight times.</p>
+<p>The probability of one specific sequence, such as:</p>
+<p>[ T H H H H H H H ]</p>
+<p>is:</p>
+<p>[ 0.5^8 = ]</p>
+<p>But now suppose we ask:</p>
+<blockquote>
+<p>What is the probability of getting exactly seven heads in eight flips?</p>
+</blockquote>
+<p>There are multiple sequences that produce exactly seven heads:</p>
+<p>[ T H H H H H H H ]</p>
+<p>[ H T H H H H H H ]</p>
+<p>[ H H T H H H H H ]</p>
+<p>and so on.</p>
+<p>There are eight possible positions for the one tail. Each sequence has probability (1/256).</p>
+<p>So:</p>
+<p>[ P(7 ) = 8 ]</p>
+<p>[ P(7 ) = = ]</p>
+<p>This is the beginning of the logic behind the <strong>binomial distribution</strong>, which describes the number of successes in a fixed number of independent trials where each trial has two possible outcomes.</p>
+<p>We will return to that idea later.</p>
+</section>
+<section id="summary-of-core-probability-rules" class="slide level2">
+<h2>34. Summary of Core Probability Rules</h2>
+<p>The major rules introduced so far are:</p>
+<h3 id="complement-rule">Complement Rule</h3>
+<p>[ P() = 1 - P(A) ]</p>
+<h3 id="general-addition-rule-1">General Addition Rule</h3>
+<p>[ P(A B) = P(A) + P(B) - P(A B) ]</p>
+<h3 id="multiplication-rule-for-dependent-events">Multiplication Rule for Dependent Events</h3>
+<p>[ P(A B) = P(A)P(B A) ]</p>
+<p>or:</p>
+<p>[ P(A B) = P(B)P(A B) ]</p>
+<h3 id="multiplication-rule-for-independent-events-1">Multiplication Rule for Independent Events</h3>
+<p>[ P(A B) = P(A)P(B) ]</p>
+<p>Use the independent-events version only when you know the events are independent.</p>
+<p>When in doubt, use the general multiplication rule.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-viii-probability-trees" class="title-slide slide level1 center">
+<h1>Part VIII: Probability Trees</h1>
+
+</section>
+<section id="probability-tree-diagrams" class="slide level2">
+<h2>35. Probability Tree Diagrams</h2>
+<p>A <strong>probability tree</strong> is a visual tool for representing sequences of probabilistic events.</p>
+<p>A tree begins with a node. Branches extend from the node to represent possible outcomes. Each branch has a probability. The probabilities coming out of a node must sum to 1.</p>
+<p>For example, a coin toss has two branches:</p>
+<ul>
+<li>Heads: 0.5</li>
+<li>Tails: 0.5</li>
+</ul>
+<p>If we toss a coin twice, the tree has two stages.</p>
+<p>First toss:</p>
+<ul>
+<li>Heads: 0.5</li>
+<li>Tails: 0.5</li>
+</ul>
+<p>Second toss after heads:</p>
+<ul>
+<li>Heads: 0.5</li>
+<li>Tails: 0.5</li>
+</ul>
+<p>Second toss after tails:</p>
+<ul>
+<li>Heads: 0.5</li>
+<li>Tails: 0.5</li>
+</ul>
+<p>The possible sequences are:</p>
+<ul>
+<li>HH</li>
+<li>HT</li>
+<li>TH</li>
+<li>TT</li>
+</ul>
+<p>Each sequence has probability:</p>
+<p>[ 0.5 = 0.25 ]</p>
+<p>To find the probability of a path, multiply along the branches.</p>
+<p>To find the probability of an event that includes multiple paths, add the probabilities of those paths.</p>
+</section>
+<section id="example-heads-exactly-once" class="slide level2">
+<h2>36. Example: Heads Exactly Once</h2>
+<p>Suppose we toss a coin twice and ask:</p>
+<blockquote>
+<p>What is the probability of getting heads exactly once?</p>
+</blockquote>
+<p>The favorable paths are:</p>
+<ul>
+<li>HT</li>
+<li>TH</li>
+</ul>
+<p>Each has probability 0.25.</p>
+<p>So:</p>
+<p>[ P() = 0.25 + 0.25 = 0.50 ]</p>
+</section>
+<section id="example-heads-at-least-once" class="slide level2">
+<h2>37. Example: Heads At Least Once</h2>
+<p>Now ask:</p>
+<blockquote>
+<p>What is the probability of getting heads at least once?</p>
+</blockquote>
+<p>The favorable paths are:</p>
+<ul>
+<li>HH</li>
+<li>HT</li>
+<li>TH</li>
+</ul>
+<p>So:</p>
+<p>[ P() = 0.25 + 0.25 + 0.25 = 0.75 ]</p>
+<p>We can also use the complement rule.</p>
+<p>The only way not to get heads at least once is to get no heads:</p>
+<ul>
+<li>TT</li>
+</ul>
+<p>That has probability 0.25.</p>
+<p>So:</p>
+<p>[ P() = 1 - P() ]</p>
+<p>[ P() = 1 - 0.25 = 0.75 ]</p>
+<p>The complement rule is often faster when an event has many possible paths.</p>
+</section>
+<section id="probability-trees-with-unequal-probabilities" class="slide level2">
+<h2>38. Probability Trees with Unequal Probabilities</h2>
+<p>Suppose airport security randomly sends travelers to either a short screening line or a long screening line.</p>
+<p>Assume:</p>
+<p>[ P(Short) = 0.25 ]</p>
+<p>[ P(Long) = 0.75 ]</p>
+<p>Now consider two travelers, one after the other, and assume their assignments are independent.</p>
+<p>For the first traveler:</p>
+<ul>
+<li>Short: 0.25</li>
+<li>Long: 0.75</li>
+</ul>
+<p>For the second traveler, regardless of what happened to the first:</p>
+<ul>
+<li>Short: 0.25</li>
+<li>Long: 0.75</li>
+</ul>
+<p>The joint probabilities are:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>First Traveler</th>
+<th>Second Traveler</th>
+<th style="text-align: right;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Short</td>
+<td>Short</td>
+<td style="text-align: right;">(0.25 = 0.0625)</td>
+</tr>
+<tr class="even">
+<td>Short</td>
+<td>Long</td>
+<td style="text-align: right;">(0.25 = 0.1875)</td>
+</tr>
+<tr class="odd">
+<td>Long</td>
+<td>Short</td>
+<td style="text-align: right;">(0.75 = 0.1875)</td>
+</tr>
+<tr class="even">
+<td>Long</td>
+<td>Long</td>
+<td style="text-align: right;">(0.75 = 0.5625)</td>
+</tr>
+</tbody>
+</table>
+<p>The probabilities sum to 1.</p>
+<p>The probability that both get the short line is:</p>
+<p>[ 0.0625 ]</p>
+<p>The probability that exactly one gets the short line is:</p>
+<p>[ 0.1875 + 0.1875 = 0.375 ]</p>
+<p>The probability that at least one gets the short line is:</p>
+<p>[ 1 - P(Long, Long) ]</p>
+<p>[ 1 - 0.5625 = 0.4375 ]</p>
+</section>
+<section id="probability-trees-with-conditional-probabilities" class="slide level2">
+<h2>39. Probability Trees with Conditional Probabilities</h2>
+<p>Now suppose the process is not independent.</p>
+<p>Imagine that if the first traveler gets the short line, the system becomes less likely to send the next traveler to the short line.</p>
+<p>For the first traveler:</p>
+<p>[ P(Short) = 0.25 ]</p>
+<p>[ P(Long) = 0.75 ]</p>
+<p>If the first traveler gets the short line:</p>
+<p>[ P(Short First Short) = 0.10 ]</p>
+<p>[ P(Long First Short) = 0.90 ]</p>
+<p>If the first traveler gets the long line:</p>
+<p>[ P(Short First Long) = 0.25 ]</p>
+<p>[ P(Long First Long) = 0.75 ]</p>
+<p>Now the second-stage probabilities depend on what happened in the first stage.</p>
+<p>The joint probabilities are:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>First Traveler</th>
+<th>Second Traveler</th>
+<th style="text-align: right;">Probability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Short</td>
+<td>Short</td>
+<td style="text-align: right;">(0.25 = 0.025)</td>
+</tr>
+<tr class="even">
+<td>Short</td>
+<td>Long</td>
+<td style="text-align: right;">(0.25 = 0.225)</td>
+</tr>
+<tr class="odd">
+<td>Long</td>
+<td>Short</td>
+<td style="text-align: right;">(0.75 = 0.1875)</td>
+</tr>
+<tr class="even">
+<td>Long</td>
+<td>Long</td>
+<td style="text-align: right;">(0.75 = 0.5625)</td>
+</tr>
+</tbody>
+</table>
+<p>This tree shows dependence. The probabilities facing the second traveler change depending on what happened to the first traveler.</p>
+<p>In a probability tree:</p>
+<ul>
+<li>Branch probabilities are conditional probabilities when they depend on previous outcomes.</li>
+<li>Final path probabilities are joint probabilities.</li>
+<li>Probabilities leaving each node must sum to 1.</li>
+</ul>
+</section>
+<section id="probability-tree-example-coin-and-die" class="slide level2">
+<h2>40. Probability Tree Example: Coin and Die</h2>
+<p>Suppose we use the following strange procedure.</p>
+<p>First, flip a fair coin.</p>
+<ul>
+<li>If the coin lands tails, report the number 3.</li>
+<li>If the coin lands heads, roll a fair die and report the die result.</li>
+</ul>
+<p>What is the probability of hearing each number?</p>
+<p>If the coin lands tails, which happens with probability (1/2), you hear 3.</p>
+<p>If the coin lands heads, which happens with probability (1/2), then each die result occurs with probability (1/6).</p>
+<p>So for numbers 1, 2, 4, 5, and 6:</p>
+<p>[ P() = = ]</p>
+<p>For 3, there are two paths:</p>
+<ol type="1">
+<li>Tails, then report 3:</li>
+</ol>
+<p>[ ]</p>
+<ol start="2" type="1">
+<li>Heads, then roll 3:</li>
+</ol>
+<p>[ = ]</p>
+<p>So:</p>
+<p>[ P() = + ]</p>
+<p>[ P() = + ]</p>
+<p>[ P() = ]</p>
+<p>If you hear the number 2, you know the coin must have landed heads. It is impossible to hear 2 after tails.</p>
+<p>If you hear 3, the coin could have landed tails or heads. Probability trees help us keep track of these possibilities.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="part-ix-contingency-tables" class="title-slide slide level1 center">
+<h1>Part IX: Contingency Tables</h1>
+
+</section>
+<section id="cross-tabulation" class="slide level2">
+<h2>41. Cross-Tabulation</h2>
+<p>A <strong>contingency table</strong>, also called a <strong>cross-tabulation</strong> or <strong>cross-tab</strong>, displays the joint distribution of two categorical variables.</p>
+<p>Contingency tables are useful for asking whether the distribution of one variable changes across categories of another variable.</p>
+<p>For example, we might ask:</p>
+<blockquote>
+<p>Does religiosity affect support for federal spending on public schools?</p>
+</blockquote>
+<p>Suppose one survey question asks whether federal spending on public schools should:</p>
+<ul>
+<li>decrease</li>
+<li>stay the same</li>
+<li>increase</li>
+</ul>
+<p>Another question asks whether religion is an important part of the respondent’s life:</p>
+<ul>
+<li>yes</li>
+<li>no</li>
+</ul>
+<p>A contingency table can show whether opinions about school spending differ between those who say religion is important and those who say it is not.</p>
+</section>
+<section id="dependent-and-independent-variables" class="slide level2">
+<h2>42. Dependent and Independent Variables</h2>
+<p>When building a contingency table, it is often helpful to place the <strong>dependent variable</strong> in the rows and the <strong>independent variable</strong> in the columns.</p>
+<p>The <strong>dependent variable</strong> is the outcome we want to explain.</p>
+<p>The <strong>independent variable</strong> is the variable we think might affect the outcome.</p>
+<p>For example:</p>
+<ul>
+<li>Dependent variable: opinion about federal school spending</li>
+<li>Independent variable: whether religion is important</li>
+</ul>
+<p>This arrangement makes it easier to compare column percentages side by side.</p>
+</section>
+<section id="frequencies-row-percentages-column-percentages-and-cell-percentages" class="slide level2">
+<h2>43. Frequencies, Row Percentages, Column Percentages, and Cell Percentages</h2>
+<p>A contingency table can display several kinds of information.</p>
+<h3 id="frequencies">Frequencies</h3>
+<p>Raw counts show how many cases fall into each combination of categories.</p>
+<h3 id="row-percentages">Row Percentages</h3>
+<p>Row percentages add across each row to 100 percent. They show how cases in a row are distributed across columns.</p>
+<h3 id="column-percentages">Column Percentages</h3>
+<p>Column percentages add down each column to 100 percent. They show how cases in a column are distributed across rows.</p>
+<h3 id="cell-percentages">Cell Percentages</h3>
+<p>Cell percentages show the percentage of all cases that fall into each cell. These are similar to joint probabilities.</p>
+<p>For example, if 99 out of 4,230 respondents both say religion is not important and support decreasing school spending, then the cell percentage is:</p>
+<p>[ % ]</p>
+<p>The corresponding joint probability is:</p>
+<p>[ 0.0234 ]</p>
+</section>
+<section id="example-religion-and-school-spending" class="slide level2">
+<h2>44. Example: Religion and School Spending</h2>
+<p>Suppose we produce a contingency table with column percentages.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Federal Spending on Public Schools</th>
+<th style="text-align: right;">Religion Not Important</th>
+<th style="text-align: right;">Religion Important</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Decrease</td>
+<td style="text-align: right;">6.77%</td>
+<td style="text-align: right;">8.09%</td>
+</tr>
+<tr class="even">
+<td>Keep the same</td>
+<td style="text-align: right;">20.93%</td>
+<td style="text-align: right;">24.89%</td>
+</tr>
+<tr class="odd">
+<td>Increase</td>
+<td style="text-align: right;">72.30%</td>
+<td style="text-align: right;">67.02%</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>100.00%</strong></td>
+<td style="text-align: right;"><strong>100.00%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Because the percentages add down each column, we can compare the two groups side by side.</p>
+<p>Among people who say religion is not important, 72.30 percent support increasing federal spending on public schools.</p>
+<p>Among people who say religion is important, 67.02 percent support increasing spending.</p>
+<p>The difference is about five percentage points. That suggests a modest relationship: people who say religion is important may be somewhat less likely to support increasing federal school spending.</p>
+<p>But this difference is not enormous. Later, we will learn statistical tests, such as the chi-square test, that help us evaluate whether differences like this are large enough to provide strong evidence of a relationship in the population.</p>
+</section>
+<section id="contingency-tables-and-conditional-probabilities" class="slide level2">
+<h2>45. Contingency Tables and Conditional Probabilities</h2>
+<p>Column percentages are conditional probabilities.</p>
+<p>For example:</p>
+<p>[ P(Increase Religion&nbsp;Not&nbsp;Important) = 0.723 ]</p>
+<p>[ P(Increase Religion&nbsp;Important) = 0.670 ]</p>
+<p>If the variables were perfectly independent, these conditional probabilities would be the same across columns.</p>
+<p>If they differ, the variables may be dependent.</p>
+<p>A contingency table is therefore a practical tool for studying whether two categorical variables are related.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="key-terms" class="title-slide slide level1 center">
+<h1>Key Terms</h1>
+<p><strong>Probability</strong><br>
+A number between 0 and 1 describing how likely an event is to occur.</p>
+<p><strong>Long-run frequency</strong><br>
+The proportion of times an outcome occurs over many repetitions of a random process.</p>
+<p><strong>Law of large numbers</strong><br>
+The principle that sample statistics converge toward population values as sample size increases.</p>
+<p><strong>Sample space</strong><br>
+The set of all possible outcomes of a random process.</p>
+<p><strong>Outcome</strong><br>
+One possible result of a random process.</p>
+<p><strong>Event</strong><br>
+A set of one or more outcomes.</p>
+<p><strong>Simple event</strong><br>
+An event consisting of one outcome.</p>
+<p><strong>Compound event</strong><br>
+An event consisting of multiple outcomes.</p>
+<p><strong>Union</strong><br>
+The event that A or B occurs, written (A B).</p>
+<p><strong>Intersection</strong><br>
+The event that A and B both occur, written (A B).</p>
+<p><strong>Disjoint events</strong><br>
+Events that cannot occur at the same time.</p>
+<p><strong>Complement</strong><br>
+All outcomes not in an event.</p>
+<p><strong>Expected value</strong><br>
+The probability-weighted average of a random variable.</p>
+<p><strong>Gambler’s fallacy</strong><br>
+The mistaken belief that random outcomes are “due” to balance out in the short run.</p>
+<p><strong>Joint probability</strong><br>
+The probability that two or more events occur together.</p>
+<p><strong>Marginal probability</strong><br>
+The probability of one event without regard to another variable, often shown in the margins of a table.</p>
+<p><strong>Conditional probability</strong><br>
+The probability of one event given that another event has occurred.</p>
+<p><strong>Independence</strong><br>
+A relationship in which knowing one event occurred does not change the probability of another event.</p>
+<p><strong>Probability tree</strong><br>
+A visual representation of sequential probabilistic events.</p>
+<p><strong>Contingency table</strong><br>
+A table showing the joint distribution of two categorical variables.</p>
+<p><strong>Cross-tabulation</strong><br>
+Another term for a contingency table.</p>
+<p><strong>Column percentage</strong><br>
+A percentage calculated down a column; often interpretable as a conditional probability.</p>
+<p><strong>Row percentage</strong><br>
+A percentage calculated across a row.</p>
+<p><strong>Cell percentage</strong><br>
+The percentage of all cases that fall into a particular cell; similar to a joint probability.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="chapter-summary" class="title-slide slide level1 center">
+<h1>Chapter Summary</h1>
+<p>Probability is essential for statistical inference because it connects samples to populations. Random samples do not perfectly reproduce population values, but probability theory tells us how random error behaves.</p>
+<p>A probability can be understood as a long-run frequency. The law of large numbers tells us that sample proportions and means converge toward population values as sample size increases.</p>
+<p>The basic building blocks of probability are sample spaces, outcomes, and events. Events can be combined using unions, intersections, and complements. The major rules of probability include the complement rule, the addition rule, and multiplication rules for dependent and independent events.</p>
+<p>Expected value is the probability-weighted average of a random variable. It provides the mathematical center of a probability distribution and appears in many areas of statistics and decision-making.</p>
+<p>Gambler’s fallacy occurs when people mistakenly believe that independent random events must balance out in the short run. This mistake can affect gambling, sports interpretation, judicial decisions, loan approvals, and other repeated judgments.</p>
+<p>Joint probabilities describe the probability that two or more events occur together. Conditional probabilities describe the probability of one event given another. These ideas allow us to define and test independence.</p>
+<p>Probability trees and contingency tables provide practical tools for organizing probability problems. Trees are especially useful for sequential processes, while contingency tables are useful for analyzing relationships between categorical variables.</p>
+<p>The central lesson is that probability gives structure to uncertainty. We may not know what will happen in a single case, but probability helps us understand what should happen in the long run—and that is the foundation of statistical inference.</p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

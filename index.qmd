@@ -3,3 +3,4 @@ title: "Welcome"
 ---
 
 This is a course resource for PubPol 529 at the Gerald R. Ford School of Public Policy. The material is derived from course lectures and is meant as a supplemental resource.
+
