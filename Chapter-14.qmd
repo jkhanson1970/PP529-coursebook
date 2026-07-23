@@ -1,0 +1,1585 @@
+---
+title: "Chapter 14: Linear Regression"
+format: revealjs
+---
+
+Linear regression is one of the most important tools in applied statistics.
+
+It allows us to model the relationship between an outcome variable and one or more predictors. It also provides a foundation for more advanced methods used in program evaluation, econometrics, public policy analysis, and social science research.
+
+Up to this point, we have studied many ways of comparing variables:
+
+- difference of means
+- difference of proportions
+- chi-square tests
+- ANOVA
+- correlation
+
+Regression builds on many of those ideas.
+
+Like correlation, regression studies relationships between variables. But regression goes further. Correlation tells us the strength and direction of a linear relationship. Regression estimates the **magnitude** of the relationship: how much we expect \(Y\) to change when \(X\) changes.
+
+Regression also generalizes naturally to models with multiple independent variables. This allows us to control for other factors, which is one of the main reasons regression is so useful in policy analysis.
+
+In this chapter, we introduce simple linear regression, interpretation of coefficients, statistical significance, residuals, \(R^2\), dichotomous independent variables, regression assumptions, robust and clustered standard errors, outliers, and nonlinear transformations.
+
+The main goal is not to make you a regression expert overnight. That would be a bold move. The goal is to build intuition and prepare you to use regression more deeply in later courses.
+
+---
+
+# Part I: Preliminaries
+
+## 1. From Correlation to Regression
+
+Correlation analysis measures the strength and direction of a linear relationship between two interval-level variables.
+
+The most common correlation coefficient, Pearson’s \(r\), ranges from:
+
+\[
+-1 \leq r \leq 1
+\]
+
+A value of \(r = 1\) means perfect positive linear association.
+
+A value of \(r = -1\) means perfect negative linear association.
+
+A value of \(r = 0\) means no linear association.
+
+Correlation is unit-free. It does not depend on the units of \(X\) or \(Y\). It tells us how linear the relationship is, but not how steep the relationship is.
+
+Linear regression also studies linear relationships, but it estimates a line:
+
+\[
+Y = a + bX
+\]
+
+The coefficient \(b\) is the slope. It tells us how much \(Y\) changes when \(X\) increases by one unit.
+
+That is the key advance.
+
+Correlation tells us whether two variables move together.  
+Regression tells us how much one variable changes when the other changes.
+
+---
+
+## 2. What Regression Adds
+
+Regression adds two major things beyond correlation.
+
+First, regression estimates the magnitude of the relationship.
+
+For example, suppose we regress infant mortality on access to clean water. Regression can tell us:
+
+> For each one-percentage-point increase in the population with access to an improved water source, infant mortality is predicted to fall by 1.5 deaths per 1,000 births.
+
+Correlation cannot give us that statement.
+
+Second, regression allows us to include multiple predictors.
+
+For example, we may want to estimate the relationship between water access and infant mortality while controlling for GDP per capita, population density, democracy, education, or health spending.
+
+With multiple regression, we can estimate the association between one predictor and the outcome while holding other predictors constant.
+
+That is why regression becomes so powerful.
+
+---
+
+# Part II: The Linear Functional Form
+
+## 3. The Basic Linear Function
+
+The basic linear function is:
+
+\[
+Y = a + bX
+\]
+
+where:
+
+- \(Y\) is the outcome variable
+- \(X\) is the predictor variable
+- \(a\) is the intercept
+- \(b\) is the slope
+
+The **intercept** is the predicted value of \(Y\) when \(X = 0\).
+
+The **slope** is the predicted change in \(Y\) for a one-unit increase in \(X\).
+
+If:
+
+\[
+b > 0
+\]
+
+then the relationship is positive.
+
+If:
+
+\[
+b < 0
+\]
+
+then the relationship is negative.
+
+If:
+
+\[
+b = 0
+\]
+
+then \(X\) does not predict \(Y\) linearly.
+
+---
+
+## 4. The Intercept
+
+The intercept tells us where the regression line crosses the \(Y\)-axis.
+
+When \(X = 0\), the term \(bX\) becomes zero:
+
+\[
+Y = a + b(0)
+\]
+
+\[
+Y = a
+\]
+
+So \(a\) is the predicted value of \(Y\) when \(X = 0\).
+
+Sometimes this is substantively meaningful. Sometimes it is not.
+
+For example, if we predict test scores using attendance rate, the intercept is the predicted test score for a student with 0 percent attendance. That may not be very meaningful if no student in the data has attendance close to 0.
+
+The intercept is always mathematically necessary, but it is not always substantively interesting.
+
+---
+
+## 5. The Slope
+
+The slope tells us how much \(Y\) is predicted to change when \(X\) increases by one unit.
+
+For example, suppose:
+
+\[
+\hat{Y} = 10.81 + 0.81X
+\]
+
+Then each one-unit increase in \(X\) is associated with a predicted 0.81-unit increase in \(Y\).
+
+If:
+
+\[
+\hat{Y} = 85.66 - 0.68X
+\]
+
+then each one-unit increase in \(X\) is associated with a predicted 0.68-unit decrease in \(Y\).
+
+The slope is the rise over the run.
+
+The “run” is the change in \(X\).  
+The “rise” is the change in \(Y\).
+
+The slope is measured in the units of \(Y\) per one unit of \(X\).
+
+---
+
+## 6. Predicted Values
+
+Regression produces predicted values.
+
+We write a predicted value as:
+
+\[
+\hat{Y}
+\]
+
+The hat indicates that this is not the actual observed value of \(Y\). It is the value predicted by the model.
+
+For a simple linear regression:
+
+\[
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1X_i
+\]
+
+where:
+
+- \(\hat{\beta}_0\) is the estimated intercept
+- \(\hat{\beta}_1\) is the estimated slope
+- \(X_i\) is the value of \(X\) for case \(i\)
+
+Each predicted value lies on the regression line.
+
+---
+
+## 7. Residuals
+
+The model usually does not predict \(Y\) perfectly.
+
+The difference between the observed value and the predicted value is called the **residual**:
+
+\[
+\hat{u}_i = Y_i - \hat{Y}_i
+\]
+
+A residual is a prediction error.
+
+If:
+
+\[
+\hat{u}_i > 0
+\]
+
+then the model underpredicted \(Y\).
+
+If:
+
+\[
+\hat{u}_i < 0
+\]
+
+then the model overpredicted \(Y\).
+
+Residuals are vertical distances between observed points and the regression line.
+
+Regression chooses the line that minimizes the sum of squared residuals.
+
+---
+
+# Part III: Ordinary Least Squares
+
+## 8. The Population Regression Model
+
+In statistical notation, the simple linear regression model is:
+
+\[
+Y_i = \beta_0 + \beta_1X_i + u_i
+\]
+
+where:
+
+- \(Y_i\) is the dependent variable for case \(i\)
+- \(X_i\) is the independent variable for case \(i\)
+- \(\beta_0\) is the true intercept
+- \(\beta_1\) is the true slope
+- \(u_i\) is the stochastic or random component
+
+The term \(u_i\) represents all the factors that affect \(Y_i\) but are not included in the model.
+
+It captures the idiosyncratic, unpredictable, or unmodeled part of \(Y\).
+
+---
+
+## 9. The Estimated Regression Model
+
+Because we do not know the true population parameters, we estimate them using sample data.
+
+The estimated model is:
+
+\[
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1X_i
+\]
+
+The estimated residual is:
+
+\[
+\hat{u}_i = Y_i - \hat{Y}_i
+\]
+
+We use the sample to estimate:
+
+- \(\beta_0\) with \(\hat{\beta}_0\)
+- \(\beta_1\) with \(\hat{\beta}_1\)
+
+The estimated line is the line of best fit.
+
+---
+
+## 10. Ordinary Least Squares
+
+The most common method for estimating a linear regression is **ordinary least squares**, or **OLS**.
+
+OLS chooses the intercept and slope that minimize the sum of squared residuals:
+
+\[
+SSE = \sum_{i=1}^{n}(Y_i - \hat{Y}_i)^2
+\]
+
+Substitute the regression equation:
+
+\[
+SSE = \sum_{i=1}^{n}(Y_i - \hat{\beta}_0 - \hat{\beta}_1X_i)^2
+\]
+
+OLS finds the values of \(\hat{\beta}_0\) and \(\hat{\beta}_1\) that make this quantity as small as possible.
+
+Why square the residuals?
+
+Because residuals can be positive or negative. If we simply added them, they would cancel out. Squaring makes them positive and gives larger errors more weight.
+
+---
+
+## 11. The OLS Slope
+
+The OLS estimate of the slope is:
+
+\[
+\hat{\beta}_1 =
+\frac{
+\sum (X_i-\bar{X})(Y_i-\bar{Y})
+}
+{
+\sum (X_i-\bar{X})^2
+}
+\]
+
+The numerator measures covariation between \(X\) and \(Y\).
+
+The denominator measures variation in \(X\).
+
+If \(X\) and \(Y\) move together, the numerator is positive, producing a positive slope.
+
+If \(X\) and \(Y\) move in opposite directions, the numerator is negative, producing a negative slope.
+
+If \(X\) and \(Y\) do not covary, the numerator is close to zero, and the slope is close to zero.
+
+---
+
+## 12. The OLS Intercept
+
+Once we have the slope, the intercept is:
+
+\[
+\hat{\beta}_0 =
+\bar{Y} - \hat{\beta}_1\bar{X}
+\]
+
+This ensures that the regression line passes through the point:
+
+\[
+(\bar{X}, \bar{Y})
+\]
+
+That is, the line passes through the mean of \(X\) and the mean of \(Y\).
+
+---
+
+## 13. Regression and Correlation
+
+The formulas for Pearson’s \(r\) and the OLS slope are related.
+
+Pearson’s \(r\) is:
+
+\[
+r =
+\frac{
+\sum (X_i-\bar{X})(Y_i-\bar{Y})
+}
+{
+\sqrt{
+\sum (X_i-\bar{X})^2
+\sum (Y_i-\bar{Y})^2
+}
+}
+\]
+
+The OLS slope is:
+
+\[
+\hat{\beta}_1 =
+\frac{
+\sum (X_i-\bar{X})(Y_i-\bar{Y})
+}
+{
+\sum (X_i-\bar{X})^2
+}
+\]
+
+Both use the same numerator: covariation between \(X\) and \(Y\).
+
+They differ in the denominator.
+
+Pearson’s \(r\) standardizes by variation in both \(X\) and \(Y\), making it unit-free and bounded between -1 and 1.
+
+The OLS slope divides by variation in \(X\), leaving the result in the units of \(Y\) per unit of \(X\).
+
+---
+
+# Part IV: Example: Democracy and Illiteracy
+
+## 14. The Research Question
+
+Suppose we want to explain variation in illiteracy across countries.
+
+The dependent variable is:
+
+- illiteracy rate, measured as the percentage of the population that cannot read and write
+
+The independent variable is:
+
+- democracy, measured on a scale from 0 to 10
+
+A score of 0 means not democratic.
+
+A score of 10 means highly democratic.
+
+The theory is that democratic governments may be more responsive to citizens and therefore more likely to provide education and public services, reducing illiteracy.
+
+The model is:
+
+\[
+Illiteracy_i = \beta_0 + \beta_1 Democracy_i + u_i
+\]
+
+---
+
+## 15. Regression Results
+
+Suppose the estimated regression is:
+
+\[
+\widehat{Illiteracy}
+=
+37.1 - 2.9(Democracy)
+\]
+
+The intercept is:
+
+\[
+37.1
+\]
+
+The slope is:
+
+\[
+-2.9
+\]
+
+Interpretation of the slope:
+
+> For each one-point increase on the democracy scale, the predicted illiteracy rate falls by 2.9 percentage points.
+
+Interpretation of the intercept:
+
+> For a country with a democracy score of 0, the predicted illiteracy rate is 37.1 percent.
+
+This assumes that a democracy score of 0 is meaningful and within the range of the data.
+
+---
+
+## 16. Predictions
+
+For a country with a democracy score of 3:
+
+\[
+\widehat{Illiteracy}
+=
+37.1 - 2.9(3)
+\]
+
+\[
+=
+37.1 - 8.7
+\]
+
+\[
+=
+28.4
+\]
+
+For a country with a democracy score of 7:
+
+\[
+\widehat{Illiteracy}
+=
+37.1 - 2.9(7)
+\]
+
+\[
+=
+37.1 - 20.3
+\]
+
+\[
+=
+16.8
+\]
+
+The predicted difference between these countries is:
+
+\[
+28.4 - 16.8 = 11.6
+\]
+
+Because democracy differs by 4 points:
+
+\[
+4(2.9) = 11.6
+\]
+
+The country with the higher democracy score is predicted to have an illiteracy rate 11.6 percentage points lower.
+
+---
+
+## 17. Causal Language
+
+Be careful.
+
+The regression shows an association. It does not automatically prove causation.
+
+A careful interpretation says:
+
+> Higher democracy scores are associated with lower illiteracy rates.
+
+or:
+
+> A one-point increase in democracy is associated with a predicted 2.9-percentage-point decrease in illiteracy.
+
+Avoid saying:
+
+> A one-point increase in democracy causes illiteracy to fall by 2.9 percentage points.
+
+unless the research design supports a causal claim.
+
+Other factors may matter, such as GDP per capita, colonial history, state capacity, conflict, or public health systems.
+
+---
+
+# Part V: Statistical Significance in Regression
+
+## 18. Sampling Distributions of Regression Coefficients
+
+Regression coefficients are sample statistics.
+
+If we drew a different sample, we would get different estimates of the slope and intercept.
+
+Therefore, \(\hat{\beta}_1\) has a sampling distribution.
+
+The standard deviation of that sampling distribution is the standard error of \(\hat{\beta}_1\).
+
+The standard error tells us how much the estimated slope typically varies from the true slope across repeated samples.
+
+---
+
+## 19. Standard Error of the Slope
+
+The true standard error of \(\hat{\beta}_1\) depends on:
+
+1. The amount of unexplained variation in \(Y\)
+2. The amount of variation in \(X\)
+
+A simplified expression is:
+
+\[
+SE_{\hat{\beta}_1}
+=
+\sqrt{
+\frac{\sigma_u^2}
+{\sum (X_i-\bar{X})^2}
+}
+\]
+
+where:
+
+- \(\sigma_u^2\) is the variance of the stochastic component
+- \(\sum (X_i-\bar{X})^2\) is variation in \(X\)
+
+More unexplained variation in \(Y\) increases the standard error.
+
+More variation in \(X\) decreases the standard error.
+
+This makes intuitive sense. If \(X\) varies widely, it is easier to estimate the slope. If all values of \(X\) are clustered closely together, estimating the slope is unstable.
+
+---
+
+## 20. t-Test for a Regression Coefficient
+
+The usual null hypothesis is:
+
+\[
+H_0: \beta_1 = 0
+\]
+
+The alternative is:
+
+\[
+H_A: \beta_1 \neq 0
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{\hat{\beta}_1 - 0}
+{SE_{\hat{\beta}_1}}
+\]
+
+or simply:
+
+\[
+t =
+\frac{\hat{\beta}_1}
+{SE_{\hat{\beta}_1}}
+\]
+
+Degrees of freedom are:
+
+\[
+df = n-k
+\]
+
+where \(k\) is the number of estimated coefficients, including the intercept.
+
+For simple bivariate regression, we estimate two coefficients:
+
+- intercept
+- slope
+
+So:
+
+\[
+df = n-2
+\]
+
+---
+
+## 21. Confidence Interval for a Regression Coefficient
+
+A confidence interval for a coefficient is:
+
+\[
+\hat{\beta}_1 \pm t^*SE_{\hat{\beta}_1}
+\]
+
+The t critical value depends on:
+
+- confidence level
+- degrees of freedom
+
+For large samples, the 95 percent critical value is approximately:
+
+\[
+1.96
+\]
+
+For smaller samples, use the t-distribution.
+
+If the confidence interval for \(\beta_1\) does not include 0, then the coefficient is statistically significant at the corresponding level.
+
+---
+
+## 22. Regression Output
+
+Regression software usually reports:
+
+- coefficient estimate
+- standard error
+- t-statistic
+- p-value
+- sometimes confidence interval
+
+For example:
+
+| Variable | Coefficient | Standard Error | t | p-value |
+|---|---:|---:|---:|---:|
+| Democracy | -2.90 | 0.60 | -4.87 | <0.001 |
+| Constant | 37.10 | 4.20 | 8.83 | <0.001 |
+
+Interpretation:
+
+- The coefficient on democracy is negative.
+- The t-statistic is large in magnitude.
+- The p-value is very small.
+- We reject the null hypothesis that the true coefficient on democracy is 0.
+
+There is statistically significant evidence of a negative association between democracy and illiteracy.
+
+---
+
+# Part VI: Explaining Variance in \(Y\)
+
+## 23. Total, Explained, and Unexplained Variation
+
+Regression partitions variation in \(Y\) into explained and unexplained parts.
+
+The **total sum of squares** is:
+
+\[
+TSS =
+\sum (Y_i-\bar{Y})^2
+\]
+
+This is total variation in \(Y\).
+
+The **explained sum of squares** is:
+
+\[
+ESS =
+\sum (\hat{Y}_i-\bar{Y})^2
+\]
+
+This is the variation explained by the regression model.
+
+The **sum of squared errors** is:
+
+\[
+SSE =
+\sum (Y_i-\hat{Y}_i)^2
+\]
+
+This is unexplained variation, or residual variation.
+
+These quantities are related:
+
+\[
+TSS = ESS + SSE
+\]
+
+---
+
+## 24. R-Squared
+
+The \(R^2\) statistic measures the proportion of variation in \(Y\) explained by the model.
+
+\[
+R^2 =
+\frac{ESS}{TSS}
+\]
+
+Equivalently:
+
+\[
+R^2 =
+1-\frac{SSE}{TSS}
+\]
+
+\(R^2\) ranges from 0 to 1.
+
+If:
+
+\[
+R^2 = 0
+\]
+
+the model explains none of the variation in \(Y\).
+
+If:
+
+\[
+R^2 = 1
+\]
+
+the model explains all variation in \(Y\).
+
+For example, if:
+
+\[
+R^2 = 0.72
+\]
+
+then the model explains 72 percent of the variation in \(Y\).
+
+---
+
+## 25. Interpreting R-Squared
+
+Suppose we regress infant mortality on access to improved water sources and obtain:
+
+\[
+R^2 = 0.72
+\]
+
+A substantive interpretation is:
+
+> Access to an improved water source explains about 72 percent of the variation in infant mortality across countries in this sample.
+
+More carefully:
+
+> According to this model, variation in access to improved water sources is associated with about 72 percent of the cross-national variation in infant mortality.
+
+The second version avoids causal overclaiming.
+
+---
+
+## 26. Adjusted R-Squared
+
+Adding more independent variables generally increases \(R^2\), even if the variables add little real explanatory value.
+
+The **adjusted \(R^2\)** penalizes for adding variables.
+
+If \(R^2\) and adjusted \(R^2\) differ meaningfully, use adjusted \(R^2\) when comparing model fit.
+
+In simple bivariate regression, they are often very similar.
+
+In multiple regression, adjusted \(R^2\) is usually more informative.
+
+---
+
+## 27. Standard Error of the Estimate
+
+Regression output may report something called:
+
+- root MSE
+- residual standard error
+- standard error of the estimate
+
+These refer to the typical prediction error.
+
+It is the average size of the residual, in the scale of \(Y\).
+
+For example, if the standard error of the estimate is:
+
+\[
+18.8
+\]
+
+in a model predicting infant mortality, then:
+
+> The model’s predicted infant mortality rate typically misses the actual rate by about 18.8 deaths per 1,000 births.
+
+This is often more intuitive than \(R^2\) because it is in the units of the dependent variable.
+
+---
+
+## 28. The F-Test for the Model
+
+Regression output also reports an F-statistic.
+
+In bivariate regression, the F-test asks whether the model as a whole explains a statistically significant amount of variation in \(Y\).
+
+Because the model has only one independent variable, the F-test is essentially equivalent to the t-test for that variable.
+
+In multiple regression, the F-test becomes more useful. It asks whether the independent variables, taken together, explain statistically significant variation in \(Y\).
+
+The null hypothesis for the model F-test is:
+
+\[
+H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0
+\]
+
+If the p-value for the F-test is small, we reject that null hypothesis.
+
+---
+
+# Part VII: Dichotomous Independent Variables
+
+## 29. Dummy Variables
+
+A **dichotomous independent variable** has two values, usually coded:
+
+\[
+1 = \text{in the category}
+\]
+
+\[
+0 = \text{not in the category}
+\]
+
+These are often called **dummy variables**.
+
+Examples:
+
+- program participant = 1, nonparticipant = 0
+- retired = 1, not retired = 0
+- Democrat = 1, not Democrat = 0
+- religion important = 1, religion not important = 0
+
+Regression works with dummy variables because 0 and 1 can be included in the linear equation.
+
+---
+
+## 30. Regression with a Dummy Variable
+
+Suppose the model is:
+
+\[
+Y_i = \beta_0 + \beta_1D_i + u_i
+\]
+
+where \(D_i\) is a dummy variable.
+
+If:
+
+\[
+D_i = 0
+\]
+
+then:
+
+\[
+\hat{Y}_i = \hat{\beta}_0
+\]
+
+If:
+
+\[
+D_i = 1
+\]
+
+then:
+
+\[
+\hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1
+\]
+
+So \(\hat{\beta}_0\) is the predicted mean for the reference group.
+
+\(\hat{\beta}_1\) is the difference between the two group means.
+
+This is equivalent to a difference-of-means test.
+
+---
+
+## 31. Example: Religion and Obama Thermometer Scores
+
+Suppose we regress Obama thermometer scores on whether religion is important in a respondent’s life.
+
+The model is:
+
+\[
+\widehat{ObamaThermometer}
+=
+63.92 - 4.71(ReligionImportant)
+\]
+
+where:
+
+\[
+ReligionImportant = 1
+\]
+
+if the respondent says religion is important, and:
+
+\[
+ReligionImportant = 0
+\]
+
+otherwise.
+
+For respondents who say religion is not important:
+
+\[
+\hat{Y} = 63.92
+\]
+
+For respondents who say religion is important:
+
+\[
+\hat{Y} = 63.92 - 4.71
+\]
+
+\[
+\hat{Y} = 59.21
+\]
+
+Interpretation:
+
+> Respondents who say religion is important are predicted to rate Obama about 4.71 thermometer points lower than respondents who say religion is not important.
+
+---
+
+## 32. Changing the Reference Category
+
+If we reverse the coding, the interpretation changes but the substantive information does not.
+
+Suppose:
+
+\[
+ReligionNotImportant = 1
+\]
+
+and:
+
+\[
+ReligionNotImportant = 0
+\]
+
+for those who say religion is important.
+
+The model may become:
+
+\[
+\widehat{ObamaThermometer}
+=
+59.21 + 4.71(ReligionNotImportant)
+\]
+
+Now the intercept is the predicted value for people who say religion is important.
+
+The coefficient says people who say religion is not important are predicted to rate Obama 4.71 points higher.
+
+Same relationship, different reference category.
+
+---
+
+## 33. Why Dummy Variables Matter
+
+Dummy variables become especially useful in multiple regression.
+
+A simple difference-of-means test compares two groups without controlling for anything else.
+
+Regression allows us to compare groups while controlling for other variables.
+
+For example, we might estimate the association between religious importance and Obama thermometer scores while controlling for:
+
+- party identification
+- age
+- race
+- income
+- education
+- region
+
+That is where regression becomes much more powerful than a simple t-test.
+
+---
+
+# Part VIII: Multiple Regression
+
+## 34. The Multiple Regression Model
+
+A multiple regression model includes more than one independent variable:
+
+\[
+Y_i =
+\beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + \beta_3X_{3i} + u_i
+\]
+
+Each coefficient represents the association between that predictor and \(Y\), holding the other predictors constant.
+
+For example:
+
+\[
+\beta_1
+\]
+
+is the predicted change in \(Y\) for a one-unit increase in \(X_1\), holding \(X_2\) and \(X_3\) constant.
+
+This is the key interpretation of multiple regression:
+
+> The effect of one variable, controlling for the others.
+
+---
+
+## 35. Example: Infant Mortality, Water, and GDP
+
+Suppose we first estimate:
+
+\[
+InfantMortality =
+\beta_0 + \beta_1 Water + u
+\]
+
+and find:
+
+\[
+\hat{\beta}_1 = -1.54
+\]
+
+This suggests that each one-percentage-point increase in access to improved water is associated with 1.54 fewer infant deaths per 1,000 births.
+
+Now add GDP per capita:
+
+\[
+InfantMortality =
+\beta_0 + \beta_1 Water + \beta_2 \log(GDPpc) + u
+\]
+
+Suppose the coefficient on water changes to:
+
+\[
+\hat{\beta}_1 = -0.80
+\]
+
+This suggests the original coefficient was partly capturing the effect of wealth. Wealthier countries tend to have better water access and lower infant mortality.
+
+Leaving GDP out produced omitted variable bias.
+
+After controlling for GDP, the estimated association between water and infant mortality becomes smaller.
+
+---
+
+## 36. Interpretation in Multiple Regression
+
+Suppose the model is:
+
+\[
+InfantMortality =
+170.3 - 0.80(Water) - 12.4(\log GDPpc)
+\]
+
+Interpretation of water:
+
+> Holding GDP per capita constant, each one-percentage-point increase in access to improved water is associated with 0.80 fewer infant deaths per 1,000 births.
+
+Interpretation of log GDP per capita:
+
+> Holding water access constant, a one-unit increase in log GDP per capita is associated with 12.4 fewer infant deaths per 1,000 births.
+
+When predictors are logged, interpretation becomes more complicated. Roughly, a one-unit increase in the natural log of a variable corresponds to multiplying the original variable by about 2.72.
+
+---
+
+# Part IX: Nonlinearity and Transformations
+
+## 37. Linear Regression Assumes Linearity
+
+Linear regression assumes that the relationship between \(X\) and \(Y\) can be reasonably represented by a straight line.
+
+But many real relationships are nonlinear.
+
+For example:
+
+- GDP per capita and infant mortality
+- population and disease spread
+- age and income
+- education and earnings
+- pollution exposure and health
+- program dosage and outcomes
+
+If the relationship is nonlinear, a linear model may fit poorly or produce misleading predictions.
+
+Always inspect scatterplots when possible.
+
+---
+
+## 38. Exponential Relationships
+
+An exponential relationship occurs when the effect of \(X\) on \(Y\) grows as \(X\) increases.
+
+A linear model may underpredict at low values, overpredict in the middle, and underpredict again at high values.
+
+One solution is to transform the variables.
+
+For exponential relationships, taking the natural log of \(Y\), \(X\), or both can make the relationship more linear.
+
+---
+
+## 39. Log Transformations
+
+Common log models include:
+
+| Model | Approximate Interpretation |
+|---|---|
+| \(Y\) on \(X\) | One-unit increase in \(X\) changes \(Y\) by \(\beta\) units |
+| \(\log(Y)\) on \(X\) | One-unit increase in \(X\) changes \(Y\) by about \(100\beta\) percent |
+| \(Y\) on \(\log(X)\) | One percent increase in \(X\) changes \(Y\) by about \(\beta/100\) units |
+| \(\log(Y)\) on \(\log(X)\) | One percent increase in \(X\) changes \(Y\) by about \(\beta\) percent |
+
+These are approximations but useful ones.
+
+---
+
+## 40. Example: GDP and Infant Mortality
+
+Suppose we regress infant mortality on GDP per capita in dollars and find a statistically significant relationship. But the scatterplot shows a strong nonlinear pattern.
+
+At low levels of GDP, small increases are associated with large reductions in infant mortality.
+
+At high levels of GDP, additional income has much smaller effects.
+
+A log-log model may fit better:
+
+\[
+\log(InfantMortality)
+=
+\beta_0 + \beta_1\log(GDPpc) + u
+\]
+
+Suppose:
+
+\[
+\hat{\beta}_1 = -0.69
+\]
+
+Interpretation:
+
+> A 1 percent increase in GDP per capita is associated with approximately a 0.69 percent decrease in infant mortality.
+
+The log transformation often produces a better-fitting and more substantively reasonable model.
+
+---
+
+# Part X: OLS Assumptions
+
+OLS regression performs well under certain assumptions. When those assumptions hold, OLS is the **best linear unbiased estimator**, often abbreviated **BLUE**.
+
+BLUE means:
+
+- Best: lowest variance among linear unbiased estimators
+- Linear: based on a linear model
+- Unbiased: correct on average across repeated samples
+- Estimator: a method for estimating population parameters
+
+We focus on four key assumptions.
+
+---
+
+## 41. Assumption 1: Conditional Mean Zero
+
+The first assumption is:
+
+\[
+E(u_i \mid X_i) = 0
+\]
+
+This means that, after accounting for \(X\), the expected value of the stochastic component is zero.
+
+In plain language:
+
+> There is nothing systematic left in the error term that is related to \(X\).
+
+If this assumption is violated, we may have omitted variable bias.
+
+---
+
+## 42. Omitted Variable Bias
+
+Suppose the true model is:
+
+\[
+Y = \beta_0 + \beta_1X + \beta_2Z + u
+\]
+
+but we estimate:
+
+\[
+Y = \beta_0 + \beta_1X + u
+\]
+
+If \(Z\) affects \(Y\) and is correlated with \(X\), then the coefficient on \(X\) will be biased.
+
+Why?
+
+Because \(X\) partly stands in for \(Z\). It captures some of \(Z\)’s explanatory power.
+
+Solution:
+
+- identify the omitted variable
+- measure it
+- include it in the model
+
+This is often difficult because important variables may be unknown or unmeasured.
+
+---
+
+## 43. Assumption 2: Independent and Identically Distributed Data
+
+The second assumption is that observations are independently and identically distributed, often abbreviated IID.
+
+This means:
+
+1. Observations are independent of one another.
+2. Observations come from the same underlying distribution.
+
+Violations occur when observations are connected.
+
+Examples:
+
+- students nested in classrooms
+- students nested in schools
+- people in the same household
+- repeated observations over time
+- countries in the same regional conflict
+- workers in the same firm
+
+When observations are connected, residuals may be correlated.
+
+This usually biases standard errors.
+
+---
+
+## 44. Solutions to Non-Independence
+
+If observations are clustered, use clustered standard errors.
+
+For example, if students are nested in schools, cluster standard errors by school.
+
+If observations are repeated over time, use standard errors robust to serial correlation, such as Newey-West standard errors.
+
+Sometimes the model itself should also be changed. For example, we might include group-level variables or fixed effects.
+
+The key idea:
+
+> If observations are not independent, the usual standard errors are not trustworthy.
+
+---
+
+## 45. Assumption 3: Large Outliers Are Unlikely
+
+OLS can be sensitive to outliers.
+
+An outlier is especially influential when:
+
+1. It has an unusual value of \(Y\) given \(X\).
+2. It has an unusual value of \(X\), far from the mean of \(X\).
+
+Outliers far from the center of \(X\) can pull the regression line toward themselves.
+
+Before dropping an outlier, ask:
+
+- Is it a data entry error?
+- Is it measured incorrectly?
+- Does it belong in the population of interest?
+- Does it reveal an omitted variable?
+- Does the model need to be respecified?
+- Would a transformation help?
+
+Do not drop observations merely because they are inconvenient.
+
+---
+
+## 46. Example: Population Density and Assaults
+
+Suppose we regress state assault rates on population density.
+
+Including the District of Columbia may produce a strong positive relationship because DC has extremely high population density and a high assault rate.
+
+But DC is not a state in the same way as the others. It is an urban federal district with no rural territory and a unique legal structure.
+
+Dropping DC may be justified if the population of interest is the 50 states.
+
+When DC is removed, the relationship may change dramatically, perhaps even becoming negative.
+
+This illustrates how influential outliers can affect regression estimates.
+
+---
+
+## 47. Assumption 4: Homoscedasticity
+
+The fourth assumption is **homoscedasticity**.
+
+This means the variance of the error term is constant across values of \(X\).
+
+In symbols:
+
+\[
+Var(u_i \mid X_i) = \sigma^2
+\]
+
+The opposite is **heteroscedasticity**.
+
+Heteroscedasticity occurs when the variance of errors changes across values of \(X\).
+
+For example, prediction errors may be small at low values of \(X\) and large at high values of \(X\).
+
+---
+
+## 48. Consequences of Heteroscedasticity
+
+If heteroscedasticity is present, OLS coefficients remain unbiased under the other assumptions.
+
+But the usual standard errors are wrong.
+
+That affects:
+
+- t-statistics
+- p-values
+- confidence intervals
+- conclusions about statistical significance
+
+Solution:
+
+Use heteroscedasticity-robust standard errors.
+
+These are often called robust standard errors.
+
+There are different formulas, such as HC1 and HC3. HC3 is more conservative and often preferred in smaller samples.
+
+---
+
+# Part XI: Practice Example: Attendance and Test Scores
+
+## 49. The Model
+
+Suppose we predict student test scores using attendance rate.
+
+The dependent variable is:
+
+- state test score
+
+The independent variable is:
+
+- attendance rate, measured as percent of school days attended
+
+There are 1,440 students in 19 schools.
+
+Because students are nested within schools, observations are not fully independent. Students in the same school may share teachers, administrators, resources, peer environments, and neighborhood contexts.
+
+Therefore, clustered standard errors by school may be appropriate.
+
+---
+
+## 50. Interpreting Results
+
+Suppose the estimated model is:
+
+\[
+\widehat{TestScore}
+=
+138.53 + 1.36(AttendanceRate)
+\]
+
+Interpretation of the intercept:
+
+> A student with 0 percent attendance is predicted to score 138.53 on the state test.
+
+This may not be substantively realistic if no student has attendance near 0.
+
+Interpretation of the slope:
+
+> Each one-percentage-point increase in attendance is associated with a predicted 1.36-point increase in the test score.
+
+If a student has 80 percent attendance:
+
+\[
+\hat{Y}
+=
+138.53 + 1.36(80)
+\]
+
+\[
+=
+138.53 + 108.8
+\]
+
+\[
+=
+247.33
+\]
+
+If attendance rises from 80 percent to 90 percent, that is a 10-point increase.
+
+The predicted test score increases by:
+
+\[
+10(1.36) = 13.6
+\]
+
+---
+
+## 51. Interpreting R-Squared and Prediction Error
+
+Suppose:
+
+\[
+R^2 = 0.052
+\]
+
+Interpretation:
+
+> Attendance rate explains about 5.2 percent of the variation across students in test scores.
+
+Suppose the residual standard error is:
+
+\[
+39.2
+\]
+
+Interpretation:
+
+> The model’s predicted test scores typically miss actual test scores by about 39.2 points.
+
+This is the standard error of the estimate.
+
+---
+
+# Key Terms
+
+**Linear regression**  
+A method for modeling the relationship between a dependent variable and one or more independent variables using a linear function.
+
+**Dependent variable**  
+The outcome variable being predicted.
+
+**Independent variable**  
+A predictor variable used to explain variation in the dependent variable.
+
+**Intercept**  
+The predicted value of \(Y\) when all independent variables equal zero.
+
+**Slope**  
+The predicted change in \(Y\) for a one-unit increase in \(X\).
+
+**Predicted value**  
+The value of \(Y\) predicted by the regression model, written \(\hat{Y}\).
+
+**Residual**  
+The difference between observed and predicted \(Y\), written \(Y_i-\hat{Y}_i\).
+
+**Ordinary least squares, OLS**  
+The method that estimates regression coefficients by minimizing the sum of squared residuals.
+
+**Stochastic component**  
+The random or unmodeled part of \(Y\), represented by \(u\).
+
+**Omitted variable bias**  
+Bias that occurs when an important variable is left out of the model and is correlated with an included predictor.
+
+**Standard error of a coefficient**  
+The estimated standard deviation of a coefficient’s sampling distribution.
+
+**Standard error of the estimate**  
+The typical prediction error of the model.
+
+**R-squared**  
+The proportion of variation in \(Y\) explained by the model.
+
+**Adjusted R-squared**  
+A version of \(R^2\) that adjusts for the number of predictors.
+
+**Dummy variable**  
+A dichotomous variable coded 1 for membership in a category and 0 otherwise.
+
+**Multiple regression**  
+Regression with more than one independent variable.
+
+**Homoscedasticity**  
+The assumption that the variance of the error term is constant.
+
+**Heteroscedasticity**  
+A violation of homoscedasticity, where error variance differs across observations.
+
+**Robust standard errors**  
+Standard errors adjusted for heteroscedasticity.
+
+**Clustered standard errors**  
+Standard errors adjusted for correlation among observations within groups.
+
+**Serial correlation**  
+Correlation among errors over time.
+
+**Outlier**  
+An observation with unusual values that may strongly influence regression estimates.
+
+**Log transformation**  
+A transformation using the natural log to address nonlinear relationships or skewed variables.
+
+---
+
+# Chapter Summary
+
+Linear regression models the relationship between an outcome variable and one or more predictors using a linear function.
+
+In simple regression, the model is:
+
+\[
+Y_i = \beta_0 + \beta_1X_i + u_i
+\]
+
+The intercept is the predicted value of \(Y\) when \(X=0\). The slope is the predicted change in \(Y\) for a one-unit increase in \(X\).
+
+OLS estimates the regression line by minimizing the sum of squared residuals. Residuals are the differences between observed and predicted values.
+
+Regression coefficients can be tested for statistical significance using t-tests. The usual null hypothesis is that the coefficient equals zero. Confidence intervals can also be constructed around coefficients.
+
+\(R^2\) measures the proportion of variation in \(Y\) explained by the model. The standard error of the estimate tells us the typical prediction error in the units of \(Y\).
+
+Dummy variables allow regression to represent differences between categories. A regression with one dichotomous predictor is equivalent to a difference-of-means test.
+
+Multiple regression extends the model to include several predictors, allowing us to estimate the effect of one variable while holding others constant.
+
+OLS relies on several assumptions. Violations can produce biased coefficients or incorrect standard errors. Omitted variable bias affects coefficients. Non-independence and heteroscedasticity affect standard errors. Outliers can distort estimates.
+
+Finally, regression assumes linearity, but transformations such as natural logs can help model nonlinear relationships.
+
+Regression is powerful because it combines prediction, explanation, and statistical inference. It is also dangerous when used mechanically. Good regression analysis requires theory, diagnostics, and careful interpretation.

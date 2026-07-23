@@ -1,0 +1,1760 @@
+---
+title: "Chapter 8: Significance Tests"
+format: revealjs
+---
+
+In the previous chapter, we introduced confidence intervals as a way to communicate the precision of a sample estimate. A confidence interval tells us how much uncertainty surrounds a point estimate, such as a sample mean or sample proportion.
+
+We now turn to a second major form of statistical inference: **significance testing**, also called **hypothesis testing**.
+
+A significance test asks whether sample evidence is strong enough to reject a claim about the population. We begin with a baseline assumption, called the **null hypothesis**, and then use sample data to determine whether that assumption remains plausible.
+
+The basic logic is:
+
+1. State a hypothesis about the population.
+2. Collect sample data.
+3. Calculate a sample statistic.
+4. Ask whether the sample statistic is unusually far from the hypothesized value.
+5. If it is sufficiently unlikely under the null hypothesis, reject the null hypothesis.
+
+This chapter introduces the core terminology and logic of significance testing. We begin with the elements of a significance test: null hypotheses, alternative hypotheses, significance levels, test statistics, critical values, and p-values. We then work through examples involving proportions and means. We also discuss the t-distribution, small-sample tests for proportions using the binomial distribution, one-tailed tests, and type I and type II errors.
+
+The concepts in this chapter will recur throughout the rest of the course. Once you understand the structure of a significance test, you can apply the same logic to many different statistical procedures.
+
+---
+
+# Part I: The Logic of Significance Testing
+
+## 1. What Is a Significance Test?
+
+A **significance test** is a procedure for evaluating whether sample evidence is strong enough to reject a hypothesis about a population parameter.
+
+The population parameter might be:
+
+- a population mean, \(\mu\)
+- a population proportion, \(\pi\)
+- a difference between two means
+- a difference between two proportions
+- a relationship between variables
+- a regression coefficient
+
+For now, we focus on one-sample tests involving either one mean or one proportion.
+
+Examples of hypotheses include:
+
+- Fewer than 40 percent of Americans approve of a president’s performance.
+- The average American watches 2.5 hours of television per day.
+- A vaccine education program changes vaccination rates.
+- A new gasoline blend reduces average air pollution.
+- Support for raising the minimum wage differs by party identification.
+
+In each case, we use sample data to evaluate a claim about the population.
+
+---
+
+## 2. The General Approach
+
+The general approach to significance testing is:
+
+1. Make a hypothesis about a population parameter.
+2. Use sample data to estimate that parameter.
+3. Use sampling distribution theory to determine how unusual the sample statistic would be if the hypothesis were true.
+4. Reject the hypothesis if the sample statistic is too unlikely under that hypothesis.
+
+The phrase “too unlikely” is important. Sample statistics vary because of random sampling error. A sample mean or sample proportion will almost never equal the population parameter exactly. Some difference is expected.
+
+The question is whether the difference is large enough that random sampling error alone becomes an implausible explanation.
+
+If the sample statistic is close to the hypothesized value, we do not reject the hypothesis.
+
+If the sample statistic is far from the hypothesized value, we may reject the hypothesis.
+
+---
+
+## 3. Relationships Between Variables
+
+Significance tests become especially useful when we evaluate relationships between variables.
+
+For example, we might hypothesize that:
+
+- approval of a president is lower among women than among men
+- people with more education watch less television
+- parents who receive vaccine education are more likely to vaccinate their children
+- a new air quality regulation reduces average pollution
+- a job training program increases employment rates
+
+In these cases, we usually begin by assuming there is **no relationship** or **no effect**. That assumption is the null hypothesis.
+
+Only if the data provide strong enough evidence do we reject the null hypothesis and conclude that the relationship or effect is statistically significant.
+
+---
+
+# Part II: Elements of a Significance Test
+
+A significance test has several core elements:
+
+1. Null hypothesis
+2. Alternative hypothesis
+3. Significance level
+4. Test statistic
+5. Critical value
+6. p-value
+7. Decision rule
+8. Conclusion
+
+We discuss each in turn.
+
+---
+
+## 4. The Null Hypothesis
+
+The **null hypothesis** is the baseline assumption we test against.
+
+It is written:
+
+\[
+H_0
+\]
+
+This is pronounced “H-zero,” not “H-oh.”
+
+The null hypothesis usually states that nothing has changed, there is no effect, or there is no relationship.
+
+For example:
+
+- A program has no effect.
+- A population mean is equal to a particular value.
+- A population proportion is equal to a particular value.
+- Two groups have the same mean.
+- Two variables are independent.
+
+The null hypothesis is not necessarily what we believe. In fact, researchers often hope to reject it. But we begin by assuming it is true, and then ask whether the data provide enough evidence to reject it.
+
+---
+
+## 5. The Alternative Hypothesis
+
+The **alternative hypothesis** is the hypothesis we consider if the null hypothesis is rejected.
+
+It is written:
+
+\[
+H_A
+\]
+
+The alternative hypothesis usually represents the researcher’s substantive expectation.
+
+For example, suppose we are evaluating a vaccine education program. The null hypothesis might be:
+
+\[
+H_0: \pi = 0.722
+\]
+
+meaning the vaccination rate among families receiving the program is 72.2 percent, the same as the baseline rate.
+
+The alternative hypothesis might be:
+
+\[
+H_A: \pi \neq 0.722
+\]
+
+meaning the program changes the vaccination rate.
+
+The alternative could reflect an increase or a decrease. If the program encourages vaccination, the rate may rise. If the program backfires, the rate may fall.
+
+This is a **two-sided** alternative because it allows for change in either direction.
+
+---
+
+## 6. Example: Vaccine Education Program
+
+Suppose public health researchers want to evaluate a vaccine education program.
+
+The goal is to increase childhood vaccination rates. However, previous research suggests that some attempts to persuade people about vaccination can backfire, especially if they seem judgmental or paternalistic. Therefore, the program might increase vaccination, decrease vaccination, or have no effect.
+
+Suppose national records show that 72.2 percent of American children aged 19 to 35 months receive the full recommended series of vaccinations.
+
+We use that as the baseline rate:
+
+\[
+\pi_0 = 0.722
+\]
+
+The hypotheses are:
+
+\[
+H_0: \pi = 0.722
+\]
+
+\[
+H_A: \pi \neq 0.722
+\]
+
+The null hypothesis says the program has no effect.
+
+The alternative hypothesis says the program changes the vaccination rate.
+
+---
+
+## 7. Significance Level
+
+The **significance level** is the threshold for rejecting the null hypothesis.
+
+It is represented by the Greek letter alpha:
+
+\[
+\alpha
+\]
+
+Alpha is the probability of making a **type I error**, which means rejecting the null hypothesis when it is actually true.
+
+Common values of alpha include:
+
+\[
+\alpha = 0.10
+\]
+
+\[
+\alpha = 0.05
+\]
+
+\[
+\alpha = 0.01
+\]
+
+The most common choice is:
+
+\[
+\alpha = 0.05
+\]
+
+This means we are willing to tolerate a 5 percent probability of rejecting a true null hypothesis.
+
+Equivalently, we require 95 percent confidence before rejecting the null hypothesis.
+
+The choice of alpha depends on context. If the consequences of a false positive are serious, we may require a smaller alpha, such as 0.01 or even lower. For example, when testing safety standards for bridges, airplanes, or medical treatments, we may want very strong evidence before rejecting the null hypothesis.
+
+---
+
+## 8. Alpha and Critical Values
+
+Alpha defines the **critical value** of the test statistic.
+
+A critical value is the threshold the test statistic must cross for us to reject the null hypothesis.
+
+For a two-tailed test using the standard normal distribution:
+
+- If \(\alpha = 0.05\), then the critical values are:
+
+\[
+z = -1.96
+\]
+
+and:
+
+\[
+z = 1.96
+\]
+
+This is because 95 percent of the standard normal distribution lies between -1.96 and 1.96, leaving 2.5 percent in each tail.
+
+If our test statistic falls beyond either critical value, we reject the null hypothesis.
+
+For example, if:
+
+\[
+z = 2.47
+\]
+
+then:
+
+\[
+|z| > 1.96
+\]
+
+so we reject the null hypothesis at the 0.05 significance level.
+
+---
+
+## 9. Test Statistics
+
+A **test statistic** measures how far the sample statistic is from the null-hypothesized value in standard error units.
+
+The general form is:
+
+\[
+\text{Test Statistic} =
+\frac{\text{Sample Statistic} - \text{Null-Hypothesized Parameter}}
+{\text{Standard Error}}
+\]
+
+For a proportion, we usually use a z-statistic:
+
+\[
+z =
+\frac{\hat{\pi} - \pi_0}
+{\widehat{SE}_{\hat{\pi}}}
+\]
+
+For a mean, we usually use a t-statistic:
+
+\[
+t =
+\frac{\bar{Y} - \mu_0}
+{\widehat{SE}_{\bar{Y}}}
+\]
+
+The test statistic tells us how many standard errors away our sample statistic is from the null hypothesis.
+
+A test statistic near zero means the sample statistic is close to the null hypothesis.
+
+A large positive or negative test statistic means the sample statistic is far from the null hypothesis.
+
+---
+
+## 10. The p-Value
+
+The **p-value** is one of the most important and most commonly misunderstood concepts in statistics.
+
+The p-value is the probability, assuming the null hypothesis is true, of observing a sample statistic as far from the null hypothesis as the one we observed, or farther.
+
+More formally:
+
+> The p-value is the probability of obtaining a result at least as extreme as the observed result, conditional on the null hypothesis being true.
+
+The p-value is a conditional probability.
+
+The condition is:
+
+\[
+H_0 \text{ is true}
+\]
+
+A small p-value means the observed result would be unlikely if the null hypothesis were true.
+
+A large p-value means the observed result is plausible under the null hypothesis.
+
+---
+
+## 11. p-Values and Alpha
+
+The p-value is compared to alpha.
+
+Decision rule:
+
+\[
+p < \alpha \Rightarrow \text{Reject } H_0
+\]
+
+\[
+p \geq \alpha \Rightarrow \text{Fail to reject } H_0
+\]
+
+This is equivalent to comparing the test statistic to the critical value.
+
+For a two-tailed z-test with \(\alpha = 0.05\):
+
+\[
+|z| > 1.96 \Rightarrow \text{Reject } H_0
+\]
+
+At exactly the same point where the test statistic crosses the critical value, the p-value falls below alpha.
+
+So these two decision rules are equivalent:
+
+1. Reject if the test statistic exceeds the critical value in absolute value.
+2. Reject if the p-value is less than alpha.
+
+---
+
+## 12. p-Value Example
+
+Suppose we conduct a two-tailed z-test and obtain:
+
+\[
+z = 1.50
+\]
+
+The area in the upper tail beyond 1.50 is about 0.0668. Because this is a two-tailed test, we also include the lower tail beyond -1.50.
+
+So:
+
+\[
+p = 2(0.0668) = 0.1336
+\]
+
+The p-value is:
+
+\[
+p = 0.1336
+\]
+
+If \(\alpha = 0.05\), then:
+
+\[
+0.1336 > 0.05
+\]
+
+So we fail to reject the null hypothesis.
+
+Now suppose:
+
+\[
+z = 2.10
+\]
+
+The two-tailed p-value is about:
+
+\[
+p = 0.0358
+\]
+
+If \(\alpha = 0.05\), then:
+
+\[
+0.0358 < 0.05
+\]
+
+So we reject the null hypothesis.
+
+---
+
+# Part III: A Significance Test for a Proportion
+
+## 13. Vaccine Education Example
+
+Return to the vaccine education program.
+
+The baseline vaccination rate is:
+
+\[
+\pi_0 = 0.722
+\]
+
+The null and alternative hypotheses are:
+
+\[
+H_0: \pi = 0.722
+\]
+
+\[
+H_A: \pi \neq 0.722
+\]
+
+Suppose we randomly select 400 families to receive the vaccine education program. Three years later, we observe whether their children received the full course of vaccinations.
+
+The sample proportion vaccinated is:
+
+\[
+\hat{\pi} = 0.751
+\]
+
+The sample size is:
+
+\[
+n = 400
+\]
+
+We want to know whether 0.751 is far enough from 0.722 to reject the null hypothesis.
+
+---
+
+## 14. Step 1: Choose Alpha
+
+Use:
+
+\[
+\alpha = 0.05
+\]
+
+This is a two-tailed test, so the critical values are:
+
+\[
+z = -1.96
+\]
+
+and:
+
+\[
+z = 1.96
+\]
+
+We will reject the null hypothesis if:
+
+\[
+|z| > 1.96
+\]
+
+---
+
+## 15. Step 2: Calculate the Standard Error Under the Null
+
+For a significance test involving a proportion, we calculate the standard error using the null-hypothesized proportion.
+
+That is important.
+
+For a confidence interval, we use \(\hat{\pi}\).
+
+For a significance test, we use \(\pi_0\), because we assume the null hypothesis is true.
+
+The standard error is:
+
+\[
+\widehat{SE}_{\hat{\pi}} =
+\sqrt{\frac{\pi_0(1-\pi_0)}{n}}
+\]
+
+Substitute values:
+
+\[
+\widehat{SE}_{\hat{\pi}} =
+\sqrt{\frac{0.722(1-0.722)}{400}}
+\]
+
+\[
+=
+\sqrt{\frac{0.722(0.278)}{400}}
+\]
+
+\[
+=
+\sqrt{\frac{0.2007}{400}}
+\]
+
+\[
+=
+\sqrt{0.000502}
+\]
+
+\[
+\approx 0.0224
+\]
+
+So the estimated standard error under the null is:
+
+\[
+0.0224
+\]
+
+---
+
+## 16. Step 3: Calculate the z-Statistic
+
+Use:
+
+\[
+z =
+\frac{\hat{\pi} - \pi_0}
+{\widehat{SE}_{\hat{\pi}}}
+\]
+
+Substitute values:
+
+\[
+z =
+\frac{0.751 - 0.722}{0.0224}
+\]
+
+\[
+z =
+\frac{0.029}{0.0224}
+\]
+
+\[
+z \approx 1.29
+\]
+
+The sample proportion is 1.29 standard errors above the null-hypothesized value.
+
+---
+
+## 17. Step 4: Compare to the Critical Value
+
+The critical value is:
+
+\[
+1.96
+\]
+
+Our test statistic is:
+
+\[
+z = 1.29
+\]
+
+Since:
+
+\[
+|1.29| < 1.96
+\]
+
+we fail to reject the null hypothesis.
+
+The observed vaccination rate is higher than the baseline rate, but not far enough away to be statistically significant at the 0.05 level.
+
+---
+
+## 18. Step 5: Calculate the p-Value
+
+Using a z-table, the upper-tail area beyond:
+
+\[
+z = 1.29
+\]
+
+is:
+
+\[
+0.0985
+\]
+
+Because this is a two-tailed test, double it:
+
+\[
+p = 2(0.0985)
+\]
+
+\[
+p = 0.197
+\]
+
+So:
+
+\[
+p = 0.197
+\]
+
+Since:
+
+\[
+0.197 > 0.05
+\]
+
+we fail to reject the null hypothesis.
+
+Interpretation:
+
+> If the true vaccination rate were 0.722, there would be about a 19.7 percent probability of observing a sample proportion as far from 0.722 as 0.751, or farther, in a sample of 400.
+
+That probability is too large for us to reject the null hypothesis at the 0.05 level.
+
+---
+
+## 19. The Role of Sample Size
+
+Now suppose the sample size were:
+
+\[
+n = 1000
+\]
+
+while the sample proportion remained:
+
+\[
+\hat{\pi} = 0.751
+\]
+
+The standard error becomes:
+
+\[
+\widehat{SE}_{\hat{\pi}} =
+\sqrt{\frac{0.722(1-0.722)}{1000}}
+\]
+
+\[
+\approx 0.0142
+\]
+
+Now the z-statistic is:
+
+\[
+z =
+\frac{0.751 - 0.722}{0.0142}
+\]
+
+\[
+z \approx 2.04
+\]
+
+Now:
+
+\[
+|2.04| > 1.96
+\]
+
+So we reject the null hypothesis at the 0.05 level.
+
+The sample proportion did not change. The difference from the null hypothesis did not change. What changed was the sample size.
+
+Larger samples reduce the standard error, making it easier to detect smaller differences.
+
+---
+
+# Part IV: Steps in a Significance Test
+
+## 20. Standard Procedure
+
+When conducting a significance test, follow these steps.
+
+### Step 1: Check Assumptions
+
+Ask:
+
+- Is the sample random or plausibly representative?
+- Are there obvious sources of selection bias or response bias?
+- What kind of variable do we have?
+- Is this a mean, a proportion, or something else?
+- Is the sample size large enough for the test we want to use?
+- If testing a mean with \(n < 30\), can we assume the population is normal?
+- If testing a proportion, is the sample large enough for the normal approximation?
+
+In this course, the most important assumption checks will usually involve sample size and choosing the correct test statistic.
+
+### Step 2: State the Hypotheses
+
+State:
+
+\[
+H_0
+\]
+
+and:
+
+\[
+H_A
+\]
+
+Be sure hypotheses are about population parameters, not sample statistics.
+
+### Step 3: Calculate the Test Statistic
+
+Use the appropriate formula.
+
+For a proportion:
+
+\[
+z =
+\frac{\hat{\pi} - \pi_0}
+{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+\]
+
+For a mean:
+
+\[
+t =
+\frac{\bar{Y} - \mu_0}
+{s/\sqrt{n}}
+\]
+
+### Step 4: Compare to the Critical Value
+
+Use alpha to determine the critical value.
+
+For a two-tailed z-test with:
+
+\[
+\alpha = 0.05
+\]
+
+the critical value is:
+
+\[
+1.96
+\]
+
+Reject if:
+
+\[
+|z| > 1.96
+\]
+
+For t-tests, use the t-table with the appropriate degrees of freedom.
+
+### Step 5: Calculate the p-Value
+
+Find the probability of observing a test statistic as extreme as yours, or more extreme, assuming the null hypothesis is true.
+
+For two-tailed tests, remember to include both tails.
+
+### Step 6: State the Conclusion
+
+Say either:
+
+- Reject the null hypothesis.
+- Fail to reject the null hypothesis.
+
+Do not say “accept the null hypothesis.”
+
+---
+
+# Part V: The t-Distribution
+
+## 21. Why We Need the t-Distribution
+
+When testing hypotheses about means, we usually use the t-distribution.
+
+The t-distribution is similar to the standard normal distribution. It is:
+
+- symmetric
+- bell-shaped
+- centered at zero
+- has declining probability as we move away from the center
+
+But the t-distribution has more area in the tails, especially when sample size is small.
+
+Why?
+
+Because when we test a mean, we usually do not know the population standard deviation \(\sigma\). We estimate it using the sample standard deviation \(s\). That introduces additional uncertainty.
+
+The t-distribution accounts for that uncertainty.
+
+---
+
+## 22. Sample Size and the t-Distribution
+
+The shape of the t-distribution depends on degrees of freedom.
+
+For a one-sample test of a mean:
+
+\[
+df = n - 1
+\]
+
+When the sample size is small, the t-distribution has thick tails. This makes it harder to reject the null hypothesis because we need a larger test statistic.
+
+As the sample size increases, the t-distribution approaches the standard normal distribution.
+
+For large samples, the t and z distributions are nearly identical.
+
+---
+
+## 23. When to Use t Instead of z
+
+For means, think t.
+
+Use the t-distribution when testing a hypothesis about a mean, especially when \(\sigma\) is unknown.
+
+If the sample size is large, t and z will be nearly identical. But using t is generally safer.
+
+If \(n < 30\), using t requires that the population distribution be approximately normal.
+
+The t-distribution does not fix a non-normal population when the sample is small.
+
+That is important.
+
+If the sample size is small and the population is skewed, the sampling distribution may not be approximately normal, and the usual t-test may not be appropriate.
+
+---
+
+## 24. Reading the t-Table
+
+A t-table differs from a z-table.
+
+In many t-tables:
+
+- rows correspond to degrees of freedom
+- columns correspond to tail areas or confidence levels
+- cells contain t critical values
+
+For a 95 percent confidence interval or a two-tailed test with \(\alpha = 0.05\), each tail contains:
+
+\[
+0.025
+\]
+
+So use the column for 0.025 in the upper tail.
+
+If:
+
+\[
+df = 13
+\]
+
+then the critical value for a two-tailed test with \(\alpha = 0.05\) is approximately:
+
+\[
+t^* = 2.16
+\]
+
+This is larger than 1.96 because the t-distribution has heavier tails.
+
+---
+
+# Part VI: A Significance Test for a Mean
+
+## 25. Air Quality Example
+
+Suppose a city has historically had an average Air Quality Index of:
+
+\[
+\mu_0 = 175
+\]
+
+Higher AQI values are worse. The city introduces a new gasoline blend intended to reduce pollution.
+
+After the new gasoline blend is introduced, researchers observe air quality over 14 days.
+
+The sample mean AQI is:
+
+\[
+\bar{Y} = 155
+\]
+
+The sample standard deviation is:
+
+\[
+s = 30
+\]
+
+The sample size is:
+
+\[
+n = 14
+\]
+
+We want to test whether the average AQI has changed.
+
+---
+
+## 26. Step 1: Check Assumptions
+
+We are testing a mean, so we use a t-test.
+
+The sample size is:
+
+\[
+n = 14
+\]
+
+which is less than 30.
+
+Therefore, to use the t-test, we need to assume that the population distribution of daily AQI values is approximately normal.
+
+This is not an assumption about the sampling distribution. It is an assumption about the population distribution.
+
+If the population distribution is not normal and \(n < 30\), the t-test may not be appropriate.
+
+---
+
+## 27. Step 2: State the Hypotheses
+
+The null hypothesis is that the mean AQI is unchanged:
+
+\[
+H_0: \mu = 175
+\]
+
+The alternative hypothesis is that the mean AQI has changed:
+
+\[
+H_A: \mu \neq 175
+\]
+
+This is a two-tailed test.
+
+---
+
+## 28. Step 3: Calculate the t-Statistic
+
+The formula is:
+
+\[
+t =
+\frac{\bar{Y} - \mu_0}
+{s/\sqrt{n}}
+\]
+
+Substitute values:
+
+\[
+t =
+\frac{155 - 175}
+{30/\sqrt{14}}
+\]
+
+First calculate the standard error:
+
+\[
+\frac{30}{\sqrt{14}} \approx 8.02
+\]
+
+Now calculate:
+
+\[
+t =
+\frac{-20}{8.02}
+\]
+
+\[
+t \approx -2.49
+\]
+
+The sample mean is 2.49 standard errors below the null-hypothesized mean.
+
+---
+
+## 29. Step 4: Compare to the Critical Value
+
+Degrees of freedom are:
+
+\[
+df = n - 1 = 14 - 1 = 13
+\]
+
+For a two-tailed test with:
+
+\[
+\alpha = 0.05
+\]
+
+and:
+
+\[
+df = 13
+\]
+
+the critical value is approximately:
+
+\[
+t^* = 2.16
+\]
+
+We compare the absolute value of the test statistic to the critical value:
+
+\[
+|-2.49| = 2.49
+\]
+
+Since:
+
+\[
+2.49 > 2.16
+\]
+
+we reject the null hypothesis.
+
+---
+
+## 30. Step 5: Calculate the p-Value
+
+Using a t-table, we look along the row for:
+
+\[
+df = 13
+\]
+
+Our test statistic has magnitude:
+
+\[
+2.49
+\]
+
+In the t-table, 2.49 falls between the critical values associated with upper-tail areas of 0.025 and 0.010.
+
+Because this is a two-tailed test, double those tail areas.
+
+So the p-value is between:
+
+\[
+2(0.010) = 0.020
+\]
+
+and:
+
+\[
+2(0.025) = 0.050
+\]
+
+Thus:
+
+\[
+0.020 < p < 0.050
+\]
+
+Using software, the p-value is approximately:
+
+\[
+p = 0.027
+\]
+
+Since:
+
+\[
+0.027 < 0.05
+\]
+
+we reject the null hypothesis.
+
+---
+
+## 31. Step 6: State the Conclusion
+
+We reject the null hypothesis at the 0.05 level.
+
+There is statistically significant evidence that the average AQI changed after the new gasoline blend was introduced.
+
+Because the sample mean is lower than 175, the evidence is consistent with the gasoline blend reducing AQI.
+
+A careful conclusion might be:
+
+> Assuming the population distribution of AQI is approximately normal, the sample provides statistically significant evidence at the 0.05 level that the mean AQI differs from 175. Because the sample mean is 155, the evidence suggests that AQI decreased after the gasoline blend was introduced.
+
+---
+
+# Part VII: One-Tailed Tests
+
+## 32. Two-Tailed Versus One-Tailed Tests
+
+Most significance tests are **two-tailed**.
+
+A two-tailed test rejects the null hypothesis if the sample statistic is far enough from the null hypothesis in either direction.
+
+For example:
+
+\[
+H_0: \mu = 175
+\]
+
+\[
+H_A: \mu \neq 175
+\]
+
+This rejects if the mean is much lower or much higher than 175.
+
+A **one-tailed test** rejects the null hypothesis only in one direction.
+
+For example, if we specifically predict that AQI decreased, we might write:
+
+\[
+H_0: \mu \geq 175
+\]
+
+\[
+H_A: \mu < 175
+\]
+
+Now we reject only if the sample mean is sufficiently below 175.
+
+---
+
+## 33. Alpha in a One-Tailed Test
+
+In a two-tailed test with:
+
+\[
+\alpha = 0.05
+\]
+
+alpha is split between the two tails:
+
+\[
+0.025
+\]
+
+in each tail.
+
+In a one-tailed test, all of alpha goes into one tail.
+
+So if:
+
+\[
+\alpha = 0.05
+\]
+
+then the rejection region is 5 percent in one tail.
+
+For a z-test, the one-tailed critical value for \(\alpha = 0.05\) is about:
+
+\[
+1.645
+\]
+
+rather than:
+
+\[
+1.96
+\]
+
+This makes it easier to reject the null hypothesis in the predicted direction.
+
+Because of that, one-tailed tests should be used cautiously and only when the direction of the alternative hypothesis is clearly justified in advance.
+
+---
+
+## 34. When to Use a One-Tailed Test
+
+A one-tailed test may be appropriate when:
+
+- theory strongly predicts a direction
+- only one direction is substantively meaningful
+- the researcher specifies the direction before seeing the data
+
+For example:
+
+\[
+H_A: \mu < 175
+\]
+
+would be appropriate if the only meaningful claim is that the policy reduced AQI.
+
+However, two-tailed tests are standard. If a researcher uses a one-tailed test, they should explain why.
+
+One-tailed tests can be tempting because they make it easier to find statistical significance. That is precisely why they should not be chosen after looking at the data.
+
+---
+
+# Part VIII: Another Proportion Test
+
+## 35. Environmental Spending Example
+
+Suppose a survey asks whether federal spending on the environment should be:
+
+- increased
+- kept about the same
+- decreased
+
+We focus on the proportion who say spending should be increased.
+
+Suppose:
+
+\[
+n = 5884
+\]
+
+and:
+
+\[
+\hat{\pi} = 0.41
+\]
+
+We want to test whether the population proportion differs from 0.40.
+
+The hypotheses are:
+
+\[
+H_0: \pi = 0.40
+\]
+
+\[
+H_A: \pi \neq 0.40
+\]
+
+Use:
+
+\[
+\alpha = 0.05
+\]
+
+---
+
+## 36. Check Assumptions
+
+This is a proportion test, so we need enough cases in both categories.
+
+The two categories are:
+
+- supports increasing spending
+- does not support increasing spending
+
+The sample is large:
+
+\[
+n = 5884
+\]
+
+The null-hypothesized proportion is:
+
+\[
+\pi_0 = 0.40
+\]
+
+A rule of thumb is:
+
+\[
+n \times \min(\pi_0, 1-\pi_0) > 10
+\]
+
+Here:
+
+\[
+5884 \times \min(0.40, 0.60)
+\]
+
+\[
+= 5884(0.40)
+\]
+
+\[
+= 2353.6
+\]
+
+This is far greater than 10, so the z-test is appropriate.
+
+---
+
+## 37. Calculate the z-Statistic
+
+The standard error under the null is:
+
+\[
+\widehat{SE}_{\hat{\pi}} =
+\sqrt{\frac{\pi_0(1-\pi_0)}{n}}
+\]
+
+Substitute values:
+
+\[
+\widehat{SE}_{\hat{\pi}} =
+\sqrt{\frac{0.40(0.60)}{5884}}
+\]
+
+\[
+=
+\sqrt{\frac{0.24}{5884}}
+\]
+
+\[
+\approx 0.0064
+\]
+
+Now calculate:
+
+\[
+z =
+\frac{0.41 - 0.40}{0.0064}
+\]
+
+\[
+z \approx 1.67
+\]
+
+The critical value for a two-tailed z-test with \(\alpha = 0.05\) is:
+
+\[
+1.96
+\]
+
+Since:
+
+\[
+1.67 < 1.96
+\]
+
+we fail to reject the null hypothesis.
+
+---
+
+## 38. Calculate the p-Value
+
+Using a z-table:
+
+\[
+P(Z > 1.67) = 0.0475
+\]
+
+Because this is a two-tailed test:
+
+\[
+p = 2(0.0475)
+\]
+
+\[
+p = 0.095
+\]
+
+Since:
+
+\[
+0.095 > 0.05
+\]
+
+we fail to reject the null hypothesis.
+
+Conclusion:
+
+> The sample does not provide statistically significant evidence at the 0.05 level that the population proportion differs from 0.40.
+
+---
+
+# Part IX: Small-Sample Proportions and the Binomial Distribution
+
+## 39. Why z Does Not Always Work for Proportions
+
+Proportions are based on counts.
+
+If we toss a coin five times, the possible proportions of heads are:
+
+\[
+0, \frac{1}{5}, \frac{2}{5}, \frac{3}{5}, \frac{4}{5}, 1
+\]
+
+These are discrete values.
+
+With very small samples, the distribution of possible sample proportions does not look like a smooth normal curve. It looks like a set of distinct probabilities.
+
+The z-distribution is continuous and symmetric. It is only an approximation to the binomial distribution.
+
+When the sample is large, the approximation works well. When the sample is small, it may not.
+
+In small-sample proportion tests, use the **binomial distribution**.
+
+---
+
+## 40. Binomial Test Logic
+
+The binomial distribution gives the exact probability of observing \(x\) successes in \(n\) trials if the true probability of success is \(\pi\):
+
+\[
+P(X=x) =
+\frac{n!}{x!(n-x)!}
+\pi^x(1-\pi)^{n-x}
+\]
+
+For a binomial significance test, we do not need to convert the sample result into a z-statistic.
+
+Instead, we calculate the exact probability of getting an outcome as extreme as the observed outcome, assuming the null hypothesis is true.
+
+That probability is the p-value.
+
+---
+
+## 41. Example: Hiring Discrimination
+
+Suppose a workplace discrimination case concerns hiring decisions.
+
+Assume the applicant pool is 50 percent white and 50 percent nonwhite, and assume all applicants are similarly qualified.
+
+If hiring is race-neutral, then the probability that a hired applicant is white is:
+
+\[
+\pi_0 = 0.50
+\]
+
+Suppose 10 people are hired.
+
+If hiring is race-neutral, the number of white hires follows a binomial distribution:
+
+\[
+X \sim Binomial(n=10, \pi=0.50)
+\]
+
+Now suppose the observed hiring outcome is extremely imbalanced, such as 9 or 10 white hires, or 0 or 1 white hires.
+
+For a two-tailed test, we include both extremes.
+
+The probability of getting 0 or 1 white hires, or 9 or 10 white hires, under the null hypothesis, is approximately:
+
+\[
+p = 0.022
+\]
+
+Since:
+
+\[
+0.022 < 0.05
+\]
+
+we reject the null hypothesis.
+
+Even with a sample size of only 10, the result is unlikely under race-neutral hiring.
+
+---
+
+## 42. Why the Binomial Is Exact
+
+The binomial distribution is exact for dichotomous outcomes under the conditions of the binomial model.
+
+It does not require the sample size to be large.
+
+It does not approximate a continuous curve.
+
+It calculates the exact probability of each possible count.
+
+The z-test is convenient for large samples, but the binomial test is more accurate, especially when:
+
+- sample size is small
+- the hypothesized proportion is near 0 or 1
+- one category has very few cases
+
+Software can easily calculate exact binomial probabilities, even when hand calculations would be tedious.
+
+---
+
+# Part X: Type I and Type II Errors
+
+## 43. Two Kinds of Error
+
+A significance test can lead to two types of error.
+
+### Type I Error
+
+A **type I error** occurs when we reject the null hypothesis even though it is true.
+
+This is a false positive.
+
+The probability of a type I error is:
+
+\[
+\alpha
+\]
+
+### Type II Error
+
+A **type II error** occurs when we fail to reject the null hypothesis even though it is false.
+
+This is a false negative.
+
+The probability of a type II error is:
+
+\[
+\beta
+\]
+
+---
+
+## 44. Error Table
+
+| Reality | Reject \(H_0\) | Fail to Reject \(H_0\) |
+|---|---|---|
+| \(H_0\) is true | Type I error | Correct decision |
+| \(H_0\) is false | Correct decision | Type II error |
+
+A type I error is rejecting a true null hypothesis.
+
+A type II error is failing to reject a false null hypothesis.
+
+One way to remember:
+
+- Type I error: false positive
+- Type II error: false negative
+
+The story of “the boy who cried wolf” contains both:
+
+- The boy says there is a wolf when there is no wolf: type I error.
+- Later, there is a wolf, but no one believes him: type II error.
+
+---
+
+## 45. Reducing Type I Error
+
+To reduce the probability of a type I error, lower alpha.
+
+For example, use:
+
+\[
+\alpha = 0.01
+\]
+
+instead of:
+
+\[
+\alpha = 0.05
+\]
+
+This makes it harder to reject the null hypothesis.
+
+However, lowering alpha increases the probability of a type II error, because it becomes harder to reject even a false null hypothesis.
+
+There is a tradeoff.
+
+---
+
+## 46. Reducing Type II Error
+
+To reduce the probability of a type II error, increase sample size.
+
+Larger samples reduce the standard error, making it easier to detect real differences.
+
+If the null hypothesis is false, a larger sample makes the sample statistic more likely to cluster around the true value rather than around the null-hypothesized value. This makes rejecting the false null hypothesis more likely.
+
+The probability of correctly rejecting a false null hypothesis is called **statistical power**.
+
+Power is:
+
+\[
+1 - \beta
+\]
+
+Increasing sample size increases power.
+
+---
+
+## 47. Sample Size and Type I Error
+
+Increasing sample size does not reduce the type I error rate.
+
+This may seem counterintuitive.
+
+The type I error rate is set by alpha. If \(\alpha = 0.05\), then under the scenario that the null hypothesis is true, we reject 5 percent of the time.
+
+Larger samples make the sampling distribution narrower, but the rejection threshold is defined in standard error units. The type I error rate remains 0.05 because alpha defines the probability of falling in the rejection region.
+
+Sample size affects type II error and power, not the type I error rate.
+
+---
+
+# Part XI: Interpreting Significance Tests Carefully
+
+## 48. Statistical Significance Is Probabilistic
+
+A statistically significant result is not definitive proof.
+
+It means the observed result would be unlikely under the null hypothesis.
+
+But unlikely events happen.
+
+If \(\alpha = 0.05\), then even when the null hypothesis is true, about 5 percent of tests will reject it by chance alone.
+
+That is the meaning of type I error.
+
+Statistical significance is evidence, not certainty.
+
+---
+
+## 49. Multiple Testing and False Positives
+
+If researchers conduct many tests, some will be statistically significant by chance alone.
+
+Suppose the null hypothesis is true for 20 different tests, and each test uses:
+
+\[
+\alpha = 0.05
+\]
+
+On average, about 1 of the 20 tests will be statistically significant just by chance.
+
+This creates a multiple testing problem.
+
+A famous illustration involves jellybeans and acne. Suppose researchers test whether jellybeans cause acne and find no relationship. Then they test many colors of jellybeans separately: purple, brown, pink, blue, teal, red, yellow, green, and so on. Eventually, one color produces \(p < 0.05\).
+
+A headline appears:
+
+> Green jellybeans cause acne.
+
+But the result may simply be a false positive caused by repeated testing.
+
+This is why researchers should be cautious when interpreting isolated significant findings, especially when many tests were conducted.
+
+---
+
+## 50. Publication Bias
+
+Statistically significant results are more likely to be published than null results.
+
+This creates **publication bias**.
+
+If journals and media outlets focus mainly on significant findings, the published literature may overrepresent false positives and exaggerated effects.
+
+Null results are still valuable. If a vaccine education program has no measurable effect, that is important information. If a policy intervention does not work, policymakers should know that.
+
+But null findings often receive less attention because they are less exciting.
+
+This is a problem for science and public policy.
+
+---
+
+## 51. Do Not Accept the Null Hypothesis
+
+When a significance test does not reject the null hypothesis, we say:
+
+> Fail to reject the null hypothesis.
+
+We do not say:
+
+> Accept the null hypothesis.
+
+Why?
+
+Because failing to reject means the data are consistent with the null hypothesis. But they may also be consistent with many nearby alternatives.
+
+A non-significant result does not prove the null hypothesis is true. It simply means we do not have enough evidence to reject it.
+
+The correct language is:
+
+- Reject \(H_0\)
+- Fail to reject \(H_0\)
+
+Not:
+
+- Accept \(H_0\)
+
+---
+
+# Key Terms
+
+**Significance test**  
+A procedure for evaluating whether sample evidence is strong enough to reject a hypothesis about a population parameter.
+
+**Hypothesis test**  
+Another term for a significance test.
+
+**Null hypothesis**  
+The baseline assumption tested against the data, written \(H_0\).
+
+**Alternative hypothesis**  
+The hypothesis considered if the null hypothesis is rejected, written \(H_A\).
+
+**Significance level**  
+The threshold for rejecting the null hypothesis, represented by \(\alpha\).
+
+**Alpha \(\alpha\)**  
+The probability of a type I error; the probability of rejecting a true null hypothesis.
+
+**Test statistic**  
+A standardized measure of how far the sample statistic is from the null-hypothesized value.
+
+**Critical value**  
+The threshold value of the test statistic required to reject the null hypothesis.
+
+**p-value**  
+The probability, assuming the null hypothesis is true, of observing a result as extreme as the sample result or more extreme.
+
+**Type I error**  
+Rejecting the null hypothesis when it is true; a false positive.
+
+**Type II error**  
+Failing to reject the null hypothesis when it is false; a false negative.
+
+**Power**  
+The probability of correctly rejecting a false null hypothesis; equal to \(1-\beta\).
+
+**z-test**  
+A significance test using the standard normal distribution.
+
+**t-test**  
+A significance test using the t-distribution.
+
+**Binomial test**  
+An exact test for proportions based on the binomial distribution.
+
+**Two-tailed test**  
+A test that allows rejection in either direction.
+
+**One-tailed test**  
+A test that allows rejection in only one direction.
+
+**p-hacking**  
+The practice of trying many analyses until a statistically significant result appears.
+
+**Publication bias**  
+The tendency for statistically significant results to be published more often than null results.
+
+---
+
+# Chapter Summary
+
+Significance testing allows researchers to evaluate hypotheses about population parameters using sample data.
+
+A significance test begins with a null hypothesis, which usually states that there is no effect, no relationship, or no change. The alternative hypothesis represents the possibility that the null hypothesis is wrong.
+
+The significance level, \(\alpha\), defines the probability of type I error we are willing to tolerate. It determines the critical value of the test statistic.
+
+A test statistic measures how far the sample statistic is from the null-hypothesized value in standard error units. For proportions, we often use a z-statistic. For means, we usually use a t-statistic.
+
+The p-value tells us the probability of observing a result as extreme as ours, or more extreme, assuming the null hypothesis is true. If the p-value is smaller than alpha, we reject the null hypothesis.
+
+For large-sample proportions, the z-test works well. For small-sample proportions, the binomial distribution gives exact probabilities. For means, the t-distribution accounts for uncertainty from estimating the population standard deviation.
+
+Significance tests can produce errors. A type I error is a false positive. A type II error is a false negative. Lowering alpha reduces type I error but can increase type II error. Increasing sample size reduces type II error and increases power.
+
+Finally, statistical significance should be interpreted carefully. A significant result is not proof. A non-significant result is not proof that the null hypothesis is true. And when many tests are conducted, some statistically significant findings will occur by chance alone. Good statistical reasoning requires both calculation and caution.

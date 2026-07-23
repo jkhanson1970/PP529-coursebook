@@ -1,0 +1,47 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "PubPol 529: Coursebook"
+  navbar:
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Chapter 1: Measurement"
+        file: chapter-1.qmd
+      - text: "Chapter 2: Sampling"
+        file: chapter-2.qmd
+      - text: "Chapter 3: Descriptive Statistics"
+        file: chapter-3.qmd
+      - text: "Chapter 4: Probability"
+        file: chapter-4.qmd
+      - text: "Chapter 5: Probability Distributions"
+        file: chapter-5.qmd
+      - text: "Chapter 6: Sampling Distributions"
+        file: chapter-6.qmd
+      - text: "Chapter 7: Statistical Inference"
+        file: chapter-7.qmd
+      - text: "Chapter 8: Significance Tests"
+        file: chapter-8.qmd
+      - text: "Chapter 9: Experiments and Causality"
+        file: chapter-9.qmd
+      - text: "Chapter 10: Comparison of Two Groups"
+        file: chapter-10.qmd
+      - text: "Chapter 11: Association Between Categorical Variables"
+        file: chapter-11.qmd
+      - text: "Chapter 12: ANOVA"
+        file: chapter-12.qmd
+      - text: "Chapter 13: Correlation"
+        file: chapter-13.qmd
+      - text: "Chapter 14: Linear Regression"
+        file: chapter-14.qmd
+
+format:
+  revealjs:
+    theme: white          # Choose from built-in themes (e.g., night, simple, serif)
+    slide-number: c/t      # Flattened slide number / total slides
+    transition: slide      # Slide transition (slide, fade, convex)
+    controls: true         # Show bottom-right arrow controls
+    history: true          # Enable slide history in browser URL
+    
