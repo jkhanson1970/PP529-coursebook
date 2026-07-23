@@ -1,0 +1,748 @@
+---
+title: "Chapter 2: Sampling"
+format: revealjs
+---
+
+Statistics usually begins with a problem: we want to learn something about a large group, but we cannot observe every member of that group.
+
+We may want to know how American voters feel about an election, how school-aged children are performing academically, how businesses experience regulation, or how countries differ in their levels of democracy or economic development. In each case, we have a larger group in mind. That larger group is called the **population**.
+
+In practice, however, we usually do not collect data from the entire population. Instead, we collect data from a smaller subset of cases. That subset is called a **sample**. We then use information from the sample to make inferences about the population.
+
+Sampling is therefore central to statistical reasoning. It determines how much confidence we can have in our conclusions, what kinds of errors we might make, and whether our results are likely to represent the broader population we care about.
+
+This chapter introduces the logic of sampling. We begin with the relationship between populations, samples, parameters, and statistics. We then consider different methods of sampling, including both probability and non-probability approaches. After that, we examine random sampling error and several important sources of bias. Finally, we introduce the logic of survey weighting, which is one way researchers correct for known imbalances in a sample.
+
+---
+
+## 1. Populations and Samples
+
+A **population** is the full set of cases we want to learn about. The population might consist of people, organizations, countries, schools, legislative districts, elections, policy programs, or almost anything else.
+
+Examples of populations include:
+
+- all registered voters in the United States  
+- all adults living in Michigan  
+- all public schools in a state  
+- all countries in the world  
+- all members of a particular Congress  
+- all students eligible for a new educational program  
+- all households in a city  
+
+The population is the group about which we want to draw conclusions.
+
+A **sample** is a subset of the population. Because we usually cannot collect data from every member of the population, we collect data from a sample and use it to estimate what is true of the population.
+
+For example, suppose we want to know the average age of students in a large lecture course. The population is all students in the course. If we randomly select ten students and calculate their average age, those ten students are our sample. Their average age is our estimate of the average age in the full class.
+
+The same logic applies at much larger scales. A national election poll may survey 1,000 adults in order to estimate the preferences of millions of voters.
+
+---
+
+## 2. Parameters and Statistics
+
+When we describe a population, we refer to **parameters**.
+
+A **parameter** is a true characteristic of a population. For example:
+
+- the average income of all households in the United States  
+- the percentage of voters who support a candidate  
+- the median age of all residents in Michigan  
+- the standard deviation of test scores among all students in a school district  
+
+Parameters are usually unknown. They are the values we would observe if we could measure the entire population.
+
+When we describe a sample, we refer to **statistics**.
+
+A **statistic** is a characteristic calculated from a sample. For example:
+
+- the average income among surveyed households  
+- the percentage of respondents who support a candidate  
+- the median age of people in a survey  
+- the standard deviation of test scores in a sampled group of students  
+
+The statistic is known, because we can calculate it directly from the sample. The parameter is usually unknown, because we do not observe the full population.
+
+The basic logic of statistical inference is this:
+
+> We use sample statistics to estimate population parameters.
+
+This distinction is crucial. If we survey 1,000 voters and find that 52 percent support Candidate A, we know with certainty that 52 percent of the sample supports Candidate A. What we do not know with certainty is whether 52 percent of the entire population supports Candidate A.
+
+Much of statistics is about quantifying that uncertainty.
+
+---
+
+## 3. Why Sampling Creates Uncertainty
+
+A sample statistic is usually not exactly equal to the population parameter. If we drew a different sample, we would probably get a slightly different statistic.
+
+Suppose we want to estimate the average age of students in a class and randomly select ten students. We calculate the mean age of those ten students. If we randomly select another ten students, the mean will likely differ slightly. A third sample may differ again.
+
+This does not mean anything has gone wrong. It is simply the result of sampling.
+
+The sample statistic is known. The uncertainty comes from using that statistic to estimate the population parameter.
+
+For example:
+
+- We know the sample mean.  
+- We do not know the population mean.  
+- We use the sample mean to estimate the population mean.  
+- Because the sample is only part of the population, the estimate is uncertain.  
+
+A major goal of statistics is to tell us how much uncertainty remains. Later statistical tools, such as confidence intervals and hypothesis tests, help us answer questions like:
+
+- How close is our sample statistic likely to be to the population parameter?  
+- How much random error should we expect?  
+- How confident can we be in our estimate?  
+- Is an observed difference likely to reflect a real difference in the population, or could it plausibly be due to random sampling error?  
+
+---
+
+## 4. Populations Are Sometimes Hypothetical
+
+It is tempting to think of populations as always concrete and observable. Sometimes they are. If we define our population as “all students enrolled in this course,” that population exists in a straightforward way.
+
+But in social science and policy research, populations are often partly hypothetical.
+
+Consider a pilot policy program. Suppose a city wants to test a new job-training program. It recruits a group of participants and measures outcomes after completion. Those participants are the sample. But what is the population?
+
+The population is not simply “everyone currently in the pilot,” because those are the people in the sample. Instead, the population might be all people who would participate if the program were implemented more broadly. That population does not yet exist. It is hypothetical.
+
+The sample helps us estimate what might happen in that broader, future population.
+
+Something similar can happen even when we seem to have complete data. Suppose we study voting behavior in the 117th Congress. We might have data on every roll-call vote cast by every member. In one sense, that is population data for the 117th Congress. But if our goal is to understand how Congress works as an institution, the 117th Congress is only one instance of a broader process.
+
+We may want to understand how party, district characteristics, ideology, electoral competition, or constituent preferences shape legislative behavior more generally. The particular Congress we observe is only one possible version of Congress. Different electoral outcomes, redistricting decisions, retirements, scandals, national events, and close races could have produced a different set of members and a different pattern of votes.
+
+In that sense, our observed Congress is a sample from a broader set of possible Congresses.
+
+This idea can feel strange at first. But it captures an important feature of social research: we often use the specific world we observe to learn about broader processes that could operate across many possible worlds.
+
+The data in front of us are concrete. The population we care about may be broader, more abstract, or even hypothetical.
+
+---
+
+## 5. Why Sampling Method Matters
+
+The quality of a sample depends heavily on how it is collected.
+
+Ideally, a sample should be **representative** of the population. A representative sample resembles the population in the ways that matter for the research question.
+
+If we want to estimate national public opinion, our sample should reflect the national population. If we want to understand school performance across a state, our sample should reflect the schools in that state. If we want to evaluate a policy program, our sample should resemble the people who would actually experience that program.
+
+The gold standard is often the **random sample**, because random selection gives each member of the population a known chance of selection. Random sampling allows us to use probability theory to estimate sampling error.
+
+But true random sampling is often difficult, expensive, or impossible. As a result, researchers use many different sampling strategies. Some are probability-based and involve random selection. Others are non-probability approaches that do not rely on random selection.
+
+Both types are useful in different contexts, but they support different kinds of conclusions.
+
+---
+
+# Part I: Methods of Sampling
+
+## 6. Non-Probability Sampling
+
+In **non-probability sampling**, cases are not selected through a random process. This means we generally cannot use standard probability theory to calculate sampling error in the usual way.
+
+Non-probability samples are common, especially in exploratory research, qualitative research, pilot studies, hard-to-reach populations, and situations where probability sampling is too expensive or impractical.
+
+Major types of non-probability sampling include:
+
+1. Convenience sampling  
+2. Purposive sampling  
+3. Snowball sampling  
+4. Quota sampling  
+
+---
+
+## 7. Convenience Sampling
+
+A **convenience sample** consists of cases that are easy to access.
+
+For example, a psychology professor may recruit undergraduate students to participate in an experiment. Students see a posting, sign up, complete the study, and perhaps receive course credit or payment. This is convenient for the researcher because students are nearby and available.
+
+Convenience sampling is inexpensive and practical, but it has obvious limitations. Undergraduate students at one university may not represent adults in general, young people in general, or even college students in general. They may differ in age, education, socioeconomic background, political attitudes, psychological traits, or willingness to participate in research.
+
+Convenience samples can be useful for some purposes, especially early-stage research or controlled experiments. But researchers must be cautious about generalizing from them to broader populations.
+
+---
+
+## 8. Purposive Sampling
+
+In **purposive sampling**, researchers deliberately select cases because they are especially relevant to the research question.
+
+For example, suppose a researcher wants to understand the experiences of community organizers working on housing policy. Rather than randomly sampling the general population, the researcher may intentionally seek out people who have direct experience with housing advocacy.
+
+Purposive sampling is common in qualitative research, case studies, elite interviews, and policy analysis. The goal is not always statistical representativeness. Instead, the goal may be to gather information-rich cases.
+
+For example, if we are studying how local governments respond to water contamination crises, we may intentionally select cities that experienced such crises. A random sample of all cities might include very few relevant cases.
+
+Purposive sampling can provide deep insight, but it does not support the same kind of statistical generalization as probability sampling.
+
+---
+
+## 9. Snowball Sampling
+
+In **snowball sampling**, researchers begin with one or more participants and then ask them to identify others who should be included.
+
+For example, after interviewing one activist, the researcher might ask:
+
+> Who else should I talk to?
+
+That person recommends others, who recommend still others, and the sample expands outward like a snowball.
+
+Snowball sampling is especially useful when studying networks, hidden populations, marginalized groups, or communities where trust matters. It can help researchers reach people who would be difficult to identify through standard sampling methods.
+
+However, snowball samples can be biased toward connected individuals and networks. People are likely to recommend others they know, who may share similar views, experiences, or social positions.
+
+---
+
+## 10. Quota Sampling
+
+In **quota sampling**, researchers decide in advance how many cases they want from particular groups, then recruit participants until those quotas are filled.
+
+For example, a researcher may want a sample that is:
+
+- 50 percent women and 50 percent men  
+- 30 percent from one age group, 40 percent from another, and 30 percent from another  
+- 20 percent from each of five geographic regions  
+
+Quota sampling can help ensure that important groups appear in the sample. However, the individuals within each quota are not necessarily randomly selected.
+
+For example, a survey firm might decide it needs 100 respondents aged 18–29, then recruit whoever is easiest to reach until it fills that quota. That sample may still be biased if the people easiest to reach differ from those who are harder to reach.
+
+Quota sampling can improve sample composition, but it does not eliminate the need to worry about representativeness.
+
+---
+
+## 11. Probability Sampling
+
+In **probability sampling**, random selection plays some role in determining which cases are included. Each case in the population has a known, nonzero probability of selection.
+
+Probability sampling is important because it allows researchers to use probability theory to estimate sampling error. In other words, it gives us a mathematical basis for saying how uncertain our estimates are.
+
+Common probability sampling methods include:
+
+1. Simple random sampling  
+2. Systematic random sampling  
+3. Stratified random sampling  
+4. Cluster sampling  
+
+---
+
+## 12. Simple Random Sampling
+
+A **simple random sample** is the most basic form of probability sample. Every member of the population has an equal probability of being selected.
+
+For example, suppose we have a list of all 10,000 students at a university and randomly select 500 names. If every student has the same chance of being selected, this is a simple random sample.
+
+Simple random sampling is the foundation of much statistical theory. Many formulas introduced in basic statistics assume that the data come from a simple random sample.
+
+In practice, however, true simple random samples are often difficult to obtain. We may not have a complete list of the population. Contacting randomly selected people may be expensive. Some people may refuse to participate. Others may be impossible to reach.
+
+This gap between theory and reality is important. Introductory statistics often begins with the assumption of simple random sampling, but real-world data frequently violate that assumption.
+
+---
+
+## 13. Systematic Random Sampling
+
+A **systematic random sample** selects cases using a fixed interval from a list.
+
+For example, suppose we have a list of union members and want to sample every fifth person. We might randomly choose a starting point among the first five names, then select every fifth name after that.
+
+Systematic sampling can be practical when working with long lists, especially if full randomization is inconvenient.
+
+However, systematic sampling can produce bias if the list has a hidden pattern. For example, if every fifth name on a list corresponds to a particular type of member because of how the list is organized, the sample may not be representative.
+
+Systematic sampling works best when the ordering of the list is unrelated to the variables we care about.
+
+---
+
+## 14. Stratified Random Sampling
+
+A **stratified random sample** divides the population into groups, called **strata**, and then randomly samples within each stratum.
+
+Strata are usually defined by characteristics that matter for the research question or for representativeness. Examples include:
+
+- geographic region  
+- race or ethnicity  
+- gender  
+- age group  
+- income category  
+- school type  
+- urban, suburban, and rural areas  
+
+For example, suppose we want a national survey that is representative by region. We could divide the country into regions and then randomly sample people within each region.
+
+Stratified sampling has several advantages.
+
+First, it can improve representativeness. By ensuring that each stratum is included, we reduce the risk that random chance will produce too many cases from one group and too few from another.
+
+Second, it can reduce sampling variability. If important groups are properly represented, sample statistics may fluctuate less across repeated samples.
+
+Third, it helps with subgroup analysis. If we want to compare groups, we need enough cases in each group. A simple random sample may include too few members of a small group to support meaningful analysis. Stratified sampling can intentionally collect enough cases from that group.
+
+For example, if a group makes up only 5 percent of the population, a simple random sample of 1,000 people would include about 50 members of that group on average. That may not be enough for detailed analysis. A stratified design could oversample that group to ensure a larger number of cases.
+
+The disadvantages are also important. To use stratified sampling, we need to know which cases belong to which strata. The strata should be mutually exclusive, meaning each case belongs to only one stratum. If our classification is inaccurate or incomplete, the sampling design may be flawed.
+
+---
+
+## 15. Cluster Sampling
+
+**Cluster sampling** divides the population into clusters, randomly selects clusters, and then samples cases within those clusters.
+
+Clusters are often geographic. Examples include:
+
+- counties  
+- census tracts  
+- neighborhoods  
+- villages  
+- schools  
+- classrooms  
+- city blocks  
+
+Cluster sampling is common in large-scale surveys, especially when in-person data collection is required.
+
+Suppose we want to conduct a nationwide household survey. A simple random sample might require interviewers to travel to thousands of scattered addresses across the country. That would be extremely expensive. Instead, researchers can randomly select geographic clusters, send interviewers to those locations, and then randomly select households within each cluster.
+
+This preserves randomness while reducing cost.
+
+Cluster sampling is often a multi-stage process. For example:
+
+1. Randomly select cities.  
+2. Within selected cities, randomly select neighborhoods.  
+3. Within selected neighborhoods, randomly select blocks.  
+4. Within selected blocks, randomly select households.  
+5. Within selected households, randomly select individuals.  
+
+This design is far more practical than sending interviewers to randomly scattered individuals across an entire country.
+
+Cluster sampling differs from stratified sampling. In stratified sampling, strata are usually internally similar and analytically meaningful. In cluster sampling, clusters are often intended to be miniature versions of the broader population, or at least heterogeneous enough to contain variation.
+
+In practice, large surveys often combine stratification and clustering.
+
+For example, the Demographic and Health Surveys, often conducted in countries around the world, use cluster-based designs. Survey teams may select clusters such as villages or urban neighborhoods, then interview households within those areas. This allows researchers to produce nationally representative estimates while keeping fieldwork manageable.
+
+The major advantage of cluster sampling is cost. The major disadvantage is complexity. Standard statistical formulas often assume simple random sampling. Clustered designs violate that assumption because people within the same cluster may be more similar to one another than people in different clusters. As a result, specialized survey methods are often needed.
+
+---
+
+## 16. Theory Versus Reality in Sampling
+
+Much of introductory statistics assumes simple random sampling. This assumption makes the theory easier to learn and provides a foundation for understanding inference.
+
+But real surveys are rarely simple random samples.
+
+High-quality surveys often use complex designs involving stratification, clustering, oversampling, and weighting. These designs are not flaws. They are often intentional choices made to improve representativeness, reduce cost, or ensure adequate sample sizes for important subgroups.
+
+For example, the American National Election Studies is a rigorous survey of political attitudes and behavior in the United States. But it is not a simple random sample. It may intentionally oversample some groups so researchers can analyze those groups with sufficient precision.
+
+If we analyze such a survey naively, without applying the appropriate weights, our results may not match known population values. For example, a survey may appear to overrepresent supporters of one candidate or demographic group. That does not necessarily mean the survey is bad. It may mean we have not yet applied the weights that correct for the sampling design.
+
+The central point is this:
+
+> Real-world samples often require real-world corrections.
+
+A good researcher asks not only what is in the data, but how the data were collected.
+
+---
+
+# Part II: Random Sampling Error and Bias
+
+## 17. Random Sampling Error
+
+Even a perfectly random sample will usually differ from the population.
+
+This difference is called **random sampling error**.
+
+Random sampling error occurs because we observe only part of the population. By chance, the sample may include slightly more of one kind of case and slightly fewer of another. As a result, the sample statistic will usually differ from the population parameter.
+
+For example, suppose the true average age in a class is 20.4 years. If we randomly sample ten students, the average age in the sample might be 20.1, 20.7, or 19.9. These differences are not caused by bias or bad methods. They are simply the result of random selection.
+
+The good news is that random sampling error is the kind of error statistics is designed to handle. Probability theory allows us to estimate how large random sampling error is likely to be.
+
+Later, when we study confidence intervals, we will be able to make statements such as:
+
+> We are 95 percent confident that the population value lies within this range.
+
+That does not mean our sample statistic is uncertain. The sample statistic is known. What is uncertain is how close it is to the population parameter.
+
+---
+
+## 18. Bias
+
+Random sampling error is expected and manageable. **Bias** is more dangerous.
+
+Bias occurs when the sample is systematically different from the population in a way that affects the results.
+
+With random sampling error, mistakes are due to chance. With bias, mistakes have a direction. The sample tends to overrepresent or underrepresent certain cases, views, behaviors, or characteristics.
+
+This is a serious problem because standard statistical methods assume that errors are random. If the sampling process is biased, larger sample sizes do not necessarily solve the problem. A biased sample can produce a very precise estimate of the wrong value.
+
+Two important forms of bias are:
+
+1. Selection bias  
+2. Non-response bias  
+
+---
+
+## 19. Selection Bias
+
+**Selection bias** occurs when the sampling method systematically includes some kinds of cases and excludes others.
+
+For example, suppose a researcher conducts a telephone survey by calling landline phones during weekday afternoons. This sampling method is likely to reach people who are at home during the day and who still use landlines. It may overrepresent retirees, people who work from home, or people without full-time employment outside the home. It may underrepresent younger adults, people who rely only on cell phones, and people who work during the day.
+
+The problem is not simply that some people are missing. The problem is that the missing people differ systematically from those included.
+
+Selection bias was once less severe for landline telephone surveys than it is today. By the 1970s, most American households had landline telephones. A landline survey could reach a large share of the population, though not all of it.
+
+Today, many adults are cell-phone-only, and many people who still have landlines rarely answer them. A landline-only survey now excludes a large and systematically different portion of the population.
+
+This matters because people who are reachable by landline may differ politically, socially, and demographically from people who are not. If those differences are related to the survey topic, the results will be biased.
+
+---
+
+## 20. Example: Landlines and Election Polling
+
+Election polling provides a clear example of selection bias.
+
+In the 2012 U.S. presidential election, some polls used landline-only samples, while others included cell phones. Analysts noticed that landline-only polls tended to produce different estimates than polls that included cell-phone respondents.
+
+This mattered because cell-phone-only voters differed from landline respondents. They tended to be younger and demographically distinct in ways that were politically relevant.
+
+A landline-only poll might show one candidate leading by a small margin, while a poll including cell phones might show a different result. The issue was not random sampling error alone. It was that the landline-only sampling frame systematically missed part of the electorate.
+
+This illustrates a broader lesson:
+
+> A sample can be large and still be biased if the sampling method systematically excludes relevant groups.
+
+The size of the sample does not fix a flawed sampling frame.
+
+---
+
+## 21. Non-Response Bias
+
+**Non-response bias** occurs when people selected for a sample do not participate, and those who do participate differ systematically from those who do not.
+
+Non-response is extremely common. Many people refuse to answer surveys. Others cannot be reached. Some begin a survey but skip particular questions.
+
+Non-response alone is not necessarily bias. If the people who respond and the people who do not respond are similar with respect to the question we care about, then non-response may not distort the results.
+
+The problem arises when willingness to respond is related to the outcome being measured.
+
+For example, suppose we conduct an election survey. People who are highly interested in politics may be more willing to participate than people who are disengaged. If politically engaged people have different candidate preferences than disengaged people, the survey will be biased.
+
+Similarly, if a survey asks about income, people with very high or very low incomes may be less willing to answer. If missing income responses are not random, estimates of average income may be biased.
+
+The key question is:
+
+> Are respondents systematically different from non-respondents in ways that matter for the research question?
+
+If yes, non-response bias is a problem.
+
+---
+
+## 22. Low Response Rates and Polling
+
+Modern survey research faces a major challenge: response rates are low.
+
+In many phone surveys, only a small percentage of calls result in a completed interview. If only 6 percent of people contacted complete a survey, the researcher must make many calls to obtain a sufficient sample size.
+
+Low response rates do not automatically mean a survey is biased. But they increase the risk of bias because the final sample depends heavily on who is willing to participate.
+
+Even small differences in willingness to respond can produce large changes in survey results.
+
+Imagine that the true electorate is evenly divided:
+
+- Candidate A: 47 percent  
+- Candidate B: 47 percent  
+- Undecided: 6 percent  
+
+Now consider two scenarios.
+
+### Scenario 1: Equal Response Rates
+
+Supporters of both candidates are equally likely to respond to the survey. Suppose 10 percent of each group responds.
+
+In this case, the expected survey result remains 47 percent for Candidate A and 47 percent for Candidate B. Random sampling error may cause some variation, but there is no systematic bias.
+
+### Scenario 2: Slightly Unequal Response Rates
+
+Now suppose Candidate B’s supporters are just slightly more likely to respond. Candidate A’s supporters respond at 10 percent, while Candidate B’s supporters respond at 11 percent.
+
+That small difference can produce a noticeable shift in the poll. Candidate B may appear to lead, even though the true electorate remains tied.
+
+This can happen after major campaign events. Suppose a debate energizes one candidate’s supporters and discourages the other’s. The underlying electorate may not have changed much, but the willingness to answer a political survey may have shifted. Polls may then show movement that partly reflects response patterns rather than true persuasion.
+
+This is why survey researchers worry so much about non-response. When response rates are low, small differences in who answers can matter a great deal.
+
+---
+
+## 23. When Is Non-Response a Problem?
+
+Non-response becomes problematic when it is systematic with respect to the variable we are trying to measure.
+
+If we ask about voting behavior, non-response is a problem if voters and non-voters respond at different rates.
+
+If we ask about candidate preference, non-response is a problem if supporters of one candidate respond at higher rates than supporters of another.
+
+If we ask about income, non-response is a problem if people at different income levels are more or less likely to answer.
+
+If non-response is random with respect to the research question, it mainly reduces sample size. If non-response is systematic, it biases the results.
+
+This distinction is crucial.
+
+A survey with a low response rate can still be useful if non-response is unrelated to the variables of interest. A survey with a high response rate can still be biased if the remaining non-response is systematic in an important way.
+
+---
+
+# Part III: Survey Weighting
+
+## 24. Why Weighting Is Necessary
+
+Many surveys intentionally or unintentionally overrepresent some groups and underrepresent others.
+
+For example, suppose a survey sample is 20 percent age 65 or older. But census data tell us that only 16 percent of the relevant population is age 65 or older.
+
+Older adults are overrepresented in the sample. If older adults answer certain questions differently from younger adults, then the sample statistic will be distorted.
+
+The purpose of **survey weighting** is to correct known imbalances between the sample and the population.
+
+Survey weights adjust how much each respondent contributes to the final estimate. Cases from overrepresented groups are down-weighted. Cases from underrepresented groups are up-weighted.
+
+The goal is to make the weighted sample resemble the population.
+
+---
+
+## 25. A Simple Weighting Example
+
+Suppose we conduct a survey and find:
+
+- 20 percent of the sample is age 65 or older.  
+- 80 percent of the sample is under age 65.  
+
+But from census data, we know:
+
+- 16 percent of the population is age 65 or older.  
+- 84 percent of the population is under age 65.  
+
+Older adults are overrepresented. Younger adults are underrepresented.
+
+To correct this, we assign weights.
+
+For older adults:
+
+\[
+\text{Weight} = \frac{\text{Population proportion}}{\text{Sample proportion}}
+\]
+
+\[
+\text{Weight for 65+} = \frac{0.16}{0.20} = 0.80
+\]
+
+Each older respondent receives a weight of 0.80. That means each older respondent counts slightly less than one full respondent in weighted calculations.
+
+For younger adults:
+
+\[
+\text{Weight for under 65} = \frac{0.84}{0.80} = 1.05
+\]
+
+Each younger respondent receives a weight of 1.05. That means each younger respondent counts slightly more than one full respondent.
+
+After weighting, the age composition of the sample better reflects the age composition of the population.
+
+---
+
+## 26. What Weighting Does
+
+Weighting changes how statistics are calculated.
+
+In an unweighted analysis, every case counts equally. If a survey has 1,000 respondents, each respondent contributes 1/1,000 of the total.
+
+In a weighted analysis, some cases count more and others count less.
+
+For example:
+
+- A respondent with a weight of 0.80 counts as 0.80 of a case.  
+- A respondent with a weight of 1.05 counts as 1.05 cases.  
+- A respondent with a weight of 2.00 counts as two cases.  
+
+This may sound strange, but the logic is straightforward. If a group is underrepresented in the sample, each member of that group in the sample must stand in for more people in the population. If a group is overrepresented, each member must stand in for fewer people.
+
+Weighting is especially important in surveys with complex sampling designs, including stratification, clustering, and oversampling.
+
+---
+
+## 27. Oversampling and Weighting
+
+Researchers sometimes intentionally oversample small groups.
+
+Suppose a group makes up only 5 percent of the population. In a simple random sample of 1,000 people, we would expect only about 50 respondents from that group. That may be too few for meaningful subgroup analysis.
+
+A researcher may intentionally sample 200 people from that group. This allows for more precise analysis within the group.
+
+But if we want to estimate population-level statistics, we cannot allow that group to count as 20 percent of the sample when it is only 5 percent of the population. We must apply weights to bring the group back into its proper population proportion.
+
+This is common in high-quality surveys. Oversampling improves our ability to study smaller groups, while weighting restores population representativeness for overall estimates.
+
+---
+
+## 28. Weighting and Election Surveys
+
+Election surveys provide a useful example.
+
+Suppose a survey appears to show that 53 percent of respondents voted for one candidate, even though the actual election result was lower. This does not necessarily mean the survey is poor. It may mean the raw, unweighted sample overrepresents groups that favored that candidate.
+
+Once survey weights are applied, the estimate may move closer to the known population value.
+
+This is why analysts must be careful when using survey data. If a survey includes weights, those weights are usually there for a reason. Ignoring them may produce misleading estimates.
+
+In introductory exercises, researchers and students sometimes work with unweighted data for simplicity. But in applied survey analysis, weights are often essential.
+
+---
+
+## 29. Weighting Is Not Magic
+
+Survey weighting is powerful, but it does not solve every problem.
+
+Weighting can correct for known differences between the sample and the population. For example, if we know the population distribution of age, gender, race, education, region, or party registration, we can weight the sample to match those distributions.
+
+But weighting cannot easily correct for unknown differences.
+
+Suppose people who are highly politically engaged are more likely to answer a survey. If we do not know exactly how political engagement is distributed in the population, or how it relates to response probability, weighting may not fully solve the problem.
+
+Similarly, if people who distrust institutions are less likely to answer surveys, and that distrust is related to the outcome we care about, standard weights may not fully correct the bias.
+
+Weighting also increases complexity. Weighted data require appropriate statistical methods, especially when combined with clustering and stratification. Standard formulas may underestimate uncertainty if they ignore the survey design.
+
+The practical lesson is:
+
+> Weighting can improve representativeness, but it depends on knowing how the sample differs from the population.
+
+---
+
+# Part IV: Bringing It Together
+
+## 30. Sampling Error Versus Bias
+
+It is useful to distinguish clearly between random sampling error and bias.
+
+| Problem | What It Means | Can Standard Statistics Handle It? |
+|---|---|---|
+| Random sampling error | The sample differs from the population by chance | Yes |
+| Selection bias | The sampling method systematically excludes or includes certain cases | Not automatically |
+| Non-response bias | Respondents differ systematically from non-respondents | Not automatically |
+| Measurement bias | The variable itself is measured in a systematically inaccurate way | Not automatically |
+
+Random sampling error is expected. It is built into statistical inference. Bias is more dangerous because it can systematically push estimates away from the truth.
+
+A larger sample reduces random sampling error. But a larger sample does not necessarily reduce bias. If the sampling method is biased, collecting more data through the same biased method may simply produce a more precise wrong answer.
+
+For example, a landline-only poll with 100,000 respondents may still be biased if landline users differ from the population in politically relevant ways.
+
+---
+
+## 31. The Central Lesson: Samples Are Designed
+
+Samples do not simply appear. They are designed, collected, filtered, and sometimes adjusted.
+
+When evaluating a sample, we should ask:
+
+- What is the population of interest?  
+- What is the sampling frame?  
+- Who had a chance of being selected?  
+- Who was excluded from the start?  
+- Was selection random?  
+- Were some groups intentionally oversampled?  
+- Who refused to participate?  
+- Are respondents different from non-respondents?  
+- Are weights needed?  
+- Were weights applied?  
+- Does the final sample support the conclusions being drawn?  
+
+Sampling is not just a technical detail. It determines what kind of claims we can make.
+
+A study based on a convenience sample may produce useful insights, but we should be careful about generalizing to a broad population. A probability sample supports stronger inference, but only if the sampling design is understood and properly analyzed. A complex survey may be excellent, but only if we use the weights and design information correctly.
+
+The sample is the bridge between the data we have and the population we care about. If that bridge is weak, our conclusions may not hold.
+
+---
+
+## Key Terms
+
+**Population**  
+The full set of cases the researcher wants to study or draw conclusions about.
+
+**Sample**  
+A subset of the population used to estimate characteristics of the population.
+
+**Parameter**  
+A true characteristic of a population, such as a population mean or proportion.
+
+**Statistic**  
+A characteristic calculated from a sample, such as a sample mean or sample proportion.
+
+**Representative sample**  
+A sample that resembles the population in the ways that matter for the research question.
+
+**Non-probability sampling**  
+Sampling methods that do not use random selection.
+
+**Convenience sample**  
+A sample made up of cases that are easy to access.
+
+**Purposive sample**  
+A sample in which cases are deliberately selected because they are especially relevant.
+
+**Snowball sample**  
+A sample built by asking participants to recommend other participants.
+
+**Quota sample**  
+A sample designed to include predetermined numbers of cases from specific groups.
+
+**Probability sampling**  
+Sampling methods in which cases have a known, nonzero probability of selection.
+
+**Simple random sample**  
+A sample in which every member of the population has an equal probability of selection.
+
+**Systematic random sample**  
+A sample selected by choosing every kth case from a list, usually after a random starting point.
+
+**Stratified random sample**  
+A sample created by dividing the population into strata and randomly sampling within each stratum.
+
+**Cluster sample**  
+A sample created by dividing the population into clusters, randomly selecting clusters, and then sampling cases within selected clusters.
+
+**Random sampling error**  
+The difference between a sample statistic and a population parameter caused by random chance.
+
+**Selection bias**  
+Bias that occurs when the sampling method systematically includes or excludes certain types of cases.
+
+**Non-response bias**  
+Bias that occurs when those who respond differ systematically from those who do not.
+
+**Survey weighting**  
+A statistical adjustment that changes how much each case contributes to estimates so the sample better reflects the population.
+
+**Oversampling**  
+Intentionally sampling some groups at higher rates than their population share, often to allow subgroup analysis.
+
+---
+
+## Chapter Summary
+
+Sampling allows researchers to use data from a subset of cases to learn about a larger population. The population is the full group of interest, while the sample is the group actually observed. Population characteristics are parameters; sample characteristics are statistics.
+
+Sampling creates uncertainty because sample statistics usually differ from population parameters. Random sampling error is expected and can be quantified using probability theory. Bias is more serious because it occurs when a sample systematically differs from the population in ways related to the research question.
+
+Researchers use many sampling methods. Non-probability approaches, such as convenience, purposive, snowball, and quota sampling, can be useful but generally do not support the same kind of statistical inference as probability samples. Probability methods, such as simple random, systematic, stratified, and cluster sampling, use random selection and provide a stronger basis for inference.
+
+Real-world surveys often use complex sampling designs. They may stratify, cluster, or oversample certain groups. These designs can improve data quality or reduce costs, but they also require careful analysis. Survey weights are often needed to correct for differences between the sample and the population.
+
+The most important lesson is that sampling shapes inference. Before trusting a statistical result, we need to understand how the sample was collected, who was included, who was excluded, who responded, and whether the final data can support the conclusions being drawn.

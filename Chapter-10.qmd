@@ -1,0 +1,1774 @@
+---
+title: "Chapter 10: Comparison of Two Groups"
+format: revealjs
+---
+
+We now move from one-sample inference to **two-sample inference**.
+
+In earlier chapters, we learned how to estimate and test claims about a single population mean or a single population proportion. We used sample statistics to estimate population parameters, calculated standard errors, constructed confidence intervals, and conducted significance tests.
+
+Now we extend those same ideas to comparisons between groups.
+
+Many policy and social science questions are comparative:
+
+- Do students whose teachers have master’s degrees score higher on tests?
+- Do democracies have lower infant mortality than non-democracies?
+- Are graduation rates higher among students who participate in a program?
+- Do cities with more racially diverse city councils have lower racial disparities in arrests?
+- Does a policy intervention reduce lead levels, air pollution, or absenteeism?
+
+These questions require comparing means or proportions across two or more groups.
+
+The logic is familiar: estimate something, calculate uncertainty around the estimate, and test whether the observed difference is large enough to reject a null hypothesis. What changes is that we are no longer estimating one statistic. We are estimating a **difference** between two statistics.
+
+A difference is itself a statistic. Therefore, it has a standard error.
+
+This chapter introduces mean comparison tables, difference-of-means tests, difference-of-proportions tests, dependent samples, equal variance assumptions, small-sample alternatives, and controlled comparisons of means.
+
+---
+
+# Part I: Mean Comparison Tables
+
+## 1. What Is a Mean Comparison Table?
+
+A **mean comparison table** displays the mean of an interval-level variable across categories of another variable.
+
+The variable whose mean we calculate is usually the outcome variable, or dependent variable. It must be measured at the interval or ratio level.
+
+The variable that creates the groups is categorical. It may be nominal or ordinal.
+
+For example, suppose we want to know whether students whose teachers have master’s degrees score higher on standardized tests than students whose teachers do not have master’s degrees.
+
+The outcome variable is:
+
+- student test score
+
+The grouping variable is:
+
+- teacher has a master’s degree
+- teacher does not have a master’s degree
+
+A mean comparison table would show the mean test score in each group.
+
+---
+
+## 2. General Structure
+
+A simple mean comparison table might look like this:
+
+| Category of \(X\) | Mean of \(Y\) | Number of Cases | Percent of Sample |
+|---|---:|---:|---:|
+| Category 1 | \(\bar{Y}_1\) | \(n_1\) | % |
+| Category 2 | \(\bar{Y}_2\) | \(n_2\) | % |
+| Category 3 | \(\bar{Y}_3\) | \(n_3\) | % |
+| **Total** | \(\bar{Y}\) | \(n\) | 100% |
+
+The full sample is divided into subsamples based on the categories of \(X\). Within each subsample, we calculate the mean of \(Y\).
+
+The table provides a descriptive comparison. It tells us whether the sample means differ across groups.
+
+However, the table alone does not tell us whether those differences are statistically significant.
+
+For that, we need a significance test.
+
+---
+
+## 3. Example: Racial Representation and Arrest Disparities
+
+Consider a study by political scientist Laurel Eckhouse on racial disparities in arrests for minor offenses.
+
+The research question is whether racial representation on city councils is associated with racial disparities in policing.
+
+In the United States, policing is largely local. City governments often have authority over police departments, budgets, oversight, and local ordinances. Therefore, the racial composition of a city council may plausibly affect policing practices.
+
+The independent variable is city council composition:
+
+- majority white city council
+- majority persons of color city council
+
+The dependent variable is a measure of racial disparity in arrests.
+
+Eckhouse focuses on arrests for minor offenses, where police officers often have discretion. Examples might include loitering, being in a park after hours, disorderly conduct, or other low-level offenses. Discretion is important because disparities may be more likely to appear when officers have more room to decide whether to arrest, warn, or ignore.
+
+---
+
+## 4. Measuring Arrest Disparities
+
+A simple count of arrests would not be sufficient because cities differ in population size.
+
+Instead, Eckhouse uses an **arrest rate ratio**:
+
+\[
+\text{Arrest Rate Ratio}
+=
+\frac{\text{Black arrests per Black resident}}
+{\text{White arrests per White resident}}
+\]
+
+This ratio compares the arrest rate for Black residents to the arrest rate for white residents.
+
+Interpretation:
+
+- A value of 1 means equal arrest rates.
+- A value of 2 means the arrest rate for Black residents is twice the arrest rate for white residents.
+- A value above 1 indicates higher arrest rates for Black residents.
+- A value below 1 would indicate lower arrest rates for Black residents.
+
+This measure allows comparison across cities of different sizes.
+
+---
+
+## 5. Mean Comparison Table: City Council Composition
+
+The mean comparison table from the study is approximately:
+
+| City Council Composition | Mean Arrest Rate Ratio | Number of Cities |
+|---|---:|---:|
+| Majority white city council | 2.63 | 1,094 |
+| Majority persons of color city council | 1.88 | 94 |
+| **Overall** | 2.57 | 1,188 |
+
+The mean arrest rate ratio is 2.63 in cities with majority white city councils. That means Black residents are arrested for minor offenses at about 2.6 times the rate of white residents.
+
+In cities with majority persons of color city councils, the mean arrest rate ratio is 1.88.
+
+The observed difference is:
+
+\[
+2.63 - 1.88 = 0.75
+\]
+
+This descriptive table suggests that racial disparities in arrests are lower in cities with majority persons of color city councils.
+
+But is that difference statistically significant?
+
+And even if it is statistically significant, is it causal?
+
+Those are separate questions.
+
+---
+
+# Part II: Difference-of-Means Tests
+
+## 6. The Difference of Means as a Statistic
+
+When we compare two means, we estimate a new statistic:
+
+\[
+\bar{Y}_2 - \bar{Y}_1
+\]
+
+This statistic estimates the difference between two population means:
+
+\[
+\mu_2 - \mu_1
+\]
+
+The null hypothesis is usually that there is no difference:
+
+\[
+H_0: \mu_2 - \mu_1 = 0
+\]
+
+The alternative hypothesis is:
+
+\[
+H_A: \mu_2 - \mu_1 \neq 0
+\]
+
+If the observed difference is large relative to its standard error, we reject the null hypothesis.
+
+---
+
+## 7. Why the Standard Error Changes
+
+When we tested one mean, we compared a sample mean to a fixed null-hypothesized value.
+
+Now we compare two sample means. Both are estimated with uncertainty.
+
+Each sample mean has its own standard error:
+
+\[
+SE_{\bar{Y}_1}
+\]
+
+and:
+
+\[
+SE_{\bar{Y}_2}
+\]
+
+Because both means are uncertain, the difference between them is also uncertain.
+
+The standard error for the difference must incorporate uncertainty from both samples.
+
+---
+
+## 8. Independent and Dependent Samples
+
+Before calculating the standard error, we must determine whether the samples are **independent** or **dependent**.
+
+### Independent Samples
+
+Samples are independent when the observations in one group are not explicitly matched with observations in the other group.
+
+Examples:
+
+- Democrats versus Republicans
+- treatment group versus control group in a randomized experiment
+- cities with majority white city councils versus cities with majority persons of color city councils
+- democracies versus non-democracies
+- students in one program versus students not in the program
+
+Independent samples are the default in most two-sample tests.
+
+### Dependent Samples
+
+Samples are dependent when observations are explicitly paired.
+
+Examples:
+
+- the same people measured before and after an intervention
+- twins split between treatment and control
+- matched pairs of similar cases
+- households measured before and after lead pipe replacement
+
+Dependent samples require a different test because the observations are connected.
+
+---
+
+## 9. Standard Error for the Difference of Means: Independent Samples
+
+For independent samples, the standard error of the difference between two means is:
+
+\[
+SE_{\bar{Y}_2-\bar{Y}_1}
+=
+\sqrt{SE_{\bar{Y}_1}^2 + SE_{\bar{Y}_2}^2}
+\]
+
+For a single mean:
+
+\[
+SE_{\bar{Y}} = \frac{s}{\sqrt{n}}
+\]
+
+So for two independent means:
+
+\[
+SE_{\bar{Y}_2-\bar{Y}_1}
+=
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]
+
+where:
+
+- \(s_1\) is the standard deviation in sample 1
+- \(s_2\) is the standard deviation in sample 2
+- \(n_1\) is the size of sample 1
+- \(n_2\) is the size of sample 2
+
+This formula takes the variance of each sample mean, adds them together, and then takes the square root.
+
+The structure resembles the Pythagorean theorem: square, add, square root. Statistics has a few geometry flashbacks. It happens.
+
+---
+
+## 10. Confidence Interval for a Difference of Means
+
+The confidence interval for a difference of means is:
+
+\[
+(\bar{Y}_2 - \bar{Y}_1)
+\pm
+t^* SE_{\bar{Y}_2-\bar{Y}_1}
+\]
+
+or:
+
+\[
+(\bar{Y}_2 - \bar{Y}_1)
+\pm
+t^*
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]
+
+The point estimate is the observed difference between sample means.
+
+The margin of error is:
+
+\[
+t^* SE_{\bar{Y}_2-\bar{Y}_1}
+\]
+
+The t critical value depends on degrees of freedom.
+
+---
+
+## 11. Degrees of Freedom for Independent-Sample Mean Tests
+
+Degrees of freedom are more complicated for two independent means than for one mean.
+
+For one mean:
+
+\[
+df = n - 1
+\]
+
+For two independent means without assuming equal variances, the exact degrees of freedom are given by the Satterthwaite approximation, which is complicated:
+
+\[
+df =
+\frac{
+\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2
+}
+{
+\frac{\left(\frac{s_1^2}{n_1}\right)^2}{n_1-1}
++
+\frac{\left(\frac{s_2^2}{n_2}\right)^2}{n_2-1}
+}
+\]
+
+Software uses this formula.
+
+By hand, we often use a conservative approximation:
+
+\[
+df = \min(n_1-1, n_2-1)
+\]
+
+That is, take the smaller sample size and subtract 1.
+
+This underestimates the true degrees of freedom, making the test slightly more conservative. If we can reject the null hypothesis using this conservative approximation, we would also reject using the more exact degrees of freedom.
+
+---
+
+## 12. Example: City Councils and Arrest Disparities
+
+Return to the arrest disparity example.
+
+| City Council Composition | Mean | Standard Deviation | Sample Size | Standard Error |
+|---|---:|---:|---:|---:|
+| Majority white | 2.63 | 2.401 | 1,094 | 0.073 |
+| Majority persons of color | 1.88 | 1.110 | 94 | 0.115 |
+
+The observed difference is:
+
+\[
+2.63 - 1.88 = 0.75
+\]
+
+The standard error for the difference is:
+
+\[
+SE =
+\sqrt{0.073^2 + 0.115^2}
+\]
+
+\[
+SE \approx 0.136
+\]
+
+So the estimated difference is:
+
+\[
+0.75
+\]
+
+with a standard error of about:
+
+\[
+0.136
+\]
+
+That difference is large relative to the standard error.
+
+---
+
+## 13. Confidence Interval for the Difference
+
+Suppose software gives a t critical value of approximately:
+
+\[
+t^* = 1.973
+\]
+
+Then the 95 percent confidence interval is:
+
+\[
+0.75 \pm 1.973(0.136)
+\]
+
+\[
+0.75 \pm 0.268
+\]
+
+Lower bound:
+
+\[
+0.75 - 0.268 = 0.482
+\]
+
+Upper bound:
+
+\[
+0.75 + 0.268 = 1.018
+\]
+
+So the confidence interval is approximately:
+
+\[
+0.48 \text{ to } 1.02
+\]
+
+Interpretation:
+
+> Across repeated samples, 95 percent of confidence intervals constructed using this procedure would contain the true difference in mean arrest rate ratios. In this sample, the interval ranges from about 0.48 to 1.02.
+
+Because the interval does not include 0, we expect to reject the null hypothesis of no difference.
+
+---
+
+## 14. Significance Test for the Difference of Means
+
+The null hypothesis is:
+
+\[
+H_0: \mu_2 - \mu_1 = 0
+\]
+
+The alternative hypothesis is:
+
+\[
+H_A: \mu_2 - \mu_1 \neq 0
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{(\bar{Y}_2 - \bar{Y}_1) - 0}
+{SE_{\bar{Y}_2-\bar{Y}_1}}
+\]
+
+Substitute values:
+
+\[
+t = \frac{0.75}{0.136}
+\]
+
+\[
+t \approx 5.52
+\]
+
+This is far larger than a typical 95 percent critical value near 2.
+
+Therefore, we reject the null hypothesis.
+
+There is statistically significant evidence that mean arrest rate ratios differ between cities with majority white city councils and cities with majority persons of color city councils.
+
+---
+
+## 15. Statistical Significance Is Not Causality
+
+The difference is statistically significant.
+
+But statistical significance does not prove causality.
+
+This is an observational study. City council composition was not randomly assigned. Cities with majority white councils may differ from cities with majority persons of color councils in many ways.
+
+Possible confounders include:
+
+- city size
+- racial composition of the population
+- poverty rates
+- homelessness rates
+- policing strategies
+- police department demographics
+- local ordinances
+- neighborhood segregation
+- council election systems
+- regional political history
+- length of time with a racially diverse council
+
+The difference-of-means test establishes that the means differ in the sample, and likely in the broader population represented by the sample. It does not by itself establish that council composition caused the difference.
+
+To strengthen causal claims, researchers may use methods such as statistical controls, regression, matching, panel data, qualitative case studies, or quasi-experimental designs.
+
+---
+
+# Part III: Another Difference-of-Means Example
+
+## 16. Democracies and Infant Mortality
+
+Suppose we want to compare infant mortality in democracies and non-democracies.
+
+Infant mortality is measured as deaths before age one per 1,000 live births.
+
+The data are:
+
+| Regime Type | Mean Infant Mortality | Standard Deviation | Sample Size |
+|---|---:|---:|---:|
+| Non-democracy | 40.0 | 28.2 | 75 |
+| Democracy | 20.7 | 21.9 | 101 |
+
+The observed difference is:
+
+\[
+40.0 - 20.7 = 19.3
+\]
+
+Infant mortality is about 19.3 deaths per 1,000 births higher in non-democracies than in democracies.
+
+---
+
+## 17. Checking Assumptions
+
+These are independent samples. Democracies and non-democracies are different groups of countries.
+
+We should not automatically assume equal variances. Infant mortality may vary differently across democracies and non-democracies. In fact, non-democracies may include both very high-performing and very low-performing states, creating greater variation.
+
+So we proceed with the independent-samples difference-of-means test without assuming equal variances.
+
+Using the conservative degrees of freedom approximation:
+
+\[
+df = \min(75-1, 101-1)
+\]
+
+\[
+df = \min(74, 100)
+\]
+
+\[
+df = 74
+\]
+
+---
+
+## 18. Standard Error for the Difference
+
+Use:
+
+\[
+SE =
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]
+
+Substitute values:
+
+\[
+SE =
+\sqrt{
+\frac{28.2^2}{75}
++
+\frac{21.9^2}{101}
+}
+\]
+
+\[
+SE \approx 3.92
+\]
+
+So the observed difference is:
+
+\[
+19.3
+\]
+
+with a standard error of:
+
+\[
+3.92
+\]
+
+---
+
+## 19. Confidence Interval
+
+Using the conservative degrees of freedom and a 95 percent confidence interval, suppose the t critical value is approximately:
+
+\[
+t^* = 2.00
+\]
+
+Then:
+
+\[
+19.3 \pm 2.00(3.92)
+\]
+
+\[
+19.3 \pm 7.84
+\]
+
+Lower bound:
+
+\[
+19.3 - 7.84 = 11.46
+\]
+
+Upper bound:
+
+\[
+19.3 + 7.84 = 27.14
+\]
+
+The 95 percent confidence interval is approximately:
+
+\[
+11.5 \text{ to } 27.1
+\]
+
+The interval does not include 0, suggesting a statistically significant difference.
+
+---
+
+## 20. Significance Test
+
+The hypotheses are:
+
+\[
+H_0: \mu_{non-democracy} - \mu_{democracy} = 0
+\]
+
+\[
+H_A: \mu_{non-democracy} - \mu_{democracy} \neq 0
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{19.3 - 0}{3.92}
+\]
+
+\[
+t \approx 4.92
+\]
+
+Since:
+
+\[
+4.92 > 2.00
+\]
+
+we reject the null hypothesis.
+
+There is statistically significant evidence that mean infant mortality differs between democracies and non-democracies.
+
+Again, causality requires further analysis. Democracies and non-democracies differ in wealth, institutions, health systems, conflict exposure, education, and many other factors.
+
+---
+
+# Part IV: Difference-of-Proportions Tests
+
+## 21. Comparing Two Proportions
+
+A difference-of-proportions test compares the proportion in one group to the proportion in another group.
+
+Examples:
+
+- graduation rates among program participants versus nonparticipants
+- vaccination rates in treatment and control groups
+- support for a policy among Democrats and Republicans
+- employment rates among those who completed training and those who did not
+
+The population parameters are:
+
+\[
+\pi_1
+\]
+
+and:
+
+\[
+\pi_2
+\]
+
+The sample estimates are:
+
+\[
+\hat{\pi}_1
+\]
+
+and:
+
+\[
+\hat{\pi}_2
+\]
+
+The null hypothesis is usually:
+
+\[
+H_0: \pi_2 - \pi_1 = 0
+\]
+
+or equivalently:
+
+\[
+H_0: \pi_1 = \pi_2
+\]
+
+The alternative is:
+
+\[
+H_A: \pi_2 - \pi_1 \neq 0
+\]
+
+---
+
+## 22. Sample Size Rule for Difference of Proportions
+
+To use the z-test for a difference of proportions, each of the four cells should have at least about 10 cases.
+
+Why four cells?
+
+Because we have:
+
+1. group 1, in the category
+2. group 1, not in the category
+3. group 2, in the category
+4. group 2, not in the category
+
+For example, if comparing graduation rates among program participants and nonparticipants, we need at least 10 cases in each of:
+
+- participants who graduated
+- participants who did not graduate
+- nonparticipants who graduated
+- nonparticipants who did not graduate
+
+If this rule is not met, the z-test may not be appropriate.
+
+---
+
+## 23. Example: Graduation Program
+
+Suppose we evaluate a program intended to increase high school graduation.
+
+| Group | Graduated | Did Not Graduate | Total | Graduation Rate |
+|---|---:|---:|---:|---:|
+| Program | 83 | 10 | 93 | 0.892 |
+| No Program | 102 | 19 | 121 | 0.843 |
+| **Total** | 185 | 29 | 214 | 0.864 |
+
+The sample proportions are:
+
+\[
+\hat{\pi}_{program} = \frac{83}{93} = 0.892
+\]
+
+\[
+\hat{\pi}_{no\ program} = \frac{102}{121} = 0.843
+\]
+
+The observed difference is:
+
+\[
+0.892 - 0.843 = 0.049
+\]
+
+The program group has a graduation rate about 4.9 percentage points higher than the no-program group.
+
+---
+
+## 24. Confidence Interval for a Difference of Proportions
+
+For a confidence interval, we use the two sample proportions separately.
+
+The standard error is:
+
+\[
+SE =
+\sqrt{
+\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1}
++
+\frac{\hat{\pi}_2(1-\hat{\pi}_2)}{n_2}
+}
+\]
+
+The confidence interval is:
+
+\[
+(\hat{\pi}_2 - \hat{\pi}_1)
+\pm
+z^*
+SE
+\]
+
+Using the example:
+
+\[
+0.049 \pm 1.96
+\sqrt{
+\frac{0.843(1-0.843)}{121}
++
+\frac{0.892(1-0.892)}{93}
+}
+\]
+
+The margin of error is approximately:
+
+\[
+0.09
+\]
+
+So the confidence interval is:
+
+\[
+0.049 \pm 0.09
+\]
+
+Lower bound:
+
+\[
+0.049 - 0.09 = -0.041
+\]
+
+Upper bound:
+
+\[
+0.049 + 0.09 = 0.139
+\]
+
+So the 95 percent confidence interval is approximately:
+
+\[
+-0.04 \text{ to } 0.14
+\]
+
+Because the interval includes 0, we expect not to reject the null hypothesis of no difference.
+
+---
+
+## 25. Why Can the Confidence Interval Include Negative Values?
+
+A difference of proportions can be negative.
+
+If the program group has a lower graduation rate than the no-program group, then:
+
+\[
+\hat{\pi}_{program} - \hat{\pi}_{no\ program} < 0
+\]
+
+So a confidence interval for a difference can cross 0.
+
+A confidence interval that includes 0 means that no difference is a plausible value. In such a case, we generally fail to reject the null hypothesis.
+
+---
+
+## 26. Significance Test for Difference of Proportions
+
+For a significance test, the standard error is calculated differently than for a confidence interval.
+
+Under the null hypothesis:
+
+\[
+\pi_1 = \pi_2
+\]
+
+So we assume there is one common population proportion.
+
+We estimate that common proportion using the pooled sample proportion:
+
+\[
+\hat{\pi} =
+\frac{x_1+x_2}{n_1+n_2}
+\]
+
+In the graduation example:
+
+\[
+\hat{\pi} = \frac{83+102}{93+121}
+\]
+
+\[
+\hat{\pi} = \frac{185}{214}
+\]
+
+\[
+\hat{\pi} = 0.864
+\]
+
+The null-hypothesis standard error is:
+
+\[
+SE_0 =
+\sqrt{
+\hat{\pi}(1-\hat{\pi})
+\left(
+\frac{1}{n_1}+\frac{1}{n_2}
+\right)
+}
+\]
+
+Equivalently:
+
+\[
+SE_0 =
+\sqrt{
+\frac{\hat{\pi}(1-\hat{\pi})}{n_1}
++
+\frac{\hat{\pi}(1-\hat{\pi})}{n_2}
+}
+\]
+
+Using the example:
+
+\[
+SE_0 \approx 0.047
+\]
+
+---
+
+## 27. z-Test for Difference of Proportions
+
+The z-statistic is:
+
+\[
+z =
+\frac{(\hat{\pi}_2-\hat{\pi}_1)-0}
+{SE_0}
+\]
+
+Using the observed difference:
+
+\[
+z =
+\frac{0.049}{0.047}
+\]
+
+\[
+z \approx 1.04
+\]
+
+The critical value for a two-tailed test with \(\alpha = 0.05\) is:
+
+\[
+1.96
+\]
+
+Since:
+
+\[
+1.04 < 1.96
+\]
+
+we fail to reject the null hypothesis.
+
+There is not statistically significant evidence at the 0.05 level that the program changed graduation rates.
+
+---
+
+# Part V: Dependent Samples
+
+## 28. What Are Dependent Samples?
+
+Samples are **dependent** when cases in one sample are explicitly matched with cases in the other sample.
+
+Common examples include:
+
+- before-and-after measurements of the same people
+- twins split across treatment and control
+- matched pairs of similar people or places
+- households measured before and after an intervention
+
+In dependent samples, the two observations are linked.
+
+This changes the analysis.
+
+Instead of comparing two independent group means, we compare differences within pairs.
+
+---
+
+## 29. Turning a Two-Sample Problem into a One-Sample Problem
+
+With dependent samples, we create a new variable:
+
+\[
+Y_d = Y_2 - Y_1
+\]
+
+This is the difference for each matched pair.
+
+Then we analyze the mean of those differences:
+
+\[
+\bar{Y}_d
+\]
+
+The null hypothesis is:
+
+\[
+H_0: \mu_d = 0
+\]
+
+where \(\mu_d\) is the population mean of the paired differences.
+
+The alternative is:
+
+\[
+H_A: \mu_d \neq 0
+\]
+
+This is now a one-sample test on the difference variable.
+
+---
+
+## 30. Example: Matched Pairs
+
+Suppose we have four matched pairs:
+
+| Pair | \(Y_2\) | \(Y_1\) | Difference \(Y_d = Y_2-Y_1\) |
+|---:|---:|---:|---:|
+| 1 | 4 | 2 | 2 |
+| 2 | 2 | 2 | 0 |
+| 3 | 5 | 3 | 2 |
+| 4 | 6 | 7 | -1 |
+
+The mean of the differences is:
+
+\[
+\bar{Y}_d = \frac{2+0+2-1}{4}
+\]
+
+\[
+\bar{Y}_d = 0.75
+\]
+
+The mean of \(Y_2\) is:
+
+\[
+\bar{Y}_2 = 4.5
+\]
+
+The mean of \(Y_1\) is:
+
+\[
+\bar{Y}_1 = 3.75
+\]
+
+The difference of the means is:
+
+\[
+4.5 - 3.75 = 0.75
+\]
+
+So:
+
+\[
+\bar{Y}_d = \bar{Y}_2 - \bar{Y}_1
+\]
+
+The mean of the differences equals the difference of the means.
+
+The advantage of the dependent-samples approach is that it uses the pairing information.
+
+---
+
+## 31. Standard Error for Dependent Samples
+
+For dependent samples, calculate the standard deviation of the difference variable:
+
+\[
+s_d
+\]
+
+Then the standard error is:
+
+\[
+SE_{\bar{Y}_d} = \frac{s_d}{\sqrt{n}}
+\]
+
+where \(n\) is the number of matched pairs.
+
+The confidence interval is:
+
+\[
+\bar{Y}_d \pm t^*\left(\frac{s_d}{\sqrt{n}}\right)
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{\bar{Y}_d - 0}
+{s_d/\sqrt{n}}
+\]
+
+Degrees of freedom are:
+
+\[
+df = n - 1
+\]
+
+This is simply a one-sample t-test on the paired differences.
+
+---
+
+## 32. Example: Lead Pipe Replacement
+
+Suppose a city replaces lead water supply lines.
+
+Researchers select 250 households. They measure lead levels before the replacement and again after the replacement.
+
+For each household:
+
+\[
+Y_d = \text{lead after} - \text{lead before}
+\]
+
+Suppose the mean difference is:
+
+\[
+\bar{Y}_d = -3.2
+\]
+
+parts per billion. This means lead levels fell by 3.2 parts per billion on average.
+
+Suppose the standard deviation of differences is:
+
+\[
+s_d = 23.7
+\]
+
+and:
+
+\[
+n = 250
+\]
+
+The standard error is:
+
+\[
+SE = \frac{23.7}{\sqrt{250}}
+\]
+
+\[
+SE \approx 1.50
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{-3.2 - 0}{1.50}
+\]
+
+\[
+t \approx -2.13
+\]
+
+Degrees of freedom:
+
+\[
+df = 249
+\]
+
+The critical value for a two-tailed 95 percent test is close to 1.97.
+
+Since:
+
+\[
+|-2.13| > 1.97
+\]
+
+we reject the null hypothesis.
+
+There is statistically significant evidence that lead levels changed. Because the mean difference is negative, the evidence suggests lead levels decreased after pipe replacement.
+
+---
+
+# Part VI: Equal Variance Assumption
+
+## 33. What Is the Equal Variance Assumption?
+
+In an independent-samples difference-of-means test, we sometimes assume that the two populations have equal variances:
+
+\[
+\sigma_1^2 = \sigma_2^2
+\]
+
+This is called the **equal variance assumption**.
+
+If the assumption is true, the two sample variances estimate the same underlying population variance. We can pool them together to estimate one common variance.
+
+This can be useful, especially when sample sizes are small, because pooling uses information more efficiently.
+
+But the assumption can be dangerous if it is wrong.
+
+---
+
+## 34. When Might Equal Variances Be Plausible?
+
+Equal variances may be plausible when the two groups are very similar except for treatment assignment.
+
+For example, in a randomized experiment, treatment and control groups come from the same sample and are randomly assigned. It may be reasonable to assume that the outcome variable has similar variance in both groups.
+
+Another possible example: a teacher compares test scores from two successive third-grade classes taught in the same school, assuming the student populations are similar from year to year.
+
+But even these examples require caution. An intervention might affect not only the mean but also the variance. For instance, a teaching method might help lower-performing students more than higher-performing students, reducing variation.
+
+The equal variance assumption is theoretical. We do not know population variances, so we cannot truly verify it with certainty.
+
+---
+
+## 35. Why the Assumption Matters
+
+Without assuming equal variances, the standard error is:
+
+\[
+SE =
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]
+
+Degrees of freedom are estimated using the Satterthwaite formula or a conservative approximation.
+
+With equal variances, we pool the variances and use:
+
+\[
+df = n_1+n_2-2
+\]
+
+This gives the maximum possible degrees of freedom.
+
+More degrees of freedom generally means a smaller critical value, making it easier to reject the null hypothesis.
+
+Therefore, if the equal variance assumption is wrong, using it can increase the risk of an incorrect conclusion.
+
+---
+
+## 36. Pooled Standard Deviation
+
+When assuming equal variances, we calculate a pooled variance:
+
+\[
+s_p^2 =
+\frac{
+(n_1-1)s_1^2 + (n_2-1)s_2^2
+}
+{
+n_1+n_2-2
+}
+\]
+
+Then take the square root:
+
+\[
+s_p = \sqrt{s_p^2}
+\]
+
+This is a weighted average of the two sample variances, weighted by their degrees of freedom.
+
+The larger sample contributes more to the pooled estimate.
+
+---
+
+## 37. Standard Error with Equal Variances
+
+Once we have the pooled standard deviation, the standard error for the difference of means is:
+
+\[
+SE =
+s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_2}
+}
+\]
+
+The confidence interval is:
+
+\[
+(\bar{Y}_2-\bar{Y}_1)
+\pm
+t^*s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_2}
+}
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{(\bar{Y}_2-\bar{Y}_1)-0}
+{s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_2}
+}}
+\]
+
+Degrees of freedom are:
+
+\[
+df = n_1+n_2-2
+\]
+
+---
+
+## 38. Example: Temperatures in Ann Arbor
+
+Suppose we compare mean temperatures in Ann Arbor in 1900 and 2000.
+
+Imagine the data are:
+
+| Year | Mean Temperature | Standard Deviation | Sample Size |
+|---|---:|---:|---:|
+| 1900 | 47 | 14 | 15 |
+| 2000 | 50 | 11 | 366 |
+
+The observed difference is:
+
+\[
+50 - 47 = 3
+\]
+
+Suppose we make the equal variance assumption. That means we assume the variance of daily temperatures is the same in 1900 and 2000.
+
+This may or may not be reasonable. If climate change affects not only average temperature but also variability, the assumption may fail.
+
+Still, for illustration, calculate the pooled standard deviation.
+
+---
+
+## 39. Pooled Standard Deviation Calculation
+
+Use:
+
+\[
+s_p^2 =
+\frac{
+(15-1)(14^2) + (366-1)(11^2)
+}
+{
+15+366-2
+}
+\]
+
+\[
+s_p^2 =
+\frac{
+14(196)+365(121)
+}
+{379}
+\]
+
+\[
+s_p \approx 11.3
+\]
+
+Now calculate the standard error:
+
+\[
+SE =
+11.3
+\sqrt{
+\frac{1}{15}+\frac{1}{366}
+}
+\]
+
+\[
+SE \approx 2.93
+\]
+
+The t-statistic is:
+
+\[
+t =
+\frac{3}{2.93}
+\]
+
+\[
+t \approx 1.02
+\]
+
+Degrees of freedom:
+
+\[
+df = 15+366-2 = 379
+\]
+
+The critical value is close to 1.96.
+
+Since:
+
+\[
+1.02 < 1.96
+\]
+
+we fail to reject the null hypothesis.
+
+There is not statistically significant evidence, in this illustrative example, that mean temperature changed.
+
+---
+
+# Part VII: Small-Sample Alternatives
+
+## 40. When the Usual Tests Do Not Work
+
+The usual t-tests and z-tests rely on assumptions.
+
+For means, if samples are small and the population is not normal, the t-test may not be appropriate.
+
+For proportions, if cell counts are too small, the z-test may not be appropriate.
+
+When those assumptions fail, we can use non-parametric or exact tests.
+
+These tests often go directly to a p-value rather than using a t or z statistic.
+
+---
+
+## 41. Fisher’s Exact Test for Small-Sample Proportions
+
+When comparing two proportions, if any of the four cells has fewer than about 10 cases, use Fisher’s exact test rather than the z-test.
+
+Fisher’s exact test evaluates how unusual the observed table is under the null hypothesis of no association.
+
+It holds the row and column totals fixed and considers all possible tables with those totals. It then asks what proportion of those possible tables are as extreme as, or more extreme than, the observed table.
+
+That proportion is the p-value.
+
+---
+
+## 42. Example: Sleep and Master’s Students
+
+Suppose we ask whether people get enough sleep.
+
+| Group | Enough Sleep | Not Enough Sleep | Total |
+|---|---:|---:|---:|
+| Master’s students | 2 | 11 | 13 |
+| Other young professionals | 5 | 3 | 8 |
+| **Total** | 7 | 14 | 21 |
+
+Several cells have fewer than 10 cases, so a z-test for difference of proportions is not appropriate.
+
+Use Fisher’s exact test.
+
+Suppose Fisher’s exact test gives:
+
+\[
+p = 0.056
+\]
+
+At:
+
+\[
+\alpha = 0.05
+\]
+
+we fail to reject the null hypothesis.
+
+At:
+
+\[
+\alpha = 0.10
+\]
+
+we would reject.
+
+The result suggests evidence of a difference, but not quite enough for the conventional 0.05 threshold.
+
+---
+
+## 43. Wilcoxon-Mann-Whitney Test for Small-Sample Independent Means
+
+When comparing two means with independent samples, if samples are small and population normality cannot be assumed, use a non-parametric alternative.
+
+One option is the **Wilcoxon-Mann-Whitney test**.
+
+This test does not compare means directly. Instead, it ranks all observations from both groups together and examines whether one group tends to have higher ranks than the other.
+
+It is useful when:
+
+- the outcome is at least ordinal
+- samples are independent
+- sample sizes are small
+- the normality assumption is not plausible
+
+---
+
+## 44. Example: Democracy and GDP per Capita
+
+Suppose we compare GDP per capita in democracies and non-democracies in Latin America in 1975.
+
+There are only 24 countries:
+
+- 12 democracies
+- 12 non-democracies
+
+GDP per capita is skewed, so the population normality assumption is not plausible. A standard t-test may not be appropriate.
+
+The Wilcoxon-Mann-Whitney test ranks all 24 countries by GDP per capita and compares the rank positions of democracies and non-democracies.
+
+If the two groups are similar, their ranks should be mixed. If one group tends to have higher GDP per capita, that group should have systematically higher ranks.
+
+Suppose the test gives:
+
+\[
+p = 0.67
+\]
+
+This is large, so we fail to reject the null hypothesis.
+
+There is no statistically significant evidence that GDP per capita differs between democracies and non-democracies in this small sample.
+
+---
+
+## 45. Wilcoxon Signed-Rank Test for Dependent Samples
+
+For dependent samples, if the sample is small and the population of differences is not normally distributed, use the **Wilcoxon signed-rank test**.
+
+This is the non-parametric counterpart to the paired t-test.
+
+It uses the ranks of the paired differences rather than assuming the differences are normally distributed.
+
+Use it when:
+
+- samples are paired
+- the outcome is at least ordinal
+- the sample size is small
+- the distribution of differences is not plausibly normal
+
+The details are less important here than knowing when the test is appropriate.
+
+---
+
+# Part VIII: Controlled Comparisons of Means
+
+## 46. Why Add a Control Variable?
+
+When comparing group means using observational data, groups may differ in more than one way.
+
+Suppose we compare life expectancy in democracies and non-democracies.
+
+If democracies have higher life expectancy, is that because they are democracies?
+
+Maybe. But democracies also tend to be wealthier. Wealthier countries usually have better health systems, nutrition, infrastructure, and education.
+
+So country wealth may confound the relationship between democracy and life expectancy.
+
+To address this, we can introduce a control variable.
+
+A **control variable** is a variable we hold constant while examining the relationship between an independent variable and an outcome.
+
+---
+
+## 47. Controlling in a Mean Comparison Table
+
+Suppose:
+
+- \(Y\): life expectancy
+- \(X\): democracy status
+- \(Z\): GDP per capita category
+
+We can compare mean life expectancy across democracy categories while holding GDP per capita constant.
+
+For example, divide countries into:
+
+- low GDP per capita
+- middle GDP per capita
+- high GDP per capita
+
+Then compare democracies and non-democracies within each income category.
+
+---
+
+## 48. Example: Democracy, Wealth, and Life Expectancy
+
+Suppose the table is:
+
+| Regime Type | Low GDP | Middle GDP | High GDP | Overall |
+|---|---:|---:|---:|---:|
+| Non-democracy | 57.8 | 68.7 | 73.5 | 64.5 |
+| Democracy | 63.3 | 74.1 | 79.2 | 72.5 |
+
+The overall comparison suggests democracies have higher life expectancy:
+
+\[
+72.5 - 64.5 = 8.0
+\]
+
+But we also compare within GDP categories.
+
+Low-income countries:
+
+\[
+63.3 - 57.8 = 5.5
+\]
+
+Middle-income countries:
+
+\[
+74.1 - 68.7 = 5.4
+\]
+
+High-income countries:
+
+\[
+79.2 - 73.5 = 5.7
+\]
+
+Even after controlling for GDP category, democracies still have higher life expectancy in each income group.
+
+This suggests the relationship between democracy and life expectancy is not entirely explained by GDP per capita.
+
+---
+
+## 49. Additive Relationships
+
+An **additive relationship** occurs when two variables each appear to matter, and their effects are relatively consistent across categories of the other variable.
+
+In the example, democracy is associated with higher life expectancy within each GDP category. GDP is also associated with higher life expectancy within each regime type.
+
+Both democracy and GDP appear to matter.
+
+The effect of democracy is similar across income categories. That is an additive pattern.
+
+---
+
+## 50. Spurious Relationships
+
+A relationship is **spurious** if it disappears after controlling for another variable.
+
+Suppose democracies had higher life expectancy overall, but within each GDP category, democracies and non-democracies had the same life expectancy.
+
+Then the original relationship between democracy and life expectancy would be spurious.
+
+GDP per capita would explain the apparent relationship.
+
+This is like the helium balloon example: the string appeared related to floating, but helium was the true cause.
+
+---
+
+## 51. Interactive Relationships
+
+An **interactive relationship** occurs when the effect of one variable changes depending on the value of another variable.
+
+For example, suppose democracy has:
+
+- little effect in low-income countries
+- moderate effect in middle-income countries
+- large effect in high-income countries
+
+Then the effect of democracy depends on GDP level.
+
+That is an interaction.
+
+In table form, interactions appear when differences across one variable vary substantially across categories of the control variable.
+
+---
+
+## 52. Limits of Controlled Mean Tables
+
+Controlled mean comparison tables are useful, but they have limits.
+
+Adding one control variable can already create many cells. Adding two or three controls quickly makes the table unwieldy.
+
+For example, if:
+
+- democracy has 2 categories
+- GDP has 3 categories
+- region has 5 categories
+- colonial history has 4 categories
+
+the number of combinations becomes large very quickly.
+
+This is one reason researchers use regression. Regression allows us to control for multiple variables more efficiently.
+
+Mean comparison tables are helpful for building intuition, but regression is more practical for more complex analysis.
+
+---
+
+# Key Terms
+
+**Mean comparison table**  
+A table showing the mean of an interval-level variable across categories of another variable.
+
+**Difference of means**  
+The difference between two sample means.
+
+**Independent samples**  
+Samples in which observations in one group are not explicitly matched with observations in another group.
+
+**Dependent samples**  
+Samples in which observations are paired or matched across groups.
+
+**Standard error of the difference**  
+The standard error associated with a difference between two sample statistics.
+
+**Difference-of-means test**  
+A significance test evaluating whether two population means differ.
+
+**Difference-of-proportions test**  
+A significance test evaluating whether two population proportions differ.
+
+**Equal variance assumption**  
+The assumption that two populations have the same variance.
+
+**Pooled standard deviation**  
+A weighted estimate of a common standard deviation under the equal variance assumption.
+
+**Satterthwaite approximation**  
+A formula for estimating degrees of freedom in a two-sample t-test without assuming equal variances.
+
+**Paired t-test**  
+A t-test for dependent samples, based on the mean of paired differences.
+
+**Fisher’s exact test**  
+An exact test for association in small-sample categorical data.
+
+**Wilcoxon-Mann-Whitney test**  
+A non-parametric test for comparing two independent samples when normality cannot be assumed.
+
+**Wilcoxon signed-rank test**  
+A non-parametric test for comparing paired samples when normality of differences cannot be assumed.
+
+**Control variable**  
+A variable held constant to evaluate whether a relationship between two other variables persists.
+
+**Additive relationship**  
+A relationship in which two variables each have effects that are relatively consistent across categories of the other.
+
+**Spurious relationship**  
+An apparent relationship that disappears after controlling for another variable.
+
+**Interactive relationship**  
+A relationship in which the effect of one variable depends on the value of another variable.
+
+---
+
+# Chapter Summary
+
+Comparing two groups is central to statistical analysis. We often want to know whether two means or two proportions differ and whether those differences are statistically significant.
+
+A mean comparison table provides a descriptive starting point. It shows how the mean of an interval-level variable differs across categories of another variable. But statistical significance requires a formal test.
+
+For independent-sample difference-of-means tests, we compare two sample means and calculate a standard error for their difference. The standard error incorporates uncertainty from both sample means. We then use a t-test to determine whether the observed difference is large enough to reject the null hypothesis of no difference.
+
+For difference-of-proportions tests, we compare two sample proportions. Confidence intervals use the two sample proportions separately, while significance tests use a pooled proportion under the null hypothesis.
+
+Dependent samples require a different approach. When observations are paired, such as before-and-after measurements, we calculate differences within pairs and conduct a one-sample test on those differences.
+
+Sometimes researchers assume equal variances across populations, allowing them to pool standard deviations and use more degrees of freedom. This can be useful but risky if the assumption is wrong.
+
+When sample sizes are too small for standard parametric tests, exact or non-parametric alternatives are available. Fisher’s exact test is used for small-sample proportions. The Wilcoxon-Mann-Whitney and Wilcoxon signed-rank tests are used for small-sample comparisons of means or paired differences when normality assumptions are not plausible.
+
+Finally, controlled mean comparison tables introduce the idea of holding a third variable constant. This helps distinguish additive, spurious, and interactive relationships. Controlled comparisons are useful, but they quickly become complex, which motivates later use of regression.
+
+The core lesson is that comparing groups requires both statistical technique and substantive judgment. We must know how to calculate differences and standard errors, but we must also ask whether the groups are truly comparable and whether the observed differences support causal claims.

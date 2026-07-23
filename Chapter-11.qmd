@@ -1,0 +1,1247 @@
+---
+title: "Chapter 11: Association Between Categorical Variables"
+format: revealjs
+---
+
+We now turn to statistical tests involving **categorical variables**.
+
+Earlier, we studied difference-of-means tests, which require an interval-level outcome variable. We also studied difference-of-proportions tests, which compare two proportions across two groups. Those tests work well when the categorical variables are dichotomous: yes/no, treatment/control, Democrat/Republican, graduated/did not graduate, and so on.
+
+But what if our variables have more than two categories?
+
+For example:
+
+- satisfaction with health insurance: satisfied, neutral, dissatisfied
+- political party: Democrat, Independent, Republican
+- policy opinion: decrease spending, keep it the same, increase spending
+- health insurance type: ACA exchange plan, employer plan, Medicare, Medicaid, uninsured
+- neighborhood fear: afraid, not afraid
+- gun ownership: owns a gun, does not own a gun
+
+When we have categorical data with multiple categories, we need a different tool. That tool is the **chi-square test of independence**.
+
+A chi-square test asks whether two categorical variables are statistically independent. It compares the frequencies we actually observe in a table to the frequencies we would expect to see if the variables were independent.
+
+This chapter introduces cross-tabulation analysis, expected frequencies, the chi-square statistic, the chi-square distribution, residuals, and methods for assessing the direction and magnitude of relationships among categorical variables. We also discuss Fisher’s exact test for small samples.
+
+---
+
+# Part I: Independence and Categorical Data
+
+## 1. From Probability Theory to Chi-Square Tests
+
+Earlier, we defined independence using conditional probabilities.
+
+Two events \(A\) and \(B\) are independent if:
+
+\[
+P(A \mid B) = P(A)
+\]
+
+In words: knowing that \(B\) occurred does not change the probability of \(A\).
+
+The same logic applies to categorical variables.
+
+Suppose we have two categorical variables:
+
+- \(Y\): whether someone owns a gun
+- \(X\): whether someone is afraid to walk in their neighborhood at night
+
+If these variables are independent, then the probability of owning a gun should be the same whether or not someone is afraid to walk in their neighborhood.
+
+That is:
+
+\[
+P(\text{Owns gun} \mid \text{Afraid}) =
+P(\text{Owns gun})
+\]
+
+and:
+
+\[
+P(\text{Owns gun} \mid \text{Not afraid}) =
+P(\text{Owns gun})
+\]
+
+If those conditional probabilities differ, the variables are not independent.
+
+But sample data always contain random sampling error. We need to know whether the differences we observe are large enough to reject independence with statistical confidence.
+
+That is what the chi-square test does.
+
+---
+
+## 2. Example: Gun Ownership and Neighborhood Fear
+
+Suppose the General Social Survey asks two questions:
+
+1. Do you own a gun?
+2. Are you afraid to walk in your neighborhood at night?
+
+The joint frequency distribution is:
+
+| Owns Gun | Afraid | Not Afraid | Total |
+|---|---:|---:|---:|
+| Yes | 133 | 395 | 528 |
+| No | 413 | 707 | 1,120 |
+| **Total** | **546** | **1,102** | **1,648** |
+
+Overall, the proportion who own a gun is:
+
+\[
+\frac{528}{1648} = 0.3204
+\]
+
+So about 32.04 percent of respondents own a gun.
+
+Among people who are afraid to walk in their neighborhood at night, the proportion who own a gun is:
+
+\[
+\frac{133}{546} = 0.2436
+\]
+
+Among people who are not afraid, the proportion who own a gun is:
+
+\[
+\frac{395}{1102} = 0.3584
+\]
+
+These conditional probabilities differ from the unconditional probability of 0.3204.
+
+That suggests the variables may not be independent.
+
+But we need a statistical test to determine whether the deviation is large enough to reject the null hypothesis of independence.
+
+---
+
+## 3. The Null Hypothesis of Independence
+
+For a chi-square test of independence, the null hypothesis is:
+
+\[
+H_0: X \text{ and } Y \text{ are independent}
+\]
+
+The alternative hypothesis is:
+
+\[
+H_A: X \text{ and } Y \text{ are not independent}
+\]
+
+In words:
+
+- The null hypothesis says the distribution of \(Y\) does not depend on \(X\).
+- The alternative hypothesis says the distribution of \(Y\) does depend on \(X\).
+
+In the gun ownership example:
+
+\[
+H_0:
+\text{Gun ownership and fear of walking at night are independent}
+\]
+
+\[
+H_A:
+\text{Gun ownership and fear of walking at night are not independent}
+\]
+
+---
+
+## 4. Expected Frequencies
+
+The chi-square test compares observed frequencies to expected frequencies.
+
+An **observed frequency** is the number we actually see in the data.
+
+An **expected frequency** is the number we would expect to see if the null hypothesis of independence were true.
+
+For example, we observed 133 people who both:
+
+- own a gun
+- are afraid to walk in their neighborhood at night
+
+But if gun ownership and neighborhood fear were independent, how many would we expect in that cell?
+
+The overall gun ownership rate is 0.3204. If independence holds, then 32.04 percent of people in every fear category should own a gun.
+
+There are 546 people who are afraid. So the expected frequency is:
+
+\[
+546(0.3204) = 174.9
+\]
+
+So under independence, we would expect about 174.9 afraid respondents to own a gun.
+
+We observed only 133.
+
+That difference contributes to the chi-square statistic.
+
+---
+
+## 5. Formula for Expected Frequencies
+
+For any cell in a contingency table, the expected frequency is:
+
+\[
+f_e =
+\frac{(\text{row total})(\text{column total})}{n}
+\]
+
+where:
+
+- \(f_e\) is the expected frequency
+- \(n\) is the total sample size
+
+For the “owns gun” and “afraid” cell:
+
+\[
+f_e =
+\frac{(528)(546)}{1648}
+\]
+
+\[
+f_e = 174.9
+\]
+
+This formula works for every cell in the table.
+
+---
+
+## 6. Expected Frequencies for the Gun Ownership Example
+
+Using the formula, the expected frequencies are:
+
+| Owns Gun | Afraid | Not Afraid | Total |
+|---|---:|---:|---:|
+| Yes | 174.9 | 353.1 | 528 |
+| No | 371.1 | 748.9 | 1,120 |
+| **Total** | **546** | **1,102** | **1,648** |
+
+These are the frequencies we would expect if gun ownership and fear of walking at night were independent.
+
+The observed frequencies were:
+
+| Owns Gun | Afraid | Not Afraid |
+|---|---:|---:|
+| Yes | 133 | 395 |
+| No | 413 | 707 |
+
+The chi-square statistic summarizes how far the observed frequencies deviate from the expected frequencies.
+
+---
+
+# Part II: Cross-Tabulation Analysis
+
+## 7. Contingency Tables and Cross-Tabs
+
+A **contingency table**, also called a **cross-tabulation** or **cross-tab**, displays the joint distribution of two categorical variables.
+
+Cross-tabs are useful for examining whether the distribution of one variable changes across categories of another variable.
+
+When constructing these tables, it is often clearest to put:
+
+- the dependent variable \(Y\) in the rows
+- the independent variable \(X\) in the columns
+
+This makes it easy to compare column percentages side by side.
+
+For example:
+
+| Dependent Variable \(Y\) | \(X=1\) | \(X=2\) | Total |
+|---|---:|---:|---:|
+| Category 1 | % | % | % |
+| Category 2 | % | % | % |
+| Category 3 | % | % | % |
+| **Total** | 100% | 100% | 100% |
+
+Column percentages allow us to ask:
+
+> Does the distribution of \(Y\) change as we move across categories of \(X\)?
+
+---
+
+## 8. Column Percentages
+
+Using the gun ownership example:
+
+| Owns Gun | Afraid | Not Afraid | Overall |
+|---|---:|---:|---:|
+| Yes | 24.36% | 35.84% | 32.04% |
+| No | 75.64% | 64.16% | 67.96% |
+| **Total** | 100.00% | 100.00% | 100.00% |
+
+These column percentages show that gun ownership is lower among those who say they are afraid to walk in their neighborhood at night.
+
+Among those afraid:
+
+\[
+24.36\%
+\]
+
+own guns.
+
+Among those not afraid:
+
+\[
+35.84\%
+\]
+
+own guns.
+
+If the variables were independent, both column percentages would equal the overall gun ownership rate:
+
+\[
+32.04\%
+\]
+
+They do not. The chi-square test tells us whether the observed deviation is statistically significant.
+
+---
+
+## 9. Adding a Control Variable
+
+We can add a control variable to a cross-tabulation.
+
+Suppose we add whether someone hunts.
+
+Hunting is likely related to gun ownership. Hunters are much more likely to own guns than non-hunters.
+
+If we control for hunting, we compare gun ownership and neighborhood fear separately among:
+
+- non-hunters
+- hunters
+
+This creates separate cross-tabs within each category of the control variable.
+
+For example:
+
+| Owns Gun | Afraid, Non-Hunter | Not Afraid, Non-Hunter | Afraid, Hunter | Not Afraid, Hunter |
+|---|---:|---:|---:|---:|
+| Yes | % | % | % | % |
+| No | % | % | % | % |
+
+If fear of walking at night is related to gun ownership only among non-hunters but not among hunters, then the control variable helps refine the relationship.
+
+This is similar to controlled mean comparisons. We hold a third variable constant to see whether the relationship between \(X\) and \(Y\) persists.
+
+However, cross-tabs can become unwieldy quickly when we add more variables or categories. This is one reason regression methods become useful.
+
+---
+
+# Part III: The Chi-Square Test of Independence
+
+## 10. Assumptions of the Chi-Square Test
+
+The chi-square test of independence requires:
+
+1. A random or representative sample.
+2. Two categorical variables.
+3. Mutually exclusive categories.
+4. Expected frequencies of at least 5 in every cell.
+
+The expected frequency condition is important.
+
+It refers to expected frequencies, not observed frequencies.
+
+If expected frequencies are too small, the chi-square approximation may not be reliable. In that case, Fisher’s exact test may be preferable.
+
+---
+
+## 11. The Chi-Square Statistic
+
+The chi-square statistic is:
+
+\[
+\chi^2 =
+\sum
+\frac{(f_o - f_e)^2}{f_e}
+\]
+
+where:
+
+- \(f_o\) is the observed frequency
+- \(f_e\) is the expected frequency
+- the sum is taken across all cells in the table
+
+The statistic measures how far observed frequencies are from expected frequencies.
+
+If observed and expected frequencies are identical, then:
+
+\[
+f_o - f_e = 0
+\]
+
+for every cell, and:
+
+\[
+\chi^2 = 0
+\]
+
+As observed frequencies deviate more from expected frequencies, the chi-square statistic grows larger.
+
+---
+
+## 12. Calculating the Chi-Square Statistic
+
+For the gun ownership example, the observed and expected values are:
+
+| Owns Gun | Afraid Observed | Afraid Expected | Not Afraid Observed | Not Afraid Expected |
+|---|---:|---:|---:|---:|
+| Yes | 133 | 174.9 | 395 | 353.1 |
+| No | 413 | 371.1 | 707 | 748.9 |
+
+For each cell, calculate:
+
+\[
+\frac{(f_o - f_e)^2}{f_e}
+\]
+
+For the “owns gun and afraid” cell:
+
+\[
+\frac{(133 - 174.9)^2}{174.9}
+\]
+
+\[
+= \frac{(-41.9)^2}{174.9}
+\]
+
+\[
+\approx 10.1
+\]
+
+Repeat for each cell:
+
+| Cell | Contribution to \(\chi^2\) |
+|---|---:|
+| Owns gun, afraid | 10.1 |
+| Owns gun, not afraid | 5.0 |
+| Does not own gun, afraid | 4.7 |
+| Does not own gun, not afraid | 2.4 |
+
+Add them:
+
+\[
+\chi^2 = 10.1 + 5.0 + 4.7 + 2.4
+\]
+
+\[
+\chi^2 = 22.2
+\]
+
+---
+
+## 13. Degrees of Freedom
+
+For a chi-square test of independence:
+
+\[
+df = (r-1)(c-1)
+\]
+
+where:
+
+- \(r\) is the number of rows
+- \(c\) is the number of columns
+
+Do not count total rows or total columns.
+
+In the gun ownership example, there are:
+
+- 2 rows
+- 2 columns
+
+So:
+
+\[
+df = (2-1)(2-1)
+\]
+
+\[
+df = 1
+\]
+
+---
+
+## 14. The Chi-Square Distribution
+
+The chi-square distribution is different from the normal and t distributions.
+
+It starts at 0 and extends to positive infinity.
+
+A chi-square statistic can never be negative.
+
+A chi-square test is therefore a **one-sided test**. We reject the null hypothesis only for large values of \(\chi^2\).
+
+For \(\alpha = 0.05\) and \(df = 1\), the critical value is:
+
+\[
+\chi^2 = 3.84
+\]
+
+Our test statistic is:
+
+\[
+\chi^2 = 22.2
+\]
+
+Since:
+
+\[
+22.2 > 3.84
+\]
+
+we reject the null hypothesis.
+
+Gun ownership and fear of walking in one’s neighborhood at night are not independent.
+
+---
+
+## 15. p-Value for the Chi-Square Test
+
+The p-value is the area in the upper tail of the chi-square distribution beyond the observed chi-square statistic.
+
+Unlike two-tailed t-tests and z-tests, we do not double the p-value.
+
+For the gun ownership example, the test statistic is so large that:
+
+\[
+p < 0.001
+\]
+
+Since:
+
+\[
+p < 0.05
+\]
+
+we reject the null hypothesis.
+
+---
+
+## 16. Running the Chi-Square Test in Software
+
+In Stata, the command structure is:
+
+```stata
+tab yvar xvar, col chi
+```
+
+This produces a cross-tabulation with column percentages and a chi-square test.
+
+In R, one common workflow is:
+
+```r
+mytable <- table(yvar, xvar)
+chisq.test(mytable, correct = FALSE)
+```
+
+The argument `correct = FALSE` avoids a small-sample correction that is not needed for large samples.
+
+Software reports:
+
+- chi-square statistic
+- degrees of freedom
+- p-value
+
+---
+
+# Part IV: Example: Program and Graduation
+
+## 17. Revisiting the Graduation Program
+
+Earlier, we analyzed a difference of proportions for a program intended to increase high school graduation.
+
+The data were:
+
+| Group | Graduated | Did Not Graduate | Total |
+|---|---:|---:|---:|
+| Program | 83 | 10 | 93 |
+| No Program | 102 | 19 | 121 |
+| **Total** | 185 | 29 | 214 |
+
+The graduation rates were:
+
+\[
+\frac{83}{93} = 0.892
+\]
+
+and:
+
+\[
+\frac{102}{121} = 0.843
+\]
+
+The difference was not statistically significant using a z-test.
+
+We can also analyze this as a chi-square test because it is a 2-by-2 table.
+
+---
+
+## 18. Expected Frequencies
+
+The overall graduation rate is:
+
+\[
+\frac{185}{214} = 0.864
+\]
+
+If program participation and graduation were independent, we would expect 86.4 percent of each group to graduate.
+
+The expected frequencies are approximately:
+
+| Group | Graduated Expected | Did Not Graduate Expected |
+|---|---:|---:|
+| Program | 80.4 | 12.6 |
+| No Program | 104.6 | 16.4 |
+
+All expected frequencies exceed 5, so the chi-square test is appropriate.
+
+---
+
+## 19. Chi-Square Result
+
+Using the formula:
+
+\[
+\chi^2 =
+\sum
+\frac{(f_o - f_e)^2}{f_e}
+\]
+
+we obtain:
+
+\[
+\chi^2 = 1.10
+\]
+
+Degrees of freedom:
+
+\[
+df = (2-1)(2-1)=1
+\]
+
+The critical value at \(\alpha = 0.05\) is:
+
+\[
+3.84
+\]
+
+Since:
+
+\[
+1.10 < 3.84
+\]
+
+we fail to reject the null hypothesis.
+
+The chi-square test reaches the same conclusion as the difference-of-proportions z-test.
+
+---
+
+## 20. Relationship Between z and Chi-Square in 2-by-2 Tables
+
+For a 2-by-2 table, the chi-square statistic with one degree of freedom is equal to the square of the z-statistic from the difference-of-proportions test:
+
+\[
+\chi^2 = z^2
+\]
+
+In the graduation example, the z-statistic was:
+
+\[
+z = 1.049
+\]
+
+Squaring it:
+
+\[
+1.049^2 \approx 1.10
+\]
+
+which equals the chi-square statistic.
+
+This relationship holds only for 2-by-2 tables.
+
+Once one of the variables has more than two categories, the chi-square test no longer reduces to a z-test.
+
+---
+
+# Part V: Example: Satisfaction with ACA Health Plans
+
+## 21. The Research Question
+
+Suppose we want to analyze satisfaction with health insurance plans after implementation of the Affordable Care Act.
+
+The dependent variable is satisfaction with one’s health plan:
+
+- satisfied
+- neutral
+- dissatisfied
+
+The independent variable is type of health insurance:
+
+- ACA exchange plan
+- other health insurance
+
+The question is:
+
+> Is satisfaction with one’s health insurance independent of plan type?
+
+The null hypothesis is:
+
+\[
+H_0: \text{Satisfaction and plan type are independent}
+\]
+
+The alternative is:
+
+\[
+H_A: \text{Satisfaction and plan type are not independent}
+\]
+
+---
+
+## 22. Observed Frequencies and Column Percentages
+
+Suppose the data are:
+
+| Satisfaction | ACA Plan | Other Plan | Total |
+|---|---:|---:|---:|
+| Satisfied | 772 | 5,096 | 5,868 |
+| Neutral | 205 | 895 | 1,100 |
+| Dissatisfied | 108 | 386 | 494 |
+| **Total** | **1,085** | **6,377** | **7,462** |
+
+Column percentages show:
+
+| Satisfaction | ACA Plan | Other Plan | Overall |
+|---|---:|---:|---:|
+| Satisfied | 71.2% | 79.9% | 78.6% |
+| Neutral | 18.9% | 14.0% | 14.7% |
+| Dissatisfied | 10.0% | 6.1% | 6.7% |
+
+People with ACA exchange plans are less likely to report being satisfied and more likely to report being neutral or dissatisfied.
+
+Now we test whether this relationship is statistically significant.
+
+---
+
+## 23. Expected Frequencies
+
+Under independence, the satisfaction distribution should be the same for ACA plans and other plans.
+
+For example, 78.6 percent of all respondents are satisfied. If plan type does not matter, then 78.6 percent of ACA respondents and 78.6 percent of other-plan respondents should be satisfied.
+
+Using:
+
+\[
+f_e = \frac{(\text{row total})(\text{column total})}{n}
+\]
+
+the expected frequencies are approximately:
+
+| Satisfaction | ACA Expected | Other Expected |
+|---|---:|---:|
+| Satisfied | 853.2 | 5,014.8 |
+| Neutral | 159.9 | 940.1 |
+| Dissatisfied | 71.9 | 422.1 |
+
+All expected frequencies exceed 5, so the chi-square test is appropriate.
+
+---
+
+## 24. Chi-Square Statistic
+
+For each cell:
+
+\[
+\frac{(f_o - f_e)^2}{f_e}
+\]
+
+The contributions are approximately:
+
+| Satisfaction | ACA Contribution | Other Contribution |
+|---|---:|---:|
+| Satisfied | 7.7 | 1.3 |
+| Neutral | 12.7 | 2.2 |
+| Dissatisfied | 18.1 | 3.1 |
+
+Adding all cell contributions gives:
+
+\[
+\chi^2 \approx 45.1
+\]
+
+Using the lecture’s rounded values, the statistic was reported around:
+
+\[
+\chi^2 \approx 50.4
+\]
+
+Small differences can arise from rounding or slightly different underlying cell values. The substantive conclusion is the same: the statistic is very large.
+
+Degrees of freedom:
+
+\[
+df = (3-1)(2-1)
+\]
+
+\[
+df = 2
+\]
+
+At \(\alpha = 0.05\), the critical value for \(df=2\) is:
+
+\[
+5.99
+\]
+
+Since:
+
+\[
+50.4 > 5.99
+\]
+
+we reject the null hypothesis.
+
+Satisfaction and plan type are not independent.
+
+---
+
+## 25. Interpreting the Result
+
+The chi-square test tells us that satisfaction differs by plan type.
+
+But the chi-square statistic itself does not tell us the direction of the relationship.
+
+To interpret direction, we must examine the table.
+
+ACA exchange plan respondents are:
+
+- less likely to be satisfied
+- more likely to be neutral
+- more likely to be dissatisfied
+
+The chi-square test tells us the relationship is statistically significant. The table tells us what the relationship looks like.
+
+---
+
+# Part VI: Residuals and Cell-Level Deviations
+
+## 26. Residuals
+
+A **residual** in a chi-square table is:
+
+\[
+f_o - f_e
+\]
+
+It tells us whether a cell contains more or fewer cases than expected under independence.
+
+A positive residual means:
+
+\[
+f_o > f_e
+\]
+
+There are more cases in that cell than expected.
+
+A negative residual means:
+
+\[
+f_o < f_e
+\]
+
+There are fewer cases in that cell than expected.
+
+Residuals help us understand the direction of the relationship.
+
+---
+
+## 27. Residuals in the ACA Example
+
+For the ACA satisfaction example:
+
+| Satisfaction | ACA Residual | Other Residual |
+|---|---:|---:|
+| Satisfied | negative | positive |
+| Neutral | positive | negative |
+| Dissatisfied | positive | negative |
+
+This means:
+
+- fewer ACA plan respondents are satisfied than expected
+- more ACA plan respondents are neutral than expected
+- more ACA plan respondents are dissatisfied than expected
+
+The opposite pattern appears among respondents with other health insurance.
+
+---
+
+## 28. Standardized Residuals
+
+A raw residual can be hard to interpret because its size depends on the sample size and expected frequency.
+
+We can convert residuals into standardized residuals, which function like z-statistics.
+
+A standardized residual is:
+
+\[
+z =
+\frac{f_o - f_e}
+{
+\sqrt{
+f_e(1-p_{row})(1-p_{column})
+}
+}
+\]
+
+where:
+
+- \(p_{row}\) is the row proportion
+- \(p_{column}\) is the column proportion
+
+Large positive or negative standardized residuals indicate cells that contribute strongly to the chi-square statistic.
+
+A standardized residual beyond approximately \(\pm 1.96\) suggests that the cell deviation is large relative to what we would expect under independence.
+
+---
+
+## 29. Example: Standardized Residual
+
+Suppose the ACA-satisfied cell has:
+
+\[
+f_o = 772
+\]
+
+\[
+f_e = 853.2
+\]
+
+The residual is:
+
+\[
+772 - 853.2 = -81.2
+\]
+
+If the standardized residual is:
+
+\[
+z = -6.50
+\]
+
+that is a very large negative deviation.
+
+This means the ACA-satisfied cell has far fewer cases than expected under independence.
+
+The result is not merely statistically significant overall. This specific cell is contributing strongly to the relationship.
+
+---
+
+# Part VII: Ordinal Variables and Direction
+
+## 30. Limits of Chi-Square for Ordinal Data
+
+The chi-square test treats categories as nominal.
+
+It does not care whether categories have a meaningful order.
+
+For example, if a variable has categories:
+
+- decrease
+- keep the same
+- increase
+
+the chi-square test treats them simply as three categories. It does not know that “increase” is higher than “keep the same” or that “decrease” is lower.
+
+This is a limitation when variables are ordinal.
+
+If both variables are ordinal, we may want to know whether the relationship is positive or negative.
+
+The chi-square test does not provide that.
+
+---
+
+## 31. Positive and Negative Relationships
+
+A **positive relationship** between two ordinal variables means higher values of one variable tend to be associated with higher values of the other variable.
+
+A **negative relationship** means higher values of one variable tend to be associated with lower values of the other variable.
+
+For example, suppose one variable measures support for legalizing marijuana:
+
+- oppose
+- neutral
+- favor
+
+and another measures whether gun laws should be more restrictive:
+
+- make it more difficult to buy a gun
+- keep laws the same
+- make it easier to buy a gun
+
+If people who favor marijuana legalization also tend to favor more restrictive gun laws, the relationship may be negative depending on how the categories are ordered.
+
+Direction depends on category coding.
+
+Always check which direction the categories move.
+
+---
+
+## 32. Gamma and Kendall’s Tau-b
+
+For ordinal variables, we can use measures such as:
+
+- Goodman and Kruskal’s gamma
+- Kendall’s tau-b
+
+These statistics can be positive, negative, or close to zero.
+
+Interpretation:
+
+- positive value: variables tend to move in the same direction
+- negative value: variables tend to move in opposite directions
+- near zero: little ordinal association
+
+These statistics supplement the chi-square test by describing the direction of the ordinal relationship.
+
+For example, if gamma is:
+
+\[
+-0.35
+\]
+
+then the relationship is negative.
+
+If gamma is:
+
+\[
+0.42
+\]
+
+then the relationship is positive.
+
+These values also have standard errors, allowing assessment of whether they are meaningfully different from zero.
+
+---
+
+## 33. Example: Spending on Schools and Social Security
+
+Suppose respondents are asked whether federal spending on public schools should:
+
+- decrease
+- stay the same
+- increase
+
+and whether spending on Social Security should:
+
+- decrease
+- stay the same
+- increase
+
+We might expect a positive relationship. People who favor more spending in one area may also favor more spending in another.
+
+If gamma and Kendall’s tau-b are positive and large relative to their standard errors, that supports the interpretation of a positive ordinal relationship.
+
+The chi-square test tells us whether the variables are independent.
+
+Gamma and tau-b help tell us the direction.
+
+---
+
+# Part VIII: Small-Sample Tests
+
+## 34. When Chi-Square Is Not Appropriate
+
+The chi-square test requires expected frequencies of at least 5 in every cell.
+
+If this condition fails, the chi-square approximation may be unreliable.
+
+In such cases, use Fisher’s exact test.
+
+---
+
+## 35. Fisher’s Exact Test
+
+**Fisher’s exact test** evaluates association between categorical variables by calculating exact probabilities rather than relying on the chi-square approximation.
+
+It is especially useful when sample sizes are small.
+
+The test considers all possible tables with the same row and column totals and asks:
+
+> How many of those possible tables are as extreme as, or more extreme than, the observed table?
+
+The result is an exact p-value.
+
+Fisher’s exact test can be used for 2-by-2 tables and, in some software, for larger tables. However, for large tables with many categories, the computation may become memory intensive.
+
+---
+
+## 36. Fisher’s Exact Test in Software
+
+In Stata:
+
+```stata
+tab yvar xvar, exact
+```
+
+or:
+
+```stata
+tab yvar xvar, col chi exact
+```
+
+In R:
+
+```r
+mytable <- table(yvar, xvar)
+fisher.test(mytable)
+```
+
+Fisher’s exact test reports a p-value directly.
+
+If expected cell counts are too small for chi-square, Fisher’s exact test is the safer option.
+
+---
+
+# Part IX: Limitations of the Chi-Square Test
+
+## 37. Direction
+
+The chi-square statistic does not tell us the direction of the relationship.
+
+It tells us whether variables are independent, not how they are related.
+
+To understand direction, examine:
+
+- column percentages
+- row percentages
+- residuals
+- standardized residuals
+- ordinal association measures, if appropriate
+
+---
+
+## 38. Magnitude
+
+The chi-square statistic does not directly tell us the substantive magnitude of the relationship.
+
+With a large enough sample, even small differences can become statistically significant.
+
+For example, a difference between 51 percent and 53 percent may be statistically significant in a huge sample, but substantively small.
+
+Always distinguish statistical significance from substantive significance.
+
+---
+
+## 39. Category Choices
+
+Chi-square results can depend on how categories are defined.
+
+If researchers combine or split categories differently, the table changes, and the chi-square result may change.
+
+For example, a political scientist might classify regimes as:
+
+- democracy
+- non-democracy
+
+or instead as:
+
+- non-democracy
+- presidential democracy
+- parliamentary democracy
+
+The chi-square statistic may differ across these choices.
+
+Researchers should be transparent about categorization decisions and check whether results are sensitive to alternative classifications.
+
+---
+
+# Key Terms
+
+**Categorical variable**  
+A variable whose values are categories.
+
+**Cross-tabulation**  
+A table showing the joint distribution of two categorical variables.
+
+**Contingency table**  
+Another term for a cross-tabulation.
+
+**Observed frequency**  
+The actual number of cases observed in a cell.
+
+**Expected frequency**  
+The number of cases expected in a cell under the null hypothesis of independence.
+
+**Chi-square test of independence**  
+A test of whether two categorical variables are independent.
+
+**Chi-square statistic**  
+A statistic measuring the discrepancy between observed and expected frequencies.
+
+**Chi-square distribution**  
+A right-skewed distribution used for chi-square tests.
+
+**Residual**  
+The difference between observed and expected frequency in a cell.
+
+**Standardized residual**  
+A residual converted into standard error units.
+
+**Degrees of freedom**  
+For a chi-square test, \((r-1)(c-1)\), where \(r\) is rows and \(c\) is columns.
+
+**Fisher’s exact test**  
+An exact test for association between categorical variables, useful for small samples.
+
+**Ordinal association**  
+Association between variables whose categories have a meaningful order.
+
+**Gamma**  
+A statistic measuring the direction and strength of association between ordinal variables.
+
+**Kendall’s tau-b**  
+Another statistic measuring ordinal association.
+
+**Statistical significance**  
+Evidence that an observed pattern is unlikely under the null hypothesis.
+
+**Substantive significance**  
+The practical or real-world importance of an observed pattern.
+
+---
+
+# Chapter Summary
+
+The chi-square test of independence allows us to evaluate whether two categorical variables are statistically independent.
+
+The test compares observed frequencies in a contingency table to expected frequencies under the null hypothesis of independence. If the observed frequencies deviate enough from the expected frequencies, the chi-square statistic becomes large, and we reject the null hypothesis.
+
+Expected frequencies are calculated using row totals, column totals, and the total sample size:
+
+\[
+f_e = \frac{(\text{row total})(\text{column total})}{n}
+\]
+
+The chi-square statistic is:
+
+\[
+\chi^2 =
+\sum
+\frac{(f_o-f_e)^2}{f_e}
+\]
+
+The test is one-sided because chi-square statistics cannot be negative. The critical value depends on the chi-square distribution and degrees of freedom:
+
+\[
+df = (r-1)(c-1)
+\]
+
+A significant chi-square test tells us the variables are not independent. It does not tell us the direction or substantive magnitude of the relationship. To understand those, we examine percentages, residuals, standardized residuals, and, for ordinal variables, statistics such as gamma or Kendall’s tau-b.
+
+For small samples, when expected frequencies are too low, Fisher’s exact test is preferable.
+
+The central lesson is that categorical relationships require careful interpretation. Statistical significance tells us that a pattern is unlikely under independence, but substantive interpretation comes from examining the table itself.
