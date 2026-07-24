@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -257,18 +286,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#part-ii-pearsons-correlation-coefficient" id="toc-part-ii-pearsons-correlation-coefficient" class="nav-link" data-scroll-target="#part-ii-pearsons-correlation-coefficient"><span class="header-section-number">16</span> Part II: Pearson’s Correlation Coefficient</a>
   <ul class="collapse">
-  <li><a href="#pearsons-r" id="toc-pearsons-r" class="nav-link" data-scroll-target="#pearsons-r"><span class="header-section-number">16.1</span> Pearson’s (r)</a></li>
+  <li><a href="#pearsons-r" id="toc-pearsons-r" class="nav-link" data-scroll-target="#pearsons-r"><span class="header-section-number">16.1</span> Pearson’s <span class="math inline">\(r\)</span></a></li>
   <li><a href="#positive-correlation" id="toc-positive-correlation" class="nav-link" data-scroll-target="#positive-correlation"><span class="header-section-number">16.2</span> Positive Correlation</a></li>
   <li><a href="#negative-correlation" id="toc-negative-correlation" class="nav-link" data-scroll-target="#negative-correlation"><span class="header-section-number">16.3</span> Negative Correlation</a></li>
   <li><a href="#no-linear-correlation" id="toc-no-linear-correlation" class="nav-link" data-scroll-target="#no-linear-correlation"><span class="header-section-number">16.4</span> No Linear Correlation</a></li>
   </ul></li>
-  <li><a href="#part-iii-interpreting-pearsons-r" id="toc-part-iii-interpreting-pearsons-r" class="nav-link" data-scroll-target="#part-iii-interpreting-pearsons-r"><span class="header-section-number">17</span> Part III: Interpreting Pearson’s (r)</a>
+  <li><a href="#part-iii-interpreting-pearsons-r" id="toc-part-iii-interpreting-pearsons-r" class="nav-link" data-scroll-target="#part-iii-interpreting-pearsons-r"><span class="header-section-number">17</span> Part III: Interpreting Pearson’s <span class="math inline">\(r\)</span></a>
   <ul class="collapse">
   <li><a href="#magnitude-and-direction" id="toc-magnitude-and-direction" class="nav-link" data-scroll-target="#magnitude-and-direction"><span class="header-section-number">17.1</span> Magnitude and Direction</a></li>
   <li><a href="#correlation-does-not-measure-slope" id="toc-correlation-does-not-measure-slope" class="nav-link" data-scroll-target="#correlation-does-not-measure-slope"><span class="header-section-number">17.2</span> Correlation Does Not Measure Slope</a></li>
   <li><a href="#correlation-and-causation" id="toc-correlation-and-causation" class="nav-link" data-scroll-target="#correlation-and-causation"><span class="header-section-number">17.3</span> Correlation and Causation</a></li>
   </ul></li>
-  <li><a href="#part-iv-how-pearsons-r-works" id="toc-part-iv-how-pearsons-r-works" class="nav-link" data-scroll-target="#part-iv-how-pearsons-r-works"><span class="header-section-number">18</span> Part IV: How Pearson’s (r) Works</a>
+  <li><a href="#part-iv-how-pearsons-r-works" id="toc-part-iv-how-pearsons-r-works" class="nav-link" data-scroll-target="#part-iv-how-pearsons-r-works"><span class="header-section-number">18</span> Part IV: How Pearson’s <span class="math inline">\(r\)</span> Works</a>
   <ul class="collapse">
   <li><a href="#the-logic-of-the-formula" id="toc-the-logic-of-the-formula" class="nav-link" data-scroll-target="#the-logic-of-the-formula"><span class="header-section-number">18.1</span> The Logic of the Formula</a></li>
   <li><a href="#deviations-from-the-mean" id="toc-deviations-from-the-mean" class="nav-link" data-scroll-target="#deviations-from-the-mean"><span class="header-section-number">18.2</span> Deviations from the Mean</a></li>
@@ -285,9 +314,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#part-v-statistical-significance-of-correlation" id="toc-part-v-statistical-significance-of-correlation" class="nav-link" data-scroll-target="#part-v-statistical-significance-of-correlation"><span class="header-section-number">19</span> Part V: Statistical Significance of Correlation</a>
   <ul class="collapse">
-  <li><a href="#pearsons-r-as-an-estimate" id="toc-pearsons-r-as-an-estimate" class="nav-link" data-scroll-target="#pearsons-r-as-an-estimate"><span class="header-section-number">19.1</span> Pearson’s (r) as an Estimate</a></li>
-  <li><a href="#standard-error-of-pearsons-r" id="toc-standard-error-of-pearsons-r" class="nav-link" data-scroll-target="#standard-error-of-pearsons-r"><span class="header-section-number">19.2</span> Standard Error of Pearson’s (r)</a></li>
-  <li><a href="#t-test-for-pearsons-r" id="toc-t-test-for-pearsons-r" class="nav-link" data-scroll-target="#t-test-for-pearsons-r"><span class="header-section-number">19.3</span> t-Test for Pearson’s (r)</a></li>
+  <li><a href="#pearsons-r-as-an-estimate" id="toc-pearsons-r-as-an-estimate" class="nav-link" data-scroll-target="#pearsons-r-as-an-estimate"><span class="header-section-number">19.1</span> Pearson’s <span class="math inline">\(r\)</span> as an Estimate</a></li>
+  <li><a href="#standard-error-of-pearsons-r" id="toc-standard-error-of-pearsons-r" class="nav-link" data-scroll-target="#standard-error-of-pearsons-r"><span class="header-section-number">19.2</span> Standard Error of Pearson’s <span class="math inline">\(r\)</span></a></li>
+  <li><a href="#t-test-for-pearsons-r" id="toc-t-test-for-pearsons-r" class="nav-link" data-scroll-target="#t-test-for-pearsons-r"><span class="header-section-number">19.3</span> t-Test for Pearson’s <span class="math inline">\(r\)</span></a></li>
   <li><a href="#example-democracy-and-life-expectancy" id="toc-example-democracy-and-life-expectancy" class="nav-link" data-scroll-target="#example-democracy-and-life-expectancy"><span class="header-section-number">19.4</span> Example: Democracy and Life Expectancy</a></li>
   </ul></li>
   <li><a href="#part-vi-using-software" id="toc-part-vi-using-software" class="nav-link" data-scroll-target="#part-vi-using-software"><span class="header-section-number">20</span> Part VI: Using Software</a>
@@ -346,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Are years of education related to income?</li>
 </ul>
 <p>Correlation analysis measures the <strong>strength</strong> and <strong>direction</strong> of the relationship between two interval-level variables.</p>
-<p>The main statistic we use is <strong>Pearson’s correlation coefficient</strong>, usually written as (r). Pearson’s (r) measures the degree to which two variables have a <strong>linear relationship</strong>.</p>
+<p>The main statistic we use is <strong>Pearson’s correlation coefficient</strong>, usually written as <span class="math inline">\(r\)</span>. Pearson’s <span class="math inline">\(r\)</span> measures the degree to which two variables have a <strong>linear relationship</strong>.</p>
 <p>The central idea is simple:</p>
 <blockquote class="blockquote">
 <p>Correlation tells us whether two quantitative variables tend to move together, move in opposite directions, or show little linear relationship.</p>
@@ -385,12 +414,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="scatterplots" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">15.2</span> Scatterplots</h2>
 <p>A <strong>scatterplot</strong> displays the relationship between two quantitative variables.</p>
-<p>One variable is placed on the horizontal axis, usually called (X). The other is placed on the vertical axis, usually called (Y).</p>
+<p>One variable is placed on the horizontal axis, usually called <span class="math inline">\(X\)</span>. The other is placed on the vertical axis, usually called <span class="math inline">\(Y\)</span>.</p>
 <p>Each point represents one case.</p>
 <p>For example, if we are studying countries:</p>
 <ul>
-<li>(X): democracy score</li>
-<li>(Y): life expectancy</li>
+<li><span class="math inline">\(X\)</span>: democracy score</li>
+<li><span class="math inline">\(Y\)</span>: life expectancy</li>
 </ul>
 <p>Each dot on the scatterplot is a country.</p>
 <p>Scatterplots help us see whether the relationship is:</p>
@@ -437,31 +466,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="part-ii-pearsons-correlation-coefficient" class="level1" data-number="16">
 <h1 data-number="16"><span class="header-section-number">16</span> Part II: Pearson’s Correlation Coefficient</h1>
 <section id="pearsons-r" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="pearsons-r"><span class="header-section-number">16.1</span> Pearson’s (r)</h2>
+<h2 data-number="16.1" class="anchored" data-anchor-id="pearsons-r"><span class="header-section-number">16.1</span> Pearson’s <span class="math inline">\(r\)</span></h2>
 <p>The most common measure of correlation is <strong>Pearson’s correlation coefficient</strong>, written:</p>
-<p>[ r ]</p>
-<p>Pearson’s (r) measures the strength and direction of a linear relationship between two variables.</p>
+<p><span class="math display">\[
+r
+\]</span></p>
+<p>Pearson’s <span class="math inline">\(r\)</span> measures the strength and direction of a linear relationship between two variables.</p>
 <p>It ranges from:</p>
-<p>[ -1 r ]</p>
+<p><span class="math display">\[
+-1 \leq r \leq 1
+\]</span></p>
 <p>The interpretation is:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;">Value of (r)</th>
+<th style="text-align: right;">Value of <span class="math inline">\(r\)</span></th>
 <th>Interpretation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">(r = 1)</td>
+<td style="text-align: right;"><span class="math inline">\(r = 1\)</span></td>
 <td>Perfect positive linear relationship</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">(r = 0)</td>
+<td style="text-align: right;"><span class="math inline">\(r = 0\)</span></td>
 <td>No linear relationship</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">(r = -1)</td>
+<td style="text-align: right;"><span class="math inline">\(r = -1\)</span></td>
 <td>Perfect negative linear relationship</td>
 </tr>
 </tbody>
@@ -469,82 +502,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Values between these extremes indicate weaker or stronger relationships.</p>
 <p>For example:</p>
 <ul>
-<li>(r = 0.80): strong positive linear relationship</li>
-<li>(r = 0.30): weak-to-moderate positive linear relationship</li>
-<li>(r = -0.60): moderately strong negative linear relationship</li>
-<li>(r = -0.05): very weak negative linear relationship</li>
-<li>(r = 0.00): no linear relationship</li>
+<li><span class="math inline">\(r = 0.80\)</span>: strong positive linear relationship</li>
+<li><span class="math inline">\(r = 0.30\)</span>: weak-to-moderate positive linear relationship</li>
+<li><span class="math inline">\(r = -0.60\)</span>: moderately strong negative linear relationship</li>
+<li><span class="math inline">\(r = -0.05\)</span>: very weak negative linear relationship</li>
+<li><span class="math inline">\(r = 0.00\)</span>: no linear relationship</li>
 </ul>
-<p>The closer (r) is to 1 or -1, the stronger the linear relationship.</p>
-<p>The closer (r) is to 0, the weaker the linear relationship.</p>
+<p>The closer <span class="math inline">\(r\)</span> is to 1 or -1, the stronger the linear relationship.</p>
+<p>The closer <span class="math inline">\(r\)</span> is to 0, the weaker the linear relationship.</p>
 <hr>
 </section>
 <section id="positive-correlation" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="positive-correlation"><span class="header-section-number">16.2</span> Positive Correlation</h2>
-<p>A positive correlation means that higher values of (X) tend to be associated with higher values of (Y).</p>
+<p>A positive correlation means that higher values of <span class="math inline">\(X\)</span> tend to be associated with higher values of <span class="math inline">\(Y\)</span>.</p>
 <p>In a scatterplot, the points tend to slope upward from left to right.</p>
 <p>For example, suppose countries with higher democracy scores tend to have higher life expectancy. Then the correlation between democracy and life expectancy would be positive.</p>
 <p>A perfect positive correlation would mean all points fall exactly on an upward-sloping line:</p>
-<p>[ r = 1 ]</p>
+<p><span class="math display">\[
+r = 1
+\]</span></p>
 <p>In real data, perfect correlation is rare. Social data are wonderfully messy, because humans insist on being complicated.</p>
 <hr>
 </section>
 <section id="negative-correlation" class="level2" data-number="16.3">
 <h2 data-number="16.3" class="anchored" data-anchor-id="negative-correlation"><span class="header-section-number">16.3</span> Negative Correlation</h2>
-<p>A negative correlation means that higher values of (X) tend to be associated with lower values of (Y).</p>
+<p>A negative correlation means that higher values of <span class="math inline">\(X\)</span> tend to be associated with lower values of <span class="math inline">\(Y\)</span>.</p>
 <p>In a scatterplot, the points tend to slope downward from left to right.</p>
 <p>For example, suppose countries with higher unionization rates tend to have lower economic inequality. Then the correlation between unionization and inequality would be negative.</p>
 <p>A perfect negative correlation would mean all points fall exactly on a downward-sloping line:</p>
-<p>[ r = -1 ]</p>
+<p><span class="math display">\[
+r = -1
+\]</span></p>
 <p>Again, perfect negative correlation is rare in social science data.</p>
 <hr>
 </section>
 <section id="no-linear-correlation" class="level2" data-number="16.4">
 <h2 data-number="16.4" class="anchored" data-anchor-id="no-linear-correlation"><span class="header-section-number">16.4</span> No Linear Correlation</h2>
-<p>If (r) is close to 0, the variables have little or no linear relationship.</p>
+<p>If <span class="math inline">\(r\)</span> is close to 0, the variables have little or no linear relationship.</p>
 <p>A scatterplot with no linear correlation may look like a random cloud of points.</p>
 <p>However, this is an important caution:</p>
 <blockquote class="blockquote">
 <p>A correlation of zero means there is no linear relationship. It does not necessarily mean there is no relationship at all.</p>
 </blockquote>
 <p>Two variables can be related in a nonlinear way.</p>
-<p>For example, suppose the relationship between age and happiness is U-shaped: happiness is higher among young adults, lower in middle age, and higher again later in life. Pearson’s (r) might be close to zero because the positive and negative parts of the relationship cancel out, even though a real nonlinear relationship exists.</p>
-<p>Pearson’s (r) measures linearity. It does not detect every kind of relationship.</p>
+<p>For example, suppose the relationship between age and happiness is U-shaped: happiness is higher among young adults, lower in middle age, and higher again later in life. Pearson’s <span class="math inline">\(r\)</span> might be close to zero because the positive and negative parts of the relationship cancel out, even though a real nonlinear relationship exists.</p>
+<p>Pearson’s <span class="math inline">\(r\)</span> measures linearity. It does not detect every kind of relationship.</p>
 <hr>
 </section>
 </section>
 <section id="part-iii-interpreting-pearsons-r" class="level1" data-number="17">
-<h1 data-number="17"><span class="header-section-number">17</span> Part III: Interpreting Pearson’s (r)</h1>
+<h1 data-number="17"><span class="header-section-number">17</span> Part III: Interpreting Pearson’s <span class="math inline">\(r\)</span></h1>
 <section id="magnitude-and-direction" class="level2" data-number="17.1">
 <h2 data-number="17.1" class="anchored" data-anchor-id="magnitude-and-direction"><span class="header-section-number">17.1</span> Magnitude and Direction</h2>
 <p>Suppose we calculate:</p>
-<p>[ r = 0.77 ]</p>
+<p><span class="math display">\[
+r = 0.77
+\]</span></p>
 <p>This indicates a strong positive linear relationship.</p>
 <p>Suppose instead:</p>
-<p>[ r = -0.60 ]</p>
+<p><span class="math display">\[
+r = -0.60
+\]</span></p>
 <p>This indicates a moderately strong negative linear relationship.</p>
 <p>Suppose:</p>
-<p>[ r = -0.01 ]</p>
+<p><span class="math display">\[
+r = -0.01
+\]</span></p>
 <p>This indicates essentially no linear relationship.</p>
 <p>The sign tells us direction.</p>
 <p>The absolute value tells us strength.</p>
 <p>So:</p>
-<p>[ r = -0.80 ]</p>
+<p><span class="math display">\[
+r = -0.80
+\]</span></p>
 <p>is stronger than:</p>
-<p>[ r = 0.30 ]</p>
+<p><span class="math display">\[
+r = 0.30
+\]</span></p>
 <p>even though one is negative and one is positive.</p>
 <hr>
 </section>
 <section id="correlation-does-not-measure-slope" class="level2" data-number="17.2">
 <h2 data-number="17.2" class="anchored" data-anchor-id="correlation-does-not-measure-slope"><span class="header-section-number">17.2</span> Correlation Does Not Measure Slope</h2>
-<p>Pearson’s (r) does not tell us how much (Y) changes when (X) changes.</p>
+<p>Pearson’s <span class="math inline">\(r\)</span> does not tell us how much <span class="math inline">\(Y\)</span> changes when <span class="math inline">\(X\)</span> changes.</p>
 <p>It tells us how closely the data fit a straight line.</p>
 <p>A correlation of 1 can occur for any positive slope, as long as the points fall perfectly on a line.</p>
 <p>For example, both of these could have:</p>
-<p>[ r = 1 ]</p>
+<p><span class="math display">\[
+r = 1
+\]</span></p>
 <ul>
-<li>a line where (Y) increases by 1 for every 1-unit increase in (X)</li>
-<li>a line where (Y) increases by 100 for every 1-unit increase in (X)</li>
+<li>a line where <span class="math inline">\(Y\)</span> increases by 1 for every 1-unit increase in <span class="math inline">\(X\)</span></li>
+<li>a line where <span class="math inline">\(Y\)</span> increases by 100 for every 1-unit increase in <span class="math inline">\(X\)</span></li>
 </ul>
 <p>Correlation tells us linear strength and direction, not the magnitude of the change.</p>
 <p>Regression will add that next piece by estimating a slope.</p>
@@ -555,8 +604,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Correlation does not establish causation.</p>
 <p>If two variables are correlated, several possibilities remain:</p>
 <ul>
-<li>(X) causes (Y)</li>
-<li>(Y) causes (X)</li>
+<li><span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(Y\)</span> causes <span class="math inline">\(X\)</span></li>
 <li>a third variable causes both</li>
 <li>the relationship is spurious</li>
 <li>the relationship reflects selection effects</li>
@@ -569,36 +618,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="part-iv-how-pearsons-r-works" class="level1" data-number="18">
-<h1 data-number="18"><span class="header-section-number">18</span> Part IV: How Pearson’s (r) Works</h1>
+<h1 data-number="18"><span class="header-section-number">18</span> Part IV: How Pearson’s <span class="math inline">\(r\)</span> Works</h1>
 <section id="the-logic-of-the-formula" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="the-logic-of-the-formula"><span class="header-section-number">18.1</span> The Logic of the Formula</h2>
-<p>The formula for Pearson’s (r) is:</p>
-<p>[ r = { } ]</p>
+<p>The formula for Pearson’s <span class="math inline">\(r\)</span> is:</p>
+<p><span class="math display">\[
+r =
+\frac{
+\sum (X_i-\bar{X})(Y_i-\bar{Y})
+}
+{
+\sqrt{
+\sum (X_i-\bar{X})^2
+\sum (Y_i-\bar{Y})^2
+}
+}
+\]</span></p>
 <p>You do not need to memorize or calculate this formula by hand.</p>
 <p>But understanding the logic helps.</p>
 <p>The numerator measures <strong>covariation</strong>.</p>
-<p>The denominator rescales that covariation by the total variation in (X) and (Y).</p>
+<p>The denominator rescales that covariation by the total variation in <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <p>In rough terms:</p>
-<p>[ r { X Y} ]</p>
+<p><span class="math display">\[
+r \approx
+\frac{\text{covariation of } X \text{ and } Y}
+{\text{total variation in } X \text{ and } Y}
+\]</span></p>
 <p>The result is a standardized measure bounded between -1 and 1.</p>
 <hr>
 </section>
 <section id="deviations-from-the-mean" class="level2" data-number="18.2">
 <h2 data-number="18.2" class="anchored" data-anchor-id="deviations-from-the-mean"><span class="header-section-number">18.2</span> Deviations from the Mean</h2>
-<p>The formula asks whether (X) and (Y) tend to be above or below their means at the same time.</p>
+<p>The formula asks whether <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> tend to be above or below their means at the same time.</p>
 <p>For each case, we calculate:</p>
-<p>[ X_i - {X} ]</p>
+<p><span class="math display">\[
+X_i - \bar{X}
+\]</span></p>
 <p>and:</p>
-<p>[ Y_i - {Y} ]</p>
+<p><span class="math display">\[
+Y_i - \bar{Y}
+\]</span></p>
 <p>These are deviations from the mean.</p>
-<p>If (X_i) is above its mean, then:</p>
-<p>[ X_i-{X} &gt; 0 ]</p>
-<p>If (X_i) is below its mean, then:</p>
-<p>[ X_i-{X} &lt; 0 ]</p>
-<p>The same logic applies to (Y).</p>
+<p>If <span class="math inline">\(X_i\)</span> is above its mean, then:</p>
+<p><span class="math display">\[
+X_i-\bar{X} &gt; 0
+\]</span></p>
+<p>If <span class="math inline">\(X_i\)</span> is below its mean, then:</p>
+<p><span class="math display">\[
+X_i-\bar{X} &lt; 0
+\]</span></p>
+<p>The same logic applies to <span class="math inline">\(Y\)</span>.</p>
 <p>The key is the product:</p>
-<p>[ (X_i-{X})(Y_i-{Y}) ]</p>
-<p>This product is positive when (X) and (Y) are on the same side of their means.</p>
+<p><span class="math display">\[
+(X_i-\bar{X})(Y_i-\bar{Y})
+\]</span></p>
+<p>This product is positive when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are on the same side of their means.</p>
 <p>It is negative when they are on opposite sides.</p>
 <hr>
 </section>
@@ -606,28 +680,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="18.3" class="anchored" data-anchor-id="positive-contributions"><span class="header-section-number">18.3</span> Positive Contributions</h2>
 <p>A case contributes positive evidence for correlation when:</p>
 <ol type="1">
-<li>(X) is above its mean and (Y) is above its mean.</li>
-<li>(X) is below its mean and (Y) is below its mean.</li>
+<li><span class="math inline">\(X\)</span> is above its mean and <span class="math inline">\(Y\)</span> is above its mean.</li>
+<li><span class="math inline">\(X\)</span> is below its mean and <span class="math inline">\(Y\)</span> is below its mean.</li>
 </ol>
 <p>In the first case:</p>
-<p>[ (+)(+) = + ]</p>
+<p><span class="math display">\[
+(+)(+) = +
+\]</span></p>
 <p>In the second case:</p>
-<p>[ (-)(-) = + ]</p>
-<p>These cases suggest that (X) and (Y) move together.</p>
+<p><span class="math display">\[
+(-)(-) = +
+\]</span></p>
+<p>These cases suggest that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> move together.</p>
 <hr>
 </section>
 <section id="negative-contributions" class="level2" data-number="18.4">
 <h2 data-number="18.4" class="anchored" data-anchor-id="negative-contributions"><span class="header-section-number">18.4</span> Negative Contributions</h2>
 <p>A case contributes negative evidence for correlation when:</p>
 <ol type="1">
-<li>(X) is above its mean and (Y) is below its mean.</li>
-<li>(X) is below its mean and (Y) is above its mean.</li>
+<li><span class="math inline">\(X\)</span> is above its mean and <span class="math inline">\(Y\)</span> is below its mean.</li>
+<li><span class="math inline">\(X\)</span> is below its mean and <span class="math inline">\(Y\)</span> is above its mean.</li>
 </ol>
 <p>In the first case:</p>
-<p>[ (+)(-) = - ]</p>
+<p><span class="math display">\[
+(+)(-) = -
+\]</span></p>
 <p>In the second case:</p>
-<p>[ (-)(+) = - ]</p>
-<p>These cases suggest that (X) and (Y) move in opposite directions.</p>
+<p><span class="math display">\[
+(-)(+) = -
+\]</span></p>
+<p>These cases suggest that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> move in opposite directions.</p>
 <hr>
 </section>
 <section id="a-small-numerical-example" class="level2" data-number="18.5">
@@ -637,8 +719,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th style="text-align: right;">Case</th>
-<th style="text-align: right;">(X)</th>
-<th style="text-align: right;">(Y)</th>
+<th style="text-align: right;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(Y\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -665,16 +747,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Suppose:</p>
-<p>[ {X} = 4 ]</p>
+<p><span class="math display">\[
+\bar{X} = 4
+\]</span></p>
 <p>and:</p>
-<p>[ {Y} = 6 ]</p>
+<p><span class="math display">\[
+\bar{Y} = 6
+\]</span></p>
 <p>Now calculate deviations:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Case</th>
-<th style="text-align: right;">(X-{X})</th>
-<th style="text-align: right;">(Y-{Y})</th>
+<th style="text-align: right;"><span class="math inline">\(X-\bar{X}\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(Y-\bar{Y}\)</span></th>
 <th style="text-align: right;">Product</th>
 </tr>
 </thead>
@@ -706,37 +792,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>The products sum to:</p>
-<p>[ 4 + (-1) + 0 + 1 = 4 ]</p>
+<p><span class="math display">\[
+4 + (-1) + 0 + 1 = 4
+\]</span></p>
 <p>The sum is positive, meaning the overall covariation is positive.</p>
-<p>This suggests a positive correlation between (X) and (Y).</p>
+<p>This suggests a positive correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <hr>
 </section>
 <section id="quadrants-in-a-scatterplot" class="level2" data-number="18.6">
 <h2 data-number="18.6" class="anchored" data-anchor-id="quadrants-in-a-scatterplot"><span class="header-section-number">18.6</span> Quadrants in a Scatterplot</h2>
 <p>A scatterplot can help us visualize the same logic.</p>
-<p>Draw a vertical line at ({X}) and a horizontal line at ({Y}). This divides the scatterplot into four quadrants.</p>
+<p>Draw a vertical line at <span class="math inline">\(\bar{X}\)</span> and a horizontal line at <span class="math inline">\(\bar{Y}\)</span>. This divides the scatterplot into four quadrants.</p>
 <section id="upper-right-quadrant" class="level3" data-number="18.6.1">
 <h3 data-number="18.6.1" class="anchored" data-anchor-id="upper-right-quadrant"><span class="header-section-number">18.6.1</span> Upper-right quadrant</h3>
-<p>(X) is above its mean.<br>
-(Y) is above its mean.<br>
+<p><span class="math inline">\(X\)</span> is above its mean.<br>
+<span class="math inline">\(Y\)</span> is above its mean.<br>
 This contributes positive correlation.</p>
 </section>
 <section id="lower-left-quadrant" class="level3" data-number="18.6.2">
 <h3 data-number="18.6.2" class="anchored" data-anchor-id="lower-left-quadrant"><span class="header-section-number">18.6.2</span> Lower-left quadrant</h3>
-<p>(X) is below its mean.<br>
-(Y) is below its mean.<br>
+<p><span class="math inline">\(X\)</span> is below its mean.<br>
+<span class="math inline">\(Y\)</span> is below its mean.<br>
 This also contributes positive correlation.</p>
 </section>
 <section id="upper-left-quadrant" class="level3" data-number="18.6.3">
 <h3 data-number="18.6.3" class="anchored" data-anchor-id="upper-left-quadrant"><span class="header-section-number">18.6.3</span> Upper-left quadrant</h3>
-<p>(X) is below its mean.<br>
-(Y) is above its mean.<br>
+<p><span class="math inline">\(X\)</span> is below its mean.<br>
+<span class="math inline">\(Y\)</span> is above its mean.<br>
 This contributes negative correlation.</p>
 </section>
 <section id="lower-right-quadrant" class="level3" data-number="18.6.4">
 <h3 data-number="18.6.4" class="anchored" data-anchor-id="lower-right-quadrant"><span class="header-section-number">18.6.4</span> Lower-right quadrant</h3>
-<p>(X) is above its mean.<br>
-(Y) is below its mean.<br>
+<p><span class="math inline">\(X\)</span> is above its mean.<br>
+<span class="math inline">\(Y\)</span> is below its mean.<br>
 This contributes negative correlation.</p>
 <p>If most points fall in the upper-right and lower-left quadrants, the correlation is positive.</p>
 <p>If most points fall in the upper-left and lower-right quadrants, the correlation is negative.</p>
@@ -748,48 +836,76 @@ This contributes negative correlation.</p>
 <section id="part-v-statistical-significance-of-correlation" class="level1" data-number="19">
 <h1 data-number="19"><span class="header-section-number">19</span> Part V: Statistical Significance of Correlation</h1>
 <section id="pearsons-r-as-an-estimate" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="pearsons-r-as-an-estimate"><span class="header-section-number">19.1</span> Pearson’s (r) as an Estimate</h2>
-<p>When we calculate Pearson’s (r) from sample data, it is a sample statistic.</p>
+<h2 data-number="19.1" class="anchored" data-anchor-id="pearsons-r-as-an-estimate"><span class="header-section-number">19.1</span> Pearson’s <span class="math inline">\(r\)</span> as an Estimate</h2>
+<p>When we calculate Pearson’s <span class="math inline">\(r\)</span> from sample data, it is a sample statistic.</p>
 <p>It estimates the true correlation in the population.</p>
 <p>Let the true population correlation be:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\rho
+\]</span></p>
 <p>The sample correlation is:</p>
-<p>[ r ]</p>
+<p><span class="math display">\[
+r
+\]</span></p>
 <p>The null hypothesis is usually:</p>
-<p>[ H_0: = 0 ]</p>
+<p><span class="math display">\[
+H_0: \rho = 0
+\]</span></p>
 <p>The alternative is:</p>
-<p>[ H_A: ]</p>
+<p><span class="math display">\[
+H_A: \rho \neq 0
+\]</span></p>
 <p>In words, the null hypothesis says there is no linear correlation in the population.</p>
 <hr>
 </section>
 <section id="standard-error-of-pearsons-r" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="standard-error-of-pearsons-r"><span class="header-section-number">19.2</span> Standard Error of Pearson’s (r)</h2>
-<p>The standard error of Pearson’s (r) is:</p>
-<p>[ SE_r = ]</p>
+<h2 data-number="19.2" class="anchored" data-anchor-id="standard-error-of-pearsons-r"><span class="header-section-number">19.2</span> Standard Error of Pearson’s <span class="math inline">\(r\)</span></h2>
+<p>The standard error of Pearson’s <span class="math inline">\(r\)</span> is:</p>
+<p><span class="math display">\[
+SE_r =
+\sqrt{
+\frac{1-r^2}{n-2}
+}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(r) is the sample correlation</li>
-<li>(n) is the sample size</li>
+<li><span class="math inline">\(r\)</span> is the sample correlation</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
 </ul>
 <p>The degrees of freedom are:</p>
-<p>[ df = n - 2 ]</p>
-<p>Why (n-2)?</p>
+<p><span class="math display">\[
+df = n - 2
+\]</span></p>
+<p>Why <span class="math inline">\(n-2\)</span>?</p>
 <p>Because estimating the correlation requires estimating two means:</p>
 <ul>
-<li>({X})</li>
-<li>({Y})</li>
+<li><span class="math inline">\(\bar{X}\)</span></li>
+<li><span class="math inline">\(\bar{Y}\)</span></li>
 </ul>
 <p>We lose one degree of freedom for each estimated mean.</p>
 <hr>
 </section>
 <section id="t-test-for-pearsons-r" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="t-test-for-pearsons-r"><span class="header-section-number">19.3</span> t-Test for Pearson’s (r)</h2>
+<h2 data-number="19.3" class="anchored" data-anchor-id="t-test-for-pearsons-r"><span class="header-section-number">19.3</span> t-Test for Pearson’s <span class="math inline">\(r\)</span></h2>
 <p>To test whether the correlation differs from zero, use:</p>
-<p>[ t = ]</p>
+<p><span class="math display">\[
+t =
+\frac{r}{SE_r}
+\]</span></p>
 <p>or:</p>
-<p>[ t = { } ]</p>
+<p><span class="math display">\[
+t =
+\frac{r}
+{
+\sqrt{
+\frac{1-r^2}{n-2}
+}
+}
+\]</span></p>
 <p>The test statistic follows a t-distribution with:</p>
-<p>[ df = n - 2 ]</p>
+<p><span class="math display">\[
+df = n - 2
+\]</span></p>
 <p>If the absolute value of the t-statistic exceeds the critical value, or if the p-value is less than alpha, we reject the null hypothesis.</p>
 <hr>
 </section>
@@ -797,11 +913,15 @@ This contributes negative correlation.</p>
 <h2 data-number="19.4" class="anchored" data-anchor-id="example-democracy-and-life-expectancy"><span class="header-section-number">19.4</span> Example: Democracy and Life Expectancy</h2>
 <p>Suppose we calculate the correlation between democracy and female life expectancy across countries.</p>
 <p>The result is:</p>
-<p>[ r = 0.3751 ]</p>
+<p><span class="math display">\[
+r = 0.3751
+\]</span></p>
 <p>This indicates a positive relationship: more democratic countries tend to have higher female life expectancy.</p>
 <p>The relationship is not extremely strong, but it is clearly positive.</p>
 <p>If the p-value is very small, we reject:</p>
-<p>[ H_0: = 0 ]</p>
+<p><span class="math display">\[
+H_0: \rho = 0
+\]</span></p>
 <p>and conclude that the correlation is statistically significant.</p>
 <p>A careful interpretation is:</p>
 <blockquote class="blockquote">
@@ -860,37 +980,41 @@ This contributes negative correlation.</p>
 <tr class="odd">
 <td>Variable 1</td>
 <td style="text-align: right;">1.00</td>
-<td style="text-align: right;">(r_{12})</td>
-<td style="text-align: right;">(r_{13})</td>
-<td style="text-align: right;">(r_{14})</td>
+<td style="text-align: right;"><span class="math inline">\(r_{12}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(r_{13}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(r_{14}\)</span></td>
 </tr>
 <tr class="even">
 <td>Variable 2</td>
-<td style="text-align: right;">(r_{21})</td>
+<td style="text-align: right;"><span class="math inline">\(r_{21}\)</span></td>
 <td style="text-align: right;">1.00</td>
-<td style="text-align: right;">(r_{23})</td>
-<td style="text-align: right;">(r_{24})</td>
+<td style="text-align: right;"><span class="math inline">\(r_{23}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(r_{24}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Variable 3</td>
-<td style="text-align: right;">(r_{31})</td>
-<td style="text-align: right;">(r_{32})</td>
+<td style="text-align: right;"><span class="math inline">\(r_{31}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(r_{32}\)</span></td>
 <td style="text-align: right;">1.00</td>
-<td style="text-align: right;">(r_{34})</td>
+<td style="text-align: right;"><span class="math inline">\(r_{34}\)</span></td>
 </tr>
 <tr class="even">
 <td>Variable 4</td>
-<td style="text-align: right;">(r_{41})</td>
-<td style="text-align: right;">(r_{42})</td>
-<td style="text-align: right;">(r_{43})</td>
+<td style="text-align: right;"><span class="math inline">\(r_{41}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(r_{42}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(r_{43}\)</span></td>
 <td style="text-align: right;">1.00</td>
 </tr>
 </tbody>
 </table>
 <p>The diagonal values are always 1 because each variable is perfectly correlated with itself.</p>
 <p>The matrix is symmetric:</p>
-<p>[ r_{12} = r_{21} ]</p>
-<p>[ r_{13} = r_{31} ]</p>
+<p><span class="math display">\[
+r_{12} = r_{21}
+\]</span></p>
+<p><span class="math display">\[
+r_{13} = r_{31}
+\]</span></p>
 <p>and so on.</p>
 <p>Some software reports the full matrix. Other software reports only one triangle of the matrix to avoid duplication.</p>
 <hr>
@@ -906,7 +1030,9 @@ This contributes negative correlation.</p>
 <li>unionization rate</li>
 </ul>
 <p>A correlation matrix might show that the correlation between unionization and inequality is:</p>
-<p>[ r = -0.43 ]</p>
+<p><span class="math display">\[
+r = -0.43
+\]</span></p>
 <p>This is a moderate negative relationship.</p>
 <p>Interpretation:</p>
 <blockquote class="blockquote">
@@ -914,7 +1040,9 @@ This contributes negative correlation.</p>
 </blockquote>
 <p>This is a descriptive association. It does not prove that unionization causes lower inequality. Other factors may influence both.</p>
 <p>Suppose the correlation between autocracy and education spending is:</p>
-<p>[ r = -0.08 ]</p>
+<p><span class="math display">\[
+r = -0.08
+\]</span></p>
 <p>This is a very weak negative relationship.</p>
 <p>Interpretation:</p>
 <blockquote class="blockquote">
@@ -928,8 +1056,8 @@ This contributes negative correlation.</p>
 <h1 data-number="21"><span class="header-section-number">21</span> Part VII: Cautions in Correlation Analysis</h1>
 <section id="correlation-measures-linear-association" class="level2" data-number="21.1">
 <h2 data-number="21.1" class="anchored" data-anchor-id="correlation-measures-linear-association"><span class="header-section-number">21.1</span> Correlation Measures Linear Association</h2>
-<p>Pearson’s (r) measures linear relationships.</p>
-<p>If the true relationship is curved, U-shaped, threshold-based, or otherwise nonlinear, Pearson’s (r) may be misleading.</p>
+<p>Pearson’s <span class="math inline">\(r\)</span> measures linear relationships.</p>
+<p>If the true relationship is curved, U-shaped, threshold-based, or otherwise nonlinear, Pearson’s <span class="math inline">\(r\)</span> may be misleading.</p>
 <p>Always look at a scatterplot when possible.</p>
 <p>A correlation coefficient is useful, but it should not be the only thing you inspect.</p>
 <hr>
@@ -941,7 +1069,7 @@ This contributes negative correlation.</p>
 <p>For example, a very wealthy country with unusual political institutions may influence a cross-national correlation between democracy and income.</p>
 <p>In later regression analysis, we will return to outliers more directly. For now, the basic advice is:</p>
 <blockquote class="blockquote">
-<p>Do not rely on Pearson’s (r) alone. Look at the data.</p>
+<p>Do not rely on Pearson’s <span class="math inline">\(r\)</span> alone. Look at the data.</p>
 </blockquote>
 <hr>
 </section>
@@ -959,8 +1087,10 @@ This contributes negative correlation.</p>
 <h2 data-number="21.4" class="anchored" data-anchor-id="statistical-significance-is-not-substantive-significance"><span class="header-section-number">21.4</span> Statistical Significance Is Not Substantive Significance</h2>
 <p>With a large sample, even a weak correlation can be statistically significant.</p>
 <p>For example:</p>
-<p>[ r = 0.05 ]</p>
-<p>may be statistically significant if (n) is very large.</p>
+<p><span class="math display">\[
+r = 0.05
+\]</span></p>
+<p>may be statistically significant if <span class="math inline">\(n\)</span> is very large.</p>
 <p>But it may not be substantively meaningful.</p>
 <p>Always ask:</p>
 <ul>
@@ -977,7 +1107,7 @@ This contributes negative correlation.</p>
 <h1 data-number="22"><span class="header-section-number">22</span> Key Terms</h1>
 <p><strong>Correlation</strong><br>
 A measure of association between two variables.</p>
-<p><strong>Pearson’s (r)</strong><br>
+<p><strong>Pearson’s <span class="math inline">\(r\)</span></strong><br>
 The most common correlation coefficient, measuring the strength and direction of a linear relationship between two interval-level variables.</p>
 <p><strong>Positive correlation</strong><br>
 A relationship in which higher values of one variable tend to be associated with higher values of another.</p>
@@ -991,12 +1121,12 @@ A graph showing the relationship between two quantitative variables.</p>
 The extent to which two variables vary together.</p>
 <p><strong>Correlation matrix</strong><br>
 A table showing correlations among multiple variables.</p>
-<p><strong>Population correlation ()</strong><br>
+<p><strong>Population correlation <span class="math inline">\(\rho\)</span></strong><br>
 The true correlation between two variables in the population.</p>
-<p><strong>Sample correlation (r)</strong><br>
+<p><strong>Sample correlation <span class="math inline">\(r\)</span></strong><br>
 The correlation between two variables calculated from sample data.</p>
-<p><strong>Standard error of (r)</strong><br>
-The estimated sampling variability of Pearson’s (r).</p>
+<p><strong>Standard error of <span class="math inline">\(r\)</span></strong><br>
+The estimated sampling variability of Pearson’s <span class="math inline">\(r\)</span>.</p>
 <p><strong>Bivariate analysis</strong><br>
 Analysis involving two variables.</p>
 <p><strong>Outlier</strong><br>
@@ -1006,11 +1136,16 @@ An observation with an unusually high or low value that may influence the analys
 <section id="chapter-summary" class="level1" data-number="23">
 <h1 data-number="23"><span class="header-section-number">23</span> Chapter Summary</h1>
 <p>Correlation analysis measures the relationship between two interval-level variables.</p>
-<p>The most common measure is Pearson’s correlation coefficient, (r). It ranges from -1 to 1. Positive values indicate that the variables tend to move together. Negative values indicate that they tend to move in opposite directions. Values near zero indicate little or no linear relationship.</p>
-<p>Pearson’s (r) measures linear association. It does not detect all possible relationships, especially nonlinear ones. A correlation near zero does not necessarily mean two variables are unrelated; it means they are not linearly related.</p>
-<p>The formula for Pearson’s (r) is based on covariation. It asks whether (X) and (Y) tend to be above or below their means at the same time. If they move together, the correlation is positive. If they move oppositely, it is negative.</p>
-<p>We can test whether a sample correlation differs from zero using a t-test with (n-2) degrees of freedom. The standard error of (r) is:</p>
-<p>[ SE_r = ]</p>
+<p>The most common measure is Pearson’s correlation coefficient, <span class="math inline">\(r\)</span>. It ranges from -1 to 1. Positive values indicate that the variables tend to move together. Negative values indicate that they tend to move in opposite directions. Values near zero indicate little or no linear relationship.</p>
+<p>Pearson’s <span class="math inline">\(r\)</span> measures linear association. It does not detect all possible relationships, especially nonlinear ones. A correlation near zero does not necessarily mean two variables are unrelated; it means they are not linearly related.</p>
+<p>The formula for Pearson’s <span class="math inline">\(r\)</span> is based on covariation. It asks whether <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> tend to be above or below their means at the same time. If they move together, the correlation is positive. If they move oppositely, it is negative.</p>
+<p>We can test whether a sample correlation differs from zero using a t-test with <span class="math inline">\(n-2\)</span> degrees of freedom. The standard error of <span class="math inline">\(r\)</span> is:</p>
+<p><span class="math display">\[
+SE_r =
+\sqrt{
+\frac{1-r^2}{n-2}
+}
+\]</span></p>
 <p>Correlation matrices allow us to examine many pairwise relationships at once.</p>
 <p>The central caution is that correlation is descriptive. It does not establish causality, does not control for other variables, and may miss nonlinear patterns. It is an important first step in analyzing relationships among quantitative variables, and it prepares us for the next major topic: linear regression.</p>
 

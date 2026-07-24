@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -308,9 +337,9 @@ ul.task-list li input[type="checkbox"] {
 <p>We usually cannot observe the full population. Instead, we collect a sample and calculate sample statistics.</p>
 <p>For example:</p>
 <ul>
-<li>We use a sample mean ({Y}) to estimate a population mean ().</li>
-<li>We use a sample proportion () to estimate a population proportion ().</li>
-<li>We use a sample standard deviation (s) to estimate a population standard deviation ().</li>
+<li>We use a sample mean <span class="math inline">\(\bar{Y}\)</span> to estimate a population mean <span class="math inline">\(\mu\)</span>.</li>
+<li>We use a sample proportion <span class="math inline">\(\hat{\pi}\)</span> to estimate a population proportion <span class="math inline">\(\pi\)</span>.</li>
+<li>We use a sample standard deviation <span class="math inline">\(s\)</span> to estimate a population standard deviation <span class="math inline">\(\sigma\)</span>.</li>
 </ul>
 <p>These sample statistics are <strong>point estimates</strong>.</p>
 <p>A <strong>point estimate</strong> is a single-number estimate of a population parameter.</p>
@@ -326,20 +355,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-the-central-limit-theorem-gives-us" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="what-the-central-limit-theorem-gives-us"><span class="header-section-number">8.2</span> What the Central Limit Theorem Gives Us</h2>
 <p>The Central Limit Theorem tells us that, under appropriate conditions, the sampling distribution of a sample mean is approximately normal.</p>
-<p>For a random sample of size (n), drawn from a population with mean () and standard deviation (), the sample mean ({Y}) has a sampling distribution that is:</p>
+<p>For a random sample of size <span class="math inline">\(n\)</span>, drawn from a population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the sample mean <span class="math inline">\(\bar{Y}\)</span> has a sampling distribution that is:</p>
 <ol type="1">
 <li>Approximately normal under the right conditions.</li>
-<li>Centered at the true population mean ().</li>
+<li>Centered at the true population mean <span class="math inline">\(\mu\)</span>.</li>
 <li>Has standard deviation:</li>
 </ol>
-<p>[ _{{Y}} = ]</p>
+<p><span class="math display">\[
+\sigma_{\bar{Y}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>This standard deviation of the sampling distribution is called the <strong>standard error</strong>.</p>
 <p>The standard error tells us how much sample means typically vary from the true population mean.</p>
 <p>So, for a sample mean:</p>
-<p>[ SE_{{Y}} = ]</p>
-<p>if () is known.</p>
-<p>Usually, () is not known, so we estimate it using the sample standard deviation (s):</p>
-<p>[ _{{Y}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{Y}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>if <span class="math inline">\(\sigma\)</span> is known.</p>
+<p>Usually, <span class="math inline">\(\sigma\)</span> is not known, so we estimate it using the sample standard deviation <span class="math inline">\(s\)</span>:</p>
+<p><span class="math display">\[
+\widehat{SE}_{\bar{Y}} = \frac{s}{\sqrt{n}}
+\]</span></p>
 <p>This is the estimated standard error.</p>
 <p>The Central Limit Theorem gives us the foundation for confidence intervals because it tells us the shape, center, and spread of the sampling distribution.</p>
 <hr>
@@ -349,10 +384,14 @@ ul.task-list li input[type="checkbox"] {
 <p>A sample statistic usually differs from the population parameter.</p>
 <p>The difference is called <strong>sampling error</strong>.</p>
 <p>For a sample mean, sampling error is:</p>
-<p>[ {Y} - ]</p>
+<p><span class="math display">\[
+\bar{Y} - \mu
+\]</span></p>
 <p>For a sample proportion, sampling error is:</p>
-<p>[ - ]</p>
-<p>We usually do not know the actual sampling error because we do not know the population parameter. If we knew () or (), we would not need to estimate it.</p>
+<p><span class="math display">\[
+\hat{\pi} - \pi
+\]</span></p>
+<p>We usually do not know the actual sampling error because we do not know the population parameter. If we knew <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\pi\)</span>, we would not need to estimate it.</p>
 <p>But we can estimate the typical size of sampling error using the standard error.</p>
 <p>The standard error tells us, on average across repeated samples, how much a sample statistic tends to miss the true population parameter.</p>
 <p>That is the key to inference.</p>
@@ -364,13 +403,21 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="9.1" class="anchored" data-anchor-id="point-estimates"><span class="header-section-number">9.1</span> Point Estimates</h2>
 <p>A <strong>point estimate</strong> is a single value calculated from sample data and used to estimate a population parameter.</p>
 <p>Examples include:</p>
-<p>[ {Y} ]</p>
+<p><span class="math display">\[
+\bar{Y}
+\]</span></p>
 <p>as an estimate of:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\mu
+\]</span></p>
 <p>and:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\hat{\pi}
+\]</span></p>
 <p>as an estimate of:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\pi
+\]</span></p>
 <p>For example:</p>
 <ul>
 <li>A survey estimates unemployment at 4.3 percent.</li>
@@ -394,9 +441,13 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>That means the point estimate is 47 percent, and the interval estimate extends 2 percentage points in each direction.</p>
 <p>So the interval runs from:</p>
-<p>[ 47 - 2 = 45 ]</p>
+<p><span class="math display">\[
+47 - 2 = 45
+\]</span></p>
 <p>to:</p>
-<p>[ 47 + 2 = 49 ]</p>
+<p><span class="math display">\[
+47 + 2 = 49
+\]</span></p>
 <p>The margin of error communicates the precision of the estimate.</p>
 <p>A smaller margin of error means the estimate is more precise.<br>
 A larger margin of error means the estimate is less precise.</p>
@@ -408,9 +459,13 @@ A larger margin of error means the estimate is less precise.</p>
 <p>That number comes from survey data, specifically the Current Population Survey. Because it is based on a sample, it has sampling error.</p>
 <p>Suppose the technical documentation reports that the margin of error for a 90 percent confidence interval is plus or minus 0.2 percentage points.</p>
 <p>Then the interval is:</p>
-<p>[ 4.3 ]</p>
+<p><span class="math display">\[
+4.3 \pm 0.2
+\]</span></p>
 <p>or:</p>
-<p>[ 4.1 4.5 ]</p>
+<p><span class="math display">\[
+4.1 \text{ to } 4.5
+\]</span></p>
 <p>This interval communicates uncertainty around the point estimate.</p>
 <p>The reported unemployment rate is 4.3 percent, but the survey procedure has a degree of imprecision. The confidence interval expresses that imprecision.</p>
 <hr>
@@ -437,19 +492,31 @@ A larger margin of error means the estimate is less precise.</p>
 <section id="the-general-form-of-a-confidence-interval" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="the-general-form-of-a-confidence-interval"><span class="header-section-number">10.2</span> The General Form of a Confidence Interval</h2>
 <p>All confidence intervals have the same basic structure:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\text{Point Estimate} \pm \text{Margin of Error}
+\]</span></p>
 <p>The margin of error has two parts:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{Margin of Error} = \text{Critical Value} \times \text{Standard Error}
+\]</span></p>
 <p>So:</p>
-<p>[ = ()() ]</p>
+<p><span class="math display">\[
+\text{Confidence Interval} = \text{Point Estimate} \pm (\text{Critical Value})(\text{Standard Error})
+\]</span></p>
 <p>The <strong>standard error</strong> tells us how much random sampling error we expect.</p>
 <p>The <strong>critical value</strong> tells us how far out we need to go in the sampling distribution to achieve the desired level of confidence.</p>
 <p>For a 95 percent confidence interval using the standard normal distribution, the critical value is:</p>
-<p>[ 1.96 ]</p>
+<p><span class="math display">\[
+1.96
+\]</span></p>
 <p>because 95 percent of the standard normal distribution lies between:</p>
-<p>[ -1.96 ]</p>
+<p><span class="math display">\[
+-1.96
+\]</span></p>
 <p>and:</p>
-<p>[ 1.96 ]</p>
+<p><span class="math display">\[
+1.96
+\]</span></p>
 <hr>
 </section>
 <section id="confidence-levels" class="level2" data-number="10.3">
@@ -465,7 +532,7 @@ A larger margin of error means the estimate is less precise.</p>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Confidence Level</th>
-<th style="text-align: right;">Alpha ()</th>
+<th style="text-align: right;">Alpha <span class="math inline">\(\alpha\)</span></th>
 <th style="text-align: right;">Two-Tailed Critical Value, Normal Approximation</th>
 </tr>
 </thead>
@@ -503,23 +570,37 @@ A larger margin of error means the estimate is less precise.</p>
 </section>
 <section id="alpha" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="alpha"><span class="header-section-number">10.4</span> Alpha</h2>
-<p>The symbol (), called <strong>alpha</strong>, represents the probability that the confidence interval procedure fails to capture the true parameter.</p>
+<p>The symbol <span class="math inline">\(\alpha\)</span>, called <strong>alpha</strong>, represents the probability that the confidence interval procedure fails to capture the true parameter.</p>
 <p>It is the complement of the confidence level.</p>
 <p>For a 95 percent confidence interval:</p>
-<p>[ = 1 - 0.95 = 0.05 ]</p>
+<p><span class="math display">\[
+\alpha = 1 - 0.95 = 0.05
+\]</span></p>
 <p>For a 90 percent confidence interval:</p>
-<p>[ = 1 - 0.90 = 0.10 ]</p>
+<p><span class="math display">\[
+\alpha = 1 - 0.90 = 0.10
+\]</span></p>
 <p>For a 99 percent confidence interval:</p>
-<p>[ = 1 - 0.99 = 0.01 ]</p>
-<p>In a two-sided confidence interval, () is split between the two tails of the sampling distribution.</p>
+<p><span class="math display">\[
+\alpha = 1 - 0.99 = 0.01
+\]</span></p>
+<p>In a two-sided confidence interval, <span class="math inline">\(\alpha\)</span> is split between the two tails of the sampling distribution.</p>
 <p>For a 95 percent confidence interval:</p>
-<p>[ = 0.05 ]</p>
+<p><span class="math display">\[
+\alpha = 0.05
+\]</span></p>
 <p>so each tail contains:</p>
-<p>[ = 0.025 ]</p>
+<p><span class="math display">\[
+\frac{\alpha}{2} = 0.025
+\]</span></p>
 <p>That is why the critical values are:</p>
-<p>[ -1.96 ]</p>
+<p><span class="math display">\[
+-1.96
+\]</span></p>
 <p>and:</p>
-<p>[ 1.96 ]</p>
+<p><span class="math display">\[
+1.96
+\]</span></p>
 <p>Those values leave 2.5 percent in the lower tail and 2.5 percent in the upper tail.</p>
 <hr>
 </section>
@@ -527,16 +608,26 @@ A larger margin of error means the estimate is less precise.</p>
 <h2 data-number="10.5" class="anchored" data-anchor-id="critical-values"><span class="header-section-number">10.5</span> Critical Values</h2>
 <p>A <strong>critical value</strong> is the value from a probability distribution that corresponds to a desired confidence level.</p>
 <p>For a 95 percent confidence interval using the standard normal distribution, the critical value is:</p>
-<p>[ z^* = 1.96 ]</p>
+<p><span class="math display">\[
+z^* = 1.96
+\]</span></p>
 <p>For a 90 percent confidence interval:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+z^* \approx 1.64
+\]</span></p>
 <p>For a 99 percent confidence interval:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+z^* \approx 2.58
+\]</span></p>
 <p>The critical value tells us how many standard errors to move away from the point estimate.</p>
 <p>For a 95 percent confidence interval:</p>
-<p>[ (SE) ]</p>
+<p><span class="math display">\[
+\text{Point Estimate} \pm 1.96(SE)
+\]</span></p>
 <p>For a 99 percent confidence interval:</p>
-<p>[ (SE) ]</p>
+<p><span class="math display">\[
+\text{Point Estimate} \pm 2.58(SE)
+\]</span></p>
 <p>A larger critical value produces a wider interval.</p>
 <hr>
 </section>
@@ -547,7 +638,9 @@ A larger margin of error means the estimate is less precise.</p>
 <h2 data-number="11.1" class="anchored" data-anchor-id="what-confidence-intervals-do-not-mean"><span class="header-section-number">11.1</span> What Confidence Intervals Do Not Mean</h2>
 <p>A confidence interval is often misinterpreted.</p>
 <p>Suppose we calculate a 95 percent confidence interval for a mean and get:</p>
-<p>[ 9.752 10.248 ]</p>
+<p><span class="math display">\[
+9.752 \text{ to } 10.248
+\]</span></p>
 <p>It is tempting to say:</p>
 <blockquote class="blockquote">
 <p>There is a 95 percent chance that the true population mean lies between 9.752 and 10.248.</p>
@@ -602,57 +695,69 @@ A larger margin of error means the estimate is less precise.</p>
 <h1 data-number="12"><span class="header-section-number">12</span> Part IV: Confidence Intervals for Means</h1>
 <section id="confidence-interval-for-a-mean-ideal-case" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="confidence-interval-for-a-mean-ideal-case"><span class="header-section-number">12.1</span> Confidence Interval for a Mean: Ideal Case</h2>
-<p>Suppose we want to estimate a population mean ().</p>
-<p>If we knew the population standard deviation (), then the standard error of the sample mean would be:</p>
-<p>[ SE_{{Y}} = ]</p>
+<p>Suppose we want to estimate a population mean <span class="math inline">\(\mu\)</span>.</p>
+<p>If we knew the population standard deviation <span class="math inline">\(\sigma\)</span>, then the standard error of the sample mean would be:</p>
+<p><span class="math display">\[
+SE_{\bar{Y}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>A confidence interval for the mean would be:</p>
-<p>[ {Y} z^*() ]</p>
+<p><span class="math display">\[
+\bar{Y} \pm z^*\left(\frac{\sigma}{\sqrt{n}}\right)
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>({Y}) is the sample mean</li>
-<li>(z^*) is the critical value from the standard normal distribution</li>
-<li>() is the population standard deviation</li>
-<li>(n) is the sample size</li>
+<li><span class="math inline">\(\bar{Y}\)</span> is the sample mean</li>
+<li><span class="math inline">\(z^*\)</span> is the critical value from the standard normal distribution</li>
+<li><span class="math inline">\(\sigma\)</span> is the population standard deviation</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
 </ul>
-<p>This ideal case is useful theoretically, but it is uncommon in practice because we usually do not know ().</p>
+<p>This ideal case is useful theoretically, but it is uncommon in practice because we usually do not know <span class="math inline">\(\sigma\)</span>.</p>
 <hr>
 </section>
 <section id="confidence-interval-for-a-mean-practical-case" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="confidence-interval-for-a-mean-practical-case"><span class="header-section-number">12.2</span> Confidence Interval for a Mean: Practical Case</h2>
-<p>Usually, we do not know the population standard deviation ().</p>
-<p>Instead, we estimate it using the sample standard deviation (s).</p>
+<p>Usually, we do not know the population standard deviation <span class="math inline">\(\sigma\)</span>.</p>
+<p>Instead, we estimate it using the sample standard deviation <span class="math inline">\(s\)</span>.</p>
 <p>The estimated standard error is:</p>
-<p>[ _{{Y}} = ]</p>
-<p>Because we estimate (), we introduce additional uncertainty. To account for this, we use the <strong>t-distribution</strong> rather than the standard normal distribution.</p>
+<p><span class="math display">\[
+\widehat{SE}_{\bar{Y}} = \frac{s}{\sqrt{n}}
+\]</span></p>
+<p>Because we estimate <span class="math inline">\(\sigma\)</span>, we introduce additional uncertainty. To account for this, we use the <strong>t-distribution</strong> rather than the standard normal distribution.</p>
 <p>The confidence interval for a mean is:</p>
-<p>[ {Y} t^*() ]</p>
+<p><span class="math display">\[
+\bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>({Y}) is the sample mean</li>
-<li>(t^*) is the critical value from the t-distribution</li>
-<li>(s) is the sample standard deviation</li>
-<li>(n) is the sample size</li>
+<li><span class="math inline">\(\bar{Y}\)</span> is the sample mean</li>
+<li><span class="math inline">\(t^*\)</span> is the critical value from the t-distribution</li>
+<li><span class="math inline">\(s\)</span> is the sample standard deviation</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
 </ul>
 <p>The quantity:</p>
-<p>[ t^*() ]</p>
+<p><span class="math display">\[
+t^*\left(\frac{s}{\sqrt{n}}\right)
+\]</span></p>
 <p>is the margin of error.</p>
 <hr>
 </section>
 <section id="why-the-t-distribution" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="why-the-t-distribution"><span class="header-section-number">12.3</span> Why the t-Distribution?</h2>
 <p>The t-distribution looks similar to the normal distribution, but it has more area in the tails.</p>
-<p>That extra tail area reflects additional uncertainty from estimating () with (s).</p>
-<p>When sample size is small, (s) may be a noisy estimate of (). The t-distribution accounts for that by producing wider intervals.</p>
+<p>That extra tail area reflects additional uncertainty from estimating <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span>.</p>
+<p>When sample size is small, <span class="math inline">\(s\)</span> may be a noisy estimate of <span class="math inline">\(\sigma\)</span>. The t-distribution accounts for that by producing wider intervals.</p>
 <p>As sample size increases, the t-distribution becomes nearly identical to the standard normal distribution.</p>
-<p>For large samples, using (t) or (z) makes almost no difference.</p>
-<p>For small samples, using (t) matters.</p>
+<p>For large samples, using <span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span> makes almost no difference.</p>
+<p>For small samples, using <span class="math inline">\(t\)</span> matters.</p>
 <hr>
 </section>
 <section id="degrees-of-freedom" class="level2" data-number="12.4">
 <h2 data-number="12.4" class="anchored" data-anchor-id="degrees-of-freedom"><span class="header-section-number">12.4</span> Degrees of Freedom</h2>
 <p>The t-distribution depends on <strong>degrees of freedom</strong>.</p>
 <p>For a one-sample confidence interval for a mean, the degrees of freedom are:</p>
-<p>[ df = n - 1 ]</p>
+<p><span class="math display">\[
+df = n - 1
+\]</span></p>
 <p>The smaller the degrees of freedom, the heavier the tails of the t-distribution.</p>
 <p>As degrees of freedom increase, the t-distribution approaches the standard normal distribution.</p>
 <p>In practice:</p>
@@ -672,41 +777,67 @@ A larger margin of error means the estimate is less precise.</p>
 <p>That last condition is satisfied if either:</p>
 <ol type="1">
 <li>The population distribution is approximately normal, or</li>
-<li>The sample size is large enough, usually (n ).</li>
+<li>The sample size is large enough, usually <span class="math inline">\(n \geq 30\)</span>.</li>
 </ol>
 <p>If the sample size is less than 30 and the population distribution is strongly skewed or otherwise non-normal, the usual t procedure may not be appropriate.</p>
-<p>The t-distribution adjusts for estimating (). It does not fix a non-normal sampling distribution caused by a small sample from a non-normal population.</p>
+<p>The t-distribution adjusts for estimating <span class="math inline">\(\sigma\)</span>. It does not fix a non-normal sampling distribution caused by a small sample from a non-normal population.</p>
 <p>That distinction is important.</p>
 <hr>
 </section>
 <section id="example-confidence-interval-for-mean-years-of-education" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="example-confidence-interval-for-mean-years-of-education"><span class="header-section-number">12.6</span> Example: Confidence Interval for Mean Years of Education</h2>
 <p>Suppose we survey:</p>
-<p>[ n = 1000 ]</p>
+<p><span class="math display">\[
+n = 1000
+\]</span></p>
 <p>people and measure years of education.</p>
 <p>The sample mean is:</p>
-<p>[ {Y} = 10 ]</p>
+<p><span class="math display">\[
+\bar{Y} = 10
+\]</span></p>
 <p>The sample standard deviation is:</p>
-<p>[ s = 4 ]</p>
+<p><span class="math display">\[
+s = 4
+\]</span></p>
 <p>We want a 95 percent confidence interval for the population mean years of education.</p>
 <p>The formula is:</p>
-<p>[ {Y} t^*() ]</p>
-<p>Because (n = 1000), the t critical value for a 95 percent confidence interval is essentially the same as the z critical value:</p>
-<p>[ t^* ]</p>
+<p><span class="math display">\[
+\bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
+\]</span></p>
+<p>Because <span class="math inline">\(n = 1000\)</span>, the t critical value for a 95 percent confidence interval is essentially the same as the z critical value:</p>
+<p><span class="math display">\[
+t^* \approx 1.96
+\]</span></p>
 <p>Now calculate the estimated standard error:</p>
-<p>[ = ]</p>
-<p>[ ]</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{s}{\sqrt{n}} = \frac{4}{\sqrt{1000}}
+\]</span></p>
+<p><span class="math display">\[
+\sqrt{1000} \approx 31.62
+\]</span></p>
+<p><span class="math display">\[
+\frac{4}{31.62} \approx 0.1265
+\]</span></p>
 <p>Now calculate the margin of error:</p>
-<p>[ 1.96(0.1265) ]</p>
+<p><span class="math display">\[
+1.96(0.1265) \approx 0.248
+\]</span></p>
 <p>So the confidence interval is:</p>
-<p>[ 10 ]</p>
+<p><span class="math display">\[
+10 \pm 0.248
+\]</span></p>
 <p>Lower bound:</p>
-<p>[ 10 - 0.248 = 9.752 ]</p>
+<p><span class="math display">\[
+10 - 0.248 = 9.752
+\]</span></p>
 <p>Upper bound:</p>
-<p>[ 10 + 0.248 = 10.248 ]</p>
+<p><span class="math display">\[
+10 + 0.248 = 10.248
+\]</span></p>
 <p>The 95 percent confidence interval is:</p>
-<p>[ 9.752 10.248 ]</p>
+<p><span class="math display">\[
+9.752 \text{ to } 10.248
+\]</span></p>
 <p>A correct interpretation is:</p>
 <blockquote class="blockquote">
 <p>We used a procedure that, across repeated random samples, would produce confidence intervals containing the true population mean 95 percent of the time. In this sample, the resulting interval ranges from 9.752 to 10.248 years of education.</p>
@@ -720,7 +851,9 @@ A larger margin of error means the estimate is less precise.</p>
 <h2 data-number="13.1" class="anchored" data-anchor-id="population-and-sample-proportions"><span class="header-section-number">13.1</span> Population and Sample Proportions</h2>
 <p>A <strong>population proportion</strong> is the proportion of cases in the population that fall into a category.</p>
 <p>We represent the population proportion as:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\pi
+\]</span></p>
 <p>Examples include:</p>
 <ul>
 <li>the proportion of voters who support Candidate A</li>
@@ -729,20 +862,30 @@ A larger margin of error means the estimate is less precise.</p>
 <li>the proportion of adults who are unemployed</li>
 </ul>
 <p>The sample proportion is written:</p>
-<p>[ ]</p>
-<p>The hat indicates that () estimates ().</p>
+<p><span class="math display">\[
+\hat{\pi}
+\]</span></p>
+<p>The hat indicates that <span class="math inline">\(\hat{\pi}\)</span> estimates <span class="math inline">\(\pi\)</span>.</p>
 <p>If 44 percent of survey respondents own a dog, then:</p>
-<p>[ = 0.44 ]</p>
+<p><span class="math display">\[
+\hat{\pi} = 0.44
+\]</span></p>
 <hr>
 </section>
 <section id="proportions-as-means-of-zeros-and-ones" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="proportions-as-means-of-zeros-and-ones"><span class="header-section-number">13.2</span> Proportions as Means of Zeros and Ones</h2>
 <p>A sample proportion can be understood as the mean of a binary variable.</p>
 <p>Suppose we code dog ownership as:</p>
-<p>[ 1 = ]</p>
-<p>[ 0 = ]</p>
+<p><span class="math display">\[
+1 = \text{owns a dog}
+\]</span></p>
+<p><span class="math display">\[
+0 = \text{does not own a dog}
+\]</span></p>
 <p>If 44 percent of people in the sample own a dog, then the mean of this 0/1 variable is:</p>
-<p>[ 0.44 ]</p>
+<p><span class="math display">\[
+0.44
+\]</span></p>
 <p>That is the sample proportion.</p>
 <p>Because proportions are means of binary variables, the Central Limit Theorem applies to proportions as well. However, because binary variables are discrete and bounded by 0 and 1, the conditions are somewhat different.</p>
 <hr>
@@ -750,15 +893,19 @@ A larger margin of error means the estimate is less precise.</p>
 <section id="standard-error-for-a-proportion" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="standard-error-for-a-proportion"><span class="header-section-number">13.3</span> Standard Error for a Proportion</h2>
 <p>The true standard error of a sample proportion is:</p>
-<p>[ SE_{} = ]</p>
+<p><span class="math display">\[
+SE_{\hat{\pi}} = \sqrt{\frac{\pi(1-\pi)}{n}}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>() is the population proportion</li>
-<li>(n) is the sample size</li>
+<li><span class="math inline">\(\pi\)</span> is the population proportion</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
 </ul>
-<p>But we usually do not know (), so we estimate it with ().</p>
+<p>But we usually do not know <span class="math inline">\(\pi\)</span>, so we estimate it with <span class="math inline">\(\hat{\pi}\)</span>.</p>
 <p>The estimated standard error is:</p>
-<p>[ _{} = ]</p>
+<p><span class="math display">\[
+\widehat{SE}_{\hat{\pi}} = \sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
 <p>This tells us how much sample proportions typically vary from the true population proportion.</p>
 <hr>
 </section>
@@ -766,7 +913,7 @@ A larger margin of error means the estimate is less precise.</p>
 <h2 data-number="13.4" class="anchored" data-anchor-id="why-we-use-z-for-proportions"><span class="header-section-number">13.4</span> Why We Use z for Proportions</h2>
 <p>For proportions, we do not use the t-distribution.</p>
 <p>This is important.</p>
-<p>For means, we use the t-distribution because we estimate the population standard deviation () with the sample standard deviation (s).</p>
+<p>For means, we use the t-distribution because we estimate the population standard deviation <span class="math inline">\(\sigma\)</span> with the sample standard deviation <span class="math inline">\(s\)</span>.</p>
 <p>For proportions, the relevant distribution is fundamentally connected to the binomial distribution. The binomial distribution gives the exact probabilities of different numbers of successes in a fixed number of trials.</p>
 <p>When sample size is large enough, the binomial distribution can be approximated by the normal distribution. Then we use the z-distribution.</p>
 <p>So for proportions:</p>
@@ -782,9 +929,13 @@ A larger margin of error means the estimate is less precise.</p>
 <p>To use the normal approximation for a confidence interval for a proportion, the sample size must be large enough.</p>
 <p>A useful rule of thumb is that each category should have at least about 15 cases.</p>
 <p>That is:</p>
-<p>[ n ]</p>
+<p><span class="math display">\[
+n\hat{\pi} \geq 15
+\]</span></p>
 <p>and:</p>
-<p>[ n(1-) ]</p>
+<p><span class="math display">\[
+n(1-\hat{\pi}) \geq 15
+\]</span></p>
 <p>In words:</p>
 <ul>
 <li>At least 15 cases should be in the category of interest.</li>
@@ -797,52 +948,88 @@ A larger margin of error means the estimate is less precise.</p>
 <section id="confidence-interval-formula-for-a-proportion" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="confidence-interval-formula-for-a-proportion"><span class="header-section-number">13.6</span> Confidence Interval Formula for a Proportion</h2>
 <p>The confidence interval for a proportion is:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>() is the sample proportion</li>
-<li>(z^*) is the critical value from the standard normal distribution</li>
-<li>(n) is the sample size</li>
+<li><span class="math inline">\(\hat{\pi}\)</span> is the sample proportion</li>
+<li><span class="math inline">\(z^*\)</span> is the critical value from the standard normal distribution</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
 </ul>
 <p>The margin of error is:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
 <p>For a 95 percent confidence interval:</p>
-<p>[ z^* = 1.96 ]</p>
+<p><span class="math display">\[
+z^* = 1.96
+\]</span></p>
 <p>For a 99 percent confidence interval:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+z^* \approx 2.58
+\]</span></p>
 <hr>
 </section>
 <section id="example-dog-ownership" class="level2" data-number="13.7">
 <h2 data-number="13.7" class="anchored" data-anchor-id="example-dog-ownership"><span class="header-section-number">13.7</span> Example: Dog Ownership</h2>
 <p>Suppose a survey asks Americans whether they own a dog.</p>
 <p>The sample size is:</p>
-<p>[ n = 2053 ]</p>
+<p><span class="math display">\[
+n = 2053
+\]</span></p>
 <p>The sample proportion who say they own a dog is:</p>
-<p>[ = 0.44 ]</p>
+<p><span class="math display">\[
+\hat{\pi} = 0.44
+\]</span></p>
 <p>We want a 99 percent confidence interval for the population proportion.</p>
 <p>For a 99 percent confidence interval:</p>
-<p>[ z^* = 2.58 ]</p>
+<p><span class="math display">\[
+z^* = 2.58
+\]</span></p>
 <p>The formula is:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ 0.44 ]</p>
+<p><span class="math display">\[
+0.44 \pm 2.58\sqrt{\frac{0.44(1-0.44)}{2053}}
+\]</span></p>
 <p>Calculate inside the square root:</p>
-<p>[ 0.44(0.56) = 0.2464 ]</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+0.44(0.56) = 0.2464
+\]</span></p>
+<p><span class="math display">\[
+\frac{0.2464}{2053} \approx 0.000120
+\]</span></p>
 <p>Take the square root:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\sqrt{0.000120} \approx 0.01095
+\]</span></p>
 <p>Now multiply by the critical value:</p>
-<p>[ 2.58(0.01095) ]</p>
+<p><span class="math display">\[
+2.58(0.01095) \approx 0.028
+\]</span></p>
 <p>The margin of error is approximately:</p>
-<p>[ 0.03 ]</p>
+<p><span class="math display">\[
+0.03
+\]</span></p>
 <p>So the confidence interval is approximately:</p>
-<p>[ 0.44 ]</p>
+<p><span class="math display">\[
+0.44 \pm 0.03
+\]</span></p>
 <p>Lower bound:</p>
-<p>[ 0.44 - 0.03 = 0.41 ]</p>
+<p><span class="math display">\[
+0.44 - 0.03 = 0.41
+\]</span></p>
 <p>Upper bound:</p>
-<p>[ 0.44 + 0.03 = 0.47 ]</p>
+<p><span class="math display">\[
+0.44 + 0.03 = 0.47
+\]</span></p>
 <p>The 99 percent confidence interval is approximately:</p>
-<p>[ 0.41 0.47 ]</p>
+<p><span class="math display">\[
+0.41 \text{ to } 0.47
+\]</span></p>
 <p>A correct interpretation is:</p>
 <blockquote class="blockquote">
 <p>We used a procedure that, across repeated random samples, would produce confidence intervals containing the true population proportion 99 percent of the time. In this sample, the resulting interval ranges from approximately 0.41 to 0.47.</p>
@@ -857,17 +1044,21 @@ A larger margin of error means the estimate is less precise.</p>
 <section id="symmetric-and-asymmetric-intervals-for-proportions" class="level2" data-number="13.8">
 <h2 data-number="13.8" class="anchored" data-anchor-id="symmetric-and-asymmetric-intervals-for-proportions"><span class="header-section-number">13.8</span> Symmetric and Asymmetric Intervals for Proportions</h2>
 <p>The textbook confidence interval for a proportion uses the normal approximation:</p>
-<p>[ z^* ]</p>
-<p>This produces a symmetric interval around ().</p>
+<p><span class="math display">\[
+\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
+<p>This produces a symmetric interval around <span class="math inline">\(\hat{\pi}\)</span>.</p>
 <p>That is usually fine when:</p>
 <ul>
 <li>the sample size is large</li>
 <li>the sample proportion is not too close to 0 or 1</li>
 </ul>
 <p>But proportions are bounded:</p>
-<p>[ 0 ]</p>
-<p>If () is close to 0 or 1, a symmetric normal interval can behave poorly. It may extend below 0 or above 1, which is impossible for a proportion.</p>
-<p>For example, if ( = 0.96), a symmetric confidence interval might try to extend above 1. That does not make sense.</p>
+<p><span class="math display">\[
+0 \leq \pi \leq 1
+\]</span></p>
+<p>If <span class="math inline">\(\hat{\pi}\)</span> is close to 0 or 1, a symmetric normal interval can behave poorly. It may extend below 0 or above 1, which is impossible for a proportion.</p>
+<p>For example, if <span class="math inline">\(\hat{\pi} = 0.96\)</span>, a symmetric confidence interval might try to extend above 1. That does not make sense.</p>
 <p>Software often uses better methods in these cases, such as:</p>
 <ul>
 <li>exact binomial intervals</li>
@@ -884,14 +1075,20 @@ A larger margin of error means the estimate is less precise.</p>
 <section id="means-versus-proportions" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="means-versus-proportions"><span class="header-section-number">14.1</span> Means Versus Proportions</h2>
 <p>Confidence intervals for means and proportions follow the same general logic:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\text{Point Estimate} \pm \text{Margin of Error}
+\]</span></p>
 <p>But the details differ.</p>
 <p>For a mean:</p>
-<p>[ {Y} t^*() ]</p>
+<p><span class="math display">\[
+\bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
+\]</span></p>
 <p>For a proportion:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
 <p>The differences are important.</p>
-<p>For means, we usually use the t-distribution because we estimate the population standard deviation with (s).</p>
+<p>For means, we usually use the t-distribution because we estimate the population standard deviation with <span class="math inline">\(s\)</span>.</p>
 <p>For proportions, we use the z-distribution when the sample size is large enough, or exact binomial methods when it is not.</p>
 <hr>
 </section>
@@ -913,33 +1110,33 @@ A larger margin of error means the estimate is less precise.</p>
 <tbody>
 <tr class="odd">
 <td>Population parameter</td>
-<td style="text-align: right;">()</td>
-<td style="text-align: right;">()</td>
+<td style="text-align: right;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\pi\)</span></td>
 </tr>
 <tr class="even">
 <td>Sample estimate</td>
-<td style="text-align: right;">({Y})</td>
-<td style="text-align: right;">()</td>
+<td style="text-align: right;"><span class="math inline">\(\bar{Y}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\hat{\pi}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Standard error estimate</td>
-<td style="text-align: right;">()</td>
-<td style="text-align: right;">()</td>
+<td style="text-align: right;"><span class="math inline">\(\frac{s}{\sqrt{n}}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}\)</span></td>
 </tr>
 <tr class="even">
 <td>Usual critical value</td>
-<td style="text-align: right;">(t^*)</td>
-<td style="text-align: right;">(z^*)</td>
+<td style="text-align: right;"><span class="math inline">\(t^*\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(z^*\)</span></td>
 </tr>
 <tr class="odd">
 <td>Small-sample issue</td>
-<td style="text-align: right;">Need population normality or large (n)</td>
+<td style="text-align: right;">Need population normality or large <span class="math inline">\(n\)</span></td>
 <td style="text-align: right;">Use binomial if normal approximation fails</td>
 </tr>
 <tr class="even">
 <td>Common confidence interval</td>
-<td style="text-align: right;">({Y} t^*)</td>
-<td style="text-align: right;">( z^*)</td>
+<td style="text-align: right;"><span class="math inline">\(\bar{Y} \pm t^*\frac{s}{\sqrt{n}}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -958,12 +1155,16 @@ A larger margin of error means the estimate is less precise.</p>
 <li>The sample or population is more variable.</li>
 </ol>
 <p>For means, the standard error is:</p>
-<p>[ ]</p>
-<p>So a larger (s) means a wider interval.</p>
-<p>A larger (n) means a narrower interval.</p>
+<p><span class="math display">\[
+\frac{s}{\sqrt{n}}
+\]</span></p>
+<p>So a larger <span class="math inline">\(s\)</span> means a wider interval.</p>
+<p>A larger <span class="math inline">\(n\)</span> means a narrower interval.</p>
 <p>For proportions, the standard error is:</p>
-<p>[ ]</p>
-<p>Again, a larger (n) produces a narrower interval.</p>
+<p><span class="math display">\[
+\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
+<p>Again, a larger <span class="math inline">\(n\)</span> produces a narrower interval.</p>
 <p>The confidence level also matters. A 99 percent confidence interval is wider than a 95 percent confidence interval because it uses a larger critical value.</p>
 <hr>
 </section>
@@ -979,7 +1180,7 @@ A larger margin of error means the estimate is less precise.</p>
 <p>Larger samples give more precise estimates because they reduce standard error.</p>
 <p>This is one of the most important practical lessons in statistics:</p>
 <blockquote class="blockquote">
-<p>Precision improves with sample size, but at a diminishing rate because standard error decreases with (), not (n).</p>
+<p>Precision improves with sample size, but at a diminishing rate because standard error decreases with <span class="math inline">\(\sqrt{n}\)</span>, not <span class="math inline">\(n\)</span>.</p>
 </blockquote>
 <p>For example, quadrupling the sample size cuts the standard error in half.</p>
 <p>That is useful, but it also means precision becomes increasingly expensive to improve.</p>
@@ -1006,16 +1207,16 @@ The amount added to and subtracted from a point estimate to create a confidence 
 The standard deviation of a sampling distribution; the typical amount of random sampling error.</p>
 <p><strong>Critical value</strong><br>
 A value from a probability distribution used to determine the width of a confidence interval.</p>
-<p><strong>Alpha ()</strong><br>
-The probability that a confidence interval procedure fails to capture the true population parameter; equal to (1 -) confidence level.</p>
+<p><strong>Alpha <span class="math inline">\(\alpha\)</span></strong><br>
+The probability that a confidence interval procedure fails to capture the true population parameter; equal to <span class="math inline">\(1 -\)</span> confidence level.</p>
 <p><strong>t-distribution</strong><br>
 A probability distribution similar to the normal distribution but with heavier tails, used for means when the population standard deviation is estimated.</p>
 <p><strong>z-distribution</strong><br>
 The standard normal distribution, with mean 0 and standard deviation 1.</p>
-<p><strong>Population proportion ()</strong><br>
+<p><strong>Population proportion <span class="math inline">\(\pi\)</span></strong><br>
 The true proportion of the population in a category.</p>
-<p><strong>Sample proportion ()</strong><br>
-The proportion of the sample in a category, used to estimate ().</p>
+<p><strong>Sample proportion <span class="math inline">\(\hat{\pi}\)</span></strong><br>
+The proportion of the sample in a category, used to estimate <span class="math inline">\(\pi\)</span>.</p>
 <p><strong>Normal approximation</strong><br>
 Using the normal distribution to approximate another distribution, such as the binomial, when sample size is large enough.</p>
 <p><strong>Binomial distribution</strong><br>
@@ -1027,15 +1228,23 @@ The exact distribution for the number of successes in a fixed number of independ
 <p>Statistical inference allows us to use sample data to make claims about populations while acknowledging uncertainty.</p>
 <p>A point estimate gives a single best estimate of a population parameter, such as a mean or proportion. But because sample statistics vary from sample to sample, point estimates are uncertain.</p>
 <p>A confidence interval communicates the precision of a point estimate. It has the general form:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\text{Point Estimate} \pm \text{Margin of Error}
+\]</span></p>
 <p>The margin of error is:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\text{Critical Value} \times \text{Standard Error}
+\]</span></p>
 <p>The confidence level describes the long-run success rate of the procedure. A 95 percent confidence interval procedure produces intervals that contain the true population parameter 95 percent of the time across repeated random samples.</p>
 <p>It is important not to say that there is a 95 percent chance that the true parameter lies inside a specific interval. Once the interval is calculated, the parameter either is inside it or it is not. The probability refers to the procedure, not the fixed interval.</p>
 <p>For means, we usually construct confidence intervals using the t-distribution:</p>
-<p>[ {Y} t^*() ]</p>
+<p><span class="math display">\[
+\bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
+\]</span></p>
 <p>For proportions, we usually use the z-distribution when the sample size is large enough:</p>
-<p>[ z^* ]</p>
+<p><span class="math display">\[
+\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
+\]</span></p>
 <p>For small-sample proportions, the binomial distribution is more appropriate.</p>
 <p>The central lesson is that confidence intervals quantify uncertainty. They do not eliminate uncertainty, but they give us a disciplined way to communicate how precise our estimates are.</p>
 

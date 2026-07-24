@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -339,10 +368,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="10.1" class="anchored" data-anchor-id="causality"><span class="header-section-number">10.1</span> Causality</h2>
 <p>A causal relationship exists when changes in one variable produce changes in another variable.</p>
 <p>Suppose we have two variables:</p>
-<p>[ X Y ]</p>
-<p>The arrow indicates that (X) causes (Y), or that changes in (X) lead to changes in (Y).</p>
-<p>In this framework, (Y) is the <strong>dependent variable</strong>. It is the outcome we care about. Its value depends, at least in part, on another variable.</p>
-<p>(X) is the <strong>independent variable</strong>. It is the variable we think may be doing the causing. It is the predictor, treatment, intervention, or explanatory variable.</p>
+<p><span class="math display">\[
+X \rightarrow Y
+\]</span></p>
+<p>The arrow indicates that <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span>, or that changes in <span class="math inline">\(X\)</span> lead to changes in <span class="math inline">\(Y\)</span>.</p>
+<p>In this framework, <span class="math inline">\(Y\)</span> is the <strong>dependent variable</strong>. It is the outcome we care about. Its value depends, at least in part, on another variable.</p>
+<p><span class="math inline">\(X\)</span> is the <strong>independent variable</strong>. It is the variable we think may be doing the causing. It is the predictor, treatment, intervention, or explanatory variable.</p>
 <p>For example:</p>
 <ul>
 <li>A job training program may affect employment.</li>
@@ -351,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Class size may affect student test scores.</li>
 <li>Exposure to lead may affect child development.</li>
 </ul>
-<p>In each case, we are interested in whether changes in (X) produce changes in (Y).</p>
+<p>In each case, we are interested in whether changes in <span class="math inline">\(X\)</span> produce changes in <span class="math inline">\(Y\)</span>.</p>
 <p>Researchers often ask:</p>
 <blockquote class="blockquote">
 <p>What is your dependent variable?</p>
@@ -376,20 +407,20 @@ ul.task-list li input[type="checkbox"] {
 <section id="covariation" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="covariation"><span class="header-section-number">10.2.1</span> 1. Covariation</h3>
 <p>The independent variable and dependent variable must move together.</p>
-<p>If (X) changes but (Y) never changes, then (X) cannot be causing (Y).</p>
+<p>If <span class="math inline">\(X\)</span> changes but <span class="math inline">\(Y\)</span> never changes, then <span class="math inline">\(X\)</span> cannot be causing <span class="math inline">\(Y\)</span>.</p>
 <p>For example, if a new education program is introduced but test scores remain exactly the same for everyone, there is no evidence that the program affected test scores.</p>
 <p>Covariation does not prove causation, but causation requires covariation.</p>
 </section>
 <section id="temporal-ordering" class="level3" data-number="10.2.2">
 <h3 data-number="10.2.2" class="anchored" data-anchor-id="temporal-ordering"><span class="header-section-number">10.2.2</span> 2. Temporal Ordering</h3>
 <p>The cause must come before the effect.</p>
-<p>If (X) causes (Y), then (X) must occur or change before (Y) changes.</p>
+<p>If <span class="math inline">\(X\)</span> causes <span class="math inline">\(Y\)</span>, then <span class="math inline">\(X\)</span> must occur or change before <span class="math inline">\(Y\)</span> changes.</p>
 <p>For example, if we argue that a vaccine education program affects later vaccination behavior, the education program must occur before the vaccination decision.</p>
-<p>If (Y) changes before (X), then (X) cannot be the cause of that change in (Y).</p>
+<p>If <span class="math inline">\(Y\)</span> changes before <span class="math inline">\(X\)</span>, then <span class="math inline">\(X\)</span> cannot be the cause of that change in <span class="math inline">\(Y\)</span>.</p>
 </section>
 <section id="elimination-of-alternative-explanations" class="level3" data-number="10.2.3">
 <h3 data-number="10.2.3" class="anchored" data-anchor-id="elimination-of-alternative-explanations"><span class="header-section-number">10.2.3</span> 3. Elimination of Alternative Explanations</h3>
-<p>There must not be another variable that explains the relationship between (X) and (Y).</p>
+<p>There must not be another variable that explains the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <p>This is often the hardest condition to satisfy.</p>
 <p>Suppose we observe that students in smaller classes have lower test scores. It might be tempting to conclude that smaller classes cause worse performance. But perhaps struggling students are intentionally assigned to smaller classes so that they can receive more attention. In that case, the apparent relationship between class size and test scores reflects the assignment process, not the causal effect of class size.</p>
 <p>To make a causal claim, we must rule out plausible alternative explanations.</p>
@@ -429,16 +460,20 @@ ul.task-list li input[type="checkbox"] {
 <li>the need for a string</li>
 </ul>
 <p>The child observed a real association but misunderstood the causal mechanism.</p>
-<p>This is a simple example, but the same logic appears constantly in social science and policy analysis. We may observe a relationship between (X) and (Y), but a third factor (Z) may be responsible for the apparent association.</p>
+<p>This is a simple example, but the same logic appears constantly in social science and policy analysis. We may observe a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, but a third factor <span class="math inline">\(Z\)</span> may be responsible for the apparent association.</p>
 <hr>
 </section>
 <section id="reverse-causality-and-simultaneity" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="reverse-causality-and-simultaneity"><span class="header-section-number">10.5</span> Reverse Causality and Simultaneity</h2>
 <p>Sometimes the causal direction may be reversed.</p>
 <p>We may think:</p>
-<p>[ X Y ]</p>
+<p><span class="math display">\[
+X \rightarrow Y
+\]</span></p>
 <p>but in reality:</p>
-<p>[ Y X ]</p>
+<p><span class="math display">\[
+Y \rightarrow X
+\]</span></p>
 <p>For example, suppose we observe that people who visit doctors more often are less healthy. Does visiting the doctor make people sick? Probably not. More likely, being sick causes people to visit doctors more often.</p>
 <p>That is reverse causality.</p>
 <p>Another possibility is <strong>simultaneity</strong>, where two variables move together as part of a broader process, rather than one clearly causing the other.</p>
@@ -458,9 +493,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="controlling-for-confounding-factors" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="controlling-for-confounding-factors"><span class="header-section-number">10.7</span> Controlling for Confounding Factors</h2>
 <p>A <strong>confounding factor</strong> is a variable that affects the outcome and is also related to the independent variable.</p>
-<p>Confounders make it difficult to isolate the causal effect of (X) on (Y).</p>
+<p>Confounders make it difficult to isolate the causal effect of <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span>.</p>
 <p>To address confounding, researchers try to <strong>control for</strong> other factors.</p>
-<p>To control for a variable means to compare cases that are similar on that variable. If we hold a third factor constant and still observe a relationship between (X) and (Y), then that third factor cannot fully explain the relationship.</p>
+<p>To control for a variable means to compare cases that are similar on that variable. If we hold a third factor constant and still observe a relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, then that third factor cannot fully explain the relationship.</p>
 <p>For example, suppose we want to know whether education affects income. Age may be a confounder because older people tend to have more education and also more work experience. If we compare people with different levels of education but similar ages, we are controlling for age.</p>
 <p>In practice, controlling for confounders can be difficult. We may not have data on the relevant variables. Worse, we may not even know what all the relevant confounders are.</p>
 <p>This is one reason experiments are so powerful.</p>
@@ -469,7 +504,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="theory-and-causal-mechanisms" class="level2" data-number="10.8">
 <h2 data-number="10.8" class="anchored" data-anchor-id="theory-and-causal-mechanisms"><span class="header-section-number">10.8</span> Theory and Causal Mechanisms</h2>
 <p>Statistical evidence is more persuasive when paired with a strong theory.</p>
-<p>A <strong>causal mechanism</strong> explains how or why (X) affects (Y).</p>
+<p>A <strong>causal mechanism</strong> explains how or why <span class="math inline">\(X\)</span> affects <span class="math inline">\(Y\)</span>.</p>
 <p>For example, if we claim that a vaccine education program increases vaccination rates, we should be able to explain the mechanism:</p>
 <ul>
 <li>Parents receive accurate information.</li>
@@ -506,7 +541,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Experiments help satisfy the three conditions for causality.</p>
 <section id="covariation-1" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="covariation-1"><span class="header-section-number">11.2.1</span> Covariation</h3>
-<p>We can compare outcomes between treated and untreated groups to see whether (Y) differs when (X) differs.</p>
+<p>We can compare outcomes between treated and untreated groups to see whether <span class="math inline">\(Y\)</span> differs when <span class="math inline">\(X\)</span> differs.</p>
 </section>
 <section id="temporal-ordering-1" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="temporal-ordering-1"><span class="header-section-number">11.2.2</span> Temporal Ordering</h3>
@@ -576,23 +611,29 @@ ul.task-list li input[type="checkbox"] {
 <section id="potential-outcomes" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="potential-outcomes"><span class="header-section-number">12.1</span> Potential Outcomes</h2>
 <p>The <strong>potential outcomes framework</strong> provides a formal way to think about causal effects.</p>
-<p>For each person or case (i), there are two potential outcomes:</p>
-<p>[ Y_i(1) ]</p>
+<p>For each person or case <span class="math inline">\(i\)</span>, there are two potential outcomes:</p>
+<p><span class="math display">\[
+Y_i(1)
+\]</span></p>
 <p>and:</p>
-<p>[ Y_i(0) ]</p>
+<p><span class="math display">\[
+Y_i(0)
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(Y_i(1)) is the outcome for case (i) if treated.</li>
-<li>(Y_i(0)) is the outcome for case (i) if not treated.</li>
+<li><span class="math inline">\(Y_i(1)\)</span> is the outcome for case <span class="math inline">\(i\)</span> if treated.</li>
+<li><span class="math inline">\(Y_i(0)\)</span> is the outcome for case <span class="math inline">\(i\)</span> if not treated.</li>
 </ul>
 <p>For example, suppose the outcome is employment after a job training program.</p>
 <p>For each person:</p>
 <ul>
-<li>(Y_i(1)): employment outcome if the person receives training</li>
-<li>(Y_i(0)): employment outcome if the person does not receive training</li>
+<li><span class="math inline">\(Y_i(1)\)</span>: employment outcome if the person receives training</li>
+<li><span class="math inline">\(Y_i(0)\)</span>: employment outcome if the person does not receive training</li>
 </ul>
 <p>The individual treatment effect is:</p>
-<p>[ Y_i(1) - Y_i(0) ]</p>
+<p><span class="math display">\[
+Y_i(1) - Y_i(0)
+\]</span></p>
 <p>This is the causal effect of treatment for that individual.</p>
 <hr>
 </section>
@@ -601,13 +642,21 @@ ul.task-list li input[type="checkbox"] {
 <p>The problem is that we can never observe both potential outcomes for the same person at the same time.</p>
 <p>A person either receives the treatment or does not.</p>
 <p>If a person receives treatment, we observe:</p>
-<p>[ Y_i(1) ]</p>
+<p><span class="math display">\[
+Y_i(1)
+\]</span></p>
 <p>but we do not observe:</p>
-<p>[ Y_i(0) ]</p>
+<p><span class="math display">\[
+Y_i(0)
+\]</span></p>
 <p>If a person does not receive treatment, we observe:</p>
-<p>[ Y_i(0) ]</p>
+<p><span class="math display">\[
+Y_i(0)
+\]</span></p>
 <p>but we do not observe:</p>
-<p>[ Y_i(1) ]</p>
+<p><span class="math display">\[
+Y_i(1)
+\]</span></p>
 <p>The missing potential outcome is the <strong>counterfactual</strong>.</p>
 <p>This is called the <strong>fundamental problem of causal inference</strong>.</p>
 <p>To know the exact treatment effect for one individual, we would need to observe what happened to that person under treatment and what would have happened to that same person without treatment. But we cannot observe both.</p>
@@ -617,12 +666,18 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="12.3" class="anchored" data-anchor-id="average-treatment-effects"><span class="header-section-number">12.3</span> Average Treatment Effects</h2>
 <p>Because we cannot observe individual treatment effects directly, we often estimate average treatment effects.</p>
 <p>The <strong>average treatment effect</strong>, or ATE, is:</p>
-<p>[ ATE = E[Y(1) - Y(0)] ]</p>
+<p><span class="math display">\[
+ATE = E[Y(1) - Y(0)]
+\]</span></p>
 <p>This is the expected difference between outcomes under treatment and outcomes under control.</p>
 <p>Equivalently, under random assignment:</p>
-<p>[ ATE = E[Y(1)] - E[Y(0)] ]</p>
+<p><span class="math display">\[
+ATE = E[Y(1)] - E[Y(0)]
+\]</span></p>
 <p>Randomization allows us to estimate this using observed group means:</p>
-<p>[ = {Y}<em>{treatment} - {Y}</em>{control} ]</p>
+<p><span class="math display">\[
+\widehat{ATE} = \bar{Y}_{treatment} - \bar{Y}_{control}
+\]</span></p>
 <p>That is, we compare the mean outcome in the treatment group to the mean outcome in the control group.</p>
 <p>Randomization makes this comparison valid because the groups are similar on average except for treatment status.</p>
 <hr>
@@ -640,21 +695,31 @@ ul.task-list li input[type="checkbox"] {
 <section id="difference-of-means" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="difference-of-means"><span class="header-section-number">12.5</span> Difference of Means</h2>
 <p>The simplest way to estimate an experimental treatment effect is a difference of means:</p>
-<p>[ {Y}_T - {Y}_C ]</p>
+<p><span class="math display">\[
+\bar{Y}_T - \bar{Y}_C
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>({Y}_T) is the mean outcome in the treatment group</li>
-<li>({Y}_C) is the mean outcome in the control group</li>
+<li><span class="math inline">\(\bar{Y}_T\)</span> is the mean outcome in the treatment group</li>
+<li><span class="math inline">\(\bar{Y}_C\)</span> is the mean outcome in the control group</li>
 </ul>
 <p>The null hypothesis is usually:</p>
-<p>[ H_0: _T - _C = 0 ]</p>
+<p><span class="math display">\[
+H_0: \mu_T - \mu_C = 0
+\]</span></p>
 <p>That is, the treatment has no effect.</p>
 <p>The alternative hypothesis is:</p>
-<p>[ H_A: _T - _C ]</p>
+<p><span class="math display">\[
+H_A: \mu_T - \mu_C \neq 0
+\]</span></p>
 <p>or, in a directional test:</p>
-<p>[ H_A: _T - _C &gt; 0 ]</p>
+<p><span class="math display">\[
+H_A: \mu_T - \mu_C &gt; 0
+\]</span></p>
 <p>or:</p>
-<p>[ H_A: _T - _C &lt; 0 ]</p>
+<p><span class="math display">\[
+H_A: \mu_T - \mu_C &lt; 0
+\]</span></p>
 <p>The statistical question becomes:</p>
 <blockquote class="blockquote">
 <p>Is the observed difference between the two group means large enough, relative to its standard error, to reject the null hypothesis?</p>
@@ -916,16 +981,22 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="16.1" class="anchored" data-anchor-id="comparing-means-across-groups"><span class="header-section-number">16.1</span> Comparing Means Across Groups</h2>
 <p>To evaluate causal effects, we often compare mean outcomes across groups.</p>
 <p>For example:</p>
-<p>[ {Y}_T - {Y}_C ]</p>
+<p><span class="math display">\[
+\bar{Y}_T - \bar{Y}_C
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>({Y}_T) is the mean outcome in the treatment group</li>
-<li>({Y}_C) is the mean outcome in the control group</li>
+<li><span class="math inline">\(\bar{Y}_T\)</span> is the mean outcome in the treatment group</li>
+<li><span class="math inline">\(\bar{Y}_C\)</span> is the mean outcome in the control group</li>
 </ul>
 <p>If the treatment has no effect, we expect:</p>
-<p>[ _T - _C = 0 ]</p>
+<p><span class="math display">\[
+\mu_T - \mu_C = 0
+\]</span></p>
 <p>So the null hypothesis is:</p>
-<p>[ H_0: _T - _C = 0 ]</p>
+<p><span class="math display">\[
+H_0: \mu_T - \mu_C = 0
+\]</span></p>
 <p>If the observed difference in sample means is large relative to its standard error, we may reject the null hypothesis.</p>
 <p>This is the basis of the <strong>difference-of-means test</strong>.</p>
 <hr>
@@ -941,11 +1012,17 @@ ul.task-list li input[type="checkbox"] {
 <li>voted or did not vote</li>
 </ul>
 <p>Then we compare proportions:</p>
-<p>[ _T - _C ]</p>
+<p><span class="math display">\[
+\hat{\pi}_T - \hat{\pi}_C
+\]</span></p>
 <p>The null hypothesis is:</p>
-<p>[ H_0: _T - _C = 0 ]</p>
+<p><span class="math display">\[
+H_0: \pi_T - \pi_C = 0
+\]</span></p>
 <p>or:</p>
-<p>[ H_0: _T = _C ]</p>
+<p><span class="math display">\[
+H_0: \pi_T = \pi_C
+\]</span></p>
 <p>If the difference in sample proportions is large relative to its standard error, we may reject the null hypothesis.</p>
 <p>This is the basis of the <strong>difference-of-proportions test</strong>.</p>
 <hr>

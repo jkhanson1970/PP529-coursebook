@@ -16,11 +16,11 @@ Up to this point, we have studied many ways of comparing variables:
 
 Regression builds on many of those ideas.
 
-Like correlation, regression studies relationships between variables. But regression goes further. Correlation tells us the strength and direction of a linear relationship. Regression estimates the **magnitude** of the relationship: how much we expect \(Y\) to change when \(X\) changes.
+Like correlation, regression studies relationships between variables. But regression goes further. Correlation tells us the strength and direction of a linear relationship. Regression estimates the **magnitude** of the relationship: how much we expect $Y$ to change when $X$ changes.
 
 Regression also generalizes naturally to models with multiple independent variables. This allows us to control for other factors, which is one of the main reasons regression is so useful in policy analysis.
 
-In this chapter, we introduce simple linear regression, interpretation of coefficients, statistical significance, residuals, \(R^2\), dichotomous independent variables, regression assumptions, robust and clustered standard errors, outliers, and nonlinear transformations.
+In this chapter, we introduce simple linear regression, interpretation of coefficients, statistical significance, residuals, $R^2$, dichotomous independent variables, regression assumptions, robust and clustered standard errors, outliers, and nonlinear transformations.
 
 The main goal is not to make you a regression expert overnight. That would be a bold move. The goal is to build intuition and prepare you to use regression more deeply in later courses.
 
@@ -32,27 +32,27 @@ The main goal is not to make you a regression expert overnight. That would be a 
 
 Correlation analysis measures the strength and direction of a linear relationship between two interval-level variables.
 
-The most common correlation coefficient, Pearson’s \(r\), ranges from:
+The most common correlation coefficient, Pearson’s $r$, ranges from:
 
-\[
+$$
 -1 \leq r \leq 1
-\]
+$$
 
-A value of \(r = 1\) means perfect positive linear association.
+A value of $r = 1$ means perfect positive linear association.
 
-A value of \(r = -1\) means perfect negative linear association.
+A value of $r = -1$ means perfect negative linear association.
 
-A value of \(r = 0\) means no linear association.
+A value of $r = 0$ means no linear association.
 
-Correlation is unit-free. It does not depend on the units of \(X\) or \(Y\). It tells us how linear the relationship is, but not how steep the relationship is.
+Correlation is unit-free. It does not depend on the units of $X$ or $Y$. It tells us how linear the relationship is, but not how steep the relationship is.
 
 Linear regression also studies linear relationships, but it estimates a line:
 
-\[
+$$
 Y = a + bX
-\]
+$$
 
-The coefficient \(b\) is the slope. It tells us how much \(Y\) changes when \(X\) increases by one unit.
+The coefficient $b$ is the slope. It tells us how much $Y$ changes when $X$ increases by one unit.
 
 That is the key advance.
 
@@ -89,62 +89,62 @@ That is why regression becomes so powerful.
 
 The basic linear function is:
 
-\[
+$$
 Y = a + bX
-\]
+$$
 
 where:
 
-- \(Y\) is the outcome variable
-- \(X\) is the predictor variable
-- \(a\) is the intercept
-- \(b\) is the slope
+- $Y$ is the outcome variable
+- $X$ is the predictor variable
+- $a$ is the intercept
+- $b$ is the slope
 
-The **intercept** is the predicted value of \(Y\) when \(X = 0\).
+The **intercept** is the predicted value of $Y$ when $X = 0$.
 
-The **slope** is the predicted change in \(Y\) for a one-unit increase in \(X\).
+The **slope** is the predicted change in $Y$ for a one-unit increase in $X$.
 
 If:
 
-\[
+$$
 b > 0
-\]
+$$
 
 then the relationship is positive.
 
 If:
 
-\[
+$$
 b < 0
-\]
+$$
 
 then the relationship is negative.
 
 If:
 
-\[
+$$
 b = 0
-\]
+$$
 
-then \(X\) does not predict \(Y\) linearly.
+then $X$ does not predict $Y$ linearly.
 
 ---
 
 ## The Intercept
 
-The intercept tells us where the regression line crosses the \(Y\)-axis.
+The intercept tells us where the regression line crosses the $Y$-axis.
 
-When \(X = 0\), the term \(bX\) becomes zero:
+When $X = 0$, the term $bX$ becomes zero:
 
-\[
+$$
 Y = a + b(0)
-\]
+$$
 
-\[
+$$
 Y = a
-\]
+$$
 
-So \(a\) is the predicted value of \(Y\) when \(X = 0\).
+So $a$ is the predicted value of $Y$ when $X = 0$.
 
 Sometimes this is substantively meaningful. Sometimes it is not.
 
@@ -156,30 +156,30 @@ The intercept is always mathematically necessary, but it is not always substanti
 
 ## The Slope
 
-The slope tells us how much \(Y\) is predicted to change when \(X\) increases by one unit.
+The slope tells us how much $Y$ is predicted to change when $X$ increases by one unit.
 
 For example, suppose:
 
-\[
+$$
 \hat{Y} = 10.81 + 0.81X
-\]
+$$
 
-Then each one-unit increase in \(X\) is associated with a predicted 0.81-unit increase in \(Y\).
+Then each one-unit increase in $X$ is associated with a predicted 0.81-unit increase in $Y$.
 
 If:
 
-\[
+$$
 \hat{Y} = 85.66 - 0.68X
-\]
+$$
 
-then each one-unit increase in \(X\) is associated with a predicted 0.68-unit decrease in \(Y\).
+then each one-unit increase in $X$ is associated with a predicted 0.68-unit decrease in $Y$.
 
 The slope is the rise over the run.
 
-The “run” is the change in \(X\).  
-The “rise” is the change in \(Y\).
+The “run” is the change in $X$.  
+The “rise” is the change in $Y$.
 
-The slope is measured in the units of \(Y\) per one unit of \(X\).
+The slope is measured in the units of $Y$ per one unit of $X$.
 
 ---
 
@@ -189,23 +189,23 @@ Regression produces predicted values.
 
 We write a predicted value as:
 
-\[
+$$
 \hat{Y}
-\]
+$$
 
-The hat indicates that this is not the actual observed value of \(Y\). It is the value predicted by the model.
+The hat indicates that this is not the actual observed value of $Y$. It is the value predicted by the model.
 
 For a simple linear regression:
 
-\[
+$$
 \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1X_i
-\]
+$$
 
 where:
 
-- \(\hat{\beta}_0\) is the estimated intercept
-- \(\hat{\beta}_1\) is the estimated slope
-- \(X_i\) is the value of \(X\) for case \(i\)
+- $\hat{\beta}_0$ is the estimated intercept
+- $\hat{\beta}_1$ is the estimated slope
+- $X_i$ is the value of $X$ for case $i$
 
 Each predicted value lies on the regression line.
 
@@ -213,31 +213,31 @@ Each predicted value lies on the regression line.
 
 ## Residuals
 
-The model usually does not predict \(Y\) perfectly.
+The model usually does not predict $Y$ perfectly.
 
 The difference between the observed value and the predicted value is called the **residual**:
 
-\[
+$$
 \hat{u}_i = Y_i - \hat{Y}_i
-\]
+$$
 
 A residual is a prediction error.
 
 If:
 
-\[
+$$
 \hat{u}_i > 0
-\]
+$$
 
-then the model underpredicted \(Y\).
+then the model underpredicted $Y$.
 
 If:
 
-\[
+$$
 \hat{u}_i < 0
-\]
+$$
 
-then the model overpredicted \(Y\).
+then the model overpredicted $Y$.
 
 Residuals are vertical distances between observed points and the regression line.
 
@@ -251,21 +251,21 @@ Regression chooses the line that minimizes the sum of squared residuals.
 
 In statistical notation, the simple linear regression model is:
 
-\[
+$$
 Y_i = \beta_0 + \beta_1X_i + u_i
-\]
+$$
 
 where:
 
-- \(Y_i\) is the dependent variable for case \(i\)
-- \(X_i\) is the independent variable for case \(i\)
-- \(\beta_0\) is the true intercept
-- \(\beta_1\) is the true slope
-- \(u_i\) is the stochastic or random component
+- $Y_i$ is the dependent variable for case $i$
+- $X_i$ is the independent variable for case $i$
+- $\beta_0$ is the true intercept
+- $\beta_1$ is the true slope
+- $u_i$ is the stochastic or random component
 
-The term \(u_i\) represents all the factors that affect \(Y_i\) but are not included in the model.
+The term $u_i$ represents all the factors that affect $Y_i$ but are not included in the model.
 
-It captures the idiosyncratic, unpredictable, or unmodeled part of \(Y\).
+It captures the idiosyncratic, unpredictable, or unmodeled part of $Y$.
 
 ---
 
@@ -275,20 +275,20 @@ Because we do not know the true population parameters, we estimate them using sa
 
 The estimated model is:
 
-\[
+$$
 \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1X_i
-\]
+$$
 
 The estimated residual is:
 
-\[
+$$
 \hat{u}_i = Y_i - \hat{Y}_i
-\]
+$$
 
 We use the sample to estimate:
 
-- \(\beta_0\) with \(\hat{\beta}_0\)
-- \(\beta_1\) with \(\hat{\beta}_1\)
+- $\beta_0$ with $\hat{\beta}_0$
+- $\beta_1$ with $\hat{\beta}_1$
 
 The estimated line is the line of best fit.
 
@@ -300,17 +300,17 @@ The most common method for estimating a linear regression is **ordinary least sq
 
 OLS chooses the intercept and slope that minimize the sum of squared residuals:
 
-\[
+$$
 SSE = \sum_{i=1}^{n}(Y_i - \hat{Y}_i)^2
-\]
+$$
 
 Substitute the regression equation:
 
-\[
+$$
 SSE = \sum_{i=1}^{n}(Y_i - \hat{\beta}_0 - \hat{\beta}_1X_i)^2
-\]
+$$
 
-OLS finds the values of \(\hat{\beta}_0\) and \(\hat{\beta}_1\) that make this quantity as small as possible.
+OLS finds the values of $\hat{\beta}_0$ and $\hat{\beta}_1$ that make this quantity as small as possible.
 
 Why square the residuals?
 
@@ -322,7 +322,7 @@ Because residuals can be positive or negative. If we simply added them, they wou
 
 The OLS estimate of the slope is:
 
-\[
+$$
 \hat{\beta}_1 =
 \frac{
 \sum (X_i-\bar{X})(Y_i-\bar{Y})
@@ -330,17 +330,17 @@ The OLS estimate of the slope is:
 {
 \sum (X_i-\bar{X})^2
 }
-\]
+$$
 
-The numerator measures covariation between \(X\) and \(Y\).
+The numerator measures covariation between $X$ and $Y$.
 
-The denominator measures variation in \(X\).
+The denominator measures variation in $X$.
 
-If \(X\) and \(Y\) move together, the numerator is positive, producing a positive slope.
+If $X$ and $Y$ move together, the numerator is positive, producing a positive slope.
 
-If \(X\) and \(Y\) move in opposite directions, the numerator is negative, producing a negative slope.
+If $X$ and $Y$ move in opposite directions, the numerator is negative, producing a negative slope.
 
-If \(X\) and \(Y\) do not covary, the numerator is close to zero, and the slope is close to zero.
+If $X$ and $Y$ do not covary, the numerator is close to zero, and the slope is close to zero.
 
 ---
 
@@ -348,28 +348,28 @@ If \(X\) and \(Y\) do not covary, the numerator is close to zero, and the slope 
 
 Once we have the slope, the intercept is:
 
-\[
+$$
 \hat{\beta}_0 =
 \bar{Y} - \hat{\beta}_1\bar{X}
-\]
+$$
 
 This ensures that the regression line passes through the point:
 
-\[
+$$
 (\bar{X}, \bar{Y})
-\]
+$$
 
-That is, the line passes through the mean of \(X\) and the mean of \(Y\).
+That is, the line passes through the mean of $X$ and the mean of $Y$.
 
 ---
 
 ## Regression and Correlation
 
-The formulas for Pearson’s \(r\) and the OLS slope are related.
+The formulas for Pearson’s $r$ and the OLS slope are related.
 
-Pearson’s \(r\) is:
+Pearson’s $r$ is:
 
-\[
+$$
 r =
 \frac{
 \sum (X_i-\bar{X})(Y_i-\bar{Y})
@@ -380,11 +380,11 @@ r =
 \sum (Y_i-\bar{Y})^2
 }
 }
-\]
+$$
 
 The OLS slope is:
 
-\[
+$$
 \hat{\beta}_1 =
 \frac{
 \sum (X_i-\bar{X})(Y_i-\bar{Y})
@@ -392,15 +392,15 @@ The OLS slope is:
 {
 \sum (X_i-\bar{X})^2
 }
-\]
+$$
 
-Both use the same numerator: covariation between \(X\) and \(Y\).
+Both use the same numerator: covariation between $X$ and $Y$.
 
 They differ in the denominator.
 
-Pearson’s \(r\) standardizes by variation in both \(X\) and \(Y\), making it unit-free and bounded between -1 and 1.
+Pearson’s $r$ standardizes by variation in both $X$ and $Y$, making it unit-free and bounded between -1 and 1.
 
-The OLS slope divides by variation in \(X\), leaving the result in the units of \(Y\) per unit of \(X\).
+The OLS slope divides by variation in $X$, leaving the result in the units of $Y$ per unit of $X$.
 
 ---
 
@@ -426,9 +426,9 @@ The theory is that democratic governments may be more responsive to citizens and
 
 The model is:
 
-\[
+$$
 Illiteracy_i = \beta_0 + \beta_1 Democracy_i + u_i
-\]
+$$
 
 ---
 
@@ -436,23 +436,23 @@ Illiteracy_i = \beta_0 + \beta_1 Democracy_i + u_i
 
 Suppose the estimated regression is:
 
-\[
+$$
 \widehat{Illiteracy}
 =
 37.1 - 2.9(Democracy)
-\]
+$$
 
 The intercept is:
 
-\[
+$$
 37.1
-\]
+$$
 
 The slope is:
 
-\[
+$$
 -2.9
-\]
+$$
 
 Interpretation of the slope:
 
@@ -470,51 +470,51 @@ This assumes that a democracy score of 0 is meaningful and within the range of t
 
 For a country with a democracy score of 3:
 
-\[
+$$
 \widehat{Illiteracy}
 =
 37.1 - 2.9(3)
-\]
+$$
 
-\[
+$$
 =
 37.1 - 8.7
-\]
+$$
 
-\[
+$$
 =
 28.4
-\]
+$$
 
 For a country with a democracy score of 7:
 
-\[
+$$
 \widehat{Illiteracy}
 =
 37.1 - 2.9(7)
-\]
+$$
 
-\[
+$$
 =
 37.1 - 20.3
-\]
+$$
 
-\[
+$$
 =
 16.8
-\]
+$$
 
 The predicted difference between these countries is:
 
-\[
+$$
 28.4 - 16.8 = 11.6
-\]
+$$
 
 Because democracy differs by 4 points:
 
-\[
+$$
 4(2.9) = 11.6
-\]
+$$
 
 The country with the higher democracy score is predicted to have an illiteracy rate 11.6 percentage points lower.
 
@@ -552,9 +552,9 @@ Regression coefficients are sample statistics.
 
 If we drew a different sample, we would get different estimates of the slope and intercept.
 
-Therefore, \(\hat{\beta}_1\) has a sampling distribution.
+Therefore, $\hat{\beta}_1$ has a sampling distribution.
 
-The standard deviation of that sampling distribution is the standard error of \(\hat{\beta}_1\).
+The standard deviation of that sampling distribution is the standard error of $\hat{\beta}_1$.
 
 The standard error tells us how much the estimated slope typically varies from the true slope across repeated samples.
 
@@ -562,32 +562,32 @@ The standard error tells us how much the estimated slope typically varies from t
 
 ## Standard Error of the Slope
 
-The true standard error of \(\hat{\beta}_1\) depends on:
+The true standard error of $\hat{\beta}_1$ depends on:
 
-1. The amount of unexplained variation in \(Y\)
-2. The amount of variation in \(X\)
+1. The amount of unexplained variation in $Y$
+2. The amount of variation in $X$
 
 A simplified expression is:
 
-\[
+$$
 SE_{\hat{\beta}_1}
 =
 \sqrt{
 \frac{\sigma_u^2}
 {\sum (X_i-\bar{X})^2}
 }
-\]
+$$
 
 where:
 
-- \(\sigma_u^2\) is the variance of the stochastic component
-- \(\sum (X_i-\bar{X})^2\) is variation in \(X\)
+- $\sigma_u^2$ is the variance of the stochastic component
+- $\sum (X_i-\bar{X})^2$ is variation in $X$
 
-More unexplained variation in \(Y\) increases the standard error.
+More unexplained variation in $Y$ increases the standard error.
 
-More variation in \(X\) decreases the standard error.
+More variation in $X$ decreases the standard error.
 
-This makes intuitive sense. If \(X\) varies widely, it is easier to estimate the slope. If all values of \(X\) are clustered closely together, estimating the slope is unstable.
+This makes intuitive sense. If $X$ varies widely, it is easier to estimate the slope. If all values of $X$ are clustered closely together, estimating the slope is unstable.
 
 ---
 
@@ -595,39 +595,39 @@ This makes intuitive sense. If \(X\) varies widely, it is easier to estimate the
 
 The usual null hypothesis is:
 
-\[
+$$
 H_0: \beta_1 = 0
-\]
+$$
 
 The alternative is:
 
-\[
+$$
 H_A: \beta_1 \neq 0
-\]
+$$
 
 The t-statistic is:
 
-\[
+$$
 t =
 \frac{\hat{\beta}_1 - 0}
 {SE_{\hat{\beta}_1}}
-\]
+$$
 
 or simply:
 
-\[
+$$
 t =
 \frac{\hat{\beta}_1}
 {SE_{\hat{\beta}_1}}
-\]
+$$
 
 Degrees of freedom are:
 
-\[
+$$
 df = n-k
-\]
+$$
 
-where \(k\) is the number of estimated coefficients, including the intercept.
+where $k$ is the number of estimated coefficients, including the intercept.
 
 For simple bivariate regression, we estimate two coefficients:
 
@@ -636,9 +636,9 @@ For simple bivariate regression, we estimate two coefficients:
 
 So:
 
-\[
+$$
 df = n-2
-\]
+$$
 
 ---
 
@@ -646,9 +646,9 @@ df = n-2
 
 A confidence interval for a coefficient is:
 
-\[
+$$
 \hat{\beta}_1 \pm t^*SE_{\hat{\beta}_1}
-\]
+$$
 
 The t critical value depends on:
 
@@ -657,13 +657,13 @@ The t critical value depends on:
 
 For large samples, the 95 percent critical value is approximately:
 
-\[
+$$
 1.96
-\]
+$$
 
 For smaller samples, use the t-distribution.
 
-If the confidence interval for \(\beta_1\) does not include 0, then the coefficient is statistically significant at the corresponding level.
+If the confidence interval for $\beta_1$ does not include 0, then the coefficient is statistically significant at the corresponding level.
 
 ---
 
@@ -695,88 +695,88 @@ There is statistically significant evidence of a negative association between de
 
 ---
 
-# Part VI: Explaining Variance in \(Y\)
+# Part VI: Explaining Variance in $Y$
 
 ## Total, Explained, and Unexplained Variation
 
-Regression partitions variation in \(Y\) into explained and unexplained parts.
+Regression partitions variation in $Y$ into explained and unexplained parts.
 
 The **total sum of squares** is:
 
-\[
+$$
 TSS =
 \sum (Y_i-\bar{Y})^2
-\]
+$$
 
-This is total variation in \(Y\).
+This is total variation in $Y$.
 
 The **explained sum of squares** is:
 
-\[
+$$
 ESS =
 \sum (\hat{Y}_i-\bar{Y})^2
-\]
+$$
 
 This is the variation explained by the regression model.
 
 The **sum of squared errors** is:
 
-\[
+$$
 SSE =
 \sum (Y_i-\hat{Y}_i)^2
-\]
+$$
 
 This is unexplained variation, or residual variation.
 
 These quantities are related:
 
-\[
+$$
 TSS = ESS + SSE
-\]
+$$
 
 ---
 
 ## R-Squared
 
-The \(R^2\) statistic measures the proportion of variation in \(Y\) explained by the model.
+The $R^2$ statistic measures the proportion of variation in $Y$ explained by the model.
 
-\[
+$$
 R^2 =
 \frac{ESS}{TSS}
-\]
+$$
 
 Equivalently:
 
-\[
+$$
 R^2 =
 1-\frac{SSE}{TSS}
-\]
+$$
 
-\(R^2\) ranges from 0 to 1.
+$R^2$ ranges from 0 to 1.
 
 If:
 
-\[
+$$
 R^2 = 0
-\]
+$$
 
-the model explains none of the variation in \(Y\).
+the model explains none of the variation in $Y$.
 
 If:
 
-\[
+$$
 R^2 = 1
-\]
+$$
 
-the model explains all variation in \(Y\).
+the model explains all variation in $Y$.
 
 For example, if:
 
-\[
+$$
 R^2 = 0.72
-\]
+$$
 
-then the model explains 72 percent of the variation in \(Y\).
+then the model explains 72 percent of the variation in $Y$.
 
 ---
 
@@ -784,9 +784,9 @@ then the model explains 72 percent of the variation in \(Y\).
 
 Suppose we regress infant mortality on access to improved water sources and obtain:
 
-\[
+$$
 R^2 = 0.72
-\]
+$$
 
 A substantive interpretation is:
 
@@ -802,15 +802,15 @@ The second version avoids causal overclaiming.
 
 ## Adjusted R-Squared
 
-Adding more independent variables generally increases \(R^2\), even if the variables add little real explanatory value.
+Adding more independent variables generally increases $R^2$, even if the variables add little real explanatory value.
 
-The **adjusted \(R^2\)** penalizes for adding variables.
+The **adjusted $R^2$** penalizes for adding variables.
 
-If \(R^2\) and adjusted \(R^2\) differ meaningfully, use adjusted \(R^2\) when comparing model fit.
+If $R^2$ and adjusted $R^2$ differ meaningfully, use adjusted $R^2$ when comparing model fit.
 
 In simple bivariate regression, they are often very similar.
 
-In multiple regression, adjusted \(R^2\) is usually more informative.
+In multiple regression, adjusted $R^2$ is usually more informative.
 
 ---
 
@@ -824,19 +824,19 @@ Regression output may report something called:
 
 These refer to the typical prediction error.
 
-It is the average size of the residual, in the scale of \(Y\).
+It is the average size of the residual, in the scale of $Y$.
 
 For example, if the standard error of the estimate is:
 
-\[
+$$
 18.8
-\]
+$$
 
 in a model predicting infant mortality, then:
 
 > The model’s predicted infant mortality rate typically misses the actual rate by about 18.8 deaths per 1,000 births.
 
-This is often more intuitive than \(R^2\) because it is in the units of the dependent variable.
+This is often more intuitive than $R^2$ because it is in the units of the dependent variable.
 
 ---
 
@@ -844,17 +844,17 @@ This is often more intuitive than \(R^2\) because it is in the units of the depe
 
 Regression output also reports an F-statistic.
 
-In bivariate regression, the F-test asks whether the model as a whole explains a statistically significant amount of variation in \(Y\).
+In bivariate regression, the F-test asks whether the model as a whole explains a statistically significant amount of variation in $Y$.
 
 Because the model has only one independent variable, the F-test is essentially equivalent to the t-test for that variable.
 
-In multiple regression, the F-test becomes more useful. It asks whether the independent variables, taken together, explain statistically significant variation in \(Y\).
+In multiple regression, the F-test becomes more useful. It asks whether the independent variables, taken together, explain statistically significant variation in $Y$.
 
 The null hypothesis for the model F-test is:
 
-\[
+$$
 H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0
-\]
+$$
 
 If the p-value for the F-test is small, we reject that null hypothesis.
 
@@ -866,13 +866,13 @@ If the p-value for the F-test is small, we reject that null hypothesis.
 
 A **dichotomous independent variable** has two values, usually coded:
 
-\[
+$$
 1 = \text{in the category}
-\]
+$$
 
-\[
+$$
 0 = \text{not in the category}
-\]
+$$
 
 These are often called **dummy variables**.
 
@@ -891,39 +891,39 @@ Regression works with dummy variables because 0 and 1 can be included in the lin
 
 Suppose the model is:
 
-\[
+$$
 Y_i = \beta_0 + \beta_1D_i + u_i
-\]
+$$
 
-where \(D_i\) is a dummy variable.
+where $D_i$ is a dummy variable.
 
 If:
 
-\[
+$$
 D_i = 0
-\]
+$$
 
 then:
 
-\[
+$$
 \hat{Y}_i = \hat{\beta}_0
-\]
+$$
 
 If:
 
-\[
+$$
 D_i = 1
-\]
+$$
 
 then:
 
-\[
+$$
 \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1
-\]
+$$
 
-So \(\hat{\beta}_0\) is the predicted mean for the reference group.
+So $\hat{\beta}_0$ is the predicted mean for the reference group.
 
-\(\hat{\beta}_1\) is the difference between the two group means.
+$\hat{\beta}_1$ is the difference between the two group means.
 
 This is equivalent to a difference-of-means test.
 
@@ -935,41 +935,41 @@ Suppose we regress Obama thermometer scores on whether religion is important in 
 
 The model is:
 
-\[
+$$
 \widehat{ObamaThermometer}
 =
 63.92 - 4.71(ReligionImportant)
-\]
+$$
 
 where:
 
-\[
+$$
 ReligionImportant = 1
-\]
+$$
 
 if the respondent says religion is important, and:
 
-\[
+$$
 ReligionImportant = 0
-\]
+$$
 
 otherwise.
 
 For respondents who say religion is not important:
 
-\[
+$$
 \hat{Y} = 63.92
-\]
+$$
 
 For respondents who say religion is important:
 
-\[
+$$
 \hat{Y} = 63.92 - 4.71
-\]
+$$
 
-\[
+$$
 \hat{Y} = 59.21
-\]
+$$
 
 Interpretation:
 
@@ -983,25 +983,25 @@ If we reverse the coding, the interpretation changes but the substantive informa
 
 Suppose:
 
-\[
+$$
 ReligionNotImportant = 1
-\]
+$$
 
 and:
 
-\[
+$$
 ReligionNotImportant = 0
-\]
+$$
 
 for those who say religion is important.
 
 The model may become:
 
-\[
+$$
 \widehat{ObamaThermometer}
 =
 59.21 + 4.71(ReligionNotImportant)
-\]
+$$
 
 Now the intercept is the predicted value for people who say religion is important.
 
@@ -1038,20 +1038,20 @@ That is where regression becomes much more powerful than a simple t-test.
 
 A multiple regression model includes more than one independent variable:
 
-\[
+$$
 Y_i =
 \beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + \beta_3X_{3i} + u_i
-\]
+$$
 
-Each coefficient represents the association between that predictor and \(Y\), holding the other predictors constant.
+Each coefficient represents the association between that predictor and $Y$, holding the other predictors constant.
 
 For example:
 
-\[
+$$
 \beta_1
-\]
+$$
 
-is the predicted change in \(Y\) for a one-unit increase in \(X_1\), holding \(X_2\) and \(X_3\) constant.
+is the predicted change in $Y$ for a one-unit increase in $X_1$, holding $X_2$ and $X_3$ constant.
 
 This is the key interpretation of multiple regression:
 
@@ -1063,31 +1063,31 @@ This is the key interpretation of multiple regression:
 
 Suppose we first estimate:
 
-\[
+$$
 InfantMortality =
 \beta_0 + \beta_1 Water + u
-\]
+$$
 
 and find:
 
-\[
+$$
 \hat{\beta}_1 = -1.54
-\]
+$$
 
 This suggests that each one-percentage-point increase in access to improved water is associated with 1.54 fewer infant deaths per 1,000 births.
 
 Now add GDP per capita:
 
-\[
+$$
 InfantMortality =
 \beta_0 + \beta_1 Water + \beta_2 \log(GDPpc) + u
-\]
+$$
 
 Suppose the coefficient on water changes to:
 
-\[
+$$
 \hat{\beta}_1 = -0.80
-\]
+$$
 
 This suggests the original coefficient was partly capturing the effect of wealth. Wealthier countries tend to have better water access and lower infant mortality.
 
@@ -1101,10 +1101,10 @@ After controlling for GDP, the estimated association between water and infant mo
 
 Suppose the model is:
 
-\[
+$$
 InfantMortality =
 170.3 - 0.80(Water) - 12.4(\log GDPpc)
-\]
+$$
 
 Interpretation of water:
 
@@ -1122,7 +1122,7 @@ When predictors are logged, interpretation becomes more complicated. Roughly, a 
 
 ## Linear Regression Assumes Linearity
 
-Linear regression assumes that the relationship between \(X\) and \(Y\) can be reasonably represented by a straight line.
+Linear regression assumes that the relationship between $X$ and $Y$ can be reasonably represented by a straight line.
 
 But many real relationships are nonlinear.
 
@@ -1143,13 +1143,13 @@ Always inspect scatterplots when possible.
 
 ## Exponential Relationships
 
-An exponential relationship occurs when the effect of \(X\) on \(Y\) grows as \(X\) increases.
+An exponential relationship occurs when the effect of $X$ on $Y$ grows as $X$ increases.
 
 A linear model may underpredict at low values, overpredict in the middle, and underpredict again at high values.
 
 One solution is to transform the variables.
 
-For exponential relationships, taking the natural log of \(Y\), \(X\), or both can make the relationship more linear.
+For exponential relationships, taking the natural log of $Y$, $X$, or both can make the relationship more linear.
 
 ---
 
@@ -1159,10 +1159,10 @@ Common log models include:
 
 | Model | Approximate Interpretation |
 |---|---|
-| \(Y\) on \(X\) | One-unit increase in \(X\) changes \(Y\) by \(\beta\) units |
-| \(\log(Y)\) on \(X\) | One-unit increase in \(X\) changes \(Y\) by about \(100\beta\) percent |
-| \(Y\) on \(\log(X)\) | One percent increase in \(X\) changes \(Y\) by about \(\beta/100\) units |
-| \(\log(Y)\) on \(\log(X)\) | One percent increase in \(X\) changes \(Y\) by about \(\beta\) percent |
+| $Y$ on $X$ | One-unit increase in $X$ changes $Y$ by $\beta$ units |
+| $\log(Y)$ on $X$ | One-unit increase in $X$ changes $Y$ by about $100\beta$ percent |
+| $Y$ on $\log(X)$ | One percent increase in $X$ changes $Y$ by about $\beta/100$ units |
+| $\log(Y)$ on $\log(X)$ | One percent increase in $X$ changes $Y$ by about $\beta$ percent |
 
 These are approximations but useful ones.
 
@@ -1178,17 +1178,17 @@ At high levels of GDP, additional income has much smaller effects.
 
 A log-log model may fit better:
 
-\[
+$$
 \log(InfantMortality)
 =
 \beta_0 + \beta_1\log(GDPpc) + u
-\]
+$$
 
 Suppose:
 
-\[
+$$
 \hat{\beta}_1 = -0.69
-\]
+$$
 
 Interpretation:
 
@@ -1217,15 +1217,15 @@ We focus on four key assumptions.
 
 The first assumption is:
 
-\[
+$$
 E(u_i \mid X_i) = 0
-\]
+$$
 
-This means that, after accounting for \(X\), the expected value of the stochastic component is zero.
+This means that, after accounting for $X$, the expected value of the stochastic component is zero.
 
 In plain language:
 
-> There is nothing systematic left in the error term that is related to \(X\).
+> There is nothing systematic left in the error term that is related to $X$.
 
 If this assumption is violated, we may have omitted variable bias.
 
@@ -1235,21 +1235,21 @@ If this assumption is violated, we may have omitted variable bias.
 
 Suppose the true model is:
 
-\[
+$$
 Y = \beta_0 + \beta_1X + \beta_2Z + u
-\]
+$$
 
 but we estimate:
 
-\[
+$$
 Y = \beta_0 + \beta_1X + u
-\]
+$$
 
-If \(Z\) affects \(Y\) and is correlated with \(X\), then the coefficient on \(X\) will be biased.
+If $Z$ affects $Y$ and is correlated with $X$, then the coefficient on $X$ will be biased.
 
 Why?
 
-Because \(X\) partly stands in for \(Z\). It captures some of \(Z\)’s explanatory power.
+Because $X$ partly stands in for $Z$. It captures some of $Z$’s explanatory power.
 
 Solution:
 
@@ -1309,10 +1309,10 @@ OLS can be sensitive to outliers.
 
 An outlier is especially influential when:
 
-1. It has an unusual value of \(Y\) given \(X\).
-2. It has an unusual value of \(X\), far from the mean of \(X\).
+1. It has an unusual value of $Y$ given $X$.
+2. It has an unusual value of $X$, far from the mean of $X$.
 
-Outliers far from the center of \(X\) can pull the regression line toward themselves.
+Outliers far from the center of $X$ can pull the regression line toward themselves.
 
 Before dropping an outlier, ask:
 
@@ -1347,19 +1347,19 @@ This illustrates how influential outliers can affect regression estimates.
 
 The fourth assumption is **homoscedasticity**.
 
-This means the variance of the error term is constant across values of \(X\).
+This means the variance of the error term is constant across values of $X$.
 
 In symbols:
 
-\[
+$$
 Var(u_i \mid X_i) = \sigma^2
-\]
+$$
 
 The opposite is **heteroscedasticity**.
 
-Heteroscedasticity occurs when the variance of errors changes across values of \(X\).
+Heteroscedasticity occurs when the variance of errors changes across values of $X$.
 
-For example, prediction errors may be small at low values of \(X\) and large at high values of \(X\).
+For example, prediction errors may be small at low values of $X$ and large at high values of $X$.
 
 ---
 
@@ -1412,11 +1412,11 @@ Therefore, clustered standard errors by school may be appropriate.
 
 Suppose the estimated model is:
 
-\[
+$$
 \widehat{TestScore}
 =
 138.53 + 1.36(AttendanceRate)
-\]
+$$
 
 Interpretation of the intercept:
 
@@ -1430,29 +1430,29 @@ Interpretation of the slope:
 
 If a student has 80 percent attendance:
 
-\[
+$$
 \hat{Y}
 =
 138.53 + 1.36(80)
-\]
+$$
 
-\[
+$$
 =
 138.53 + 108.8
-\]
+$$
 
-\[
+$$
 =
 247.33
-\]
+$$
 
 If attendance rises from 80 percent to 90 percent, that is a 10-point increase.
 
 The predicted test score increases by:
 
-\[
+$$
 10(1.36) = 13.6
-\]
+$$
 
 ---
 
@@ -1460,9 +1460,9 @@ The predicted test score increases by:
 
 Suppose:
 
-\[
+$$
 R^2 = 0.052
-\]
+$$
 
 Interpretation:
 
@@ -1470,9 +1470,9 @@ Interpretation:
 
 Suppose the residual standard error is:
 
-\[
+$$
 39.2
-\]
+$$
 
 Interpretation:
 
@@ -1494,22 +1494,22 @@ The outcome variable being predicted.
 A predictor variable used to explain variation in the dependent variable.
 
 **Intercept**  
-The predicted value of \(Y\) when all independent variables equal zero.
+The predicted value of $Y$ when all independent variables equal zero.
 
 **Slope**  
-The predicted change in \(Y\) for a one-unit increase in \(X\).
+The predicted change in $Y$ for a one-unit increase in $X$.
 
 **Predicted value**  
-The value of \(Y\) predicted by the regression model, written \(\hat{Y}\).
+The value of $Y$ predicted by the regression model, written $\hat{Y}$.
 
 **Residual**  
-The difference between observed and predicted \(Y\), written \(Y_i-\hat{Y}_i\).
+The difference between observed and predicted $Y$, written $Y_i-\hat{Y}_i$.
 
 **Ordinary least squares, OLS**  
 The method that estimates regression coefficients by minimizing the sum of squared residuals.
 
 **Stochastic component**  
-The random or unmodeled part of \(Y\), represented by \(u\).
+The random or unmodeled part of $Y$, represented by $u$.
 
 **Omitted variable bias**  
 Bias that occurs when an important variable is left out of the model and is correlated with an included predictor.
@@ -1521,10 +1521,10 @@ The estimated standard deviation of a coefficient’s sampling distribution.
 The typical prediction error of the model.
 
 **R-squared**  
-The proportion of variation in \(Y\) explained by the model.
+The proportion of variation in $Y$ explained by the model.
 
 **Adjusted R-squared**  
-A version of \(R^2\) that adjusts for the number of predictors.
+A version of $R^2$ that adjusts for the number of predictors.
 
 **Dummy variable**  
 A dichotomous variable coded 1 for membership in a category and 0 otherwise.
@@ -1561,17 +1561,17 @@ Linear regression models the relationship between an outcome variable and one or
 
 In simple regression, the model is:
 
-\[
+$$
 Y_i = \beta_0 + \beta_1X_i + u_i
-\]
+$$
 
-The intercept is the predicted value of \(Y\) when \(X=0\). The slope is the predicted change in \(Y\) for a one-unit increase in \(X\).
+The intercept is the predicted value of $Y$ when $X=0$. The slope is the predicted change in $Y$ for a one-unit increase in $X$.
 
 OLS estimates the regression line by minimizing the sum of squared residuals. Residuals are the differences between observed and predicted values.
 
 Regression coefficients can be tested for statistical significance using t-tests. The usual null hypothesis is that the coefficient equals zero. Confidence intervals can also be constructed around coefficients.
 
-\(R^2\) measures the proportion of variation in \(Y\) explained by the model. The standard error of the estimate tells us the typical prediction error in the units of \(Y\).
+$R^2$ measures the proportion of variation in $Y$ explained by the model. The standard error of the estimate tells us the typical prediction error in the units of $Y$.
 
 Dummy variables allow regression to represent differences between categories. A regression with one dichotomous predictor is equivalent to a difference-of-means test.
 

@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -359,20 +388,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="from-probability-theory-to-chi-square-tests" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="from-probability-theory-to-chi-square-tests"><span class="header-section-number">13.1</span> From Probability Theory to Chi-Square Tests</h2>
 <p>Earlier, we defined independence using conditional probabilities.</p>
-<p>Two events (A) and (B) are independent if:</p>
-<p>[ P(A B) = P(A) ]</p>
-<p>In words: knowing that (B) occurred does not change the probability of (A).</p>
+<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if:</p>
+<p><span class="math display">\[
+P(A \mid B) = P(A)
+\]</span></p>
+<p>In words: knowing that <span class="math inline">\(B\)</span> occurred does not change the probability of <span class="math inline">\(A\)</span>.</p>
 <p>The same logic applies to categorical variables.</p>
 <p>Suppose we have two categorical variables:</p>
 <ul>
-<li>(Y): whether someone owns a gun</li>
-<li>(X): whether someone is afraid to walk in their neighborhood at night</li>
+<li><span class="math inline">\(Y\)</span>: whether someone owns a gun</li>
+<li><span class="math inline">\(X\)</span>: whether someone is afraid to walk in their neighborhood at night</li>
 </ul>
 <p>If these variables are independent, then the probability of owning a gun should be the same whether or not someone is afraid to walk in their neighborhood.</p>
 <p>That is:</p>
-<p>[ P( ) = P() ]</p>
+<p><span class="math display">\[
+P(\text{Owns gun} \mid \text{Afraid}) =
+P(\text{Owns gun})
+\]</span></p>
 <p>and:</p>
-<p>[ P( ) = P() ]</p>
+<p><span class="math display">\[
+P(\text{Owns gun} \mid \text{Not afraid}) =
+P(\text{Owns gun})
+\]</span></p>
 <p>If those conditional probabilities differ, the variables are not independent.</p>
 <p>But sample data always contain random sampling error. We need to know whether the differences we observe are large enough to reject independence with statistical confidence.</p>
 <p>That is what the chi-square test does.</p>
@@ -417,12 +454,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Overall, the proportion who own a gun is:</p>
-<p>[ = 0.3204 ]</p>
+<p><span class="math display">\[
+\frac{528}{1648} = 0.3204
+\]</span></p>
 <p>So about 32.04 percent of respondents own a gun.</p>
 <p>Among people who are afraid to walk in their neighborhood at night, the proportion who own a gun is:</p>
-<p>[ = 0.2436 ]</p>
+<p><span class="math display">\[
+\frac{133}{546} = 0.2436
+\]</span></p>
 <p>Among people who are not afraid, the proportion who own a gun is:</p>
-<p>[ = 0.3584 ]</p>
+<p><span class="math display">\[
+\frac{395}{1102} = 0.3584
+\]</span></p>
 <p>These conditional probabilities differ from the unconditional probability of 0.3204.</p>
 <p>That suggests the variables may not be independent.</p>
 <p>But we need a statistical test to determine whether the deviation is large enough to reject the null hypothesis of independence.</p>
@@ -431,17 +474,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-null-hypothesis-of-independence" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="the-null-hypothesis-of-independence"><span class="header-section-number">13.3</span> The Null Hypothesis of Independence</h2>
 <p>For a chi-square test of independence, the null hypothesis is:</p>
-<p>[ H_0: X Y ]</p>
+<p><span class="math display">\[
+H_0: X \text{ and } Y \text{ are independent}
+\]</span></p>
 <p>The alternative hypothesis is:</p>
-<p>[ H_A: X Y ]</p>
+<p><span class="math display">\[
+H_A: X \text{ and } Y \text{ are not independent}
+\]</span></p>
 <p>In words:</p>
 <ul>
-<li>The null hypothesis says the distribution of (Y) does not depend on (X).</li>
-<li>The alternative hypothesis says the distribution of (Y) does depend on (X).</li>
+<li>The null hypothesis says the distribution of <span class="math inline">\(Y\)</span> does not depend on <span class="math inline">\(X\)</span>.</li>
+<li>The alternative hypothesis says the distribution of <span class="math inline">\(Y\)</span> does depend on <span class="math inline">\(X\)</span>.</li>
 </ul>
 <p>In the gun ownership example:</p>
-<p>[ H_0: ]</p>
-<p>[ H_A: ]</p>
+<p><span class="math display">\[
+H_0:
+\text{Gun ownership and fear of walking at night are independent}
+\]</span></p>
+<p><span class="math display">\[
+H_A:
+\text{Gun ownership and fear of walking at night are not independent}
+\]</span></p>
 <hr>
 </section>
 <section id="expected-frequencies" class="level2" data-number="13.4">
@@ -457,7 +510,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>But if gun ownership and neighborhood fear were independent, how many would we expect in that cell?</p>
 <p>The overall gun ownership rate is 0.3204. If independence holds, then 32.04 percent of people in every fear category should own a gun.</p>
 <p>There are 546 people who are afraid. So the expected frequency is:</p>
-<p>[ 546(0.3204) = 174.9 ]</p>
+<p><span class="math display">\[
+546(0.3204) = 174.9
+\]</span></p>
 <p>So under independence, we would expect about 174.9 afraid respondents to own a gun.</p>
 <p>We observed only 133.</p>
 <p>That difference contributes to the chi-square statistic.</p>
@@ -466,15 +521,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="formula-for-expected-frequencies" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="formula-for-expected-frequencies"><span class="header-section-number">13.5</span> Formula for Expected Frequencies</h2>
 <p>For any cell in a contingency table, the expected frequency is:</p>
-<p>[ f_e = ]</p>
+<p><span class="math display">\[
+f_e =
+\frac{(\text{row total})(\text{column total})}{n}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(f_e) is the expected frequency</li>
-<li>(n) is the total sample size</li>
+<li><span class="math inline">\(f_e\)</span> is the expected frequency</li>
+<li><span class="math inline">\(n\)</span> is the total sample size</li>
 </ul>
 <p>For the “owns gun” and “afraid” cell:</p>
-<p>[ f_e = ]</p>
-<p>[ f_e = 174.9 ]</p>
+<p><span class="math display">\[
+f_e =
+\frac{(528)(546)}{1648}
+\]</span></p>
+<p><span class="math display">\[
+f_e = 174.9
+\]</span></p>
 <p>This formula works for every cell in the table.</p>
 <hr>
 </section>
@@ -546,17 +609,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Cross-tabs are useful for examining whether the distribution of one variable changes across categories of another variable.</p>
 <p>When constructing these tables, it is often clearest to put:</p>
 <ul>
-<li>the dependent variable (Y) in the rows</li>
-<li>the independent variable (X) in the columns</li>
+<li>the dependent variable <span class="math inline">\(Y\)</span> in the rows</li>
+<li>the independent variable <span class="math inline">\(X\)</span> in the columns</li>
 </ul>
 <p>This makes it easy to compare column percentages side by side.</p>
 <p>For example:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>Dependent Variable (Y)</th>
-<th style="text-align: right;">(X=1)</th>
-<th style="text-align: right;">(X=2)</th>
+<th>Dependent Variable <span class="math inline">\(Y\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(X=1\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(X=2\)</span></th>
 <th style="text-align: right;">Total</th>
 </tr>
 </thead>
@@ -589,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Column percentages allow us to ask:</p>
 <blockquote class="blockquote">
-<p>Does the distribution of (Y) change as we move across categories of (X)?</p>
+<p>Does the distribution of <span class="math inline">\(Y\)</span> change as we move across categories of <span class="math inline">\(X\)</span>?</p>
 </blockquote>
 <hr>
 </section>
@@ -628,13 +691,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>These column percentages show that gun ownership is lower among those who say they are afraid to walk in their neighborhood at night.</p>
 <p>Among those afraid:</p>
-<p>[ 24.36% ]</p>
+<p><span class="math display">\[
+24.36\%
+\]</span></p>
 <p>own guns.</p>
 <p>Among those not afraid:</p>
-<p>[ 35.84% ]</p>
+<p><span class="math display">\[
+35.84\%
+\]</span></p>
 <p>own guns.</p>
 <p>If the variables were independent, both column percentages would equal the overall gun ownership rate:</p>
-<p>[ 32.04% ]</p>
+<p><span class="math display">\[
+32.04\%
+\]</span></p>
 <p>They do not. The chi-square test tells us whether the observed deviation is statistically significant.</p>
 <hr>
 </section>
@@ -685,7 +754,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>If fear of walking at night is related to gun ownership only among non-hunters but not among hunters, then the control variable helps refine the relationship.</p>
-<p>This is similar to controlled mean comparisons. We hold a third variable constant to see whether the relationship between (X) and (Y) persists.</p>
+<p>This is similar to controlled mean comparisons. We hold a third variable constant to see whether the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> persists.</p>
 <p>However, cross-tabs can become unwieldy quickly when we add more variables or categories. This is one reason regression methods become useful.</p>
 <hr>
 </section>
@@ -709,18 +778,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-chi-square-statistic" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="the-chi-square-statistic"><span class="header-section-number">15.2</span> The Chi-Square Statistic</h2>
 <p>The chi-square statistic is:</p>
-<p>[ ^2 = ]</p>
+<p><span class="math display">\[
+\chi^2 =
+\sum
+\frac{(f_o - f_e)^2}{f_e}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(f_o) is the observed frequency</li>
-<li>(f_e) is the expected frequency</li>
+<li><span class="math inline">\(f_o\)</span> is the observed frequency</li>
+<li><span class="math inline">\(f_e\)</span> is the expected frequency</li>
 <li>the sum is taken across all cells in the table</li>
 </ul>
 <p>The statistic measures how far observed frequencies are from expected frequencies.</p>
 <p>If observed and expected frequencies are identical, then:</p>
-<p>[ f_o - f_e = 0 ]</p>
+<p><span class="math display">\[
+f_o - f_e = 0
+\]</span></p>
 <p>for every cell, and:</p>
-<p>[ ^2 = 0 ]</p>
+<p><span class="math display">\[
+\chi^2 = 0
+\]</span></p>
 <p>As observed frequencies deviate more from expected frequencies, the chi-square statistic grows larger.</p>
 <hr>
 </section>
@@ -762,17 +839,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>For each cell, calculate:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{(f_o - f_e)^2}{f_e}
+\]</span></p>
 <p>For the “owns gun and afraid” cell:</p>
-<p>[ ]</p>
-<p>[ = ]</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{(133 - 174.9)^2}{174.9}
+\]</span></p>
+<p><span class="math display">\[
+= \frac{(-41.9)^2}{174.9}
+\]</span></p>
+<p><span class="math display">\[
+\approx 10.1
+\]</span></p>
 <p>Repeat for each cell:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Cell</th>
-<th style="text-align: right;">Contribution to (^2)</th>
+<th style="text-align: right;">Contribution to <span class="math inline">\(\chi^2\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -795,18 +880,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Add them:</p>
-<p>[ ^2 = 10.1 + 5.0 + 4.7 + 2.4 ]</p>
-<p>[ ^2 = 22.2 ]</p>
+<p><span class="math display">\[
+\chi^2 = 10.1 + 5.0 + 4.7 + 2.4
+\]</span></p>
+<p><span class="math display">\[
+\chi^2 = 22.2
+\]</span></p>
 <hr>
 </section>
 <section id="degrees-of-freedom" class="level2" data-number="15.4">
 <h2 data-number="15.4" class="anchored" data-anchor-id="degrees-of-freedom"><span class="header-section-number">15.4</span> Degrees of Freedom</h2>
 <p>For a chi-square test of independence:</p>
-<p>[ df = (r-1)(c-1) ]</p>
+<p><span class="math display">\[
+df = (r-1)(c-1)
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(r) is the number of rows</li>
-<li>(c) is the number of columns</li>
+<li><span class="math inline">\(r\)</span> is the number of rows</li>
+<li><span class="math inline">\(c\)</span> is the number of columns</li>
 </ul>
 <p>Do not count total rows or total columns.</p>
 <p>In the gun ownership example, there are:</p>
@@ -815,8 +906,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>2 columns</li>
 </ul>
 <p>So:</p>
-<p>[ df = (2-1)(2-1) ]</p>
-<p>[ df = 1 ]</p>
+<p><span class="math display">\[
+df = (2-1)(2-1)
+\]</span></p>
+<p><span class="math display">\[
+df = 1
+\]</span></p>
 <hr>
 </section>
 <section id="the-chi-square-distribution" class="level2" data-number="15.5">
@@ -824,13 +919,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The chi-square distribution is different from the normal and t distributions.</p>
 <p>It starts at 0 and extends to positive infinity.</p>
 <p>A chi-square statistic can never be negative.</p>
-<p>A chi-square test is therefore a <strong>one-sided test</strong>. We reject the null hypothesis only for large values of (^2).</p>
-<p>For (= 0.05) and (df = 1), the critical value is:</p>
-<p>[ ^2 = 3.84 ]</p>
+<p>A chi-square test is therefore a <strong>one-sided test</strong>. We reject the null hypothesis only for large values of <span class="math inline">\(\chi^2\)</span>.</p>
+<p>For <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(df = 1\)</span>, the critical value is:</p>
+<p><span class="math display">\[
+\chi^2 = 3.84
+\]</span></p>
 <p>Our test statistic is:</p>
-<p>[ ^2 = 22.2 ]</p>
+<p><span class="math display">\[
+\chi^2 = 22.2
+\]</span></p>
 <p>Since:</p>
-<p>[ 22.2 &gt; 3.84 ]</p>
+<p><span class="math display">\[
+22.2 &gt; 3.84
+\]</span></p>
 <p>we reject the null hypothesis.</p>
 <p>Gun ownership and fear of walking in one’s neighborhood at night are not independent.</p>
 <hr>
@@ -840,9 +941,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The p-value is the area in the upper tail of the chi-square distribution beyond the observed chi-square statistic.</p>
 <p>Unlike two-tailed t-tests and z-tests, we do not double the p-value.</p>
 <p>For the gun ownership example, the test statistic is so large that:</p>
-<p>[ p &lt; 0.001 ]</p>
+<p><span class="math display">\[
+p &lt; 0.001
+\]</span></p>
 <p>Since:</p>
-<p>[ p &lt; 0.05 ]</p>
+<p><span class="math display">\[
+p &lt; 0.05
+\]</span></p>
 <p>we reject the null hypothesis.</p>
 <hr>
 </section>
@@ -901,9 +1006,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>The graduation rates were:</p>
-<p>[ = 0.892 ]</p>
+<p><span class="math display">\[
+\frac{83}{93} = 0.892
+\]</span></p>
 <p>and:</p>
-<p>[ = 0.843 ]</p>
+<p><span class="math display">\[
+\frac{102}{121} = 0.843
+\]</span></p>
 <p>The difference was not statistically significant using a z-test.</p>
 <p>We can also analyze this as a chi-square test because it is a 2-by-2 table.</p>
 <hr>
@@ -911,7 +1020,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="expected-frequencies-1" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="expected-frequencies-1"><span class="header-section-number">16.2</span> Expected Frequencies</h2>
 <p>The overall graduation rate is:</p>
-<p>[ = 0.864 ]</p>
+<p><span class="math display">\[
+\frac{185}{214} = 0.864
+\]</span></p>
 <p>If program participation and graduation were independent, we would expect 86.4 percent of each group to graduate.</p>
 <p>The expected frequencies are approximately:</p>
 <table class="caption-top table">
@@ -941,15 +1052,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="chi-square-result" class="level2" data-number="16.3">
 <h2 data-number="16.3" class="anchored" data-anchor-id="chi-square-result"><span class="header-section-number">16.3</span> Chi-Square Result</h2>
 <p>Using the formula:</p>
-<p>[ ^2 = ]</p>
+<p><span class="math display">\[
+\chi^2 =
+\sum
+\frac{(f_o - f_e)^2}{f_e}
+\]</span></p>
 <p>we obtain:</p>
-<p>[ ^2 = 1.10 ]</p>
+<p><span class="math display">\[
+\chi^2 = 1.10
+\]</span></p>
 <p>Degrees of freedom:</p>
-<p>[ df = (2-1)(2-1)=1 ]</p>
-<p>The critical value at (= 0.05) is:</p>
-<p>[ 3.84 ]</p>
+<p><span class="math display">\[
+df = (2-1)(2-1)=1
+\]</span></p>
+<p>The critical value at <span class="math inline">\(\alpha = 0.05\)</span> is:</p>
+<p><span class="math display">\[
+3.84
+\]</span></p>
 <p>Since:</p>
-<p>[ 1.10 &lt; 3.84 ]</p>
+<p><span class="math display">\[
+1.10 &lt; 3.84
+\]</span></p>
 <p>we fail to reject the null hypothesis.</p>
 <p>The chi-square test reaches the same conclusion as the difference-of-proportions z-test.</p>
 <hr>
@@ -957,11 +1080,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="relationship-between-z-and-chi-square-in-2-by-2-tables" class="level2" data-number="16.4">
 <h2 data-number="16.4" class="anchored" data-anchor-id="relationship-between-z-and-chi-square-in-2-by-2-tables"><span class="header-section-number">16.4</span> Relationship Between z and Chi-Square in 2-by-2 Tables</h2>
 <p>For a 2-by-2 table, the chi-square statistic with one degree of freedom is equal to the square of the z-statistic from the difference-of-proportions test:</p>
-<p>[ ^2 = z^2 ]</p>
+<p><span class="math display">\[
+\chi^2 = z^2
+\]</span></p>
 <p>In the graduation example, the z-statistic was:</p>
-<p>[ z = 1.049 ]</p>
+<p><span class="math display">\[
+z = 1.049
+\]</span></p>
 <p>Squaring it:</p>
-<p>[ 1.049^2 ]</p>
+<p><span class="math display">\[
+1.049^2 \approx 1.10
+\]</span></p>
 <p>which equals the chi-square statistic.</p>
 <p>This relationship holds only for 2-by-2 tables.</p>
 <p>Once one of the variables has more than two categories, the chi-square test no longer reduces to a z-test.</p>
@@ -989,9 +1118,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Is satisfaction with one’s health insurance independent of plan type?</p>
 </blockquote>
 <p>The null hypothesis is:</p>
-<p>[ H_0: ]</p>
+<p><span class="math display">\[
+H_0: \text{Satisfaction and plan type are independent}
+\]</span></p>
 <p>The alternative is:</p>
-<p>[ H_A: ]</p>
+<p><span class="math display">\[
+H_A: \text{Satisfaction and plan type are not independent}
+\]</span></p>
 <hr>
 </section>
 <section id="observed-frequencies-and-column-percentages" class="level2" data-number="17.2">
@@ -1073,7 +1206,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Under independence, the satisfaction distribution should be the same for ACA plans and other plans.</p>
 <p>For example, 78.6 percent of all respondents are satisfied. If plan type does not matter, then 78.6 percent of ACA respondents and 78.6 percent of other-plan respondents should be satisfied.</p>
 <p>Using:</p>
-<p>[ f_e = ]</p>
+<p><span class="math display">\[
+f_e = \frac{(\text{row total})(\text{column total})}{n}
+\]</span></p>
 <p>the expected frequencies are approximately:</p>
 <table class="caption-top table">
 <thead>
@@ -1107,7 +1242,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="chi-square-statistic" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="chi-square-statistic"><span class="header-section-number">17.4</span> Chi-Square Statistic</h2>
 <p>For each cell:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{(f_o - f_e)^2}{f_e}
+\]</span></p>
 <p>The contributions are approximately:</p>
 <table class="caption-top table">
 <thead>
@@ -1136,17 +1273,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Adding all cell contributions gives:</p>
-<p>[ ^2 ]</p>
+<p><span class="math display">\[
+\chi^2 \approx 45.1
+\]</span></p>
 <p>Using the lecture’s rounded values, the statistic was reported around:</p>
-<p>[ ^2 ]</p>
+<p><span class="math display">\[
+\chi^2 \approx 50.4
+\]</span></p>
 <p>Small differences can arise from rounding or slightly different underlying cell values. The substantive conclusion is the same: the statistic is very large.</p>
 <p>Degrees of freedom:</p>
-<p>[ df = (3-1)(2-1) ]</p>
-<p>[ df = 2 ]</p>
-<p>At (= 0.05), the critical value for (df=2) is:</p>
-<p>[ 5.99 ]</p>
+<p><span class="math display">\[
+df = (3-1)(2-1)
+\]</span></p>
+<p><span class="math display">\[
+df = 2
+\]</span></p>
+<p>At <span class="math inline">\(\alpha = 0.05\)</span>, the critical value for <span class="math inline">\(df=2\)</span> is:</p>
+<p><span class="math display">\[
+5.99
+\]</span></p>
 <p>Since:</p>
-<p>[ 50.4 &gt; 5.99 ]</p>
+<p><span class="math display">\[
+50.4 &gt; 5.99
+\]</span></p>
 <p>we reject the null hypothesis.</p>
 <p>Satisfaction and plan type are not independent.</p>
 <hr>
@@ -1171,13 +1320,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="residuals" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="residuals"><span class="header-section-number">18.1</span> Residuals</h2>
 <p>A <strong>residual</strong> in a chi-square table is:</p>
-<p>[ f_o - f_e ]</p>
+<p><span class="math display">\[
+f_o - f_e
+\]</span></p>
 <p>It tells us whether a cell contains more or fewer cases than expected under independence.</p>
 <p>A positive residual means:</p>
-<p>[ f_o &gt; f_e ]</p>
+<p><span class="math display">\[
+f_o &gt; f_e
+\]</span></p>
 <p>There are more cases in that cell than expected.</p>
 <p>A negative residual means:</p>
-<p>[ f_o &lt; f_e ]</p>
+<p><span class="math display">\[
+f_o &lt; f_e
+\]</span></p>
 <p>There are fewer cases in that cell than expected.</p>
 <p>Residuals help us understand the direction of the relationship.</p>
 <hr>
@@ -1225,25 +1380,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A raw residual can be hard to interpret because its size depends on the sample size and expected frequency.</p>
 <p>We can convert residuals into standardized residuals, which function like z-statistics.</p>
 <p>A standardized residual is:</p>
-<p>[ z = { } ]</p>
+<p><span class="math display">\[
+z =
+\frac{f_o - f_e}
+{
+\sqrt{
+f_e(1-p_{row})(1-p_{column})
+}
+}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(p_{row}) is the row proportion</li>
-<li>(p_{column}) is the column proportion</li>
+<li><span class="math inline">\(p_{row}\)</span> is the row proportion</li>
+<li><span class="math inline">\(p_{column}\)</span> is the column proportion</li>
 </ul>
 <p>Large positive or negative standardized residuals indicate cells that contribute strongly to the chi-square statistic.</p>
-<p>A standardized residual beyond approximately () suggests that the cell deviation is large relative to what we would expect under independence.</p>
+<p>A standardized residual beyond approximately <span class="math inline">\(\pm 1.96\)</span> suggests that the cell deviation is large relative to what we would expect under independence.</p>
 <hr>
 </section>
 <section id="example-standardized-residual" class="level2" data-number="18.4">
 <h2 data-number="18.4" class="anchored" data-anchor-id="example-standardized-residual"><span class="header-section-number">18.4</span> Example: Standardized Residual</h2>
 <p>Suppose the ACA-satisfied cell has:</p>
-<p>[ f_o = 772 ]</p>
-<p>[ f_e = 853.2 ]</p>
+<p><span class="math display">\[
+f_o = 772
+\]</span></p>
+<p><span class="math display">\[
+f_e = 853.2
+\]</span></p>
 <p>The residual is:</p>
-<p>[ 772 - 853.2 = -81.2 ]</p>
+<p><span class="math display">\[
+772 - 853.2 = -81.2
+\]</span></p>
 <p>If the standardized residual is:</p>
-<p>[ z = -6.50 ]</p>
+<p><span class="math display">\[
+z = -6.50
+\]</span></p>
 <p>that is a very large negative deviation.</p>
 <p>This means the ACA-satisfied cell has far fewer cases than expected under independence.</p>
 <p>The result is not merely statistically significant overall. This specific cell is contributing strongly to the relationship.</p>
@@ -1305,10 +1476,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>These statistics supplement the chi-square test by describing the direction of the ordinal relationship.</p>
 <p>For example, if gamma is:</p>
-<p>[ -0.35 ]</p>
+<p><span class="math display">\[
+-0.35
+\]</span></p>
 <p>then the relationship is negative.</p>
 <p>If gamma is:</p>
-<p>[ 0.42 ]</p>
+<p><span class="math display">\[
+0.42
+\]</span></p>
 <p>then the relationship is positive.</p>
 <p>These values also have standard errors, allowing assessment of whether they are meaningfully different from zero.</p>
 <hr>
@@ -1436,7 +1611,7 @@ The difference between observed and expected frequency in a cell.</p>
 <p><strong>Standardized residual</strong><br>
 A residual converted into standard error units.</p>
 <p><strong>Degrees of freedom</strong><br>
-For a chi-square test, ((r-1)(c-1)), where (r) is rows and (c) is columns.</p>
+For a chi-square test, <span class="math inline">\((r-1)(c-1)\)</span>, where <span class="math inline">\(r\)</span> is rows and <span class="math inline">\(c\)</span> is columns.</p>
 <p><strong>Fisher’s exact test</strong><br>
 An exact test for association between categorical variables, useful for small samples.</p>
 <p><strong>Ordinal association</strong><br>
@@ -1456,11 +1631,19 @@ The practical or real-world importance of an observed pattern.</p>
 <p>The chi-square test of independence allows us to evaluate whether two categorical variables are statistically independent.</p>
 <p>The test compares observed frequencies in a contingency table to expected frequencies under the null hypothesis of independence. If the observed frequencies deviate enough from the expected frequencies, the chi-square statistic becomes large, and we reject the null hypothesis.</p>
 <p>Expected frequencies are calculated using row totals, column totals, and the total sample size:</p>
-<p>[ f_e = ]</p>
+<p><span class="math display">\[
+f_e = \frac{(\text{row total})(\text{column total})}{n}
+\]</span></p>
 <p>The chi-square statistic is:</p>
-<p>[ ^2 = ]</p>
+<p><span class="math display">\[
+\chi^2 =
+\sum
+\frac{(f_o-f_e)^2}{f_e}
+\]</span></p>
 <p>The test is one-sided because chi-square statistics cannot be negative. The critical value depends on the chi-square distribution and degrees of freedom:</p>
-<p>[ df = (r-1)(c-1) ]</p>
+<p><span class="math display">\[
+df = (r-1)(c-1)
+\]</span></p>
 <p>A significant chi-square test tells us the variables are not independent. It does not tell us the direction or substantive magnitude of the relationship. To understand those, we examine percentages, residuals, standardized residuals, and, for ordinal variables, statistics such as gamma or Kendall’s tau-b.</p>
 <p>For small samples, when expected frequencies are too low, Fisher’s exact test is preferable.</p>
 <p>The central lesson is that categorical relationships require careful interpretation. Statistical significance tells us that a pattern is unlikely under independence, but substantive interpretation comes from examining the table itself.</p>

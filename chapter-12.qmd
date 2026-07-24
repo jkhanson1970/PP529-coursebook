@@ -22,7 +22,7 @@ If between-group variation is large relative to within-group variation, then gro
 
 ## Comparing Several Means
 
-Suppose we have an interval-level dependent variable \(Y\), such as:
+Suppose we have an interval-level dependent variable $Y$, such as:
 
 - test score
 - income
@@ -31,7 +31,7 @@ Suppose we have an interval-level dependent variable \(Y\), such as:
 - infant mortality rate
 - air quality index
 
-And suppose we have a categorical independent variable \(X\), such as:
+And suppose we have a categorical independent variable $X$, such as:
 
 - political party
 - school
@@ -40,9 +40,9 @@ And suppose we have a categorical independent variable \(X\), such as:
 - regime type
 - treatment category
 
-If \(X\) has only two categories, we can compare the two means using a t-test.
+If $X$ has only two categories, we can compare the two means using a t-test.
 
-But if \(X\) has more than two categories, we need another approach.
+But if $X$ has more than two categories, we need another approach.
 
 For example, suppose we want to compare student test scores across five classrooms. The null hypothesis is that all five classrooms have the same mean test score. The alternative is that at least one classroom has a different mean.
 
@@ -56,22 +56,22 @@ ANOVA asks whether the means of an interval-level variable differ across categor
 
 For a one-way ANOVA, we have:
 
-- one interval-level dependent variable, \(Y\)
-- one categorical independent variable, \(X\)
+- one interval-level dependent variable, $Y$
+- one categorical independent variable, $X$
 
 The null hypothesis is:
 
-\[
+$$
 H_0: \mu_1 = \mu_2 = \mu_3 = \cdots = \mu_G
-\]
+$$
 
-where \(G\) is the number of groups.
+where $G$ is the number of groups.
 
 The alternative hypothesis is:
 
-\[
+$$
 H_A: \text{At least one group mean differs from the others.}
-\]
+$$
 
 Notice that the alternative hypothesis does not say exactly which group differs. It only says that not all group means are equal.
 
@@ -88,9 +88,9 @@ Suppose respondents are asked to rate Barack Obama on a feeling thermometer from
 
 The overall mean thermometer score is:
 
-\[
+$$
 \bar{Y} = 60.72
-\]
+$$
 
 Now suppose we compare mean thermometer scores across party identification:
 
@@ -117,7 +117,7 @@ ANOVA stands for **analysis of variance**.
 
 That name may seem surprising because we are comparing means. But the method works by analyzing variance.
 
-Specifically, ANOVA partitions the total variation in \(Y\) into two parts:
+Specifically, ANOVA partitions the total variation in $Y$ into two parts:
 
 1. **Between-group variation**
 2. **Within-group variation**
@@ -126,9 +126,9 @@ The key question is:
 
 > Is variation between group means large relative to variation within groups?
 
-If the group means are far apart and individuals within each group are clustered close to their group mean, then group membership explains a lot of variation in \(Y\).
+If the group means are far apart and individuals within each group are clustered close to their group mean, then group membership explains a lot of variation in $Y$.
 
-If the group means are close together or the groups overlap heavily, then group membership does not explain much variation in \(Y\).
+If the group means are close together or the groups overlap heavily, then group membership does not explain much variation in $Y$.
 
 ---
 
@@ -152,9 +152,9 @@ Between-group variation asks:
 
 The overall mean is:
 
-\[
+$$
 \bar{Y} = 60.72
-\]
+$$
 
 So we examine how far each group mean is from 60.72, weighting by group size.
 
@@ -184,21 +184,21 @@ ANOVA uses an **F statistic**.
 
 The F statistic is a ratio:
 
-\[
+$$
 F =
 \frac{\text{Between-group variance}}
 {\text{Within-group variance}}
-\]
+$$
 
-If between-group variance is large relative to within-group variance, \(F\) will be large.
+If between-group variance is large relative to within-group variance, $F$ will be large.
 
-If between-group variance is small relative to within-group variance, \(F\) will be small.
+If between-group variance is small relative to within-group variance, $F$ will be small.
 
 The smallest possible F statistic is 0. That would occur when all group means are identical.
 
 Because variances are always nonnegative, F statistics cannot be negative.
 
-Like chi-square tests, ANOVA uses a one-sided test. We reject the null hypothesis only for large values of \(F\).
+Like chi-square tests, ANOVA uses a one-sided test. We reject the null hypothesis only for large values of $F$.
 
 ---
 
@@ -212,9 +212,9 @@ In another scenario, the three group means differ slightly, but the observations
 
 The F statistic formalizes this comparison:
 
-\[
+$$
 \text{Are group means far apart compared to the variation inside the groups?}
-\]
+$$
 
 ---
 
@@ -224,14 +224,14 @@ The F statistic formalizes this comparison:
 
 Suppose we have:
 
-- total sample size \(N\)
-- number of groups \(G\)
-- sample size in group \(g\): \(n_g\)
-- outcome for person \(i\) in group \(g\): \(Y_{ig}\)
-- mean of group \(g\): \(\bar{Y}_g\)
-- overall mean: \(\bar{Y}\)
+- total sample size $N$
+- number of groups $G$
+- sample size in group $g$: $n_g$
+- outcome for person $i$ in group $g$: $Y_{ig}$
+- mean of group $g$: $\bar{Y}_g$
+- overall mean: $\bar{Y}$
 
-ANOVA compares the group means \(\bar{Y}_g\) to the overall mean \(\bar{Y}\), while also accounting for variation among individuals within each group.
+ANOVA compares the group means $\bar{Y}_g$ to the overall mean $\bar{Y}$, while also accounting for variation among individuals within each group.
 
 ---
 
@@ -239,12 +239,12 @@ ANOVA compares the group means \(\bar{Y}_g\) to the overall mean \(\bar{Y}\), wh
 
 The **between sum of squares** measures how far group means are from the overall mean, weighted by group size.
 
-\[
+$$
 SS_{between}
 =
 \sum_{g=1}^{G}
 n_g(\bar{Y}_g - \bar{Y})^2
-\]
+$$
 
 For each group:
 
@@ -258,17 +258,17 @@ Groups with more cases contribute more to the between-group sum of squares.
 
 The degrees of freedom for the between-group component are:
 
-\[
+$$
 df_{between} = G - 1
-\]
+$$
 
 The **between-group variance**, also called the **mean square between**, is:
 
-\[
+$$
 MS_{between}
 =
 \frac{SS_{between}}{G-1}
-\]
+$$
 
 ---
 
@@ -276,42 +276,42 @@ MS_{between}
 
 The **within sum of squares** measures variation of individuals around their own group means.
 
-\[
+$$
 SS_{within}
 =
 \sum_{g=1}^{G}
 \sum_{i=1}^{n_g}
 (Y_{ig} - \bar{Y}_g)^2
-\]
+$$
 
 This is the sum of the within-group sums of squares.
 
 Another way to calculate it is:
 
-\[
+$$
 SS_{within}
 =
 \sum_{g=1}^{G}
 (n_g-1)s_g^2
-\]
+$$
 
-where \(s_g^2\) is the sample variance within group \(g\).
+where $s_g^2$ is the sample variance within group $g$.
 
 This second formula is often more convenient if we already know group standard deviations.
 
 The degrees of freedom for the within-group component are:
 
-\[
+$$
 df_{within} = N - G
-\]
+$$
 
 The **within-group variance**, also called the **mean square within**, is:
 
-\[
+$$
 MS_{within}
 =
 \frac{SS_{within}}{N-G}
-\]
+$$
 
 ---
 
@@ -319,24 +319,24 @@ MS_{within}
 
 The F statistic is:
 
-\[
+$$
 F =
 \frac{MS_{between}}{MS_{within}}
-\]
+$$
 
 or:
 
-\[
+$$
 F =
 \frac{SS_{between}/(G-1)}
 {SS_{within}/(N-G)}
-\]
+$$
 
 The F statistic has two degrees of freedom:
 
-\[
+$$
 F_{G-1,\;N-G}
-\]
+$$
 
 The first is the numerator degrees of freedom.
 
@@ -354,15 +354,15 @@ A small F statistic means that group means are not far apart relative to within-
 
 The F test evaluates:
 
-\[
+$$
 H_0: \mu_1 = \mu_2 = \cdots = \mu_G
-\]
+$$
 
 against:
 
-\[
+$$
 H_A: \text{At least one group mean differs.}
-\]
+$$
 
 If the p-value associated with F is less than alpha, we reject the null hypothesis.
 
@@ -383,29 +383,29 @@ Return to the Obama thermometer example.
 
 There are:
 
-\[
+$$
 G = 3
-\]
+$$
 
 groups and:
 
-\[
+$$
 N = 5474
-\]
+$$
 
 observations.
 
 The null hypothesis is:
 
-\[
+$$
 H_0: \mu_D = \mu_I = \mu_R
-\]
+$$
 
 The alternative is:
 
-\[
+$$
 H_A: \text{At least one party mean differs.}
-\]
+$$
 
 ---
 
@@ -413,16 +413,16 @@ H_A: \text{At least one party mean differs.}
 
 The between sum of squares is:
 
-\[
+$$
 SS_{between}
 =
 \sum_{g=1}^{G}
 n_g(\bar{Y}_g - \bar{Y})^2
-\]
+$$
 
 Substitute values:
 
-\[
+$$
 SS_{between}
 =
 2197(85.31 - 60.72)^2
@@ -430,33 +430,33 @@ SS_{between}
 1776(55.70 - 60.72)^2
 +
 1501(26.62 - 60.72)^2
-\]
+$$
 
 This gives approximately:
 
-\[
+$$
 SS_{between} = 2{,}881{,}370.9
-\]
+$$
 
 Degrees of freedom:
 
-\[
+$$
 df_{between} = G - 1 = 3 - 1 = 2
-\]
+$$
 
 So:
 
-\[
+$$
 MS_{between}
 =
 \frac{2{,}881{,}370.9}{2}
-\]
+$$
 
-\[
+$$
 MS_{between}
 =
 1{,}440{,}685.45
-\]
+$$
 
 ---
 
@@ -464,16 +464,16 @@ MS_{between}
 
 Using group standard deviations:
 
-\[
+$$
 SS_{within}
 =
 \sum_{g=1}^{G}
 (n_g-1)s_g^2
-\]
+$$
 
 Substitute values:
 
-\[
+$$
 SS_{within}
 =
 (2197-1)(19.10)^2
@@ -481,32 +481,32 @@ SS_{within}
 (1776-1)(27.10)^2
 +
 (1501-1)(25.40)^2
-\]
+$$
 
 This gives approximately:
 
-\[
+$$
 SS_{within} = 3{,}689{,}000
-\]
+$$
 
 Degrees of freedom:
 
-\[
+$$
 df_{within} = N - G = 5474 - 3 = 5471
-\]
+$$
 
 So:
 
-\[
+$$
 MS_{within}
 =
 \frac{3{,}689{,}000}{5471}
-\]
+$$
 
-\[
+$$
 MS_{within}
 \approx 674.4
-\]
+$$
 
 ---
 
@@ -514,19 +514,19 @@ MS_{within}
 
 Now calculate:
 
-\[
+$$
 F =
 \frac{MS_{between}}{MS_{within}}
-\]
+$$
 
-\[
+$$
 F =
 \frac{1{,}440{,}685.45}{674.4}
-\]
+$$
 
-\[
+$$
 F \approx 2136
-\]
+$$
 
 This is extremely large.
 
@@ -565,10 +565,10 @@ The residual row represents within-group variation.
 
 The F statistic is:
 
-\[
+$$
 \frac{\text{Mean Square for Party ID}}
 {\text{Mean Square Residual}}
-\]
+$$
 
 The p-value tells us whether the group means differ with statistical significance.
 
@@ -576,20 +576,20 @@ The p-value tells us whether the group means differ with statistical significanc
 
 ## R-Squared in ANOVA
 
-Software may also report \(R^2\).
+Software may also report $R^2$.
 
-In ANOVA, \(R^2\) represents the proportion of total variation in \(Y\) explained by the group categories.
+In ANOVA, $R^2$ represents the proportion of total variation in $Y$ explained by the group categories.
 
-\[
+$$
 R^2 =
 \frac{SS_{between}}{SS_{total}}
-\]
+$$
 
 In the Obama thermometer example, party ID explains roughly 44 percent of the variation in Obama thermometer scores.
 
 That is a large amount of explained variation for social science data.
 
-We will return to \(R^2\) in more detail when discussing regression.
+We will return to $R^2$ in more detail when discussing regression.
 
 ---
 
@@ -610,15 +610,15 @@ The question is:
 
 The null hypothesis is:
 
-\[
+$$
 H_0: \mu_1 = \mu_2 = \cdots = \mu_{25}
-\]
+$$
 
 The alternative is:
 
-\[
+$$
 H_A: \text{At least one school mean differs.}
-\]
+$$
 
 A one-way ANOVA can test whether school membership explains statistically significant variation in test scores.
 
@@ -704,11 +704,11 @@ A two-way ANOVA output may include rows such as:
 | Region | smaller | 0.04 |
 | Residual |  |  |
 
-The **model** row tests whether the full set of categories, taken together, explains variation in \(Y\).
+The **model** row tests whether the full set of categories, taken together, explains variation in $Y$.
 
-The **Party ID** row tests whether party ID explains variation in \(Y\), after controlling for region.
+The **Party ID** row tests whether party ID explains variation in $Y$, after controlling for region.
 
-The **Region** row tests whether region explains variation in \(Y\), after controlling for party ID.
+The **Region** row tests whether region explains variation in $Y$, after controlling for party ID.
 
 If party ID has a very small p-value, then party ID matters even after controlling for region.
 
@@ -981,10 +981,10 @@ The logic of ANOVA is based on partitioning variance. Total variation in an inte
 
 The F statistic is:
 
-\[
+$$
 F =
 \frac{MS_{between}}{MS_{within}}
-\]
+$$
 
 A large F statistic with a small p-value leads us to reject the null hypothesis that all group means are equal.
 

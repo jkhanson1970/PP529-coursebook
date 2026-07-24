@@ -31,36 +31,36 @@ This chapter introduces cross-tabulation analysis, expected frequencies, the chi
 
 Earlier, we defined independence using conditional probabilities.
 
-Two events \(A\) and \(B\) are independent if:
+Two events $A$ and $B$ are independent if:
 
-\[
+$$
 P(A \mid B) = P(A)
-\]
+$$
 
-In words: knowing that \(B\) occurred does not change the probability of \(A\).
+In words: knowing that $B$ occurred does not change the probability of $A$.
 
 The same logic applies to categorical variables.
 
 Suppose we have two categorical variables:
 
-- \(Y\): whether someone owns a gun
-- \(X\): whether someone is afraid to walk in their neighborhood at night
+- $Y$: whether someone owns a gun
+- $X$: whether someone is afraid to walk in their neighborhood at night
 
 If these variables are independent, then the probability of owning a gun should be the same whether or not someone is afraid to walk in their neighborhood.
 
 That is:
 
-\[
+$$
 P(\text{Owns gun} \mid \text{Afraid}) =
 P(\text{Owns gun})
-\]
+$$
 
 and:
 
-\[
+$$
 P(\text{Owns gun} \mid \text{Not afraid}) =
 P(\text{Owns gun})
-\]
+$$
 
 If those conditional probabilities differ, the variables are not independent.
 
@@ -87,23 +87,23 @@ The joint frequency distribution is:
 
 Overall, the proportion who own a gun is:
 
-\[
+$$
 \frac{528}{1648} = 0.3204
-\]
+$$
 
 So about 32.04 percent of respondents own a gun.
 
 Among people who are afraid to walk in their neighborhood at night, the proportion who own a gun is:
 
-\[
+$$
 \frac{133}{546} = 0.2436
-\]
+$$
 
 Among people who are not afraid, the proportion who own a gun is:
 
-\[
+$$
 \frac{395}{1102} = 0.3584
-\]
+$$
 
 These conditional probabilities differ from the unconditional probability of 0.3204.
 
@@ -117,32 +117,32 @@ But we need a statistical test to determine whether the deviation is large enoug
 
 For a chi-square test of independence, the null hypothesis is:
 
-\[
+$$
 H_0: X \text{ and } Y \text{ are independent}
-\]
+$$
 
 The alternative hypothesis is:
 
-\[
+$$
 H_A: X \text{ and } Y \text{ are not independent}
-\]
+$$
 
 In words:
 
-- The null hypothesis says the distribution of \(Y\) does not depend on \(X\).
-- The alternative hypothesis says the distribution of \(Y\) does depend on \(X\).
+- The null hypothesis says the distribution of $Y$ does not depend on $X$.
+- The alternative hypothesis says the distribution of $Y$ does depend on $X$.
 
 In the gun ownership example:
 
-\[
+$$
 H_0:
 \text{Gun ownership and fear of walking at night are independent}
-\]
+$$
 
-\[
+$$
 H_A:
 \text{Gun ownership and fear of walking at night are not independent}
-\]
+$$
 
 ---
 
@@ -165,9 +165,9 @@ The overall gun ownership rate is 0.3204. If independence holds, then 32.04 perc
 
 There are 546 people who are afraid. So the expected frequency is:
 
-\[
+$$
 546(0.3204) = 174.9
-\]
+$$
 
 So under independence, we would expect about 174.9 afraid respondents to own a gun.
 
@@ -181,26 +181,26 @@ That difference contributes to the chi-square statistic.
 
 For any cell in a contingency table, the expected frequency is:
 
-\[
+$$
 f_e =
 \frac{(\text{row total})(\text{column total})}{n}
-\]
+$$
 
 where:
 
-- \(f_e\) is the expected frequency
-- \(n\) is the total sample size
+- $f_e$ is the expected frequency
+- $n$ is the total sample size
 
 For the “owns gun” and “afraid” cell:
 
-\[
+$$
 f_e =
 \frac{(528)(546)}{1648}
-\]
+$$
 
-\[
+$$
 f_e = 174.9
-\]
+$$
 
 This formula works for every cell in the table.
 
@@ -239,14 +239,14 @@ Cross-tabs are useful for examining whether the distribution of one variable cha
 
 When constructing these tables, it is often clearest to put:
 
-- the dependent variable \(Y\) in the rows
-- the independent variable \(X\) in the columns
+- the dependent variable $Y$ in the rows
+- the independent variable $X$ in the columns
 
 This makes it easy to compare column percentages side by side.
 
 For example:
 
-| Dependent Variable \(Y\) | \(X=1\) | \(X=2\) | Total |
+| Dependent Variable $Y$ | $X=1$ | $X=2$ | Total |
 |---|---:|---:|---:|
 | Category 1 | % | % | % |
 | Category 2 | % | % | % |
@@ -255,7 +255,7 @@ For example:
 
 Column percentages allow us to ask:
 
-> Does the distribution of \(Y\) change as we move across categories of \(X\)?
+> Does the distribution of $Y$ change as we move across categories of $X$?
 
 ---
 
@@ -273,25 +273,25 @@ These column percentages show that gun ownership is lower among those who say th
 
 Among those afraid:
 
-\[
+$$
 24.36\%
-\]
+$$
 
 own guns.
 
 Among those not afraid:
 
-\[
+$$
 35.84\%
-\]
+$$
 
 own guns.
 
 If the variables were independent, both column percentages would equal the overall gun ownership rate:
 
-\[
+$$
 32.04\%
-\]
+$$
 
 They do not. The chi-square test tells us whether the observed deviation is statistically significant.
 
@@ -321,7 +321,7 @@ For example:
 
 If fear of walking at night is related to gun ownership only among non-hunters but not among hunters, then the control variable helps refine the relationship.
 
-This is similar to controlled mean comparisons. We hold a third variable constant to see whether the relationship between \(X\) and \(Y\) persists.
+This is similar to controlled mean comparisons. We hold a third variable constant to see whether the relationship between $X$ and $Y$ persists.
 
 However, cross-tabs can become unwieldy quickly when we add more variables or categories. This is one reason regression methods become useful.
 
@@ -350,31 +350,31 @@ If expected frequencies are too small, the chi-square approximation may not be r
 
 The chi-square statistic is:
 
-\[
+$$
 \chi^2 =
 \sum
 \frac{(f_o - f_e)^2}{f_e}
-\]
+$$
 
 where:
 
-- \(f_o\) is the observed frequency
-- \(f_e\) is the expected frequency
+- $f_o$ is the observed frequency
+- $f_e$ is the expected frequency
 - the sum is taken across all cells in the table
 
 The statistic measures how far observed frequencies are from expected frequencies.
 
 If observed and expected frequencies are identical, then:
 
-\[
+$$
 f_o - f_e = 0
-\]
+$$
 
 for every cell, and:
 
-\[
+$$
 \chi^2 = 0
-\]
+$$
 
 As observed frequencies deviate more from expected frequencies, the chi-square statistic grows larger.
 
@@ -391,27 +391,27 @@ For the gun ownership example, the observed and expected values are:
 
 For each cell, calculate:
 
-\[
+$$
 \frac{(f_o - f_e)^2}{f_e}
-\]
+$$
 
 For the “owns gun and afraid” cell:
 
-\[
+$$
 \frac{(133 - 174.9)^2}{174.9}
-\]
+$$
 
-\[
+$$
 = \frac{(-41.9)^2}{174.9}
-\]
+$$
 
-\[
+$$
 \approx 10.1
-\]
+$$
 
 Repeat for each cell:
 
-| Cell | Contribution to \(\chi^2\) |
+| Cell | Contribution to $\chi^2$ |
 |---|---:|
 | Owns gun, afraid | 10.1 |
 | Owns gun, not afraid | 5.0 |
@@ -420,13 +420,13 @@ Repeat for each cell:
 
 Add them:
 
-\[
+$$
 \chi^2 = 10.1 + 5.0 + 4.7 + 2.4
-\]
+$$
 
-\[
+$$
 \chi^2 = 22.2
-\]
+$$
 
 ---
 
@@ -434,14 +434,14 @@ Add them:
 
 For a chi-square test of independence:
 
-\[
+$$
 df = (r-1)(c-1)
-\]
+$$
 
 where:
 
-- \(r\) is the number of rows
-- \(c\) is the number of columns
+- $r$ is the number of rows
+- $c$ is the number of columns
 
 Do not count total rows or total columns.
 
@@ -452,13 +452,13 @@ In the gun ownership example, there are:
 
 So:
 
-\[
+$$
 df = (2-1)(2-1)
-\]
+$$
 
-\[
+$$
 df = 1
-\]
+$$
 
 ---
 
@@ -470,25 +470,25 @@ It starts at 0 and extends to positive infinity.
 
 A chi-square statistic can never be negative.
 
-A chi-square test is therefore a **one-sided test**. We reject the null hypothesis only for large values of \(\chi^2\).
+A chi-square test is therefore a **one-sided test**. We reject the null hypothesis only for large values of $\chi^2$.
 
-For \(\alpha = 0.05\) and \(df = 1\), the critical value is:
+For $\alpha = 0.05$ and $df = 1$, the critical value is:
 
-\[
+$$
 \chi^2 = 3.84
-\]
+$$
 
 Our test statistic is:
 
-\[
+$$
 \chi^2 = 22.2
-\]
+$$
 
 Since:
 
-\[
+$$
 22.2 > 3.84
-\]
+$$
 
 we reject the null hypothesis.
 
@@ -504,15 +504,15 @@ Unlike two-tailed t-tests and z-tests, we do not double the p-value.
 
 For the gun ownership example, the test statistic is so large that:
 
-\[
+$$
 p < 0.001
-\]
+$$
 
 Since:
 
-\[
+$$
 p < 0.05
-\]
+$$
 
 we reject the null hypothesis.
 
@@ -561,15 +561,15 @@ The data were:
 
 The graduation rates were:
 
-\[
+$$
 \frac{83}{93} = 0.892
-\]
+$$
 
 and:
 
-\[
+$$
 \frac{102}{121} = 0.843
-\]
+$$
 
 The difference was not statistically significant using a z-test.
 
@@ -581,9 +581,9 @@ We can also analyze this as a chi-square test because it is a 2-by-2 table.
 
 The overall graduation rate is:
 
-\[
+$$
 \frac{185}{214} = 0.864
-\]
+$$
 
 If program participation and graduation were independent, we would expect 86.4 percent of each group to graduate.
 
@@ -602,35 +602,35 @@ All expected frequencies exceed 5, so the chi-square test is appropriate.
 
 Using the formula:
 
-\[
+$$
 \chi^2 =
 \sum
 \frac{(f_o - f_e)^2}{f_e}
-\]
+$$
 
 we obtain:
 
-\[
+$$
 \chi^2 = 1.10
-\]
+$$
 
 Degrees of freedom:
 
-\[
+$$
 df = (2-1)(2-1)=1
-\]
+$$
 
-The critical value at \(\alpha = 0.05\) is:
+The critical value at $\alpha = 0.05$ is:
 
-\[
+$$
 3.84
-\]
+$$
 
 Since:
 
-\[
+$$
 1.10 < 3.84
-\]
+$$
 
 we fail to reject the null hypothesis.
 
@@ -642,21 +642,21 @@ The chi-square test reaches the same conclusion as the difference-of-proportions
 
 For a 2-by-2 table, the chi-square statistic with one degree of freedom is equal to the square of the z-statistic from the difference-of-proportions test:
 
-\[
+$$
 \chi^2 = z^2
-\]
+$$
 
 In the graduation example, the z-statistic was:
 
-\[
+$$
 z = 1.049
-\]
+$$
 
 Squaring it:
 
-\[
+$$
 1.049^2 \approx 1.10
-\]
+$$
 
 which equals the chi-square statistic.
 
@@ -689,15 +689,15 @@ The question is:
 
 The null hypothesis is:
 
-\[
+$$
 H_0: \text{Satisfaction and plan type are independent}
-\]
+$$
 
 The alternative is:
 
-\[
+$$
 H_A: \text{Satisfaction and plan type are not independent}
-\]
+$$
 
 ---
 
@@ -734,9 +734,9 @@ For example, 78.6 percent of all respondents are satisfied. If plan type does no
 
 Using:
 
-\[
+$$
 f_e = \frac{(\text{row total})(\text{column total})}{n}
-\]
+$$
 
 the expected frequencies are approximately:
 
@@ -754,9 +754,9 @@ All expected frequencies exceed 5, so the chi-square test is appropriate.
 
 For each cell:
 
-\[
+$$
 \frac{(f_o - f_e)^2}{f_e}
-\]
+$$
 
 The contributions are approximately:
 
@@ -768,39 +768,39 @@ The contributions are approximately:
 
 Adding all cell contributions gives:
 
-\[
+$$
 \chi^2 \approx 45.1
-\]
+$$
 
 Using the lecture’s rounded values, the statistic was reported around:
 
-\[
+$$
 \chi^2 \approx 50.4
-\]
+$$
 
 Small differences can arise from rounding or slightly different underlying cell values. The substantive conclusion is the same: the statistic is very large.
 
 Degrees of freedom:
 
-\[
+$$
 df = (3-1)(2-1)
-\]
+$$
 
-\[
+$$
 df = 2
-\]
+$$
 
-At \(\alpha = 0.05\), the critical value for \(df=2\) is:
+At $\alpha = 0.05$, the critical value for $df=2$ is:
 
-\[
+$$
 5.99
-\]
+$$
 
 Since:
 
-\[
+$$
 50.4 > 5.99
-\]
+$$
 
 we reject the null hypothesis.
 
@@ -832,25 +832,25 @@ The chi-square test tells us the relationship is statistically significant. The 
 
 A **residual** in a chi-square table is:
 
-\[
+$$
 f_o - f_e
-\]
+$$
 
 It tells us whether a cell contains more or fewer cases than expected under independence.
 
 A positive residual means:
 
-\[
+$$
 f_o > f_e
-\]
+$$
 
 There are more cases in that cell than expected.
 
 A negative residual means:
 
-\[
+$$
 f_o < f_e
-\]
+$$
 
 There are fewer cases in that cell than expected.
 
@@ -886,7 +886,7 @@ We can convert residuals into standardized residuals, which function like z-stat
 
 A standardized residual is:
 
-\[
+$$
 z =
 \frac{f_o - f_e}
 {
@@ -894,16 +894,16 @@ z =
 f_e(1-p_{row})(1-p_{column})
 }
 }
-\]
+$$
 
 where:
 
-- \(p_{row}\) is the row proportion
-- \(p_{column}\) is the column proportion
+- $p_{row}$ is the row proportion
+- $p_{column}$ is the column proportion
 
 Large positive or negative standardized residuals indicate cells that contribute strongly to the chi-square statistic.
 
-A standardized residual beyond approximately \(\pm 1.96\) suggests that the cell deviation is large relative to what we would expect under independence.
+A standardized residual beyond approximately $\pm 1.96$ suggests that the cell deviation is large relative to what we would expect under independence.
 
 ---
 
@@ -911,25 +911,25 @@ A standardized residual beyond approximately \(\pm 1.96\) suggests that the cell
 
 Suppose the ACA-satisfied cell has:
 
-\[
+$$
 f_o = 772
-\]
+$$
 
-\[
+$$
 f_e = 853.2
-\]
+$$
 
 The residual is:
 
-\[
+$$
 772 - 853.2 = -81.2
-\]
+$$
 
 If the standardized residual is:
 
-\[
+$$
 z = -6.50
-\]
+$$
 
 that is a very large negative deviation.
 
@@ -1008,17 +1008,17 @@ These statistics supplement the chi-square test by describing the direction of t
 
 For example, if gamma is:
 
-\[
+$$
 -0.35
-\]
+$$
 
 then the relationship is negative.
 
 If gamma is:
 
-\[
+$$
 0.42
-\]
+$$
 
 then the relationship is positive.
 
@@ -1191,7 +1191,7 @@ The difference between observed and expected frequency in a cell.
 A residual converted into standard error units.
 
 **Degrees of freedom**  
-For a chi-square test, \((r-1)(c-1)\), where \(r\) is rows and \(c\) is columns.
+For a chi-square test, $(r-1)(c-1)$, where $r$ is rows and $c$ is columns.
 
 **Fisher’s exact test**  
 An exact test for association between categorical variables, useful for small samples.
@@ -1221,23 +1221,23 @@ The test compares observed frequencies in a contingency table to expected freque
 
 Expected frequencies are calculated using row totals, column totals, and the total sample size:
 
-\[
+$$
 f_e = \frac{(\text{row total})(\text{column total})}{n}
-\]
+$$
 
 The chi-square statistic is:
 
-\[
+$$
 \chi^2 =
 \sum
 \frac{(f_o-f_e)^2}{f_e}
-\]
+$$
 
 The test is one-sided because chi-square statistics cannot be negative. The critical value depends on the chi-square distribution and degrees of freedom:
 
-\[
+$$
 df = (r-1)(c-1)
-\]
+$$
 
 A significant chi-square test tells us the variables are not independent. It does not tell us the direction or substantive magnitude of the relationship. To understand those, we examine percentages, residuals, standardized residuals, and, for ordinal variables, statistics such as gamma or Kendall’s tau-b.
 

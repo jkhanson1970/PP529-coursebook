@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -314,9 +343,9 @@ ul.task-list li input[type="checkbox"] {
 <p>A <strong>sampling distribution</strong> is a special kind of probability distribution. It describes the probabilities associated with the possible values of a sample statistic.</p>
 <p>Examples of sample statistics include:</p>
 <ul>
-<li>a sample mean, ({X})</li>
-<li>a sample proportion, ()</li>
-<li>a sample standard deviation, (s)</li>
+<li>a sample mean, <span class="math inline">\(\bar{X}\)</span></li>
+<li>a sample proportion, <span class="math inline">\(\hat{\pi}\)</span></li>
+<li>a sample standard deviation, <span class="math inline">\(s\)</span></li>
 <li>a difference between two sample means</li>
 <li>a regression coefficient</li>
 </ul>
@@ -329,11 +358,17 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="7.2" class="anchored" data-anchor-id="a-thought-exercise-rolling-dice"><span class="header-section-number">7.2</span> A Thought Exercise: Rolling Dice</h2>
 <p>Imagine rolling a fair six-sided die 200 times and calculating the mean of the 200 rolls.</p>
 <p>The expected value of a fair die roll is:</p>
-<p>[ E(X) = 3.5 ]</p>
+<p><span class="math display">\[
+E(X) = 3.5
+\]</span></p>
 <p>That is because the possible values are:</p>
-<p>[ 1, 2, 3, 4, 5, 6 ]</p>
+<p><span class="math display">\[
+1, 2, 3, 4, 5, 6
+\]</span></p>
 <p>and the mean of those values is:</p>
-<p>[ = 3.5 ]</p>
+<p><span class="math display">\[
+\frac{1+2+3+4+5+6}{6} = 3.5
+\]</span></p>
 <p>If we rolled the die infinitely many times, the mean would converge to 3.5. But if we roll it only 200 times, the sample mean will probably not be exactly 3.5. It might be 3.42, 3.57, 3.49, or 3.61.</p>
 <p>Now imagine that everyone in a class rolls a die 200 times and calculates their own mean. Each person would get a different sample mean. Those means would vary because each set of 200 rolls is a different random sample from the same underlying probability distribution.</p>
 <p>The sample mean is therefore a random variable.</p>
@@ -344,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-a-sampling-distribution-shows" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="what-a-sampling-distribution-shows"><span class="header-section-number">7.3</span> What a Sampling Distribution Shows</h2>
 <p>A sampling distribution tells us how a statistic behaves across repeated random samples.</p>
-<p>For example, the sampling distribution of ({X}) tells us the probability that the sample mean falls in different ranges.</p>
+<p>For example, the sampling distribution of <span class="math inline">\(\bar{X}\)</span> tells us the probability that the sample mean falls in different ranges.</p>
 <p>It answers questions like:</p>
 <ul>
 <li>How likely is the sample mean to be close to the population mean?</li>
@@ -393,14 +428,18 @@ The sampling distribution describes values of statistics.</p>
 <p>It tells us what the sampling distribution of the sample mean looks like under appropriate conditions.</p>
 <p>In its basic form, the Central Limit Theorem says:</p>
 <blockquote class="blockquote">
-<p>For a random sample of size (n) drawn from a population with mean () and standard deviation (), the sampling distribution of the sample mean ({X}) is approximately normal, centered at (), with standard deviation (), provided the sample size is sufficiently large.</p>
+<p>For a random sample of size <span class="math inline">\(n\)</span> drawn from a population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the sampling distribution of the sample mean <span class="math inline">\(\bar{X}\)</span> is approximately normal, centered at <span class="math inline">\(\mu\)</span>, with standard deviation <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>, provided the sample size is sufficiently large.</p>
 </blockquote>
 <p>This statement contains three crucial ideas.</p>
-<p>First, the sampling distribution of ({X}) is approximately normal.</p>
+<p>First, the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is approximately normal.</p>
 <p>Second, the sampling distribution is centered at the true population mean:</p>
-<p>[ E({X}) = ]</p>
+<p><span class="math display">\[
+E(\bar{X}) = \mu
+\]</span></p>
 <p>Third, the standard deviation of the sampling distribution is:</p>
-<p>[ _{{X}} = ]</p>
+<p><span class="math display">\[
+\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>This standard deviation has a special name: the <strong>standard error</strong>.</p>
 <hr>
 </section>
@@ -422,9 +461,11 @@ The sampling distribution describes values of statistics.</p>
 </section>
 <section id="the-center-of-the-sampling-distribution" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="the-center-of-the-sampling-distribution"><span class="header-section-number">8.3</span> The Center of the Sampling Distribution</h2>
-<p>The second major insight is that the sampling distribution of ({X}) is centered at the population mean ().</p>
+<p>The second major insight is that the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is centered at the population mean <span class="math inline">\(\mu\)</span>.</p>
 <p>In notation:</p>
-<p>[ E({X}) = ]</p>
+<p><span class="math display">\[
+E(\bar{X}) = \mu
+\]</span></p>
 <p>This means that the sample mean is an <strong>unbiased estimator</strong> of the population mean.</p>
 <p>An estimator is unbiased if, across repeated samples, it hits the correct value on average.</p>
 <p>A single sample mean may be too high or too low. But if we repeatedly drew samples and calculated the mean each time, the average of those sample means would equal the true population mean.</p>
@@ -434,17 +475,19 @@ The sampling distribution describes values of statistics.</p>
 <section id="the-spread-of-the-sampling-distribution" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="the-spread-of-the-sampling-distribution"><span class="header-section-number">8.4</span> The Spread of the Sampling Distribution</h2>
 <p>The third major insight is that the standard deviation of the sampling distribution is:</p>
-<p>[ _{{X}} = ]</p>
+<p><span class="math display">\[
+\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(_{{X}}) is the standard deviation of the sampling distribution of ({X})</li>
-<li>() is the standard deviation of (X) in the population</li>
-<li>(n) is the sample size</li>
+<li><span class="math inline">\(\sigma_{\bar{X}}\)</span> is the standard deviation of the sampling distribution of <span class="math inline">\(\bar{X}\)</span></li>
+<li><span class="math inline">\(\sigma\)</span> is the standard deviation of <span class="math inline">\(X\)</span> in the population</li>
+<li><span class="math inline">\(n\)</span> is the sample size</li>
 </ul>
 <p>This tells us how much sample means vary across repeated samples.</p>
 <p>The formula has two important parts.</p>
-<p>The numerator, (), tells us how spread out the original variable is in the population.</p>
-<p>The denominator, (), tells us how much information we have from the sample.</p>
+<p>The numerator, <span class="math inline">\(\sigma\)</span>, tells us how spread out the original variable is in the population.</p>
+<p>The denominator, <span class="math inline">\(\sqrt{n}\)</span>, tells us how much information we have from the sample.</p>
 <p>Larger sample sizes reduce the spread of the sampling distribution. More data produce more precise estimates.</p>
 <hr>
 </section>
@@ -455,7 +498,9 @@ The sampling distribution describes values of statistics.</p>
 <p>Second, the observations should be independent, or at least close enough to independent for the methods to work.</p>
 <p>Third, the sample size must be large enough.</p>
 <p>A common rule of thumb is:</p>
-<p>[ n ]</p>
+<p><span class="math display">\[
+n \geq 30
+\]</span></p>
 <p>If the sample size is at least 30, the sampling distribution of the sample mean is usually approximately normal, even if the population distribution is not normal.</p>
 <p>This is a rule of thumb, not a magic boundary. A sample size of 29 is not suddenly terrible while 30 is perfect. The adequacy of the approximation depends on the shape of the population distribution.</p>
 <p>If the population is highly skewed or has extreme outliers, we may need a larger sample.</p>
@@ -489,8 +534,10 @@ The sampling distribution describes values of statistics.</p>
 <p>A narrower sampling distribution means sample means are more tightly clustered around the population mean. That means less random sampling error.</p>
 <p>This is why larger samples produce more precise estimates.</p>
 <p>The Central Limit Theorem tells us not only that sample means tend to be normally distributed, but also exactly how their variability changes with sample size:</p>
-<p>[ _{{X}} = ]</p>
-<p>As (n) increases, () increases. Since () is in the denominator, the standard error decreases.</p>
+<p><span class="math display">\[
+\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>As <span class="math inline">\(n\)</span> increases, <span class="math inline">\(\sqrt{n}\)</span> increases. Since <span class="math inline">\(\sqrt{n}\)</span> is in the denominator, the standard error decreases.</p>
 <hr>
 </section>
 </section>
@@ -500,7 +547,9 @@ The sampling distribution describes values of statistics.</p>
 <h2 data-number="9.1" class="anchored" data-anchor-id="what-is-the-standard-error"><span class="header-section-number">9.1</span> What Is the Standard Error?</h2>
 <p>The <strong>standard error</strong> is the standard deviation of a sampling distribution.</p>
 <p>For the sample mean, the standard error is:</p>
-<p>[ SE_{{X}} = _{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>The standard error tells us how much sample means typically vary from the population mean.</p>
 <p>In other words, it tells us the typical size of random sampling error.</p>
 <p>This is one of the most important quantities in statistics.</p>
@@ -512,12 +561,16 @@ The sampling distribution describes values of statistics.</p>
 <section id="standard-deviation-versus-standard-error" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="standard-deviation-versus-standard-error"><span class="header-section-number">9.2</span> Standard Deviation Versus Standard Error</h2>
 <p>The <strong>standard deviation</strong> of a variable describes how much individual observations vary.</p>
-<p>For example, if we measure household income in a population, the population standard deviation () describes how far individual households tend to be from the population mean.</p>
+<p>For example, if we measure household income in a population, the population standard deviation <span class="math inline">\(\sigma\)</span> describes how far individual households tend to be from the population mean.</p>
 <p>The <strong>standard error</strong> of the sample mean describes how much sample means vary across repeated samples.</p>
 <p>So:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\sigma
+\]</span></p>
 <p>describes variability among individual cases.</p>
-<p>[ _{{X}} ]</p>
+<p><span class="math display">\[
+\sigma_{\bar{X}}
+\]</span></p>
 <p>describes variability among sample means.</p>
 <p>The standard error is smaller than the population standard deviation because sample means are less variable than individual observations. Averages smooth out some of the variation.</p>
 <hr>
@@ -525,23 +578,29 @@ The sampling distribution describes values of statistics.</p>
 <section id="interpreting-the-standard-error-formula" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="interpreting-the-standard-error-formula"><span class="header-section-number">9.3</span> Interpreting the Standard Error Formula</h2>
 <p>The standard error of the mean is:</p>
-<p>[ SE_{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>This formula tells us two important things.</p>
 <section id="population-variability-matters" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="population-variability-matters"><span class="header-section-number">9.3.1</span> Population Variability Matters</h3>
-<p>If the population standard deviation () is large, sample means will vary more.</p>
+<p>If the population standard deviation <span class="math inline">\(\sigma\)</span> is large, sample means will vary more.</p>
 <p>That makes sense. If individual values in the population are widely spread out, then different samples can produce quite different means.</p>
-<p>If () is small, sample means will vary less. If everyone in the population has nearly the same value, then every sample will produce nearly the same mean.</p>
+<p>If <span class="math inline">\(\sigma\)</span> is small, sample means will vary less. If everyone in the population has nearly the same value, then every sample will produce nearly the same mean.</p>
 <p>In the extreme case, if everyone in the population has exactly the same value, then:</p>
-<p>[ = 0 ]</p>
+<p><span class="math display">\[
+\sigma = 0
+\]</span></p>
 <p>and:</p>
-<p>[ SE_{{X}} = 0 ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = 0
+\]</span></p>
 <p>Every sample mean would equal the population mean exactly.</p>
 </section>
 <section id="sample-size-matters" class="level3" data-number="9.3.2">
 <h3 data-number="9.3.2" class="anchored" data-anchor-id="sample-size-matters"><span class="header-section-number">9.3.2</span> Sample Size Matters</h3>
-<p>If the sample size (n) is large, the standard error is small.</p>
-<p>If the sample size (n) is small, the standard error is large.</p>
+<p>If the sample size <span class="math inline">\(n\)</span> is large, the standard error is small.</p>
+<p>If the sample size <span class="math inline">\(n\)</span> is small, the standard error is large.</p>
 <p>Larger samples produce more stable sample means because they are less affected by unusual observations.</p>
 <p>This is why larger samples give us more precise estimates.</p>
 <hr>
@@ -549,28 +608,36 @@ The sampling distribution describes values of statistics.</p>
 </section>
 <section id="the-sampling-distribution-in-standard-error-units" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="the-sampling-distribution-in-standard-error-units"><span class="header-section-number">9.4</span> The Sampling Distribution in Standard Error Units</h2>
-<p>Because the sampling distribution of ({X}) is approximately normal, we can apply the normal distribution’s area rules.</p>
-<p>If the sampling distribution is normal and centered at (), then approximately 68.26 percent of sample means fall within one standard error of ():</p>
-<p>[ (SE_{{X}}) ]</p>
-<p>Approximately 95 percent of sample means fall within 1.96 standard errors of ():</p>
-<p>[ (SE_{{X}}) ]</p>
+<p>Because the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is approximately normal, we can apply the normal distribution’s area rules.</p>
+<p>If the sampling distribution is normal and centered at <span class="math inline">\(\mu\)</span>, then approximately 68.26 percent of sample means fall within one standard error of <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[
+\mu \pm 1(SE_{\bar{X}})
+\]</span></p>
+<p>Approximately 95 percent of sample means fall within 1.96 standard errors of <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[
+\mu \pm 1.96(SE_{\bar{X}})
+\]</span></p>
 <p>This is the key bridge to confidence intervals and hypothesis testing.</p>
 <p>If we know the center and spread of the sampling distribution, we can describe where sample means are likely to fall.</p>
 <hr>
 </section>
 <section id="visualizing-the-sampling-distribution" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="visualizing-the-sampling-distribution"><span class="header-section-number">9.5</span> Visualizing the Sampling Distribution</h2>
-<p>Imagine a normal curve representing the sampling distribution of ({X}).</p>
+<p>Imagine a normal curve representing the sampling distribution of <span class="math inline">\(\bar{X}\)</span>.</p>
 <p>At the center is the true population mean:</p>
-<p>[ ]</p>
-<p>The horizontal axis contains possible values of ({X}), the sample mean.</p>
-<p>Each possible sample mean has some probability of occurring. Sample means near () are more likely. Sample means far from () are less likely.</p>
+<p><span class="math display">\[
+\mu
+\]</span></p>
+<p>The horizontal axis contains possible values of <span class="math inline">\(\bar{X}\)</span>, the sample mean.</p>
+<p>Each possible sample mean has some probability of occurring. Sample means near <span class="math inline">\(\mu\)</span> are more likely. Sample means far from <span class="math inline">\(\mu\)</span> are less likely.</p>
 <p>The standard deviation of this distribution is the standard error:</p>
-<p>[ SE_{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>So:</p>
 <ul>
-<li>about 68 percent of sample means fall within one standard error of ()</li>
-<li>about 95 percent fall within 1.96 standard errors of ()</li>
+<li>about 68 percent of sample means fall within one standard error of <span class="math inline">\(\mu\)</span></li>
+<li>about 95 percent fall within 1.96 standard errors of <span class="math inline">\(\mu\)</span></li>
 <li>sample means far beyond that are unlikely</li>
 </ul>
 <p>This is what allows us to say how surprising or unsurprising a sample mean is under a particular assumption about the population mean.</p>
@@ -582,16 +649,24 @@ The sampling distribution describes values of statistics.</p>
 <section id="from-sample-means-to-z-scores" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="from-sample-means-to-z-scores"><span class="header-section-number">10.1</span> From Sample Means to Z-Scores</h2>
 <p>Earlier, we learned how to convert a normally distributed variable into a Z-score:</p>
-<p>[ Z = ]</p>
+<p><span class="math display">\[
+Z = \frac{Y-\mu}{\sigma}
+\]</span></p>
 <p>The same logic applies to a sample mean.</p>
-<p>If ({X}) has a normal sampling distribution centered at (), with standard deviation (), then we can standardize ({X}) like this:</p>
-<p>[ Z = ]</p>
+<p>If <span class="math inline">\(\bar{X}\)</span> has a normal sampling distribution centered at <span class="math inline">\(\mu\)</span>, with standard deviation <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>, then we can standardize <span class="math inline">\(\bar{X}\)</span> like this:</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}
+\]</span></p>
 <p>This converts the sample mean into standard normal units.</p>
 <p>In words:</p>
-<p>[ Z = ]</p>
+<p><span class="math display">\[
+Z = \frac{\text{sample statistic} - \text{hypothesized population parameter}}{\text{standard error}}
+\]</span></p>
 <p>This structure will appear again and again.</p>
 <p>Many test statistics follow this general form:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{\text{estimate} - \text{hypothesized value}}{\text{standard error}}
+\]</span></p>
 <p>The numerator tells us how far the estimate is from the hypothesized value.</p>
 <p>The denominator tells us how much random error we expect.</p>
 <p>The result tells us how many standard errors away the estimate is from the hypothesized value.</p>
@@ -600,15 +675,15 @@ The sampling distribution describes values of statistics.</p>
 <section id="why-standardizing-matters" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="why-standardizing-matters"><span class="header-section-number">10.2</span> Why Standardizing Matters</h2>
 <p>Standardizing lets us use the standard normal distribution.</p>
-<p>Suppose we hypothesize that the population mean is (). We collect a sample and calculate ({X}). We then convert the distance between ({X}) and () into standard error units.</p>
+<p>Suppose we hypothesize that the population mean is <span class="math inline">\(\mu\)</span>. We collect a sample and calculate <span class="math inline">\(\bar{X}\)</span>. We then convert the distance between <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\mu\)</span> into standard error units.</p>
 <p>If the resulting Z-score is small, the sample mean is close to the hypothesized mean.</p>
 <p>If the resulting Z-score is large, the sample mean is far from the hypothesized mean.</p>
 <p>For example:</p>
 <ul>
-<li>(Z = 0.5): the sample mean is half a standard error from ()</li>
-<li>(Z = 1.0): the sample mean is one standard error from ()</li>
-<li>(Z = 2.0): the sample mean is two standard errors from ()</li>
-<li>(Z = 4.0): the sample mean is four standard errors from ()</li>
+<li><span class="math inline">\(Z = 0.5\)</span>: the sample mean is half a standard error from <span class="math inline">\(\mu\)</span></li>
+<li><span class="math inline">\(Z = 1.0\)</span>: the sample mean is one standard error from <span class="math inline">\(\mu\)</span></li>
+<li><span class="math inline">\(Z = 2.0\)</span>: the sample mean is two standard errors from <span class="math inline">\(\mu\)</span></li>
+<li><span class="math inline">\(Z = 4.0\)</span>: the sample mean is four standard errors from <span class="math inline">\(\mu\)</span></li>
 </ul>
 <p>A sample mean four standard errors away from the hypothesized population mean would be very unlikely if the hypothesis were true.</p>
 <p>This is the logic behind hypothesis testing.</p>
@@ -620,32 +695,52 @@ The sampling distribution describes values of statistics.</p>
 <section id="the-scenario" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="the-scenario"><span class="header-section-number">11.1</span> The Scenario</h2>
 <p>Suppose the true mean household income in Michigan is:</p>
-<p>[ = $62{,}000 ]</p>
+<p><span class="math display">\[
+\mu = \$62{,}000
+\]</span></p>
 <p>Suppose the true population standard deviation is:</p>
-<p>[ = $61{,}000 ]</p>
+<p><span class="math display">\[
+\sigma = \$61{,}000
+\]</span></p>
 <p>This standard deviation is very large, almost as large as the mean itself. That may seem surprising, but income distributions are typically highly skewed. A relatively small number of households with very high incomes can greatly increase the standard deviation.</p>
 <p>Suppose we randomly select:</p>
-<p>[ n = 50 ]</p>
+<p><span class="math display">\[
+n = 50
+\]</span></p>
 <p>households from Michigan and calculate the sample mean household income.</p>
 <p>Before collecting the sample, what do we know about the sample mean?</p>
-<p>The sample mean ({X}) is a random variable. It depends on which 50 households are selected.</p>
-<p>Because (n = 50), the Central Limit Theorem tells us that the sampling distribution of ({X}) is approximately normal, even though the population distribution of household income is skewed.</p>
+<p>The sample mean <span class="math inline">\(\bar{X}\)</span> is a random variable. It depends on which 50 households are selected.</p>
+<p>Because <span class="math inline">\(n = 50\)</span>, the Central Limit Theorem tells us that the sampling distribution of <span class="math inline">\(\bar{X}\)</span> is approximately normal, even though the population distribution of household income is skewed.</p>
 <p>The sampling distribution is centered at:</p>
-<p>[ = $62{,}000 ]</p>
+<p><span class="math display">\[
+\mu = \$62{,}000
+\]</span></p>
 <p>And its standard deviation, the standard error, is:</p>
-<p>[ SE_{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <hr>
 </section>
 <section id="calculating-the-standard-error" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="calculating-the-standard-error"><span class="header-section-number">11.2</span> Calculating the Standard Error</h2>
 <p>Use the formula:</p>
-<p>[ SE_{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>Substitute the values:</p>
-<p>[ SE_{{X}} = ]</p>
-<p>[ SE_{{X}} ]</p>
-<p>[ SE_{{X}} 627 ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{61{,}000}{\sqrt{50}}
+\]</span></p>
+<p><span class="math display">\[
+SE_{\bar{X}} \approx \frac{61{,}000}{7.071}
+\]</span></p>
+<p><span class="math display">\[
+SE_{\bar{X}} \approx 8{,}627
+\]</span></p>
 <p>So the standard error is approximately:</p>
-<p>[ $8{,}627 ]</p>
+<p><span class="math display">\[
+\$8{,}627
+\]</span></p>
 <p>Interpretation:</p>
 <blockquote class="blockquote">
 <p>Across repeated random samples of 50 households, the sample mean household income would typically differ from the true population mean by about $8,627.</p>
@@ -657,15 +752,25 @@ The sampling distribution describes values of statistics.</p>
 <h2 data-number="11.3" class="anchored" data-anchor-id="the-68-percent-range"><span class="header-section-number">11.3</span> The 68 Percent Range</h2>
 <p>Because the sampling distribution is approximately normal, about 68.26 percent of sample means fall within one standard error of the population mean.</p>
 <p>So:</p>
-<p>[ (SE_{{X}}) ]</p>
+<p><span class="math display">\[
+\mu \pm 1(SE_{\bar{X}})
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ 62{,}000 (8{,}627) ]</p>
+<p><span class="math display">\[
+62{,}000 \pm 1(8{,}627)
+\]</span></p>
 <p>Lower end:</p>
-<p>[ 62{,}000 - 8{,}627 = 53{,}373 ]</p>
+<p><span class="math display">\[
+62{,}000 - 8{,}627 = 53{,}373
+\]</span></p>
 <p>Upper end:</p>
-<p>[ 62{,}000 + 8{,}627 = 70{,}627 ]</p>
+<p><span class="math display">\[
+62{,}000 + 8{,}627 = 70{,}627
+\]</span></p>
 <p>So about 68.26 percent of sample means from samples of size 50 would fall between:</p>
-<p>[ $53{,}373 $70{,}627 ]</p>
+<p><span class="math display">\[
+\$53{,}373 \text{ and } \$70{,}627
+\]</span></p>
 <p>This does not mean 68 percent of individual households have incomes in that range. It means 68 percent of sample means from repeated samples of 50 households would fall in that range.</p>
 <p>That distinction is crucial.</p>
 <hr>
@@ -674,17 +779,29 @@ The sampling distribution describes values of statistics.</p>
 <h2 data-number="11.4" class="anchored" data-anchor-id="the-95-percent-range"><span class="header-section-number">11.4</span> The 95 Percent Range</h2>
 <p>About 95 percent of sample means fall within 1.96 standard errors of the population mean.</p>
 <p>So:</p>
-<p>[ (SE_{{X}}) ]</p>
+<p><span class="math display">\[
+\mu \pm 1.96(SE_{\bar{X}})
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ 62{,}000 (8{,}627) ]</p>
+<p><span class="math display">\[
+62{,}000 \pm 1.96(8{,}627)
+\]</span></p>
 <p>Calculate the margin:</p>
-<p>[ 1.96(8{,}627) 909 ]</p>
+<p><span class="math display">\[
+1.96(8{,}627) \approx 16{,}909
+\]</span></p>
 <p>Lower end:</p>
-<p>[ 62{,}000 - 16{,}909 = 45{,}091 ]</p>
+<p><span class="math display">\[
+62{,}000 - 16{,}909 = 45{,}091
+\]</span></p>
 <p>Upper end:</p>
-<p>[ 62{,}000 + 16{,}909 = 78{,}909 ]</p>
+<p><span class="math display">\[
+62{,}000 + 16{,}909 = 78{,}909
+\]</span></p>
 <p>So about 95 percent of sample means from samples of size 50 would fall between approximately:</p>
-<p>[ $45{,}091 $78{,}909 ]</p>
+<p><span class="math display">\[
+\$45{,}091 \text{ and } \$78{,}909
+\]</span></p>
 <p>This range is wider than the 68 percent range because we are capturing more of the sampling distribution.</p>
 <p>To be more confident, we need a wider range.</p>
 <hr>
@@ -709,27 +826,41 @@ The sampling distribution describes values of statistics.</p>
 <section id="the-idealized-scenario" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="the-idealized-scenario"><span class="header-section-number">12.1</span> The Idealized Scenario</h2>
 <p>In the Michigan income example, we assumed we knew:</p>
-<p>[ = $62{,}000 ]</p>
+<p><span class="math display">\[
+\mu = \$62{,}000
+\]</span></p>
 <p>and:</p>
-<p>[ = $61{,}000 ]</p>
+<p><span class="math display">\[
+\sigma = \$61{,}000
+\]</span></p>
 <p>That allowed us to draw ranges around the true population mean.</p>
 <p>But in real research, we usually do not know either of those values.</p>
 <p>We usually do not know the population mean. That is what we are trying to estimate.</p>
 <p>We also usually do not know the population standard deviation. We estimate it using the sample standard deviation:</p>
-<p>[ s ]</p>
+<p><span class="math display">\[
+s
+\]</span></p>
 <p>So in practice, we replace:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\sigma
+\]</span></p>
 <p>with:</p>
-<p>[ s ]</p>
+<p><span class="math display">\[
+s
+\]</span></p>
 <p>This introduces additional uncertainty.</p>
 <hr>
 </section>
 <section id="from-standard-error-to-estimated-standard-error" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="from-standard-error-to-estimated-standard-error"><span class="header-section-number">12.2</span> From Standard Error to Estimated Standard Error</h2>
 <p>The theoretical standard error of the sample mean is:</p>
-<p>[ SE_{{X}} = ]</p>
-<p>But because we usually do not know (), we estimate the standard error using the sample standard deviation (s):</p>
-<p>[ _{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>But because we usually do not know <span class="math inline">\(\sigma\)</span>, we estimate the standard error using the sample standard deviation <span class="math inline">\(s\)</span>:</p>
+<p><span class="math display">\[
+\widehat{SE}_{\bar{X}} = \frac{s}{\sqrt{n}}
+\]</span></p>
 <p>This estimated standard error is what we typically use in real data analysis.</p>
 <p>Because it is estimated rather than known, we often use the <strong>t-distribution</strong> rather than the standard normal distribution.</p>
 <p>The t-distribution looks similar to the normal distribution but has thicker tails. Those thicker tails reflect the additional uncertainty that comes from estimating the population standard deviation.</p>
@@ -738,12 +869,16 @@ The sampling distribution describes values of statistics.</p>
 </section>
 <section id="why-the-t-distribution-appears" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="why-the-t-distribution-appears"><span class="header-section-number">12.3</span> Why the t-Distribution Appears</h2>
-<p>If we knew the population standard deviation (), then the standardized statistic:</p>
-<p>[ Z = ]</p>
+<p>If we knew the population standard deviation <span class="math inline">\(\sigma\)</span>, then the standardized statistic:</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}}
+\]</span></p>
 <p>would follow a standard normal distribution under the appropriate conditions.</p>
 <p>But in practice, we usually use:</p>
-<p>[ t = ]</p>
-<p>Because (s) is itself estimated from the sample, there is more uncertainty. The t-distribution accounts for that uncertainty.</p>
+<p><span class="math display">\[
+t = \frac{\bar{X} - \mu}{s/\sqrt{n}}
+\]</span></p>
+<p>Because <span class="math inline">\(s\)</span> is itself estimated from the sample, there is more uncertainty. The t-distribution accounts for that uncertainty.</p>
 <p>For large samples, the t-distribution becomes very close to the normal distribution.</p>
 <p>For small samples, the t-distribution has wider tails, meaning it allows more probability for values farther from the center.</p>
 <p>This matters because small samples contain less information, so we should be more cautious.</p>
@@ -761,7 +896,9 @@ The sampling distribution describes values of statistics.</p>
 <p>A sample mean is usually not exactly equal to the population mean. A sample proportion is usually not exactly equal to the population proportion. But probability theory tells us how far away those sample statistics are likely to be.</p>
 <p>The Central Limit Theorem tells us that the sampling distribution of the sample mean is approximately normal under broad conditions.</p>
 <p>It also tells us that the standard deviation of that sampling distribution is:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>This is the standard error.</p>
 <p>The standard error gives us a measure of expected sampling error.</p>
 <hr>
@@ -788,24 +925,32 @@ The sampling distribution describes values of statistics.</p>
 <p>The population distribution is the distribution of values in the full population.</p>
 <p>Usually, we do not observe it.</p>
 <p>It has parameters such as:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\mu
+\]</span></p>
 <p>and:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\sigma
+\]</span></p>
 </section>
 <section id="sample-distribution" class="level3" data-number="13.3.2">
 <h3 data-number="13.3.2" class="anchored" data-anchor-id="sample-distribution"><span class="header-section-number">13.3.2</span> Sample Distribution</h3>
 <p>The sample distribution is the distribution of values in the sample we actually collected.</p>
 <p>We observe this distribution in our data.</p>
 <p>It has statistics such as:</p>
-<p>[ {X} ]</p>
+<p><span class="math display">\[
+\bar{X}
+\]</span></p>
 <p>and:</p>
-<p>[ s ]</p>
+<p><span class="math display">\[
+s
+\]</span></p>
 </section>
 <section id="sampling-distribution" class="level3" data-number="13.3.3">
 <h3 data-number="13.3.3" class="anchored" data-anchor-id="sampling-distribution"><span class="header-section-number">13.3.3</span> Sampling Distribution</h3>
 <p>The sampling distribution is the probability distribution of a sample statistic across repeated random samples.</p>
 <p>Usually, we do not observe it directly.</p>
-<p>It describes how statistics such as ({X}) or () vary from sample to sample.</p>
+<p>It describes how statistics such as <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(\hat{\pi}\)</span> vary from sample to sample.</p>
 <p>The sampling distribution is the one that supports inference.</p>
 <hr>
 </section>
@@ -818,17 +963,17 @@ The distribution of observed values in one actual sample.</p>
 <p><strong>Sampling distribution</strong><br>
 The probability distribution of a sample statistic across repeated random samples.</p>
 <p><strong>Sample statistic</strong><br>
-A quantity calculated from sample data, such as ({X}), (), or (s).</p>
+A quantity calculated from sample data, such as <span class="math inline">\(\bar{X}\)</span>, <span class="math inline">\(\hat{\pi}\)</span>, or <span class="math inline">\(s\)</span>.</p>
 <p><strong>Population parameter</strong><br>
-A true quantity describing the population, such as (), (), or ().</p>
+A true quantity describing the population, such as <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>, or <span class="math inline">\(\sigma\)</span>.</p>
 <p><strong>Central Limit Theorem</strong><br>
-The theorem stating that, under appropriate conditions, the sampling distribution of the sample mean is approximately normal, centered at the population mean, with standard deviation (/).</p>
+The theorem stating that, under appropriate conditions, the sampling distribution of the sample mean is approximately normal, centered at the population mean, with standard deviation <span class="math inline">\(\sigma/\sqrt{n}\)</span>.</p>
 <p><strong>Standard error</strong><br>
 The standard deviation of a sampling distribution.</p>
 <p><strong>Standard error of the mean</strong><br>
-The standard deviation of the sampling distribution of ({X}), equal to (/) when () is known.</p>
+The standard deviation of the sampling distribution of <span class="math inline">\(\bar{X}\)</span>, equal to <span class="math inline">\(\sigma/\sqrt{n}\)</span> when <span class="math inline">\(\sigma\)</span> is known.</p>
 <p><strong>Estimated standard error</strong><br>
-An estimate of the standard error using the sample standard deviation, (s/).</p>
+An estimate of the standard error using the sample standard deviation, <span class="math inline">\(s/\sqrt{n}\)</span>.</p>
 <p><strong>Random sampling error</strong><br>
 The difference between a sample statistic and the population parameter caused by random sampling.</p>
 <p><strong>Unbiased estimator</strong><br>
@@ -842,7 +987,9 @@ A probability distribution similar to the normal distribution but with thicker t
 <p>A sampling distribution is the probability distribution of a sample statistic across repeated random samples. It is not the same as a sample distribution, which describes the observed values in one sample.</p>
 <p>Sample statistics are random variables because they depend on random samples. Different samples produce different sample means, proportions, and standard deviations. Sampling distributions describe how those statistics vary.</p>
 <p>The Central Limit Theorem tells us that the sampling distribution of the sample mean is approximately normal under broad conditions. It is centered at the true population mean, and its standard deviation is the standard error:</p>
-<p>[ SE_{{X}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
+\]</span></p>
 <p>The standard error tells us the typical amount of random sampling error. It decreases as sample size increases and increases as population variability increases.</p>
 <p>Because the sampling distribution is approximately normal, we can use normal distribution logic to say that about 68 percent of sample means fall within one standard error of the population mean and about 95 percent fall within 1.96 standard errors.</p>
 <p>In real research, we usually do not know the population standard deviation, so we estimate the standard error using the sample standard deviation. This leads us to the t-distribution, which we use when accounting for the extra uncertainty introduced by estimation.</p>

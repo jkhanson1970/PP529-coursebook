@@ -533,21 +533,21 @@ To correct this, we assign weights.
 
 For older adults:
 
-\[
+$$
 \text{Weight} = \frac{\text{Population proportion}}{\text{Sample proportion}}
-\]
+$$
 
-\[
+$$
 \text{Weight for 65+} = \frac{0.16}{0.20} = 0.80
-\]
+$$
 
 Each older respondent receives a weight of 0.80. That means each older respondent counts slightly less than one full respondent in weighted calculations.
 
 For younger adults:
 
-\[
+$$
 \text{Weight for under 65} = \frac{0.84}{0.80} = 1.05
-\]
+$$
 
 Each younger respondent receives a weight of 1.05. That means each younger respondent counts slightly more than one full respondent.
 

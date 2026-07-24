@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -348,7 +377,7 @@ ul.task-list li input[type="checkbox"] {
 <p>For example:</p>
 <ul>
 <li>The probability of heads in a fair coin toss is 0.5 because, in the long run, about half of coin tosses will land heads.</li>
-<li>The probability of rolling a 3 on a fair six-sided die is (1/6) because, in the long run, about one-sixth of rolls will be 3.</li>
+<li>The probability of rolling a 3 on a fair six-sided die is <span class="math inline">\(1/6\)</span> because, in the long run, about one-sixth of rolls will be 3.</li>
 <li>If 75 percent of people in a population have at least six years of schooling, then the probability that a randomly selected person has at least six years of schooling is 0.75.</li>
 </ul>
 <p>This long-run interpretation is crucial for understanding sample data.</p>
@@ -367,21 +396,25 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.3" class="anchored" data-anchor-id="the-law-of-large-numbers"><span class="header-section-number">5.3</span> The Law of Large Numbers</h2>
 <p>The <strong>law of large numbers</strong> states that, as the number of observations increases, sample statistics tend to converge toward the true population values.</p>
 <p>For proportions, we can write this idea as:</p>
-<p>[ n ]</p>
+<p><span class="math display">\[
+\hat{\pi} \rightarrow \pi \quad \text{as} \quad n \rightarrow \infty
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>() is the true population proportion.</li>
-<li>(), pronounced “pi-hat,” is the sample proportion.</li>
-<li>(n) is the sample size.</li>
-<li>The hat indicates that () is an estimator of ().</li>
+<li><span class="math inline">\(\pi\)</span> is the true population proportion.</li>
+<li><span class="math inline">\(\hat{\pi}\)</span>, pronounced “pi-hat,” is the sample proportion.</li>
+<li><span class="math inline">\(n\)</span> is the sample size.</li>
+<li>The hat indicates that <span class="math inline">\(\hat{\pi}\)</span> is an estimator of <span class="math inline">\(\pi\)</span>.</li>
 </ul>
-<p>If we flip a fair coin repeatedly, the sample proportion of heads, (), will converge toward the true probability of heads, (= 0.5), as the number of flips grows.</p>
+<p>If we flip a fair coin repeatedly, the sample proportion of heads, <span class="math inline">\(\hat{\pi}\)</span>, will converge toward the true probability of heads, <span class="math inline">\(\pi = 0.5\)</span>, as the number of flips grows.</p>
 <p>The same logic applies to means:</p>
-<p>[ {X} _X n ]</p>
+<p><span class="math display">\[
+\bar{X} \rightarrow \mu_X \quad \text{as} \quad n \rightarrow \infty
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>({X}) is the sample mean.</li>
-<li>(_X) is the population mean.</li>
+<li><span class="math inline">\(\bar{X}\)</span> is the sample mean.</li>
+<li><span class="math inline">\(\mu_X\)</span> is the population mean.</li>
 </ul>
 <p>This does not mean every sample is perfectly accurate. Small samples can deviate substantially from the population. Even large samples can deviate somewhat. But probability theory tells us how those deviations behave.</p>
 <p>This is the basic logic of inference:</p>
@@ -395,13 +428,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="sample-spaces" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sample-spaces"><span class="header-section-number">6.1</span> Sample Spaces</h2>
 <p>A <strong>sample space</strong> is the set of all possible outcomes of a random process.</p>
-<p>We usually denote the sample space with (S).</p>
+<p>We usually denote the sample space with <span class="math inline">\(S\)</span>.</p>
 <p>For a coin toss, the sample space is:</p>
-<p>[ S = {Heads, Tails} ]</p>
+<p><span class="math display">\[
+S = \{Heads, Tails\}
+\]</span></p>
 <p>For a six-sided die roll, the sample space is:</p>
-<p>[ S = {1, 2, 3, 4, 5, 6} ]</p>
+<p><span class="math display">\[
+S = \{1, 2, 3, 4, 5, 6\}
+\]</span></p>
 <p>For a survey question with three possible responses, the sample space might be:</p>
-<p>[ S = {Agree, Disagree, Don’t Know} ]</p>
+<p><span class="math display">\[
+S = \{Agree, Disagree, Don’t Know\}
+\]</span></p>
 <p>A valid sample space must be both <strong>mutually exclusive</strong> and <strong>exhaustive</strong>.</p>
 <p><strong>Mutually exclusive</strong> means that only one outcome can occur at a time. A single coin toss cannot be both heads and tails.</p>
 <p><strong>Exhaustive</strong> means that all possible outcomes are included. Something in the sample space must occur.</p>
@@ -413,16 +452,26 @@ ul.task-list li input[type="checkbox"] {
 <p>An <strong>outcome</strong> is one possible result of a random process.</p>
 <p>For a coin toss, “heads” is an outcome and “tails” is an outcome.</p>
 <p>For a die roll, each number is an outcome:</p>
-<p>[ 1, 2, 3, 4, 5, 6 ]</p>
+<p><span class="math display">\[
+1, 2, 3, 4, 5, 6
+\]</span></p>
 <p>For a survey question, each possible response is an outcome.</p>
 <p>Each outcome has a probability. If all outcomes are equally likely, calculating probabilities is straightforward.</p>
 <p>For a fair coin:</p>
-<p>[ P(Heads) = ]</p>
-<p>[ P(Tails) = ]</p>
+<p><span class="math display">\[
+P(Heads) = \frac{1}{2}
+\]</span></p>
+<p><span class="math display">\[
+P(Tails) = \frac{1}{2}
+\]</span></p>
 <p>For a fair six-sided die:</p>
-<p>[ P(1) = P(2) = P(3) = P(4) = P(5) = P(6) = ]</p>
+<p><span class="math display">\[
+P(1) = P(2) = P(3) = P(4) = P(5) = P(6) = \frac{1}{6}
+\]</span></p>
 <p>The probabilities sum to 1:</p>
-<p>[ +++++=1 ]</p>
+<p><span class="math display">\[
+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=1
+\]</span></p>
 <hr>
 </section>
 <section id="probability-as-area" class="level2" data-number="6.3">
@@ -436,12 +485,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>For a fair die, the rectangle is divided into six equal parts:</p>
 <ul>
-<li>1: area (1/6)</li>
-<li>2: area (1/6)</li>
-<li>3: area (1/6)</li>
-<li>4: area (1/6)</li>
-<li>5: area (1/6)</li>
-<li>6: area (1/6)</li>
+<li>1: area <span class="math inline">\(1/6\)</span></li>
+<li>2: area <span class="math inline">\(1/6\)</span></li>
+<li>3: area <span class="math inline">\(1/6\)</span></li>
+<li>4: area <span class="math inline">\(1/6\)</span></li>
+<li>5: area <span class="math inline">\(1/6\)</span></li>
+<li>6: area <span class="math inline">\(1/6\)</span></li>
 </ul>
 <p>This area-based view will be useful when we discuss unions, intersections, complements, and conditional probabilities.</p>
 <hr>
@@ -451,19 +500,29 @@ ul.task-list li input[type="checkbox"] {
 <p>An <strong>event</strong> is a set of outcomes.</p>
 <p>Sometimes an event consists of only one outcome. This is called a <strong>simple event</strong>.</p>
 <p>For example, when rolling a die:</p>
-<p>[ A = {3} ]</p>
+<p><span class="math display">\[
+A = \{3\}
+\]</span></p>
 <p>The event is “rolling a 3.”</p>
 <p>Other events consist of multiple outcomes. These are called <strong>compound events</strong>.</p>
 <p>For example:</p>
-<p>[ B = {2, 4, 6} ]</p>
+<p><span class="math display">\[
+B = \{2, 4, 6\}
+\]</span></p>
 <p>The event is “rolling an even number.”</p>
 <p>Another example:</p>
-<p>[ C = {1, 2, 3, 4} ]</p>
+<p><span class="math display">\[
+C = \{1, 2, 3, 4\}
+\]</span></p>
 <p>The event is “rolling a number less than 5.”</p>
 <p>In a survey with responses:</p>
-<p>[ S = {Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree} ]</p>
+<p><span class="math display">\[
+S = \{Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree\}
+\]</span></p>
 <p>we might define an event called “agreement”:</p>
-<p>[ A = {Agree, Strongly Agree} ]</p>
+<p><span class="math display">\[
+A = \{Agree, Strongly Agree\}
+\]</span></p>
 <p>An event is simply a subset of the sample space.</p>
 <hr>
 </section>
@@ -471,12 +530,20 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="6.5" class="anchored" data-anchor-id="probability-of-an-event"><span class="header-section-number">6.5</span> Probability of an Event</h2>
 <p>The probability of an event is the sum of the probabilities of the outcomes included in that event.</p>
 <p>Suppose we roll a fair die and define:</p>
-<p>[ A = {2, 4, 6} ]</p>
+<p><span class="math display">\[
+A = \{2, 4, 6\}
+\]</span></p>
 <p>This is the event “rolling an even number.”</p>
-<p>Each outcome has probability (1/6), so:</p>
-<p>[ P(A) = P(2) + P(4) + P(6) ]</p>
-<p>[ P(A) = + + ]</p>
-<p>[ P(A) = = ]</p>
+<p>Each outcome has probability <span class="math inline">\(1/6\)</span>, so:</p>
+<p><span class="math display">\[
+P(A) = P(2) + P(4) + P(6)
+\]</span></p>
+<p><span class="math display">\[
+P(A) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6}
+\]</span></p>
+<p><span class="math display">\[
+P(A) = \frac{3}{6} = \frac{1}{2}
+\]</span></p>
 <p>The event occurs if any one of its outcomes occurs.</p>
 <hr>
 </section>
@@ -486,39 +553,63 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-union-of-events-a-or-b" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="the-union-of-events-a-or-b"><span class="header-section-number">7.1</span> The Union of Events: “A or B”</h2>
 <p>The <strong>union</strong> of two events includes all outcomes that belong to either event.</p>
-<p>The union of (A) and (B) is written:</p>
-<p>[ A B ]</p>
+<p>The union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is written:</p>
+<p><span class="math display">\[
+A \cup B
+\]</span></p>
 <p>This means:</p>
-<p>[ A B ]</p>
+<p><span class="math display">\[
+A \text{ or } B
+\]</span></p>
 <p>Importantly, “or” is inclusive. It means A, or B, or both.</p>
 <p>Suppose we roll a die and define:</p>
-<p>[ A = {2, 4, 6} ]</p>
+<p><span class="math display">\[
+A = \{2, 4, 6\}
+\]</span></p>
 <p>the event “rolling an even number,” and:</p>
-<p>[ B = {1, 2, 3, 4} ]</p>
+<p><span class="math display">\[
+B = \{1, 2, 3, 4\}
+\]</span></p>
 <p>the event “rolling a number less than 5.”</p>
 <p>Then:</p>
-<p>[ A B = {1, 2, 3, 4, 6} ]</p>
+<p><span class="math display">\[
+A \cup B = \{1, 2, 3, 4, 6\}
+\]</span></p>
 <p>The only die roll not included is 5.</p>
 <p>So:</p>
-<p>[ P(A B) = ]</p>
+<p><span class="math display">\[
+P(A \cup B) = \frac{5}{6}
+\]</span></p>
 <p>The union expands the set of outcomes. It asks whether at least one of the events occurred.</p>
 <hr>
 </section>
 <section id="the-intersection-of-events-a-and-b" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="the-intersection-of-events-a-and-b"><span class="header-section-number">7.2</span> The Intersection of Events: “A and B”</h2>
 <p>The <strong>intersection</strong> of two events includes only outcomes that belong to both events.</p>
-<p>The intersection of (A) and (B) is written:</p>
-<p>[ A B ]</p>
+<p>The intersection of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is written:</p>
+<p><span class="math display">\[
+A \cap B
+\]</span></p>
 <p>This means:</p>
-<p>[ A B ]</p>
+<p><span class="math display">\[
+A \text{ and } B
+\]</span></p>
 <p>This is more restrictive than a union. Both events must occur.</p>
 <p>Using the same example:</p>
-<p>[ A = {2, 4, 6} ]</p>
-<p>[ B = {1, 2, 3, 4} ]</p>
+<p><span class="math display">\[
+A = \{2, 4, 6\}
+\]</span></p>
+<p><span class="math display">\[
+B = \{1, 2, 3, 4\}
+\]</span></p>
 <p>The outcomes common to both are:</p>
-<p>[ A B = {2, 4} ]</p>
+<p><span class="math display">\[
+A \cap B = \{2, 4\}
+\]</span></p>
 <p>So:</p>
-<p>[ P(A B) = = ]</p>
+<p><span class="math display">\[
+P(A \cap B) = \frac{2}{6} = \frac{1}{3}
+\]</span></p>
 <p>A useful reminder:</p>
 <ul>
 <li>“Or” expands possibilities.</li>
@@ -532,40 +623,62 @@ ul.task-list li input[type="checkbox"] {
 <p>Two events are <strong>disjoint</strong> if they cannot occur at the same time.</p>
 <p>Disjoint events have no overlap. Their intersection is empty.</p>
 <p>For example, when rolling a die:</p>
-<p>[ A = {1, 3, 5} ]</p>
+<p><span class="math display">\[
+A = \{1, 3, 5\}
+\]</span></p>
 <p>is the event “rolling an odd number,” and:</p>
-<p>[ B = {4} ]</p>
+<p><span class="math display">\[
+B = \{4\}
+\]</span></p>
 <p>is the event “rolling a 4.”</p>
 <p>These events cannot both occur. A die roll cannot be both odd and 4.</p>
 <p>So:</p>
-<p>[ A B = ]</p>
+<p><span class="math display">\[
+A \cap B = \emptyset
+\]</span></p>
 <p>and:</p>
-<p>[ P(A B) = 0 ]</p>
+<p><span class="math display">\[
+P(A \cap B) = 0
+\]</span></p>
 <p>Heads and tails in a single coin toss are also disjoint. One coin toss cannot produce both heads and tails.</p>
 <hr>
 </section>
 <section id="complements" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="complements"><span class="header-section-number">7.4</span> Complements</h2>
 <p>The <strong>complement</strong> of an event consists of all outcomes not in that event.</p>
-<p>If the event is (A), its complement can be written as:</p>
-<p>[ ]</p>
+<p>If the event is <span class="math inline">\(A\)</span>, its complement can be written as:</p>
+<p><span class="math display">\[
+\tilde{A}
+\]</span></p>
 <p>or sometimes:</p>
-<p>[ A^c ]</p>
+<p><span class="math display">\[
+A^c
+\]</span></p>
 <p>Both mean “not A.”</p>
 <p>Suppose:</p>
-<p>[ A = {2, 4, 6} ]</p>
+<p><span class="math display">\[
+A = \{2, 4, 6\}
+\]</span></p>
 <p>the event “rolling an even number.”</p>
 <p>Then the complement is:</p>
-<p>[ = {1, 3, 5} ]</p>
+<p><span class="math display">\[
+\tilde{A} = \{1, 3, 5\}
+\]</span></p>
 <p>the event “not rolling an even number,” or rolling an odd number.</p>
-<p>An event and its complement always exhaust the sample space. Either (A) happens or it does not.</p>
+<p>An event and its complement always exhaust the sample space. Either <span class="math inline">\(A\)</span> happens or it does not.</p>
 <p>Therefore:</p>
-<p>[ P(A) + P() = 1 ]</p>
+<p><span class="math display">\[
+P(A) + P(\tilde{A}) = 1
+\]</span></p>
 <p>So:</p>
-<p>[ P() = 1 - P(A) ]</p>
+<p><span class="math display">\[
+P(\tilde{A}) = 1 - P(A)
+\]</span></p>
 <p>This is called the <strong>complement rule</strong>.</p>
 <p>For example, if the probability that a randomly selected person is eligible to vote is 0.75, then the probability that the person is not eligible to vote is:</p>
-<p>[ 1 - 0.75 = 0.25 ]</p>
+<p><span class="math display">\[
+1 - 0.75 = 0.25
+\]</span></p>
 <hr>
 </section>
 </section>
@@ -574,56 +687,82 @@ ul.task-list li input[type="checkbox"] {
 <section id="probabilities-range-from-0-to-1" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="probabilities-range-from-0-to-1"><span class="header-section-number">8.1</span> Probabilities Range from 0 to 1</h2>
 <p>Every probability must fall between 0 and 1:</p>
-<p>[ 0 P(A) ]</p>
+<p><span class="math display">\[
+0 \leq P(A) \leq 1
+\]</span></p>
 <p>If:</p>
-<p>[ P(A) = 0 ]</p>
-<p>then event (A) is impossible.</p>
+<p><span class="math display">\[
+P(A) = 0
+\]</span></p>
+<p>then event <span class="math inline">\(A\)</span> is impossible.</p>
 <p>If:</p>
-<p>[ P(A) = 1 ]</p>
-<p>then event (A) is certain.</p>
+<p><span class="math display">\[
+P(A) = 1
+\]</span></p>
+<p>then event <span class="math inline">\(A\)</span> is certain.</p>
 <p>If you calculate a probability and get something like 1.6 or -0.2, something has gone wrong. A probability cannot exceed 1 and cannot be negative.</p>
 <p>The probability of the entire sample space is always 1:</p>
-<p>[ P(S) = 1 ]</p>
+<p><span class="math display">\[
+P(S) = 1
+\]</span></p>
 <p>The probability of something outside the sample space is 0.</p>
 <hr>
 </section>
 <section id="addition-rule-for-disjoint-events" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="addition-rule-for-disjoint-events"><span class="header-section-number">8.2</span> Addition Rule for Disjoint Events</h2>
 <p>If two events are disjoint, then the probability of either event occurring is the sum of their probabilities:</p>
-<p>[ P(A B) = P(A) + P(B) ]</p>
-<p>This only works when (A) and (B) do not overlap.</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B)
+\]</span></p>
+<p>This only works when <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> do not overlap.</p>
 <p>For example, when rolling a die, let:</p>
-<p>[ A = {1} ]</p>
-<p>[ B = {6} ]</p>
+<p><span class="math display">\[
+A = \{1\}
+\]</span></p>
+<p><span class="math display">\[
+B = \{6\}
+\]</span></p>
 <p>Since a die roll cannot be both 1 and 6, the events are disjoint.</p>
 <p>So:</p>
-<p>[ P(A B) = P(A) + P(B) ]</p>
-<p>[ P(A B) = + = = ]</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B)
+\]</span></p>
+<p><span class="math display">\[
+P(A \cup B) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3}
+\]</span></p>
 <hr>
 </section>
 <section id="general-addition-rule" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="general-addition-rule"><span class="header-section-number">8.3</span> General Addition Rule</h2>
 <p>If two events may overlap, we need the general addition rule:</p>
-<p>[ P(A B) = P(A) + P(B) - P(A B) ]</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]</span></p>
 <p>Why subtract the intersection?</p>
-<p>Because when we add (P(A)) and (P(B)), the overlapping part gets counted twice. Subtracting (P(A B)) removes the double-counting.</p>
+<p>Because when we add <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>, the overlapping part gets counted twice. Subtracting <span class="math inline">\(P(A \cap B)\)</span> removes the double-counting.</p>
 <p>This formula always works. If the events are disjoint, then:</p>
-<p>[ P(A B) = 0 ]</p>
+<p><span class="math display">\[
+P(A \cap B) = 0
+\]</span></p>
 <p>and the formula reduces to:</p>
-<p>[ P(A B) = P(A) + P(B) ]</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B)
+\]</span></p>
 <hr>
 </section>
 <section id="expected-value" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">8.4</span> Expected Value</h2>
 <p>The <strong>expected value</strong> of a random variable is its probability-weighted average.</p>
-<p>If a variable (Y) can take values (y_1, y_2, , y_k), then:</p>
-<p>[ E(Y) = _i y_i P(Y = y_i) ]</p>
+<p>If a variable <span class="math inline">\(Y\)</span> can take values <span class="math inline">\(y_1, y_2, \ldots, y_k\)</span>, then:</p>
+<p><span class="math display">\[
+E(Y) = \sum_i y_i P(Y = y_i)
+\]</span></p>
 <p>In words: multiply each possible value by its probability, then add the results.</p>
-<p>For example, suppose (Y) can take four values:</p>
+<p>For example, suppose <span class="math inline">\(Y\)</span> can take four values:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;">(Y)</th>
+<th style="text-align: right;"><span class="math inline">\(Y\)</span></th>
 <th style="text-align: right;">Probability</th>
 </tr>
 </thead>
@@ -647,11 +786,17 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The expected value is:</p>
-<p>[ E(Y) = 1(0.5) + 2(0.3) + 3(0.1) + 4(0.1) ]</p>
-<p>[ E(Y) = 0.5 + 0.6 + 0.3 + 0.4 ]</p>
-<p>[ E(Y) = 1.8 ]</p>
+<p><span class="math display">\[
+E(Y) = 1(0.5) + 2(0.3) + 3(0.1) + 4(0.1)
+\]</span></p>
+<p><span class="math display">\[
+E(Y) = 0.5 + 0.6 + 0.3 + 0.4
+\]</span></p>
+<p><span class="math display">\[
+E(Y) = 1.8
+\]</span></p>
 <p>The expected value is the mean of the probability distribution.</p>
-<p>It does not need to be a value that can actually occur. Just as the expected value of a die roll is 3.5, even though no one can roll a 3.5, the expected value here is 1.8 even though (Y) only takes whole-number values.</p>
+<p>It does not need to be a value that can actually occur. Just as the expected value of a die roll is 3.5, even though no one can roll a 3.5, the expected value here is 1.8 even though <span class="math inline">\(Y\)</span> only takes whole-number values.</p>
 <hr>
 </section>
 </section>
@@ -666,7 +811,9 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>This intuition is understandable, but it is wrong.</p>
 <p>If the coin is fair, each flip is independent. The probability of tails on the next flip is still:</p>
-<p>[ 0.5 ]</p>
+<p><span class="math display">\[
+0.5
+\]</span></p>
 <p>The previous flips do not affect the next one.</p>
 <p>The law of large numbers tells us that, in the long run, the proportion of heads will converge toward 0.5. But it does not say that short-run imbalances must immediately correct themselves.</p>
 <p>The opposite intuition is sometimes called the <strong>hot hand fallacy</strong>:</p>
@@ -686,9 +833,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Consider basketball. If a player makes several three-point shots in a row, fans may say the player is “hot.” Is that real? Maybe. Unlike coin tosses, basketball shots are not identical independent trials. The player’s confidence, fatigue, defensive pressure, shot location, and rhythm may all matter. A shot from the corner with no defender nearby is not the same as a contested shot from several feet behind the line.</p>
 <p>Sports analytics often relies on expected value. A three-point shot may be worth attempting even if it is made less often than a two-point shot because the payoff is larger.</p>
 <p>For example, if a player makes 40 percent of three-point shots, the expected value of the shot is:</p>
-<p>[ 3(0.40) = 1.20 ]</p>
+<p><span class="math display">\[
+3(0.40) = 1.20
+\]</span></p>
 <p>If a player makes 55 percent of two-point shots, the expected value is:</p>
-<p>[ 2(0.55) = 1.10 ]</p>
+<p><span class="math display">\[
+2(0.55) = 1.10
+\]</span></p>
 <p>Even though the two-point shot is made more often, the three-point shot has the higher expected value.</p>
 <p>The same logic appears in football decisions, such as whether to punt or go for it on fourth down. Teams can estimate the expected value of each choice based on field position, yards to go, time remaining, and historical outcomes.</p>
 <p>Probability is everywhere. Even when people are arguing about sports, they are often arguing about probability. Sometimes loudly. Very loudly.</p>
@@ -722,15 +873,19 @@ ul.task-list li input[type="checkbox"] {
 <li>The probability that one die shows 3 and another die shows 4.</li>
 </ul>
 <p>Joint probabilities involve intersections:</p>
-<p>[ P(A B) ]</p>
-<p>This is the probability that both (A) and (B) occur.</p>
+<p><span class="math display">\[
+P(A \cap B)
+\]</span></p>
+<p>This is the probability that both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> occur.</p>
 <hr>
 </section>
 <section id="rolling-two-dice" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="rolling-two-dice"><span class="header-section-number">10.2</span> Rolling Two Dice</h2>
 <p>Suppose we roll two dice: one orange and one white.</p>
 <p>Each die has six possible outcomes. Together, there are:</p>
-<p>[ 6 = 36 ]</p>
+<p><span class="math display">\[
+6 \times 6 = 36
+\]</span></p>
 <p>possible joint outcomes.</p>
 <p>For example:</p>
 <ul>
@@ -740,13 +895,19 @@ ul.task-list li input[type="checkbox"] {
 <li>Orange = 6, White = 6</li>
 </ul>
 <p>If both dice are fair, each joint outcome has probability:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{1}{36}
+\]</span></p>
 <p>Now suppose we want the probability that the sum of the two dice is less than or equal to 4.</p>
 <p>The favorable outcomes are:</p>
-<p>[ (1,1), (1,2), (2,1), (1,3), (2,2), (3,1) ]</p>
+<p><span class="math display">\[
+(1,1), (1,2), (2,1), (1,3), (2,2), (3,1)
+\]</span></p>
 <p>There are 6 favorable outcomes.</p>
 <p>So:</p>
-<p>[ P( ) = = ]</p>
+<p><span class="math display">\[
+P(\text{sum} \leq 4) = \frac{6}{36} = \frac{1}{6}
+\]</span></p>
 <p>This illustrates the basic strategy for joint probabilities:</p>
 <ol type="1">
 <li>Identify all joint outcomes.</li>
@@ -810,8 +971,12 @@ ul.task-list li input[type="checkbox"] {
 <p>The internal cells show combinations of answers.</p>
 <p>For example, 1,050 respondents are Democrats who support raising the minimum wage.</p>
 <p>The joint probability of being a Democrat and supporting the minimum wage increase is:</p>
-<p>[ P(Democrat Yes) = ]</p>
-<p>[ P(Democrat Yes) ]</p>
+<p><span class="math display">\[
+P(Democrat \cap Yes) = \frac{1050}{3438}
+\]</span></p>
+<p><span class="math display">\[
+P(Democrat \cap Yes) \approx 0.305
+\]</span></p>
 <p>This is a joint probability because two things are true at once.</p>
 <hr>
 </section>
@@ -854,15 +1019,29 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>The internal cells are joint probabilities.</p>
 <p>For example:</p>
-<p>[ P(Yes Democrat) = 0.305 ]</p>
-<p>[ P(No Republican) = 0.181 ]</p>
+<p><span class="math display">\[
+P(Yes \cap Democrat) = 0.305
+\]</span></p>
+<p><span class="math display">\[
+P(No \cap Republican) = 0.181
+\]</span></p>
 <p>The row and column totals are called <strong>marginal probabilities</strong>.</p>
 <p>For example:</p>
-<p>[ P(Yes) = 0.646 ]</p>
-<p>[ P(No) = 0.354 ]</p>
-<p>[ P(Democrat) = 0.363 ]</p>
-<p>[ P(Independent) = 0.337 ]</p>
-<p>[ P(Republican) = 0.300 ]</p>
+<p><span class="math display">\[
+P(Yes) = 0.646
+\]</span></p>
+<p><span class="math display">\[
+P(No) = 0.354
+\]</span></p>
+<p><span class="math display">\[
+P(Democrat) = 0.363
+\]</span></p>
+<p><span class="math display">\[
+P(Independent) = 0.337
+\]</span></p>
+<p><span class="math display">\[
+P(Republican) = 0.300
+\]</span></p>
 <p>They are called marginal probabilities because they appear in the margins of the table. More importantly, they give the probability of one event without regard to the other variable.</p>
 <hr>
 </section>
@@ -873,15 +1052,19 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="11.1" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">11.1</span> Conditional Probability</h2>
 <p>A <strong>conditional probability</strong> is the probability of one event given that another event has occurred.</p>
 <p>The notation is:</p>
-<p>[ P(A B) ]</p>
+<p><span class="math display">\[
+P(A \mid B)
+\]</span></p>
 <p>This is read:</p>
 <blockquote class="blockquote">
 <p>The probability of A given B.</p>
 </blockquote>
 <p>The formula is:</p>
-<p>[ P(A B) = ]</p>
+<p><span class="math display">\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]</span></p>
 <p>The denominator is the event we know has occurred. The numerator is the joint probability that both events occurred.</p>
-<p>Conceptually, conditional probability restricts the sample space. Once we know (B) happened, we focus only on the part of the sample space where (B) is true. Then we ask what fraction of that space also includes (A).</p>
+<p>Conceptually, conditional probability restricts the sample space. Once we know <span class="math inline">\(B\)</span> happened, we focus only on the part of the sample space where <span class="math inline">\(B\)</span> is true. Then we ask what fraction of that space also includes <span class="math inline">\(A\)</span>.</p>
 <hr>
 </section>
 <section id="conditional-probability-example-minimum-wage-and-party-id" class="level2" data-number="11.2">
@@ -922,16 +1105,26 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Suppose we want:</p>
-<p>[ P(Yes Democrat) ]</p>
+<p><span class="math display">\[
+P(Yes \mid Democrat)
+\]</span></p>
 <p>That is, among Democrats, what is the probability of supporting a minimum wage increase?</p>
 <p>Use the formula:</p>
-<p>[ P(Yes Democrat) = ]</p>
+<p><span class="math display">\[
+P(Yes \mid Democrat) = \frac{P(Yes \cap Democrat)}{P(Democrat)}
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ P(Yes Democrat) = ]</p>
-<p>[ P(Yes Democrat) ]</p>
+<p><span class="math display">\[
+P(Yes \mid Democrat) = \frac{0.305}{0.363}
+\]</span></p>
+<p><span class="math display">\[
+P(Yes \mid Democrat) \approx 0.840
+\]</span></p>
 <p>So, given that a respondent is a Democrat, the probability that they support raising the minimum wage is about 0.84.</p>
 <p>Compare that to the unconditional probability:</p>
-<p>[ P(Yes) = 0.646 ]</p>
+<p><span class="math display">\[
+P(Yes) = 0.646
+\]</span></p>
 <p>Knowing that a person is a Democrat changes our estimate of the probability that they support raising the minimum wage.</p>
 <p>That suggests party identification and minimum wage attitudes are not independent.</p>
 <hr>
@@ -939,34 +1132,54 @@ ul.task-list li input[type="checkbox"] {
 <section id="another-conditional-probability-example" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="another-conditional-probability-example"><span class="header-section-number">11.3</span> Another Conditional Probability Example</h2>
 <p>Now suppose we want:</p>
-<p>[ P(Independent No) ]</p>
+<p><span class="math display">\[
+P(Independent \mid No)
+\]</span></p>
 <p>That is, among those who oppose raising the minimum wage, what is the probability that a person is an independent?</p>
 <p>Use the formula:</p>
-<p>[ P(Independent No) = ]</p>
+<p><span class="math display">\[
+P(Independent \mid No) = \frac{P(Independent \cap No)}{P(No)}
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ P(Independent No) = ]</p>
-<p>[ P(Independent No) ]</p>
+<p><span class="math display">\[
+P(Independent \mid No) = \frac{0.115}{0.354}
+\]</span></p>
+<p><span class="math display">\[
+P(Independent \mid No) \approx 0.325
+\]</span></p>
 <p>So among people who oppose raising the minimum wage, about 32.5 percent are independents.</p>
 <p>Notice that this is close to the unconditional probability of being an independent:</p>
-<p>[ P(Independent) = 0.337 ]</p>
+<p><span class="math display">\[
+P(Independent) = 0.337
+\]</span></p>
 <p>That particular conditional probability does not change much. But that alone does not prove independence for the full relationship. Other categories may still differ substantially.</p>
 <hr>
 </section>
 <section id="independence" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="independence"><span class="header-section-number">11.4</span> Independence</h2>
 <p>Two events are <strong>independent</strong> if knowing that one occurred does not change the probability that the other occurred.</p>
-<p>Events (A) and (B) are independent if:</p>
-<p>[ P(A B) = P(A) ]</p>
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if:</p>
+<p><span class="math display">\[
+P(A \mid B) = P(A)
+\]</span></p>
 <p>Equivalently:</p>
-<p>[ P(B A) = P(B) ]</p>
+<p><span class="math display">\[
+P(B \mid A) = P(B)
+\]</span></p>
 <p>If the conditional probability equals the unconditional probability, then the condition did not matter.</p>
 <p>For example, suppose the probability that a randomly selected person has a job is:</p>
-<p>[ P(Job) = 0.60 ]</p>
+<p><span class="math display">\[
+P(Job) = 0.60
+\]</span></p>
 <p>Now suppose we condition on having a high school degree. If:</p>
-<p>[ P(Job High School Degree) = 0.60 ]</p>
+<p><span class="math display">\[
+P(Job \mid High School Degree) = 0.60
+\]</span></p>
 <p>then having a high school degree provides no information about whether someone has a job. The two events are independent.</p>
 <p>But if:</p>
-<p>[ P(Job High School Degree) &gt; 0.60 ]</p>
+<p><span class="math display">\[
+P(Job \mid High School Degree) &gt; 0.60
+\]</span></p>
 <p>then employment and high school degree status are dependent. Knowing one changes the probability of the other.</p>
 <hr>
 </section>
@@ -974,19 +1187,35 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="11.5" class="anchored" data-anchor-id="independence-with-dice"><span class="header-section-number">11.5</span> Independence with Dice</h2>
 <p>Suppose we roll two dice, one orange and one white.</p>
 <p>Let:</p>
-<p>[ A = ]</p>
-<p>[ B = ]</p>
+<p><span class="math display">\[
+A = \text{orange die is 1}
+\]</span></p>
+<p><span class="math display">\[
+B = \text{white die is 3}
+\]</span></p>
 <p>The probability that the orange die is 1 is:</p>
-<p>[ P(A) = ]</p>
+<p><span class="math display">\[
+P(A) = \frac{1}{6}
+\]</span></p>
 <p>The probability that both happen is:</p>
-<p>[ P(A B) = ]</p>
+<p><span class="math display">\[
+P(A \cap B) = \frac{1}{36}
+\]</span></p>
 <p>The probability that the white die is 3 is:</p>
-<p>[ P(B) = ]</p>
+<p><span class="math display">\[
+P(B) = \frac{1}{6}
+\]</span></p>
 <p>Now calculate:</p>
-<p>[ P(A B) = ]</p>
-<p>[ P(A B) = ]</p>
-<p>[ P(A B) = ]</p>
-<p>This equals (P(A)). So the events are independent.</p>
+<p><span class="math display">\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]</span></p>
+<p><span class="math display">\[
+P(A \mid B) = \frac{1/36}{1/6}
+\]</span></p>
+<p><span class="math display">\[
+P(A \mid B) = \frac{1}{6}
+\]</span></p>
+<p>This equals <span class="math inline">\(P(A)\)</span>. So the events are independent.</p>
 <p>Knowing the white die is 3 does not change the probability that the orange die is 1.</p>
 <hr>
 </section>
@@ -994,16 +1223,28 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="11.6" class="anchored" data-anchor-id="independence-with-cards"><span class="header-section-number">11.6</span> Independence with Cards</h2>
 <p>Suppose we draw one card from a standard 52-card deck.</p>
 <p>There are 26 red cards, so:</p>
-<p>[ P(Red) = = ]</p>
+<p><span class="math display">\[
+P(Red) = \frac{26}{52} = \frac{1}{2}
+\]</span></p>
 <p>There are 4 aces, so:</p>
-<p>[ P(Ace) = = ]</p>
+<p><span class="math display">\[
+P(Ace) = \frac{4}{52} = \frac{1}{13}
+\]</span></p>
 <p>There are 2 red aces, so:</p>
-<p>[ P(Red Ace) = ]</p>
+<p><span class="math display">\[
+P(Red \cap Ace) = \frac{2}{52}
+\]</span></p>
 <p>Now calculate:</p>
-<p>[ P(Red Ace) = ]</p>
-<p>[ P(Red Ace) = ]</p>
-<p>[ P(Red Ace) = ]</p>
-<p>This equals (P(Red)). So being told that the card is an ace does not change the probability that it is red.</p>
+<p><span class="math display">\[
+P(Red \mid Ace) = \frac{P(Red \cap Ace)}{P(Ace)}
+\]</span></p>
+<p><span class="math display">\[
+P(Red \mid Ace) = \frac{2/52}{4/52}
+\]</span></p>
+<p><span class="math display">\[
+P(Red \mid Ace) = \frac{1}{2}
+\]</span></p>
+<p>This equals <span class="math inline">\(P(Red)\)</span>. So being told that the card is an ace does not change the probability that it is red.</p>
 <p>Redness and aceness are independent.</p>
 <hr>
 </section>
@@ -1011,11 +1252,17 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="11.7" class="anchored" data-anchor-id="testing-for-independence-in-tables"><span class="header-section-number">11.7</span> Testing for Independence in Tables</h2>
 <p>In a joint probability table, we can test for independence by comparing conditional and unconditional probabilities.</p>
 <p>Using the minimum wage table:</p>
-<p>[ P(Yes) = 0.646 ]</p>
+<p><span class="math display">\[
+P(Yes) = 0.646
+\]</span></p>
 <p>But:</p>
-<p>[ P(Yes Democrat) = 0.840 ]</p>
+<p><span class="math display">\[
+P(Yes \mid Democrat) = 0.840
+\]</span></p>
 <p>Since:</p>
-<p>[ 0.840 ]</p>
+<p><span class="math display">\[
+0.840 \neq 0.646
+\]</span></p>
 <p>party identification and support for raising the minimum wage are not independent.</p>
 <p>If two variables have multiple categories, checking one conditional probability may be enough to show dependence. If one conditional probability differs from the unconditional probability, independence fails.</p>
 <p>However, finding one category where the conditional probability matches the unconditional probability is not enough to prove independence. Other categories may differ and counterbalance one another.</p>
@@ -1028,40 +1275,70 @@ ul.task-list li input[type="checkbox"] {
 <section id="general-multiplication-rule" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="general-multiplication-rule"><span class="header-section-number">12.1</span> General Multiplication Rule</h2>
 <p>The general multiplication rule gives the probability that two events both occur:</p>
-<p>[ P(A B) = P(A)P(B A) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A)P(B \mid A)
+\]</span></p>
 <p>Equivalently:</p>
-<p>[ P(A B) = P(B)P(A B) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(B)P(A \mid B)
+\]</span></p>
 <p>This formula always works.</p>
 <p>It follows directly from the conditional probability formula:</p>
-<p>[ P(B A) = ]</p>
+<p><span class="math display">\[
+P(B \mid A) = \frac{P(A \cap B)}{P(A)}
+\]</span></p>
 <p>Rearranging gives:</p>
-<p>[ P(A B) = P(A)P(B A) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A)P(B \mid A)
+\]</span></p>
 <p>This rule is especially useful when events are dependent.</p>
 <p>For example, suppose:</p>
-<p>[ P(Republican) = 0.300 ]</p>
+<p><span class="math display">\[
+P(Republican) = 0.300
+\]</span></p>
 <p>and:</p>
-<p>[ P(No Republican) = ]</p>
+<p><span class="math display">\[
+P(No \mid Republican) = \frac{0.181}{0.300}
+\]</span></p>
 <p>Then:</p>
-<p>[ P(Republican No) = P(Republican)P(No Republican) ]</p>
-<p>[ P(Republican No) = 0.300 () ]</p>
-<p>[ P(Republican No) = 0.181 ]</p>
+<p><span class="math display">\[
+P(Republican \cap No) = P(Republican)P(No \mid Republican)
+\]</span></p>
+<p><span class="math display">\[
+P(Republican \cap No) = 0.300 \left(\frac{0.181}{0.300}\right)
+\]</span></p>
+<p><span class="math display">\[
+P(Republican \cap No) = 0.181
+\]</span></p>
 <hr>
 </section>
 <section id="multiplication-rule-for-independent-events" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="multiplication-rule-for-independent-events"><span class="header-section-number">12.2</span> Multiplication Rule for Independent Events</h2>
 <p>If two events are independent, then:</p>
-<p>[ P(B A) = P(B) ]</p>
+<p><span class="math display">\[
+P(B \mid A) = P(B)
+\]</span></p>
 <p>So the general multiplication rule becomes:</p>
-<p>[ P(A B) = P(A)P(B) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A)P(B)
+\]</span></p>
 <p>This formula should only be used when the events are independent.</p>
 <p>For example, if we flip a fair coin twice, the probability of heads on the first flip is 0.5, and the probability of heads on the second flip is also 0.5.</p>
 <p>Because the flips are independent:</p>
-<p>[ P(Heads Heads) = 0.5 = 0.25 ]</p>
+<p><span class="math display">\[
+P(Heads \cap Heads) = 0.5 \times 0.5 = 0.25
+\]</span></p>
 <p>For eight heads in a row:</p>
-<p>[ P(8 ) = 0.5^8 ]</p>
-<p>[ P(8 ) = 0.0039 ]</p>
+<p><span class="math display">\[
+P(8 \text{ heads}) = 0.5^8
+\]</span></p>
+<p><span class="math display">\[
+P(8 \text{ heads}) = 0.0039
+\]</span></p>
 <p>That is:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{1}{256}
+\]</span></p>
 <p>The probability is small, but not impossible.</p>
 <hr>
 </section>
@@ -1069,22 +1346,36 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="12.3" class="anchored" data-anchor-id="permutations-and-repeated-trials"><span class="header-section-number">12.3</span> Permutations and Repeated Trials</h2>
 <p>Suppose we flip a fair coin eight times.</p>
 <p>The probability of one specific sequence, such as:</p>
-<p>[ T H H H H H H H ]</p>
+<p><span class="math display">\[
+T H H H H H H H
+\]</span></p>
 <p>is:</p>
-<p>[ 0.5^8 = ]</p>
+<p><span class="math display">\[
+0.5^8 = \frac{1}{256}
+\]</span></p>
 <p>But now suppose we ask:</p>
 <blockquote class="blockquote">
 <p>What is the probability of getting exactly seven heads in eight flips?</p>
 </blockquote>
 <p>There are multiple sequences that produce exactly seven heads:</p>
-<p>[ T H H H H H H H ]</p>
-<p>[ H T H H H H H H ]</p>
-<p>[ H H T H H H H H ]</p>
+<p><span class="math display">\[
+T H H H H H H H
+\]</span></p>
+<p><span class="math display">\[
+H T H H H H H H
+\]</span></p>
+<p><span class="math display">\[
+H H T H H H H H
+\]</span></p>
 <p>and so on.</p>
-<p>There are eight possible positions for the one tail. Each sequence has probability (1/256).</p>
+<p>There are eight possible positions for the one tail. Each sequence has probability <span class="math inline">\(1/256\)</span>.</p>
 <p>So:</p>
-<p>[ P(7 ) = 8 ]</p>
-<p>[ P(7 ) = = ]</p>
+<p><span class="math display">\[
+P(7 \text{ heads in 8 flips}) = 8 \times \frac{1}{256}
+\]</span></p>
+<p><span class="math display">\[
+P(7 \text{ heads in 8 flips}) = \frac{8}{256} = \frac{1}{32}
+\]</span></p>
 <p>This is the beginning of the logic behind the <strong>binomial distribution</strong>, which describes the number of successes in a fixed number of independent trials where each trial has two possible outcomes.</p>
 <p>We will return to that idea later.</p>
 <hr>
@@ -1094,21 +1385,31 @@ ul.task-list li input[type="checkbox"] {
 <p>The major rules introduced so far are:</p>
 <section id="complement-rule" class="level3" data-number="12.4.1">
 <h3 data-number="12.4.1" class="anchored" data-anchor-id="complement-rule"><span class="header-section-number">12.4.1</span> Complement Rule</h3>
-<p>[ P() = 1 - P(A) ]</p>
+<p><span class="math display">\[
+P(\tilde{A}) = 1 - P(A)
+\]</span></p>
 </section>
 <section id="general-addition-rule-1" class="level3" data-number="12.4.2">
 <h3 data-number="12.4.2" class="anchored" data-anchor-id="general-addition-rule-1"><span class="header-section-number">12.4.2</span> General Addition Rule</h3>
-<p>[ P(A B) = P(A) + P(B) - P(A B) ]</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]</span></p>
 </section>
 <section id="multiplication-rule-for-dependent-events" class="level3" data-number="12.4.3">
 <h3 data-number="12.4.3" class="anchored" data-anchor-id="multiplication-rule-for-dependent-events"><span class="header-section-number">12.4.3</span> Multiplication Rule for Dependent Events</h3>
-<p>[ P(A B) = P(A)P(B A) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A)P(B \mid A)
+\]</span></p>
 <p>or:</p>
-<p>[ P(A B) = P(B)P(A B) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(B)P(A \mid B)
+\]</span></p>
 </section>
 <section id="multiplication-rule-for-independent-events-1" class="level3" data-number="12.4.4">
 <h3 data-number="12.4.4" class="anchored" data-anchor-id="multiplication-rule-for-independent-events-1"><span class="header-section-number">12.4.4</span> Multiplication Rule for Independent Events</h3>
-<p>[ P(A B) = P(A)P(B) ]</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A)P(B)
+\]</span></p>
 <p>Use the independent-events version only when you know the events are independent.</p>
 <p>When in doubt, use the general multiplication rule.</p>
 <hr>
@@ -1150,7 +1451,9 @@ ul.task-list li input[type="checkbox"] {
 <li>TT</li>
 </ul>
 <p>Each sequence has probability:</p>
-<p>[ 0.5 = 0.25 ]</p>
+<p><span class="math display">\[
+0.5 \times 0.5 = 0.25
+\]</span></p>
 <p>To find the probability of a path, multiply along the branches.</p>
 <p>To find the probability of an event that includes multiple paths, add the probabilities of those paths.</p>
 <hr>
@@ -1168,7 +1471,9 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Each has probability 0.25.</p>
 <p>So:</p>
-<p>[ P() = 0.25 + 0.25 = 0.50 ]</p>
+<p><span class="math display">\[
+P(\text{heads exactly once}) = 0.25 + 0.25 = 0.50
+\]</span></p>
 <hr>
 </section>
 <section id="example-heads-at-least-once" class="level2" data-number="13.3">
@@ -1184,7 +1489,9 @@ ul.task-list li input[type="checkbox"] {
 <li>TH</li>
 </ul>
 <p>So:</p>
-<p>[ P() = 0.25 + 0.25 + 0.25 = 0.75 ]</p>
+<p><span class="math display">\[
+P(\text{heads at least once}) = 0.25 + 0.25 + 0.25 = 0.75
+\]</span></p>
 <p>We can also use the complement rule.</p>
 <p>The only way not to get heads at least once is to get no heads:</p>
 <ul>
@@ -1192,8 +1499,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>That has probability 0.25.</p>
 <p>So:</p>
-<p>[ P() = 1 - P() ]</p>
-<p>[ P() = 1 - 0.25 = 0.75 ]</p>
+<p><span class="math display">\[
+P(\text{heads at least once}) = 1 - P(\text{no heads})
+\]</span></p>
+<p><span class="math display">\[
+P(\text{heads at least once}) = 1 - 0.25 = 0.75
+\]</span></p>
 <p>The complement rule is often faster when an event has many possible paths.</p>
 <hr>
 </section>
@@ -1201,8 +1512,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="13.4" class="anchored" data-anchor-id="probability-trees-with-unequal-probabilities"><span class="header-section-number">13.4</span> Probability Trees with Unequal Probabilities</h2>
 <p>Suppose airport security randomly sends travelers to either a short screening line or a long screening line.</p>
 <p>Assume:</p>
-<p>[ P(Short) = 0.25 ]</p>
-<p>[ P(Long) = 0.75 ]</p>
+<p><span class="math display">\[
+P(Short) = 0.25
+\]</span></p>
+<p><span class="math display">\[
+P(Long) = 0.75
+\]</span></p>
 <p>Now consider two travelers, one after the other, and assume their assignments are independent.</p>
 <p>For the first traveler:</p>
 <ul>
@@ -1227,33 +1542,41 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>Short</td>
 <td>Short</td>
-<td style="text-align: right;">(0.25 = 0.0625)</td>
+<td style="text-align: right;"><span class="math inline">\(0.25 \times 0.25 = 0.0625\)</span></td>
 </tr>
 <tr class="even">
 <td>Short</td>
 <td>Long</td>
-<td style="text-align: right;">(0.25 = 0.1875)</td>
+<td style="text-align: right;"><span class="math inline">\(0.25 \times 0.75 = 0.1875\)</span></td>
 </tr>
 <tr class="odd">
 <td>Long</td>
 <td>Short</td>
-<td style="text-align: right;">(0.75 = 0.1875)</td>
+<td style="text-align: right;"><span class="math inline">\(0.75 \times 0.25 = 0.1875\)</span></td>
 </tr>
 <tr class="even">
 <td>Long</td>
 <td>Long</td>
-<td style="text-align: right;">(0.75 = 0.5625)</td>
+<td style="text-align: right;"><span class="math inline">\(0.75 \times 0.75 = 0.5625\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>The probabilities sum to 1.</p>
 <p>The probability that both get the short line is:</p>
-<p>[ 0.0625 ]</p>
+<p><span class="math display">\[
+0.0625
+\]</span></p>
 <p>The probability that exactly one gets the short line is:</p>
-<p>[ 0.1875 + 0.1875 = 0.375 ]</p>
+<p><span class="math display">\[
+0.1875 + 0.1875 = 0.375
+\]</span></p>
 <p>The probability that at least one gets the short line is:</p>
-<p>[ 1 - P(Long, Long) ]</p>
-<p>[ 1 - 0.5625 = 0.4375 ]</p>
+<p><span class="math display">\[
+1 - P(Long, Long)
+\]</span></p>
+<p><span class="math display">\[
+1 - 0.5625 = 0.4375
+\]</span></p>
 <hr>
 </section>
 <section id="probability-trees-with-conditional-probabilities" class="level2" data-number="13.5">
@@ -1261,14 +1584,26 @@ ul.task-list li input[type="checkbox"] {
 <p>Now suppose the process is not independent.</p>
 <p>Imagine that if the first traveler gets the short line, the system becomes less likely to send the next traveler to the short line.</p>
 <p>For the first traveler:</p>
-<p>[ P(Short) = 0.25 ]</p>
-<p>[ P(Long) = 0.75 ]</p>
+<p><span class="math display">\[
+P(Short) = 0.25
+\]</span></p>
+<p><span class="math display">\[
+P(Long) = 0.75
+\]</span></p>
 <p>If the first traveler gets the short line:</p>
-<p>[ P(Short First Short) = 0.10 ]</p>
-<p>[ P(Long First Short) = 0.90 ]</p>
+<p><span class="math display">\[
+P(Short \mid First Short) = 0.10
+\]</span></p>
+<p><span class="math display">\[
+P(Long \mid First Short) = 0.90
+\]</span></p>
 <p>If the first traveler gets the long line:</p>
-<p>[ P(Short First Long) = 0.25 ]</p>
-<p>[ P(Long First Long) = 0.75 ]</p>
+<p><span class="math display">\[
+P(Short \mid First Long) = 0.25
+\]</span></p>
+<p><span class="math display">\[
+P(Long \mid First Long) = 0.75
+\]</span></p>
 <p>Now the second-stage probabilities depend on what happened in the first stage.</p>
 <p>The joint probabilities are:</p>
 <table class="caption-top table">
@@ -1283,22 +1618,22 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>Short</td>
 <td>Short</td>
-<td style="text-align: right;">(0.25 = 0.025)</td>
+<td style="text-align: right;"><span class="math inline">\(0.25 \times 0.10 = 0.025\)</span></td>
 </tr>
 <tr class="even">
 <td>Short</td>
 <td>Long</td>
-<td style="text-align: right;">(0.25 = 0.225)</td>
+<td style="text-align: right;"><span class="math inline">\(0.25 \times 0.90 = 0.225\)</span></td>
 </tr>
 <tr class="odd">
 <td>Long</td>
 <td>Short</td>
-<td style="text-align: right;">(0.75 = 0.1875)</td>
+<td style="text-align: right;"><span class="math inline">\(0.75 \times 0.25 = 0.1875\)</span></td>
 </tr>
 <tr class="even">
 <td>Long</td>
 <td>Long</td>
-<td style="text-align: right;">(0.75 = 0.5625)</td>
+<td style="text-align: right;"><span class="math inline">\(0.75 \times 0.75 = 0.5625\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -1320,23 +1655,35 @@ ul.task-list li input[type="checkbox"] {
 <li>If the coin lands heads, roll a fair die and report the die result.</li>
 </ul>
 <p>What is the probability of hearing each number?</p>
-<p>If the coin lands tails, which happens with probability (1/2), you hear 3.</p>
-<p>If the coin lands heads, which happens with probability (1/2), then each die result occurs with probability (1/6).</p>
+<p>If the coin lands tails, which happens with probability <span class="math inline">\(1/2\)</span>, you hear 3.</p>
+<p>If the coin lands heads, which happens with probability <span class="math inline">\(1/2\)</span>, then each die result occurs with probability <span class="math inline">\(1/6\)</span>.</p>
 <p>So for numbers 1, 2, 4, 5, and 6:</p>
-<p>[ P() = = ]</p>
+<p><span class="math display">\[
+P(\text{hear number}) = \frac{1}{2} \times \frac{1}{6} = \frac{1}{12}
+\]</span></p>
 <p>For 3, there are two paths:</p>
 <ol type="1">
 <li>Tails, then report 3:</li>
 </ol>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{1}{2}
+\]</span></p>
 <ol start="2" type="1">
 <li>Heads, then roll 3:</li>
 </ol>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\frac{1}{2} \times \frac{1}{6} = \frac{1}{12}
+\]</span></p>
 <p>So:</p>
-<p>[ P() = + ]</p>
-<p>[ P() = + ]</p>
-<p>[ P() = ]</p>
+<p><span class="math display">\[
+P(\text{hear 3}) = \frac{1}{2} + \frac{1}{12}
+\]</span></p>
+<p><span class="math display">\[
+P(\text{hear 3}) = \frac{6}{12} + \frac{1}{12}
+\]</span></p>
+<p><span class="math display">\[
+P(\text{hear 3}) = \frac{7}{12}
+\]</span></p>
 <p>If you hear the number 2, you know the coin must have landed heads. It is impossible to hear 2 after tails.</p>
 <p>If you hear 3, the coin could have landed tails or heads. Probability trees help us keep track of these possibilities.</p>
 <hr>
@@ -1398,9 +1745,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="14.3.4" class="anchored" data-anchor-id="cell-percentages"><span class="header-section-number">14.3.4</span> Cell Percentages</h3>
 <p>Cell percentages show the percentage of all cases that fall into each cell. These are similar to joint probabilities.</p>
 <p>For example, if 99 out of 4,230 respondents both say religion is not important and support decreasing school spending, then the cell percentage is:</p>
-<p>[ % ]</p>
+<p><span class="math display">\[
+\frac{99}{4230} \times 100 \approx 2.34\%
+\]</span></p>
 <p>The corresponding joint probability is:</p>
-<p>[ 0.0234 ]</p>
+<p><span class="math display">\[
+0.0234
+\]</span></p>
 <hr>
 </section>
 </section>
@@ -1454,8 +1805,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="14.5" class="anchored" data-anchor-id="contingency-tables-and-conditional-probabilities"><span class="header-section-number">14.5</span> Contingency Tables and Conditional Probabilities</h2>
 <p>Column percentages are conditional probabilities.</p>
 <p>For example:</p>
-<p>[ P(Increase Religion&nbsp;Not&nbsp;Important) = 0.723 ]</p>
-<p>[ P(Increase Religion&nbsp;Important) = 0.670 ]</p>
+<p><span class="math display">\[
+P(Increase \mid Religion\ Not\ Important) = 0.723
+\]</span></p>
+<p><span class="math display">\[
+P(Increase \mid Religion\ Important) = 0.670
+\]</span></p>
 <p>If the variables were perfectly independent, these conditional probabilities would be the same across columns.</p>
 <p>If they differ, the variables may be dependent.</p>
 <p>A contingency table is therefore a practical tool for studying whether two categorical variables are related.</p>
@@ -1481,9 +1836,9 @@ An event consisting of one outcome.</p>
 <p><strong>Compound event</strong><br>
 An event consisting of multiple outcomes.</p>
 <p><strong>Union</strong><br>
-The event that A or B occurs, written (A B).</p>
+The event that A or B occurs, written <span class="math inline">\(A \cup B\)</span>.</p>
 <p><strong>Intersection</strong><br>
-The event that A and B both occur, written (A B).</p>
+The event that A and B both occur, written <span class="math inline">\(A \cap B\)</span>.</p>
 <p><strong>Disjoint events</strong><br>
 Events that cannot occur at the same time.</p>
 <p><strong>Complement</strong><br>

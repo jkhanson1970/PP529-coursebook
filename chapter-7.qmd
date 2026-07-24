@@ -30,9 +30,9 @@ We usually cannot observe the full population. Instead, we collect a sample and 
 
 For example:
 
-- We use a sample mean \(\bar{Y}\) to estimate a population mean \(\mu\).
-- We use a sample proportion \(\hat{\pi}\) to estimate a population proportion \(\pi\).
-- We use a sample standard deviation \(s\) to estimate a population standard deviation \(\sigma\).
+- We use a sample mean $\bar{Y}$ to estimate a population mean $\mu$.
+- We use a sample proportion $\hat{\pi}$ to estimate a population proportion $\pi$.
+- We use a sample standard deviation $s$ to estimate a population standard deviation $\sigma$.
 
 These sample statistics are **point estimates**.
 
@@ -54,15 +54,15 @@ That is what confidence intervals help us communicate.
 
 The Central Limit Theorem tells us that, under appropriate conditions, the sampling distribution of a sample mean is approximately normal.
 
-For a random sample of size \(n\), drawn from a population with mean \(\mu\) and standard deviation \(\sigma\), the sample mean \(\bar{Y}\) has a sampling distribution that is:
+For a random sample of size $n$, drawn from a population with mean $\mu$ and standard deviation $\sigma$, the sample mean $\bar{Y}$ has a sampling distribution that is:
 
 1. Approximately normal under the right conditions.
-2. Centered at the true population mean \(\mu\).
+2. Centered at the true population mean $\mu$.
 3. Has standard deviation:
 
-\[
+$$
 \sigma_{\bar{Y}} = \frac{\sigma}{\sqrt{n}}
-\]
+$$
 
 This standard deviation of the sampling distribution is called the **standard error**.
 
@@ -70,17 +70,17 @@ The standard error tells us how much sample means typically vary from the true p
 
 So, for a sample mean:
 
-\[
+$$
 SE_{\bar{Y}} = \frac{\sigma}{\sqrt{n}}
-\]
+$$
 
-if \(\sigma\) is known.
+if $\sigma$ is known.
 
-Usually, \(\sigma\) is not known, so we estimate it using the sample standard deviation \(s\):
+Usually, $\sigma$ is not known, so we estimate it using the sample standard deviation $s$:
 
-\[
+$$
 \widehat{SE}_{\bar{Y}} = \frac{s}{\sqrt{n}}
-\]
+$$
 
 This is the estimated standard error.
 
@@ -96,17 +96,17 @@ The difference is called **sampling error**.
 
 For a sample mean, sampling error is:
 
-\[
+$$
 \bar{Y} - \mu
-\]
+$$
 
 For a sample proportion, sampling error is:
 
-\[
+$$
 \hat{\pi} - \pi
-\]
+$$
 
-We usually do not know the actual sampling error because we do not know the population parameter. If we knew \(\mu\) or \(\pi\), we would not need to estimate it.
+We usually do not know the actual sampling error because we do not know the population parameter. If we knew $\mu$ or $\pi$, we would not need to estimate it.
 
 But we can estimate the typical size of sampling error using the standard error.
 
@@ -124,27 +124,27 @@ A **point estimate** is a single value calculated from sample data and used to e
 
 Examples include:
 
-\[
+$$
 \bar{Y}
-\]
+$$
 
 as an estimate of:
 
-\[
+$$
 \mu
-\]
+$$
 
 and:
 
-\[
+$$
 \hat{\pi}
-\]
+$$
 
 as an estimate of:
 
-\[
+$$
 \pi
-\]
+$$
 
 For example:
 
@@ -177,15 +177,15 @@ That means the point estimate is 47 percent, and the interval estimate extends 2
 
 So the interval runs from:
 
-\[
+$$
 47 - 2 = 45
-\]
+$$
 
 to:
 
-\[
+$$
 47 + 2 = 49
-\]
+$$
 
 The margin of error communicates the precision of the estimate.
 
@@ -204,15 +204,15 @@ Suppose the technical documentation reports that the margin of error for a 90 pe
 
 Then the interval is:
 
-\[
+$$
 4.3 \pm 0.2
-\]
+$$
 
 or:
 
-\[
+$$
 4.1 \text{ to } 4.5
-\]
+$$
 
 This interval communicates uncertainty around the point estimate.
 
@@ -246,21 +246,21 @@ The confidence level describes the long-run success rate of the procedure.
 
 All confidence intervals have the same basic structure:
 
-\[
+$$
 \text{Point Estimate} \pm \text{Margin of Error}
-\]
+$$
 
 The margin of error has two parts:
 
-\[
+$$
 \text{Margin of Error} = \text{Critical Value} \times \text{Standard Error}
-\]
+$$
 
 So:
 
-\[
+$$
 \text{Confidence Interval} = \text{Point Estimate} \pm (\text{Critical Value})(\text{Standard Error})
-\]
+$$
 
 The **standard error** tells us how much random sampling error we expect.
 
@@ -268,21 +268,21 @@ The **critical value** tells us how far out we need to go in the sampling distri
 
 For a 95 percent confidence interval using the standard normal distribution, the critical value is:
 
-\[
+$$
 1.96
-\]
+$$
 
 because 95 percent of the standard normal distribution lies between:
 
-\[
+$$
 -1.96
-\]
+$$
 
 and:
 
-\[
+$$
 1.96
-\]
+$$
 
 ---
 
@@ -292,7 +292,7 @@ The **confidence level** is the long-run percentage of intervals that would cont
 
 Common confidence levels include:
 
-| Confidence Level | Alpha \(\alpha\) | Two-Tailed Critical Value, Normal Approximation |
+| Confidence Level | Alpha $\alpha$ | Two-Tailed Critical Value, Normal Approximation |
 |---:|---:|---:|
 | 90% | 0.10 | 1.64 or 1.645 |
 | 95% | 0.05 | 1.96 |
@@ -319,53 +319,53 @@ There is a tradeoff:
 
 ## Alpha
 
-The symbol \(\alpha\), called **alpha**, represents the probability that the confidence interval procedure fails to capture the true parameter.
+The symbol $\alpha$, called **alpha**, represents the probability that the confidence interval procedure fails to capture the true parameter.
 
 It is the complement of the confidence level.
 
 For a 95 percent confidence interval:
 
-\[
+$$
 \alpha = 1 - 0.95 = 0.05
-\]
+$$
 
 For a 90 percent confidence interval:
 
-\[
+$$
 \alpha = 1 - 0.90 = 0.10
-\]
+$$
 
 For a 99 percent confidence interval:
 
-\[
+$$
 \alpha = 1 - 0.99 = 0.01
-\]
+$$
 
-In a two-sided confidence interval, \(\alpha\) is split between the two tails of the sampling distribution.
+In a two-sided confidence interval, $\alpha$ is split between the two tails of the sampling distribution.
 
 For a 95 percent confidence interval:
 
-\[
+$$
 \alpha = 0.05
-\]
+$$
 
 so each tail contains:
 
-\[
+$$
 \frac{\alpha}{2} = 0.025
-\]
+$$
 
 That is why the critical values are:
 
-\[
+$$
 -1.96
-\]
+$$
 
 and:
 
-\[
+$$
 1.96
-\]
+$$
 
 Those values leave 2.5 percent in the lower tail and 2.5 percent in the upper tail.
 
@@ -377,35 +377,35 @@ A **critical value** is the value from a probability distribution that correspon
 
 For a 95 percent confidence interval using the standard normal distribution, the critical value is:
 
-\[
+$$
 z^* = 1.96
-\]
+$$
 
 For a 90 percent confidence interval:
 
-\[
+$$
 z^* \approx 1.64
-\]
+$$
 
 For a 99 percent confidence interval:
 
-\[
+$$
 z^* \approx 2.58
-\]
+$$
 
 The critical value tells us how many standard errors to move away from the point estimate.
 
 For a 95 percent confidence interval:
 
-\[
+$$
 \text{Point Estimate} \pm 1.96(SE)
-\]
+$$
 
 For a 99 percent confidence interval:
 
-\[
+$$
 \text{Point Estimate} \pm 2.58(SE)
-\]
+$$
 
 A larger critical value produces a wider interval.
 
@@ -419,9 +419,9 @@ A confidence interval is often misinterpreted.
 
 Suppose we calculate a 95 percent confidence interval for a mean and get:
 
-\[
+$$
 9.752 \text{ to } 10.248
-\]
+$$
 
 It is tempting to say:
 
@@ -491,63 +491,63 @@ Those statements incorrectly treat the population parameter as random after the 
 
 ## Confidence Interval for a Mean: Ideal Case
 
-Suppose we want to estimate a population mean \(\mu\).
+Suppose we want to estimate a population mean $\mu$.
 
-If we knew the population standard deviation \(\sigma\), then the standard error of the sample mean would be:
+If we knew the population standard deviation $\sigma$, then the standard error of the sample mean would be:
 
-\[
+$$
 SE_{\bar{Y}} = \frac{\sigma}{\sqrt{n}}
-\]
+$$
 
 A confidence interval for the mean would be:
 
-\[
+$$
 \bar{Y} \pm z^*\left(\frac{\sigma}{\sqrt{n}}\right)
-\]
+$$
 
 where:
 
-- \(\bar{Y}\) is the sample mean
-- \(z^*\) is the critical value from the standard normal distribution
-- \(\sigma\) is the population standard deviation
-- \(n\) is the sample size
+- $\bar{Y}$ is the sample mean
+- $z^*$ is the critical value from the standard normal distribution
+- $\sigma$ is the population standard deviation
+- $n$ is the sample size
 
-This ideal case is useful theoretically, but it is uncommon in practice because we usually do not know \(\sigma\).
+This ideal case is useful theoretically, but it is uncommon in practice because we usually do not know $\sigma$.
 
 ---
 
 ## Confidence Interval for a Mean: Practical Case
 
-Usually, we do not know the population standard deviation \(\sigma\).
+Usually, we do not know the population standard deviation $\sigma$.
 
-Instead, we estimate it using the sample standard deviation \(s\).
+Instead, we estimate it using the sample standard deviation $s$.
 
 The estimated standard error is:
 
-\[
+$$
 \widehat{SE}_{\bar{Y}} = \frac{s}{\sqrt{n}}
-\]
+$$
 
-Because we estimate \(\sigma\), we introduce additional uncertainty. To account for this, we use the **t-distribution** rather than the standard normal distribution.
+Because we estimate $\sigma$, we introduce additional uncertainty. To account for this, we use the **t-distribution** rather than the standard normal distribution.
 
 The confidence interval for a mean is:
 
-\[
+$$
 \bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
-\]
+$$
 
 where:
 
-- \(\bar{Y}\) is the sample mean
-- \(t^*\) is the critical value from the t-distribution
-- \(s\) is the sample standard deviation
-- \(n\) is the sample size
+- $\bar{Y}$ is the sample mean
+- $t^*$ is the critical value from the t-distribution
+- $s$ is the sample standard deviation
+- $n$ is the sample size
 
 The quantity:
 
-\[
+$$
 t^*\left(\frac{s}{\sqrt{n}}\right)
-\]
+$$
 
 is the margin of error.
 
@@ -557,15 +557,15 @@ is the margin of error.
 
 The t-distribution looks similar to the normal distribution, but it has more area in the tails.
 
-That extra tail area reflects additional uncertainty from estimating \(\sigma\) with \(s\).
+That extra tail area reflects additional uncertainty from estimating $\sigma$ with $s$.
 
-When sample size is small, \(s\) may be a noisy estimate of \(\sigma\). The t-distribution accounts for that by producing wider intervals.
+When sample size is small, $s$ may be a noisy estimate of $\sigma$. The t-distribution accounts for that by producing wider intervals.
 
 As sample size increases, the t-distribution becomes nearly identical to the standard normal distribution.
 
-For large samples, using \(t\) or \(z\) makes almost no difference.
+For large samples, using $t$ or $z$ makes almost no difference.
 
-For small samples, using \(t\) matters.
+For small samples, using $t$ matters.
 
 ---
 
@@ -575,9 +575,9 @@ The t-distribution depends on **degrees of freedom**.
 
 For a one-sample confidence interval for a mean, the degrees of freedom are:
 
-\[
+$$
 df = n - 1
-\]
+$$
 
 The smaller the degrees of freedom, the heavier the tails of the t-distribution.
 
@@ -604,11 +604,11 @@ The sampling distribution of the mean should be approximately normal.
 That last condition is satisfied if either:
 
 1. The population distribution is approximately normal, or
-2. The sample size is large enough, usually \(n \geq 30\).
+2. The sample size is large enough, usually $n \geq 30$.
 
 If the sample size is less than 30 and the population distribution is strongly skewed or otherwise non-normal, the usual t procedure may not be appropriate.
 
-The t-distribution adjusts for estimating \(\sigma\). It does not fix a non-normal sampling distribution caused by a small sample from a non-normal population.
+The t-distribution adjusts for estimating $\sigma$. It does not fix a non-normal sampling distribution caused by a small sample from a non-normal population.
 
 That distinction is important.
 
@@ -618,81 +618,81 @@ That distinction is important.
 
 Suppose we survey:
 
-\[
+$$
 n = 1000
-\]
+$$
 
 people and measure years of education.
 
 The sample mean is:
 
-\[
+$$
 \bar{Y} = 10
-\]
+$$
 
 The sample standard deviation is:
 
-\[
+$$
 s = 4
-\]
+$$
 
 We want a 95 percent confidence interval for the population mean years of education.
 
 The formula is:
 
-\[
+$$
 \bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
-\]
+$$
 
-Because \(n = 1000\), the t critical value for a 95 percent confidence interval is essentially the same as the z critical value:
+Because $n = 1000$, the t critical value for a 95 percent confidence interval is essentially the same as the z critical value:
 
-\[
+$$
 t^* \approx 1.96
-\]
+$$
 
 Now calculate the estimated standard error:
 
-\[
+$$
 \frac{s}{\sqrt{n}} = \frac{4}{\sqrt{1000}}
-\]
+$$
 
-\[
+$$
 \sqrt{1000} \approx 31.62
-\]
+$$
 
-\[
+$$
 \frac{4}{31.62} \approx 0.1265
-\]
+$$
 
 Now calculate the margin of error:
 
-\[
+$$
 1.96(0.1265) \approx 0.248
-\]
+$$
 
 So the confidence interval is:
 
-\[
+$$
 10 \pm 0.248
-\]
+$$
 
 Lower bound:
 
-\[
+$$
 10 - 0.248 = 9.752
-\]
+$$
 
 Upper bound:
 
-\[
+$$
 10 + 0.248 = 10.248
-\]
+$$
 
 The 95 percent confidence interval is:
 
-\[
+$$
 9.752 \text{ to } 10.248
-\]
+$$
 
 A correct interpretation is:
 
@@ -708,9 +708,9 @@ A **population proportion** is the proportion of cases in the population that fa
 
 We represent the population proportion as:
 
-\[
+$$
 \pi
-\]
+$$
 
 Examples include:
 
@@ -721,17 +721,17 @@ Examples include:
 
 The sample proportion is written:
 
-\[
+$$
 \hat{\pi}
-\]
+$$
 
-The hat indicates that \(\hat{\pi}\) estimates \(\pi\).
+The hat indicates that $\hat{\pi}$ estimates $\pi$.
 
 If 44 percent of survey respondents own a dog, then:
 
-\[
+$$
 \hat{\pi} = 0.44
-\]
+$$
 
 ---
 
@@ -741,19 +741,19 @@ A sample proportion can be understood as the mean of a binary variable.
 
 Suppose we code dog ownership as:
 
-\[
+$$
 1 = \text{owns a dog}
-\]
+$$
 
-\[
+$$
 0 = \text{does not own a dog}
-\]
+$$
 
 If 44 percent of people in the sample own a dog, then the mean of this 0/1 variable is:
 
-\[
+$$
 0.44
-\]
+$$
 
 That is the sample proportion.
 
@@ -765,22 +765,22 @@ Because proportions are means of binary variables, the Central Limit Theorem app
 
 The true standard error of a sample proportion is:
 
-\[
+$$
 SE_{\hat{\pi}} = \sqrt{\frac{\pi(1-\pi)}{n}}
-\]
+$$
 
 where:
 
-- \(\pi\) is the population proportion
-- \(n\) is the sample size
+- $\pi$ is the population proportion
+- $n$ is the sample size
 
-But we usually do not know \(\pi\), so we estimate it with \(\hat{\pi}\).
+But we usually do not know $\pi$, so we estimate it with $\hat{\pi}$.
 
 The estimated standard error is:
 
-\[
+$$
 \widehat{SE}_{\hat{\pi}} = \sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
 This tells us how much sample proportions typically vary from the true population proportion.
 
@@ -792,7 +792,7 @@ For proportions, we do not use the t-distribution.
 
 This is important.
 
-For means, we use the t-distribution because we estimate the population standard deviation \(\sigma\) with the sample standard deviation \(s\).
+For means, we use the t-distribution because we estimate the population standard deviation $\sigma$ with the sample standard deviation $s$.
 
 For proportions, the relevant distribution is fundamentally connected to the binomial distribution. The binomial distribution gives the exact probabilities of different numbers of successes in a fixed number of trials.
 
@@ -814,15 +814,15 @@ A useful rule of thumb is that each category should have at least about 15 cases
 
 That is:
 
-\[
+$$
 n\hat{\pi} \geq 15
-\]
+$$
 
 and:
 
-\[
+$$
 n(1-\hat{\pi}) \geq 15
-\]
+$$
 
 In words:
 
@@ -839,33 +839,33 @@ If the sample size is too small, or if the proportion is too close to 0 or 1, th
 
 The confidence interval for a proportion is:
 
-\[
+$$
 \hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
 where:
 
-- \(\hat{\pi}\) is the sample proportion
-- \(z^*\) is the critical value from the standard normal distribution
-- \(n\) is the sample size
+- $\hat{\pi}$ is the sample proportion
+- $z^*$ is the critical value from the standard normal distribution
+- $n$ is the sample size
 
 The margin of error is:
 
-\[
+$$
 z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
 For a 95 percent confidence interval:
 
-\[
+$$
 z^* = 1.96
-\]
+$$
 
 For a 99 percent confidence interval:
 
-\[
+$$
 z^* \approx 2.58
-\]
+$$
 
 ---
 
@@ -875,87 +875,87 @@ Suppose a survey asks Americans whether they own a dog.
 
 The sample size is:
 
-\[
+$$
 n = 2053
-\]
+$$
 
 The sample proportion who say they own a dog is:
 
-\[
+$$
 \hat{\pi} = 0.44
-\]
+$$
 
 We want a 99 percent confidence interval for the population proportion.
 
 For a 99 percent confidence interval:
 
-\[
+$$
 z^* = 2.58
-\]
+$$
 
 The formula is:
 
-\[
+$$
 \hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
 Substitute values:
 
-\[
+$$
 0.44 \pm 2.58\sqrt{\frac{0.44(1-0.44)}{2053}}
-\]
+$$
 
 Calculate inside the square root:
 
-\[
+$$
 0.44(0.56) = 0.2464
-\]
+$$
 
-\[
+$$
 \frac{0.2464}{2053} \approx 0.000120
-\]
+$$
 
 Take the square root:
 
-\[
+$$
 \sqrt{0.000120} \approx 0.01095
-\]
+$$
 
 Now multiply by the critical value:
 
-\[
+$$
 2.58(0.01095) \approx 0.028
-\]
+$$
 
 The margin of error is approximately:
 
-\[
+$$
 0.03
-\]
+$$
 
 So the confidence interval is approximately:
 
-\[
+$$
 0.44 \pm 0.03
-\]
+$$
 
 Lower bound:
 
-\[
+$$
 0.44 - 0.03 = 0.41
-\]
+$$
 
 Upper bound:
 
-\[
+$$
 0.44 + 0.03 = 0.47
-\]
+$$
 
 The 99 percent confidence interval is approximately:
 
-\[
+$$
 0.41 \text{ to } 0.47
-\]
+$$
 
 A correct interpretation is:
 
@@ -973,11 +973,11 @@ That wording is acceptable as long as we do not say there is a 99 percent probab
 
 The textbook confidence interval for a proportion uses the normal approximation:
 
-\[
+$$
 \hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
-This produces a symmetric interval around \(\hat{\pi}\).
+This produces a symmetric interval around $\hat{\pi}$.
 
 That is usually fine when:
 
@@ -986,13 +986,13 @@ That is usually fine when:
 
 But proportions are bounded:
 
-\[
+$$
 0 \leq \pi \leq 1
-\]
+$$
 
-If \(\hat{\pi}\) is close to 0 or 1, a symmetric normal interval can behave poorly. It may extend below 0 or above 1, which is impossible for a proportion.
+If $\hat{\pi}$ is close to 0 or 1, a symmetric normal interval can behave poorly. It may extend below 0 or above 1, which is impossible for a proportion.
 
-For example, if \(\hat{\pi} = 0.96\), a symmetric confidence interval might try to extend above 1. That does not make sense.
+For example, if $\hat{\pi} = 0.96$, a symmetric confidence interval might try to extend above 1. That does not make sense.
 
 Software often uses better methods in these cases, such as:
 
@@ -1012,27 +1012,27 @@ For hand calculations in this course, the normal approximation is useful and imp
 
 Confidence intervals for means and proportions follow the same general logic:
 
-\[
+$$
 \text{Point Estimate} \pm \text{Margin of Error}
-\]
+$$
 
 But the details differ.
 
 For a mean:
 
-\[
+$$
 \bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
-\]
+$$
 
 For a proportion:
 
-\[
+$$
 \hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
 The differences are important.
 
-For means, we usually use the t-distribution because we estimate the population standard deviation with \(s\).
+For means, we usually use the t-distribution because we estimate the population standard deviation with $s$.
 
 For proportions, we use the z-distribution when the sample size is large enough, or exact binomial methods when it is not.
 
@@ -1042,12 +1042,12 @@ For proportions, we use the z-distribution when the sample size is large enough,
 
 | Quantity | Mean | Proportion |
 |---|---:|---:|
-| Population parameter | \(\mu\) | \(\pi\) |
-| Sample estimate | \(\bar{Y}\) | \(\hat{\pi}\) |
-| Standard error estimate | \(\frac{s}{\sqrt{n}}\) | \(\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}\) |
-| Usual critical value | \(t^*\) | \(z^*\) |
-| Small-sample issue | Need population normality or large \(n\) | Use binomial if normal approximation fails |
-| Common confidence interval | \(\bar{Y} \pm t^*\frac{s}{\sqrt{n}}\) | \(\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}\) |
+| Population parameter | $\mu$ | $\pi$ |
+| Sample estimate | $\bar{Y}$ | $\hat{\pi}$ |
+| Standard error estimate | $\frac{s}{\sqrt{n}}$ | $\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}$ |
+| Usual critical value | $t^*$ | $z^*$ |
+| Small-sample issue | Need population normality or large $n$ | Use binomial if normal approximation fails |
+| Common confidence interval | $\bar{Y} \pm t^*\frac{s}{\sqrt{n}}$ | $\hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}$ |
 
 ---
 
@@ -1064,21 +1064,21 @@ A confidence interval becomes wider when:
 
 For means, the standard error is:
 
-\[
+$$
 \frac{s}{\sqrt{n}}
-\]
+$$
 
-So a larger \(s\) means a wider interval.
+So a larger $s$ means a wider interval.
 
-A larger \(n\) means a narrower interval.
+A larger $n$ means a narrower interval.
 
 For proportions, the standard error is:
 
-\[
+$$
 \sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
-Again, a larger \(n\) produces a narrower interval.
+Again, a larger $n$ produces a narrower interval.
 
 The confidence level also matters. A 99 percent confidence interval is wider than a 95 percent confidence interval because it uses a larger critical value.
 
@@ -1097,7 +1097,7 @@ Larger samples give more precise estimates because they reduce standard error.
 
 This is one of the most important practical lessons in statistics:
 
-> Precision improves with sample size, but at a diminishing rate because standard error decreases with \(\sqrt{n}\), not \(n\).
+> Precision improves with sample size, but at a diminishing rate because standard error decreases with $\sqrt{n}$, not $n$.
 
 For example, quadrupling the sample size cuts the standard error in half.
 
@@ -1134,8 +1134,8 @@ The standard deviation of a sampling distribution; the typical amount of random 
 **Critical value**  
 A value from a probability distribution used to determine the width of a confidence interval.
 
-**Alpha \(\alpha\)**  
-The probability that a confidence interval procedure fails to capture the true population parameter; equal to \(1 -\) confidence level.
+**Alpha $\alpha$**  
+The probability that a confidence interval procedure fails to capture the true population parameter; equal to $1 -$ confidence level.
 
 **t-distribution**  
 A probability distribution similar to the normal distribution but with heavier tails, used for means when the population standard deviation is estimated.
@@ -1143,11 +1143,11 @@ A probability distribution similar to the normal distribution but with heavier t
 **z-distribution**  
 The standard normal distribution, with mean 0 and standard deviation 1.
 
-**Population proportion \(\pi\)**  
+**Population proportion $\pi$**  
 The true proportion of the population in a category.
 
-**Sample proportion \(\hat{\pi}\)**  
-The proportion of the sample in a category, used to estimate \(\pi\).
+**Sample proportion $\hat{\pi}$**  
+The proportion of the sample in a category, used to estimate $\pi$.
 
 **Normal approximation**  
 Using the normal distribution to approximate another distribution, such as the binomial, when sample size is large enough.
@@ -1165,15 +1165,15 @@ A point estimate gives a single best estimate of a population parameter, such as
 
 A confidence interval communicates the precision of a point estimate. It has the general form:
 
-\[
+$$
 \text{Point Estimate} \pm \text{Margin of Error}
-\]
+$$
 
 The margin of error is:
 
-\[
+$$
 \text{Critical Value} \times \text{Standard Error}
-\]
+$$
 
 The confidence level describes the long-run success rate of the procedure. A 95 percent confidence interval procedure produces intervals that contain the true population parameter 95 percent of the time across repeated random samples.
 
@@ -1181,15 +1181,15 @@ It is important not to say that there is a 95 percent chance that the true param
 
 For means, we usually construct confidence intervals using the t-distribution:
 
-\[
+$$
 \bar{Y} \pm t^*\left(\frac{s}{\sqrt{n}}\right)
-\]
+$$
 
 For proportions, we usually use the z-distribution when the sample size is large enough:
 
-\[
+$$
 \hat{\pi} \pm z^*\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}
-\]
+$$
 
 For small-sample proportions, the binomial distribution is more appropriate.
 

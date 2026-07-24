@@ -543,9 +543,9 @@ If we calculate the mean of this variable, the result is the proportion of cases
 
 Suppose we have ten people. Seven are employed and three are not. The variable contains seven 1s and three 0s. The mean is:
 
-\[
+$$
 \frac{1+1+1+1+1+1+1+0+0+0}{10} = 0.7
-\]
+$$
 
 That means 70 percent of the sample is employed.
 

@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -357,16 +386,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="12.2" class="anchored" data-anchor-id="general-structure"><span class="header-section-number">12.2</span> General Structure</h2>
 <p>A simple mean comparison table might look like this:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 26%">
-<col style="width: 26%">
-<col style="width: 26%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Category of (X)</th>
-<th style="text-align: right;">Mean of (Y)</th>
+<th>Category of <span class="math inline">\(X\)</span></th>
+<th style="text-align: right;">Mean of <span class="math inline">\(Y\)</span></th>
 <th style="text-align: right;">Number of Cases</th>
 <th style="text-align: right;">Percent of Sample</th>
 </tr>
@@ -374,31 +397,31 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>Category 1</td>
-<td style="text-align: right;">({Y}_1)</td>
-<td style="text-align: right;">(n_1)</td>
+<td style="text-align: right;"><span class="math inline">\(\bar{Y}_1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(n_1\)</span></td>
 <td style="text-align: right;">%</td>
 </tr>
 <tr class="even">
 <td>Category 2</td>
-<td style="text-align: right;">({Y}_2)</td>
-<td style="text-align: right;">(n_2)</td>
+<td style="text-align: right;"><span class="math inline">\(\bar{Y}_2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(n_2\)</span></td>
 <td style="text-align: right;">%</td>
 </tr>
 <tr class="odd">
 <td>Category 3</td>
-<td style="text-align: right;">({Y}_3)</td>
-<td style="text-align: right;">(n_3)</td>
+<td style="text-align: right;"><span class="math inline">\(\bar{Y}_3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(n_3\)</span></td>
 <td style="text-align: right;">%</td>
 </tr>
 <tr class="even">
 <td><strong>Total</strong></td>
-<td style="text-align: right;">({Y})</td>
-<td style="text-align: right;">(n)</td>
+<td style="text-align: right;"><span class="math inline">\(\bar{Y}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(n\)</span></td>
 <td style="text-align: right;">100%</td>
 </tr>
 </tbody>
 </table>
-<p>The full sample is divided into subsamples based on the categories of (X). Within each subsample, we calculate the mean of (Y).</p>
+<p>The full sample is divided into subsamples based on the categories of <span class="math inline">\(X\)</span>. Within each subsample, we calculate the mean of <span class="math inline">\(Y\)</span>.</p>
 <p>The table provides a descriptive comparison. It tells us whether the sample means differ across groups.</p>
 <p>However, the table alone does not tell us whether those differences are statistically significant.</p>
 <p>For that, we need a significance test.</p>
@@ -422,7 +445,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="12.4" class="anchored" data-anchor-id="measuring-arrest-disparities"><span class="header-section-number">12.4</span> Measuring Arrest Disparities</h2>
 <p>A simple count of arrests would not be sufficient because cities differ in population size.</p>
 <p>Instead, Eckhouse uses an <strong>arrest rate ratio</strong>:</p>
-<p>[ = {} ]</p>
+<p><span class="math display">\[
+\text{Arrest Rate Ratio}
+=
+\frac{\text{Black arrests per Black resident}}
+{\text{White arrests per White resident}}
+\]</span></p>
 <p>This ratio compares the arrest rate for Black residents to the arrest rate for white residents.</p>
 <p>Interpretation:</p>
 <ul>
@@ -466,7 +494,9 @@ ul.task-list li input[type="checkbox"] {
 <p>The mean arrest rate ratio is 2.63 in cities with majority white city councils. That means Black residents are arrested for minor offenses at about 2.6 times the rate of white residents.</p>
 <p>In cities with majority persons of color city councils, the mean arrest rate ratio is 1.88.</p>
 <p>The observed difference is:</p>
-<p>[ 2.63 - 1.88 = 0.75 ]</p>
+<p><span class="math display">\[
+2.63 - 1.88 = 0.75
+\]</span></p>
 <p>This descriptive table suggests that racial disparities in arrests are lower in cities with majority persons of color city councils.</p>
 <p>But is that difference statistically significant?</p>
 <p>And even if it is statistically significant, is it causal?</p>
@@ -479,13 +509,21 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-difference-of-means-as-a-statistic" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="the-difference-of-means-as-a-statistic"><span class="header-section-number">13.1</span> The Difference of Means as a Statistic</h2>
 <p>When we compare two means, we estimate a new statistic:</p>
-<p>[ {Y}_2 - {Y}_1 ]</p>
+<p><span class="math display">\[
+\bar{Y}_2 - \bar{Y}_1
+\]</span></p>
 <p>This statistic estimates the difference between two population means:</p>
-<p>[ _2 - _1 ]</p>
+<p><span class="math display">\[
+\mu_2 - \mu_1
+\]</span></p>
 <p>The null hypothesis is usually that there is no difference:</p>
-<p>[ H_0: _2 - _1 = 0 ]</p>
+<p><span class="math display">\[
+H_0: \mu_2 - \mu_1 = 0
+\]</span></p>
 <p>The alternative hypothesis is:</p>
-<p>[ H_A: _2 - _1 ]</p>
+<p><span class="math display">\[
+H_A: \mu_2 - \mu_1 \neq 0
+\]</span></p>
 <p>If the observed difference is large relative to its standard error, we reject the null hypothesis.</p>
 <hr>
 </section>
@@ -494,9 +532,13 @@ ul.task-list li input[type="checkbox"] {
 <p>When we tested one mean, we compared a sample mean to a fixed null-hypothesized value.</p>
 <p>Now we compare two sample means. Both are estimated with uncertainty.</p>
 <p>Each sample mean has its own standard error:</p>
-<p>[ SE_{{Y}_1} ]</p>
+<p><span class="math display">\[
+SE_{\bar{Y}_1}
+\]</span></p>
 <p>and:</p>
-<p>[ SE_{{Y}_2} ]</p>
+<p><span class="math display">\[
+SE_{\bar{Y}_2}
+\]</span></p>
 <p>Because both means are uncertain, the difference between them is also uncertain.</p>
 <p>The standard error for the difference must incorporate uncertainty from both samples.</p>
 <hr>
@@ -534,17 +576,31 @@ ul.task-list li input[type="checkbox"] {
 <section id="standard-error-for-the-difference-of-means-independent-samples" class="level2" data-number="13.4">
 <h2 data-number="13.4" class="anchored" data-anchor-id="standard-error-for-the-difference-of-means-independent-samples"><span class="header-section-number">13.4</span> Standard Error for the Difference of Means: Independent Samples</h2>
 <p>For independent samples, the standard error of the difference between two means is:</p>
-<p>[ SE_{{Y}_2-{Y}_1} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{Y}_2-\bar{Y}_1}
+=
+\sqrt{SE_{\bar{Y}_1}^2 + SE_{\bar{Y}_2}^2}
+\]</span></p>
 <p>For a single mean:</p>
-<p>[ SE_{{Y}} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{Y}} = \frac{s}{\sqrt{n}}
+\]</span></p>
 <p>So for two independent means:</p>
-<p>[ SE_{{Y}_2-{Y}_1} = ]</p>
+<p><span class="math display">\[
+SE_{\bar{Y}_2-\bar{Y}_1}
+=
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(s_1) is the standard deviation in sample 1</li>
-<li>(s_2) is the standard deviation in sample 2</li>
-<li>(n_1) is the size of sample 1</li>
-<li>(n_2) is the size of sample 2</li>
+<li><span class="math inline">\(s_1\)</span> is the standard deviation in sample 1</li>
+<li><span class="math inline">\(s_2\)</span> is the standard deviation in sample 2</li>
+<li><span class="math inline">\(n_1\)</span> is the size of sample 1</li>
+<li><span class="math inline">\(n_2\)</span> is the size of sample 2</li>
 </ul>
 <p>This formula takes the variance of each sample mean, adds them together, and then takes the square root.</p>
 <p>The structure resembles the Pythagorean theorem: square, add, square root. Statistics has a few geometry flashbacks. It happens.</p>
@@ -553,12 +609,27 @@ ul.task-list li input[type="checkbox"] {
 <section id="confidence-interval-for-a-difference-of-means" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="confidence-interval-for-a-difference-of-means"><span class="header-section-number">13.5</span> Confidence Interval for a Difference of Means</h2>
 <p>The confidence interval for a difference of means is:</p>
-<p>[ ({Y}_2 - {Y}<em>1) t^* SE</em>{{Y}_2-{Y}_1} ]</p>
+<p><span class="math display">\[
+(\bar{Y}_2 - \bar{Y}_1)
+\pm
+t^* SE_{\bar{Y}_2-\bar{Y}_1}
+\]</span></p>
 <p>or:</p>
-<p>[ ({Y}_2 - {Y}_1) t^* ]</p>
+<p><span class="math display">\[
+(\bar{Y}_2 - \bar{Y}_1)
+\pm
+t^*
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]</span></p>
 <p>The point estimate is the observed difference between sample means.</p>
 <p>The margin of error is:</p>
-<p>[ t^* SE_{{Y}_2-{Y}_1} ]</p>
+<p><span class="math display">\[
+t^* SE_{\bar{Y}_2-\bar{Y}_1}
+\]</span></p>
 <p>The t critical value depends on degrees of freedom.</p>
 <hr>
 </section>
@@ -566,12 +637,26 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="13.6" class="anchored" data-anchor-id="degrees-of-freedom-for-independent-sample-mean-tests"><span class="header-section-number">13.6</span> Degrees of Freedom for Independent-Sample Mean Tests</h2>
 <p>Degrees of freedom are more complicated for two independent means than for one mean.</p>
 <p>For one mean:</p>
-<p>[ df = n - 1 ]</p>
+<p><span class="math display">\[
+df = n - 1
+\]</span></p>
 <p>For two independent means without assuming equal variances, the exact degrees of freedom are given by the Satterthwaite approximation, which is complicated:</p>
-<p>[ df = { + } ]</p>
+<p><span class="math display">\[
+df =
+\frac{
+\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2
+}
+{
+\frac{\left(\frac{s_1^2}{n_1}\right)^2}{n_1-1}
++
+\frac{\left(\frac{s_2^2}{n_2}\right)^2}{n_2-1}
+}
+\]</span></p>
 <p>Software uses this formula.</p>
 <p>By hand, we often use a conservative approximation:</p>
-<p>[ df = (n_1-1, n_2-1) ]</p>
+<p><span class="math display">\[
+df = \min(n_1-1, n_2-1)
+\]</span></p>
 <p>That is, take the smaller sample size and subtract 1.</p>
 <p>This underestimates the true degrees of freedom, making the test slightly more conservative. If we can reject the null hypothesis using this conservative approximation, we would also reject using the more exact degrees of freedom.</p>
 <hr>
@@ -614,30 +699,53 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The observed difference is:</p>
-<p>[ 2.63 - 1.88 = 0.75 ]</p>
+<p><span class="math display">\[
+2.63 - 1.88 = 0.75
+\]</span></p>
 <p>The standard error for the difference is:</p>
-<p>[ SE = ]</p>
-<p>[ SE ]</p>
+<p><span class="math display">\[
+SE =
+\sqrt{0.073^2 + 0.115^2}
+\]</span></p>
+<p><span class="math display">\[
+SE \approx 0.136
+\]</span></p>
 <p>So the estimated difference is:</p>
-<p>[ 0.75 ]</p>
+<p><span class="math display">\[
+0.75
+\]</span></p>
 <p>with a standard error of about:</p>
-<p>[ 0.136 ]</p>
+<p><span class="math display">\[
+0.136
+\]</span></p>
 <p>That difference is large relative to the standard error.</p>
 <hr>
 </section>
 <section id="confidence-interval-for-the-difference" class="level2" data-number="13.8">
 <h2 data-number="13.8" class="anchored" data-anchor-id="confidence-interval-for-the-difference"><span class="header-section-number">13.8</span> Confidence Interval for the Difference</h2>
 <p>Suppose software gives a t critical value of approximately:</p>
-<p>[ t^* = 1.973 ]</p>
+<p><span class="math display">\[
+t^* = 1.973
+\]</span></p>
 <p>Then the 95 percent confidence interval is:</p>
-<p>[ 0.75 (0.136) ]</p>
-<p>[ 0.75 ]</p>
+<p><span class="math display">\[
+0.75 \pm 1.973(0.136)
+\]</span></p>
+<p><span class="math display">\[
+0.75 \pm 0.268
+\]</span></p>
 <p>Lower bound:</p>
-<p>[ 0.75 - 0.268 = 0.482 ]</p>
+<p><span class="math display">\[
+0.75 - 0.268 = 0.482
+\]</span></p>
 <p>Upper bound:</p>
-<p>[ 0.75 + 0.268 = 1.018 ]</p>
+<p><span class="math display">\[
+0.75 + 0.268 = 1.018
+\]</span></p>
 <p>So the confidence interval is approximately:</p>
-<p>[ 0.48 1.02 ]</p>
+<p><span class="math display">\[
+0.48 \text{ to } 1.02
+\]</span></p>
 <p>Interpretation:</p>
 <blockquote class="blockquote">
 <p>Across repeated samples, 95 percent of confidence intervals constructed using this procedure would contain the true difference in mean arrest rate ratios. In this sample, the interval ranges from about 0.48 to 1.02.</p>
@@ -648,14 +756,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="significance-test-for-the-difference-of-means" class="level2" data-number="13.9">
 <h2 data-number="13.9" class="anchored" data-anchor-id="significance-test-for-the-difference-of-means"><span class="header-section-number">13.9</span> Significance Test for the Difference of Means</h2>
 <p>The null hypothesis is:</p>
-<p>[ H_0: _2 - _1 = 0 ]</p>
+<p><span class="math display">\[
+H_0: \mu_2 - \mu_1 = 0
+\]</span></p>
 <p>The alternative hypothesis is:</p>
-<p>[ H_A: _2 - _1 ]</p>
+<p><span class="math display">\[
+H_A: \mu_2 - \mu_1 \neq 0
+\]</span></p>
 <p>The t-statistic is:</p>
-<p>[ t = {SE_{{Y}_2-{Y}_1}} ]</p>
+<p><span class="math display">\[
+t =
+\frac{(\bar{Y}_2 - \bar{Y}_1) - 0}
+{SE_{\bar{Y}_2-\bar{Y}_1}}
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ t = ]</p>
-<p>[ t ]</p>
+<p><span class="math display">\[
+t = \frac{0.75}{0.136}
+\]</span></p>
+<p><span class="math display">\[
+t \approx 5.52
+\]</span></p>
 <p>This is far larger than a typical 95 percent critical value near 2.</p>
 <p>Therefore, we reject the null hypothesis.</p>
 <p>There is statistically significant evidence that mean arrest rate ratios differ between cities with majority white city councils and cities with majority persons of color city councils.</p>
@@ -723,7 +843,9 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The observed difference is:</p>
-<p>[ 40.0 - 20.7 = 19.3 ]</p>
+<p><span class="math display">\[
+40.0 - 20.7 = 19.3
+\]</span></p>
 <p>Infant mortality is about 19.3 deaths per 1,000 births higher in non-democracies than in democracies.</p>
 <hr>
 </section>
@@ -733,50 +855,99 @@ ul.task-list li input[type="checkbox"] {
 <p>We should not automatically assume equal variances. Infant mortality may vary differently across democracies and non-democracies. In fact, non-democracies may include both very high-performing and very low-performing states, creating greater variation.</p>
 <p>So we proceed with the independent-samples difference-of-means test without assuming equal variances.</p>
 <p>Using the conservative degrees of freedom approximation:</p>
-<p>[ df = (75-1, 101-1) ]</p>
-<p>[ df = (74, 100) ]</p>
-<p>[ df = 74 ]</p>
+<p><span class="math display">\[
+df = \min(75-1, 101-1)
+\]</span></p>
+<p><span class="math display">\[
+df = \min(74, 100)
+\]</span></p>
+<p><span class="math display">\[
+df = 74
+\]</span></p>
 <hr>
 </section>
 <section id="standard-error-for-the-difference" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="standard-error-for-the-difference"><span class="header-section-number">14.3</span> Standard Error for the Difference</h2>
 <p>Use:</p>
-<p>[ SE = ]</p>
+<p><span class="math display">\[
+SE =
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]</span></p>
 <p>Substitute values:</p>
-<p>[ SE = ]</p>
-<p>[ SE ]</p>
+<p><span class="math display">\[
+SE =
+\sqrt{
+\frac{28.2^2}{75}
++
+\frac{21.9^2}{101}
+}
+\]</span></p>
+<p><span class="math display">\[
+SE \approx 3.92
+\]</span></p>
 <p>So the observed difference is:</p>
-<p>[ 19.3 ]</p>
+<p><span class="math display">\[
+19.3
+\]</span></p>
 <p>with a standard error of:</p>
-<p>[ 3.92 ]</p>
+<p><span class="math display">\[
+3.92
+\]</span></p>
 <hr>
 </section>
 <section id="confidence-interval" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="confidence-interval"><span class="header-section-number">14.4</span> Confidence Interval</h2>
 <p>Using the conservative degrees of freedom and a 95 percent confidence interval, suppose the t critical value is approximately:</p>
-<p>[ t^* = 2.00 ]</p>
+<p><span class="math display">\[
+t^* = 2.00
+\]</span></p>
 <p>Then:</p>
-<p>[ 19.3 (3.92) ]</p>
-<p>[ 19.3 ]</p>
+<p><span class="math display">\[
+19.3 \pm 2.00(3.92)
+\]</span></p>
+<p><span class="math display">\[
+19.3 \pm 7.84
+\]</span></p>
 <p>Lower bound:</p>
-<p>[ 19.3 - 7.84 = 11.46 ]</p>
+<p><span class="math display">\[
+19.3 - 7.84 = 11.46
+\]</span></p>
 <p>Upper bound:</p>
-<p>[ 19.3 + 7.84 = 27.14 ]</p>
+<p><span class="math display">\[
+19.3 + 7.84 = 27.14
+\]</span></p>
 <p>The 95 percent confidence interval is approximately:</p>
-<p>[ 11.5 27.1 ]</p>
+<p><span class="math display">\[
+11.5 \text{ to } 27.1
+\]</span></p>
 <p>The interval does not include 0, suggesting a statistically significant difference.</p>
 <hr>
 </section>
 <section id="significance-test" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="significance-test"><span class="header-section-number">14.5</span> Significance Test</h2>
 <p>The hypotheses are:</p>
-<p>[ H_0: <em>{non-democracy} - </em>{democracy} = 0 ]</p>
-<p>[ H_A: <em>{non-democracy} - </em>{democracy} ]</p>
+<p><span class="math display">\[
+H_0: \mu_{non-democracy} - \mu_{democracy} = 0
+\]</span></p>
+<p><span class="math display">\[
+H_A: \mu_{non-democracy} - \mu_{democracy} \neq 0
+\]</span></p>
 <p>The t-statistic is:</p>
-<p>[ t = ]</p>
-<p>[ t ]</p>
+<p><span class="math display">\[
+t =
+\frac{19.3 - 0}{3.92}
+\]</span></p>
+<p><span class="math display">\[
+t \approx 4.92
+\]</span></p>
 <p>Since:</p>
-<p>[ 4.92 &gt; 2.00 ]</p>
+<p><span class="math display">\[
+4.92 &gt; 2.00
+\]</span></p>
 <p>we reject the null hypothesis.</p>
 <p>There is statistically significant evidence that mean infant mortality differs between democracies and non-democracies.</p>
 <p>Again, causality requires further analysis. Democracies and non-democracies differ in wealth, institutions, health systems, conflict exposure, education, and many other factors.</p>
@@ -796,19 +967,33 @@ ul.task-list li input[type="checkbox"] {
 <li>employment rates among those who completed training and those who did not</li>
 </ul>
 <p>The population parameters are:</p>
-<p>[ _1 ]</p>
+<p><span class="math display">\[
+\pi_1
+\]</span></p>
 <p>and:</p>
-<p>[ _2 ]</p>
+<p><span class="math display">\[
+\pi_2
+\]</span></p>
 <p>The sample estimates are:</p>
-<p>[ _1 ]</p>
+<p><span class="math display">\[
+\hat{\pi}_1
+\]</span></p>
 <p>and:</p>
-<p>[ _2 ]</p>
+<p><span class="math display">\[
+\hat{\pi}_2
+\]</span></p>
 <p>The null hypothesis is usually:</p>
-<p>[ H_0: _2 - _1 = 0 ]</p>
+<p><span class="math display">\[
+H_0: \pi_2 - \pi_1 = 0
+\]</span></p>
 <p>or equivalently:</p>
-<p>[ H_0: _1 = _2 ]</p>
+<p><span class="math display">\[
+H_0: \pi_1 = \pi_2
+\]</span></p>
 <p>The alternative is:</p>
-<p>[ H_A: _2 - _1 ]</p>
+<p><span class="math display">\[
+H_A: \pi_2 - \pi_1 \neq 0
+\]</span></p>
 <hr>
 </section>
 <section id="sample-size-rule-for-difference-of-proportions" class="level2" data-number="15.2">
@@ -870,10 +1055,16 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The sample proportions are:</p>
-<p>[ _{program} = = 0.892 ]</p>
-<p>[ _{no&nbsp;program} = = 0.843 ]</p>
+<p><span class="math display">\[
+\hat{\pi}_{program} = \frac{83}{93} = 0.892
+\]</span></p>
+<p><span class="math display">\[
+\hat{\pi}_{no\ program} = \frac{102}{121} = 0.843
+\]</span></p>
 <p>The observed difference is:</p>
-<p>[ 0.892 - 0.843 = 0.049 ]</p>
+<p><span class="math display">\[
+0.892 - 0.843 = 0.049
+\]</span></p>
 <p>The program group has a graduation rate about 4.9 percentage points higher than the no-program group.</p>
 <hr>
 </section>
@@ -881,21 +1072,50 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="15.4" class="anchored" data-anchor-id="confidence-interval-for-a-difference-of-proportions"><span class="header-section-number">15.4</span> Confidence Interval for a Difference of Proportions</h2>
 <p>For a confidence interval, we use the two sample proportions separately.</p>
 <p>The standard error is:</p>
-<p>[ SE = ]</p>
+<p><span class="math display">\[
+SE =
+\sqrt{
+\frac{\hat{\pi}_1(1-\hat{\pi}_1)}{n_1}
++
+\frac{\hat{\pi}_2(1-\hat{\pi}_2)}{n_2}
+}
+\]</span></p>
 <p>The confidence interval is:</p>
-<p>[ (_2 - _1) z^* SE ]</p>
+<p><span class="math display">\[
+(\hat{\pi}_2 - \hat{\pi}_1)
+\pm
+z^*
+SE
+\]</span></p>
 <p>Using the example:</p>
-<p>[ 0.049 ]</p>
+<p><span class="math display">\[
+0.049 \pm 1.96
+\sqrt{
+\frac{0.843(1-0.843)}{121}
++
+\frac{0.892(1-0.892)}{93}
+}
+\]</span></p>
 <p>The margin of error is approximately:</p>
-<p>[ 0.09 ]</p>
+<p><span class="math display">\[
+0.09
+\]</span></p>
 <p>So the confidence interval is:</p>
-<p>[ 0.049 ]</p>
+<p><span class="math display">\[
+0.049 \pm 0.09
+\]</span></p>
 <p>Lower bound:</p>
-<p>[ 0.049 - 0.09 = -0.041 ]</p>
+<p><span class="math display">\[
+0.049 - 0.09 = -0.041
+\]</span></p>
 <p>Upper bound:</p>
-<p>[ 0.049 + 0.09 = 0.139 ]</p>
+<p><span class="math display">\[
+0.049 + 0.09 = 0.139
+\]</span></p>
 <p>So the 95 percent confidence interval is approximately:</p>
-<p>[ -0.04 0.14 ]</p>
+<p><span class="math display">\[
+-0.04 \text{ to } 0.14
+\]</span></p>
 <p>Because the interval includes 0, we expect not to reject the null hypothesis of no difference.</p>
 <hr>
 </section>
@@ -903,7 +1123,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="15.5" class="anchored" data-anchor-id="why-can-the-confidence-interval-include-negative-values"><span class="header-section-number">15.5</span> Why Can the Confidence Interval Include Negative Values?</h2>
 <p>A difference of proportions can be negative.</p>
 <p>If the program group has a lower graduation rate than the no-program group, then:</p>
-<p>[ <em>{program} - </em>{no&nbsp;program} &lt; 0 ]</p>
+<p><span class="math display">\[
+\hat{\pi}_{program} - \hat{\pi}_{no\ program} &lt; 0
+\]</span></p>
 <p>So a confidence interval for a difference can cross 0.</p>
 <p>A confidence interval that includes 0 means that no difference is a plausible value. In such a case, we generally fail to reject the null hypothesis.</p>
 <hr>
@@ -912,33 +1134,74 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="15.6" class="anchored" data-anchor-id="significance-test-for-difference-of-proportions"><span class="header-section-number">15.6</span> Significance Test for Difference of Proportions</h2>
 <p>For a significance test, the standard error is calculated differently than for a confidence interval.</p>
 <p>Under the null hypothesis:</p>
-<p>[ _1 = _2 ]</p>
+<p><span class="math display">\[
+\pi_1 = \pi_2
+\]</span></p>
 <p>So we assume there is one common population proportion.</p>
 <p>We estimate that common proportion using the pooled sample proportion:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\hat{\pi} =
+\frac{x_1+x_2}{n_1+n_2}
+\]</span></p>
 <p>In the graduation example:</p>
-<p>[ = ]</p>
-<p>[ = ]</p>
-<p>[ = 0.864 ]</p>
+<p><span class="math display">\[
+\hat{\pi} = \frac{83+102}{93+121}
+\]</span></p>
+<p><span class="math display">\[
+\hat{\pi} = \frac{185}{214}
+\]</span></p>
+<p><span class="math display">\[
+\hat{\pi} = 0.864
+\]</span></p>
 <p>The null-hypothesis standard error is:</p>
-<p>[ SE_0 = ]</p>
+<p><span class="math display">\[
+SE_0 =
+\sqrt{
+\hat{\pi}(1-\hat{\pi})
+\left(
+\frac{1}{n_1}+\frac{1}{n_2}
+\right)
+}
+\]</span></p>
 <p>Equivalently:</p>
-<p>[ SE_0 = ]</p>
+<p><span class="math display">\[
+SE_0 =
+\sqrt{
+\frac{\hat{\pi}(1-\hat{\pi})}{n_1}
++
+\frac{\hat{\pi}(1-\hat{\pi})}{n_2}
+}
+\]</span></p>
 <p>Using the example:</p>
-<p>[ SE_0 ]</p>
+<p><span class="math display">\[
+SE_0 \approx 0.047
+\]</span></p>
 <hr>
 </section>
 <section id="z-test-for-difference-of-proportions" class="level2" data-number="15.7">
 <h2 data-number="15.7" class="anchored" data-anchor-id="z-test-for-difference-of-proportions"><span class="header-section-number">15.7</span> z-Test for Difference of Proportions</h2>
 <p>The z-statistic is:</p>
-<p>[ z = {SE_0} ]</p>
+<p><span class="math display">\[
+z =
+\frac{(\hat{\pi}_2-\hat{\pi}_1)-0}
+{SE_0}
+\]</span></p>
 <p>Using the observed difference:</p>
-<p>[ z = ]</p>
-<p>[ z ]</p>
-<p>The critical value for a two-tailed test with (= 0.05) is:</p>
-<p>[ 1.96 ]</p>
+<p><span class="math display">\[
+z =
+\frac{0.049}{0.047}
+\]</span></p>
+<p><span class="math display">\[
+z \approx 1.04
+\]</span></p>
+<p>The critical value for a two-tailed test with <span class="math inline">\(\alpha = 0.05\)</span> is:</p>
+<p><span class="math display">\[
+1.96
+\]</span></p>
 <p>Since:</p>
-<p>[ 1.04 &lt; 1.96 ]</p>
+<p><span class="math display">\[
+1.04 &lt; 1.96
+\]</span></p>
 <p>we fail to reject the null hypothesis.</p>
 <p>There is not statistically significant evidence at the 0.05 level that the program changed graduation rates.</p>
 <hr>
@@ -964,15 +1227,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="turning-a-two-sample-problem-into-a-one-sample-problem" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="turning-a-two-sample-problem-into-a-one-sample-problem"><span class="header-section-number">16.2</span> Turning a Two-Sample Problem into a One-Sample Problem</h2>
 <p>With dependent samples, we create a new variable:</p>
-<p>[ Y_d = Y_2 - Y_1 ]</p>
+<p><span class="math display">\[
+Y_d = Y_2 - Y_1
+\]</span></p>
 <p>This is the difference for each matched pair.</p>
 <p>Then we analyze the mean of those differences:</p>
-<p>[ {Y}_d ]</p>
+<p><span class="math display">\[
+\bar{Y}_d
+\]</span></p>
 <p>The null hypothesis is:</p>
-<p>[ H_0: _d = 0 ]</p>
-<p>where (_d) is the population mean of the paired differences.</p>
+<p><span class="math display">\[
+H_0: \mu_d = 0
+\]</span></p>
+<p>where <span class="math inline">\(\mu_d\)</span> is the population mean of the paired differences.</p>
 <p>The alternative is:</p>
-<p>[ H_A: _d ]</p>
+<p><span class="math display">\[
+H_A: \mu_d \neq 0
+\]</span></p>
 <p>This is now a one-sample test on the difference variable.</p>
 <hr>
 </section>
@@ -983,9 +1254,9 @@ ul.task-list li input[type="checkbox"] {
 <thead>
 <tr class="header">
 <th style="text-align: right;">Pair</th>
-<th style="text-align: right;">(Y_2)</th>
-<th style="text-align: right;">(Y_1)</th>
-<th style="text-align: right;">Difference (Y_d = Y_2-Y_1)</th>
+<th style="text-align: right;"><span class="math inline">\(Y_2\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(Y_1\)</span></th>
+<th style="text-align: right;">Difference <span class="math inline">\(Y_d = Y_2-Y_1\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -1016,16 +1287,28 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The mean of the differences is:</p>
-<p>[ {Y}_d = ]</p>
-<p>[ {Y}_d = 0.75 ]</p>
-<p>The mean of (Y_2) is:</p>
-<p>[ {Y}_2 = 4.5 ]</p>
-<p>The mean of (Y_1) is:</p>
-<p>[ {Y}_1 = 3.75 ]</p>
+<p><span class="math display">\[
+\bar{Y}_d = \frac{2+0+2-1}{4}
+\]</span></p>
+<p><span class="math display">\[
+\bar{Y}_d = 0.75
+\]</span></p>
+<p>The mean of <span class="math inline">\(Y_2\)</span> is:</p>
+<p><span class="math display">\[
+\bar{Y}_2 = 4.5
+\]</span></p>
+<p>The mean of <span class="math inline">\(Y_1\)</span> is:</p>
+<p><span class="math display">\[
+\bar{Y}_1 = 3.75
+\]</span></p>
 <p>The difference of the means is:</p>
-<p>[ 4.5 - 3.75 = 0.75 ]</p>
+<p><span class="math display">\[
+4.5 - 3.75 = 0.75
+\]</span></p>
 <p>So:</p>
-<p>[ {Y}_d = {Y}_2 - {Y}_1 ]</p>
+<p><span class="math display">\[
+\bar{Y}_d = \bar{Y}_2 - \bar{Y}_1
+\]</span></p>
 <p>The mean of the differences equals the difference of the means.</p>
 <p>The advantage of the dependent-samples approach is that it uses the pairing information.</p>
 <hr>
@@ -1033,16 +1316,28 @@ ul.task-list li input[type="checkbox"] {
 <section id="standard-error-for-dependent-samples" class="level2" data-number="16.4">
 <h2 data-number="16.4" class="anchored" data-anchor-id="standard-error-for-dependent-samples"><span class="header-section-number">16.4</span> Standard Error for Dependent Samples</h2>
 <p>For dependent samples, calculate the standard deviation of the difference variable:</p>
-<p>[ s_d ]</p>
+<p><span class="math display">\[
+s_d
+\]</span></p>
 <p>Then the standard error is:</p>
-<p>[ SE_{{Y}_d} = ]</p>
-<p>where (n) is the number of matched pairs.</p>
+<p><span class="math display">\[
+SE_{\bar{Y}_d} = \frac{s_d}{\sqrt{n}}
+\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of matched pairs.</p>
 <p>The confidence interval is:</p>
-<p>[ {Y}_d t^*() ]</p>
+<p><span class="math display">\[
+\bar{Y}_d \pm t^*\left(\frac{s_d}{\sqrt{n}}\right)
+\]</span></p>
 <p>The t-statistic is:</p>
-<p>[ t = {s_d/} ]</p>
+<p><span class="math display">\[
+t =
+\frac{\bar{Y}_d - 0}
+{s_d/\sqrt{n}}
+\]</span></p>
 <p>Degrees of freedom are:</p>
-<p>[ df = n - 1 ]</p>
+<p><span class="math display">\[
+df = n - 1
+\]</span></p>
 <p>This is simply a one-sample t-test on the paired differences.</p>
 <hr>
 </section>
@@ -1051,25 +1346,46 @@ ul.task-list li input[type="checkbox"] {
 <p>Suppose a city replaces lead water supply lines.</p>
 <p>Researchers select 250 households. They measure lead levels before the replacement and again after the replacement.</p>
 <p>For each household:</p>
-<p>[ Y_d = - ]</p>
+<p><span class="math display">\[
+Y_d = \text{lead after} - \text{lead before}
+\]</span></p>
 <p>Suppose the mean difference is:</p>
-<p>[ {Y}_d = -3.2 ]</p>
+<p><span class="math display">\[
+\bar{Y}_d = -3.2
+\]</span></p>
 <p>parts per billion. This means lead levels fell by 3.2 parts per billion on average.</p>
 <p>Suppose the standard deviation of differences is:</p>
-<p>[ s_d = 23.7 ]</p>
+<p><span class="math display">\[
+s_d = 23.7
+\]</span></p>
 <p>and:</p>
-<p>[ n = 250 ]</p>
+<p><span class="math display">\[
+n = 250
+\]</span></p>
 <p>The standard error is:</p>
-<p>[ SE = ]</p>
-<p>[ SE ]</p>
+<p><span class="math display">\[
+SE = \frac{23.7}{\sqrt{250}}
+\]</span></p>
+<p><span class="math display">\[
+SE \approx 1.50
+\]</span></p>
 <p>The t-statistic is:</p>
-<p>[ t = ]</p>
-<p>[ t ]</p>
+<p><span class="math display">\[
+t =
+\frac{-3.2 - 0}{1.50}
+\]</span></p>
+<p><span class="math display">\[
+t \approx -2.13
+\]</span></p>
 <p>Degrees of freedom:</p>
-<p>[ df = 249 ]</p>
+<p><span class="math display">\[
+df = 249
+\]</span></p>
 <p>The critical value for a two-tailed 95 percent test is close to 1.97.</p>
 <p>Since:</p>
-<p>[ |-2.13| &gt; 1.97 ]</p>
+<p><span class="math display">\[
+|-2.13| &gt; 1.97
+\]</span></p>
 <p>we reject the null hypothesis.</p>
 <p>There is statistically significant evidence that lead levels changed. Because the mean difference is negative, the evidence suggests lead levels decreased after pipe replacement.</p>
 <hr>
@@ -1080,7 +1396,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-is-the-equal-variance-assumption" class="level2" data-number="17.1">
 <h2 data-number="17.1" class="anchored" data-anchor-id="what-is-the-equal-variance-assumption"><span class="header-section-number">17.1</span> What Is the Equal Variance Assumption?</h2>
 <p>In an independent-samples difference-of-means test, we sometimes assume that the two populations have equal variances:</p>
-<p>[ _1^2 = _2^2 ]</p>
+<p><span class="math display">\[
+\sigma_1^2 = \sigma_2^2
+\]</span></p>
 <p>This is called the <strong>equal variance assumption</strong>.</p>
 <p>If the assumption is true, the two sample variances estimate the same underlying population variance. We can pool them together to estimate one common variance.</p>
 <p>This can be useful, especially when sample sizes are small, because pooling uses information more efficiently.</p>
@@ -1099,10 +1417,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="why-the-assumption-matters" class="level2" data-number="17.3">
 <h2 data-number="17.3" class="anchored" data-anchor-id="why-the-assumption-matters"><span class="header-section-number">17.3</span> Why the Assumption Matters</h2>
 <p>Without assuming equal variances, the standard error is:</p>
-<p>[ SE = ]</p>
+<p><span class="math display">\[
+SE =
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_2^2}{n_2}
+}
+\]</span></p>
 <p>Degrees of freedom are estimated using the Satterthwaite formula or a conservative approximation.</p>
 <p>With equal variances, we pool the variances and use:</p>
-<p>[ df = n_1+n_2-2 ]</p>
+<p><span class="math display">\[
+df = n_1+n_2-2
+\]</span></p>
 <p>This gives the maximum possible degrees of freedom.</p>
 <p>More degrees of freedom generally means a smaller critical value, making it easier to reject the null hypothesis.</p>
 <p>Therefore, if the equal variance assumption is wrong, using it can increase the risk of an incorrect conclusion.</p>
@@ -1111,9 +1438,19 @@ ul.task-list li input[type="checkbox"] {
 <section id="pooled-standard-deviation" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="pooled-standard-deviation"><span class="header-section-number">17.4</span> Pooled Standard Deviation</h2>
 <p>When assuming equal variances, we calculate a pooled variance:</p>
-<p>[ s_p^2 = { n_1+n_2-2 } ]</p>
+<p><span class="math display">\[
+s_p^2 =
+\frac{
+(n_1-1)s_1^2 + (n_2-1)s_2^2
+}
+{
+n_1+n_2-2
+}
+\]</span></p>
 <p>Then take the square root:</p>
-<p>[ s_p = ]</p>
+<p><span class="math display">\[
+s_p = \sqrt{s_p^2}
+\]</span></p>
 <p>This is a weighted average of the two sample variances, weighted by their degrees of freedom.</p>
 <p>The larger sample contributes more to the pooled estimate.</p>
 <hr>
@@ -1121,13 +1458,35 @@ ul.task-list li input[type="checkbox"] {
 <section id="standard-error-with-equal-variances" class="level2" data-number="17.5">
 <h2 data-number="17.5" class="anchored" data-anchor-id="standard-error-with-equal-variances"><span class="header-section-number">17.5</span> Standard Error with Equal Variances</h2>
 <p>Once we have the pooled standard deviation, the standard error for the difference of means is:</p>
-<p>[ SE = s_p ]</p>
+<p><span class="math display">\[
+SE =
+s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_2}
+}
+\]</span></p>
 <p>The confidence interval is:</p>
-<p>[ ({Y}_2-{Y}_1) t^*s_p ]</p>
+<p><span class="math display">\[
+(\bar{Y}_2-\bar{Y}_1)
+\pm
+t^*s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_2}
+}
+\]</span></p>
 <p>The t-statistic is:</p>
-<p>[ t = {s_p } ]</p>
+<p><span class="math display">\[
+t =
+\frac{(\bar{Y}_2-\bar{Y}_1)-0}
+{s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_2}
+}}
+\]</span></p>
 <p>Degrees of freedom are:</p>
-<p>[ df = n_1+n_2-2 ]</p>
+<p><span class="math display">\[
+df = n_1+n_2-2
+\]</span></p>
 <hr>
 </section>
 <section id="example-temperatures-in-ann-arbor" class="level2" data-number="17.6">
@@ -1159,7 +1518,9 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The observed difference is:</p>
-<p>[ 50 - 47 = 3 ]</p>
+<p><span class="math display">\[
+50 - 47 = 3
+\]</span></p>
 <p>Suppose we make the equal variance assumption. That means we assume the variance of daily temperatures is the same in 1900 and 2000.</p>
 <p>This may or may not be reasonable. If climate change affects not only average temperature but also variability, the assumption may fail.</p>
 <p>Still, for illustration, calculate the pooled standard deviation.</p>
@@ -1168,20 +1529,53 @@ ul.task-list li input[type="checkbox"] {
 <section id="pooled-standard-deviation-calculation" class="level2" data-number="17.7">
 <h2 data-number="17.7" class="anchored" data-anchor-id="pooled-standard-deviation-calculation"><span class="header-section-number">17.7</span> Pooled Standard Deviation Calculation</h2>
 <p>Use:</p>
-<p>[ s_p^2 = { 15+366-2 } ]</p>
-<p>[ s_p^2 = {379} ]</p>
-<p>[ s_p ]</p>
+<p><span class="math display">\[
+s_p^2 =
+\frac{
+(15-1)(14^2) + (366-1)(11^2)
+}
+{
+15+366-2
+}
+\]</span></p>
+<p><span class="math display">\[
+s_p^2 =
+\frac{
+14(196)+365(121)
+}
+{379}
+\]</span></p>
+<p><span class="math display">\[
+s_p \approx 11.3
+\]</span></p>
 <p>Now calculate the standard error:</p>
-<p>[ SE = 11.3 ]</p>
-<p>[ SE ]</p>
+<p><span class="math display">\[
+SE =
+11.3
+\sqrt{
+\frac{1}{15}+\frac{1}{366}
+}
+\]</span></p>
+<p><span class="math display">\[
+SE \approx 2.93
+\]</span></p>
 <p>The t-statistic is:</p>
-<p>[ t = ]</p>
-<p>[ t ]</p>
+<p><span class="math display">\[
+t =
+\frac{3}{2.93}
+\]</span></p>
+<p><span class="math display">\[
+t \approx 1.02
+\]</span></p>
 <p>Degrees of freedom:</p>
-<p>[ df = 15+366-2 = 379 ]</p>
+<p><span class="math display">\[
+df = 15+366-2 = 379
+\]</span></p>
 <p>The critical value is close to 1.96.</p>
 <p>Since:</p>
-<p>[ 1.02 &lt; 1.96 ]</p>
+<p><span class="math display">\[
+1.02 &lt; 1.96
+\]</span></p>
 <p>we fail to reject the null hypothesis.</p>
 <p>There is not statistically significant evidence, in this illustrative example, that mean temperature changed.</p>
 <hr>
@@ -1242,12 +1636,18 @@ ul.task-list li input[type="checkbox"] {
 <p>Several cells have fewer than 10 cases, so a z-test for difference of proportions is not appropriate.</p>
 <p>Use Fisher’s exact test.</p>
 <p>Suppose Fisher’s exact test gives:</p>
-<p>[ p = 0.056 ]</p>
+<p><span class="math display">\[
+p = 0.056
+\]</span></p>
 <p>At:</p>
-<p>[ = 0.05 ]</p>
+<p><span class="math display">\[
+\alpha = 0.05
+\]</span></p>
 <p>we fail to reject the null hypothesis.</p>
 <p>At:</p>
-<p>[ = 0.10 ]</p>
+<p><span class="math display">\[
+\alpha = 0.10
+\]</span></p>
 <p>we would reject.</p>
 <p>The result suggests evidence of a difference, but not quite enough for the conventional 0.05 threshold.</p>
 <hr>
@@ -1278,7 +1678,9 @@ ul.task-list li input[type="checkbox"] {
 <p>The Wilcoxon-Mann-Whitney test ranks all 24 countries by GDP per capita and compares the rank positions of democracies and non-democracies.</p>
 <p>If the two groups are similar, their ranks should be mixed. If one group tends to have higher GDP per capita, that group should have systematically higher ranks.</p>
 <p>Suppose the test gives:</p>
-<p>[ p = 0.67 ]</p>
+<p><span class="math display">\[
+p = 0.67
+\]</span></p>
 <p>This is large, so we fail to reject the null hypothesis.</p>
 <p>There is no statistically significant evidence that GDP per capita differs between democracies and non-democracies in this small sample.</p>
 <hr>
@@ -1316,9 +1718,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="19.2" class="anchored" data-anchor-id="controlling-in-a-mean-comparison-table"><span class="header-section-number">19.2</span> Controlling in a Mean Comparison Table</h2>
 <p>Suppose:</p>
 <ul>
-<li>(Y): life expectancy</li>
-<li>(X): democracy status</li>
-<li>(Z): GDP per capita category</li>
+<li><span class="math inline">\(Y\)</span>: life expectancy</li>
+<li><span class="math inline">\(X\)</span>: democracy status</li>
+<li><span class="math inline">\(Z\)</span>: GDP per capita category</li>
 </ul>
 <p>We can compare mean life expectancy across democracy categories while holding GDP per capita constant.</p>
 <p>For example, divide countries into:</p>
@@ -1361,14 +1763,22 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>The overall comparison suggests democracies have higher life expectancy:</p>
-<p>[ 72.5 - 64.5 = 8.0 ]</p>
+<p><span class="math display">\[
+72.5 - 64.5 = 8.0
+\]</span></p>
 <p>But we also compare within GDP categories.</p>
 <p>Low-income countries:</p>
-<p>[ 63.3 - 57.8 = 5.5 ]</p>
+<p><span class="math display">\[
+63.3 - 57.8 = 5.5
+\]</span></p>
 <p>Middle-income countries:</p>
-<p>[ 74.1 - 68.7 = 5.4 ]</p>
+<p><span class="math display">\[
+74.1 - 68.7 = 5.4
+\]</span></p>
 <p>High-income countries:</p>
-<p>[ 79.2 - 73.5 = 5.7 ]</p>
+<p><span class="math display">\[
+79.2 - 73.5 = 5.7
+\]</span></p>
 <p>Even after controlling for GDP category, democracies still have higher life expectancy in each income group.</p>
 <p>This suggests the relationship between democracy and life expectancy is not entirely explained by GDP per capita.</p>
 <hr>

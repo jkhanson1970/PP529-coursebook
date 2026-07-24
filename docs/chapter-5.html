@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -360,14 +389,16 @@ ul.task-list li input[type="checkbox"] {
 <li>the number of students in a classroom</li>
 </ul>
 <p>Discrete variables are countable. They take on distinct values, not an infinite continuum of possibilities.</p>
-<p>Suppose a random variable (Y) can take five possible values:</p>
-<p>[ Y = 1, 2, 3, 4, 5 ]</p>
+<p>Suppose a random variable <span class="math inline">\(Y\)</span> can take five possible values:</p>
+<p><span class="math display">\[
+Y = 1, 2, 3, 4, 5
+\]</span></p>
 <p>and suppose the probabilities are:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;">(Y)</th>
-<th style="text-align: right;">(P(Y))</th>
+<th style="text-align: right;"><span class="math inline">\(Y\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(P(Y)\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -399,7 +430,9 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <p>This is a discrete probability distribution.</p>
 <p>The probabilities must sum to 1:</p>
-<p>[ 0.20 + 0.25 + 0.30 + 0.15 + 0.10 = 1.00 ]</p>
+<p><span class="math display">\[
+0.20 + 0.25 + 0.30 + 0.15 + 0.10 = 1.00
+\]</span></p>
 <p>That is because the table includes all possible outcomes.</p>
 <hr>
 </section>
@@ -407,23 +440,43 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="7.2" class="anchored" data-anchor-id="probabilities-for-discrete-variables"><span class="header-section-number">7.2</span> Probabilities for Discrete Variables</h2>
 <p>With a discrete probability distribution, we can answer probability questions by adding the probabilities of the relevant values.</p>
 <p>For example:</p>
-<p>[ P(Y = 2) = 0.25 ]</p>
+<p><span class="math display">\[
+P(Y = 2) = 0.25
+\]</span></p>
 <p>That value is read directly from the table.</p>
 <p>Now suppose we ask:</p>
-<p>[ P(Y &lt; 3) ]</p>
+<p><span class="math display">\[
+P(Y &lt; 3)
+\]</span></p>
 <p>The values less than 3 are 1 and 2. So:</p>
-<p>[ P(Y &lt; 3) = P(Y = 1) + P(Y = 2) ]</p>
-<p>[ P(Y &lt; 3) = 0.20 + 0.25 = 0.45 ]</p>
+<p><span class="math display">\[
+P(Y &lt; 3) = P(Y = 1) + P(Y = 2)
+\]</span></p>
+<p><span class="math display">\[
+P(Y &lt; 3) = 0.20 + 0.25 = 0.45
+\]</span></p>
 <p>Now suppose we ask:</p>
-<p>[ P(Y ) ]</p>
+<p><span class="math display">\[
+P(Y \geq 4)
+\]</span></p>
 <p>The values greater than or equal to 4 are 4 and 5. So:</p>
-<p>[ P(Y ) = P(Y = 4) + P(Y = 5) ]</p>
-<p>[ P(Y ) = 0.15 + 0.10 = 0.25 ]</p>
+<p><span class="math display">\[
+P(Y \geq 4) = P(Y = 4) + P(Y = 5)
+\]</span></p>
+<p><span class="math display">\[
+P(Y \geq 4) = 0.15 + 0.10 = 0.25
+\]</span></p>
 <p>Finally, suppose we ask:</p>
-<p>[ P(2 Y ) ]</p>
+<p><span class="math display">\[
+P(2 \leq Y \leq 4)
+\]</span></p>
 <p>The values in that range are 2, 3, and 4. So:</p>
-<p>[ P(2 Y ) = P(Y = 2) + P(Y = 3) + P(Y = 4) ]</p>
-<p>[ P(2 Y ) = 0.25 + 0.30 + 0.15 = 0.70 ]</p>
+<p><span class="math display">\[
+P(2 \leq Y \leq 4) = P(Y = 2) + P(Y = 3) + P(Y = 4)
+\]</span></p>
+<p><span class="math display">\[
+P(2 \leq Y \leq 4) = 0.25 + 0.30 + 0.15 = 0.70
+\]</span></p>
 <p>The rule is simple: identify the values that satisfy the condition, then sum their probabilities.</p>
 <hr>
 </section>
@@ -431,14 +484,22 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="7.3" class="anchored" data-anchor-id="summation-notation-for-discrete-probabilities"><span class="header-section-number">7.3</span> Summation Notation for Discrete Probabilities</h2>
 <p>We can write this process using summation notation.</p>
 <p>For example:</p>
-<p>[ P(Y &lt; 3) = _{y &lt; 3} P(Y = y) ]</p>
-<p>This means: add the probabilities for all values of (y) that are less than 3.</p>
+<p><span class="math display">\[
+P(Y &lt; 3) = \sum_{y &lt; 3} P(Y = y)
+\]</span></p>
+<p>This means: add the probabilities for all values of <span class="math inline">\(y\)</span> that are less than 3.</p>
 <p>In this example:</p>
-<p>[ P(Y &lt; 3) = P(Y = 1) + P(Y = 2) ]</p>
+<p><span class="math display">\[
+P(Y &lt; 3) = P(Y = 1) + P(Y = 2)
+\]</span></p>
 <p>Similarly:</p>
-<p>[ P(Y ) = _{y } P(Y = y) ]</p>
+<p><span class="math display">\[
+P(Y \geq 4) = \sum_{y \geq 4} P(Y = y)
+\]</span></p>
 <p>and:</p>
-<p>[ P(2 Y ) = _{y=2}^{4} P(Y = y) ]</p>
+<p><span class="math display">\[
+P(2 \leq Y \leq 4) = \sum_{y=2}^{4} P(Y = y)
+\]</span></p>
 <p>Summation notation may look intimidating, but the idea is straightforward. We are adding probabilities across the values that meet the condition.</p>
 <p>This notation is useful because it prepares us for continuous probability distributions, where we cannot simply add up discrete probabilities. Instead, we use integration.</p>
 <p>Do not panic. We will not do calculus by hand. But understanding the concept matters.</p>
@@ -463,7 +524,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Continuous variables create an important conceptual difference.</p>
 <p>For a continuous variable, the probability of any exact value is zero.</p>
 <p>That may sound strange. But consider age. What is the probability that a randomly selected person is exactly:</p>
-<p>[ 32.679732491 ]</p>
+<p><span class="math display">\[
+32.679732491\ldots
+\]</span></p>
 <p>years old?</p>
 <p>Since age can be subdivided infinitely, no single exact point has positive probability. Instead, we ask about ranges:</p>
 <ul>
@@ -481,7 +544,9 @@ ul.task-list li input[type="checkbox"] {
 <p>The height of the curve is called <strong>density</strong>.</p>
 <p>Density is not itself probability. Probability is area.</p>
 <p>For a continuous distribution:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{Probability} = \text{Area under the curve over an interval}
+\]</span></p>
 <p>For example, suppose we have a distribution of age. If the curve is high around age 30, that means there is relatively high probability density in that region. If the curve is low around age 90, there is relatively low probability density there.</p>
 <p>But the probability of being exactly 30 is still zero. The probability of being between 30 and 35, however, can be positive because that interval has width.</p>
 <p>The total area under a probability density curve must equal 1.</p>
@@ -491,14 +556,22 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="8.3" class="anchored" data-anchor-id="probability-as-area-under-the-curve"><span class="header-section-number">8.3</span> Probability as Area Under the Curve</h2>
 <p>For a continuous variable, we find probabilities by identifying the area under the curve within a range.</p>
 <p>For example:</p>
-<p>[ P(Y ) ]</p>
+<p><span class="math display">\[
+P(Y \leq 38)
+\]</span></p>
 <p>is the area under the curve from the lowest possible value up to 38.</p>
-<p>[ P(40 Y ) ]</p>
+<p><span class="math display">\[
+P(40 \leq Y \leq 60)
+\]</span></p>
 <p>is the area under the curve between 40 and 60.</p>
-<p>[ P(Y ) ]</p>
+<p><span class="math display">\[
+P(Y \geq 72)
+\]</span></p>
 <p>is the area under the curve from 72 upward.</p>
 <p>If the area under the curve between 40 and 60 is 0.36, then:</p>
-<p>[ P(40 Y ) = 0.36 ]</p>
+<p><span class="math display">\[
+P(40 \leq Y \leq 60) = 0.36
+\]</span></p>
 <p>That means there is a 36 percent chance that a randomly selected case falls in that range.</p>
 <p>Again, probability is the area under the curve.</p>
 <hr>
@@ -507,23 +580,29 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="8.4" class="anchored" data-anchor-id="integration-and-area"><span class="header-section-number">8.4</span> Integration and Area</h2>
 <p>How do we find area under a curve?</p>
 <p>For a rectangle, area is easy:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\text{Area} = \text{width} \times \text{height}
+\]</span></p>
 <p>But probability curves are usually not flat across the top. They are curved. To find the area under a curved function, calculus uses <strong>integration</strong>.</p>
-<p>For a continuous random variable (Y), the probability that (Y) falls between two values (a) and (b) is written:</p>
-<p>[ P(a Y b) = _a^b f(y),dy ]</p>
+<p>For a continuous random variable <span class="math inline">\(Y\)</span>, the probability that <span class="math inline">\(Y\)</span> falls between two values <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is written:</p>
+<p><span class="math display">\[
+P(a \leq Y \leq b) = \int_a^b f(y)\,dy
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(f(y)) is the probability density function</li>
-<li>(dy) represents a tiny increment of (y)</li>
-<li>the integral adds up all the tiny slices of area between (a) and (b)</li>
+<li><span class="math inline">\(f(y)\)</span> is the probability density function</li>
+<li><span class="math inline">\(dy\)</span> represents a tiny increment of <span class="math inline">\(y\)</span></li>
+<li>the integral adds up all the tiny slices of area between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
 </ul>
 <p>Conceptually, integration divides the interval into many tiny rectangles. Each rectangle has:</p>
 <ul>
-<li>a tiny width, (dy)</li>
-<li>a height, (f(y))</li>
+<li>a tiny width, <span class="math inline">\(dy\)</span></li>
+<li>a height, <span class="math inline">\(f(y)\)</span></li>
 </ul>
 <p>The area of each tiny rectangle is approximately:</p>
-<p>[ f(y)dy ]</p>
+<p><span class="math display">\[
+f(y)dy
+\]</span></p>
 <p>Adding all those tiny areas gives the total area under the curve.</p>
 <p>In this course, we will not calculate integrals by hand. Instead, we will use tables and software. But the concept matters because tables such as the Z-table and T-table are essentially precomputed areas under probability curves.</p>
 <p>Some mathematically generous soul did the integration for us. We should be grateful. Quietly, perhaps, but grateful.</p>
@@ -536,17 +615,21 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="8.5.1" class="anchored" data-anchor-id="probability-density-function"><span class="header-section-number">8.5.1</span> Probability Density Function</h3>
 <p>A <strong>probability density function</strong>, or PDF, gives the height of the curve at a particular value.</p>
 <p>We often write a generic density function as:</p>
-<p>[ f(y) ]</p>
-<p>This means: the function (f) takes (y) as input and returns the height of the curve at that value of (y).</p>
+<p><span class="math display">\[
+f(y)
+\]</span></p>
+<p>This means: the function <span class="math inline">\(f\)</span> takes <span class="math inline">\(y\)</span> as input and returns the height of the curve at that value of <span class="math inline">\(y\)</span>.</p>
 <p>The input is a value of the variable.<br>
 The output is density.</p>
 </section>
 <section id="cumulative-distribution-function" class="level3" data-number="8.5.2">
 <h3 data-number="8.5.2" class="anchored" data-anchor-id="cumulative-distribution-function"><span class="header-section-number">8.5.2</span> Cumulative Distribution Function</h3>
 <p>A <strong>cumulative distribution function</strong>, or CDF, gives the total area under the curve up to a particular value.</p>
-<p>For a value (y), the CDF tells us:</p>
-<p>[ P(Y y) ]</p>
-<p>In words: the probability that the random variable is less than or equal to (y).</p>
+<p>For a value <span class="math inline">\(y\)</span>, the CDF tells us:</p>
+<p><span class="math display">\[
+P(Y \leq y)
+\]</span></p>
+<p>In words: the probability that the random variable is less than or equal to <span class="math inline">\(y\)</span>.</p>
 <p>The PDF gives height.<br>
 The CDF gives accumulated area.</p>
 <hr>
@@ -564,22 +647,32 @@ The CDF gives accumulated area.</p>
 <li><strong>Dispersion</strong></li>
 </ol>
 <p>For many probability distributions, the center is the <strong>mean</strong>, represented by:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\mu
+\]</span></p>
 <p>The dispersion is often represented by the <strong>variance</strong>:</p>
-<p>[ ^2 ]</p>
+<p><span class="math display">\[
+\sigma^2
+\]</span></p>
 <p>or the <strong>standard deviation</strong>:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\sigma
+\]</span></p>
 <p>These are population-level or distribution-level quantities. They describe the long-run behavior of the random variable.</p>
 <hr>
 </section>
 <section id="expected-value" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">9.2</span> Expected Value</h2>
 <p>The mean of a probability distribution is also called the <strong>expected value</strong>.</p>
-<p>The expected value of (Y) is written:</p>
-<p>[ E(Y) ]</p>
+<p>The expected value of <span class="math inline">\(Y\)</span> is written:</p>
+<p><span class="math display">\[
+E(Y)
+\]</span></p>
 <p>For a discrete random variable, the expected value is:</p>
-<p>[ E(Y) = _y yP(Y=y) ]</p>
-<p>In words: multiply each possible value of (Y) by its probability, then add the results.</p>
+<p><span class="math display">\[
+E(Y) = \sum_y yP(Y=y)
+\]</span></p>
+<p>In words: multiply each possible value of <span class="math inline">\(Y\)</span> by its probability, then add the results.</p>
 <p>The expected value is the probability-weighted center of the distribution.</p>
 <hr>
 </section>
@@ -587,13 +680,23 @@ The CDF gives accumulated area.</p>
 <h2 data-number="9.3" class="anchored" data-anchor-id="expected-value-example-a-die-roll"><span class="header-section-number">9.3</span> Expected Value Example: A Die Roll</h2>
 <p>Suppose we roll a fair six-sided die.</p>
 <p>The possible values are:</p>
-<p>[ 1, 2, 3, 4, 5, 6 ]</p>
+<p><span class="math display">\[
+1, 2, 3, 4, 5, 6
+\]</span></p>
 <p>Each has probability:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\frac{1}{6}
+\]</span></p>
 <p>The expected value is:</p>
-<p>[ E(Y) = 1() + 2() + 3() + 4() + 5() + 6() ]</p>
-<p>[ E(Y) = ]</p>
-<p>[ E(Y) = = 3.5 ]</p>
+<p><span class="math display">\[
+E(Y) = 1\left(\frac{1}{6}\right) + 2\left(\frac{1}{6}\right) + 3\left(\frac{1}{6}\right) + 4\left(\frac{1}{6}\right) + 5\left(\frac{1}{6}\right) + 6\left(\frac{1}{6}\right)
+\]</span></p>
+<p><span class="math display">\[
+E(Y) = \frac{1+2+3+4+5+6}{6}
+\]</span></p>
+<p><span class="math display">\[
+E(Y) = \frac{21}{6} = 3.5
+\]</span></p>
 <p>The expected value of a die roll is 3.5.</p>
 <p>Notice that 3.5 is not a possible die roll. We cannot roll a 3.5. But 3.5 is still the mean of the probability distribution.</p>
 <p>This is an important lesson: an expected value does not have to be an outcome that can actually occur.</p>
@@ -605,8 +708,8 @@ The CDF gives accumulated area.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: right;">(Y)</th>
-<th style="text-align: right;">(P(Y))</th>
+<th style="text-align: right;"><span class="math inline">\(Y\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(P(Y)\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -633,11 +736,19 @@ The CDF gives accumulated area.</p>
 </tbody>
 </table>
 <p>The expected value is:</p>
-<p>[ E(Y) = 1(0.20) + 2(0.25) + 3(0.30) + 4(0.15) + 5(0.10) ]</p>
-<p>[ E(Y) = 0.20 + 0.50 + 0.90 + 0.60 + 0.50 ]</p>
-<p>[ E(Y) = 2.70 ]</p>
+<p><span class="math display">\[
+E(Y) = 1(0.20) + 2(0.25) + 3(0.30) + 4(0.15) + 5(0.10)
+\]</span></p>
+<p><span class="math display">\[
+E(Y) = 0.20 + 0.50 + 0.90 + 0.60 + 0.50
+\]</span></p>
+<p><span class="math display">\[
+E(Y) = 2.70
+\]</span></p>
 <p>So the mean of this probability distribution is:</p>
-<p>[ = 2.70 ]</p>
+<p><span class="math display">\[
+\mu = 2.70
+\]</span></p>
 <p>If we repeatedly draw values from this distribution, the sample mean will converge toward 2.70 as the number of draws increases.</p>
 <p>That is the law of large numbers at work.</p>
 <hr>
@@ -645,37 +756,51 @@ The CDF gives accumulated area.</p>
 <section id="expected-value-for-continuous-variables" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="expected-value-for-continuous-variables"><span class="header-section-number">9.5</span> Expected Value for Continuous Variables</h2>
 <p>For a continuous random variable, the logic is the same, but the notation changes.</p>
-<p>Instead of summing over discrete values, we integrate across the continuous range of (Y):</p>
-<p>[ E(Y) = _{-}^{} y f(y),dy ]</p>
-<p>This expression means: multiply each value of (y) by its density, then add across the entire range of the distribution.</p>
+<p>Instead of summing over discrete values, we integrate across the continuous range of <span class="math inline">\(Y\)</span>:</p>
+<p><span class="math display">\[
+E(Y) = \int_{-\infty}^{\infty} y f(y)\,dy
+\]</span></p>
+<p>This expression means: multiply each value of <span class="math inline">\(y\)</span> by its density, then add across the entire range of the distribution.</p>
 <p>Again, you do not need to calculate this by hand. The important point is conceptual.</p>
 <p>For discrete variables:</p>
-<p>[ E(Y) = _y yP(Y=y) ]</p>
+<p><span class="math display">\[
+E(Y) = \sum_y yP(Y=y)
+\]</span></p>
 <p>For continuous variables:</p>
-<p>[ E(Y) = y f(y),dy ]</p>
+<p><span class="math display">\[
+E(Y) = \int y f(y)\,dy
+\]</span></p>
 <p>Both formulas express the same idea: the expected value is the probability-weighted center of the distribution.</p>
 <hr>
 </section>
 <section id="variance-of-a-probability-distribution" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="variance-of-a-probability-distribution"><span class="header-section-number">9.6</span> Variance of a Probability Distribution</h2>
 <p>The <strong>variance</strong> of a probability distribution describes its spread around the mean.</p>
-<p>For a random variable (Y), the variance is:</p>
-<p>[ Var(Y) = E[(Y-)^2] ]</p>
+<p>For a random variable <span class="math inline">\(Y\)</span>, the variance is:</p>
+<p><span class="math display">\[
+Var(Y) = E[(Y-\mu)^2]
+\]</span></p>
 <p>This means the variance is the expected squared deviation from the mean.</p>
 <p>In words:</p>
 <ol type="1">
-<li>Take each possible value of (Y).</li>
+<li>Take each possible value of <span class="math inline">\(Y\)</span>.</li>
 <li>Measure how far it is from the mean.</li>
 <li>Square that distance.</li>
 <li>Weight by the probability of that value.</li>
 <li>Add across all values.</li>
 </ol>
 <p>For a discrete variable:</p>
-<p>[ Var(Y) = _y (y-)^2P(Y=y) ]</p>
+<p><span class="math display">\[
+Var(Y) = \sum_y (y-\mu)^2P(Y=y)
+\]</span></p>
 <p>For a continuous variable:</p>
-<p>[ Var(Y) = _{-}^{} (y-)^2 f(y),dy ]</p>
+<p><span class="math display">\[
+Var(Y) = \int_{-\infty}^{\infty} (y-\mu)^2 f(y)\,dy
+\]</span></p>
 <p>The standard deviation is the square root of the variance:</p>
-<p>[ = ]</p>
+<p><span class="math display">\[
+\sigma = \sqrt{Var(Y)}
+\]</span></p>
 <p>The main idea is that probability distributions have centers and spreads. Their center is the expected value. Their spread is described by variance and standard deviation.</p>
 <hr>
 </section>
@@ -705,7 +830,7 @@ The CDF gives accumulated area.</p>
 <li><p><strong>There are two possible outcomes.</strong><br>
 Each trial results in either success or failure, heads or tails, yes or no.</p></li>
 <li><p><strong>The probability of success is constant.</strong><br>
-The probability of being in the category of interest is the same for each trial. We represent this probability as ().</p></li>
+The probability of being in the category of interest is the same for each trial. We represent this probability as <span class="math inline">\(\pi\)</span>.</p></li>
 <li><p><strong>The trials are independent.</strong><br>
 The outcome of one trial does not affect the outcome of another.</p></li>
 </ol>
@@ -717,16 +842,26 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>Suppose we toss a fair coin 10 times.</p>
 <p>Let heads be the outcome of interest.</p>
 <p>For each toss:</p>
-<p>[ P(Heads) = 0.5 ]</p>
-<p>[ P(Tails) = 1 - 0.5 = 0.5 ]</p>
+<p><span class="math display">\[
+P(Heads) = 0.5
+\]</span></p>
+<p><span class="math display">\[
+P(Tails) = 1 - 0.5 = 0.5
+\]</span></p>
 <p>The tosses are independent.</p>
 <p>What is the probability of getting 10 heads?</p>
 <p>Because the tosses are independent, we multiply the probabilities:</p>
-<p>[ P(10 ) = 0.5^{10} ]</p>
-<p>[ P(10 ) = 0.00098 ]</p>
+<p><span class="math display">\[
+P(10 \text{ heads}) = 0.5^{10}
+\]</span></p>
+<p><span class="math display">\[
+P(10 \text{ heads}) = 0.00098
+\]</span></p>
 <p>This is a very unlikely outcome.</p>
 <p>Now imagine a political survey. Suppose exactly half the electorate supports Candidate A and half supports Candidate B. If we randomly select 10 voters, the probability that all 10 support Candidate A is also:</p>
-<p>[ 0.5^{10} = 0.00098 ]</p>
+<p><span class="math display">\[
+0.5^{10} = 0.00098
+\]</span></p>
 <p>So if a random sample of 10 voters all support Candidate A, we might begin to doubt the claim that the electorate is evenly split.</p>
 <p>This is the intuition behind statistical inference: we compare what we observe to what would be likely under a hypothesized truth.</p>
 <hr>
@@ -738,43 +873,63 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>What is the probability of getting exactly nine heads in ten tosses?</p>
 </blockquote>
 <p>First, consider one specific ordering:</p>
-<p>[ H,H,H,H,H,H,H,H,H,T ]</p>
+<p><span class="math display">\[
+H,H,H,H,H,H,H,H,H,T
+\]</span></p>
 <p>The probability of that exact sequence is:</p>
-<p>[ 0.5<sup>9(1-0.5)</sup>1 ]</p>
-<p>[ = 0.5<sup>9(0.5)</sup>1 ]</p>
-<p>[ = 0.5^{10} ]</p>
-<p>[ = 0.00098 ]</p>
+<p><span class="math display">\[
+0.5^9(1-0.5)^1
+\]</span></p>
+<p><span class="math display">\[
+= 0.5^9(0.5)^1
+\]</span></p>
+<p><span class="math display">\[
+= 0.5^{10}
+\]</span></p>
+<p><span class="math display">\[
+= 0.00098
+\]</span></p>
 <p>But that is only one possible ordering. The single tail could appear in any of the ten positions.</p>
 <p>There are 10 ways to get exactly nine heads and one tail.</p>
 <p>So:</p>
-<p>[ P(9 ) = 10(0.00098) ]</p>
-<p>[ = 0.0098 ]</p>
+<p><span class="math display">\[
+P(9 \text{ heads in 10 tosses}) = 10(0.00098)
+\]</span></p>
+<p><span class="math display">\[
+= 0.0098
+\]</span></p>
 <p>The binomial formula generalizes this logic.</p>
 <hr>
 </section>
 <section id="the-binomial-formula" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="the-binomial-formula"><span class="header-section-number">10.5</span> The Binomial Formula</h2>
-<p>The binomial distribution gives the probability of getting exactly (x) successes in (n) trials:</p>
-<p>[ P(X=x) = <sup>x(1-)</sup>{n-x} ]</p>
+<p>The binomial distribution gives the probability of getting exactly <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials:</p>
+<p><span class="math display">\[
+P(X=x) = \frac{n!}{x!(n-x)!}\pi^x(1-\pi)^{n-x}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(n) is the number of trials</li>
-<li>(x) is the number of successes</li>
-<li>() is the probability of success on each trial</li>
-<li>(1-) is the probability of failure</li>
-<li>(n!) means (n) factorial</li>
+<li><span class="math inline">\(n\)</span> is the number of trials</li>
+<li><span class="math inline">\(x\)</span> is the number of successes</li>
+<li><span class="math inline">\(\pi\)</span> is the probability of success on each trial</li>
+<li><span class="math inline">\(1-\pi\)</span> is the probability of failure</li>
+<li><span class="math inline">\(n!\)</span> means <span class="math inline">\(n\)</span> factorial</li>
 </ul>
 <p>The formula has two main parts.</p>
 <section id="part-1-number-of-possible-arrangements" class="level3" data-number="10.5.1">
 <h3 data-number="10.5.1" class="anchored" data-anchor-id="part-1-number-of-possible-arrangements"><span class="header-section-number">10.5.1</span> Part 1: Number of Possible Arrangements</h3>
-<p>[ ]</p>
-<p>This counts how many different ways we can arrange (x) successes among (n) trials.</p>
+<p><span class="math display">\[
+\frac{n!}{x!(n-x)!}
+\]</span></p>
+<p>This counts how many different ways we can arrange <span class="math inline">\(x\)</span> successes among <span class="math inline">\(n\)</span> trials.</p>
 </section>
 <section id="part-2-probability-of-one-arrangement" class="level3" data-number="10.5.2">
 <h3 data-number="10.5.2" class="anchored" data-anchor-id="part-2-probability-of-one-arrangement"><span class="header-section-number">10.5.2</span> Part 2: Probability of One Arrangement</h3>
-<p>[ <sup>x(1-)</sup>{n-x} ]</p>
-<p>This gives the probability of any one specific arrangement with (x) successes and (n-x) failures.</p>
-<p>Multiplying these parts gives the total probability of getting exactly (x) successes in any order.</p>
+<p><span class="math display">\[
+\pi^x(1-\pi)^{n-x}
+\]</span></p>
+<p>This gives the probability of any one specific arrangement with <span class="math inline">\(x\)</span> successes and <span class="math inline">\(n-x\)</span> failures.</p>
+<p>Multiplying these parts gives the total probability of getting exactly <span class="math inline">\(x\)</span> successes in any order.</p>
 <hr>
 </section>
 </section>
@@ -782,30 +937,54 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <h2 data-number="10.6" class="anchored" data-anchor-id="factorials"><span class="header-section-number">10.6</span> Factorials</h2>
 <p>A <strong>factorial</strong> is the product of a positive integer and all positive integers below it.</p>
 <p>For example:</p>
-<p>[ 5! = 5 ]</p>
-<p>[ 3! = 3 ]</p>
+<p><span class="math display">\[
+5! = 5 \times 4 \times 3 \times 2 \times 1
+\]</span></p>
+<p><span class="math display">\[
+3! = 3 \times 2 \times 1
+\]</span></p>
 <p>By definition:</p>
-<p>[ 0! = 1 ]</p>
-<p>This matters in binomial calculations. For example, if (x=n), then (n-x=0), and the formula includes (0!). That value is 1.</p>
+<p><span class="math display">\[
+0! = 1
+\]</span></p>
+<p>This matters in binomial calculations. For example, if <span class="math inline">\(x=n\)</span>, then <span class="math inline">\(n-x=0\)</span>, and the formula includes <span class="math inline">\(0!\)</span>. That value is 1.</p>
 <hr>
 </section>
 <section id="binomial-example-nine-heads-in-ten-tosses" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="binomial-example-nine-heads-in-ten-tosses"><span class="header-section-number">10.7</span> Binomial Example: Nine Heads in Ten Tosses</h2>
 <p>Let:</p>
-<p>[ n = 10 ]</p>
-<p>[ x = 9 ]</p>
-<p>[ = 0.5 ]</p>
+<p><span class="math display">\[
+n = 10
+\]</span></p>
+<p><span class="math display">\[
+x = 9
+\]</span></p>
+<p><span class="math display">\[
+\pi = 0.5
+\]</span></p>
 <p>The binomial formula is:</p>
-<p>[ P(X=9) = (0.5)<sup>9(1-0.5)</sup>{10-9} ]</p>
+<p><span class="math display">\[
+P(X=9) = \frac{10!}{9!(10-9)!}(0.5)^9(1-0.5)^{10-9}
+\]</span></p>
 <p>Simplify:</p>
-<p>[ P(X=9) = (0.5)<sup>9(0.5)</sup>1 ]</p>
+<p><span class="math display">\[
+P(X=9) = \frac{10!}{9!1!}(0.5)^9(0.5)^1
+\]</span></p>
 <p>The arrangement part is:</p>
-<p>[ = 10 ]</p>
+<p><span class="math display">\[
+\frac{10!}{9!1!} = 10
+\]</span></p>
 <p>The probability of one arrangement is:</p>
-<p>[ (0.5)<sup>9(0.5)</sup>1 = 0.00098 ]</p>
+<p><span class="math display">\[
+(0.5)^9(0.5)^1 = 0.00098
+\]</span></p>
 <p>So:</p>
-<p>[ P(X=9) = 10(0.00098) ]</p>
-<p>[ P(X=9) = 0.0098 ]</p>
+<p><span class="math display">\[
+P(X=9) = 10(0.00098)
+\]</span></p>
+<p><span class="math display">\[
+P(X=9) = 0.0098
+\]</span></p>
 <p>This matches the intuitive result from earlier.</p>
 <hr>
 </section>
@@ -813,9 +992,13 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <h2 data-number="10.8" class="anchored" data-anchor-id="the-binomial-as-a-probability-distribution"><span class="header-section-number">10.8</span> The Binomial as a Probability Distribution</h2>
 <p>The binomial formula can be used to calculate the probability of every possible number of successes.</p>
 <p>If we toss a coin 10 times, the number of heads can be:</p>
-<p>[ 0,1,2,3,4,5,6,7,8,9,10 ]</p>
-<p>For each value of (x), the binomial formula gives:</p>
-<p>[ P(X=x) ]</p>
+<p><span class="math display">\[
+0,1,2,3,4,5,6,7,8,9,10
+\]</span></p>
+<p>For each value of <span class="math inline">\(x\)</span>, the binomial formula gives:</p>
+<p><span class="math display">\[
+P(X=x)
+\]</span></p>
 <p>Together, these probabilities form a binomial probability distribution.</p>
 <p>For a fair coin tossed 10 times, the distribution is centered at 5 heads, or a sample proportion of 0.5. Getting 5 heads is more likely than getting 0, 1, 9, or 10 heads.</p>
 <p>The distribution is symmetric because heads and tails are equally likely.</p>
@@ -827,17 +1010,25 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <h2 data-number="10.9" class="anchored" data-anchor-id="the-binomial-and-sample-proportions"><span class="header-section-number">10.9</span> The Binomial and Sample Proportions</h2>
 <p>The binomial distribution can also be understood as a distribution of sample proportions.</p>
 <p>Suppose the probability of being in a category is:</p>
-<p>[ = 0.6 ]</p>
+<p><span class="math display">\[
+\pi = 0.6
+\]</span></p>
 <p>and we randomly sample:</p>
-<p>[ n = 1000 ]</p>
+<p><span class="math display">\[
+n = 1000
+\]</span></p>
 <p>cases.</p>
 <p>The expected number of cases in the category is:</p>
-<p>[ n= 1000(0.6) = 600 ]</p>
+<p><span class="math display">\[
+n\pi = 1000(0.6) = 600
+\]</span></p>
 <p>So the expected sample proportion is:</p>
-<p>[ = 0.6 ]</p>
+<p><span class="math display">\[
+\hat{\pi} = 0.6
+\]</span></p>
 <p>But we will not always get exactly 600 out of 1000. We might get 590, 604, 612, or 581. The binomial distribution tells us the probability of each possible count, and therefore the probability of each possible sample proportion.</p>
-<p>As (n) becomes large, the distribution of sample proportions becomes approximately normal. It is centered at the true population proportion ().</p>
-<p>This matters because in real surveys, we do not know (). We observe (), the sample proportion, and use probability theory to assess how close it is likely to be to the true population proportion.</p>
+<p>As <span class="math inline">\(n\)</span> becomes large, the distribution of sample proportions becomes approximately normal. It is centered at the true population proportion <span class="math inline">\(\pi\)</span>.</p>
+<p>This matters because in real surveys, we do not know <span class="math inline">\(\pi\)</span>. We observe <span class="math inline">\(\hat{\pi}\)</span>, the sample proportion, and use probability theory to assess how close it is likely to be to the true population proportion.</p>
 <hr>
 </section>
 </section>
@@ -862,17 +1053,19 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <section id="the-normal-density-function" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="the-normal-density-function"><span class="header-section-number">11.2</span> The Normal Density Function</h2>
 <p>The probability density function for a normal distribution is:</p>
-<p>[ f(y) = e<sup>{-()</sup>2} ]</p>
+<p><span class="math display">\[
+f(y) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{y-\mu}{\sigma}\right)^2}
+\]</span></p>
 <p>You do not need to memorize this formula.</p>
 <p>But it is useful to recognize its components:</p>
 <ul>
-<li>() is the mean</li>
-<li>() is the standard deviation</li>
-<li>() is the mathematical constant 3.14159…</li>
-<li>(e) is the base of the natural exponential function</li>
+<li><span class="math inline">\(\mu\)</span> is the mean</li>
+<li><span class="math inline">\(\sigma\)</span> is the standard deviation</li>
+<li><span class="math inline">\(\pi\)</span> is the mathematical constant 3.14159…</li>
+<li><span class="math inline">\(e\)</span> is the base of the natural exponential function</li>
 </ul>
 <p>This function draws the bell-shaped normal curve.</p>
-<p>A specific normal distribution is determined by choosing values for () and ().</p>
+<p>A specific normal distribution is determined by choosing values for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
 <hr>
 </section>
 <section id="changing-the-mean" class="level2" data-number="11.3">
@@ -880,9 +1073,9 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>If we change the mean while holding the standard deviation constant, the normal curve shifts left or right.</p>
 <p>For example, consider three normal distributions with the same standard deviation but different means:</p>
 <ul>
-<li>(= 68)</li>
-<li>(= 70)</li>
-<li>(= 72)</li>
+<li><span class="math inline">\(\mu = 68\)</span></li>
+<li><span class="math inline">\(\mu = 70\)</span></li>
+<li><span class="math inline">\(\mu = 72\)</span></li>
 </ul>
 <p>Each distribution has the same shape and spread, but each is centered at a different value.</p>
 <p>The mean determines location.</p>
@@ -892,15 +1085,17 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <h2 data-number="11.4" class="anchored" data-anchor-id="changing-the-standard-deviation"><span class="header-section-number">11.4</span> Changing the Standard Deviation</h2>
 <p>If we hold the mean constant but change the standard deviation, the spread of the distribution changes.</p>
 <p>Suppose three normal distributions all have:</p>
-<p>[ = 70 ]</p>
+<p><span class="math display">\[
+\mu = 70
+\]</span></p>
 <p>but different standard deviations:</p>
 <ul>
-<li>(= 0.5)</li>
-<li>(= 1)</li>
-<li>(= 2)</li>
+<li><span class="math inline">\(\sigma = 0.5\)</span></li>
+<li><span class="math inline">\(\sigma = 1\)</span></li>
+<li><span class="math inline">\(\sigma = 2\)</span></li>
 </ul>
-<p>The distribution with (= 0.5) is tightly concentrated around 70.</p>
-<p>The distribution with (= 2) is much more spread out.</p>
+<p>The distribution with <span class="math inline">\(\sigma = 0.5\)</span> is tightly concentrated around 70.</p>
+<p>The distribution with <span class="math inline">\(\sigma = 2\)</span> is much more spread out.</p>
 <p>The standard deviation determines dispersion.</p>
 <hr>
 </section>
@@ -914,9 +1109,15 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <li>99.7 percent of the area lies within about 3 standard deviations of the mean.</li>
 </ul>
 <p>More precisely:</p>
-<p>[ P(- Y + ) ]</p>
-<p>[ P(- 1.96Y + 1.96) ]</p>
-<p>[ P(- 3Y + 3) ]</p>
+<p><span class="math display">\[
+P(\mu - \sigma \leq Y \leq \mu + \sigma) \approx 0.6826
+\]</span></p>
+<p><span class="math display">\[
+P(\mu - 1.96\sigma \leq Y \leq \mu + 1.96\sigma) \approx 0.95
+\]</span></p>
+<p><span class="math display">\[
+P(\mu - 3\sigma \leq Y \leq \mu + 3\sigma) \approx 0.997
+\]</span></p>
 <p>The number 1.96 is especially important because 95 percent of a normal distribution lies between -1.96 and +1.96 standard deviations from the mean.</p>
 <p>That number will appear repeatedly in confidence intervals and hypothesis tests.</p>
 <hr>
@@ -943,22 +1144,28 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>There are infinitely many normal distributions because normal distributions can have different means and standard deviations.</p>
 <p>To make them easier to use, we convert any normal distribution into the <strong>standard normal distribution</strong>.</p>
 <p>The standard normal distribution has:</p>
-<p>[ = 0 ]</p>
+<p><span class="math display">\[
+\mu = 0
+\]</span></p>
 <p>and:</p>
-<p>[ = 1 ]</p>
+<p><span class="math display">\[
+\sigma = 1
+\]</span></p>
 <p>A value on the standard normal distribution is called a <strong>Z-score</strong>.</p>
 <p>A Z-score tells us how many standard deviations a value is from the mean.</p>
 <hr>
 </section>
 <section id="calculating-a-z-score" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="calculating-a-z-score"><span class="header-section-number">12.2</span> Calculating a Z-Score</h2>
-<p>To convert a value (Y) into a Z-score, use:</p>
-<p>[ Z = ]</p>
+<p>To convert a value <span class="math inline">\(Y\)</span> into a Z-score, use:</p>
+<p><span class="math display">\[
+Z = \frac{Y-\mu}{\sigma}
+\]</span></p>
 <p>where:</p>
 <ul>
-<li>(Y) is the original value</li>
-<li>() is the mean</li>
-<li>() is the standard deviation</li>
+<li><span class="math inline">\(Y\)</span> is the original value</li>
+<li><span class="math inline">\(\mu\)</span> is the mean</li>
+<li><span class="math inline">\(\sigma\)</span> is the standard deviation</li>
 </ul>
 <p>The process has two steps:</p>
 <ol type="1">
@@ -977,10 +1184,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>The magnitude tells us how far the value is from the mean in standard deviation units.</p>
 <p>For example:</p>
 <ul>
-<li>(Z = 1.00): one standard deviation above the mean</li>
-<li>(Z = -1.00): one standard deviation below the mean</li>
-<li>(Z = 2.00): two standard deviations above the mean</li>
-<li>(Z = -2.00): two standard deviations below the mean</li>
+<li><span class="math inline">\(Z = 1.00\)</span>: one standard deviation above the mean</li>
+<li><span class="math inline">\(Z = -1.00\)</span>: one standard deviation below the mean</li>
+<li><span class="math inline">\(Z = 2.00\)</span>: two standard deviations above the mean</li>
+<li><span class="math inline">\(Z = -2.00\)</span>: two standard deviations below the mean</li>
 </ul>
 <p>Z-scores are useful because they provide context.</p>
 <p>A test score of 80 may be good or bad depending on the distribution of scores. If the mean is 75 and the standard deviation is 5, then 80 is one standard deviation above the mean.</p>
@@ -991,22 +1198,42 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <section id="z-score-example-exam-scores" class="level2" data-number="12.4">
 <h2 data-number="12.4" class="anchored" data-anchor-id="z-score-example-exam-scores"><span class="header-section-number">12.4</span> Z-Score Example: Exam Scores</h2>
 <p>Suppose exam scores are normally distributed with:</p>
-<p>[ = 75 ]</p>
-<p>[ = 5 ]</p>
+<p><span class="math display">\[
+\mu = 75
+\]</span></p>
+<p><span class="math display">\[
+\sigma = 5
+\]</span></p>
 <p>A student scores:</p>
-<p>[ Y = 80 ]</p>
+<p><span class="math display">\[
+Y = 80
+\]</span></p>
 <p>The Z-score is:</p>
-<p>[ Z = ]</p>
-<p>[ Z = ]</p>
-<p>[ Z = 1.00 ]</p>
+<p><span class="math display">\[
+Z = \frac{80-75}{5}
+\]</span></p>
+<p><span class="math display">\[
+Z = \frac{5}{5}
+\]</span></p>
+<p><span class="math display">\[
+Z = 1.00
+\]</span></p>
 <p>So a score of 80 is one standard deviation above the mean.</p>
 <p>Now consider a score of 65:</p>
-<p>[ Z = ]</p>
-<p>[ Z = ]</p>
-<p>[ Z = -2.00 ]</p>
+<p><span class="math display">\[
+Z = \frac{65-75}{5}
+\]</span></p>
+<p><span class="math display">\[
+Z = \frac{-10}{5}
+\]</span></p>
+<p><span class="math display">\[
+Z = -2.00
+\]</span></p>
 <p>So a score of 65 is two standard deviations below the mean.</p>
 <p>A score of 75 gives:</p>
-<p>[ Z = = 0 ]</p>
+<p><span class="math display">\[
+Z = \frac{75-75}{5} = 0
+\]</span></p>
 <p>So 75 is exactly at the mean.</p>
 <hr>
 </section>
@@ -1014,16 +1241,30 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <h2 data-number="12.5" class="anchored" data-anchor-id="converting-back-from-a-z-score"><span class="header-section-number">12.5</span> Converting Back from a Z-Score</h2>
 <p>We can also convert a Z-score back to the original scale.</p>
 <p>Starting with:</p>
-<p>[ Z = ]</p>
-<p>solve for (Y):</p>
-<p>[ Y = Z+ ]</p>
+<p><span class="math display">\[
+Z = \frac{Y-\mu}{\sigma}
+\]</span></p>
+<p>solve for <span class="math inline">\(Y\)</span>:</p>
+<p><span class="math display">\[
+Y = Z\sigma + \mu
+\]</span></p>
 <p>For example, suppose:</p>
-<p>[ Z = 2 ]</p>
-<p>[ = 75 ]</p>
-<p>[ = 5 ]</p>
+<p><span class="math display">\[
+Z = 2
+\]</span></p>
+<p><span class="math display">\[
+\mu = 75
+\]</span></p>
+<p><span class="math display">\[
+\sigma = 5
+\]</span></p>
 <p>Then:</p>
-<p>[ Y = 2(5) + 75 ]</p>
-<p>[ Y = 85 ]</p>
+<p><span class="math display">\[
+Y = 2(5) + 75
+\]</span></p>
+<p><span class="math display">\[
+Y = 85
+\]</span></p>
 <p>A Z-score of 2 corresponds to an exam score of 85.</p>
 <hr>
 </section>
@@ -1038,11 +1279,17 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>What is the probability that a normally distributed variable is more than two standard deviations above the mean?</p>
 </blockquote>
 <p>On the standard normal scale, two standard deviations above the mean is:</p>
-<p>[ Z = 2.00 ]</p>
+<p><span class="math display">\[
+Z = 2.00
+\]</span></p>
 <p>So we want:</p>
-<p>[ P(Z &gt; 2.00) ]</p>
+<p><span class="math display">\[
+P(Z &gt; 2.00)
+\]</span></p>
 <p>Using a Z-table that reports upper-tail probabilities:</p>
-<p>[ P(Z &gt; 2.00) = 0.0228 ]</p>
+<p><span class="math display">\[
+P(Z &gt; 2.00) = 0.0228
+\]</span></p>
 <p>That means there is a 2.28 percent chance that a normally distributed variable falls more than two standard deviations above the mean.</p>
 <hr>
 </section>
@@ -1050,44 +1297,72 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <h2 data-number="13.2" class="anchored" data-anchor-id="symmetry"><span class="header-section-number">13.2</span> Symmetry</h2>
 <p>The standard normal distribution is symmetric.</p>
 <p>Therefore:</p>
-<p>[ P(Z &gt; 1.00) = P(Z &lt; -1.00) ]</p>
+<p><span class="math display">\[
+P(Z &gt; 1.00) = P(Z &lt; -1.00)
+\]</span></p>
 <p>and:</p>
-<p>[ P(Z &gt; 2.00) = P(Z &lt; -2.00) ]</p>
+<p><span class="math display">\[
+P(Z &gt; 2.00) = P(Z &lt; -2.00)
+\]</span></p>
 <p>If a table gives area above positive Z-scores, we can use symmetry to find areas below negative Z-scores.</p>
 <p>For example:</p>
-<p>[ P(Z &gt; 1.00) = 0.1587 ]</p>
+<p><span class="math display">\[
+P(Z &gt; 1.00) = 0.1587
+\]</span></p>
 <p>Therefore:</p>
-<p>[ P(Z &lt; -1.00) = 0.1587 ]</p>
+<p><span class="math display">\[
+P(Z &lt; -1.00) = 0.1587
+\]</span></p>
 <hr>
 </section>
 <section id="complement-rule-with-the-z-table" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="complement-rule-with-the-z-table"><span class="header-section-number">13.3</span> Complement Rule with the Z-Table</h2>
 <p>If the table gives area above a Z-score, then area below that Z-score is found using the complement rule.</p>
 <p>For example:</p>
-<p>[ P(Z &gt; 1.00) = 0.1587 ]</p>
+<p><span class="math display">\[
+P(Z &gt; 1.00) = 0.1587
+\]</span></p>
 <p>So:</p>
-<p>[ P(Z ) = 1 - 0.1587 ]</p>
-<p>[ P(Z ) = 0.8413 ]</p>
-<p>The probability of being at exactly (Z = 1.00) is zero because the normal distribution is continuous. So we do not need to worry much about whether the inequality is (&lt;), (), (&gt;), or () in ordinary area calculations.</p>
+<p><span class="math display">\[
+P(Z \leq 1.00) = 1 - 0.1587
+\]</span></p>
+<p><span class="math display">\[
+P(Z \leq 1.00) = 0.8413
+\]</span></p>
+<p>The probability of being at exactly <span class="math inline">\(Z = 1.00\)</span> is zero because the normal distribution is continuous. So we do not need to worry much about whether the inequality is <span class="math inline">\(&lt;\)</span>, <span class="math inline">\(\leq\)</span>, <span class="math inline">\(&gt;\)</span>, or <span class="math inline">\(\geq\)</span> in ordinary area calculations.</p>
 <p>In hypothesis testing, however, crossing a threshold can matter. We will return to that later.</p>
 <hr>
 </section>
 <section id="area-between-two-z-scores" class="level2" data-number="13.4">
 <h2 data-number="13.4" class="anchored" data-anchor-id="area-between-two-z-scores"><span class="header-section-number">13.4</span> Area Between Two Z-Scores</h2>
 <p>Suppose we want the area between:</p>
-<p>[ Z = -1.00 ]</p>
+<p><span class="math display">\[
+Z = -1.00
+\]</span></p>
 <p>and:</p>
-<p>[ Z = 1.00 ]</p>
+<p><span class="math display">\[
+Z = 1.00
+\]</span></p>
 <p>We know:</p>
-<p>[ P(Z &lt; -1.00) = 0.1587 ]</p>
+<p><span class="math display">\[
+P(Z &lt; -1.00) = 0.1587
+\]</span></p>
 <p>and:</p>
-<p>[ P(Z &gt; 1.00) = 0.1587 ]</p>
+<p><span class="math display">\[
+P(Z &gt; 1.00) = 0.1587
+\]</span></p>
 <p>The total area outside the interval is:</p>
-<p>[ 0.1587 + 0.1587 = 0.3174 ]</p>
+<p><span class="math display">\[
+0.1587 + 0.1587 = 0.3174
+\]</span></p>
 <p>So the area inside the interval is:</p>
-<p>[ 1 - 0.3174 = 0.6826 ]</p>
+<p><span class="math display">\[
+1 - 0.3174 = 0.6826
+\]</span></p>
 <p>Thus:</p>
-<p>[ P(-1.00 Z ) = 0.6826 ]</p>
+<p><span class="math display">\[
+P(-1.00 \leq Z \leq 1.00) = 0.6826
+\]</span></p>
 <p>This is the familiar 68.26 percent within one standard deviation of the mean.</p>
 <hr>
 </section>
@@ -1104,7 +1379,9 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 </blockquote>
 <p>Using a Z-table, we search for the table value closest to 0.40. The closest values may fall between two Z-scores, such as 0.25 and 0.26.</p>
 <p>In that case, we can say the Z-score is approximately between:</p>
-<p>[ 0.25 0.26 ]</p>
+<p><span class="math display">\[
+0.25 \text{ and } 0.26
+\]</span></p>
 <p>Tables are sometimes imprecise because they report only certain decimal places. Software can calculate more precise values, but tables are useful for understanding the logic.</p>
 <hr>
 </section>
@@ -1131,27 +1408,41 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <section id="sampling-distribution-of-the-mean" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="sampling-distribution-of-the-mean"><span class="header-section-number">14.2</span> Sampling Distribution of the Mean</h2>
 <p>Suppose we have a population of student debt values. The true population mean is:</p>
-<p>[ = 23{,}708 ]</p>
+<p><span class="math display">\[
+\mu = 23{,}708
+\]</span></p>
 <p>and the true population standard deviation is:</p>
-<p>[ = 5{,}918 ]</p>
+<p><span class="math display">\[
+\sigma = 5{,}918
+\]</span></p>
 <p>Now imagine drawing a random sample of 100 students and calculating the sample mean:</p>
-<p>[ {X} ]</p>
+<p><span class="math display">\[
+\bar{X}
+\]</span></p>
 <p>One sample might produce:</p>
-<p>[ {X} = 22{,}705 ]</p>
+<p><span class="math display">\[
+\bar{X} = 22{,}705
+\]</span></p>
 <p>Another sample might produce:</p>
-<p>[ {X} = 24{,}100 ]</p>
+<p><span class="math display">\[
+\bar{X} = 24{,}100
+\]</span></p>
 <p>Another might produce:</p>
-<p>[ {X} = 23{,}690 ]</p>
+<p><span class="math display">\[
+\bar{X} = 23{,}690
+\]</span></p>
 <p>Each sample gives a different sample mean.</p>
 <p>If we repeatedly drew many samples of size 100 and plotted all the sample means, we would see a distribution of sample means.</p>
 <p>That distribution would be centered near the true population mean.</p>
-<p>This distribution is the sampling distribution of ({X}).</p>
+<p>This distribution is the sampling distribution of <span class="math inline">\(\bar{X}\)</span>.</p>
 <hr>
 </section>
 <section id="standard-error" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">14.3</span> Standard Error</h2>
 <p>The standard deviation of a sampling distribution has a special name:</p>
-<p>[ ]</p>
+<p><span class="math display">\[
+\text{standard error}
+\]</span></p>
 <p>The standard error tells us how much a sample statistic typically varies from the population parameter.</p>
 <p>For a sample mean, the standard error describes the typical distance between a sample mean and the true population mean.</p>
 <p>This connects directly to the logic of standard deviation:</p>
@@ -1212,7 +1503,7 @@ The square root of the variance.</p>
 <p><strong>Binomial distribution</strong><br>
 A discrete probability distribution describing the number of successes in a fixed number of independent trials with two possible outcomes.</p>
 <p><strong>Factorial</strong><br>
-The product of a positive integer and all positive integers below it; for example, (5! = 5 ).</p>
+The product of a positive integer and all positive integers below it; for example, <span class="math inline">\(5! = 5 \times 4 \times 3 \times 2 \times 1\)</span>.</p>
 <p><strong>Normal distribution</strong><br>
 A symmetric, bell-shaped probability distribution defined by its mean and standard deviation.</p>
 <p><strong>Standard normal distribution</strong><br>
@@ -1233,7 +1524,7 @@ The theorem stating that, under appropriate conditions, the sampling distributio
 <h1 data-number="16"><span class="header-section-number">16</span> Chapter Summary</h1>
 <p>Probability distributions describe how random variables behave. For discrete variables, probabilities are assigned to specific values. For continuous variables, probabilities are represented by area under a curve over intervals.</p>
 <p>The expected value of a probability distribution is its mean. It is the probability-weighted center of the distribution. The variance and standard deviation describe the distribution’s spread.</p>
-<p>The binomial distribution applies to repeated independent trials with two possible outcomes. It tells us the probability of getting exactly (x) successes in (n) trials. It is especially useful for understanding sample proportions.</p>
+<p>The binomial distribution applies to repeated independent trials with two possible outcomes. It tells us the probability of getting exactly <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials. It is especially useful for understanding sample proportions.</p>
 <p>The normal distribution is a symmetric, bell-shaped distribution defined by its mean and standard deviation. All normal distributions share common area properties: about 68 percent of the area lies within one standard deviation of the mean, about 95 percent within 1.96 standard deviations, and almost all within three standard deviations.</p>
 <p>The standard normal distribution converts any normal variable into Z-scores, which measure distance from the mean in standard deviation units. Z-tables allow us to find probabilities by identifying area under the standard normal curve.</p>
 <p>The most important connection is to sampling distributions. Sample statistics are random variables because they depend on random samples. Their probability distributions allow us to assess how much random error to expect. This is the foundation for confidence intervals, hypothesis testing, and statistical inference.</p>

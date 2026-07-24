@@ -28,15 +28,15 @@ A causal relationship exists when changes in one variable produce changes in ano
 
 Suppose we have two variables:
 
-\[
+$$
 X \rightarrow Y
-\]
+$$
 
-The arrow indicates that \(X\) causes \(Y\), or that changes in \(X\) lead to changes in \(Y\).
+The arrow indicates that $X$ causes $Y$, or that changes in $X$ lead to changes in $Y$.
 
-In this framework, \(Y\) is the **dependent variable**. It is the outcome we care about. Its value depends, at least in part, on another variable.
+In this framework, $Y$ is the **dependent variable**. It is the outcome we care about. Its value depends, at least in part, on another variable.
 
-\(X\) is the **independent variable**. It is the variable we think may be doing the causing. It is the predictor, treatment, intervention, or explanatory variable.
+$X$ is the **independent variable**. It is the variable we think may be doing the causing. It is the predictor, treatment, intervention, or explanatory variable.
 
 For example:
 
@@ -46,7 +46,7 @@ For example:
 - Class size may affect student test scores.
 - Exposure to lead may affect child development.
 
-In each case, we are interested in whether changes in \(X\) produce changes in \(Y\).
+In each case, we are interested in whether changes in $X$ produce changes in $Y$.
 
 Researchers often ask:
 
@@ -70,29 +70,29 @@ This means:
 
 For a causal relationship to exist, three basic conditions must hold.
 
-### 1. Covariation
+### Covariation
 
 The independent variable and dependent variable must move together.
 
-If \(X\) changes but \(Y\) never changes, then \(X\) cannot be causing \(Y\).
+If $X$ changes but $Y$ never changes, then $X$ cannot be causing $Y$.
 
 For example, if a new education program is introduced but test scores remain exactly the same for everyone, there is no evidence that the program affected test scores.
 
 Covariation does not prove causation, but causation requires covariation.
 
-### 2. Temporal Ordering
+### Temporal Ordering
 
 The cause must come before the effect.
 
-If \(X\) causes \(Y\), then \(X\) must occur or change before \(Y\) changes.
+If $X$ causes $Y$, then $X$ must occur or change before $Y$ changes.
 
 For example, if we argue that a vaccine education program affects later vaccination behavior, the education program must occur before the vaccination decision.
 
-If \(Y\) changes before \(X\), then \(X\) cannot be the cause of that change in \(Y\).
+If $Y$ changes before $X$, then $X$ cannot be the cause of that change in $Y$.
 
-### 3. Elimination of Alternative Explanations
+### Elimination of Alternative Explanations
 
-There must not be another variable that explains the relationship between \(X\) and \(Y\).
+There must not be another variable that explains the relationship between $X$ and $Y$.
 
 This is often the hardest condition to satisfy.
 
@@ -142,7 +142,7 @@ The relationship between strings and floating is spurious. Helium causes both:
 
 The child observed a real association but misunderstood the causal mechanism.
 
-This is a simple example, but the same logic appears constantly in social science and policy analysis. We may observe a relationship between \(X\) and \(Y\), but a third factor \(Z\) may be responsible for the apparent association.
+This is a simple example, but the same logic appears constantly in social science and policy analysis. We may observe a relationship between $X$ and $Y$, but a third factor $Z$ may be responsible for the apparent association.
 
 ---
 
@@ -152,15 +152,15 @@ Sometimes the causal direction may be reversed.
 
 We may think:
 
-\[
+$$
 X \rightarrow Y
-\]
+$$
 
 but in reality:
 
-\[
+$$
 Y \rightarrow X
-\]
+$$
 
 For example, suppose we observe that people who visit doctors more often are less healthy. Does visiting the doctor make people sick? Probably not. More likely, being sick causes people to visit doctors more often.
 
@@ -192,11 +192,11 @@ This example illustrates why causal inference is difficult. We cannot simply com
 
 A **confounding factor** is a variable that affects the outcome and is also related to the independent variable.
 
-Confounders make it difficult to isolate the causal effect of \(X\) on \(Y\).
+Confounders make it difficult to isolate the causal effect of $X$ on $Y$.
 
 To address confounding, researchers try to **control for** other factors.
 
-To control for a variable means to compare cases that are similar on that variable. If we hold a third factor constant and still observe a relationship between \(X\) and \(Y\), then that third factor cannot fully explain the relationship.
+To control for a variable means to compare cases that are similar on that variable. If we hold a third factor constant and still observe a relationship between $X$ and $Y$, then that third factor cannot fully explain the relationship.
 
 For example, suppose we want to know whether education affects income. Age may be a confounder because older people tend to have more education and also more work experience. If we compare people with different levels of education but similar ages, we are controlling for age.
 
@@ -210,7 +210,7 @@ This is one reason experiments are so powerful.
 
 Statistical evidence is more persuasive when paired with a strong theory.
 
-A **causal mechanism** explains how or why \(X\) affects \(Y\).
+A **causal mechanism** explains how or why $X$ affects $Y$.
 
 For example, if we claim that a vaccine education program increases vaccination rates, we should be able to explain the mechanism:
 
@@ -257,7 +257,7 @@ Experiments help satisfy the three conditions for causality.
 
 ### Covariation
 
-We can compare outcomes between treated and untreated groups to see whether \(Y\) differs when \(X\) differs.
+We can compare outcomes between treated and untreated groups to see whether $Y$ differs when $X$ differs.
 
 ### Temporal Ordering
 
@@ -345,35 +345,35 @@ Once the experiment has already occurred, imbalance becomes harder to fix. Resea
 
 The **potential outcomes framework** provides a formal way to think about causal effects.
 
-For each person or case \(i\), there are two potential outcomes:
+For each person or case $i$, there are two potential outcomes:
 
-\[
+$$
 Y_i(1)
-\]
+$$
 
 and:
 
-\[
+$$
 Y_i(0)
-\]
+$$
 
 where:
 
-- \(Y_i(1)\) is the outcome for case \(i\) if treated.
-- \(Y_i(0)\) is the outcome for case \(i\) if not treated.
+- $Y_i(1)$ is the outcome for case $i$ if treated.
+- $Y_i(0)$ is the outcome for case $i$ if not treated.
 
 For example, suppose the outcome is employment after a job training program.
 
 For each person:
 
-- \(Y_i(1)\): employment outcome if the person receives training
-- \(Y_i(0)\): employment outcome if the person does not receive training
+- $Y_i(1)$: employment outcome if the person receives training
+- $Y_i(0)$: employment outcome if the person does not receive training
 
 The individual treatment effect is:
 
-\[
+$$
 Y_i(1) - Y_i(0)
-\]
+$$
 
 This is the causal effect of treatment for that individual.
 
@@ -387,27 +387,27 @@ A person either receives the treatment or does not.
 
 If a person receives treatment, we observe:
 
-\[
+$$
 Y_i(1)
-\]
+$$
 
 but we do not observe:
 
-\[
+$$
 Y_i(0)
-\]
+$$
 
 If a person does not receive treatment, we observe:
 
-\[
+$$
 Y_i(0)
-\]
+$$
 
 but we do not observe:
 
-\[
+$$
 Y_i(1)
-\]
+$$
 
 The missing potential outcome is the **counterfactual**.
 
@@ -423,23 +423,23 @@ Because we cannot observe individual treatment effects directly, we often estima
 
 The **average treatment effect**, or ATE, is:
 
-\[
+$$
 ATE = E[Y(1) - Y(0)]
-\]
+$$
 
 This is the expected difference between outcomes under treatment and outcomes under control.
 
 Equivalently, under random assignment:
 
-\[
+$$
 ATE = E[Y(1)] - E[Y(0)]
-\]
+$$
 
 Randomization allows us to estimate this using observed group means:
 
-\[
+$$
 \widehat{ATE} = \bar{Y}_{treatment} - \bar{Y}_{control}
-\]
+$$
 
 That is, we compare the mean outcome in the treatment group to the mean outcome in the control group.
 
@@ -467,40 +467,40 @@ This is the logic behind experimental causal inference.
 
 The simplest way to estimate an experimental treatment effect is a difference of means:
 
-\[
+$$
 \bar{Y}_T - \bar{Y}_C
-\]
+$$
 
 where:
 
-- \(\bar{Y}_T\) is the mean outcome in the treatment group
-- \(\bar{Y}_C\) is the mean outcome in the control group
+- $\bar{Y}_T$ is the mean outcome in the treatment group
+- $\bar{Y}_C$ is the mean outcome in the control group
 
 The null hypothesis is usually:
 
-\[
+$$
 H_0: \mu_T - \mu_C = 0
-\]
+$$
 
 That is, the treatment has no effect.
 
 The alternative hypothesis is:
 
-\[
+$$
 H_A: \mu_T - \mu_C \neq 0
-\]
+$$
 
 or, in a directional test:
 
-\[
+$$
 H_A: \mu_T - \mu_C > 0
-\]
+$$
 
 or:
 
-\[
+$$
 H_A: \mu_T - \mu_C < 0
-\]
+$$
 
 The statistical question becomes:
 
@@ -827,26 +827,26 @@ To evaluate causal effects, we often compare mean outcomes across groups.
 
 For example:
 
-\[
+$$
 \bar{Y}_T - \bar{Y}_C
-\]
+$$
 
 where:
 
-- \(\bar{Y}_T\) is the mean outcome in the treatment group
-- \(\bar{Y}_C\) is the mean outcome in the control group
+- $\bar{Y}_T$ is the mean outcome in the treatment group
+- $\bar{Y}_C$ is the mean outcome in the control group
 
 If the treatment has no effect, we expect:
 
-\[
+$$
 \mu_T - \mu_C = 0
-\]
+$$
 
 So the null hypothesis is:
 
-\[
+$$
 H_0: \mu_T - \mu_C = 0
-\]
+$$
 
 If the observed difference in sample means is large relative to its standard error, we may reject the null hypothesis.
 
@@ -867,21 +867,21 @@ For example:
 
 Then we compare proportions:
 
-\[
+$$
 \hat{\pi}_T - \hat{\pi}_C
-\]
+$$
 
 The null hypothesis is:
 
-\[
+$$
 H_0: \pi_T - \pi_C = 0
-\]
+$$
 
 or:
 
-\[
+$$
 H_0: \pi_T = \pi_C
-\]
+$$
 
 If the difference in sample proportions is large relative to its standard error, we may reject the null hypothesis.
 

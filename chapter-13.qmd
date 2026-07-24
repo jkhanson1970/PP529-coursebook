@@ -17,7 +17,7 @@ For example, we might ask:
 
 Correlation analysis measures the **strength** and **direction** of the relationship between two interval-level variables.
 
-The main statistic we use is **Pearson’s correlation coefficient**, usually written as \(r\). Pearson’s \(r\) measures the degree to which two variables have a **linear relationship**.
+The main statistic we use is **Pearson’s correlation coefficient**, usually written as $r$. Pearson’s $r$ measures the degree to which two variables have a **linear relationship**.
 
 The central idea is simple:
 
@@ -62,14 +62,14 @@ Because interval-level variables can take many values, we usually do not create 
 
 A **scatterplot** displays the relationship between two quantitative variables.
 
-One variable is placed on the horizontal axis, usually called \(X\). The other is placed on the vertical axis, usually called \(Y\).
+One variable is placed on the horizontal axis, usually called $X$. The other is placed on the vertical axis, usually called $Y$.
 
 Each point represents one case.
 
 For example, if we are studying countries:
 
-- \(X\): democracy score
-- \(Y\): life expectancy
+- $X$: democracy score
+- $Y$: life expectancy
 
 Each dot on the scatterplot is a country.
 
@@ -122,49 +122,49 @@ If the points are widely scattered, the relationship is weak.
 
 # Part II: Pearson’s Correlation Coefficient
 
-## Pearson’s \(r\)
+## Pearson’s $r$
 
 The most common measure of correlation is **Pearson’s correlation coefficient**, written:
 
-\[
+$$
 r
-\]
+$$
 
-Pearson’s \(r\) measures the strength and direction of a linear relationship between two variables.
+Pearson’s $r$ measures the strength and direction of a linear relationship between two variables.
 
 It ranges from:
 
-\[
+$$
 -1 \leq r \leq 1
-\]
+$$
 
 The interpretation is:
 
-| Value of \(r\) | Interpretation |
+| Value of $r$ | Interpretation |
 |---:|---|
-| \(r = 1\) | Perfect positive linear relationship |
-| \(r = 0\) | No linear relationship |
-| \(r = -1\) | Perfect negative linear relationship |
+| $r = 1$ | Perfect positive linear relationship |
+| $r = 0$ | No linear relationship |
+| $r = -1$ | Perfect negative linear relationship |
 
 Values between these extremes indicate weaker or stronger relationships.
 
 For example:
 
-- \(r = 0.80\): strong positive linear relationship
-- \(r = 0.30\): weak-to-moderate positive linear relationship
-- \(r = -0.60\): moderately strong negative linear relationship
-- \(r = -0.05\): very weak negative linear relationship
-- \(r = 0.00\): no linear relationship
+- $r = 0.80$: strong positive linear relationship
+- $r = 0.30$: weak-to-moderate positive linear relationship
+- $r = -0.60$: moderately strong negative linear relationship
+- $r = -0.05$: very weak negative linear relationship
+- $r = 0.00$: no linear relationship
 
-The closer \(r\) is to 1 or -1, the stronger the linear relationship.
+The closer $r$ is to 1 or -1, the stronger the linear relationship.
 
-The closer \(r\) is to 0, the weaker the linear relationship.
+The closer $r$ is to 0, the weaker the linear relationship.
 
 ---
 
 ## Positive Correlation
 
-A positive correlation means that higher values of \(X\) tend to be associated with higher values of \(Y\).
+A positive correlation means that higher values of $X$ tend to be associated with higher values of $Y$.
 
 In a scatterplot, the points tend to slope upward from left to right.
 
@@ -172,9 +172,9 @@ For example, suppose countries with higher democracy scores tend to have higher 
 
 A perfect positive correlation would mean all points fall exactly on an upward-sloping line:
 
-\[
+$$
 r = 1
-\]
+$$
 
 In real data, perfect correlation is rare. Social data are wonderfully messy, because humans insist on being complicated.
 
@@ -182,7 +182,7 @@ In real data, perfect correlation is rare. Social data are wonderfully messy, be
 
 ## Negative Correlation
 
-A negative correlation means that higher values of \(X\) tend to be associated with lower values of \(Y\).
+A negative correlation means that higher values of $X$ tend to be associated with lower values of $Y$.
 
 In a scatterplot, the points tend to slope downward from left to right.
 
@@ -190,9 +190,9 @@ For example, suppose countries with higher unionization rates tend to have lower
 
 A perfect negative correlation would mean all points fall exactly on a downward-sloping line:
 
-\[
+$$
 r = -1
-\]
+$$
 
 Again, perfect negative correlation is rare in social science data.
 
@@ -200,7 +200,7 @@ Again, perfect negative correlation is rare in social science data.
 
 ## No Linear Correlation
 
-If \(r\) is close to 0, the variables have little or no linear relationship.
+If $r$ is close to 0, the variables have little or no linear relationship.
 
 A scatterplot with no linear correlation may look like a random cloud of points.
 
@@ -210,37 +210,37 @@ However, this is an important caution:
 
 Two variables can be related in a nonlinear way.
 
-For example, suppose the relationship between age and happiness is U-shaped: happiness is higher among young adults, lower in middle age, and higher again later in life. Pearson’s \(r\) might be close to zero because the positive and negative parts of the relationship cancel out, even though a real nonlinear relationship exists.
+For example, suppose the relationship between age and happiness is U-shaped: happiness is higher among young adults, lower in middle age, and higher again later in life. Pearson’s $r$ might be close to zero because the positive and negative parts of the relationship cancel out, even though a real nonlinear relationship exists.
 
-Pearson’s \(r\) measures linearity. It does not detect every kind of relationship.
+Pearson’s $r$ measures linearity. It does not detect every kind of relationship.
 
 ---
 
-# Part III: Interpreting Pearson’s \(r\)
+# Part III: Interpreting Pearson’s $r$
 
 ## Magnitude and Direction
 
 Suppose we calculate:
 
-\[
+$$
 r = 0.77
-\]
+$$
 
 This indicates a strong positive linear relationship.
 
 Suppose instead:
 
-\[
+$$
 r = -0.60
-\]
+$$
 
 This indicates a moderately strong negative linear relationship.
 
 Suppose:
 
-\[
+$$
 r = -0.01
-\]
+$$
 
 This indicates essentially no linear relationship.
 
@@ -250,15 +250,15 @@ The absolute value tells us strength.
 
 So:
 
-\[
+$$
 r = -0.80
-\]
+$$
 
 is stronger than:
 
-\[
+$$
 r = 0.30
-\]
+$$
 
 even though one is negative and one is positive.
 
@@ -266,7 +266,7 @@ even though one is negative and one is positive.
 
 ## Correlation Does Not Measure Slope
 
-Pearson’s \(r\) does not tell us how much \(Y\) changes when \(X\) changes.
+Pearson’s $r$ does not tell us how much $Y$ changes when $X$ changes.
 
 It tells us how closely the data fit a straight line.
 
@@ -274,12 +274,12 @@ A correlation of 1 can occur for any positive slope, as long as the points fall 
 
 For example, both of these could have:
 
-\[
+$$
 r = 1
-\]
+$$
 
-- a line where \(Y\) increases by 1 for every 1-unit increase in \(X\)
-- a line where \(Y\) increases by 100 for every 1-unit increase in \(X\)
+- a line where $Y$ increases by 1 for every 1-unit increase in $X$
+- a line where $Y$ increases by 100 for every 1-unit increase in $X$
 
 Correlation tells us linear strength and direction, not the magnitude of the change.
 
@@ -293,8 +293,8 @@ Correlation does not establish causation.
 
 If two variables are correlated, several possibilities remain:
 
-- \(X\) causes \(Y\)
-- \(Y\) causes \(X\)
+- $X$ causes $Y$
+- $Y$ causes $X$
 - a third variable causes both
 - the relationship is spurious
 - the relationship reflects selection effects
@@ -307,13 +307,13 @@ Correlation is useful for describing relationships. It is not enough to prove ca
 
 ---
 
-# Part IV: How Pearson’s \(r\) Works
+# Part IV: How Pearson’s $r$ Works
 
 ## The Logic of the Formula
 
-The formula for Pearson’s \(r\) is:
+The formula for Pearson’s $r$ is:
 
-\[
+$$
 r =
 \frac{
 \sum (X_i-\bar{X})(Y_i-\bar{Y})
@@ -324,7 +324,7 @@ r =
 \sum (Y_i-\bar{Y})^2
 }
 }
-\]
+$$
 
 You do not need to memorize or calculate this formula by hand.
 
@@ -332,15 +332,15 @@ But understanding the logic helps.
 
 The numerator measures **covariation**.
 
-The denominator rescales that covariation by the total variation in \(X\) and \(Y\).
+The denominator rescales that covariation by the total variation in $X$ and $Y$.
 
 In rough terms:
 
-\[
+$$
 r \approx
 \frac{\text{covariation of } X \text{ and } Y}
 {\text{total variation in } X \text{ and } Y}
-\]
+$$
 
 The result is a standardized measure bounded between -1 and 1.
 
@@ -348,43 +348,43 @@ The result is a standardized measure bounded between -1 and 1.
 
 ## Deviations from the Mean
 
-The formula asks whether \(X\) and \(Y\) tend to be above or below their means at the same time.
+The formula asks whether $X$ and $Y$ tend to be above or below their means at the same time.
 
 For each case, we calculate:
 
-\[
+$$
 X_i - \bar{X}
-\]
+$$
 
 and:
 
-\[
+$$
 Y_i - \bar{Y}
-\]
+$$
 
 These are deviations from the mean.
 
-If \(X_i\) is above its mean, then:
+If $X_i$ is above its mean, then:
 
-\[
+$$
 X_i-\bar{X} > 0
-\]
+$$
 
-If \(X_i\) is below its mean, then:
+If $X_i$ is below its mean, then:
 
-\[
+$$
 X_i-\bar{X} < 0
-\]
+$$
 
-The same logic applies to \(Y\).
+The same logic applies to $Y$.
 
 The key is the product:
 
-\[
+$$
 (X_i-\bar{X})(Y_i-\bar{Y})
-\]
+$$
 
-This product is positive when \(X\) and \(Y\) are on the same side of their means.
+This product is positive when $X$ and $Y$ are on the same side of their means.
 
 It is negative when they are on opposite sides.
 
@@ -394,22 +394,22 @@ It is negative when they are on opposite sides.
 
 A case contributes positive evidence for correlation when:
 
-1. \(X\) is above its mean and \(Y\) is above its mean.
-2. \(X\) is below its mean and \(Y\) is below its mean.
+1. $X$ is above its mean and $Y$ is above its mean.
+2. $X$ is below its mean and $Y$ is below its mean.
 
 In the first case:
 
-\[
+$$
 (+)(+) = +
-\]
+$$
 
 In the second case:
 
-\[
+$$
 (-)(-) = +
-\]
+$$
 
-These cases suggest that \(X\) and \(Y\) move together.
+These cases suggest that $X$ and $Y$ move together.
 
 ---
 
@@ -417,22 +417,22 @@ These cases suggest that \(X\) and \(Y\) move together.
 
 A case contributes negative evidence for correlation when:
 
-1. \(X\) is above its mean and \(Y\) is below its mean.
-2. \(X\) is below its mean and \(Y\) is above its mean.
+1. $X$ is above its mean and $Y$ is below its mean.
+2. $X$ is below its mean and $Y$ is above its mean.
 
 In the first case:
 
-\[
+$$
 (+)(-) = -
-\]
+$$
 
 In the second case:
 
-\[
+$$
 (-)(+) = -
-\]
+$$
 
-These cases suggest that \(X\) and \(Y\) move in opposite directions.
+These cases suggest that $X$ and $Y$ move in opposite directions.
 
 ---
 
@@ -440,7 +440,7 @@ These cases suggest that \(X\) and \(Y\) move in opposite directions.
 
 Suppose we have four cases:
 
-| Case | \(X\) | \(Y\) |
+| Case | $X$ | $Y$ |
 |---:|---:|---:|
 | 1 | 6 | 8 |
 | 2 | 3 | 7 |
@@ -449,19 +449,19 @@ Suppose we have four cases:
 
 Suppose:
 
-\[
+$$
 \bar{X} = 4
-\]
+$$
 
 and:
 
-\[
+$$
 \bar{Y} = 6
-\]
+$$
 
 Now calculate deviations:
 
-| Case | \(X-\bar{X}\) | \(Y-\bar{Y}\) | Product |
+| Case | $X-\bar{X}$ | $Y-\bar{Y}$ | Product |
 |---:|---:|---:|---:|
 | 1 | 2 | 2 | 4 |
 | 2 | -1 | 1 | -1 |
@@ -470,13 +470,13 @@ Now calculate deviations:
 
 The products sum to:
 
-\[
+$$
 4 + (-1) + 0 + 1 = 4
-\]
+$$
 
 The sum is positive, meaning the overall covariation is positive.
 
-This suggests a positive correlation between \(X\) and \(Y\).
+This suggests a positive correlation between $X$ and $Y$.
 
 ---
 
@@ -484,30 +484,30 @@ This suggests a positive correlation between \(X\) and \(Y\).
 
 A scatterplot can help us visualize the same logic.
 
-Draw a vertical line at \(\bar{X}\) and a horizontal line at \(\bar{Y}\). This divides the scatterplot into four quadrants.
+Draw a vertical line at $\bar{X}$ and a horizontal line at $\bar{Y}$. This divides the scatterplot into four quadrants.
 
 ### Upper-right quadrant
 
-\(X\) is above its mean.  
-\(Y\) is above its mean.  
+$X$ is above its mean.  
+$Y$ is above its mean.  
 This contributes positive correlation.
 
 ### Lower-left quadrant
 
-\(X\) is below its mean.  
-\(Y\) is below its mean.  
+$X$ is below its mean.  
+$Y$ is below its mean.  
 This also contributes positive correlation.
 
 ### Upper-left quadrant
 
-\(X\) is below its mean.  
-\(Y\) is above its mean.  
+$X$ is below its mean.  
+$Y$ is above its mean.  
 This contributes negative correlation.
 
 ### Lower-right quadrant
 
-\(X\) is above its mean.  
-\(Y\) is below its mean.  
+$X$ is above its mean.  
+$Y$ is below its mean.  
 This contributes negative correlation.
 
 If most points fall in the upper-right and lower-left quadrants, the correlation is positive.
@@ -520,85 +520,85 @@ If points are scattered evenly across all quadrants, the correlation is near zer
 
 # Part V: Statistical Significance of Correlation
 
-## Pearson’s \(r\) as an Estimate
+## Pearson’s $r$ as an Estimate
 
-When we calculate Pearson’s \(r\) from sample data, it is a sample statistic.
+When we calculate Pearson’s $r$ from sample data, it is a sample statistic.
 
 It estimates the true correlation in the population.
 
 Let the true population correlation be:
 
-\[
+$$
 \rho
-\]
+$$
 
 The sample correlation is:
 
-\[
+$$
 r
-\]
+$$
 
 The null hypothesis is usually:
 
-\[
+$$
 H_0: \rho = 0
-\]
+$$
 
 The alternative is:
 
-\[
+$$
 H_A: \rho \neq 0
-\]
+$$
 
 In words, the null hypothesis says there is no linear correlation in the population.
 
 ---
 
-## Standard Error of Pearson’s \(r\)
+## Standard Error of Pearson’s $r$
 
-The standard error of Pearson’s \(r\) is:
+The standard error of Pearson’s $r$ is:
 
-\[
+$$
 SE_r =
 \sqrt{
 \frac{1-r^2}{n-2}
 }
-\]
+$$
 
 where:
 
-- \(r\) is the sample correlation
-- \(n\) is the sample size
+- $r$ is the sample correlation
+- $n$ is the sample size
 
 The degrees of freedom are:
 
-\[
+$$
 df = n - 2
-\]
+$$
 
-Why \(n-2\)?
+Why $n-2$?
 
 Because estimating the correlation requires estimating two means:
 
-- \(\bar{X}\)
-- \(\bar{Y}\)
+- $\bar{X}$
+- $\bar{Y}$
 
 We lose one degree of freedom for each estimated mean.
 
 ---
 
-## t-Test for Pearson’s \(r\)
+## t-Test for Pearson’s $r$
 
 To test whether the correlation differs from zero, use:
 
-\[
+$$
 t =
 \frac{r}{SE_r}
-\]
+$$
 
 or:
 
-\[
+$$
 t =
 \frac{r}
 {
@@ -606,13 +606,13 @@ t =
 \frac{1-r^2}{n-2}
 }
 }
-\]
+$$
 
 The test statistic follows a t-distribution with:
 
-\[
+$$
 df = n - 2
-\]
+$$
 
 If the absolute value of the t-statistic exceeds the critical value, or if the p-value is less than alpha, we reject the null hypothesis.
 
@@ -624,9 +624,9 @@ Suppose we calculate the correlation between democracy and female life expectanc
 
 The result is:
 
-\[
+$$
 r = 0.3751
-\]
+$$
 
 This indicates a positive relationship: more democratic countries tend to have higher female life expectancy.
 
@@ -634,9 +634,9 @@ The relationship is not extremely strong, but it is clearly positive.
 
 If the p-value is very small, we reject:
 
-\[
+$$
 H_0: \rho = 0
-\]
+$$
 
 and conclude that the correlation is statistically significant.
 
@@ -715,22 +715,22 @@ For example:
 
 |  | Variable 1 | Variable 2 | Variable 3 | Variable 4 |
 |---|---:|---:|---:|---:|
-| Variable 1 | 1.00 | \(r_{12}\) | \(r_{13}\) | \(r_{14}\) |
-| Variable 2 | \(r_{21}\) | 1.00 | \(r_{23}\) | \(r_{24}\) |
-| Variable 3 | \(r_{31}\) | \(r_{32}\) | 1.00 | \(r_{34}\) |
-| Variable 4 | \(r_{41}\) | \(r_{42}\) | \(r_{43}\) | 1.00 |
+| Variable 1 | 1.00 | $r_{12}$ | $r_{13}$ | $r_{14}$ |
+| Variable 2 | $r_{21}$ | 1.00 | $r_{23}$ | $r_{24}$ |
+| Variable 3 | $r_{31}$ | $r_{32}$ | 1.00 | $r_{34}$ |
+| Variable 4 | $r_{41}$ | $r_{42}$ | $r_{43}$ | 1.00 |
 
 The diagonal values are always 1 because each variable is perfectly correlated with itself.
 
 The matrix is symmetric:
 
-\[
+$$
 r_{12} = r_{21}
-\]
+$$
 
-\[
+$$
 r_{13} = r_{31}
-\]
+$$
 
 and so on.
 
@@ -750,9 +750,9 @@ Suppose we analyze several country-level variables:
 
 A correlation matrix might show that the correlation between unionization and inequality is:
 
-\[
+$$
 r = -0.43
-\]
+$$
 
 This is a moderate negative relationship.
 
@@ -764,9 +764,9 @@ This is a descriptive association. It does not prove that unionization causes lo
 
 Suppose the correlation between autocracy and education spending is:
 
-\[
+$$
 r = -0.08
-\]
+$$
 
 This is a very weak negative relationship.
 
@@ -782,9 +782,9 @@ Always interpret both direction and magnitude.
 
 ## Correlation Measures Linear Association
 
-Pearson’s \(r\) measures linear relationships.
+Pearson’s $r$ measures linear relationships.
 
-If the true relationship is curved, U-shaped, threshold-based, or otherwise nonlinear, Pearson’s \(r\) may be misleading.
+If the true relationship is curved, U-shaped, threshold-based, or otherwise nonlinear, Pearson’s $r$ may be misleading.
 
 Always look at a scatterplot when possible.
 
@@ -802,7 +802,7 @@ For example, a very wealthy country with unusual political institutions may infl
 
 In later regression analysis, we will return to outliers more directly. For now, the basic advice is:
 
-> Do not rely on Pearson’s \(r\) alone. Look at the data.
+> Do not rely on Pearson’s $r$ alone. Look at the data.
 
 ---
 
@@ -828,11 +828,11 @@ With a large sample, even a weak correlation can be statistically significant.
 
 For example:
 
-\[
+$$
 r = 0.05
-\]
+$$
 
-may be statistically significant if \(n\) is very large.
+may be statistically significant if $n$ is very large.
 
 But it may not be substantively meaningful.
 
@@ -852,7 +852,7 @@ A small p-value does not make a weak relationship important.
 **Correlation**  
 A measure of association between two variables.
 
-**Pearson’s \(r\)**  
+**Pearson’s $r$**  
 The most common correlation coefficient, measuring the strength and direction of a linear relationship between two interval-level variables.
 
 **Positive correlation**  
@@ -873,14 +873,14 @@ The extent to which two variables vary together.
 **Correlation matrix**  
 A table showing correlations among multiple variables.
 
-**Population correlation \(\rho\)**  
+**Population correlation $\rho$**  
 The true correlation between two variables in the population.
 
-**Sample correlation \(r\)**  
+**Sample correlation $r$**  
 The correlation between two variables calculated from sample data.
 
-**Standard error of \(r\)**  
-The estimated sampling variability of Pearson’s \(r\).
+**Standard error of $r$**  
+The estimated sampling variability of Pearson’s $r$.
 
 **Bivariate analysis**  
 Analysis involving two variables.
@@ -894,20 +894,20 @@ An observation with an unusually high or low value that may influence the analys
 
 Correlation analysis measures the relationship between two interval-level variables.
 
-The most common measure is Pearson’s correlation coefficient, \(r\). It ranges from -1 to 1. Positive values indicate that the variables tend to move together. Negative values indicate that they tend to move in opposite directions. Values near zero indicate little or no linear relationship.
+The most common measure is Pearson’s correlation coefficient, $r$. It ranges from -1 to 1. Positive values indicate that the variables tend to move together. Negative values indicate that they tend to move in opposite directions. Values near zero indicate little or no linear relationship.
 
-Pearson’s \(r\) measures linear association. It does not detect all possible relationships, especially nonlinear ones. A correlation near zero does not necessarily mean two variables are unrelated; it means they are not linearly related.
+Pearson’s $r$ measures linear association. It does not detect all possible relationships, especially nonlinear ones. A correlation near zero does not necessarily mean two variables are unrelated; it means they are not linearly related.
 
-The formula for Pearson’s \(r\) is based on covariation. It asks whether \(X\) and \(Y\) tend to be above or below their means at the same time. If they move together, the correlation is positive. If they move oppositely, it is negative.
+The formula for Pearson’s $r$ is based on covariation. It asks whether $X$ and $Y$ tend to be above or below their means at the same time. If they move together, the correlation is positive. If they move oppositely, it is negative.
 
-We can test whether a sample correlation differs from zero using a t-test with \(n-2\) degrees of freedom. The standard error of \(r\) is:
+We can test whether a sample correlation differs from zero using a t-test with $n-2$ degrees of freedom. The standard error of $r$ is:
 
-\[
+$$
 SE_r =
 \sqrt{
 \frac{1-r^2}{n-2}
 }
-\]
+$$
 
 Correlation matrices allow us to examine many pairwise relationships at once.
 
