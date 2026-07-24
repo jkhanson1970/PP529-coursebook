@@ -1,6 +1,5 @@
 ---
 title: "Chapter 13: Correlation"
-format: revealjs
 ---
 
 Correlation analysis is our first major tool for studying relationships between variables when all variables in the analysis are measured at the interval or ratio level.
@@ -28,7 +27,7 @@ The central idea is simple:
 
 # Part I: Preliminaries
 
-## 1. When Do We Use Correlation?
+## When Do We Use Correlation?
 
 Correlation is used when the variables in the analysis are interval- or ratio-level variables.
 
@@ -59,7 +58,7 @@ Because interval-level variables can take many values, we usually do not create 
 
 ---
 
-## 2. Scatterplots
+## Scatterplots
 
 A **scatterplot** displays the relationship between two quantitative variables.
 
@@ -88,7 +87,7 @@ Correlation analysis gives us a numerical summary of what we see visually in a s
 
 ---
 
-## 3. Strength and Direction
+## Strength and Direction
 
 Correlation describes two features of a relationship:
 
@@ -123,7 +122,7 @@ If the points are widely scattered, the relationship is weak.
 
 # Part II: Pearson’s Correlation Coefficient
 
-## 4. Pearson’s \(r\)
+## Pearson’s \(r\)
 
 The most common measure of correlation is **Pearson’s correlation coefficient**, written:
 
@@ -163,7 +162,7 @@ The closer \(r\) is to 0, the weaker the linear relationship.
 
 ---
 
-## 5. Positive Correlation
+## Positive Correlation
 
 A positive correlation means that higher values of \(X\) tend to be associated with higher values of \(Y\).
 
@@ -181,7 +180,7 @@ In real data, perfect correlation is rare. Social data are wonderfully messy, be
 
 ---
 
-## 6. Negative Correlation
+## Negative Correlation
 
 A negative correlation means that higher values of \(X\) tend to be associated with lower values of \(Y\).
 
@@ -199,7 +198,7 @@ Again, perfect negative correlation is rare in social science data.
 
 ---
 
-## 7. No Linear Correlation
+## No Linear Correlation
 
 If \(r\) is close to 0, the variables have little or no linear relationship.
 
@@ -219,7 +218,7 @@ Pearson’s \(r\) measures linearity. It does not detect every kind of relations
 
 # Part III: Interpreting Pearson’s \(r\)
 
-## 8. Magnitude and Direction
+## Magnitude and Direction
 
 Suppose we calculate:
 
@@ -265,7 +264,7 @@ even though one is negative and one is positive.
 
 ---
 
-## 9. Correlation Does Not Measure Slope
+## Correlation Does Not Measure Slope
 
 Pearson’s \(r\) does not tell us how much \(Y\) changes when \(X\) changes.
 
@@ -288,7 +287,7 @@ Regression will add that next piece by estimating a slope.
 
 ---
 
-## 10. Correlation and Causation
+## Correlation and Causation
 
 Correlation does not establish causation.
 
@@ -310,7 +309,7 @@ Correlation is useful for describing relationships. It is not enough to prove ca
 
 # Part IV: How Pearson’s \(r\) Works
 
-## 11. The Logic of the Formula
+## The Logic of the Formula
 
 The formula for Pearson’s \(r\) is:
 
@@ -347,7 +346,7 @@ The result is a standardized measure bounded between -1 and 1.
 
 ---
 
-## 12. Deviations from the Mean
+## Deviations from the Mean
 
 The formula asks whether \(X\) and \(Y\) tend to be above or below their means at the same time.
 
@@ -391,7 +390,7 @@ It is negative when they are on opposite sides.
 
 ---
 
-## 13. Positive Contributions
+## Positive Contributions
 
 A case contributes positive evidence for correlation when:
 
@@ -414,7 +413,7 @@ These cases suggest that \(X\) and \(Y\) move together.
 
 ---
 
-## 14. Negative Contributions
+## Negative Contributions
 
 A case contributes negative evidence for correlation when:
 
@@ -437,7 +436,7 @@ These cases suggest that \(X\) and \(Y\) move in opposite directions.
 
 ---
 
-## 15. A Small Numerical Example
+## A Small Numerical Example
 
 Suppose we have four cases:
 
@@ -481,7 +480,7 @@ This suggests a positive correlation between \(X\) and \(Y\).
 
 ---
 
-## 16. Quadrants in a Scatterplot
+## Quadrants in a Scatterplot
 
 A scatterplot can help us visualize the same logic.
 
@@ -521,7 +520,7 @@ If points are scattered evenly across all quadrants, the correlation is near zer
 
 # Part V: Statistical Significance of Correlation
 
-## 17. Pearson’s \(r\) as an Estimate
+## Pearson’s \(r\) as an Estimate
 
 When we calculate Pearson’s \(r\) from sample data, it is a sample statistic.
 
@@ -555,7 +554,7 @@ In words, the null hypothesis says there is no linear correlation in the populat
 
 ---
 
-## 18. Standard Error of Pearson’s \(r\)
+## Standard Error of Pearson’s \(r\)
 
 The standard error of Pearson’s \(r\) is:
 
@@ -588,7 +587,7 @@ We lose one degree of freedom for each estimated mean.
 
 ---
 
-## 19. t-Test for Pearson’s \(r\)
+## t-Test for Pearson’s \(r\)
 
 To test whether the correlation differs from zero, use:
 
@@ -619,7 +618,7 @@ If the absolute value of the t-statistic exceeds the critical value, or if the p
 
 ---
 
-## 20. Example: Democracy and Life Expectancy
+## Example: Democracy and Life Expectancy
 
 Suppose we calculate the correlation between democracy and female life expectancy across countries.
 
@@ -651,7 +650,7 @@ Again, this does not by itself prove that democracy causes higher life expectanc
 
 # Part VI: Using Software
 
-## 21. Correlation Commands
+## Correlation Commands
 
 Correlation is usually calculated with software.
 
@@ -706,7 +705,7 @@ For fuller output, including p-values and sample sizes, the `corr.test` function
 
 ---
 
-## 22. Correlation Matrices
+## Correlation Matrices
 
 When we calculate correlations among several variables, software reports a **correlation matrix**.
 
@@ -739,7 +738,7 @@ Some software reports the full matrix. Other software reports only one triangle 
 
 ---
 
-## 23. Example: Cross-National Correlations
+## Example: Cross-National Correlations
 
 Suppose we analyze several country-level variables:
 
@@ -781,7 +780,7 @@ Always interpret both direction and magnitude.
 
 # Part VII: Cautions in Correlation Analysis
 
-## 24. Correlation Measures Linear Association
+## Correlation Measures Linear Association
 
 Pearson’s \(r\) measures linear relationships.
 
@@ -793,7 +792,7 @@ A correlation coefficient is useful, but it should not be the only thing you ins
 
 ---
 
-## 25. Outliers Can Matter
+## Outliers Can Matter
 
 Outliers can strongly influence correlations.
 
@@ -807,7 +806,7 @@ In later regression analysis, we will return to outliers more directly. For now,
 
 ---
 
-## 26. Correlation Does Not Control for Other Variables
+## Correlation Does Not Control for Other Variables
 
 Correlation is bivariate. It examines the relationship between two variables at a time.
 
@@ -823,7 +822,7 @@ Correlation is a useful starting point, not the final word.
 
 ---
 
-## 27. Statistical Significance Is Not Substantive Significance
+## Statistical Significance Is Not Substantive Significance
 
 With a large sample, even a weak correlation can be statistically significant.
 

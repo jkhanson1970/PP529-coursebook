@@ -1,149 +1,282 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Chapter 1: Measurement – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <title>PubPol 529: Coursebook – Chapter 1: Measurement</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Chapter 1: Measurement</h1>
+<body class="nav-sidebar floating quarto-light">
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">2.1</span> Concepts</a></li>
+  <li><a href="#what-makes-a-concept-useful" id="toc-what-makes-a-concept-useful" class="nav-link" data-scroll-target="#what-makes-a-concept-useful"><span class="header-section-number">2.2</span> What Makes a Concept Useful?</a></li>
+  <li><a href="#from-concepts-to-variables-operationalization" id="toc-from-concepts-to-variables-operationalization" class="nav-link" data-scroll-target="#from-concepts-to-variables-operationalization"><span class="header-section-number">2.3</span> From Concepts to Variables: Operationalization</a></li>
+  <li><a href="#example-measuring-political-ideology" id="toc-example-measuring-political-ideology" class="nav-link" data-scroll-target="#example-measuring-political-ideology"><span class="header-section-number">2.4</span> Example: Measuring Political Ideology</a></li>
+  <li><a href="#example-measuring-education" id="toc-example-measuring-education" class="nav-link" data-scroll-target="#example-measuring-education"><span class="header-section-number">2.5</span> Example: Measuring Education</a></li>
+  <li><a href="#measurement-choices-in-existing-data" id="toc-measurement-choices-in-existing-data" class="nav-link" data-scroll-target="#measurement-choices-in-existing-data"><span class="header-section-number">2.6</span> Measurement Choices in Existing Data</a></li>
+  <li><a href="#assessing-measurement-quality" id="toc-assessing-measurement-quality" class="nav-link" data-scroll-target="#assessing-measurement-quality"><span class="header-section-number">2.7</span> Assessing Measurement Quality</a>
+  <ul class="collapse">
+  <li><a href="#reliability" id="toc-reliability" class="nav-link" data-scroll-target="#reliability"><span class="header-section-number">2.7.1</span> Reliability</a></li>
+  <li><a href="#validity" id="toc-validity" class="nav-link" data-scroll-target="#validity"><span class="header-section-number">2.7.2</span> Validity</a></li>
+  </ul></li>
+  <li><a href="#change-does-not-necessarily-mean-unreliability" id="toc-change-does-not-necessarily-mean-unreliability" class="nav-link" data-scroll-target="#change-does-not-necessarily-mean-unreliability"><span class="header-section-number">2.8</span> Change Does Not Necessarily Mean Unreliability</a></li>
+  <li><a href="#response-bias" id="toc-response-bias" class="nav-link" data-scroll-target="#response-bias"><span class="header-section-number">2.9</span> Response Bias</a></li>
+  <li><a href="#example-measuring-religiosity" id="toc-example-measuring-religiosity" class="nav-link" data-scroll-target="#example-measuring-religiosity"><span class="header-section-number">2.10</span> Example: Measuring Religiosity</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">2.11</span> Variables</a></li>
+  <li><a href="#categorical-and-quantitative-variables" id="toc-categorical-and-quantitative-variables" class="nav-link" data-scroll-target="#categorical-and-quantitative-variables"><span class="header-section-number">2.12</span> Categorical and Quantitative Variables</a></li>
+  <li><a href="#levels-of-measurement" id="toc-levels-of-measurement" class="nav-link" data-scroll-target="#levels-of-measurement"><span class="header-section-number">2.13</span> Levels of Measurement</a>
+  <ul class="collapse">
+  <li><a href="#nominal-variables" id="toc-nominal-variables" class="nav-link" data-scroll-target="#nominal-variables"><span class="header-section-number">2.13.1</span> Nominal Variables</a></li>
+  <li><a href="#ordinal-variables" id="toc-ordinal-variables" class="nav-link" data-scroll-target="#ordinal-variables"><span class="header-section-number">2.13.2</span> Ordinal Variables</a></li>
+  <li><a href="#interval-variables" id="toc-interval-variables" class="nav-link" data-scroll-target="#interval-variables"><span class="header-section-number">2.13.3</span> Interval Variables</a></li>
+  <li><a href="#ratio-variables" id="toc-ratio-variables" class="nav-link" data-scroll-target="#ratio-variables"><span class="header-section-number">2.13.4</span> Ratio Variables</a></li>
+  </ul></li>
+  <li><a href="#discrete-and-continuous-variables" id="toc-discrete-and-continuous-variables" class="nav-link" data-scroll-target="#discrete-and-continuous-variables"><span class="header-section-number">2.14</span> Discrete and Continuous Variables</a></li>
+  <li><a href="#why-variable-type-matters" id="toc-why-variable-type-matters" class="nav-link" data-scroll-target="#why-variable-type-matters"><span class="header-section-number">2.15</span> Why Variable Type Matters</a></li>
+  <li><a href="#dichotomous-variables" id="toc-dichotomous-variables" class="nav-link" data-scroll-target="#dichotomous-variables"><span class="header-section-number">2.16</span> Dichotomous Variables</a></li>
+  <li><a href="#practical-flexibility-in-measurement" id="toc-practical-flexibility-in-measurement" class="nav-link" data-scroll-target="#practical-flexibility-in-measurement"><span class="header-section-number">2.17</span> Practical Flexibility in Measurement</a></li>
+  <li><a href="#indexes-and-scales" id="toc-indexes-and-scales" class="nav-link" data-scroll-target="#indexes-and-scales"><span class="header-section-number">2.18</span> Indexes and Scales</a>
+  <ul class="collapse">
+  <li><a href="#indexes" id="toc-indexes" class="nav-link" data-scroll-target="#indexes"><span class="header-section-number">2.18.1</span> Indexes</a></li>
+  <li><a href="#scales" id="toc-scales" class="nav-link" data-scroll-target="#scales"><span class="header-section-number">2.18.2</span> Scales</a></li>
+  </ul></li>
+  <li><a href="#the-central-lesson-data-are-produced-by-methods" id="toc-the-central-lesson-data-are-produced-by-methods" class="nav-link" data-scroll-target="#the-central-lesson-data-are-produced-by-methods"><span class="header-section-number">2.19</span> The Central Lesson: Data Are Produced by Methods</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">2.20</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">2.21</span> Chapter Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></h1>
 </div>
 
-</section>
-<section class="slide level2">
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
 
 <p>Before we can do statistics, we need data. Before we can have data, we need to measure something.</p>
 <p>That sounds simple enough, but measurement is often the hardest part of research. The mathematical tools of statistics can certainly be challenging, but they are systematic and learnable. Measurement, by contrast, requires us to make careful judgments about how abstract ideas become concrete data. If we measure poorly, even the most sophisticated statistical analysis will produce results we cannot trust.</p>
 <p>This chapter introduces the logic of measurement. We begin with <strong>concepts</strong>, the ideas we want to study. We then examine <strong>operationalization</strong>, the process of turning concepts into variables. After that, we consider how to assess the quality of measurement using the ideas of <strong>reliability</strong> and <strong>validity</strong>. Finally, we turn to the properties of variables themselves, including their levels of measurement and the implications those properties have for statistical analysis.</p>
 <p>By the end of the chapter, you should understand that every data set is the result of choices. Those choices shape what we can learn from the data, what we cannot learn, and how cautious we need to be when interpreting results.</p>
-</section>
-<section id="concepts" class="slide level2">
-<h2>1. Concepts</h2>
+<hr>
+<section id="concepts" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">2.1</span> Concepts</h2>
 <p>A <strong>concept</strong> is an idea, label, or category that we use to describe something in the world. Concepts are the building blocks of research. They allow us to identify, describe, compare, and eventually explain social and political phenomena.</p>
 <p>In everyday life, we use concepts constantly. We talk about things like:</p>
 <ul>
@@ -171,9 +304,10 @@
 <p>Measuring education may sound easy at first. We could count years of schooling. But does a person who spent six years completing college necessarily have more education than someone who completed it in four? Does formal schooling capture trade skills, informal learning, or knowledge acquired outside institutions? What about differences in educational quality across schools or countries?</p>
 <p>Measuring tolerance may be even harder. Do we ask people whether they consider themselves tolerant? Do we observe their behavior? Do we ask about attitudes toward specific groups? Each option captures something slightly different.</p>
 <p>The point is not that measurement is impossible. The point is that measurement always requires choices, and those choices have consequences.</p>
+<hr>
 </section>
-<section id="what-makes-a-concept-useful" class="slide level2">
-<h2>2. What Makes a Concept Useful?</h2>
+<section id="what-makes-a-concept-useful" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="what-makes-a-concept-useful"><span class="header-section-number">2.2</span> What Makes a Concept Useful?</h2>
 <p>Researchers often create new concepts. This is one reason academic fields sometimes develop so much jargon. Not all concepts are equally useful, however. A useful concept should have several qualities.</p>
 <p>First, it should <strong>resonate</strong> with others. When we use the term, other people should have at least a reasonably shared understanding of what we mean.</p>
 <p>Second, it should have an <strong>empirical domain</strong>. That is, it should refer to things that can, at least in principle, be observed, identified, or measured.</p>
@@ -182,9 +316,10 @@
 <p>Consider the concept of <strong>state capacity</strong>. In political science, state capacity refers to the ability of a state, or government, to do what it sets out to do. A high-capacity state can implement policies, collect taxes, enforce laws, provide services, and maintain order.</p>
 <p>This concept is related to, but distinct from, <strong>governance</strong>. Governance often has a normative component. A well-governed country is usually understood as one in which the state acts effectively and in ways that serve citizens’ interests. State capacity, by contrast, is more neutral. A state may have high capacity and use that capacity for harmful or repressive purposes. It may be effective without being just.</p>
 <p>That distinction matters. If we want to study state capacity, we need to measure the government’s ability to act, not whether we approve of what the government does.</p>
+<hr>
 </section>
-<section id="from-concepts-to-variables-operationalization" class="slide level2">
-<h2>3. From Concepts to Variables: Operationalization</h2>
+<section id="from-concepts-to-variables-operationalization" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="from-concepts-to-variables-operationalization"><span class="header-section-number">2.3</span> From Concepts to Variables: Operationalization</h2>
 <p>Once we identify a concept, we need to turn it into something we can record as data. This process is called <strong>operationalization</strong>.</p>
 <p>Operationalization is the process of taking an abstract concept and developing a concrete measurement strategy that produces a variable.</p>
 <p>The process usually involves several steps:</p>
@@ -200,16 +335,17 @@ What values will appear in our data set?</p></li>
 </ol>
 <p>A <strong>variable</strong> is the recorded result of measurement. It must have at least two possible values. If every case has the same value, then it is not really a variable; it is a constant.</p>
 <p>For example, if we conduct a survey of people and ask, “Are you human?” we will presumably get the same answer from everyone. That would not be a useful variable. If we ask, “What is your age?” or “What is your highest level of education?” we expect answers to vary across people.</p>
+<hr>
 </section>
-<section id="example-measuring-political-ideology" class="slide level2">
-<h2>4. Example: Measuring Political Ideology</h2>
+<section id="example-measuring-political-ideology" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="example-measuring-political-ideology"><span class="header-section-number">2.4</span> Example: Measuring Political Ideology</h2>
 <p>To see operationalization in practice, consider the concept of <strong>political ideology</strong>.</p>
 <p>At the conceptual level, ideology refers to a structured set of political beliefs. But that definition is still abstract. To measure ideology, we need to decide what kind of structure we think ideology has.</p>
 <p>One common strategy is to imagine ideology as a single dimension running from liberal to conservative, or left to right. This imposes a particular structure on the concept. It assumes that people can be located somewhere along one ideological spectrum.</p>
 <p>That may be useful, but it is not the only way to think about ideology. Political beliefs may have multiple dimensions. For example, someone may be economically conservative but socially liberal, or economically progressive but socially conservative. A single left-right scale may not capture that complexity.</p>
 <p>Still, the one-dimensional liberal-conservative scale has been widely used, especially in survey research. One of the most important examples comes from the <strong>American National Election Studies</strong>. The ANES is a long-running study of political opinion in the United States, conducted during presidential election years. Much of the foundational work behind this study was developed at the University of Michigan’s Institute for Social Research.</p>
 <p>The ANES asks respondents a question similar to the following:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>We hear a lot of talk these days about liberals and conservatives. Here is a seven-point scale on which the political views that people may hold are arranged from extremely liberal to extremely conservative. Where would you place yourself on this scale?</p>
 </blockquote>
 <p>The scale is usually arranged as follows:</p>
@@ -233,9 +369,10 @@ What values will appear in our data set?</p></li>
 <p>Those numbers are useful, but we need to be careful. This is an <strong>ordinal</strong> scale, meaning the categories have an order. A score of 6 is more conservative than a score of 5, and a score of 5 is more conservative than a score of 4. But we cannot be certain that the distance between 4 and 5 is the same as the distance between 6 and 7.</p>
 <p>That matters because, strictly speaking, we should be cautious about calculating averages from ordinal scales. In practice, social scientists often do calculate means of ordinal variables like ideology. This is not necessarily disastrous, especially when the scale behaves approximately like a numeric scale. But it is important to understand the assumption being made.</p>
 <p>There are formal rules, and then there is what researchers often do. The two do not always match perfectly.</p>
+<hr>
 </section>
-<section id="example-measuring-education" class="slide level2">
-<h2>5. Example: Measuring Education</h2>
+<section id="example-measuring-education" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="example-measuring-education"><span class="header-section-number">2.5</span> Example: Measuring Education</h2>
 <p>Education is another concept that initially seems easy to measure but becomes complicated quickly.</p>
 <p>One common strategy is to measure education by <strong>years of schooling</strong>. This has several advantages. It is simple, easy to ask in a survey, and widely understood. If someone says they completed twelve years of schooling, we generally understand what that means. It also allows for straightforward comparisons across individuals.</p>
 <p>But years of schooling may not capture what we really mean by education. Two people may spend the same number of years in school and learn very different things. Educational quality varies dramatically across schools and countries. Some people acquire substantial knowledge or skills outside formal schooling. Others attend school without gaining the skills we might associate with being educated.</p>
@@ -243,9 +380,10 @@ What values will appear in our data set?</p></li>
 <p>This measure captures formal credentials, which can be important for employment, income, and social status. But it also has limitations. A bachelor’s degree in one field may not be directly comparable to a bachelor’s degree in another. A professional degree, a master’s degree, and a PhD are not always easily ranked along a single dimension. The content, duration, and meaning of degrees differ across contexts.</p>
 <p>A third strategy might focus on <strong>skills</strong>, such as literacy, numeracy, writing ability, or technical competency. This may come closer to what some people mean by education, but it is harder to measure. Asking people to report how much they know is unreliable. Testing people may be expensive, time-consuming, or culturally biased.</p>
 <p>Each measurement strategy captures part of the concept and misses part of it. There is no perfect measure. The researcher’s task is to choose a strategy that is appropriate for the research question and to be honest about its limitations.</p>
+<hr>
 </section>
-<section id="measurement-choices-in-existing-data" class="slide level2">
-<h2>6. Measurement Choices in Existing Data</h2>
+<section id="measurement-choices-in-existing-data" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="measurement-choices-in-existing-data"><span class="header-section-number">2.6</span> Measurement Choices in Existing Data</h2>
 <p>Researchers often do not collect their own data. Instead, they use data collected by governments, organizations, schools, agencies, or previous researchers. In these cases, the measurement strategy has already been chosen.</p>
 <p>For example, education researchers may use administrative data from a state department of education. Those data may include variables such as race and ethnicity, eligibility for free or reduced-price lunch, standardized test scores, school attendance, and graduation status. The researcher does not get to redesign how those variables were measured. Instead, the researcher must understand the choices that were already made.</p>
 <p>Census data provide a powerful example. The U.S. Census has measured race and ethnicity in different ways over time. The categories have changed repeatedly, reflecting political, social, and scientific assumptions of different eras.</p>
@@ -258,24 +396,24 @@ What values will appear in our data set?</p></li>
 <p>These are not merely technical questions. They are political and social questions as well. Census categories can shape identity. When a state repeatedly offers certain categories, families and communities may come to understand themselves through those categories. Measurement does not merely reflect the world; sometimes it helps construct the world.</p>
 <p>Measurement choices also have material consequences. Census data influence political representation, federal funding, civil rights enforcement, and public policy. Groups may lobby to be included in official categories because recognition affects visibility and resources.</p>
 <p>The lesson is simple but important: whenever we see a table, graph, or statistical result, we should ask how the variables were measured. We should not lose our critical instincts. Every data set reflects measurement decisions, and those decisions affect interpretation.</p>
+<hr>
 </section>
-<section id="assessing-measurement-quality" class="slide level2">
-<h2>7. Assessing Measurement Quality</h2>
+<section id="assessing-measurement-quality" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="assessing-measurement-quality"><span class="header-section-number">2.7</span> Assessing Measurement Quality</h2>
 <p>A good measurement strategy should be both <strong>reliable</strong> and <strong>valid</strong>.</p>
 <p>These are two of the most important concepts in research methods.</p>
-</section>
-<section class="slide level2">
-
-<h3 id="reliability">Reliability</h3>
+<hr>
+<section id="reliability" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="reliability"><span class="header-section-number">2.7.1</span> Reliability</h3>
 <p>A measurement strategy is <strong>reliable</strong> if it produces consistent results.</p>
 <p>If the same measurement strategy is applied multiple times to the same object, person, place, or thing, it should produce the same result, assuming the thing being measured has not changed.</p>
 <p>For example, suppose you step on a bathroom scale and it reports your weight. You step off, step back on, and it gives a different number. You move the scale to another part of the room and it gives yet another number. That scale is unreliable.</p>
 <p>Reliability is about reproducibility. If I use the measure, you use the measure, and another researcher uses the measure, we should all get the same answer when measuring the same thing under the same conditions.</p>
 <p>However, reliability does not require accuracy. A scale that always reports your weight as five pounds heavier than it really is may be perfectly reliable. It is consistently wrong. Reliability means consistency, not correctness.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-<h3 id="validity">Validity</h3>
+<section id="validity" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="validity"><span class="header-section-number">2.7.2</span> Validity</h3>
 <p>A measurement strategy is <strong>valid</strong> if it measures the concept it is intended to measure.</p>
 <p>Validity has two components. First, the measure must be pointed at the right concept. Second, it must measure that concept accurately.</p>
 <p>Suppose we want to measure education and decide to use years of schooling. Is that valid? It depends on what we mean by education. If we mean time spent in formal educational institutions, then years of schooling is valid. If we mean knowledge, skills, or intellectual development, then years of schooling may be only partially valid.</p>
@@ -291,73 +429,78 @@ What values will appear in our data set?</p></li>
 <li>A valid and reliable measure produces results clustered near the bullseye.</li>
 </ul>
 <p>Reliability is about consistency. Validity is about truthfulness to the concept.</p>
+<hr>
 </section>
-<section id="change-does-not-necessarily-mean-unreliability" class="slide level2">
-<h2>8. Change Does Not Necessarily Mean Unreliability</h2>
+</section>
+<section id="change-does-not-necessarily-mean-unreliability" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="change-does-not-necessarily-mean-unreliability"><span class="header-section-number">2.8</span> Change Does Not Necessarily Mean Unreliability</h2>
 <p>One point often causes confusion: if the thing being measured changes, then the measurement should change.</p>
 <p>Suppose we ask students how many times they engaged in binge drinking during the past month. If we ask at the beginning of the semester, the answer may differ from the answer during midterms. That does not necessarily mean the measure is unreliable. It may simply mean behavior changed.</p>
 <p>But suppose our real goal is to measure a more stable trait, such as a person’s general drinking habits. Asking only about last week may not be reliable for that broader concept. Last week could have been unusual.</p>
 <p>This distinction matters. A question can be reliable for a narrow concept but unreliable for a broader one.</p>
 <p>For example:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>How many times did you attend religious services last week?</p>
 </blockquote>
 <p>This may reliably measure whether someone attended services last week. But it may not reliably measure religiosity as a broader personal characteristic.</p>
+<hr>
 </section>
-<section id="response-bias" class="slide level2">
-<h2>9. Response Bias</h2>
+<section id="response-bias" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="response-bias"><span class="header-section-number">2.9</span> Response Bias</h2>
 <p>A common threat to measurement quality is <strong>response bias</strong>.</p>
 <p>Response bias occurs when the way a question is asked, or the context in which it is asked, leads respondents to give answers that do not accurately reflect their true beliefs, behaviors, or experiences.</p>
 <p>This often happens when respondents feel social pressure.</p>
 <p>For example, surveys frequently ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Did you vote in the last election?</p>
 </blockquote>
 <p>In the United States, the percentage of people who say yes is usually higher than actual turnout. Some respondents may misremember. Some may generally think of themselves as voters and answer accordingly. Others may know that voting is socially approved and feel pressure to say yes.</p>
 <p>Response bias can also occur when questions ask about illegal or sensitive behavior. Suppose researchers want to study corruption and ask business owners:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Did you pay a bribe to receive a permit?</p>
 </blockquote>
 <p>Respondents may be reluctant to admit participating in an illegal transaction. A less threatening question might ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>How common is it for businesses in your industry to be asked for unofficial payments when applying for permits?</p>
 </blockquote>
 <p>This does not eliminate the problem, but it may reduce the pressure on respondents.</p>
 <p>Similarly, if researchers want to study racial prejudice, directly asking people whether race influenced their vote may not produce truthful answers. Respondents may not want to admit prejudice, or they may not be fully aware of how race shaped their behavior. Researchers may therefore use indirect methods, such as experiments that vary candidate race while holding policy positions constant.</p>
 <p>Good measurement requires anticipating how people interpret questions and how social pressures shape responses.</p>
+<hr>
 </section>
-<section id="example-measuring-religiosity" class="slide level2">
-<h2>10. Example: Measuring Religiosity</h2>
+<section id="example-measuring-religiosity" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="example-measuring-religiosity"><span class="header-section-number">2.10</span> Example: Measuring Religiosity</h2>
 <p>Religiosity is a useful example because it is difficult to define and measure.</p>
 <p>Suppose we want to know how religious a person is. We might ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Did you attend religious services last week?<br>
 Yes or no.</p>
 </blockquote>
 <p>This question is simple and may be reliable for measuring attendance last week. But is it valid as a measure of religiosity?</p>
 <p>There are several problems. A person may attend services for family or social reasons without feeling religious. Another person may be deeply religious but unable to attend services because of illness, disability, transportation barriers, or because their religious practice does not center on formal services. Religious holidays may also affect attendance in particular weeks.</p>
 <p>A broader question might be:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>How frequently do you attend religious services?<br>
 Every week, almost every week, once or twice a month, a few times a year, or never.</p>
 </blockquote>
 <p>This improves on the previous question by capturing usual behavior rather than one week. But it still assumes that religious service attendance is closely related to religiosity.</p>
 <p>Another possibility is:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Is religion an important part of your life?<br>
 Yes or no.</p>
 </blockquote>
 <p>This gets closer to internal belief, but it forces a complex matter into a binary answer. Someone might feel that religion is somewhat important, occasionally important, culturally important, spiritually important, or important in some contexts but not others.</p>
 <p>A more scaled question might be:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>On a scale from 1 to 10, how much have you internalized a religious belief system and made its practice a regular part of your life?</p>
 </blockquote>
 <p>This appears more nuanced, but it has its own problems. The wording is complex. “Internalized a religious belief system” may mean different things to different people. The question also asks two things at once: whether someone has internalized beliefs and whether they practice them regularly. A person may have strong beliefs but little practice, or regular practice but weaker belief.</p>
 <p>The scale itself is also ambiguous. What does a 7 mean? How is it different from a 6 or an 8? Different respondents may interpret the numbers very differently.</p>
 <p>This example illustrates a general rule: the hardest part of data analysis is often not the statistical analysis itself. It is creating measures that actually capture the concepts we care about.</p>
+<hr>
 </section>
-<section id="variables" class="slide level2">
-<h2>11. Variables</h2>
+<section id="variables" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="variables"><span class="header-section-number">2.11</span> Variables</h2>
 <p>A measurement strategy produces a <strong>variable</strong>. A variable is a recorded feature that can take on different values across cases.</p>
 <p>Variables have properties. These properties determine what we can do with the data. They affect whether we can calculate means, create certain types of graphs, use particular statistical tests, or interpret results in specific ways.</p>
 <p>Three important ways to classify variables are:</p>
@@ -369,9 +512,10 @@ Yes or no.</p>
 <li><strong>Discrete versus continuous</strong></li>
 </ol>
 <p>These classifications overlap, but each gives us useful information.</p>
+<hr>
 </section>
-<section id="categorical-and-quantitative-variables" class="slide level2">
-<h2>12. Categorical and Quantitative Variables</h2>
+<section id="categorical-and-quantitative-variables" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="categorical-and-quantitative-variables"><span class="header-section-number">2.12</span> Categorical and Quantitative Variables</h2>
 <p>The most basic distinction is between <strong>categorical</strong> and <strong>quantitative</strong> variables.</p>
 <p>A <strong>quantitative variable</strong> uses numbers in a mathematically meaningful way. The values represent amounts.</p>
 <p>Examples include:</p>
@@ -408,9 +552,10 @@ Yes or no.</p>
 </ul>
 <p>For example, a data set might code Democrats as 1, Republicans as 2, and Independents as 3. But that does not mean Republicans are “twice” Democrats or that Independents are “three times” Democrats. The numbers are just labels.</p>
 <p>This distinction is crucial because statistical software will often calculate things whether or not they make conceptual sense. The software may compute a mean for party identification coded as 1, 2, and 3. But that mean is meaningless unless the numbers represent real quantities.</p>
+<hr>
 </section>
-<section id="levels-of-measurement" class="slide level2">
-<h2>13. Levels of Measurement</h2>
+<section id="levels-of-measurement" class="level2" data-number="2.13">
+<h2 data-number="2.13" class="anchored" data-anchor-id="levels-of-measurement"><span class="header-section-number">2.13</span> Levels of Measurement</h2>
 <p>The second classification concerns the <strong>level of measurement</strong>. The three most important levels are:</p>
 <ol type="1">
 <li>Nominal<br>
@@ -420,10 +565,9 @@ Yes or no.</p>
 <li>Interval</li>
 </ol>
 <p>A fourth, ratio, is often treated separately, though for many practical purposes it can be understood as a special kind of interval variable.</p>
-</section>
-<section class="slide level2">
-
-<h3 id="nominal-variables">Nominal Variables</h3>
+<hr>
+<section id="nominal-variables" class="level3" data-number="2.13.1">
+<h3 data-number="2.13.1" class="anchored" data-anchor-id="nominal-variables"><span class="header-section-number">2.13.1</span> Nominal Variables</h3>
 <p>A <strong>nominal variable</strong> is a categorical variable whose categories have no inherent order.</p>
 <p>The word “nominal” comes from the idea of naming. Nominal variables name categories.</p>
 <p>Examples include:</p>
@@ -442,10 +586,10 @@ Yes or no.</p>
 </ul>
 <p>With nominal variables, one category is not naturally higher or lower than another. The categories are simply different.</p>
 <p>Because there is no order, the only measure of central tendency available for a nominal variable is the <strong>mode</strong>, or most common category. There is no median and no meaningful mean.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-<h3 id="ordinal-variables">Ordinal Variables</h3>
+<section id="ordinal-variables" class="level3" data-number="2.13.2">
+<h3 data-number="2.13.2" class="anchored" data-anchor-id="ordinal-variables"><span class="header-section-number">2.13.2</span> Ordinal Variables</h3>
 <p>An <strong>ordinal variable</strong> is a categorical variable whose categories have a meaningful order.</p>
 <p>Examples include:</p>
 <ul>
@@ -462,10 +606,10 @@ Yes or no.</p>
 <p>A small pronunciation note: Rensis Likert, who developed the approach, pronounced his name “Lick-ert,” not “Lie-kert.” The latter pronunciation is common, but the former is historically correct.</p>
 <p>For ordinal variables, we can identify a <strong>mode</strong> and a <strong>median</strong>. The median is the category containing the middle case when all cases are ordered. It is not necessarily the category that appears in the middle of the list of possible categories.</p>
 <p>Strictly speaking, ordinal variables do not have true means, because the distances between categories are not known to be equal. In practice, researchers sometimes calculate means for ordinal scales when the categories seem to approximate equal intervals.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-<h3 id="interval-variables">Interval Variables</h3>
+<section id="interval-variables" class="level3" data-number="2.13.3">
+<h3 data-number="2.13.3" class="anchored" data-anchor-id="interval-variables"><span class="header-section-number">2.13.3</span> Interval Variables</h3>
 <p>An <strong>interval variable</strong> is a quantitative variable with meaningful numeric distances between values.</p>
 <p>Examples include:</p>
 <ul>
@@ -481,10 +625,10 @@ Yes or no.</p>
 </ul>
 <p>The key feature is that one-unit differences have consistent meaning. The difference between 10 and 11 degrees is the same size as the difference between 20 and 21 degrees.</p>
 <p>Interval variables allow us to calculate means, medians, and modes, though the mode may be less informative when there are many possible values.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-<h3 id="ratio-variables">Ratio Variables</h3>
+<section id="ratio-variables" class="level3" data-number="2.13.4">
+<h3 data-number="2.13.4" class="anchored" data-anchor-id="ratio-variables"><span class="header-section-number">2.13.4</span> Ratio Variables</h3>
 <p>A <strong>ratio variable</strong> is an interval variable with a true zero.</p>
 <p>A true zero means the complete absence of whatever is being measured. This allows ratio comparisons.</p>
 <p>Examples include:</p>
@@ -504,9 +648,11 @@ Yes or no.</p>
 <p>If one person has $20,000 and another has $10,000, the first has twice as much income. If one person has four siblings and another has two, the first has twice as many siblings.</p>
 <p>Temperature in Fahrenheit or Celsius is not a ratio variable because zero degrees does not mean “no temperature.” Sixty degrees Fahrenheit is not twice as hot as thirty degrees Fahrenheit.</p>
 <p>For many purposes in introductory statistics, the key distinction is whether the variable is categorical, ordinal, or quantitative. But understanding ratio variables helps clarify what kinds of mathematical statements are meaningful.</p>
+<hr>
 </section>
-<section id="discrete-and-continuous-variables" class="slide level2">
-<h2>14. Discrete and Continuous Variables</h2>
+</section>
+<section id="discrete-and-continuous-variables" class="level2" data-number="2.14">
+<h2 data-number="2.14" class="anchored" data-anchor-id="discrete-and-continuous-variables"><span class="header-section-number">2.14</span> Discrete and Continuous Variables</h2>
 <p>The third classification concerns whether a variable is <strong>discrete</strong> or <strong>continuous</strong>.</p>
 <p>A <strong>discrete variable</strong> has a well-defined set of possible values. Count variables are discrete.</p>
 <p>Examples include:</p>
@@ -539,9 +685,10 @@ Yes or no.</p>
 <p>A distance can be measured in meters, centimeters, millimeters, or smaller units. In principle, we can always divide the scale more finely.</p>
 <p>In practice, continuous variables are often recorded in rounded form. Age is technically continuous, but surveys usually record age in whole years. A three-year-old may proudly say they are “three and a half,” but most data sets do not record age that precisely.</p>
 <p>Likewise, income may seem continuous in principle, but in practice it is often recorded in dollars or categories. Measurement always involves practical choices.</p>
+<hr>
 </section>
-<section id="why-variable-type-matters" class="slide level2">
-<h2>15. Why Variable Type Matters</h2>
+<section id="why-variable-type-matters" class="level2" data-number="2.15">
+<h2 data-number="2.15" class="anchored" data-anchor-id="why-variable-type-matters"><span class="header-section-number">2.15</span> Why Variable Type Matters</h2>
 <p>The properties of variables determine what we can do with them.</p>
 <p>For example, the type of graph we use depends on the variable. A continuous variable is often displayed using a <strong>histogram</strong>, where bars touch because the underlying scale is continuous. A discrete categorical variable is often displayed using a <strong>bar chart</strong>, where bars are separated because the categories are distinct.</p>
 <p>Variable type also affects what summary statistics are meaningful.</p>
@@ -554,7 +701,7 @@ Yes or no.</p>
 <li><strong>Mean</strong>: the arithmetic average</li>
 </ul>
 <p>Which measures can we use?</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Level of Measurement</th>
@@ -587,9 +734,10 @@ Yes or no.</p>
 <p>For nominal variables, only the mode makes sense. If religious affiliation is coded as Protestant = 1, Catholic = 2, Jewish = 3, Muslim = 4, Hindu = 5, and no religion = 6, calculating the average would not produce a meaningful result.</p>
 <p>For ordinal variables, the median and mode are meaningful because the categories can be ordered. But the mean is questionable unless we are willing to assume that the distances between categories are approximately equal.</p>
 <p>For interval and ratio variables, the mean, median, and mode are all possible, though the mode is often less useful when there are many unique values.</p>
+<hr>
 </section>
-<section id="dichotomous-variables" class="slide level2">
-<h2>16. Dichotomous Variables</h2>
+<section id="dichotomous-variables" class="level2" data-number="2.16">
+<h2 data-number="2.16" class="anchored" data-anchor-id="dichotomous-variables"><span class="header-section-number">2.16</span> Dichotomous Variables</h2>
 <p>A <strong>dichotomous variable</strong> has exactly two categories.</p>
 <p>Examples include:</p>
 <ul>
@@ -618,9 +766,10 @@ Yes or no.</p>
 <p>That means 70 percent of the sample is employed.</p>
 <p>This is a special case where taking the mean of a nominal variable makes sense because of the 0/1 coding. Dichotomous variables are also important in regression analysis, where they can be used as indicators or “dummy variables.”</p>
 <p>The term <strong>dummy variable</strong> simply means that the variable stands in for membership in a category. It is not a judgment about the variable or the people in the category.</p>
+<hr>
 </section>
-<section id="practical-flexibility-in-measurement" class="slide level2">
-<h2>17. Practical Flexibility in Measurement</h2>
+<section id="practical-flexibility-in-measurement" class="level2" data-number="2.17">
+<h2 data-number="2.17" class="anchored" data-anchor-id="practical-flexibility-in-measurement"><span class="header-section-number">2.17</span> Practical Flexibility in Measurement</h2>
 <p>The rules about measurement levels are important, but researchers sometimes bend them for practical reasons.</p>
 <p>For example, researchers often calculate means for ordinal scales. Grade point averages are a familiar example. Letter grades are ordinal: A is higher than B, B is higher than C, and so on. Yet schools often convert them into numbers and calculate averages.</p>
 <p>Similarly, political scientists often calculate mean ideology scores using seven-point ideology scales. This is not strictly ideal, but if the scale behaves approximately like an interval variable, the mean may still be useful.</p>
@@ -639,14 +788,14 @@ Yes or no.</p>
 <p>This loses information, but it has advantages. People may be more willing to report a category than an exact income. They may also know their approximate income range more easily than their precise income. In policy research, income categories may correspond to eligibility thresholds for public programs.</p>
 <p>Sometimes researchers treat discrete variables as continuous when there are many possible values. For example, the number of students in a school is technically discrete. A school can have 423 students or 424 students, but not 423.6 students. Yet if we are analyzing hundreds of schools with enrollments ranging from 50 to 3,000, we might graph enrollment using a histogram and treat it as approximately continuous.</p>
 <p>The key is not to memorize rules mechanically. The key is to understand what assumptions we are making and whether those assumptions are reasonable for the analysis at hand.</p>
+<hr>
 </section>
-<section id="indexes-and-scales" class="slide level2">
-<h2>18. Indexes and Scales</h2>
+<section id="indexes-and-scales" class="level2" data-number="2.18">
+<h2 data-number="2.18" class="anchored" data-anchor-id="indexes-and-scales"><span class="header-section-number">2.18</span> Indexes and Scales</h2>
 <p>Researchers often combine multiple items into a single measure. Two common terms for such measures are <strong>index</strong> and <strong>scale</strong>. These terms are sometimes used loosely, but they have distinct meanings.</p>
-</section>
-<section class="slide level2">
-
-<h3 id="indexes">Indexes</h3>
+<hr>
+<section id="indexes" class="level3" data-number="2.18.1">
+<h3 data-number="2.18.1" class="anchored" data-anchor-id="indexes"><span class="header-section-number">2.18.1</span> Indexes</h3>
 <p>An <strong>index</strong> is a measure constructed by combining multiple indicators, usually by adding them together.</p>
 <p>The items in an index are generally treated as equivalent contributors to the overall measure.</p>
 <p>For example, suppose we want to measure environmental protection across countries. We might create a list of environmental policy areas:</p>
@@ -666,14 +815,14 @@ Yes or no.</p>
 <p>For each country, we record whether it has a law in each area. If a country has a law, it receives 1 point. If not, it receives 0. We then add the points to create an environmental protection index.</p>
 <p>A country with laws in five areas scores higher than a country with laws in two areas.</p>
 <p>This is a simple example, and real indexes are often more complicated. Researchers may weight some items more heavily than others, assess enforcement rather than legal existence, or use expert ratings. But the basic logic is the same: combine multiple indicators into one measure.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-<h3 id="scales">Scales</h3>
+<section id="scales" class="level3" data-number="2.18.2">
+<h3 data-number="2.18.2" class="anchored" data-anchor-id="scales"><span class="header-section-number">2.18.2</span> Scales</h3>
 <p>A <strong>scale</strong> is also composed of multiple items, but the items are usually arranged to capture position along an underlying dimension.</p>
 <p>Scales are often used to measure attitudes, beliefs, or intensity.</p>
 <p>A familiar example is the Likert-type scale. Respondents are given statements and asked how strongly they agree or disagree. For example:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Government should do more to reduce income inequality.</p>
 </blockquote>
 <p>Response options might be:</p>
@@ -705,9 +854,11 @@ Yes or no.</p>
 <li>Abortion should be permitted whenever the pregnant person chooses.</li>
 </ol>
 <p>The logic is that someone who endorses a more permissive statement may also endorse the narrower exceptions listed before it. In practice, people’s views are often more complex than a perfect scale allows, but the approach illustrates how researchers can try to measure intensity along a dimension.</p>
+<hr>
 </section>
-<section id="the-central-lesson-data-are-produced-by-methods" class="slide level2">
-<h2>19. The Central Lesson: Data Are Produced by Methods</h2>
+</section>
+<section id="the-central-lesson-data-are-produced-by-methods" class="level2" data-number="2.19">
+<h2 data-number="2.19" class="anchored" data-anchor-id="the-central-lesson-data-are-produced-by-methods"><span class="header-section-number">2.19</span> The Central Lesson: Data Are Produced by Methods</h2>
 <p>The most important lesson of this chapter is that data are not simply “out there” waiting to be collected. Data are produced through methods.</p>
 <p>Every variable reflects choices:</p>
 <ul>
@@ -731,9 +882,10 @@ Yes or no.</p>
 <p>A classic illustration is the fishing net. If a net has large holes, small fish pass through. After pulling up the net, we might conclude that there are no small fish in the ocean. But that conclusion would be wrong. The problem is not the ocean; it is the measurement strategy.</p>
 <p>The same is true in social research. If our survey, administrative data, or coding strategy cannot capture certain people, behaviors, identities, or experiences, we may mistakenly conclude that they do not exist or do not matter.</p>
 <p>Good researchers remain humble about measurement. They ask not only, “What do the data show?” but also, “How were these data created?”</p>
+<hr>
 </section>
-<section id="key-terms" class="slide level2">
-<h2>Key Terms</h2>
+<section id="key-terms" class="level2" data-number="2.20">
+<h2 data-number="2.20" class="anchored" data-anchor-id="key-terms"><span class="header-section-number">2.20</span> Key Terms</h2>
 <p><strong>Concept</strong><br>
 An abstract idea or label used to describe something in the world.</p>
 <p><strong>Operationalization</strong><br>
@@ -770,9 +922,10 @@ A variable with exactly two categories, often coded 0 and 1.</p>
 A measure created by combining multiple indicators, often by adding them together.</p>
 <p><strong>Scale</strong><br>
 A measure designed to locate cases along an underlying dimension, often using ordered response options.</p>
+<hr>
 </section>
-<section id="chapter-summary" class="slide level2">
-<h2>Chapter Summary</h2>
+<section id="chapter-summary" class="level2" data-number="2.21">
+<h2 data-number="2.21" class="anchored" data-anchor-id="chapter-summary"><span class="header-section-number">2.21</span> Chapter Summary</h2>
 <p>Measurement is the foundation of statistical analysis. Before we can analyze data, we must decide how to turn abstract concepts into concrete variables. This process requires conceptual clarity, practical judgment, and awareness of trade-offs.</p>
 <p>No measure is perfect. A measure may be easy to collect but only loosely connected to the concept. Another may be conceptually strong but difficult to administer. Existing data may be convenient but built on measurement choices we would not have made ourselves.</p>
 <p>Reliable measures produce consistent results. Valid measures capture the intended concept. The best measures are both reliable and valid, but many real-world measures fall short in some way.</p>
@@ -781,389 +934,423 @@ A measure designed to locate cases along an underlying dimension, often using or
 
 
 </section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
 
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': false,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return codeEl.innerText;
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="PubPol 529: Coursebook">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-2.html" class="pagination-link" aria-label="Chapter 2: Sampling">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
 
 </body></html>

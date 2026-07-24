@@ -1,6 +1,5 @@
 ---
 title: "Chapter 1: Measurement"
-format: revealjs
 ---
 
 Before we can do statistics, we need data. Before we can have data, we need to measure something.
@@ -13,7 +12,7 @@ By the end of the chapter, you should understand that every data set is the resu
 
 ---
 
-## 1. Concepts
+## Concepts
 
 A **concept** is an idea, label, or category that we use to describe something in the world. Concepts are the building blocks of research. They allow us to identify, describe, compare, and eventually explain social and political phenomena.
 
@@ -43,7 +42,7 @@ The point is not that measurement is impossible. The point is that measurement a
 
 ---
 
-## 2. What Makes a Concept Useful?
+## What Makes a Concept Useful?
 
 Researchers often create new concepts. This is one reason academic fields sometimes develop so much jargon. Not all concepts are equally useful, however. A useful concept should have several qualities.
 
@@ -63,7 +62,7 @@ That distinction matters. If we want to study state capacity, we need to measure
 
 ---
 
-## 3. From Concepts to Variables: Operationalization
+## From Concepts to Variables: Operationalization
 
 Once we identify a concept, we need to turn it into something we can record as data. This process is called **operationalization**.
 
@@ -89,7 +88,7 @@ For example, if we conduct a survey of people and ask, “Are you human?” we w
 
 ---
 
-## 4. Example: Measuring Political Ideology
+## Example: Measuring Political Ideology
 
 To see operationalization in practice, consider the concept of **political ideology**.
 
@@ -127,7 +126,7 @@ There are formal rules, and then there is what researchers often do. The two do 
 
 ---
 
-## 5. Example: Measuring Education
+## Example: Measuring Education
 
 Education is another concept that initially seems easy to measure but becomes complicated quickly.
 
@@ -145,7 +144,7 @@ Each measurement strategy captures part of the concept and misses part of it. Th
 
 ---
 
-## 6. Measurement Choices in Existing Data
+## Measurement Choices in Existing Data
 
 Researchers often do not collect their own data. Instead, they use data collected by governments, organizations, schools, agencies, or previous researchers. In these cases, the measurement strategy has already been chosen.
 
@@ -173,7 +172,7 @@ The lesson is simple but important: whenever we see a table, graph, or statistic
 
 ---
 
-## 7. Assessing Measurement Quality
+## Assessing Measurement Quality
 
 A good measurement strategy should be both **reliable** and **valid**.
 
@@ -219,7 +218,7 @@ Reliability is about consistency. Validity is about truthfulness to the concept.
 
 ---
 
-## 8. Change Does Not Necessarily Mean Unreliability
+## Change Does Not Necessarily Mean Unreliability
 
 One point often causes confusion: if the thing being measured changes, then the measurement should change.
 
@@ -237,7 +236,7 @@ This may reliably measure whether someone attended services last week. But it ma
 
 ---
 
-## 9. Response Bias
+## Response Bias
 
 A common threat to measurement quality is **response bias**.
 
@@ -267,7 +266,7 @@ Good measurement requires anticipating how people interpret questions and how so
 
 ---
 
-## 10. Example: Measuring Religiosity
+## Example: Measuring Religiosity
 
 Religiosity is a useful example because it is difficult to define and measure.
 
@@ -306,7 +305,7 @@ This example illustrates a general rule: the hardest part of data analysis is of
 
 ---
 
-## 11. Variables
+## Variables
 
 A measurement strategy produces a **variable**. A variable is a recorded feature that can take on different values across cases.
 
@@ -322,7 +321,7 @@ These classifications overlap, but each gives us useful information.
 
 ---
 
-## 12. Categorical and Quantitative Variables
+## Categorical and Quantitative Variables
 
 The most basic distinction is between **categorical** and **quantitative** variables.
 
@@ -357,7 +356,7 @@ This distinction is crucial because statistical software will often calculate th
 
 ---
 
-## 13. Levels of Measurement
+## Levels of Measurement
 
 The second classification concerns the **level of measurement**. The three most important levels are:
 
@@ -454,7 +453,7 @@ For many purposes in introductory statistics, the key distinction is whether the
 
 ---
 
-## 14. Discrete and Continuous Variables
+## Discrete and Continuous Variables
 
 The third classification concerns whether a variable is **discrete** or **continuous**.
 
@@ -490,7 +489,7 @@ Likewise, income may seem continuous in principle, but in practice it is often r
 
 ---
 
-## 15. Why Variable Type Matters
+## Why Variable Type Matters
 
 The properties of variables determine what we can do with them.
 
@@ -520,7 +519,7 @@ For interval and ratio variables, the mean, median, and mode are all possible, t
 
 ---
 
-## 16. Dichotomous Variables
+## Dichotomous Variables
 
 A **dichotomous variable** has exactly two categories.
 
@@ -556,7 +555,7 @@ The term **dummy variable** simply means that the variable stands in for members
 
 ---
 
-## 17. Practical Flexibility in Measurement
+## Practical Flexibility in Measurement
 
 The rules about measurement levels are important, but researchers sometimes bend them for practical reasons.
 
@@ -580,7 +579,7 @@ The key is not to memorize rules mechanically. The key is to understand what ass
 
 ---
 
-## 18. Indexes and Scales
+## Indexes and Scales
 
 Researchers often combine multiple items into a single measure. Two common terms for such measures are **index** and **scale**. These terms are sometimes used loosely, but they have distinct meanings.
 
@@ -644,7 +643,7 @@ The logic is that someone who endorses a more permissive statement may also endo
 
 ---
 
-## 19. The Central Lesson: Data Are Produced by Methods
+## The Central Lesson: Data Are Produced by Methods
 
 The most important lesson of this chapter is that data are not simply “out there” waiting to be collected. Data are produced through methods.
 

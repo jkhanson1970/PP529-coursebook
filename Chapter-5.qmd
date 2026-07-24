@@ -1,6 +1,5 @@
 ---
 title: "Chapter 5: Probability Distributions"
-format: revealjs
 ---
 
 Probability theory gives us the language of uncertainty. Probability distributions give us the structure of that uncertainty.
@@ -17,7 +16,7 @@ The central idea is this: sample statistics, such as sample means and sample pro
 
 ---
 
-## 1. Probability as Area
+## Probability as Area
 
 A probability distribution assigns probabilities to the possible values of a random variable.
 
@@ -50,7 +49,7 @@ Percentages communicate the same information, but strictly speaking, probabiliti
 
 # Part I: Discrete Probability Distributions
 
-## 2. Discrete Random Variables
+## Discrete Random Variables
 
 A **discrete random variable** takes on specific, separate values.
 
@@ -93,7 +92,7 @@ That is because the table includes all possible outcomes.
 
 ---
 
-## 3. Probabilities for Discrete Variables
+## Probabilities for Discrete Variables
 
 With a discrete probability distribution, we can answer probability questions by adding the probabilities of the relevant values.
 
@@ -157,7 +156,7 @@ The rule is simple: identify the values that satisfy the condition, then sum the
 
 ---
 
-## 4. Summation Notation for Discrete Probabilities
+## Summation Notation for Discrete Probabilities
 
 We can write this process using summation notation.
 
@@ -197,7 +196,7 @@ Do not panic. We will not do calculus by hand. But understanding the concept mat
 
 # Part II: Continuous Probability Distributions
 
-## 5. Continuous Random Variables
+## Continuous Random Variables
 
 A **continuous random variable** can take on infinitely many values within a range.
 
@@ -234,7 +233,7 @@ For continuous variables, probability is assigned to intervals, not exact points
 
 ---
 
-## 6. Probability Density
+## Probability Density
 
 For continuous distributions, we describe probability using a **probability density function**, or PDF.
 
@@ -258,7 +257,7 @@ The total area under a probability density curve must equal 1.
 
 ---
 
-## 7. Probability as Area Under the Curve
+## Probability as Area Under the Curve
 
 For a continuous variable, we find probabilities by identifying the area under the curve within a range.
 
@@ -294,7 +293,7 @@ Again, probability is the area under the curve.
 
 ---
 
-## 8. Integration and Area
+## Integration and Area
 
 How do we find area under a curve?
 
@@ -337,7 +336,7 @@ Some mathematically generous soul did the integration for us. We should be grate
 
 ---
 
-## 9. Probability Density Functions and Cumulative Distribution Functions
+## Probability Density Functions and Cumulative Distribution Functions
 
 Two functions are especially important when working with continuous probability distributions.
 
@@ -375,7 +374,7 @@ The CDF gives accumulated area.
 
 # Part III: Describing Probability Distributions
 
-## 10. Parameters of Probability Distributions
+## Parameters of Probability Distributions
 
 Probability distributions can be described using parameters, just as sample distributions can be described using statistics.
 
@@ -406,7 +405,7 @@ These are population-level or distribution-level quantities. They describe the l
 
 ---
 
-## 11. Expected Value
+## Expected Value
 
 The mean of a probability distribution is also called the **expected value**.
 
@@ -428,7 +427,7 @@ The expected value is the probability-weighted center of the distribution.
 
 ---
 
-## 12. Expected Value Example: A Die Roll
+## Expected Value Example: A Die Roll
 
 Suppose we roll a fair six-sided die.
 
@@ -466,7 +465,7 @@ This is an important lesson: an expected value does not have to be an outcome th
 
 ---
 
-## 13. Expected Value Example: A Discrete Distribution
+## Expected Value Example: A Discrete Distribution
 
 Return to the earlier probability distribution:
 
@@ -504,7 +503,7 @@ That is the law of large numbers at work.
 
 ---
 
-## 14. Expected Value for Continuous Variables
+## Expected Value for Continuous Variables
 
 For a continuous random variable, the logic is the same, but the notation changes.
 
@@ -534,7 +533,7 @@ Both formulas express the same idea: the expected value is the probability-weigh
 
 ---
 
-## 15. Variance of a Probability Distribution
+## Variance of a Probability Distribution
 
 The **variance** of a probability distribution describes its spread around the mean.
 
@@ -578,7 +577,7 @@ The main idea is that probability distributions have centers and spreads. Their 
 
 # Part IV: The Binomial Distribution
 
-## 16. Why the Binomial Distribution Matters
+## Why the Binomial Distribution Matters
 
 The **binomial distribution** is a discrete probability distribution that describes the number of successes in a fixed number of independent trials when each trial has two possible outcomes.
 
@@ -597,7 +596,7 @@ The binomial distribution helps us calculate the probability of getting a certai
 
 ---
 
-## 17. Conditions for the Binomial Distribution
+## Conditions for the Binomial Distribution
 
 The binomial distribution applies when three conditions are met:
 
@@ -614,7 +613,7 @@ If these conditions do not hold, the binomial distribution may not be appropriat
 
 ---
 
-## 18. Coin Toss Example
+## Coin Toss Example
 
 Suppose we toss a fair coin 10 times.
 
@@ -658,7 +657,7 @@ This is the intuition behind statistical inference: we compare what we observe t
 
 ---
 
-## 19. Permutations: Nine Heads in Ten Tosses
+## Permutations: Nine Heads in Ten Tosses
 
 Now suppose we ask:
 
@@ -706,7 +705,7 @@ The binomial formula generalizes this logic.
 
 ---
 
-## 20. The Binomial Formula
+## The Binomial Formula
 
 The binomial distribution gives the probability of getting exactly \(x\) successes in \(n\) trials:
 
@@ -744,7 +743,7 @@ Multiplying these parts gives the total probability of getting exactly \(x\) suc
 
 ---
 
-## 21. Factorials
+## Factorials
 
 A **factorial** is the product of a positive integer and all positive integers below it.
 
@@ -768,7 +767,7 @@ This matters in binomial calculations. For example, if \(x=n\), then \(n-x=0\), 
 
 ---
 
-## 22. Binomial Example: Nine Heads in Ten Tosses
+## Binomial Example: Nine Heads in Ten Tosses
 
 Let:
 
@@ -822,7 +821,7 @@ This matches the intuitive result from earlier.
 
 ---
 
-## 23. The Binomial as a Probability Distribution
+## The Binomial as a Probability Distribution
 
 The binomial formula can be used to calculate the probability of every possible number of successes.
 
@@ -850,7 +849,7 @@ This is one of the first hints of a major idea: as sample size grows, sample sta
 
 ---
 
-## 24. The Binomial and Sample Proportions
+## The Binomial and Sample Proportions
 
 The binomial distribution can also be understood as a distribution of sample proportions.
 
@@ -890,7 +889,7 @@ This matters because in real surveys, we do not know \(\pi\). We observe \(\hat{
 
 # Part V: The Normal Distribution
 
-## 25. Why the Normal Distribution Matters
+## Why the Normal Distribution Matters
 
 The **normal distribution** is one of the most important probability distributions in statistics.
 
@@ -909,7 +908,7 @@ The normal distribution is central to confidence intervals, hypothesis tests, Z-
 
 ---
 
-## 26. The Normal Density Function
+## The Normal Density Function
 
 The probability density function for a normal distribution is:
 
@@ -932,7 +931,7 @@ A specific normal distribution is determined by choosing values for \(\mu\) and 
 
 ---
 
-## 27. Changing the Mean
+## Changing the Mean
 
 If we change the mean while holding the standard deviation constant, the normal curve shifts left or right.
 
@@ -948,7 +947,7 @@ The mean determines location.
 
 ---
 
-## 28. Changing the Standard Deviation
+## Changing the Standard Deviation
 
 If we hold the mean constant but change the standard deviation, the spread of the distribution changes.
 
@@ -972,7 +971,7 @@ The standard deviation determines dispersion.
 
 ---
 
-## 29. Common Properties of All Normal Distributions
+## Common Properties of All Normal Distributions
 
 Every normal distribution has the same general area properties.
 
@@ -1002,7 +1001,7 @@ That number will appear repeatedly in confidence intervals and hypothesis tests.
 
 ---
 
-## 30. Normal Distributions and Inference
+## Normal Distributions and Inference
 
 The normal distribution is useful for inference because sample statistics often have approximately normal sampling distributions.
 
@@ -1024,7 +1023,7 @@ To answer that, we need to know the probability distribution of the sample stati
 
 # Part VI: The Standard Normal Distribution
 
-## 31. Why Standardize?
+## Why Standardize?
 
 There are infinitely many normal distributions because normal distributions can have different means and standard deviations.
 
@@ -1048,7 +1047,7 @@ A Z-score tells us how many standard deviations a value is from the mean.
 
 ---
 
-## 32. Calculating a Z-Score
+## Calculating a Z-Score
 
 To convert a value \(Y\) into a Z-score, use:
 
@@ -1072,7 +1071,7 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 
 ---
 
-## 33. Interpreting Z-Scores
+## Interpreting Z-Scores
 
 A Z-score of 0 means the value is exactly at the mean.
 
@@ -1099,7 +1098,7 @@ The raw score alone is not enough. The Z-score tells us where the score sits in 
 
 ---
 
-## 34. Z-Score Example: Exam Scores
+## Z-Score Example: Exam Scores
 
 Suppose exam scores are normally distributed with:
 
@@ -1159,7 +1158,7 @@ So 75 is exactly at the mean.
 
 ---
 
-## 35. Converting Back from a Z-Score
+## Converting Back from a Z-Score
 
 We can also convert a Z-score back to the original scale.
 
@@ -1205,7 +1204,7 @@ A Z-score of 2 corresponds to an exam score of 85.
 
 # Part VII: Using the Z-Table
 
-## 36. Area Under the Standard Normal Curve
+## Area Under the Standard Normal Curve
 
 The standard normal distribution lets us find probabilities by finding area under the curve.
 
@@ -1235,7 +1234,7 @@ That means there is a 2.28 percent chance that a normally distributed variable f
 
 ---
 
-## 37. Symmetry
+## Symmetry
 
 The standard normal distribution is symmetric.
 
@@ -1267,7 +1266,7 @@ P(Z < -1.00) = 0.1587
 
 ---
 
-## 38. Complement Rule with the Z-Table
+## Complement Rule with the Z-Table
 
 If the table gives area above a Z-score, then area below that Z-score is found using the complement rule.
 
@@ -1293,7 +1292,7 @@ In hypothesis testing, however, crossing a threshold can matter. We will return 
 
 ---
 
-## 39. Area Between Two Z-Scores
+## Area Between Two Z-Scores
 
 Suppose we want the area between:
 
@@ -1341,7 +1340,7 @@ This is the familiar 68.26 percent within one standard deviation of the mean.
 
 ---
 
-## 40. Finding a Z-Score from an Area
+## Finding a Z-Score from an Area
 
 Sometimes we work backward.
 
@@ -1367,7 +1366,7 @@ Tables are sometimes imprecise because they report only certain decimal places. 
 
 # Part VIII: Connecting Probability Distributions to Sampling Distributions
 
-## 41. Sample Statistics Are Random Variables
+## Sample Statistics Are Random Variables
 
 A crucial idea is that sample statistics are random variables.
 
@@ -1390,7 +1389,7 @@ The probability distribution of a sample statistic is called a **sampling distri
 
 ---
 
-## 42. Sampling Distribution of the Mean
+## Sampling Distribution of the Mean
 
 Suppose we have a population of student debt values. The true population mean is:
 
@@ -1438,7 +1437,7 @@ This distribution is the sampling distribution of \(\bar{X}\).
 
 ---
 
-## 43. Standard Error
+## Standard Error
 
 The standard deviation of a sampling distribution has a special name:
 
@@ -1459,7 +1458,7 @@ The standard error is central to confidence intervals and hypothesis tests.
 
 ---
 
-## 44. Sample Size and the Sampling Distribution
+## Sample Size and the Sampling Distribution
 
 Sample size affects the spread of the sampling distribution.
 
@@ -1477,7 +1476,7 @@ This is why increasing sample size reduces random sampling error.
 
 ---
 
-## 45. The Central Limit Theorem Preview
+## The Central Limit Theorem Preview
 
 The **Central Limit Theorem** is one of the most important results in statistics.
 

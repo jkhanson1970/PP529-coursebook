@@ -1,6 +1,5 @@
 ---
 title: "Chapter 6: Sampling Distributions"
-format: revealjs
 ---
 
 Sampling distributions are one of the most important ideas in statistics.
@@ -25,7 +24,7 @@ That question is the foundation for confidence intervals, hypothesis tests, stan
 
 ---
 
-## 1. From Probability Distributions to Sampling Distributions
+## From Probability Distributions to Sampling Distributions
 
 A **probability distribution** describes the probabilities associated with the possible values of a random variable.
 
@@ -47,7 +46,7 @@ A sampling distribution describes how those sample means, proportions, or other 
 
 ---
 
-## 2. A Thought Exercise: Rolling Dice
+## A Thought Exercise: Rolling Dice
 
 Imagine rolling a fair six-sided die 200 times and calculating the mean of the 200 rolls.
 
@@ -81,7 +80,7 @@ That distribution is the **sampling distribution of the sample mean**.
 
 ---
 
-## 3. What a Sampling Distribution Shows
+## What a Sampling Distribution Shows
 
 A sampling distribution tells us how a statistic behaves across repeated random samples.
 
@@ -100,7 +99,7 @@ But statistical theory tells us what the sampling distribution looks like under 
 
 ---
 
-## 4. Sample Distribution Versus Sampling Distribution
+## Sample Distribution Versus Sampling Distribution
 
 Because the terms sound similar, it is worth being very clear.
 
@@ -122,7 +121,7 @@ This distinction is central.
 
 ---
 
-## 5. Why Sampling Distributions Matter
+## Why Sampling Distributions Matter
 
 Sampling distributions matter because they allow us to estimate uncertainty.
 
@@ -146,7 +145,7 @@ Sampling distributions are also the foundation for hypothesis testing. A hypothe
 
 # Part I: The Central Limit Theorem
 
-## 6. The Central Limit Theorem
+## The Central Limit Theorem
 
 The **Central Limit Theorem**, often abbreviated CLT, is one of the most important results in statistics.
 
@@ -176,7 +175,7 @@ This standard deviation has a special name: the **standard error**.
 
 ---
 
-## 7. The Shape of the Sampling Distribution
+## The Shape of the Sampling Distribution
 
 The first major insight of the Central Limit Theorem is that the sampling distribution of the sample mean is approximately normal under the right conditions.
 
@@ -196,7 +195,7 @@ This is one reason the normal distribution is so important. It appears not only 
 
 ---
 
-## 8. The Center of the Sampling Distribution
+## The Center of the Sampling Distribution
 
 The second major insight is that the sampling distribution of \(\bar{X}\) is centered at the population mean \(\mu\).
 
@@ -216,7 +215,7 @@ The sample mean does not systematically overestimate or underestimate the popula
 
 ---
 
-## 9. The Spread of the Sampling Distribution
+## The Spread of the Sampling Distribution
 
 The third major insight is that the standard deviation of the sampling distribution is:
 
@@ -242,7 +241,7 @@ Larger sample sizes reduce the spread of the sampling distribution. More data pr
 
 ---
 
-## 10. Conditions for the Central Limit Theorem
+## Conditions for the Central Limit Theorem
 
 The Central Limit Theorem does not apply automatically in every possible situation. Several conditions matter.
 
@@ -268,7 +267,7 @@ If the population is already approximately normal, even a smaller sample may be 
 
 ---
 
-## 11. When the Population Is Normal
+## When the Population Is Normal
 
 If the population distribution is normal, then the sampling distribution of the sample mean is normal regardless of sample size.
 
@@ -282,7 +281,7 @@ This differs from a skewed population. If the population is strongly skewed and 
 
 ---
 
-## 12. When the Population Is Skewed
+## When the Population Is Skewed
 
 Suppose the population distribution is positively skewed, as income often is.
 
@@ -298,7 +297,7 @@ This is the Central Limit Theorem at work.
 
 ---
 
-## 13. Why Sample Size Matters
+## Why Sample Size Matters
 
 Sample size matters for two reasons.
 
@@ -322,7 +321,7 @@ As \(n\) increases, \(\sqrt{n}\) increases. Since \(\sqrt{n}\) is in the denomin
 
 # Part II: Standard Error
 
-## 14. What Is the Standard Error?
+## What Is the Standard Error?
 
 The **standard error** is the standard deviation of a sampling distribution.
 
@@ -346,7 +345,7 @@ That distinction is important.
 
 ---
 
-## 15. Standard Deviation Versus Standard Error
+## Standard Deviation Versus Standard Error
 
 The **standard deviation** of a variable describes how much individual observations vary.
 
@@ -372,7 +371,7 @@ The standard error is smaller than the population standard deviation because sam
 
 ---
 
-## 16. Interpreting the Standard Error Formula
+## Interpreting the Standard Error Formula
 
 The standard error of the mean is:
 
@@ -416,7 +415,7 @@ This is why larger samples give us more precise estimates.
 
 ---
 
-## 17. The Sampling Distribution in Standard Error Units
+## The Sampling Distribution in Standard Error Units
 
 Because the sampling distribution of \(\bar{X}\) is approximately normal, we can apply the normal distribution’s area rules.
 
@@ -438,7 +437,7 @@ If we know the center and spread of the sampling distribution, we can describe w
 
 ---
 
-## 18. Visualizing the Sampling Distribution
+## Visualizing the Sampling Distribution
 
 Imagine a normal curve representing the sampling distribution of \(\bar{X}\).
 
@@ -470,7 +469,7 @@ This is what allows us to say how surprising or unsurprising a sample mean is un
 
 # Part III: Standardizing the Sample Mean
 
-## 19. From Sample Means to Z-Scores
+## From Sample Means to Z-Scores
 
 Earlier, we learned how to convert a normally distributed variable into a Z-score:
 
@@ -510,7 +509,7 @@ The result tells us how many standard errors away the estimate is from the hypot
 
 ---
 
-## 20. Why Standardizing Matters
+## Why Standardizing Matters
 
 Standardizing lets us use the standard normal distribution.
 
@@ -535,7 +534,7 @@ This is the logic behind hypothesis testing.
 
 # Part IV: Example: Household Income in Michigan
 
-## 21. The Scenario
+## The Scenario
 
 Suppose the true mean household income in Michigan is:
 
@@ -579,7 +578,7 @@ SE_{\bar{X}} = \frac{\sigma}{\sqrt{n}}
 
 ---
 
-## 22. Calculating the Standard Error
+## Calculating the Standard Error
 
 Use the formula:
 
@@ -615,7 +614,7 @@ That is the typical amount of random sampling error for the sample mean in this 
 
 ---
 
-## 23. The 68 Percent Range
+## The 68 Percent Range
 
 Because the sampling distribution is approximately normal, about 68.26 percent of sample means fall within one standard error of the population mean.
 
@@ -655,7 +654,7 @@ That distinction is crucial.
 
 ---
 
-## 24. The 95 Percent Range
+## The 95 Percent Range
 
 About 95 percent of sample means fall within 1.96 standard errors of the population mean.
 
@@ -701,7 +700,7 @@ To be more confident, we need a wider range.
 
 ---
 
-## 25. Precision and Confidence
+## Precision and Confidence
 
 A wider interval captures more possible sample means. That makes it more reliable in the sense that it covers a larger portion of the sampling distribution.
 
@@ -721,7 +720,7 @@ This will become central when we study confidence intervals.
 
 # Part V: What We Know and What We Usually Do Not Know
 
-## 26. The Idealized Scenario
+## The Idealized Scenario
 
 In the Michigan income example, we assumed we knew:
 
@@ -763,7 +762,7 @@ This introduces additional uncertainty.
 
 ---
 
-## 27. From Standard Error to Estimated Standard Error
+## From Standard Error to Estimated Standard Error
 
 The theoretical standard error of the sample mean is:
 
@@ -787,7 +786,7 @@ We will use this idea when constructing confidence intervals and conducting hypo
 
 ---
 
-## 28. Why the t-Distribution Appears
+## Why the t-Distribution Appears
 
 If we knew the population standard deviation \(\sigma\), then the standardized statistic:
 
@@ -815,7 +814,7 @@ This matters because small samples contain less information, so we should be mor
 
 # Part VI: The Big Picture
 
-## 29. The Central Insight
+## The Central Insight
 
 The central insight of this chapter is:
 
@@ -837,7 +836,7 @@ The standard error gives us a measure of expected sampling error.
 
 ---
 
-## 30. Why This Matters for Inference
+## Why This Matters for Inference
 
 Statistical inference is about using sample data to make claims about populations.
 
@@ -854,7 +853,7 @@ Everything that follows—confidence intervals, significance tests, p-values, an
 
 ---
 
-## 31. Three Distributions to Keep Straight
+## Three Distributions to Keep Straight
 
 At this point, we have discussed three different kinds of distributions.
 

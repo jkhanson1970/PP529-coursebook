@@ -1,6 +1,5 @@
 ---
 title: "Chapter 11: Association Between Categorical Variables"
-format: revealjs
 ---
 
 We now turn to statistical tests involving **categorical variables**.
@@ -28,7 +27,7 @@ This chapter introduces cross-tabulation analysis, expected frequencies, the chi
 
 # Part I: Independence and Categorical Data
 
-## 1. From Probability Theory to Chi-Square Tests
+## From Probability Theory to Chi-Square Tests
 
 Earlier, we defined independence using conditional probabilities.
 
@@ -71,7 +70,7 @@ That is what the chi-square test does.
 
 ---
 
-## 2. Example: Gun Ownership and Neighborhood Fear
+## Example: Gun Ownership and Neighborhood Fear
 
 Suppose the General Social Survey asks two questions:
 
@@ -114,7 +113,7 @@ But we need a statistical test to determine whether the deviation is large enoug
 
 ---
 
-## 3. The Null Hypothesis of Independence
+## The Null Hypothesis of Independence
 
 For a chi-square test of independence, the null hypothesis is:
 
@@ -147,7 +146,7 @@ H_A:
 
 ---
 
-## 4. Expected Frequencies
+## Expected Frequencies
 
 The chi-square test compares observed frequencies to expected frequencies.
 
@@ -178,7 +177,7 @@ That difference contributes to the chi-square statistic.
 
 ---
 
-## 5. Formula for Expected Frequencies
+## Formula for Expected Frequencies
 
 For any cell in a contingency table, the expected frequency is:
 
@@ -207,7 +206,7 @@ This formula works for every cell in the table.
 
 ---
 
-## 6. Expected Frequencies for the Gun Ownership Example
+## Expected Frequencies for the Gun Ownership Example
 
 Using the formula, the expected frequencies are:
 
@@ -232,7 +231,7 @@ The chi-square statistic summarizes how far the observed frequencies deviate fro
 
 # Part II: Cross-Tabulation Analysis
 
-## 7. Contingency Tables and Cross-Tabs
+## Contingency Tables and Cross-Tabs
 
 A **contingency table**, also called a **cross-tabulation** or **cross-tab**, displays the joint distribution of two categorical variables.
 
@@ -260,7 +259,7 @@ Column percentages allow us to ask:
 
 ---
 
-## 8. Column Percentages
+## Column Percentages
 
 Using the gun ownership example:
 
@@ -298,7 +297,7 @@ They do not. The chi-square test tells us whether the observed deviation is stat
 
 ---
 
-## 9. Adding a Control Variable
+## Adding a Control Variable
 
 We can add a control variable to a cross-tabulation.
 
@@ -330,7 +329,7 @@ However, cross-tabs can become unwieldy quickly when we add more variables or ca
 
 # Part III: The Chi-Square Test of Independence
 
-## 10. Assumptions of the Chi-Square Test
+## Assumptions of the Chi-Square Test
 
 The chi-square test of independence requires:
 
@@ -347,7 +346,7 @@ If expected frequencies are too small, the chi-square approximation may not be r
 
 ---
 
-## 11. The Chi-Square Statistic
+## The Chi-Square Statistic
 
 The chi-square statistic is:
 
@@ -381,7 +380,7 @@ As observed frequencies deviate more from expected frequencies, the chi-square s
 
 ---
 
-## 12. Calculating the Chi-Square Statistic
+## Calculating the Chi-Square Statistic
 
 For the gun ownership example, the observed and expected values are:
 
@@ -431,7 +430,7 @@ Add them:
 
 ---
 
-## 13. Degrees of Freedom
+## Degrees of Freedom
 
 For a chi-square test of independence:
 
@@ -463,7 +462,7 @@ df = 1
 
 ---
 
-## 14. The Chi-Square Distribution
+## The Chi-Square Distribution
 
 The chi-square distribution is different from the normal and t distributions.
 
@@ -497,7 +496,7 @@ Gun ownership and fear of walking in one’s neighborhood at night are not indep
 
 ---
 
-## 15. p-Value for the Chi-Square Test
+## p-Value for the Chi-Square Test
 
 The p-value is the area in the upper tail of the chi-square distribution beyond the observed chi-square statistic.
 
@@ -519,7 +518,7 @@ we reject the null hypothesis.
 
 ---
 
-## 16. Running the Chi-Square Test in Software
+## Running the Chi-Square Test in Software
 
 In Stata, the command structure is:
 
@@ -548,7 +547,7 @@ Software reports:
 
 # Part IV: Example: Program and Graduation
 
-## 17. Revisiting the Graduation Program
+## Revisiting the Graduation Program
 
 Earlier, we analyzed a difference of proportions for a program intended to increase high school graduation.
 
@@ -578,7 +577,7 @@ We can also analyze this as a chi-square test because it is a 2-by-2 table.
 
 ---
 
-## 18. Expected Frequencies
+## Expected Frequencies
 
 The overall graduation rate is:
 
@@ -599,7 +598,7 @@ All expected frequencies exceed 5, so the chi-square test is appropriate.
 
 ---
 
-## 19. Chi-Square Result
+## Chi-Square Result
 
 Using the formula:
 
@@ -639,7 +638,7 @@ The chi-square test reaches the same conclusion as the difference-of-proportions
 
 ---
 
-## 20. Relationship Between z and Chi-Square in 2-by-2 Tables
+## Relationship Between z and Chi-Square in 2-by-2 Tables
 
 For a 2-by-2 table, the chi-square statistic with one degree of freedom is equal to the square of the z-statistic from the difference-of-proportions test:
 
@@ -669,7 +668,7 @@ Once one of the variables has more than two categories, the chi-square test no l
 
 # Part V: Example: Satisfaction with ACA Health Plans
 
-## 21. The Research Question
+## The Research Question
 
 Suppose we want to analyze satisfaction with health insurance plans after implementation of the Affordable Care Act.
 
@@ -702,7 +701,7 @@ H_A: \text{Satisfaction and plan type are not independent}
 
 ---
 
-## 22. Observed Frequencies and Column Percentages
+## Observed Frequencies and Column Percentages
 
 Suppose the data are:
 
@@ -727,7 +726,7 @@ Now we test whether this relationship is statistically significant.
 
 ---
 
-## 23. Expected Frequencies
+## Expected Frequencies
 
 Under independence, the satisfaction distribution should be the same for ACA plans and other plans.
 
@@ -751,7 +750,7 @@ All expected frequencies exceed 5, so the chi-square test is appropriate.
 
 ---
 
-## 24. Chi-Square Statistic
+## Chi-Square Statistic
 
 For each cell:
 
@@ -809,7 +808,7 @@ Satisfaction and plan type are not independent.
 
 ---
 
-## 25. Interpreting the Result
+## Interpreting the Result
 
 The chi-square test tells us that satisfaction differs by plan type.
 
@@ -829,7 +828,7 @@ The chi-square test tells us the relationship is statistically significant. The 
 
 # Part VI: Residuals and Cell-Level Deviations
 
-## 26. Residuals
+## Residuals
 
 A **residual** in a chi-square table is:
 
@@ -859,7 +858,7 @@ Residuals help us understand the direction of the relationship.
 
 ---
 
-## 27. Residuals in the ACA Example
+## Residuals in the ACA Example
 
 For the ACA satisfaction example:
 
@@ -879,7 +878,7 @@ The opposite pattern appears among respondents with other health insurance.
 
 ---
 
-## 28. Standardized Residuals
+## Standardized Residuals
 
 A raw residual can be hard to interpret because its size depends on the sample size and expected frequency.
 
@@ -908,7 +907,7 @@ A standardized residual beyond approximately \(\pm 1.96\) suggests that the cell
 
 ---
 
-## 29. Example: Standardized Residual
+## Example: Standardized Residual
 
 Suppose the ACA-satisfied cell has:
 
@@ -942,7 +941,7 @@ The result is not merely statistically significant overall. This specific cell i
 
 # Part VII: Ordinal Variables and Direction
 
-## 30. Limits of Chi-Square for Ordinal Data
+## Limits of Chi-Square for Ordinal Data
 
 The chi-square test treats categories as nominal.
 
@@ -964,7 +963,7 @@ The chi-square test does not provide that.
 
 ---
 
-## 31. Positive and Negative Relationships
+## Positive and Negative Relationships
 
 A **positive relationship** between two ordinal variables means higher values of one variable tend to be associated with higher values of the other variable.
 
@@ -990,7 +989,7 @@ Always check which direction the categories move.
 
 ---
 
-## 32. Gamma and Kendall’s Tau-b
+## Gamma and Kendall’s Tau-b
 
 For ordinal variables, we can use measures such as:
 
@@ -1027,7 +1026,7 @@ These values also have standard errors, allowing assessment of whether they are 
 
 ---
 
-## 33. Example: Spending on Schools and Social Security
+## Example: Spending on Schools and Social Security
 
 Suppose respondents are asked whether federal spending on public schools should:
 
@@ -1053,7 +1052,7 @@ Gamma and tau-b help tell us the direction.
 
 # Part VIII: Small-Sample Tests
 
-## 34. When Chi-Square Is Not Appropriate
+## When Chi-Square Is Not Appropriate
 
 The chi-square test requires expected frequencies of at least 5 in every cell.
 
@@ -1063,7 +1062,7 @@ In such cases, use Fisher’s exact test.
 
 ---
 
-## 35. Fisher’s Exact Test
+## Fisher’s Exact Test
 
 **Fisher’s exact test** evaluates association between categorical variables by calculating exact probabilities rather than relying on the chi-square approximation.
 
@@ -1079,7 +1078,7 @@ Fisher’s exact test can be used for 2-by-2 tables and, in some software, for l
 
 ---
 
-## 36. Fisher’s Exact Test in Software
+## Fisher’s Exact Test in Software
 
 In Stata:
 
@@ -1108,7 +1107,7 @@ If expected cell counts are too small for chi-square, Fisher’s exact test is t
 
 # Part IX: Limitations of the Chi-Square Test
 
-## 37. Direction
+## Direction
 
 The chi-square statistic does not tell us the direction of the relationship.
 
@@ -1124,7 +1123,7 @@ To understand direction, examine:
 
 ---
 
-## 38. Magnitude
+## Magnitude
 
 The chi-square statistic does not directly tell us the substantive magnitude of the relationship.
 
@@ -1136,7 +1135,7 @@ Always distinguish statistical significance from substantive significance.
 
 ---
 
-## 39. Category Choices
+## Category Choices
 
 Chi-square results can depend on how categories are defined.
 

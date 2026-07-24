@@ -1,6 +1,5 @@
 ---
 title: "Chapter 3: Descriptive Statistics"
-format: revealjs
 ---
 
 Once we have collected data, the first task is to describe what we have. Before we test hypotheses, estimate models, or make claims about relationships between variables, we need to understand the basic shape and structure of the data.
@@ -23,7 +22,7 @@ Throughout the chapter, one principle remains central: the appropriate descripti
 
 ---
 
-## 1. Distributions
+## Distributions
 
 A **distribution** describes how the values of a variable appear in a sample or population.
 
@@ -47,7 +46,7 @@ Before we can summarize a distribution, however, we need to think about the type
 
 ---
 
-## 2. Distributions of Categorical and Discrete Variables
+## Distributions of Categorical and Discrete Variables
 
 For categorical or discrete variables, we often begin with a **frequency distribution**.
 
@@ -83,7 +82,7 @@ The tallest bar identifies the most common category. In this example, â€œNeverâ€
 
 ---
 
-## 3. Distributions of Continuous Variables
+## Distributions of Continuous Variables
 
 For continuous variables, the logic is slightly different.
 
@@ -124,7 +123,7 @@ The choice of bin width matters. If bins are too wide, we may hide important var
 
 ---
 
-## 4. Describing Distributions
+## Describing Distributions
 
 Once we have examined a distribution, we usually want to summarize it.
 
@@ -160,7 +159,7 @@ Software will often do what you ask, even when you should not have asked. The re
 
 # Part I: Measures of Central Tendency
 
-## 5. Central Tendency
+## Central Tendency
 
 A measure of central tendency describes what is typical in a distribution.
 
@@ -176,7 +175,7 @@ Sometimes these three measures are the same. Often, they are not.
 
 ---
 
-## 6. The Mean
+## The Mean
 
 The **mean** is the arithmetic center of a distribution.
 
@@ -198,7 +197,7 @@ The mean is appropriate for interval- or ratio-level variables. It is not approp
 
 ---
 
-## 7. Summation Notation
+## Summation Notation
 
 To express the formula for the mean, we need summation notation.
 
@@ -234,7 +233,7 @@ In words: add up all the values of \(Y\) from the first case through the final c
 
 ---
 
-## 8. The Population Mean
+## The Population Mean
 
 If we have data for the full population, the population mean is:
 
@@ -292,7 +291,7 @@ Notice that 3.5 is not a possible die roll. We cannot roll a 3.5. But 3.5 is sti
 
 ---
 
-## 9. The Sample Mean
+## The Sample Mean
 
 Usually, we do not observe the full population. Instead, we have a sample.
 
@@ -318,7 +317,7 @@ This distinction is important:
 
 ---
 
-## 10. The Median
+## The Median
 
 The **median** is the middle value in an ordered distribution.
 
@@ -336,7 +335,7 @@ The median can be used for ordinal, interval, and ratio variables. It cannot be 
 
 ---
 
-## 11. Finding the Median
+## Finding the Median
 
 To find the median:
 
@@ -429,7 +428,7 @@ So the median age is:
 
 ---
 
-## 12. The Mode
+## The Mode
 
 The **mode** is the most common value in a distribution.
 
@@ -449,7 +448,7 @@ For continuous variables, the mode can be less useful. If values are measured ve
 
 ---
 
-## 13. Which Measures of Central Tendency Are Available?
+## Which Measures of Central Tendency Are Available?
 
 The measurement level of the variable determines which measures of central tendency make sense.
 
@@ -467,7 +466,7 @@ For interval and ratio variables, all three are available, though the mode may b
 
 ---
 
-## 14. Comparing the Mean, Median, and Mode
+## Comparing the Mean, Median, and Mode
 
 The mean, median, and mode often tell different stories about the same distribution.
 
@@ -487,7 +486,7 @@ The best measure depends on the variable and the purpose of the description.
 
 # Part II: Measures of Dispersion
 
-## 15. Dispersion
+## Dispersion
 
 Measures of central tendency tell us what is typical. Measures of **dispersion** tell us how spread out the data are.
 
@@ -511,7 +510,7 @@ As with central tendency, the appropriate measure depends on the measurement lev
 
 ---
 
-## 16. Dispersion for Nominal Variables
+## Dispersion for Nominal Variables
 
 For nominal variables, most formal measures of dispersion do not apply.
 
@@ -532,7 +531,7 @@ This is still a description of dispersion, but it is not based on mathematical d
 
 ---
 
-## 17. The Range
+## The Range
 
 The **range** is the distance between the highest and lowest observed values in the data.
 
@@ -558,7 +557,7 @@ Also note that the range refers to the observed data, not the full possible rang
 
 ---
 
-## 18. Percentiles and Quantiles
+## Percentiles and Quantiles
 
 To understand the interquartile range, we need to return to percentiles.
 
@@ -587,7 +586,7 @@ Quantiles help us describe where observations fall in a distribution.
 
 ---
 
-## 19. The Interquartile Range
+## The Interquartile Range
 
 The **interquartile range**, or **IQR**, measures the spread of the middle 50 percent of the data.
 
@@ -607,7 +606,7 @@ This makes the IQR especially useful for skewed distributions or distributions w
 
 ---
 
-## 20. Finding the Interquartile Range
+## Finding the Interquartile Range
 
 To find the IQR:
 
@@ -682,7 +681,7 @@ The middle 50 percent of the age distribution spans four years.
 
 ---
 
-## 21. IQR for Ordinal Variables
+## IQR for Ordinal Variables
 
 For ordinal variables, the IQR can still be useful, but we should interpret it qualitatively rather than as a precise numeric distance.
 
@@ -723,7 +722,7 @@ Also notice that the median is not the middle category in the list. The median i
 
 ---
 
-## 22. Box-and-Whisker Plots
+## Box-and-Whisker Plots
 
 The interquartile range often appears in a graph called a **box-and-whisker plot**, or simply a **box plot**.
 
@@ -748,7 +747,7 @@ For example, suppose we compare the heights of soccer players by position. Goalk
 
 # Part III: Variance and Standard Deviation
 
-## 23. Variability Around the Mean
+## Variability Around the Mean
 
 The range and IQR describe spread using positions in the distribution. Variance and standard deviation describe spread around the mean.
 
@@ -762,7 +761,7 @@ If most observations are close to the mean, dispersion is low. If many observati
 
 ---
 
-## 24. Deviations from the Mean
+## Deviations from the Mean
 
 For each observation, we can calculate its **deviation from the mean**:
 
@@ -823,7 +822,7 @@ So instead of taking absolute values, we square the deviations.
 
 ---
 
-## 25. Sum of Squares
+## Sum of Squares
 
 A **squared deviation** is:
 
@@ -875,7 +874,7 @@ If every observation is exactly equal to the mean, every deviation is zero, and 
 
 ---
 
-## 26. Population Variance
+## Population Variance
 
 The **variance** is the mean squared deviation from the mean.
 
@@ -913,7 +912,7 @@ To return to the original units of the variable, we take the square root. That g
 
 ---
 
-## 27. Population Standard Deviation
+## Population Standard Deviation
 
 The **standard deviation** is the square root of the variance.
 
@@ -956,7 +955,7 @@ The standard deviation cannot be negative. Its smallest possible value is zero, 
 
 ---
 
-## 28. Sample Variance and Sample Standard Deviation
+## Sample Variance and Sample Standard Deviation
 
 In practice, we usually do not have population data. We have sample data.
 
@@ -1000,7 +999,7 @@ This difference is important.
 
 ---
 
-## 29. Why Do We Divide by \(n - 1\)?
+## Why Do We Divide by \(n - 1\)?
 
 When calculating the population variance, we divide by \(N\). When calculating the sample variance, we divide by \(n - 1\).
 
@@ -1016,7 +1015,7 @@ The sample has \(n\) observations, but after estimating the sample mean, only \(
 
 ---
 
-## 30. Degrees of Freedom
+## Degrees of Freedom
 
 Degrees of freedom can be difficult at first, so consider a simple example.
 
@@ -1054,7 +1053,7 @@ So when calculating sample variance, we divide by \(n - 1\) to account for the f
 
 ---
 
-## 31. The Correction Matters Most in Small Samples
+## The Correction Matters Most in Small Samples
 
 Dividing by \(n - 1\) rather than \(n\) makes the estimate of variance slightly larger.
 
@@ -1070,7 +1069,7 @@ As sample size increases, the distinction between \(n\) and \(n - 1\) becomes le
 
 ---
 
-## 32. Summary of Variance and Standard Deviation Formulas
+## Summary of Variance and Standard Deviation Formulas
 
 For a population:
 
@@ -1106,7 +1105,7 @@ The sample statistics \(\bar{Y}\), \(s^2\), and \(s\) estimate the population pa
 
 # Part IV: Skewness
 
-## 33. Skewness
+## Skewness
 
 A distribution is **skewed** if it is asymmetric.
 
@@ -1121,7 +1120,7 @@ There are two main types of skewness:
 
 ---
 
-## 34. Positive Skew
+## Positive Skew
 
 A distribution has **positive skew** if it has a long tail extending toward higher values.
 
@@ -1141,7 +1140,7 @@ However, this is a rule of thumb, not a law. The best way to assess skewness is 
 
 ---
 
-## 35. Negative Skew
+## Negative Skew
 
 A distribution has **negative skew** if it has a long tail extending toward lower values.
 
@@ -1161,7 +1160,7 @@ Again, this is only a rule of thumb. Some discrete distributions may violate thi
 
 ---
 
-## 36. Skewness and Choice of Summary Statistic
+## Skewness and Choice of Summary Statistic
 
 Skewness matters because it affects how we describe what is typical.
 
@@ -1191,7 +1190,7 @@ Neither statistic is inherently wrong. They answer different questions.
 
 ---
 
-## 37. Reading a Skewed Distribution
+## Reading a Skewed Distribution
 
 When examining a distribution, ask:
 
@@ -1213,7 +1212,7 @@ This is easy to mix up. Remember: the skew points toward the tail, not toward wh
 
 # Part V: Choosing Appropriate Descriptive Statistics
 
-## 38. Matching Statistics to Measurement Level
+## Matching Statistics to Measurement Level
 
 The most important practical rule is that descriptive statistics must match the measurement level of the variable.
 
@@ -1236,7 +1235,7 @@ For example:
 
 ---
 
-## 39. Descriptive Statistics as Interpretation
+## Descriptive Statistics as Interpretation
 
 Descriptive statistics are not just mechanical calculations. They are choices about how to represent data.
 

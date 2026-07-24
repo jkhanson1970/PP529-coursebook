@@ -1,207 +1,338 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>14&nbsp; Chapter 13: Correlation – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-14.html" rel="next">
+<link href="./chapter-12.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <title>PubPol 529: Coursebook – Chapter 13: Correlation</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Chapter 13: Correlation</h1>
+<body class="nav-sidebar floating quarto-light">
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-13.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#part-i-preliminaries" id="toc-part-i-preliminaries" class="nav-link active" data-scroll-target="#part-i-preliminaries"><span class="header-section-number">15</span> Part I: Preliminaries</a>
+  <ul class="collapse">
+  <li><a href="#when-do-we-use-correlation" id="toc-when-do-we-use-correlation" class="nav-link" data-scroll-target="#when-do-we-use-correlation"><span class="header-section-number">15.1</span> When Do We Use Correlation?</a></li>
+  <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots"><span class="header-section-number">15.2</span> Scatterplots</a></li>
+  <li><a href="#strength-and-direction" id="toc-strength-and-direction" class="nav-link" data-scroll-target="#strength-and-direction"><span class="header-section-number">15.3</span> Strength and Direction</a>
+  <ul class="collapse">
+  <li><a href="#direction" id="toc-direction" class="nav-link" data-scroll-target="#direction"><span class="header-section-number">15.3.1</span> Direction</a></li>
+  <li><a href="#strength" id="toc-strength" class="nav-link" data-scroll-target="#strength"><span class="header-section-number">15.3.2</span> Strength</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-ii-pearsons-correlation-coefficient" id="toc-part-ii-pearsons-correlation-coefficient" class="nav-link" data-scroll-target="#part-ii-pearsons-correlation-coefficient"><span class="header-section-number">16</span> Part II: Pearson’s Correlation Coefficient</a>
+  <ul class="collapse">
+  <li><a href="#pearsons-r" id="toc-pearsons-r" class="nav-link" data-scroll-target="#pearsons-r"><span class="header-section-number">16.1</span> Pearson’s (r)</a></li>
+  <li><a href="#positive-correlation" id="toc-positive-correlation" class="nav-link" data-scroll-target="#positive-correlation"><span class="header-section-number">16.2</span> Positive Correlation</a></li>
+  <li><a href="#negative-correlation" id="toc-negative-correlation" class="nav-link" data-scroll-target="#negative-correlation"><span class="header-section-number">16.3</span> Negative Correlation</a></li>
+  <li><a href="#no-linear-correlation" id="toc-no-linear-correlation" class="nav-link" data-scroll-target="#no-linear-correlation"><span class="header-section-number">16.4</span> No Linear Correlation</a></li>
+  </ul></li>
+  <li><a href="#part-iii-interpreting-pearsons-r" id="toc-part-iii-interpreting-pearsons-r" class="nav-link" data-scroll-target="#part-iii-interpreting-pearsons-r"><span class="header-section-number">17</span> Part III: Interpreting Pearson’s (r)</a>
+  <ul class="collapse">
+  <li><a href="#magnitude-and-direction" id="toc-magnitude-and-direction" class="nav-link" data-scroll-target="#magnitude-and-direction"><span class="header-section-number">17.1</span> Magnitude and Direction</a></li>
+  <li><a href="#correlation-does-not-measure-slope" id="toc-correlation-does-not-measure-slope" class="nav-link" data-scroll-target="#correlation-does-not-measure-slope"><span class="header-section-number">17.2</span> Correlation Does Not Measure Slope</a></li>
+  <li><a href="#correlation-and-causation" id="toc-correlation-and-causation" class="nav-link" data-scroll-target="#correlation-and-causation"><span class="header-section-number">17.3</span> Correlation and Causation</a></li>
+  </ul></li>
+  <li><a href="#part-iv-how-pearsons-r-works" id="toc-part-iv-how-pearsons-r-works" class="nav-link" data-scroll-target="#part-iv-how-pearsons-r-works"><span class="header-section-number">18</span> Part IV: How Pearson’s (r) Works</a>
+  <ul class="collapse">
+  <li><a href="#the-logic-of-the-formula" id="toc-the-logic-of-the-formula" class="nav-link" data-scroll-target="#the-logic-of-the-formula"><span class="header-section-number">18.1</span> The Logic of the Formula</a></li>
+  <li><a href="#deviations-from-the-mean" id="toc-deviations-from-the-mean" class="nav-link" data-scroll-target="#deviations-from-the-mean"><span class="header-section-number">18.2</span> Deviations from the Mean</a></li>
+  <li><a href="#positive-contributions" id="toc-positive-contributions" class="nav-link" data-scroll-target="#positive-contributions"><span class="header-section-number">18.3</span> Positive Contributions</a></li>
+  <li><a href="#negative-contributions" id="toc-negative-contributions" class="nav-link" data-scroll-target="#negative-contributions"><span class="header-section-number">18.4</span> Negative Contributions</a></li>
+  <li><a href="#a-small-numerical-example" id="toc-a-small-numerical-example" class="nav-link" data-scroll-target="#a-small-numerical-example"><span class="header-section-number">18.5</span> A Small Numerical Example</a></li>
+  <li><a href="#quadrants-in-a-scatterplot" id="toc-quadrants-in-a-scatterplot" class="nav-link" data-scroll-target="#quadrants-in-a-scatterplot"><span class="header-section-number">18.6</span> Quadrants in a Scatterplot</a>
+  <ul class="collapse">
+  <li><a href="#upper-right-quadrant" id="toc-upper-right-quadrant" class="nav-link" data-scroll-target="#upper-right-quadrant"><span class="header-section-number">18.6.1</span> Upper-right quadrant</a></li>
+  <li><a href="#lower-left-quadrant" id="toc-lower-left-quadrant" class="nav-link" data-scroll-target="#lower-left-quadrant"><span class="header-section-number">18.6.2</span> Lower-left quadrant</a></li>
+  <li><a href="#upper-left-quadrant" id="toc-upper-left-quadrant" class="nav-link" data-scroll-target="#upper-left-quadrant"><span class="header-section-number">18.6.3</span> Upper-left quadrant</a></li>
+  <li><a href="#lower-right-quadrant" id="toc-lower-right-quadrant" class="nav-link" data-scroll-target="#lower-right-quadrant"><span class="header-section-number">18.6.4</span> Lower-right quadrant</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-v-statistical-significance-of-correlation" id="toc-part-v-statistical-significance-of-correlation" class="nav-link" data-scroll-target="#part-v-statistical-significance-of-correlation"><span class="header-section-number">19</span> Part V: Statistical Significance of Correlation</a>
+  <ul class="collapse">
+  <li><a href="#pearsons-r-as-an-estimate" id="toc-pearsons-r-as-an-estimate" class="nav-link" data-scroll-target="#pearsons-r-as-an-estimate"><span class="header-section-number">19.1</span> Pearson’s (r) as an Estimate</a></li>
+  <li><a href="#standard-error-of-pearsons-r" id="toc-standard-error-of-pearsons-r" class="nav-link" data-scroll-target="#standard-error-of-pearsons-r"><span class="header-section-number">19.2</span> Standard Error of Pearson’s (r)</a></li>
+  <li><a href="#t-test-for-pearsons-r" id="toc-t-test-for-pearsons-r" class="nav-link" data-scroll-target="#t-test-for-pearsons-r"><span class="header-section-number">19.3</span> t-Test for Pearson’s (r)</a></li>
+  <li><a href="#example-democracy-and-life-expectancy" id="toc-example-democracy-and-life-expectancy" class="nav-link" data-scroll-target="#example-democracy-and-life-expectancy"><span class="header-section-number">19.4</span> Example: Democracy and Life Expectancy</a></li>
+  </ul></li>
+  <li><a href="#part-vi-using-software" id="toc-part-vi-using-software" class="nav-link" data-scroll-target="#part-vi-using-software"><span class="header-section-number">20</span> Part VI: Using Software</a>
+  <ul class="collapse">
+  <li><a href="#correlation-commands" id="toc-correlation-commands" class="nav-link" data-scroll-target="#correlation-commands"><span class="header-section-number">20.1</span> Correlation Commands</a>
+  <ul class="collapse">
+  <li><a href="#in-stata" id="toc-in-stata" class="nav-link" data-scroll-target="#in-stata"><span class="header-section-number">20.1.1</span> In Stata</a></li>
+  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r"><span class="header-section-number">20.1.2</span> In R</a></li>
+  </ul></li>
+  <li><a href="#correlation-matrices" id="toc-correlation-matrices" class="nav-link" data-scroll-target="#correlation-matrices"><span class="header-section-number">20.2</span> Correlation Matrices</a></li>
+  <li><a href="#example-cross-national-correlations" id="toc-example-cross-national-correlations" class="nav-link" data-scroll-target="#example-cross-national-correlations"><span class="header-section-number">20.3</span> Example: Cross-National Correlations</a></li>
+  </ul></li>
+  <li><a href="#part-vii-cautions-in-correlation-analysis" id="toc-part-vii-cautions-in-correlation-analysis" class="nav-link" data-scroll-target="#part-vii-cautions-in-correlation-analysis"><span class="header-section-number">21</span> Part VII: Cautions in Correlation Analysis</a>
+  <ul class="collapse">
+  <li><a href="#correlation-measures-linear-association" id="toc-correlation-measures-linear-association" class="nav-link" data-scroll-target="#correlation-measures-linear-association"><span class="header-section-number">21.1</span> Correlation Measures Linear Association</a></li>
+  <li><a href="#outliers-can-matter" id="toc-outliers-can-matter" class="nav-link" data-scroll-target="#outliers-can-matter"><span class="header-section-number">21.2</span> Outliers Can Matter</a></li>
+  <li><a href="#correlation-does-not-control-for-other-variables" id="toc-correlation-does-not-control-for-other-variables" class="nav-link" data-scroll-target="#correlation-does-not-control-for-other-variables"><span class="header-section-number">21.3</span> Correlation Does Not Control for Other Variables</a></li>
+  <li><a href="#statistical-significance-is-not-substantive-significance" id="toc-statistical-significance-is-not-substantive-significance" class="nav-link" data-scroll-target="#statistical-significance-is-not-substantive-significance"><span class="header-section-number">21.4</span> Statistical Significance Is Not Substantive Significance</a></li>
+  </ul></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">22</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">23</span> Chapter Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></h1>
 </div>
 
-</section>
-<section class="slide level2">
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
 
 <p>Correlation analysis is our first major tool for studying relationships between variables when all variables in the analysis are measured at the interval or ratio level.</p>
 <p>Until now, most of our analyses have involved at least one categorical variable. We compared means across categories, compared proportions across groups, used chi-square tests for categorical association, and used ANOVA to compare multiple group means. Correlation analysis is different. It is used when both variables are quantitative.</p>
@@ -217,20 +348,14 @@
 <p>Correlation analysis measures the <strong>strength</strong> and <strong>direction</strong> of the relationship between two interval-level variables.</p>
 <p>The main statistic we use is <strong>Pearson’s correlation coefficient</strong>, usually written as (r). Pearson’s (r) measures the degree to which two variables have a <strong>linear relationship</strong>.</p>
 <p>The central idea is simple:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Correlation tells us whether two quantitative variables tend to move together, move in opposite directions, or show little linear relationship.</p>
 </blockquote>
-</section>
-<section class="slide level2">
-
-</section>
-<section>
-<section id="part-i-preliminaries" class="title-slide slide level1 center">
-<h1>Part I: Preliminaries</h1>
-
-</section>
-<section id="when-do-we-use-correlation" class="slide level2">
-<h2>1. When Do We Use Correlation?</h2>
+<hr>
+<section id="part-i-preliminaries" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Part I: Preliminaries</h1>
+<section id="when-do-we-use-correlation" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="when-do-we-use-correlation"><span class="header-section-number">15.1</span> When Do We Use Correlation?</h2>
 <p>Correlation is used when the variables in the analysis are interval- or ratio-level variables.</p>
 <p>Examples include:</p>
 <ul>
@@ -255,9 +380,10 @@
 </ul>
 <p>But when both variables are quantitative, correlation is often a useful first step.</p>
 <p>Because interval-level variables can take many values, we usually do not create joint frequency tables. There would be too many possible combinations. Instead, we use scatterplots and correlation coefficients.</p>
+<hr>
 </section>
-<section id="scatterplots" class="slide level2">
-<h2>2. Scatterplots</h2>
+<section id="scatterplots" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="scatterplots"><span class="header-section-number">15.2</span> Scatterplots</h2>
 <p>A <strong>scatterplot</strong> displays the relationship between two quantitative variables.</p>
 <p>One variable is placed on the horizontal axis, usually called (X). The other is placed on the vertical axis, usually called (Y).</p>
 <p>Each point represents one case.</p>
@@ -278,46 +404,47 @@
 <li>influenced by outliers</li>
 </ul>
 <p>Correlation analysis gives us a numerical summary of what we see visually in a scatterplot.</p>
+<hr>
 </section>
-<section id="strength-and-direction" class="slide level2">
-<h2>3. Strength and Direction</h2>
+<section id="strength-and-direction" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="strength-and-direction"><span class="header-section-number">15.3</span> Strength and Direction</h2>
 <p>Correlation describes two features of a relationship:</p>
 <ol type="1">
 <li><strong>Direction</strong></li>
 <li><strong>Strength</strong></li>
 </ol>
-<h3 id="direction">Direction</h3>
+<section id="direction" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="direction"><span class="header-section-number">15.3.1</span> Direction</h3>
 <p>A relationship is <strong>positive</strong> if higher values of one variable tend to be associated with higher values of the other variable.</p>
 <p>For example, if countries with higher education spending tend to have higher life expectancy, the relationship is positive.</p>
 <p>A relationship is <strong>negative</strong> if higher values of one variable tend to be associated with lower values of the other variable.</p>
 <p>For example, if countries with higher unionization tend to have lower economic inequality, the relationship is negative.</p>
 <p>Important point:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>If both variables decrease together, the relationship is positive, not negative.</p>
 </blockquote>
 <p>Positive means the variables move in the same direction. Negative means they move in opposite directions.</p>
-<h3 id="strength">Strength</h3>
+</section>
+<section id="strength" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="strength"><span class="header-section-number">15.3.2</span> Strength</h3>
 <p>Strength refers to how closely the data follow a linear pattern.</p>
 <p>If the points in a scatterplot fall almost exactly along a straight line, the relationship is strong.</p>
 <p>If the points are widely scattered, the relationship is weak.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-ii-pearsons-correlation-coefficient" class="title-slide slide level1 center">
-<h1>Part II: Pearson’s Correlation Coefficient</h1>
-
 </section>
-<section id="pearsons-r" class="slide level2">
-<h2>4. Pearson’s (r)</h2>
+</section>
+<section id="part-ii-pearsons-correlation-coefficient" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Part II: Pearson’s Correlation Coefficient</h1>
+<section id="pearsons-r" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="pearsons-r"><span class="header-section-number">16.1</span> Pearson’s (r)</h2>
 <p>The most common measure of correlation is <strong>Pearson’s correlation coefficient</strong>, written:</p>
 <p>[ r ]</p>
 <p>Pearson’s (r) measures the strength and direction of a linear relationship between two variables.</p>
 <p>It ranges from:</p>
 <p>[ -1 r ]</p>
 <p>The interpretation is:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Value of (r)</th>
@@ -350,47 +477,46 @@
 </ul>
 <p>The closer (r) is to 1 or -1, the stronger the linear relationship.</p>
 <p>The closer (r) is to 0, the weaker the linear relationship.</p>
+<hr>
 </section>
-<section id="positive-correlation" class="slide level2">
-<h2>5. Positive Correlation</h2>
+<section id="positive-correlation" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="positive-correlation"><span class="header-section-number">16.2</span> Positive Correlation</h2>
 <p>A positive correlation means that higher values of (X) tend to be associated with higher values of (Y).</p>
 <p>In a scatterplot, the points tend to slope upward from left to right.</p>
 <p>For example, suppose countries with higher democracy scores tend to have higher life expectancy. Then the correlation between democracy and life expectancy would be positive.</p>
 <p>A perfect positive correlation would mean all points fall exactly on an upward-sloping line:</p>
 <p>[ r = 1 ]</p>
 <p>In real data, perfect correlation is rare. Social data are wonderfully messy, because humans insist on being complicated.</p>
+<hr>
 </section>
-<section id="negative-correlation" class="slide level2">
-<h2>6. Negative Correlation</h2>
+<section id="negative-correlation" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="negative-correlation"><span class="header-section-number">16.3</span> Negative Correlation</h2>
 <p>A negative correlation means that higher values of (X) tend to be associated with lower values of (Y).</p>
 <p>In a scatterplot, the points tend to slope downward from left to right.</p>
 <p>For example, suppose countries with higher unionization rates tend to have lower economic inequality. Then the correlation between unionization and inequality would be negative.</p>
 <p>A perfect negative correlation would mean all points fall exactly on a downward-sloping line:</p>
 <p>[ r = -1 ]</p>
 <p>Again, perfect negative correlation is rare in social science data.</p>
+<hr>
 </section>
-<section id="no-linear-correlation" class="slide level2">
-<h2>7. No Linear Correlation</h2>
+<section id="no-linear-correlation" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="no-linear-correlation"><span class="header-section-number">16.4</span> No Linear Correlation</h2>
 <p>If (r) is close to 0, the variables have little or no linear relationship.</p>
 <p>A scatterplot with no linear correlation may look like a random cloud of points.</p>
 <p>However, this is an important caution:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>A correlation of zero means there is no linear relationship. It does not necessarily mean there is no relationship at all.</p>
 </blockquote>
 <p>Two variables can be related in a nonlinear way.</p>
 <p>For example, suppose the relationship between age and happiness is U-shaped: happiness is higher among young adults, lower in middle age, and higher again later in life. Pearson’s (r) might be close to zero because the positive and negative parts of the relationship cancel out, even though a real nonlinear relationship exists.</p>
 <p>Pearson’s (r) measures linearity. It does not detect every kind of relationship.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-iii-interpreting-pearsons-r" class="title-slide slide level1 center">
-<h1>Part III: Interpreting Pearson’s (r)</h1>
-
 </section>
-<section id="magnitude-and-direction" class="slide level2">
-<h2>8. Magnitude and Direction</h2>
+<section id="part-iii-interpreting-pearsons-r" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Part III: Interpreting Pearson’s (r)</h1>
+<section id="magnitude-and-direction" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="magnitude-and-direction"><span class="header-section-number">17.1</span> Magnitude and Direction</h2>
 <p>Suppose we calculate:</p>
 <p>[ r = 0.77 ]</p>
 <p>This indicates a strong positive linear relationship.</p>
@@ -407,9 +533,10 @@
 <p>is stronger than:</p>
 <p>[ r = 0.30 ]</p>
 <p>even though one is negative and one is positive.</p>
+<hr>
 </section>
-<section id="correlation-does-not-measure-slope" class="slide level2">
-<h2>9. Correlation Does Not Measure Slope</h2>
+<section id="correlation-does-not-measure-slope" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="correlation-does-not-measure-slope"><span class="header-section-number">17.2</span> Correlation Does Not Measure Slope</h2>
 <p>Pearson’s (r) does not tell us how much (Y) changes when (X) changes.</p>
 <p>It tells us how closely the data fit a straight line.</p>
 <p>A correlation of 1 can occur for any positive slope, as long as the points fall perfectly on a line.</p>
@@ -421,9 +548,10 @@
 </ul>
 <p>Correlation tells us linear strength and direction, not the magnitude of the change.</p>
 <p>Regression will add that next piece by estimating a slope.</p>
+<hr>
 </section>
-<section id="correlation-and-causation" class="slide level2">
-<h2>10. Correlation and Causation</h2>
+<section id="correlation-and-causation" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="correlation-and-causation"><span class="header-section-number">17.3</span> Correlation and Causation</h2>
 <p>Correlation does not establish causation.</p>
 <p>If two variables are correlated, several possibilities remain:</p>
 <ul>
@@ -437,17 +565,13 @@
 </ul>
 <p>For example, if democracy and life expectancy are positively correlated, democracy may contribute to better health outcomes. But wealth, education, health systems, state capacity, or regional history may also matter.</p>
 <p>Correlation is useful for describing relationships. It is not enough to prove causality.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-iv-how-pearsons-r-works" class="title-slide slide level1 center">
-<h1>Part IV: How Pearson’s (r) Works</h1>
-
 </section>
-<section id="the-logic-of-the-formula" class="slide level2">
-<h2>11. The Logic of the Formula</h2>
+<section id="part-iv-how-pearsons-r-works" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Part IV: How Pearson’s (r) Works</h1>
+<section id="the-logic-of-the-formula" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="the-logic-of-the-formula"><span class="header-section-number">18.1</span> The Logic of the Formula</h2>
 <p>The formula for Pearson’s (r) is:</p>
 <p>[ r = { } ]</p>
 <p>You do not need to memorize or calculate this formula by hand.</p>
@@ -457,9 +581,10 @@
 <p>In rough terms:</p>
 <p>[ r { X Y} ]</p>
 <p>The result is a standardized measure bounded between -1 and 1.</p>
+<hr>
 </section>
-<section id="deviations-from-the-mean" class="slide level2">
-<h2>12. Deviations from the Mean</h2>
+<section id="deviations-from-the-mean" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="deviations-from-the-mean"><span class="header-section-number">18.2</span> Deviations from the Mean</h2>
 <p>The formula asks whether (X) and (Y) tend to be above or below their means at the same time.</p>
 <p>For each case, we calculate:</p>
 <p>[ X_i - {X} ]</p>
@@ -475,9 +600,10 @@
 <p>[ (X_i-{X})(Y_i-{Y}) ]</p>
 <p>This product is positive when (X) and (Y) are on the same side of their means.</p>
 <p>It is negative when they are on opposite sides.</p>
+<hr>
 </section>
-<section id="positive-contributions" class="slide level2">
-<h2>13. Positive Contributions</h2>
+<section id="positive-contributions" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="positive-contributions"><span class="header-section-number">18.3</span> Positive Contributions</h2>
 <p>A case contributes positive evidence for correlation when:</p>
 <ol type="1">
 <li>(X) is above its mean and (Y) is above its mean.</li>
@@ -488,9 +614,10 @@
 <p>In the second case:</p>
 <p>[ (-)(-) = + ]</p>
 <p>These cases suggest that (X) and (Y) move together.</p>
+<hr>
 </section>
-<section id="negative-contributions" class="slide level2">
-<h2>14. Negative Contributions</h2>
+<section id="negative-contributions" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="negative-contributions"><span class="header-section-number">18.4</span> Negative Contributions</h2>
 <p>A case contributes negative evidence for correlation when:</p>
 <ol type="1">
 <li>(X) is above its mean and (Y) is below its mean.</li>
@@ -501,11 +628,12 @@
 <p>In the second case:</p>
 <p>[ (-)(+) = - ]</p>
 <p>These cases suggest that (X) and (Y) move in opposite directions.</p>
+<hr>
 </section>
-<section id="a-small-numerical-example" class="slide level2">
-<h2>15. A Small Numerical Example</h2>
+<section id="a-small-numerical-example" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="a-small-numerical-example"><span class="header-section-number">18.5</span> A Small Numerical Example</h2>
 <p>Suppose we have four cases:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Case</th>
@@ -541,7 +669,7 @@
 <p>and:</p>
 <p>[ {Y} = 6 ]</p>
 <p>Now calculate deviations:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Case</th>
@@ -581,41 +709,46 @@
 <p>[ 4 + (-1) + 0 + 1 = 4 ]</p>
 <p>The sum is positive, meaning the overall covariation is positive.</p>
 <p>This suggests a positive correlation between (X) and (Y).</p>
+<hr>
 </section>
-<section id="quadrants-in-a-scatterplot" class="slide level2">
-<h2>16. Quadrants in a Scatterplot</h2>
+<section id="quadrants-in-a-scatterplot" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="quadrants-in-a-scatterplot"><span class="header-section-number">18.6</span> Quadrants in a Scatterplot</h2>
 <p>A scatterplot can help us visualize the same logic.</p>
 <p>Draw a vertical line at ({X}) and a horizontal line at ({Y}). This divides the scatterplot into four quadrants.</p>
-<h3 id="upper-right-quadrant">Upper-right quadrant</h3>
+<section id="upper-right-quadrant" class="level3" data-number="18.6.1">
+<h3 data-number="18.6.1" class="anchored" data-anchor-id="upper-right-quadrant"><span class="header-section-number">18.6.1</span> Upper-right quadrant</h3>
 <p>(X) is above its mean.<br>
 (Y) is above its mean.<br>
 This contributes positive correlation.</p>
-<h3 id="lower-left-quadrant">Lower-left quadrant</h3>
+</section>
+<section id="lower-left-quadrant" class="level3" data-number="18.6.2">
+<h3 data-number="18.6.2" class="anchored" data-anchor-id="lower-left-quadrant"><span class="header-section-number">18.6.2</span> Lower-left quadrant</h3>
 <p>(X) is below its mean.<br>
 (Y) is below its mean.<br>
 This also contributes positive correlation.</p>
-<h3 id="upper-left-quadrant">Upper-left quadrant</h3>
+</section>
+<section id="upper-left-quadrant" class="level3" data-number="18.6.3">
+<h3 data-number="18.6.3" class="anchored" data-anchor-id="upper-left-quadrant"><span class="header-section-number">18.6.3</span> Upper-left quadrant</h3>
 <p>(X) is below its mean.<br>
 (Y) is above its mean.<br>
 This contributes negative correlation.</p>
-<h3 id="lower-right-quadrant">Lower-right quadrant</h3>
+</section>
+<section id="lower-right-quadrant" class="level3" data-number="18.6.4">
+<h3 data-number="18.6.4" class="anchored" data-anchor-id="lower-right-quadrant"><span class="header-section-number">18.6.4</span> Lower-right quadrant</h3>
 <p>(X) is above its mean.<br>
 (Y) is below its mean.<br>
 This contributes negative correlation.</p>
 <p>If most points fall in the upper-right and lower-left quadrants, the correlation is positive.</p>
 <p>If most points fall in the upper-left and lower-right quadrants, the correlation is negative.</p>
 <p>If points are scattered evenly across all quadrants, the correlation is near zero.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-v-statistical-significance-of-correlation" class="title-slide slide level1 center">
-<h1>Part V: Statistical Significance of Correlation</h1>
-
 </section>
-<section id="pearsons-r-as-an-estimate" class="slide level2">
-<h2>17. Pearson’s (r) as an Estimate</h2>
+</section>
+<section id="part-v-statistical-significance-of-correlation" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> Part V: Statistical Significance of Correlation</h1>
+<section id="pearsons-r-as-an-estimate" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="pearsons-r-as-an-estimate"><span class="header-section-number">19.1</span> Pearson’s (r) as an Estimate</h2>
 <p>When we calculate Pearson’s (r) from sample data, it is a sample statistic.</p>
 <p>It estimates the true correlation in the population.</p>
 <p>Let the true population correlation be:</p>
@@ -627,9 +760,10 @@ This contributes negative correlation.</p>
 <p>The alternative is:</p>
 <p>[ H_A: ]</p>
 <p>In words, the null hypothesis says there is no linear correlation in the population.</p>
+<hr>
 </section>
-<section id="standard-error-of-pearsons-r" class="slide level2">
-<h2>18. Standard Error of Pearson’s (r)</h2>
+<section id="standard-error-of-pearsons-r" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="standard-error-of-pearsons-r"><span class="header-section-number">19.2</span> Standard Error of Pearson’s (r)</h2>
 <p>The standard error of Pearson’s (r) is:</p>
 <p>[ SE_r = ]</p>
 <p>where:</p>
@@ -646,9 +780,10 @@ This contributes negative correlation.</p>
 <li>({Y})</li>
 </ul>
 <p>We lose one degree of freedom for each estimated mean.</p>
+<hr>
 </section>
-<section id="t-test-for-pearsons-r" class="slide level2">
-<h2>19. t-Test for Pearson’s (r)</h2>
+<section id="t-test-for-pearsons-r" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="t-test-for-pearsons-r"><span class="header-section-number">19.3</span> t-Test for Pearson’s (r)</h2>
 <p>To test whether the correlation differs from zero, use:</p>
 <p>[ t = ]</p>
 <p>or:</p>
@@ -656,9 +791,10 @@ This contributes negative correlation.</p>
 <p>The test statistic follows a t-distribution with:</p>
 <p>[ df = n - 2 ]</p>
 <p>If the absolute value of the t-statistic exceeds the critical value, or if the p-value is less than alpha, we reject the null hypothesis.</p>
+<hr>
 </section>
-<section id="example-democracy-and-life-expectancy" class="slide level2">
-<h2>20. Example: Democracy and Life Expectancy</h2>
+<section id="example-democracy-and-life-expectancy" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="example-democracy-and-life-expectancy"><span class="header-section-number">19.4</span> Example: Democracy and Life Expectancy</h2>
 <p>Suppose we calculate the correlation between democracy and female life expectancy across countries.</p>
 <p>The result is:</p>
 <p>[ r = 0.3751 ]</p>
@@ -668,48 +804,49 @@ This contributes negative correlation.</p>
 <p>[ H_0: = 0 ]</p>
 <p>and conclude that the correlation is statistically significant.</p>
 <p>A careful interpretation is:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Democracy and female life expectancy are positively correlated. The relationship is statistically significant, though the magnitude of the correlation is moderate.</p>
 </blockquote>
 <p>Again, this does not by itself prove that democracy causes higher life expectancy.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-vi-using-software" class="title-slide slide level1 center">
-<h1>Part VI: Using Software</h1>
-
 </section>
-<section id="correlation-commands" class="slide level2">
-<h2>21. Correlation Commands</h2>
+<section id="part-vi-using-software" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> Part VI: Using Software</h1>
+<section id="correlation-commands" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="correlation-commands"><span class="header-section-number">20.1</span> Correlation Commands</h2>
 <p>Correlation is usually calculated with software.</p>
-<h3 id="in-stata">In Stata</h3>
+<section id="in-stata" class="level3" data-number="20.1.1">
+<h3 data-number="20.1.1" class="anchored" data-anchor-id="in-stata"><span class="header-section-number">20.1.1</span> In Stata</h3>
 <p>A common command is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a></a><span class="kw">pwcorr</span> var1 var2, sig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pwcorr</span> var1 var2, sig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The option:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a></a>sig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>requests p-values.</p>
 <p>If you want sample sizes as well, you can use:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a></a><span class="kw">pwcorr</span> var1 var2, sig <span class="kw">obs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<h3 id="in-r">In R</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">pwcorr</span> var1 var2, sig <span class="kw">obs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="in-r" class="level3" data-number="20.1.2">
+<h3 data-number="20.1.2" class="anchored" data-anchor-id="in-r"><span class="header-section-number">20.1.2</span> In R</h3>
 <p>The base R command is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">cor.test</span>(var1, var2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(var1, var2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For multiple variables, you can use:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">cor</span>(data[, <span class="fu">c</span>(<span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span>, <span class="st">"var4"</span>)],</span>
-<span id="cb5-2"><a></a>    <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data[, <span class="fu">c</span>(<span class="st">"var1"</span>, <span class="st">"var2"</span>, <span class="st">"var3"</span>, <span class="st">"var4"</span>)],</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The option:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>use <span class="ot">=</span> <span class="st">"pairwise.complete.obs"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>use <span class="ot">=</span> <span class="st">"pairwise.complete.obs"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>tells R to use all available data for each pair of variables.</p>
 <p>This matters when some variables have missing values. Without this option, R may drop any row with missing data on any variable in the correlation matrix, even if the pair currently being analyzed has no missing values.</p>
 <p>For fuller output, including p-values and sample sizes, the <code>corr.test</code> function in the <code>psych</code> package is useful.</p>
+<hr>
 </section>
-<section id="correlation-matrices" class="slide level2">
-<h2>22. Correlation Matrices</h2>
+</section>
+<section id="correlation-matrices" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="correlation-matrices"><span class="header-section-number">20.2</span> Correlation Matrices</h2>
 <p>When we calculate correlations among several variables, software reports a <strong>correlation matrix</strong>.</p>
 <p>A correlation matrix has the same variables in the rows and columns.</p>
 <p>For example:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -756,9 +893,10 @@ This contributes negative correlation.</p>
 <p>[ r_{13} = r_{31} ]</p>
 <p>and so on.</p>
 <p>Some software reports the full matrix. Other software reports only one triangle of the matrix to avoid duplication.</p>
+<hr>
 </section>
-<section id="example-cross-national-correlations" class="slide level2">
-<h2>23. Example: Cross-National Correlations</h2>
+<section id="example-cross-national-correlations" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="example-cross-national-correlations"><span class="header-section-number">20.3</span> Example: Cross-National Correlations</h2>
 <p>Suppose we analyze several country-level variables:</p>
 <ul>
 <li>autocracy score</li>
@@ -771,7 +909,7 @@ This contributes negative correlation.</p>
 <p>[ r = -0.43 ]</p>
 <p>This is a moderate negative relationship.</p>
 <p>Interpretation:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Countries with higher unionization rates tend to have lower income inequality.</p>
 </blockquote>
 <p>This is a descriptive association. It does not prove that unionization causes lower inequality. Other factors may influence both.</p>
@@ -779,47 +917,46 @@ This contributes negative correlation.</p>
 <p>[ r = -0.08 ]</p>
 <p>This is a very weak negative relationship.</p>
 <p>Interpretation:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>More autocratic countries tend to spend slightly less on education, but the relationship is weak.</p>
 </blockquote>
 <p>Always interpret both direction and magnitude.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-vii-cautions-in-correlation-analysis" class="title-slide slide level1 center">
-<h1>Part VII: Cautions in Correlation Analysis</h1>
-
 </section>
-<section id="correlation-measures-linear-association" class="slide level2">
-<h2>24. Correlation Measures Linear Association</h2>
+<section id="part-vii-cautions-in-correlation-analysis" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> Part VII: Cautions in Correlation Analysis</h1>
+<section id="correlation-measures-linear-association" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="correlation-measures-linear-association"><span class="header-section-number">21.1</span> Correlation Measures Linear Association</h2>
 <p>Pearson’s (r) measures linear relationships.</p>
 <p>If the true relationship is curved, U-shaped, threshold-based, or otherwise nonlinear, Pearson’s (r) may be misleading.</p>
 <p>Always look at a scatterplot when possible.</p>
 <p>A correlation coefficient is useful, but it should not be the only thing you inspect.</p>
+<hr>
 </section>
-<section id="outliers-can-matter" class="slide level2">
-<h2>25. Outliers Can Matter</h2>
+<section id="outliers-can-matter" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="outliers-can-matter"><span class="header-section-number">21.2</span> Outliers Can Matter</h2>
 <p>Outliers can strongly influence correlations.</p>
 <p>A single extreme case may make a relationship appear stronger, weaker, or even reverse its direction.</p>
 <p>For example, a very wealthy country with unusual political institutions may influence a cross-national correlation between democracy and income.</p>
 <p>In later regression analysis, we will return to outliers more directly. For now, the basic advice is:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Do not rely on Pearson’s (r) alone. Look at the data.</p>
 </blockquote>
+<hr>
 </section>
-<section id="correlation-does-not-control-for-other-variables" class="slide level2">
-<h2>26. Correlation Does Not Control for Other Variables</h2>
+<section id="correlation-does-not-control-for-other-variables" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="correlation-does-not-control-for-other-variables"><span class="header-section-number">21.3</span> Correlation Does Not Control for Other Variables</h2>
 <p>Correlation is bivariate. It examines the relationship between two variables at a time.</p>
 <p>It does not control for other factors.</p>
 <p>For example, suppose democracy and life expectancy are correlated. That relationship might change after controlling for GDP per capita.</p>
 <p>Correlation cannot tell us whether the relationship remains after accounting for other variables.</p>
 <p>Regression analysis allows us to include controls.</p>
 <p>Correlation is a useful starting point, not the final word.</p>
+<hr>
 </section>
-<section id="statistical-significance-is-not-substantive-significance" class="slide level2">
-<h2>27. Statistical Significance Is Not Substantive Significance</h2>
+<section id="statistical-significance-is-not-substantive-significance" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="statistical-significance-is-not-substantive-significance"><span class="header-section-number">21.4</span> Statistical Significance Is Not Substantive Significance</h2>
 <p>With a large sample, even a weak correlation can be statistically significant.</p>
 <p>For example:</p>
 <p>[ r = 0.05 ]</p>
@@ -833,13 +970,11 @@ This contributes negative correlation.</p>
 <li>Does the relationship make theoretical sense?</li>
 </ul>
 <p>A small p-value does not make a weak relationship important.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-terms" class="title-slide slide level1 center">
-<h1>Key Terms</h1>
+</section>
+<section id="key-terms" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Key Terms</h1>
 <p><strong>Correlation</strong><br>
 A measure of association between two variables.</p>
 <p><strong>Pearson’s (r)</strong><br>
@@ -866,12 +1001,10 @@ The estimated sampling variability of Pearson’s (r).</p>
 Analysis involving two variables.</p>
 <p><strong>Outlier</strong><br>
 An observation with an unusually high or low value that may influence the analysis.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section id="chapter-summary" class="title-slide slide level1 center">
-<h1>Chapter Summary</h1>
+<section id="chapter-summary" class="level1" data-number="23">
+<h1 data-number="23"><span class="header-section-number">23</span> Chapter Summary</h1>
 <p>Correlation analysis measures the relationship between two interval-level variables.</p>
 <p>The most common measure is Pearson’s correlation coefficient, (r). It ranges from -1 to 1. Positive values indicate that the variables tend to move together. Negative values indicate that they tend to move in opposite directions. Values near zero indicate little or no linear relationship.</p>
 <p>Pearson’s (r) measures linear association. It does not detect all possible relationships, especially nonlinear ones. A correlation near zero does not necessarily mean two variables are unrelated; it means they are not linearly related.</p>
@@ -883,389 +1016,423 @@ An observation with an unusually high or low value that may influence the analys
 
 
 </section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
 
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': false,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return codeEl.innerText;
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter-12.html" class="pagination-link" aria-label="Chapter 12: ANOVA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-14.html" class="pagination-link" aria-label="Chapter 14: Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
 
 </body></html>

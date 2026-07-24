@@ -1,6 +1,5 @@
 ---
 title: "Chapter 4: Probability"
-format: revealjs
 ---
 
 Probability is the language of statistical inference.
@@ -19,7 +18,7 @@ Some of the notation may feel unfamiliar at first. That is normal. Probability o
 
 ---
 
-## 1. Why Probability Matters
+## Why Probability Matters
 
 Probability helps us understand randomness.
 
@@ -39,7 +38,7 @@ That tendency is one of the foundations of statistical inference.
 
 ---
 
-## 2. Probability as Long-Run Frequency
+## Probability as Long-Run Frequency
 
 One useful way to think about probability is as a **long-run frequency**.
 
@@ -67,7 +66,7 @@ Probability theory gives us a way to say how unlikely.
 
 ---
 
-## 3. The Law of Large Numbers
+## The Law of Large Numbers
 
 The **law of large numbers** states that, as the number of observations increases, sample statistics tend to converge toward the true population values.
 
@@ -107,7 +106,7 @@ This is the basic logic of inference:
 
 # Part I: Basic Elements of Probability
 
-## 4. Sample Spaces
+## Sample Spaces
 
 A **sample space** is the set of all possible outcomes of a random process.
 
@@ -141,7 +140,7 @@ If the sample space is properly defined, the probabilities of all outcomes must 
 
 ---
 
-## 5. Outcomes
+## Outcomes
 
 An **outcome** is one possible result of a random process.
 
@@ -181,7 +180,7 @@ The probabilities sum to 1:
 
 ---
 
-## 6. Probability as Area
+## Probability as Area
 
 Because probabilities are proportions, we can visualize them as areas.
 
@@ -205,7 +204,7 @@ This area-based view will be useful when we discuss unions, intersections, compl
 
 ---
 
-## 7. Events
+## Events
 
 An **event** is a set of outcomes.
 
@@ -253,7 +252,7 @@ An event is simply a subset of the sample space.
 
 ---
 
-## 8. Probability of an Event
+## Probability of an Event
 
 The probability of an event is the sum of the probabilities of the outcomes included in that event.
 
@@ -285,7 +284,7 @@ The event occurs if any one of its outcomes occurs.
 
 # Part II: Unions, Intersections, and Complements
 
-## 9. The Union of Events: “A or B”
+## The Union of Events: “A or B”
 
 The **union** of two events includes all outcomes that belong to either event.
 
@@ -335,7 +334,7 @@ The union expands the set of outcomes. It asks whether at least one of the event
 
 ---
 
-## 10. The Intersection of Events: “A and B”
+## The Intersection of Events: “A and B”
 
 The **intersection** of two events includes only outcomes that belong to both events.
 
@@ -384,7 +383,7 @@ This can feel counterintuitive at first. In everyday language, “and” may sou
 
 ---
 
-## 11. Disjoint Events
+## Disjoint Events
 
 Two events are **disjoint** if they cannot occur at the same time.
 
@@ -422,7 +421,7 @@ Heads and tails in a single coin toss are also disjoint. One coin toss cannot pr
 
 ---
 
-## 12. Complements
+## Complements
 
 The **complement** of an event consists of all outcomes not in that event.
 
@@ -482,7 +481,7 @@ For example, if the probability that a randomly selected person is eligible to v
 
 # Part III: Basic Rules of Probability
 
-## 13. Probabilities Range from 0 to 1
+## Probabilities Range from 0 to 1
 
 Every probability must fall between 0 and 1:
 
@@ -518,7 +517,7 @@ The probability of something outside the sample space is 0.
 
 ---
 
-## 14. Addition Rule for Disjoint Events
+## Addition Rule for Disjoint Events
 
 If two events are disjoint, then the probability of either event occurring is the sum of their probabilities:
 
@@ -552,7 +551,7 @@ P(A \cup B) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3}
 
 ---
 
-## 15. General Addition Rule
+## General Addition Rule
 
 If two events may overlap, we need the general addition rule:
 
@@ -578,7 +577,7 @@ P(A \cup B) = P(A) + P(B)
 
 ---
 
-## 16. Expected Value
+## Expected Value
 
 The **expected value** of a random variable is its probability-weighted average.
 
@@ -621,7 +620,7 @@ It does not need to be a value that can actually occur. Just as the expected val
 
 # Part IV: Gambler’s Fallacy
 
-## 17. The Fallacy
+## The Fallacy
 
 The **gambler’s fallacy** is the mistaken belief that a random process is “due” to balance out in the short run.
 
@@ -651,7 +650,7 @@ Each flip is its own event.
 
 ---
 
-## 18. Independence and Streaks
+## Independence and Streaks
 
 The gambler’s fallacy depends on misunderstanding independence.
 
@@ -685,7 +684,7 @@ Probability is everywhere. Even when people are arguing about sports, they are o
 
 ---
 
-## 19. Real-World Consequences of Gambler’s Fallacy
+## Real-World Consequences of Gambler’s Fallacy
 
 Gambler’s fallacy is not limited to casinos or sports. It can affect serious decisions.
 
@@ -705,7 +704,7 @@ This is the practical danger of gambler’s fallacy: it can make independent eve
 
 # Part V: Joint Probabilities
 
-## 20. Joint Outcomes
+## Joint Outcomes
 
 A **joint probability** is the probability that two or more events occur together.
 
@@ -726,7 +725,7 @@ This is the probability that both \(A\) and \(B\) occur.
 
 ---
 
-## 21. Rolling Two Dice
+## Rolling Two Dice
 
 Suppose we roll two dice: one orange and one white.
 
@@ -775,7 +774,7 @@ This illustrates the basic strategy for joint probabilities:
 
 ---
 
-## 22. Joint Frequency Distributions
+## Joint Frequency Distributions
 
 In data analysis, joint probabilities often begin as joint frequency distributions.
 
@@ -816,7 +815,7 @@ This is a joint probability because two things are true at once.
 
 ---
 
-## 23. Joint Probability Distributions
+## Joint Probability Distributions
 
 We can convert the frequency table into a joint probability table by dividing every cell by the total sample size.
 
@@ -868,7 +867,7 @@ They are called marginal probabilities because they appear in the margins of the
 
 # Part VI: Conditional Probability and Independence
 
-## 24. Conditional Probability
+## Conditional Probability
 
 A **conditional probability** is the probability of one event given that another event has occurred.
 
@@ -894,7 +893,7 @@ Conceptually, conditional probability restricts the sample space. Once we know \
 
 ---
 
-## 25. Conditional Probability Example: Minimum Wage and Party ID
+## Conditional Probability Example: Minimum Wage and Party ID
 
 Using the joint probability table:
 
@@ -942,7 +941,7 @@ That suggests party identification and minimum wage attitudes are not independen
 
 ---
 
-## 26. Another Conditional Probability Example
+## Another Conditional Probability Example
 
 Now suppose we want:
 
@@ -980,7 +979,7 @@ That particular conditional probability does not change much. But that alone doe
 
 ---
 
-## 27. Independence
+## Independence
 
 Two events are **independent** if knowing that one occurred does not change the probability that the other occurred.
 
@@ -1022,7 +1021,7 @@ then employment and high school degree status are dependent. Knowing one changes
 
 ---
 
-## 28. Independence with Dice
+## Independence with Dice
 
 Suppose we roll two dice, one orange and one white.
 
@@ -1074,7 +1073,7 @@ Knowing the white die is 3 does not change the probability that the orange die i
 
 ---
 
-## 29. Independence with Cards
+## Independence with Cards
 
 Suppose we draw one card from a standard 52-card deck.
 
@@ -1116,7 +1115,7 @@ Redness and aceness are independent.
 
 ---
 
-## 30. Testing for Independence in Tables
+## Testing for Independence in Tables
 
 In a joint probability table, we can test for independence by comparing conditional and unconditional probabilities.
 
@@ -1150,7 +1149,7 @@ To establish independence across categorical variables, the relevant conditional
 
 # Part VII: Multiplication Rules
 
-## 31. General Multiplication Rule
+## General Multiplication Rule
 
 The general multiplication rule gives the probability that two events both occur:
 
@@ -1208,7 +1207,7 @@ P(Republican \cap No) = 0.181
 
 ---
 
-## 32. Multiplication Rule for Independent Events
+## Multiplication Rule for Independent Events
 
 If two events are independent, then:
 
@@ -1252,7 +1251,7 @@ The probability is small, but not impossible.
 
 ---
 
-## 33. Permutations and Repeated Trials
+## Permutations and Repeated Trials
 
 Suppose we flip a fair coin eight times.
 
@@ -1306,7 +1305,7 @@ We will return to that idea later.
 
 ---
 
-## 34. Summary of Core Probability Rules
+## Summary of Core Probability Rules
 
 The major rules introduced so far are:
 
@@ -1348,7 +1347,7 @@ When in doubt, use the general multiplication rule.
 
 # Part VIII: Probability Trees
 
-## 35. Probability Tree Diagrams
+## Probability Tree Diagrams
 
 A **probability tree** is a visual tool for representing sequences of probabilistic events.
 
@@ -1395,7 +1394,7 @@ To find the probability of an event that includes multiple paths, add the probab
 
 ---
 
-## 36. Example: Heads Exactly Once
+## Example: Heads Exactly Once
 
 Suppose we toss a coin twice and ask:
 
@@ -1416,7 +1415,7 @@ P(\text{heads exactly once}) = 0.25 + 0.25 = 0.50
 
 ---
 
-## 37. Example: Heads At Least Once
+## Example: Heads At Least Once
 
 Now ask:
 
@@ -1456,7 +1455,7 @@ The complement rule is often faster when an event has many possible paths.
 
 ---
 
-## 38. Probability Trees with Unequal Probabilities
+## Probability Trees with Unequal Probabilities
 
 Suppose airport security randomly sends travelers to either a short screening line or a long screening line.
 
@@ -1517,7 +1516,7 @@ The probability that at least one gets the short line is:
 
 ---
 
-## 39. Probability Trees with Conditional Probabilities
+## Probability Trees with Conditional Probabilities
 
 Now suppose the process is not independent.
 
@@ -1574,7 +1573,7 @@ In a probability tree:
 
 ---
 
-## 40. Probability Tree Example: Coin and Die
+## Probability Tree Example: Coin and Die
 
 Suppose we use the following strange procedure.
 
@@ -1631,7 +1630,7 @@ If you hear 3, the coin could have landed tails or heads. Probability trees help
 
 # Part IX: Contingency Tables
 
-## 41. Cross-Tabulation
+## Cross-Tabulation
 
 A **contingency table**, also called a **cross-tabulation** or **cross-tab**, displays the joint distribution of two categorical variables.
 
@@ -1656,7 +1655,7 @@ A contingency table can show whether opinions about school spending differ betwe
 
 ---
 
-## 42. Dependent and Independent Variables
+## Dependent and Independent Variables
 
 When building a contingency table, it is often helpful to place the **dependent variable** in the rows and the **independent variable** in the columns.
 
@@ -1673,7 +1672,7 @@ This arrangement makes it easier to compare column percentages side by side.
 
 ---
 
-## 43. Frequencies, Row Percentages, Column Percentages, and Cell Percentages
+## Frequencies, Row Percentages, Column Percentages, and Cell Percentages
 
 A contingency table can display several kinds of information.
 
@@ -1707,7 +1706,7 @@ The corresponding joint probability is:
 
 ---
 
-## 44. Example: Religion and School Spending
+## Example: Religion and School Spending
 
 Suppose we produce a contingency table with column percentages.
 
@@ -1730,7 +1729,7 @@ But this difference is not enormous. Later, we will learn statistical tests, suc
 
 ---
 
-## 45. Contingency Tables and Conditional Probabilities
+## Contingency Tables and Conditional Probabilities
 
 Column percentages are conditional probabilities.
 

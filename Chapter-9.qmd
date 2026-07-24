@@ -1,6 +1,5 @@
 ---
 title: "Chapter 9: Experiments and Causality"
-format: revealjs
 ---
 
 We now move from one-sample inference to comparisons between groups.
@@ -23,7 +22,7 @@ The key lesson is that association is not enough. Two variables may move togethe
 
 ---
 
-## 1. Causality
+## Causality
 
 A causal relationship exists when changes in one variable produce changes in another variable.
 
@@ -67,7 +66,7 @@ This means:
 
 ---
 
-## 2. Conditions for Causality
+## Conditions for Causality
 
 For a causal relationship to exist, three basic conditions must hold.
 
@@ -103,7 +102,7 @@ To make a causal claim, we must rule out plausible alternative explanations.
 
 ---
 
-## 3. Correlation Is Not Causation
+## Correlation Is Not Causation
 
 A correlation between two variables does not necessarily imply a causal relationship.
 
@@ -124,7 +123,7 @@ The challenge of causal inference is to determine whether an observed associatio
 
 ---
 
-## 4. Spurious Relationships
+## Spurious Relationships
 
 A relationship is **spurious** when two variables appear to be related, but the relationship is actually caused by some third factor.
 
@@ -147,7 +146,7 @@ This is a simple example, but the same logic appears constantly in social scienc
 
 ---
 
-## 5. Reverse Causality and Simultaneity
+## Reverse Causality and Simultaneity
 
 Sometimes the causal direction may be reversed.
 
@@ -175,7 +174,7 @@ As the saying goes, a rising tide lifts all boats. The boats are not causing eac
 
 ---
 
-## 6. Example: Class Size and Test Scores
+## Example: Class Size and Test Scores
 
 Research sometimes finds that children in smaller classrooms perform worse on standardized tests, even after controlling for demographic factors.
 
@@ -189,7 +188,7 @@ This example illustrates why causal inference is difficult. We cannot simply com
 
 ---
 
-## 7. Controlling for Confounding Factors
+## Controlling for Confounding Factors
 
 A **confounding factor** is a variable that affects the outcome and is also related to the independent variable.
 
@@ -207,7 +206,7 @@ This is one reason experiments are so powerful.
 
 ---
 
-## 8. Theory and Causal Mechanisms
+## Theory and Causal Mechanisms
 
 Statistical evidence is more persuasive when paired with a strong theory.
 
@@ -230,7 +229,7 @@ A statistically significant association is not enough. Causal claims require the
 
 # Part I: Experiments
 
-## 9. Experiments as the Gold Standard
+## Experiments as the Gold Standard
 
 Experiments are often considered the strongest design for identifying causal effects.
 
@@ -252,7 +251,7 @@ Random assignment helps ensure that the treatment and control groups are similar
 
 ---
 
-## 10. Why Experiments Help Identify Causality
+## Why Experiments Help Identify Causality
 
 Experiments help satisfy the three conditions for causality.
 
@@ -272,7 +271,7 @@ This is the major advantage of randomization. It can balance even factors the re
 
 ---
 
-## 11. Treatment and Control Groups
+## Treatment and Control Groups
 
 An experiment divides cases into groups.
 
@@ -298,7 +297,7 @@ Randomization makes this comparison credible.
 
 ---
 
-## 12. Randomization
+## Randomization
 
 **Randomization** means assigning cases to treatment or control by chance.
 
@@ -324,7 +323,7 @@ For example, suppose people who choose to participate in a job training program 
 
 ---
 
-## 13. Balance
+## Balance
 
 After random assignment, researchers often check whether the treatment and control groups are **balanced**.
 
@@ -342,7 +341,7 @@ Once the experiment has already occurred, imbalance becomes harder to fix. Resea
 
 # Part II: The Potential Outcomes Framework
 
-## 14. Potential Outcomes
+## Potential Outcomes
 
 The **potential outcomes framework** provides a formal way to think about causal effects.
 
@@ -380,7 +379,7 @@ This is the causal effect of treatment for that individual.
 
 ---
 
-## 15. The Fundamental Problem of Causal Inference
+## The Fundamental Problem of Causal Inference
 
 The problem is that we can never observe both potential outcomes for the same person at the same time.
 
@@ -418,7 +417,7 @@ To know the exact treatment effect for one individual, we would need to observe 
 
 ---
 
-## 16. Average Treatment Effects
+## Average Treatment Effects
 
 Because we cannot observe individual treatment effects directly, we often estimate average treatment effects.
 
@@ -448,7 +447,7 @@ Randomization makes this comparison valid because the groups are similar on aver
 
 ---
 
-## 17. Why Randomization Solves the Problem
+## Why Randomization Solves the Problem
 
 Randomization does not allow us to observe both potential outcomes for the same person.
 
@@ -464,7 +463,7 @@ This is the logic behind experimental causal inference.
 
 ---
 
-## 18. Difference of Means
+## Difference of Means
 
 The simplest way to estimate an experimental treatment effect is a difference of means:
 
@@ -522,7 +521,7 @@ These are different from measurement validity. Here, we are evaluating the valid
 
 ---
 
-## 19. Internal Validity
+## Internal Validity
 
 **Internal validity** refers to whether the experiment successfully identifies the causal effect within the study.
 
@@ -546,7 +545,7 @@ If internal validity is weak, then the estimated treatment effect may be biased.
 
 ---
 
-## 20. External Validity
+## External Validity
 
 **External validity** refers to whether the results generalize beyond the study setting.
 
@@ -566,7 +565,7 @@ Policy researchers care deeply about external validity because policy decisions 
 
 ---
 
-## 21. Internal and External Validity Tradeoffs
+## Internal and External Validity Tradeoffs
 
 Sometimes internal and external validity are in tension.
 
@@ -580,7 +579,7 @@ Good research design tries to maximize both, but tradeoffs are common.
 
 # Part IV: Example: Teacher Absenteeism in India
 
-## 22. The Study
+## The Study
 
 Consider an experiment on teacher absenteeism in rural India.
 
@@ -603,7 +602,7 @@ The control schools did not receive this intervention.
 
 ---
 
-## 23. Results
+## Results
 
 The study found that absenteeism was lower in treatment schools.
 
@@ -616,7 +615,7 @@ The study therefore suggested that attendance incentives, combined with monitori
 
 ---
 
-## 24. Internal Validity Questions
+## Internal Validity Questions
 
 The study has important strengths for internal validity.
 
@@ -648,7 +647,7 @@ These concerns do not necessarily invalidate the study, but they illustrate the 
 
 ---
 
-## 25. External Validity Questions
+## External Validity Questions
 
 External validity asks whether the findings generalize beyond the study.
 
@@ -680,7 +679,7 @@ These are external validity questions. They concern whether the result applies b
 
 # Part V: Observational Studies
 
-## 26. When Experiments Are Not Possible
+## When Experiments Are Not Possible
 
 Experiments are powerful, but they are not always possible.
 
@@ -698,7 +697,7 @@ In these cases, researchers rely on **observational data**.
 
 ---
 
-## 27. Observational Data
+## Observational Data
 
 In an **observational study**, researchers observe data generated by the world rather than assigning treatment themselves.
 
@@ -718,7 +717,7 @@ Those differences may explain the outcome.
 
 ---
 
-## 28. The Goal in Observational Studies
+## The Goal in Observational Studies
 
 Even without randomization, the goal remains the same:
 
@@ -734,7 +733,7 @@ Researchers must try to construct credible comparisons using statistical methods
 
 ---
 
-## 29. Threats in Observational Studies
+## Threats in Observational Studies
 
 Observational studies face several threats.
 
@@ -770,7 +769,7 @@ This is one of the hardest problems in causal inference.
 
 ---
 
-## 30. Statistical Controls
+## Statistical Controls
 
 One strategy in observational studies is to use statistical controls.
 
@@ -786,7 +785,7 @@ They cannot control for variables that are missing, unknown, or poorly measured.
 
 ---
 
-## 31. Matching
+## Matching
 
 Another strategy is **matching**.
 
@@ -800,7 +799,7 @@ Matching can improve causal inference, but it still depends on observed variable
 
 ---
 
-## 32. Quasi-Experiments
+## Quasi-Experiments
 
 A **quasi-experiment** is a research design that attempts to approximate an experiment without random assignment.
 
@@ -822,7 +821,7 @@ You will encounter many of these designs in future program evaluation and econom
 
 # Part VI: From Causality to Difference-of-Means Tests
 
-## 33. Comparing Means Across Groups
+## Comparing Means Across Groups
 
 To evaluate causal effects, we often compare mean outcomes across groups.
 
@@ -855,7 +854,7 @@ This is the basis of the **difference-of-means test**.
 
 ---
 
-## 34. Comparing Proportions Across Groups
+## Comparing Proportions Across Groups
 
 Sometimes the outcome is binary.
 
@@ -890,7 +889,7 @@ This is the basis of the **difference-of-proportions test**.
 
 ---
 
-## 35. Mean Comparison Tables
+## Mean Comparison Tables
 
 A simple way to begin comparing groups is with a mean comparison table.
 

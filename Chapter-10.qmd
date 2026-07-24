@@ -1,6 +1,5 @@
 ---
 title: "Chapter 10: Comparison of Two Groups"
-format: revealjs
 ---
 
 We now move from one-sample inference to **two-sample inference**.
@@ -29,7 +28,7 @@ This chapter introduces mean comparison tables, difference-of-means tests, diffe
 
 # Part I: Mean Comparison Tables
 
-## 1. What Is a Mean Comparison Table?
+## What Is a Mean Comparison Table?
 
 A **mean comparison table** displays the mean of an interval-level variable across categories of another variable.
 
@@ -52,7 +51,7 @@ A mean comparison table would show the mean test score in each group.
 
 ---
 
-## 2. General Structure
+## General Structure
 
 A simple mean comparison table might look like this:
 
@@ -73,7 +72,7 @@ For that, we need a significance test.
 
 ---
 
-## 3. Example: Racial Representation and Arrest Disparities
+## Example: Racial Representation and Arrest Disparities
 
 Consider a study by political scientist Laurel Eckhouse on racial disparities in arrests for minor offenses.
 
@@ -92,7 +91,7 @@ Eckhouse focuses on arrests for minor offenses, where police officers often have
 
 ---
 
-## 4. Measuring Arrest Disparities
+## Measuring Arrest Disparities
 
 A simple count of arrests would not be sufficient because cities differ in population size.
 
@@ -118,7 +117,7 @@ This measure allows comparison across cities of different sizes.
 
 ---
 
-## 5. Mean Comparison Table: City Council Composition
+## Mean Comparison Table: City Council Composition
 
 The mean comparison table from the study is approximately:
 
@@ -150,7 +149,7 @@ Those are separate questions.
 
 # Part II: Difference-of-Means Tests
 
-## 6. The Difference of Means as a Statistic
+## The Difference of Means as a Statistic
 
 When we compare two means, we estimate a new statistic:
 
@@ -180,7 +179,7 @@ If the observed difference is large relative to its standard error, we reject th
 
 ---
 
-## 7. Why the Standard Error Changes
+## Why the Standard Error Changes
 
 When we tested one mean, we compared a sample mean to a fixed null-hypothesized value.
 
@@ -204,7 +203,7 @@ The standard error for the difference must incorporate uncertainty from both sam
 
 ---
 
-## 8. Independent and Dependent Samples
+## Independent and Dependent Samples
 
 Before calculating the standard error, we must determine whether the samples are **independent** or **dependent**.
 
@@ -237,7 +236,7 @@ Dependent samples require a different test because the observations are connecte
 
 ---
 
-## 9. Standard Error for the Difference of Means: Independent Samples
+## Standard Error for the Difference of Means: Independent Samples
 
 For independent samples, the standard error of the difference between two means is:
 
@@ -278,7 +277,7 @@ The structure resembles the Pythagorean theorem: square, add, square root. Stati
 
 ---
 
-## 10. Confidence Interval for a Difference of Means
+## Confidence Interval for a Difference of Means
 
 The confidence interval for a difference of means is:
 
@@ -313,7 +312,7 @@ The t critical value depends on degrees of freedom.
 
 ---
 
-## 11. Degrees of Freedom for Independent-Sample Mean Tests
+## Degrees of Freedom for Independent-Sample Mean Tests
 
 Degrees of freedom are more complicated for two independent means than for one mean.
 
@@ -351,7 +350,7 @@ This underestimates the true degrees of freedom, making the test slightly more c
 
 ---
 
-## 12. Example: City Councils and Arrest Disparities
+## Example: City Councils and Arrest Disparities
 
 Return to the arrest disparity example.
 
@@ -393,7 +392,7 @@ That difference is large relative to the standard error.
 
 ---
 
-## 13. Confidence Interval for the Difference
+## Confidence Interval for the Difference
 
 Suppose software gives a t critical value of approximately:
 
@@ -437,7 +436,7 @@ Because the interval does not include 0, we expect to reject the null hypothesis
 
 ---
 
-## 14. Significance Test for the Difference of Means
+## Significance Test for the Difference of Means
 
 The null hypothesis is:
 
@@ -477,7 +476,7 @@ There is statistically significant evidence that mean arrest rate ratios differ 
 
 ---
 
-## 15. Statistical Significance Is Not Causality
+## Statistical Significance Is Not Causality
 
 The difference is statistically significant.
 
@@ -507,7 +506,7 @@ To strengthen causal claims, researchers may use methods such as statistical con
 
 # Part III: Another Difference-of-Means Example
 
-## 16. Democracies and Infant Mortality
+## Democracies and Infant Mortality
 
 Suppose we want to compare infant mortality in democracies and non-democracies.
 
@@ -530,7 +529,7 @@ Infant mortality is about 19.3 deaths per 1,000 births higher in non-democracies
 
 ---
 
-## 17. Checking Assumptions
+## Checking Assumptions
 
 These are independent samples. Democracies and non-democracies are different groups of countries.
 
@@ -554,7 +553,7 @@ df = 74
 
 ---
 
-## 18. Standard Error for the Difference
+## Standard Error for the Difference
 
 Use:
 
@@ -596,7 +595,7 @@ with a standard error of:
 
 ---
 
-## 19. Confidence Interval
+## Confidence Interval
 
 Using the conservative degrees of freedom and a 95 percent confidence interval, suppose the t critical value is approximately:
 
@@ -636,7 +635,7 @@ The interval does not include 0, suggesting a statistically significant differen
 
 ---
 
-## 20. Significance Test
+## Significance Test
 
 The hypotheses are:
 
@@ -675,7 +674,7 @@ Again, causality requires further analysis. Democracies and non-democracies diff
 
 # Part IV: Difference-of-Proportions Tests
 
-## 21. Comparing Two Proportions
+## Comparing Two Proportions
 
 A difference-of-proportions test compares the proportion in one group to the proportion in another group.
 
@@ -730,7 +729,7 @@ H_A: \pi_2 - \pi_1 \neq 0
 
 ---
 
-## 22. Sample Size Rule for Difference of Proportions
+## Sample Size Rule for Difference of Proportions
 
 To use the z-test for a difference of proportions, each of the four cells should have at least about 10 cases.
 
@@ -754,7 +753,7 @@ If this rule is not met, the z-test may not be appropriate.
 
 ---
 
-## 23. Example: Graduation Program
+## Example: Graduation Program
 
 Suppose we evaluate a program intended to increase high school graduation.
 
@@ -784,7 +783,7 @@ The program group has a graduation rate about 4.9 percentage points higher than 
 
 ---
 
-## 24. Confidence Interval for a Difference of Proportions
+## Confidence Interval for a Difference of Proportions
 
 For a confidence interval, we use the two sample proportions separately.
 
@@ -853,7 +852,7 @@ Because the interval includes 0, we expect not to reject the null hypothesis of 
 
 ---
 
-## 25. Why Can the Confidence Interval Include Negative Values?
+## Why Can the Confidence Interval Include Negative Values?
 
 A difference of proportions can be negative.
 
@@ -869,7 +868,7 @@ A confidence interval that includes 0 means that no difference is a plausible va
 
 ---
 
-## 26. Significance Test for Difference of Proportions
+## Significance Test for Difference of Proportions
 
 For a significance test, the standard error is calculated differently than for a confidence interval.
 
@@ -933,7 +932,7 @@ SE_0 \approx 0.047
 
 ---
 
-## 27. z-Test for Difference of Proportions
+## z-Test for Difference of Proportions
 
 The z-statistic is:
 
@@ -974,7 +973,7 @@ There is not statistically significant evidence at the 0.05 level that the progr
 
 # Part V: Dependent Samples
 
-## 28. What Are Dependent Samples?
+## What Are Dependent Samples?
 
 Samples are **dependent** when cases in one sample are explicitly matched with cases in the other sample.
 
@@ -993,7 +992,7 @@ Instead of comparing two independent group means, we compare differences within 
 
 ---
 
-## 29. Turning a Two-Sample Problem into a One-Sample Problem
+## Turning a Two-Sample Problem into a One-Sample Problem
 
 With dependent samples, we create a new variable:
 
@@ -1027,7 +1026,7 @@ This is now a one-sample test on the difference variable.
 
 ---
 
-## 30. Example: Matched Pairs
+## Example: Matched Pairs
 
 Suppose we have four matched pairs:
 
@@ -1078,7 +1077,7 @@ The advantage of the dependent-samples approach is that it uses the pairing info
 
 ---
 
-## 31. Standard Error for Dependent Samples
+## Standard Error for Dependent Samples
 
 For dependent samples, calculate the standard deviation of the difference variable:
 
@@ -1118,7 +1117,7 @@ This is simply a one-sample t-test on the paired differences.
 
 ---
 
-## 32. Example: Lead Pipe Replacement
+## Example: Lead Pipe Replacement
 
 Suppose a city replaces lead water supply lines.
 
@@ -1193,7 +1192,7 @@ There is statistically significant evidence that lead levels changed. Because th
 
 # Part VI: Equal Variance Assumption
 
-## 33. What Is the Equal Variance Assumption?
+## What Is the Equal Variance Assumption?
 
 In an independent-samples difference-of-means test, we sometimes assume that the two populations have equal variances:
 
@@ -1211,7 +1210,7 @@ But the assumption can be dangerous if it is wrong.
 
 ---
 
-## 34. When Might Equal Variances Be Plausible?
+## When Might Equal Variances Be Plausible?
 
 Equal variances may be plausible when the two groups are very similar except for treatment assignment.
 
@@ -1225,7 +1224,7 @@ The equal variance assumption is theoretical. We do not know population variance
 
 ---
 
-## 35. Why the Assumption Matters
+## Why the Assumption Matters
 
 Without assuming equal variances, the standard error is:
 
@@ -1254,7 +1253,7 @@ Therefore, if the equal variance assumption is wrong, using it can increase the 
 
 ---
 
-## 36. Pooled Standard Deviation
+## Pooled Standard Deviation
 
 When assuming equal variances, we calculate a pooled variance:
 
@@ -1280,7 +1279,7 @@ The larger sample contributes more to the pooled estimate.
 
 ---
 
-## 37. Standard Error with Equal Variances
+## Standard Error with Equal Variances
 
 Once we have the pooled standard deviation, the standard error for the difference of means is:
 
@@ -1322,7 +1321,7 @@ df = n_1+n_2-2
 
 ---
 
-## 38. Example: Temperatures in Ann Arbor
+## Example: Temperatures in Ann Arbor
 
 Suppose we compare mean temperatures in Ann Arbor in 1900 and 2000.
 
@@ -1347,7 +1346,7 @@ Still, for illustration, calculate the pooled standard deviation.
 
 ---
 
-## 39. Pooled Standard Deviation Calculation
+## Pooled Standard Deviation Calculation
 
 Use:
 
@@ -1420,7 +1419,7 @@ There is not statistically significant evidence, in this illustrative example, t
 
 # Part VII: Small-Sample Alternatives
 
-## 40. When the Usual Tests Do Not Work
+## When the Usual Tests Do Not Work
 
 The usual t-tests and z-tests rely on assumptions.
 
@@ -1434,7 +1433,7 @@ These tests often go directly to a p-value rather than using a t or z statistic.
 
 ---
 
-## 41. Fisher’s Exact Test for Small-Sample Proportions
+## Fisher’s Exact Test for Small-Sample Proportions
 
 When comparing two proportions, if any of the four cells has fewer than about 10 cases, use Fisher’s exact test rather than the z-test.
 
@@ -1446,7 +1445,7 @@ That proportion is the p-value.
 
 ---
 
-## 42. Example: Sleep and Master’s Students
+## Example: Sleep and Master’s Students
 
 Suppose we ask whether people get enough sleep.
 
@@ -1486,7 +1485,7 @@ The result suggests evidence of a difference, but not quite enough for the conve
 
 ---
 
-## 43. Wilcoxon-Mann-Whitney Test for Small-Sample Independent Means
+## Wilcoxon-Mann-Whitney Test for Small-Sample Independent Means
 
 When comparing two means with independent samples, if samples are small and population normality cannot be assumed, use a non-parametric alternative.
 
@@ -1503,7 +1502,7 @@ It is useful when:
 
 ---
 
-## 44. Example: Democracy and GDP per Capita
+## Example: Democracy and GDP per Capita
 
 Suppose we compare GDP per capita in democracies and non-democracies in Latin America in 1975.
 
@@ -1530,7 +1529,7 @@ There is no statistically significant evidence that GDP per capita differs betwe
 
 ---
 
-## 45. Wilcoxon Signed-Rank Test for Dependent Samples
+## Wilcoxon Signed-Rank Test for Dependent Samples
 
 For dependent samples, if the sample is small and the population of differences is not normally distributed, use the **Wilcoxon signed-rank test**.
 
@@ -1551,7 +1550,7 @@ The details are less important here than knowing when the test is appropriate.
 
 # Part VIII: Controlled Comparisons of Means
 
-## 46. Why Add a Control Variable?
+## Why Add a Control Variable?
 
 When comparing group means using observational data, groups may differ in more than one way.
 
@@ -1569,7 +1568,7 @@ A **control variable** is a variable we hold constant while examining the relati
 
 ---
 
-## 47. Controlling in a Mean Comparison Table
+## Controlling in a Mean Comparison Table
 
 Suppose:
 
@@ -1589,7 +1588,7 @@ Then compare democracies and non-democracies within each income category.
 
 ---
 
-## 48. Example: Democracy, Wealth, and Life Expectancy
+## Example: Democracy, Wealth, and Life Expectancy
 
 Suppose the table is:
 
@@ -1630,7 +1629,7 @@ This suggests the relationship between democracy and life expectancy is not enti
 
 ---
 
-## 49. Additive Relationships
+## Additive Relationships
 
 An **additive relationship** occurs when two variables each appear to matter, and their effects are relatively consistent across categories of the other variable.
 
@@ -1642,7 +1641,7 @@ The effect of democracy is similar across income categories. That is an additive
 
 ---
 
-## 50. Spurious Relationships
+## Spurious Relationships
 
 A relationship is **spurious** if it disappears after controlling for another variable.
 
@@ -1656,7 +1655,7 @@ This is like the helium balloon example: the string appeared related to floating
 
 ---
 
-## 51. Interactive Relationships
+## Interactive Relationships
 
 An **interactive relationship** occurs when the effect of one variable changes depending on the value of another variable.
 
@@ -1674,7 +1673,7 @@ In table form, interactions appear when differences across one variable vary sub
 
 ---
 
-## 52. Limits of Controlled Mean Tables
+## Limits of Controlled Mean Tables
 
 Controlled mean comparison tables are useful, but they have limits.
 

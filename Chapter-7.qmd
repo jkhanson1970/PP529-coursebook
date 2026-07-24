@@ -1,6 +1,5 @@
 ---
 title: "Chapter 7: Statistical Inference"
-format: revealjs
 ---
 
 We now shift from theoretical foundations to application.
@@ -23,7 +22,7 @@ This chapter introduces statistical inference through confidence intervals. We b
 
 ---
 
-## 1. The Big Idea of Statistical Inference
+## The Big Idea of Statistical Inference
 
 Statistical inference is the process of using sample data to make claims about a population.
 
@@ -51,7 +50,7 @@ That is what confidence intervals help us communicate.
 
 ---
 
-## 2. What the Central Limit Theorem Gives Us
+## What the Central Limit Theorem Gives Us
 
 The Central Limit Theorem tells us that, under appropriate conditions, the sampling distribution of a sample mean is approximately normal.
 
@@ -89,7 +88,7 @@ The Central Limit Theorem gives us the foundation for confidence intervals becau
 
 ---
 
-## 3. Sampling Error
+## Sampling Error
 
 A sample statistic usually differs from the population parameter.
 
@@ -119,7 +118,7 @@ That is the key to inference.
 
 # Part I: Point Estimates and Interval Estimates
 
-## 4. Point Estimates
+## Point Estimates
 
 A **point estimate** is a single value calculated from sample data and used to estimate a population parameter.
 
@@ -164,7 +163,7 @@ That is why we need interval estimates.
 
 ---
 
-## 5. Interval Estimates
+## Interval Estimates
 
 An **interval estimate** gives a range around a point estimate.
 
@@ -195,7 +194,7 @@ A larger margin of error means the estimate is less precise.
 
 ---
 
-## 6. Example: The Unemployment Rate
+## Example: The Unemployment Rate
 
 Suppose the Bureau of Labor Statistics reports that the unemployment rate is 4.3 percent.
 
@@ -223,7 +222,7 @@ The reported unemployment rate is 4.3 percent, but the survey procedure has a de
 
 # Part II: Confidence Intervals
 
-## 7. What Is a Confidence Interval?
+## What Is a Confidence Interval?
 
 A **confidence interval** is a numerical interval constructed around a point estimate using a procedure that captures the true population parameter a specified percentage of the time across repeated random samples.
 
@@ -243,7 +242,7 @@ The confidence level describes the long-run success rate of the procedure.
 
 ---
 
-## 8. The General Form of a Confidence Interval
+## The General Form of a Confidence Interval
 
 All confidence intervals have the same basic structure:
 
@@ -287,7 +286,7 @@ and:
 
 ---
 
-## 9. Confidence Levels
+## Confidence Levels
 
 The **confidence level** is the long-run percentage of intervals that would contain the true population parameter if we repeated the sampling process many times.
 
@@ -318,7 +317,7 @@ There is a tradeoff:
 
 ---
 
-## 10. Alpha
+## Alpha
 
 The symbol \(\alpha\), called **alpha**, represents the probability that the confidence interval procedure fails to capture the true parameter.
 
@@ -372,7 +371,7 @@ Those values leave 2.5 percent in the lower tail and 2.5 percent in the upper ta
 
 ---
 
-## 11. Critical Values
+## Critical Values
 
 A **critical value** is the value from a probability distribution that corresponds to a desired confidence level.
 
@@ -414,7 +413,7 @@ A larger critical value produces a wider interval.
 
 # Part III: Interpreting Confidence Intervals Correctly
 
-## 12. What Confidence Intervals Do Not Mean
+## What Confidence Intervals Do Not Mean
 
 A confidence interval is often misinterpreted.
 
@@ -440,7 +439,7 @@ So the probability is not 0.95 for this specific interval. It is either 1 or 0. 
 
 ---
 
-## 13. The Ring Toss Analogy
+## The Ring Toss Analogy
 
 A useful analogy is a ring toss.
 
@@ -462,7 +461,7 @@ After collecting data, the interval either contains the true parameter or it doe
 
 ---
 
-## 14. Correct Interpretations
+## Correct Interpretations
 
 A good interpretation of a 95 percent confidence interval is:
 
@@ -490,7 +489,7 @@ Those statements incorrectly treat the population parameter as random after the 
 
 # Part IV: Confidence Intervals for Means
 
-## 15. Confidence Interval for a Mean: Ideal Case
+## Confidence Interval for a Mean: Ideal Case
 
 Suppose we want to estimate a population mean \(\mu\).
 
@@ -517,7 +516,7 @@ This ideal case is useful theoretically, but it is uncommon in practice because 
 
 ---
 
-## 16. Confidence Interval for a Mean: Practical Case
+## Confidence Interval for a Mean: Practical Case
 
 Usually, we do not know the population standard deviation \(\sigma\).
 
@@ -554,7 +553,7 @@ is the margin of error.
 
 ---
 
-## 17. Why the t-Distribution?
+## Why the t-Distribution?
 
 The t-distribution looks similar to the normal distribution, but it has more area in the tails.
 
@@ -570,7 +569,7 @@ For small samples, using \(t\) matters.
 
 ---
 
-## 18. Degrees of Freedom
+## Degrees of Freedom
 
 The t-distribution depends on **degrees of freedom**.
 
@@ -592,7 +591,7 @@ In practice:
 
 ---
 
-## 19. Conditions for a Confidence Interval for a Mean
+## Conditions for a Confidence Interval for a Mean
 
 To construct a confidence interval for a mean using the usual t procedure, we need appropriate conditions.
 
@@ -615,7 +614,7 @@ That distinction is important.
 
 ---
 
-## 20. Example: Confidence Interval for Mean Years of Education
+## Example: Confidence Interval for Mean Years of Education
 
 Suppose we survey:
 
@@ -703,7 +702,7 @@ A correct interpretation is:
 
 # Part V: Confidence Intervals for Proportions
 
-## 21. Population and Sample Proportions
+## Population and Sample Proportions
 
 A **population proportion** is the proportion of cases in the population that fall into a category.
 
@@ -736,7 +735,7 @@ If 44 percent of survey respondents own a dog, then:
 
 ---
 
-## 22. Proportions as Means of Zeros and Ones
+## Proportions as Means of Zeros and Ones
 
 A sample proportion can be understood as the mean of a binary variable.
 
@@ -762,7 +761,7 @@ Because proportions are means of binary variables, the Central Limit Theorem app
 
 ---
 
-## 23. Standard Error for a Proportion
+## Standard Error for a Proportion
 
 The true standard error of a sample proportion is:
 
@@ -787,7 +786,7 @@ This tells us how much sample proportions typically vary from the true populatio
 
 ---
 
-## 24. Why We Use z for Proportions
+## Why We Use z for Proportions
 
 For proportions, we do not use the t-distribution.
 
@@ -807,7 +806,7 @@ So for proportions:
 
 ---
 
-## 25. Conditions for the Normal Approximation for Proportions
+## Conditions for the Normal Approximation for Proportions
 
 To use the normal approximation for a confidence interval for a proportion, the sample size must be large enough.
 
@@ -836,7 +835,7 @@ If the sample size is too small, or if the proportion is too close to 0 or 1, th
 
 ---
 
-## 26. Confidence Interval Formula for a Proportion
+## Confidence Interval Formula for a Proportion
 
 The confidence interval for a proportion is:
 
@@ -870,7 +869,7 @@ z^* \approx 2.58
 
 ---
 
-## 27. Example: Dog Ownership
+## Example: Dog Ownership
 
 Suppose a survey asks Americans whether they own a dog.
 
@@ -970,7 +969,7 @@ That wording is acceptable as long as we do not say there is a 99 percent probab
 
 ---
 
-## 28. Symmetric and Asymmetric Intervals for Proportions
+## Symmetric and Asymmetric Intervals for Proportions
 
 The textbook confidence interval for a proportion uses the normal approximation:
 
@@ -1009,7 +1008,7 @@ For hand calculations in this course, the normal approximation is useful and imp
 
 # Part VI: Comparing Confidence Intervals for Means and Proportions
 
-## 29. Means Versus Proportions
+## Means Versus Proportions
 
 Confidence intervals for means and proportions follow the same general logic:
 
@@ -1039,7 +1038,7 @@ For proportions, we use the z-distribution when the sample size is large enough,
 
 ---
 
-## 30. Summary Table
+## Summary Table
 
 | Quantity | Mean | Proportion |
 |---|---:|---:|
@@ -1054,7 +1053,7 @@ For proportions, we use the z-distribution when the sample size is large enough,
 
 # Part VII: The Logic of Precision
 
-## 31. What Makes a Confidence Interval Wider?
+## What Makes a Confidence Interval Wider?
 
 A confidence interval becomes wider when:
 
@@ -1085,7 +1084,7 @@ The confidence level also matters. A 99 percent confidence interval is wider tha
 
 ---
 
-## 32. What Makes a Confidence Interval Narrower?
+## What Makes a Confidence Interval Narrower?
 
 A confidence interval becomes narrower when:
 

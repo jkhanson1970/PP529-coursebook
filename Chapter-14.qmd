@@ -1,6 +1,5 @@
 ---
 title: "Chapter 14: Linear Regression"
-format: revealjs
 ---
 
 Linear regression is one of the most important tools in applied statistics.
@@ -29,7 +28,7 @@ The main goal is not to make you a regression expert overnight. That would be a 
 
 # Part I: Preliminaries
 
-## 1. From Correlation to Regression
+## From Correlation to Regression
 
 Correlation analysis measures the strength and direction of a linear relationship between two interval-level variables.
 
@@ -62,7 +61,7 @@ Regression tells us how much one variable changes when the other changes.
 
 ---
 
-## 2. What Regression Adds
+## What Regression Adds
 
 Regression adds two major things beyond correlation.
 
@@ -86,7 +85,7 @@ That is why regression becomes so powerful.
 
 # Part II: The Linear Functional Form
 
-## 3. The Basic Linear Function
+## The Basic Linear Function
 
 The basic linear function is:
 
@@ -131,7 +130,7 @@ then \(X\) does not predict \(Y\) linearly.
 
 ---
 
-## 4. The Intercept
+## The Intercept
 
 The intercept tells us where the regression line crosses the \(Y\)-axis.
 
@@ -155,7 +154,7 @@ The intercept is always mathematically necessary, but it is not always substanti
 
 ---
 
-## 5. The Slope
+## The Slope
 
 The slope tells us how much \(Y\) is predicted to change when \(X\) increases by one unit.
 
@@ -184,7 +183,7 @@ The slope is measured in the units of \(Y\) per one unit of \(X\).
 
 ---
 
-## 6. Predicted Values
+## Predicted Values
 
 Regression produces predicted values.
 
@@ -212,7 +211,7 @@ Each predicted value lies on the regression line.
 
 ---
 
-## 7. Residuals
+## Residuals
 
 The model usually does not predict \(Y\) perfectly.
 
@@ -248,7 +247,7 @@ Regression chooses the line that minimizes the sum of squared residuals.
 
 # Part III: Ordinary Least Squares
 
-## 8. The Population Regression Model
+## The Population Regression Model
 
 In statistical notation, the simple linear regression model is:
 
@@ -270,7 +269,7 @@ It captures the idiosyncratic, unpredictable, or unmodeled part of \(Y\).
 
 ---
 
-## 9. The Estimated Regression Model
+## The Estimated Regression Model
 
 Because we do not know the true population parameters, we estimate them using sample data.
 
@@ -295,7 +294,7 @@ The estimated line is the line of best fit.
 
 ---
 
-## 10. Ordinary Least Squares
+## Ordinary Least Squares
 
 The most common method for estimating a linear regression is **ordinary least squares**, or **OLS**.
 
@@ -319,7 +318,7 @@ Because residuals can be positive or negative. If we simply added them, they wou
 
 ---
 
-## 11. The OLS Slope
+## The OLS Slope
 
 The OLS estimate of the slope is:
 
@@ -345,7 +344,7 @@ If \(X\) and \(Y\) do not covary, the numerator is close to zero, and the slope 
 
 ---
 
-## 12. The OLS Intercept
+## The OLS Intercept
 
 Once we have the slope, the intercept is:
 
@@ -364,7 +363,7 @@ That is, the line passes through the mean of \(X\) and the mean of \(Y\).
 
 ---
 
-## 13. Regression and Correlation
+## Regression and Correlation
 
 The formulas for Pearson’s \(r\) and the OLS slope are related.
 
@@ -407,7 +406,7 @@ The OLS slope divides by variation in \(X\), leaving the result in the units of 
 
 # Part IV: Example: Democracy and Illiteracy
 
-## 14. The Research Question
+## The Research Question
 
 Suppose we want to explain variation in illiteracy across countries.
 
@@ -433,7 +432,7 @@ Illiteracy_i = \beta_0 + \beta_1 Democracy_i + u_i
 
 ---
 
-## 15. Regression Results
+## Regression Results
 
 Suppose the estimated regression is:
 
@@ -467,7 +466,7 @@ This assumes that a democracy score of 0 is meaningful and within the range of t
 
 ---
 
-## 16. Predictions
+## Predictions
 
 For a country with a democracy score of 3:
 
@@ -521,7 +520,7 @@ The country with the higher democracy score is predicted to have an illiteracy r
 
 ---
 
-## 17. Causal Language
+## Causal Language
 
 Be careful.
 
@@ -547,7 +546,7 @@ Other factors may matter, such as GDP per capita, colonial history, state capaci
 
 # Part V: Statistical Significance in Regression
 
-## 18. Sampling Distributions of Regression Coefficients
+## Sampling Distributions of Regression Coefficients
 
 Regression coefficients are sample statistics.
 
@@ -561,7 +560,7 @@ The standard error tells us how much the estimated slope typically varies from t
 
 ---
 
-## 19. Standard Error of the Slope
+## Standard Error of the Slope
 
 The true standard error of \(\hat{\beta}_1\) depends on:
 
@@ -592,7 +591,7 @@ This makes intuitive sense. If \(X\) varies widely, it is easier to estimate the
 
 ---
 
-## 20. t-Test for a Regression Coefficient
+## t-Test for a Regression Coefficient
 
 The usual null hypothesis is:
 
@@ -643,7 +642,7 @@ df = n-2
 
 ---
 
-## 21. Confidence Interval for a Regression Coefficient
+## Confidence Interval for a Regression Coefficient
 
 A confidence interval for a coefficient is:
 
@@ -668,7 +667,7 @@ If the confidence interval for \(\beta_1\) does not include 0, then the coeffici
 
 ---
 
-## 22. Regression Output
+## Regression Output
 
 Regression software usually reports:
 
@@ -698,7 +697,7 @@ There is statistically significant evidence of a negative association between de
 
 # Part VI: Explaining Variance in \(Y\)
 
-## 23. Total, Explained, and Unexplained Variation
+## Total, Explained, and Unexplained Variation
 
 Regression partitions variation in \(Y\) into explained and unexplained parts.
 
@@ -737,7 +736,7 @@ TSS = ESS + SSE
 
 ---
 
-## 24. R-Squared
+## R-Squared
 
 The \(R^2\) statistic measures the proportion of variation in \(Y\) explained by the model.
 
@@ -781,7 +780,7 @@ then the model explains 72 percent of the variation in \(Y\).
 
 ---
 
-## 25. Interpreting R-Squared
+## Interpreting R-Squared
 
 Suppose we regress infant mortality on access to improved water sources and obtain:
 
@@ -801,7 +800,7 @@ The second version avoids causal overclaiming.
 
 ---
 
-## 26. Adjusted R-Squared
+## Adjusted R-Squared
 
 Adding more independent variables generally increases \(R^2\), even if the variables add little real explanatory value.
 
@@ -815,7 +814,7 @@ In multiple regression, adjusted \(R^2\) is usually more informative.
 
 ---
 
-## 27. Standard Error of the Estimate
+## Standard Error of the Estimate
 
 Regression output may report something called:
 
@@ -841,7 +840,7 @@ This is often more intuitive than \(R^2\) because it is in the units of the depe
 
 ---
 
-## 28. The F-Test for the Model
+## The F-Test for the Model
 
 Regression output also reports an F-statistic.
 
@@ -863,7 +862,7 @@ If the p-value for the F-test is small, we reject that null hypothesis.
 
 # Part VII: Dichotomous Independent Variables
 
-## 29. Dummy Variables
+## Dummy Variables
 
 A **dichotomous independent variable** has two values, usually coded:
 
@@ -888,7 +887,7 @@ Regression works with dummy variables because 0 and 1 can be included in the lin
 
 ---
 
-## 30. Regression with a Dummy Variable
+## Regression with a Dummy Variable
 
 Suppose the model is:
 
@@ -930,7 +929,7 @@ This is equivalent to a difference-of-means test.
 
 ---
 
-## 31. Example: Religion and Obama Thermometer Scores
+## Example: Religion and Obama Thermometer Scores
 
 Suppose we regress Obama thermometer scores on whether religion is important in a respondent’s life.
 
@@ -978,7 +977,7 @@ Interpretation:
 
 ---
 
-## 32. Changing the Reference Category
+## Changing the Reference Category
 
 If we reverse the coding, the interpretation changes but the substantive information does not.
 
@@ -1012,7 +1011,7 @@ Same relationship, different reference category.
 
 ---
 
-## 33. Why Dummy Variables Matter
+## Why Dummy Variables Matter
 
 Dummy variables become especially useful in multiple regression.
 
@@ -1035,7 +1034,7 @@ That is where regression becomes much more powerful than a simple t-test.
 
 # Part VIII: Multiple Regression
 
-## 34. The Multiple Regression Model
+## The Multiple Regression Model
 
 A multiple regression model includes more than one independent variable:
 
@@ -1060,7 +1059,7 @@ This is the key interpretation of multiple regression:
 
 ---
 
-## 35. Example: Infant Mortality, Water, and GDP
+## Example: Infant Mortality, Water, and GDP
 
 Suppose we first estimate:
 
@@ -1098,7 +1097,7 @@ After controlling for GDP, the estimated association between water and infant mo
 
 ---
 
-## 36. Interpretation in Multiple Regression
+## Interpretation in Multiple Regression
 
 Suppose the model is:
 
@@ -1121,7 +1120,7 @@ When predictors are logged, interpretation becomes more complicated. Roughly, a 
 
 # Part IX: Nonlinearity and Transformations
 
-## 37. Linear Regression Assumes Linearity
+## Linear Regression Assumes Linearity
 
 Linear regression assumes that the relationship between \(X\) and \(Y\) can be reasonably represented by a straight line.
 
@@ -1142,7 +1141,7 @@ Always inspect scatterplots when possible.
 
 ---
 
-## 38. Exponential Relationships
+## Exponential Relationships
 
 An exponential relationship occurs when the effect of \(X\) on \(Y\) grows as \(X\) increases.
 
@@ -1154,7 +1153,7 @@ For exponential relationships, taking the natural log of \(Y\), \(X\), or both c
 
 ---
 
-## 39. Log Transformations
+## Log Transformations
 
 Common log models include:
 
@@ -1169,7 +1168,7 @@ These are approximations but useful ones.
 
 ---
 
-## 40. Example: GDP and Infant Mortality
+## Example: GDP and Infant Mortality
 
 Suppose we regress infant mortality on GDP per capita in dollars and find a statistically significant relationship. But the scatterplot shows a strong nonlinear pattern.
 
@@ -1214,7 +1213,7 @@ We focus on four key assumptions.
 
 ---
 
-## 41. Assumption 1: Conditional Mean Zero
+## Assumption 1: Conditional Mean Zero
 
 The first assumption is:
 
@@ -1232,7 +1231,7 @@ If this assumption is violated, we may have omitted variable bias.
 
 ---
 
-## 42. Omitted Variable Bias
+## Omitted Variable Bias
 
 Suppose the true model is:
 
@@ -1262,7 +1261,7 @@ This is often difficult because important variables may be unknown or unmeasured
 
 ---
 
-## 43. Assumption 2: Independent and Identically Distributed Data
+## Assumption 2: Independent and Identically Distributed Data
 
 The second assumption is that observations are independently and identically distributed, often abbreviated IID.
 
@@ -1288,7 +1287,7 @@ This usually biases standard errors.
 
 ---
 
-## 44. Solutions to Non-Independence
+## Solutions to Non-Independence
 
 If observations are clustered, use clustered standard errors.
 
@@ -1304,7 +1303,7 @@ The key idea:
 
 ---
 
-## 45. Assumption 3: Large Outliers Are Unlikely
+## Assumption 3: Large Outliers Are Unlikely
 
 OLS can be sensitive to outliers.
 
@@ -1328,7 +1327,7 @@ Do not drop observations merely because they are inconvenient.
 
 ---
 
-## 46. Example: Population Density and Assaults
+## Example: Population Density and Assaults
 
 Suppose we regress state assault rates on population density.
 
@@ -1344,7 +1343,7 @@ This illustrates how influential outliers can affect regression estimates.
 
 ---
 
-## 47. Assumption 4: Homoscedasticity
+## Assumption 4: Homoscedasticity
 
 The fourth assumption is **homoscedasticity**.
 
@@ -1364,7 +1363,7 @@ For example, prediction errors may be small at low values of \(X\) and large at 
 
 ---
 
-## 48. Consequences of Heteroscedasticity
+## Consequences of Heteroscedasticity
 
 If heteroscedasticity is present, OLS coefficients remain unbiased under the other assumptions.
 
@@ -1389,7 +1388,7 @@ There are different formulas, such as HC1 and HC3. HC3 is more conservative and 
 
 # Part XI: Practice Example: Attendance and Test Scores
 
-## 49. The Model
+## The Model
 
 Suppose we predict student test scores using attendance rate.
 
@@ -1409,7 +1408,7 @@ Therefore, clustered standard errors by school may be appropriate.
 
 ---
 
-## 50. Interpreting Results
+## Interpreting Results
 
 Suppose the estimated model is:
 
@@ -1457,7 +1456,7 @@ The predicted test score increases by:
 
 ---
 
-## 51. Interpreting R-Squared and Prediction Error
+## Interpreting R-Squared and Prediction Error
 
 Suppose:
 

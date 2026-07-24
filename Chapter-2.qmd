@@ -1,6 +1,5 @@
 ---
 title: "Chapter 2: Sampling"
-format: revealjs
 ---
 
 Statistics usually begins with a problem: we want to learn something about a large group, but we cannot observe every member of that group.
@@ -15,7 +14,7 @@ This chapter introduces the logic of sampling. We begin with the relationship be
 
 ---
 
-## 1. Populations and Samples
+## Populations and Samples
 
 A **population** is the full set of cases we want to learn about. The population might consist of people, organizations, countries, schools, legislative districts, elections, policy programs, or almost anything else.
 
@@ -39,7 +38,7 @@ The same logic applies at much larger scales. A national election poll may surve
 
 ---
 
-## 2. Parameters and Statistics
+## Parameters and Statistics
 
 When we describe a population, we refer to **parameters**.
 
@@ -73,7 +72,7 @@ Much of statistics is about quantifying that uncertainty.
 
 ---
 
-## 3. Why Sampling Creates Uncertainty
+## Why Sampling Creates Uncertainty
 
 A sample statistic is usually not exactly equal to the population parameter. If we drew a different sample, we would probably get a slightly different statistic.
 
@@ -99,7 +98,7 @@ A major goal of statistics is to tell us how much uncertainty remains. Later sta
 
 ---
 
-## 4. Populations Are Sometimes Hypothetical
+## Populations Are Sometimes Hypothetical
 
 It is tempting to think of populations as always concrete and observable. Sometimes they are. If we define our population as “all students enrolled in this course,” that population exists in a straightforward way.
 
@@ -123,7 +122,7 @@ The data in front of us are concrete. The population we care about may be broade
 
 ---
 
-## 5. Why Sampling Method Matters
+## Why Sampling Method Matters
 
 The quality of a sample depends heavily on how it is collected.
 
@@ -141,7 +140,7 @@ Both types are useful in different contexts, but they support different kinds of
 
 # Part I: Methods of Sampling
 
-## 6. Non-Probability Sampling
+## Non-Probability Sampling
 
 In **non-probability sampling**, cases are not selected through a random process. This means we generally cannot use standard probability theory to calculate sampling error in the usual way.
 
@@ -156,7 +155,7 @@ Major types of non-probability sampling include:
 
 ---
 
-## 7. Convenience Sampling
+## Convenience Sampling
 
 A **convenience sample** consists of cases that are easy to access.
 
@@ -168,7 +167,7 @@ Convenience samples can be useful for some purposes, especially early-stage rese
 
 ---
 
-## 8. Purposive Sampling
+## Purposive Sampling
 
 In **purposive sampling**, researchers deliberately select cases because they are especially relevant to the research question.
 
@@ -182,7 +181,7 @@ Purposive sampling can provide deep insight, but it does not support the same ki
 
 ---
 
-## 9. Snowball Sampling
+## Snowball Sampling
 
 In **snowball sampling**, researchers begin with one or more participants and then ask them to identify others who should be included.
 
@@ -198,7 +197,7 @@ However, snowball samples can be biased toward connected individuals and network
 
 ---
 
-## 10. Quota Sampling
+## Quota Sampling
 
 In **quota sampling**, researchers decide in advance how many cases they want from particular groups, then recruit participants until those quotas are filled.
 
@@ -216,7 +215,7 @@ Quota sampling can improve sample composition, but it does not eliminate the nee
 
 ---
 
-## 11. Probability Sampling
+## Probability Sampling
 
 In **probability sampling**, random selection plays some role in determining which cases are included. Each case in the population has a known, nonzero probability of selection.
 
@@ -231,7 +230,7 @@ Common probability sampling methods include:
 
 ---
 
-## 12. Simple Random Sampling
+## Simple Random Sampling
 
 A **simple random sample** is the most basic form of probability sample. Every member of the population has an equal probability of being selected.
 
@@ -245,7 +244,7 @@ This gap between theory and reality is important. Introductory statistics often 
 
 ---
 
-## 13. Systematic Random Sampling
+## Systematic Random Sampling
 
 A **systematic random sample** selects cases using a fixed interval from a list.
 
@@ -259,7 +258,7 @@ Systematic sampling works best when the ordering of the list is unrelated to the
 
 ---
 
-## 14. Stratified Random Sampling
+## Stratified Random Sampling
 
 A **stratified random sample** divides the population into groups, called **strata**, and then randomly samples within each stratum.
 
@@ -289,7 +288,7 @@ The disadvantages are also important. To use stratified sampling, we need to kno
 
 ---
 
-## 15. Cluster Sampling
+## Cluster Sampling
 
 **Cluster sampling** divides the population into clusters, randomly selects clusters, and then samples cases within those clusters.
 
@@ -329,7 +328,7 @@ The major advantage of cluster sampling is cost. The major disadvantage is compl
 
 ---
 
-## 16. Theory Versus Reality in Sampling
+## Theory Versus Reality in Sampling
 
 Much of introductory statistics assumes simple random sampling. This assumption makes the theory easier to learn and provides a foundation for understanding inference.
 
@@ -351,7 +350,7 @@ A good researcher asks not only what is in the data, but how the data were colle
 
 # Part II: Random Sampling Error and Bias
 
-## 17. Random Sampling Error
+## Random Sampling Error
 
 Even a perfectly random sample will usually differ from the population.
 
@@ -371,7 +370,7 @@ That does not mean our sample statistic is uncertain. The sample statistic is kn
 
 ---
 
-## 18. Bias
+## Bias
 
 Random sampling error is expected and manageable. **Bias** is more dangerous.
 
@@ -388,7 +387,7 @@ Two important forms of bias are:
 
 ---
 
-## 19. Selection Bias
+## Selection Bias
 
 **Selection bias** occurs when the sampling method systematically includes some kinds of cases and excludes others.
 
@@ -404,7 +403,7 @@ This matters because people who are reachable by landline may differ politically
 
 ---
 
-## 20. Example: Landlines and Election Polling
+## Example: Landlines and Election Polling
 
 Election polling provides a clear example of selection bias.
 
@@ -422,7 +421,7 @@ The size of the sample does not fix a flawed sampling frame.
 
 ---
 
-## 21. Non-Response Bias
+## Non-Response Bias
 
 **Non-response bias** occurs when people selected for a sample do not participate, and those who do participate differ systematically from those who do not.
 
@@ -444,7 +443,7 @@ If yes, non-response bias is a problem.
 
 ---
 
-## 22. Low Response Rates and Polling
+## Low Response Rates and Polling
 
 Modern survey research faces a major challenge: response rates are low.
 
@@ -480,7 +479,7 @@ This is why survey researchers worry so much about non-response. When response r
 
 ---
 
-## 23. When Is Non-Response a Problem?
+## When Is Non-Response a Problem?
 
 Non-response becomes problematic when it is systematic with respect to the variable we are trying to measure.
 
@@ -500,7 +499,7 @@ A survey with a low response rate can still be useful if non-response is unrelat
 
 # Part III: Survey Weighting
 
-## 24. Why Weighting Is Necessary
+## Why Weighting Is Necessary
 
 Many surveys intentionally or unintentionally overrepresent some groups and underrepresent others.
 
@@ -516,7 +515,7 @@ The goal is to make the weighted sample resemble the population.
 
 ---
 
-## 25. A Simple Weighting Example
+## A Simple Weighting Example
 
 Suppose we conduct a survey and find:
 
@@ -556,7 +555,7 @@ After weighting, the age composition of the sample better reflects the age compo
 
 ---
 
-## 26. What Weighting Does
+## What Weighting Does
 
 Weighting changes how statistics are calculated.
 
@@ -576,7 +575,7 @@ Weighting is especially important in surveys with complex sampling designs, incl
 
 ---
 
-## 27. Oversampling and Weighting
+## Oversampling and Weighting
 
 Researchers sometimes intentionally oversample small groups.
 
@@ -590,7 +589,7 @@ This is common in high-quality surveys. Oversampling improves our ability to stu
 
 ---
 
-## 28. Weighting and Election Surveys
+## Weighting and Election Surveys
 
 Election surveys provide a useful example.
 
@@ -604,7 +603,7 @@ In introductory exercises, researchers and students sometimes work with unweight
 
 ---
 
-## 29. Weighting Is Not Magic
+## Weighting Is Not Magic
 
 Survey weighting is powerful, but it does not solve every problem.
 
@@ -626,7 +625,7 @@ The practical lesson is:
 
 # Part IV: Bringing It Together
 
-## 30. Sampling Error Versus Bias
+## Sampling Error Versus Bias
 
 It is useful to distinguish clearly between random sampling error and bias.
 
@@ -645,7 +644,7 @@ For example, a landline-only poll with 100,000 respondents may still be biased i
 
 ---
 
-## 31. The Central Lesson: Samples Are Designed
+## The Central Lesson: Samples Are Designed
 
 Samples do not simply appear. They are designed, collected, filtered, and sometimes adjusted.
 

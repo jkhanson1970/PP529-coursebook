@@ -1,141 +1,318 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Chapter 5: Probability Distributions – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-6.html" rel="next">
+<link href="./chapter-4.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <title>PubPol 529: Coursebook – Chapter 5: Probability Distributions</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Chapter 5: Probability Distributions</h1>
+<body class="nav-sidebar floating quarto-light">
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-5.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#probability-as-area" id="toc-probability-as-area" class="nav-link active" data-scroll-target="#probability-as-area"><span class="header-section-number">6.1</span> Probability as Area</a></li>
+  <li><a href="#part-i-discrete-probability-distributions" id="toc-part-i-discrete-probability-distributions" class="nav-link" data-scroll-target="#part-i-discrete-probability-distributions"><span class="header-section-number">7</span> Part I: Discrete Probability Distributions</a>
+  <ul class="collapse">
+  <li><a href="#discrete-random-variables" id="toc-discrete-random-variables" class="nav-link" data-scroll-target="#discrete-random-variables"><span class="header-section-number">7.1</span> Discrete Random Variables</a></li>
+  <li><a href="#probabilities-for-discrete-variables" id="toc-probabilities-for-discrete-variables" class="nav-link" data-scroll-target="#probabilities-for-discrete-variables"><span class="header-section-number">7.2</span> Probabilities for Discrete Variables</a></li>
+  <li><a href="#summation-notation-for-discrete-probabilities" id="toc-summation-notation-for-discrete-probabilities" class="nav-link" data-scroll-target="#summation-notation-for-discrete-probabilities"><span class="header-section-number">7.3</span> Summation Notation for Discrete Probabilities</a></li>
+  </ul></li>
+  <li><a href="#part-ii-continuous-probability-distributions" id="toc-part-ii-continuous-probability-distributions" class="nav-link" data-scroll-target="#part-ii-continuous-probability-distributions"><span class="header-section-number">8</span> Part II: Continuous Probability Distributions</a>
+  <ul class="collapse">
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables"><span class="header-section-number">8.1</span> Continuous Random Variables</a></li>
+  <li><a href="#probability-density" id="toc-probability-density" class="nav-link" data-scroll-target="#probability-density"><span class="header-section-number">8.2</span> Probability Density</a></li>
+  <li><a href="#probability-as-area-under-the-curve" id="toc-probability-as-area-under-the-curve" class="nav-link" data-scroll-target="#probability-as-area-under-the-curve"><span class="header-section-number">8.3</span> Probability as Area Under the Curve</a></li>
+  <li><a href="#integration-and-area" id="toc-integration-and-area" class="nav-link" data-scroll-target="#integration-and-area"><span class="header-section-number">8.4</span> Integration and Area</a></li>
+  <li><a href="#probability-density-functions-and-cumulative-distribution-functions" id="toc-probability-density-functions-and-cumulative-distribution-functions" class="nav-link" data-scroll-target="#probability-density-functions-and-cumulative-distribution-functions"><span class="header-section-number">8.5</span> Probability Density Functions and Cumulative Distribution Functions</a>
+  <ul class="collapse">
+  <li><a href="#probability-density-function" id="toc-probability-density-function" class="nav-link" data-scroll-target="#probability-density-function"><span class="header-section-number">8.5.1</span> Probability Density Function</a></li>
+  <li><a href="#cumulative-distribution-function" id="toc-cumulative-distribution-function" class="nav-link" data-scroll-target="#cumulative-distribution-function"><span class="header-section-number">8.5.2</span> Cumulative Distribution Function</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-iii-describing-probability-distributions" id="toc-part-iii-describing-probability-distributions" class="nav-link" data-scroll-target="#part-iii-describing-probability-distributions"><span class="header-section-number">9</span> Part III: Describing Probability Distributions</a>
+  <ul class="collapse">
+  <li><a href="#parameters-of-probability-distributions" id="toc-parameters-of-probability-distributions" class="nav-link" data-scroll-target="#parameters-of-probability-distributions"><span class="header-section-number">9.1</span> Parameters of Probability Distributions</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">9.2</span> Expected Value</a></li>
+  <li><a href="#expected-value-example-a-die-roll" id="toc-expected-value-example-a-die-roll" class="nav-link" data-scroll-target="#expected-value-example-a-die-roll"><span class="header-section-number">9.3</span> Expected Value Example: A Die Roll</a></li>
+  <li><a href="#expected-value-example-a-discrete-distribution" id="toc-expected-value-example-a-discrete-distribution" class="nav-link" data-scroll-target="#expected-value-example-a-discrete-distribution"><span class="header-section-number">9.4</span> Expected Value Example: A Discrete Distribution</a></li>
+  <li><a href="#expected-value-for-continuous-variables" id="toc-expected-value-for-continuous-variables" class="nav-link" data-scroll-target="#expected-value-for-continuous-variables"><span class="header-section-number">9.5</span> Expected Value for Continuous Variables</a></li>
+  <li><a href="#variance-of-a-probability-distribution" id="toc-variance-of-a-probability-distribution" class="nav-link" data-scroll-target="#variance-of-a-probability-distribution"><span class="header-section-number">9.6</span> Variance of a Probability Distribution</a></li>
+  </ul></li>
+  <li><a href="#part-iv-the-binomial-distribution" id="toc-part-iv-the-binomial-distribution" class="nav-link" data-scroll-target="#part-iv-the-binomial-distribution"><span class="header-section-number">10</span> Part IV: The Binomial Distribution</a>
+  <ul class="collapse">
+  <li><a href="#why-the-binomial-distribution-matters" id="toc-why-the-binomial-distribution-matters" class="nav-link" data-scroll-target="#why-the-binomial-distribution-matters"><span class="header-section-number">10.1</span> Why the Binomial Distribution Matters</a></li>
+  <li><a href="#conditions-for-the-binomial-distribution" id="toc-conditions-for-the-binomial-distribution" class="nav-link" data-scroll-target="#conditions-for-the-binomial-distribution"><span class="header-section-number">10.2</span> Conditions for the Binomial Distribution</a></li>
+  <li><a href="#coin-toss-example" id="toc-coin-toss-example" class="nav-link" data-scroll-target="#coin-toss-example"><span class="header-section-number">10.3</span> Coin Toss Example</a></li>
+  <li><a href="#permutations-nine-heads-in-ten-tosses" id="toc-permutations-nine-heads-in-ten-tosses" class="nav-link" data-scroll-target="#permutations-nine-heads-in-ten-tosses"><span class="header-section-number">10.4</span> Permutations: Nine Heads in Ten Tosses</a></li>
+  <li><a href="#the-binomial-formula" id="toc-the-binomial-formula" class="nav-link" data-scroll-target="#the-binomial-formula"><span class="header-section-number">10.5</span> The Binomial Formula</a>
+  <ul class="collapse">
+  <li><a href="#part-1-number-of-possible-arrangements" id="toc-part-1-number-of-possible-arrangements" class="nav-link" data-scroll-target="#part-1-number-of-possible-arrangements"><span class="header-section-number">10.5.1</span> Part 1: Number of Possible Arrangements</a></li>
+  <li><a href="#part-2-probability-of-one-arrangement" id="toc-part-2-probability-of-one-arrangement" class="nav-link" data-scroll-target="#part-2-probability-of-one-arrangement"><span class="header-section-number">10.5.2</span> Part 2: Probability of One Arrangement</a></li>
+  </ul></li>
+  <li><a href="#factorials" id="toc-factorials" class="nav-link" data-scroll-target="#factorials"><span class="header-section-number">10.6</span> Factorials</a></li>
+  <li><a href="#binomial-example-nine-heads-in-ten-tosses" id="toc-binomial-example-nine-heads-in-ten-tosses" class="nav-link" data-scroll-target="#binomial-example-nine-heads-in-ten-tosses"><span class="header-section-number">10.7</span> Binomial Example: Nine Heads in Ten Tosses</a></li>
+  <li><a href="#the-binomial-as-a-probability-distribution" id="toc-the-binomial-as-a-probability-distribution" class="nav-link" data-scroll-target="#the-binomial-as-a-probability-distribution"><span class="header-section-number">10.8</span> The Binomial as a Probability Distribution</a></li>
+  <li><a href="#the-binomial-and-sample-proportions" id="toc-the-binomial-and-sample-proportions" class="nav-link" data-scroll-target="#the-binomial-and-sample-proportions"><span class="header-section-number">10.9</span> The Binomial and Sample Proportions</a></li>
+  </ul></li>
+  <li><a href="#part-v-the-normal-distribution" id="toc-part-v-the-normal-distribution" class="nav-link" data-scroll-target="#part-v-the-normal-distribution"><span class="header-section-number">11</span> Part V: The Normal Distribution</a>
+  <ul class="collapse">
+  <li><a href="#why-the-normal-distribution-matters" id="toc-why-the-normal-distribution-matters" class="nav-link" data-scroll-target="#why-the-normal-distribution-matters"><span class="header-section-number">11.1</span> Why the Normal Distribution Matters</a></li>
+  <li><a href="#the-normal-density-function" id="toc-the-normal-density-function" class="nav-link" data-scroll-target="#the-normal-density-function"><span class="header-section-number">11.2</span> The Normal Density Function</a></li>
+  <li><a href="#changing-the-mean" id="toc-changing-the-mean" class="nav-link" data-scroll-target="#changing-the-mean"><span class="header-section-number">11.3</span> Changing the Mean</a></li>
+  <li><a href="#changing-the-standard-deviation" id="toc-changing-the-standard-deviation" class="nav-link" data-scroll-target="#changing-the-standard-deviation"><span class="header-section-number">11.4</span> Changing the Standard Deviation</a></li>
+  <li><a href="#common-properties-of-all-normal-distributions" id="toc-common-properties-of-all-normal-distributions" class="nav-link" data-scroll-target="#common-properties-of-all-normal-distributions"><span class="header-section-number">11.5</span> Common Properties of All Normal Distributions</a></li>
+  <li><a href="#normal-distributions-and-inference" id="toc-normal-distributions-and-inference" class="nav-link" data-scroll-target="#normal-distributions-and-inference"><span class="header-section-number">11.6</span> Normal Distributions and Inference</a></li>
+  </ul></li>
+  <li><a href="#part-vi-the-standard-normal-distribution" id="toc-part-vi-the-standard-normal-distribution" class="nav-link" data-scroll-target="#part-vi-the-standard-normal-distribution"><span class="header-section-number">12</span> Part VI: The Standard Normal Distribution</a>
+  <ul class="collapse">
+  <li><a href="#why-standardize" id="toc-why-standardize" class="nav-link" data-scroll-target="#why-standardize"><span class="header-section-number">12.1</span> Why Standardize?</a></li>
+  <li><a href="#calculating-a-z-score" id="toc-calculating-a-z-score" class="nav-link" data-scroll-target="#calculating-a-z-score"><span class="header-section-number">12.2</span> Calculating a Z-Score</a></li>
+  <li><a href="#interpreting-z-scores" id="toc-interpreting-z-scores" class="nav-link" data-scroll-target="#interpreting-z-scores"><span class="header-section-number">12.3</span> Interpreting Z-Scores</a></li>
+  <li><a href="#z-score-example-exam-scores" id="toc-z-score-example-exam-scores" class="nav-link" data-scroll-target="#z-score-example-exam-scores"><span class="header-section-number">12.4</span> Z-Score Example: Exam Scores</a></li>
+  <li><a href="#converting-back-from-a-z-score" id="toc-converting-back-from-a-z-score" class="nav-link" data-scroll-target="#converting-back-from-a-z-score"><span class="header-section-number">12.5</span> Converting Back from a Z-Score</a></li>
+  </ul></li>
+  <li><a href="#part-vii-using-the-z-table" id="toc-part-vii-using-the-z-table" class="nav-link" data-scroll-target="#part-vii-using-the-z-table"><span class="header-section-number">13</span> Part VII: Using the Z-Table</a>
+  <ul class="collapse">
+  <li><a href="#area-under-the-standard-normal-curve" id="toc-area-under-the-standard-normal-curve" class="nav-link" data-scroll-target="#area-under-the-standard-normal-curve"><span class="header-section-number">13.1</span> Area Under the Standard Normal Curve</a></li>
+  <li><a href="#symmetry" id="toc-symmetry" class="nav-link" data-scroll-target="#symmetry"><span class="header-section-number">13.2</span> Symmetry</a></li>
+  <li><a href="#complement-rule-with-the-z-table" id="toc-complement-rule-with-the-z-table" class="nav-link" data-scroll-target="#complement-rule-with-the-z-table"><span class="header-section-number">13.3</span> Complement Rule with the Z-Table</a></li>
+  <li><a href="#area-between-two-z-scores" id="toc-area-between-two-z-scores" class="nav-link" data-scroll-target="#area-between-two-z-scores"><span class="header-section-number">13.4</span> Area Between Two Z-Scores</a></li>
+  <li><a href="#finding-a-z-score-from-an-area" id="toc-finding-a-z-score-from-an-area" class="nav-link" data-scroll-target="#finding-a-z-score-from-an-area"><span class="header-section-number">13.5</span> Finding a Z-Score from an Area</a></li>
+  </ul></li>
+  <li><a href="#part-viii-connecting-probability-distributions-to-sampling-distributions" id="toc-part-viii-connecting-probability-distributions-to-sampling-distributions" class="nav-link" data-scroll-target="#part-viii-connecting-probability-distributions-to-sampling-distributions"><span class="header-section-number">14</span> Part VIII: Connecting Probability Distributions to Sampling Distributions</a>
+  <ul class="collapse">
+  <li><a href="#sample-statistics-are-random-variables" id="toc-sample-statistics-are-random-variables" class="nav-link" data-scroll-target="#sample-statistics-are-random-variables"><span class="header-section-number">14.1</span> Sample Statistics Are Random Variables</a></li>
+  <li><a href="#sampling-distribution-of-the-mean" id="toc-sampling-distribution-of-the-mean" class="nav-link" data-scroll-target="#sampling-distribution-of-the-mean"><span class="header-section-number">14.2</span> Sampling Distribution of the Mean</a></li>
+  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error"><span class="header-section-number">14.3</span> Standard Error</a></li>
+  <li><a href="#sample-size-and-the-sampling-distribution" id="toc-sample-size-and-the-sampling-distribution" class="nav-link" data-scroll-target="#sample-size-and-the-sampling-distribution"><span class="header-section-number">14.4</span> Sample Size and the Sampling Distribution</a></li>
+  <li><a href="#the-central-limit-theorem-preview" id="toc-the-central-limit-theorem-preview" class="nav-link" data-scroll-target="#the-central-limit-theorem-preview"><span class="header-section-number">14.5</span> The Central Limit Theorem Preview</a></li>
+  </ul></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">15</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">16</span> Chapter Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></h1>
 </div>
 
-</section>
-<section class="slide level2">
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
 
 <p>Probability theory gives us the language of uncertainty. Probability distributions give us the structure of that uncertainty.</p>
 <p>In the previous chapter, we introduced basic probability concepts: outcomes, events, sample spaces, complements, unions, intersections, joint probabilities, conditional probabilities, and independence. We also saw that probability can be understood as a long-run frequency. If a random process is repeated many times, the proportion of times an outcome occurs converges toward its probability.</p>
@@ -143,9 +320,9 @@
 <p>This chapter is a bridge between basic probability and statistical inference. The ideas here prepare us for sampling distributions, confidence intervals, hypothesis tests, and statistical significance. Those later tools all depend on understanding how random variables behave across repeated random processes.</p>
 <p>We begin by thinking of probability as <strong>area under a curve</strong>. We then discuss how to describe probability distributions using means and variances. Next, we introduce the <strong>binomial distribution</strong>, which describes the number of successes in repeated independent trials with two possible outcomes. Finally, we turn to the <strong>normal distribution</strong>, the <strong>standard normal distribution</strong>, and the logic of <strong>Z-scores</strong>.</p>
 <p>The central idea is this: sample statistics, such as sample means and sample proportions, are themselves random variables. Because they are random variables, they have probability distributions. Understanding those distributions is what allows us to make statistical inferences.</p>
-</section>
-<section id="probability-as-area" class="slide level2">
-<h2>1. Probability as Area</h2>
+<hr>
+<section id="probability-as-area" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="probability-as-area"><span class="header-section-number">6.1</span> Probability as Area</h2>
 <p>A probability distribution assigns probabilities to the possible values of a random variable.</p>
 <p>A <strong>random variable</strong> is a variable whose value is determined by a random process. For example:</p>
 <ul>
@@ -167,17 +344,12 @@
 <li>0.80, not 80 percent</li>
 </ul>
 <p>Percentages communicate the same information, but strictly speaking, probabilities are numbers between 0 and 1.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section>
-<section>
-<section id="part-i-discrete-probability-distributions" class="title-slide slide level1 center">
-<h1>Part I: Discrete Probability Distributions</h1>
-
-</section>
-<section id="discrete-random-variables" class="slide level2">
-<h2>2. Discrete Random Variables</h2>
+<section id="part-i-discrete-probability-distributions" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Part I: Discrete Probability Distributions</h1>
+<section id="discrete-random-variables" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="discrete-random-variables"><span class="header-section-number">7.1</span> Discrete Random Variables</h2>
 <p>A <strong>discrete random variable</strong> takes on specific, separate values.</p>
 <p>Examples include:</p>
 <ul>
@@ -191,7 +363,7 @@
 <p>Suppose a random variable (Y) can take five possible values:</p>
 <p>[ Y = 1, 2, 3, 4, 5 ]</p>
 <p>and suppose the probabilities are:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">(Y)</th>
@@ -229,9 +401,10 @@
 <p>The probabilities must sum to 1:</p>
 <p>[ 0.20 + 0.25 + 0.30 + 0.15 + 0.10 = 1.00 ]</p>
 <p>That is because the table includes all possible outcomes.</p>
+<hr>
 </section>
-<section id="probabilities-for-discrete-variables" class="slide level2">
-<h2>3. Probabilities for Discrete Variables</h2>
+<section id="probabilities-for-discrete-variables" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="probabilities-for-discrete-variables"><span class="header-section-number">7.2</span> Probabilities for Discrete Variables</h2>
 <p>With a discrete probability distribution, we can answer probability questions by adding the probabilities of the relevant values.</p>
 <p>For example:</p>
 <p>[ P(Y = 2) = 0.25 ]</p>
@@ -252,9 +425,10 @@
 <p>[ P(2 Y ) = P(Y = 2) + P(Y = 3) + P(Y = 4) ]</p>
 <p>[ P(2 Y ) = 0.25 + 0.30 + 0.15 = 0.70 ]</p>
 <p>The rule is simple: identify the values that satisfy the condition, then sum their probabilities.</p>
+<hr>
 </section>
-<section id="summation-notation-for-discrete-probabilities" class="slide level2">
-<h2>4. Summation Notation for Discrete Probabilities</h2>
+<section id="summation-notation-for-discrete-probabilities" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="summation-notation-for-discrete-probabilities"><span class="header-section-number">7.3</span> Summation Notation for Discrete Probabilities</h2>
 <p>We can write this process using summation notation.</p>
 <p>For example:</p>
 <p>[ P(Y &lt; 3) = _{y &lt; 3} P(Y = y) ]</p>
@@ -268,17 +442,13 @@
 <p>Summation notation may look intimidating, but the idea is straightforward. We are adding probabilities across the values that meet the condition.</p>
 <p>This notation is useful because it prepares us for continuous probability distributions, where we cannot simply add up discrete probabilities. Instead, we use integration.</p>
 <p>Do not panic. We will not do calculus by hand. But understanding the concept matters.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-ii-continuous-probability-distributions" class="title-slide slide level1 center">
-<h1>Part II: Continuous Probability Distributions</h1>
-
 </section>
-<section id="continuous-random-variables" class="slide level2">
-<h2>5. Continuous Random Variables</h2>
+<section id="part-ii-continuous-probability-distributions" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Part II: Continuous Probability Distributions</h1>
+<section id="continuous-random-variables" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="continuous-random-variables"><span class="header-section-number">8.1</span> Continuous Random Variables</h2>
 <p>A <strong>continuous random variable</strong> can take on infinitely many values within a range.</p>
 <p>Examples include:</p>
 <ul>
@@ -302,9 +472,10 @@
 <li>What is the probability someone is older than 72?</li>
 </ul>
 <p>For continuous variables, probability is assigned to intervals, not exact points.</p>
+<hr>
 </section>
-<section id="probability-density" class="slide level2">
-<h2>6. Probability Density</h2>
+<section id="probability-density" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="probability-density"><span class="header-section-number">8.2</span> Probability Density</h2>
 <p>For continuous distributions, we describe probability using a <strong>probability density function</strong>, or PDF.</p>
 <p>A probability density function gives the height of the probability curve at each value of the variable.</p>
 <p>The height of the curve is called <strong>density</strong>.</p>
@@ -314,9 +485,10 @@
 <p>For example, suppose we have a distribution of age. If the curve is high around age 30, that means there is relatively high probability density in that region. If the curve is low around age 90, there is relatively low probability density there.</p>
 <p>But the probability of being exactly 30 is still zero. The probability of being between 30 and 35, however, can be positive because that interval has width.</p>
 <p>The total area under a probability density curve must equal 1.</p>
+<hr>
 </section>
-<section id="probability-as-area-under-the-curve" class="slide level2">
-<h2>7. Probability as Area Under the Curve</h2>
+<section id="probability-as-area-under-the-curve" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="probability-as-area-under-the-curve"><span class="header-section-number">8.3</span> Probability as Area Under the Curve</h2>
 <p>For a continuous variable, we find probabilities by identifying the area under the curve within a range.</p>
 <p>For example:</p>
 <p>[ P(Y ) ]</p>
@@ -329,9 +501,10 @@
 <p>[ P(40 Y ) = 0.36 ]</p>
 <p>That means there is a 36 percent chance that a randomly selected case falls in that range.</p>
 <p>Again, probability is the area under the curve.</p>
+<hr>
 </section>
-<section id="integration-and-area" class="slide level2">
-<h2>8. Integration and Area</h2>
+<section id="integration-and-area" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="integration-and-area"><span class="header-section-number">8.4</span> Integration and Area</h2>
 <p>How do we find area under a curve?</p>
 <p>For a rectangle, area is easy:</p>
 <p>[ = ]</p>
@@ -354,35 +527,36 @@
 <p>Adding all those tiny areas gives the total area under the curve.</p>
 <p>In this course, we will not calculate integrals by hand. Instead, we will use tables and software. But the concept matters because tables such as the Z-table and T-table are essentially precomputed areas under probability curves.</p>
 <p>Some mathematically generous soul did the integration for us. We should be grateful. Quietly, perhaps, but grateful.</p>
+<hr>
 </section>
-<section id="probability-density-functions-and-cumulative-distribution-functions" class="slide level2">
-<h2>9. Probability Density Functions and Cumulative Distribution Functions</h2>
+<section id="probability-density-functions-and-cumulative-distribution-functions" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="probability-density-functions-and-cumulative-distribution-functions"><span class="header-section-number">8.5</span> Probability Density Functions and Cumulative Distribution Functions</h2>
 <p>Two functions are especially important when working with continuous probability distributions.</p>
-<h3 id="probability-density-function">Probability Density Function</h3>
+<section id="probability-density-function" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="probability-density-function"><span class="header-section-number">8.5.1</span> Probability Density Function</h3>
 <p>A <strong>probability density function</strong>, or PDF, gives the height of the curve at a particular value.</p>
 <p>We often write a generic density function as:</p>
 <p>[ f(y) ]</p>
 <p>This means: the function (f) takes (y) as input and returns the height of the curve at that value of (y).</p>
 <p>The input is a value of the variable.<br>
 The output is density.</p>
-<h3 id="cumulative-distribution-function">Cumulative Distribution Function</h3>
+</section>
+<section id="cumulative-distribution-function" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="cumulative-distribution-function"><span class="header-section-number">8.5.2</span> Cumulative Distribution Function</h3>
 <p>A <strong>cumulative distribution function</strong>, or CDF, gives the total area under the curve up to a particular value.</p>
 <p>For a value (y), the CDF tells us:</p>
 <p>[ P(Y y) ]</p>
 <p>In words: the probability that the random variable is less than or equal to (y).</p>
 <p>The PDF gives height.<br>
 The CDF gives accumulated area.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-iii-describing-probability-distributions" class="title-slide slide level1 center">
-<h1>Part III: Describing Probability Distributions</h1>
-
 </section>
-<section id="parameters-of-probability-distributions" class="slide level2">
-<h2>10. Parameters of Probability Distributions</h2>
+</section>
+<section id="part-iii-describing-probability-distributions" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Part III: Describing Probability Distributions</h1>
+<section id="parameters-of-probability-distributions" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="parameters-of-probability-distributions"><span class="header-section-number">9.1</span> Parameters of Probability Distributions</h2>
 <p>Probability distributions can be described using parameters, just as sample distributions can be described using statistics.</p>
 <p>The most important parameters describe:</p>
 <ol type="1">
@@ -396,9 +570,10 @@ The CDF gives accumulated area.</p>
 <p>or the <strong>standard deviation</strong>:</p>
 <p>[ ]</p>
 <p>These are population-level or distribution-level quantities. They describe the long-run behavior of the random variable.</p>
+<hr>
 </section>
-<section id="expected-value" class="slide level2">
-<h2>11. Expected Value</h2>
+<section id="expected-value" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">9.2</span> Expected Value</h2>
 <p>The mean of a probability distribution is also called the <strong>expected value</strong>.</p>
 <p>The expected value of (Y) is written:</p>
 <p>[ E(Y) ]</p>
@@ -406,9 +581,10 @@ The CDF gives accumulated area.</p>
 <p>[ E(Y) = _y yP(Y=y) ]</p>
 <p>In words: multiply each possible value of (Y) by its probability, then add the results.</p>
 <p>The expected value is the probability-weighted center of the distribution.</p>
+<hr>
 </section>
-<section id="expected-value-example-a-die-roll" class="slide level2">
-<h2>12. Expected Value Example: A Die Roll</h2>
+<section id="expected-value-example-a-die-roll" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="expected-value-example-a-die-roll"><span class="header-section-number">9.3</span> Expected Value Example: A Die Roll</h2>
 <p>Suppose we roll a fair six-sided die.</p>
 <p>The possible values are:</p>
 <p>[ 1, 2, 3, 4, 5, 6 ]</p>
@@ -421,11 +597,12 @@ The CDF gives accumulated area.</p>
 <p>The expected value of a die roll is 3.5.</p>
 <p>Notice that 3.5 is not a possible die roll. We cannot roll a 3.5. But 3.5 is still the mean of the probability distribution.</p>
 <p>This is an important lesson: an expected value does not have to be an outcome that can actually occur.</p>
+<hr>
 </section>
-<section id="expected-value-example-a-discrete-distribution" class="slide level2">
-<h2>13. Expected Value Example: A Discrete Distribution</h2>
+<section id="expected-value-example-a-discrete-distribution" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="expected-value-example-a-discrete-distribution"><span class="header-section-number">9.4</span> Expected Value Example: A Discrete Distribution</h2>
 <p>Return to the earlier probability distribution:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">(Y)</th>
@@ -463,9 +640,10 @@ The CDF gives accumulated area.</p>
 <p>[ = 2.70 ]</p>
 <p>If we repeatedly draw values from this distribution, the sample mean will converge toward 2.70 as the number of draws increases.</p>
 <p>That is the law of large numbers at work.</p>
+<hr>
 </section>
-<section id="expected-value-for-continuous-variables" class="slide level2">
-<h2>14. Expected Value for Continuous Variables</h2>
+<section id="expected-value-for-continuous-variables" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="expected-value-for-continuous-variables"><span class="header-section-number">9.5</span> Expected Value for Continuous Variables</h2>
 <p>For a continuous random variable, the logic is the same, but the notation changes.</p>
 <p>Instead of summing over discrete values, we integrate across the continuous range of (Y):</p>
 <p>[ E(Y) = _{-}^{} y f(y),dy ]</p>
@@ -476,9 +654,10 @@ The CDF gives accumulated area.</p>
 <p>For continuous variables:</p>
 <p>[ E(Y) = y f(y),dy ]</p>
 <p>Both formulas express the same idea: the expected value is the probability-weighted center of the distribution.</p>
+<hr>
 </section>
-<section id="variance-of-a-probability-distribution" class="slide level2">
-<h2>15. Variance of a Probability Distribution</h2>
+<section id="variance-of-a-probability-distribution" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="variance-of-a-probability-distribution"><span class="header-section-number">9.6</span> Variance of a Probability Distribution</h2>
 <p>The <strong>variance</strong> of a probability distribution describes its spread around the mean.</p>
 <p>For a random variable (Y), the variance is:</p>
 <p>[ Var(Y) = E[(Y-)^2] ]</p>
@@ -498,17 +677,13 @@ The CDF gives accumulated area.</p>
 <p>The standard deviation is the square root of the variance:</p>
 <p>[ = ]</p>
 <p>The main idea is that probability distributions have centers and spreads. Their center is the expected value. Their spread is described by variance and standard deviation.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-iv-the-binomial-distribution" class="title-slide slide level1 center">
-<h1>Part IV: The Binomial Distribution</h1>
-
 </section>
-<section id="why-the-binomial-distribution-matters" class="slide level2">
-<h2>16. Why the Binomial Distribution Matters</h2>
+<section id="part-iv-the-binomial-distribution" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Part IV: The Binomial Distribution</h1>
+<section id="why-the-binomial-distribution-matters" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="why-the-binomial-distribution-matters"><span class="header-section-number">10.1</span> Why the Binomial Distribution Matters</h2>
 <p>The <strong>binomial distribution</strong> is a discrete probability distribution that describes the number of successes in a fixed number of independent trials when each trial has two possible outcomes.</p>
 <p>Examples include:</p>
 <ul>
@@ -521,9 +696,10 @@ The CDF gives accumulated area.</p>
 </ul>
 <p>The binomial distribution is important because many variables in social science and policy analysis are dichotomous. A person either belongs to a category or does not. A respondent either supports a policy or does not. A household either receives a benefit or does not.</p>
 <p>The binomial distribution helps us calculate the probability of getting a certain number of cases in the category of interest.</p>
+<hr>
 </section>
-<section id="conditions-for-the-binomial-distribution" class="slide level2">
-<h2>17. Conditions for the Binomial Distribution</h2>
+<section id="conditions-for-the-binomial-distribution" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="conditions-for-the-binomial-distribution"><span class="header-section-number">10.2</span> Conditions for the Binomial Distribution</h2>
 <p>The binomial distribution applies when three conditions are met:</p>
 <ol type="1">
 <li><p><strong>There are two possible outcomes.</strong><br>
@@ -534,9 +710,10 @@ The probability of being in the category of interest is the same for each trial.
 The outcome of one trial does not affect the outcome of another.</p></li>
 </ol>
 <p>If these conditions do not hold, the binomial distribution may not be appropriate.</p>
+<hr>
 </section>
-<section id="coin-toss-example" class="slide level2">
-<h2>18. Coin Toss Example</h2>
+<section id="coin-toss-example" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="coin-toss-example"><span class="header-section-number">10.3</span> Coin Toss Example</h2>
 <p>Suppose we toss a fair coin 10 times.</p>
 <p>Let heads be the outcome of interest.</p>
 <p>For each toss:</p>
@@ -552,11 +729,12 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>[ 0.5^{10} = 0.00098 ]</p>
 <p>So if a random sample of 10 voters all support Candidate A, we might begin to doubt the claim that the electorate is evenly split.</p>
 <p>This is the intuition behind statistical inference: we compare what we observe to what would be likely under a hypothesized truth.</p>
+<hr>
 </section>
-<section id="permutations-nine-heads-in-ten-tosses" class="slide level2">
-<h2>19. Permutations: Nine Heads in Ten Tosses</h2>
+<section id="permutations-nine-heads-in-ten-tosses" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="permutations-nine-heads-in-ten-tosses"><span class="header-section-number">10.4</span> Permutations: Nine Heads in Ten Tosses</h2>
 <p>Now suppose we ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What is the probability of getting exactly nine heads in ten tosses?</p>
 </blockquote>
 <p>First, consider one specific ordering:</p>
@@ -572,9 +750,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>[ P(9 ) = 10(0.00098) ]</p>
 <p>[ = 0.0098 ]</p>
 <p>The binomial formula generalizes this logic.</p>
+<hr>
 </section>
-<section id="the-binomial-formula" class="slide level2">
-<h2>20. The Binomial Formula</h2>
+<section id="the-binomial-formula" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="the-binomial-formula"><span class="header-section-number">10.5</span> The Binomial Formula</h2>
 <p>The binomial distribution gives the probability of getting exactly (x) successes in (n) trials:</p>
 <p>[ P(X=x) = <sup>x(1-)</sup>{n-x} ]</p>
 <p>where:</p>
@@ -586,16 +765,21 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <li>(n!) means (n) factorial</li>
 </ul>
 <p>The formula has two main parts.</p>
-<h3 id="part-1-number-of-possible-arrangements">Part 1: Number of Possible Arrangements</h3>
+<section id="part-1-number-of-possible-arrangements" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="part-1-number-of-possible-arrangements"><span class="header-section-number">10.5.1</span> Part 1: Number of Possible Arrangements</h3>
 <p>[ ]</p>
 <p>This counts how many different ways we can arrange (x) successes among (n) trials.</p>
-<h3 id="part-2-probability-of-one-arrangement">Part 2: Probability of One Arrangement</h3>
+</section>
+<section id="part-2-probability-of-one-arrangement" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="part-2-probability-of-one-arrangement"><span class="header-section-number">10.5.2</span> Part 2: Probability of One Arrangement</h3>
 <p>[ <sup>x(1-)</sup>{n-x} ]</p>
 <p>This gives the probability of any one specific arrangement with (x) successes and (n-x) failures.</p>
 <p>Multiplying these parts gives the total probability of getting exactly (x) successes in any order.</p>
+<hr>
 </section>
-<section id="factorials" class="slide level2">
-<h2>21. Factorials</h2>
+</section>
+<section id="factorials" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="factorials"><span class="header-section-number">10.6</span> Factorials</h2>
 <p>A <strong>factorial</strong> is the product of a positive integer and all positive integers below it.</p>
 <p>For example:</p>
 <p>[ 5! = 5 ]</p>
@@ -603,9 +787,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>By definition:</p>
 <p>[ 0! = 1 ]</p>
 <p>This matters in binomial calculations. For example, if (x=n), then (n-x=0), and the formula includes (0!). That value is 1.</p>
+<hr>
 </section>
-<section id="binomial-example-nine-heads-in-ten-tosses" class="slide level2">
-<h2>22. Binomial Example: Nine Heads in Ten Tosses</h2>
+<section id="binomial-example-nine-heads-in-ten-tosses" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="binomial-example-nine-heads-in-ten-tosses"><span class="header-section-number">10.7</span> Binomial Example: Nine Heads in Ten Tosses</h2>
 <p>Let:</p>
 <p>[ n = 10 ]</p>
 <p>[ x = 9 ]</p>
@@ -622,9 +807,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>[ P(X=9) = 10(0.00098) ]</p>
 <p>[ P(X=9) = 0.0098 ]</p>
 <p>This matches the intuitive result from earlier.</p>
+<hr>
 </section>
-<section id="the-binomial-as-a-probability-distribution" class="slide level2">
-<h2>23. The Binomial as a Probability Distribution</h2>
+<section id="the-binomial-as-a-probability-distribution" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="the-binomial-as-a-probability-distribution"><span class="header-section-number">10.8</span> The Binomial as a Probability Distribution</h2>
 <p>The binomial formula can be used to calculate the probability of every possible number of successes.</p>
 <p>If we toss a coin 10 times, the number of heads can be:</p>
 <p>[ 0,1,2,3,4,5,6,7,8,9,10 ]</p>
@@ -635,9 +821,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>The distribution is symmetric because heads and tails are equally likely.</p>
 <p>If we toss the coin many more times, say 500 times, the binomial distribution becomes smoother and begins to resemble a normal distribution. It remains centered at the true probability of heads, 0.5, but the distribution of sample proportions becomes increasingly concentrated near that value.</p>
 <p>This is one of the first hints of a major idea: as sample size grows, sample statistics tend to have predictable probability distributions.</p>
+<hr>
 </section>
-<section id="the-binomial-and-sample-proportions" class="slide level2">
-<h2>24. The Binomial and Sample Proportions</h2>
+<section id="the-binomial-and-sample-proportions" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="the-binomial-and-sample-proportions"><span class="header-section-number">10.9</span> The Binomial and Sample Proportions</h2>
 <p>The binomial distribution can also be understood as a distribution of sample proportions.</p>
 <p>Suppose the probability of being in a category is:</p>
 <p>[ = 0.6 ]</p>
@@ -651,17 +838,13 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>But we will not always get exactly 600 out of 1000. We might get 590, 604, 612, or 581. The binomial distribution tells us the probability of each possible count, and therefore the probability of each possible sample proportion.</p>
 <p>As (n) becomes large, the distribution of sample proportions becomes approximately normal. It is centered at the true population proportion ().</p>
 <p>This matters because in real surveys, we do not know (). We observe (), the sample proportion, and use probability theory to assess how close it is likely to be to the true population proportion.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-v-the-normal-distribution" class="title-slide slide level1 center">
-<h1>Part V: The Normal Distribution</h1>
-
 </section>
-<section id="why-the-normal-distribution-matters" class="slide level2">
-<h2>25. Why the Normal Distribution Matters</h2>
+<section id="part-v-the-normal-distribution" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Part V: The Normal Distribution</h1>
+<section id="why-the-normal-distribution-matters" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="why-the-normal-distribution-matters"><span class="header-section-number">11.1</span> Why the Normal Distribution Matters</h2>
 <p>The <strong>normal distribution</strong> is one of the most important probability distributions in statistics.</p>
 <p>It is useful because many variables are approximately normally distributed, and, even more importantly, many sample statistics have sampling distributions that are approximately normal under the right conditions.</p>
 <p>The normal distribution is:</p>
@@ -674,9 +857,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <li>defined by its mean and standard deviation</li>
 </ul>
 <p>The normal distribution is central to confidence intervals, hypothesis tests, Z-scores, T-scores, and many regression models.</p>
+<hr>
 </section>
-<section id="the-normal-density-function" class="slide level2">
-<h2>26. The Normal Density Function</h2>
+<section id="the-normal-density-function" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="the-normal-density-function"><span class="header-section-number">11.2</span> The Normal Density Function</h2>
 <p>The probability density function for a normal distribution is:</p>
 <p>[ f(y) = e<sup>{-()</sup>2} ]</p>
 <p>You do not need to memorize this formula.</p>
@@ -689,9 +873,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 </ul>
 <p>This function draws the bell-shaped normal curve.</p>
 <p>A specific normal distribution is determined by choosing values for () and ().</p>
+<hr>
 </section>
-<section id="changing-the-mean" class="slide level2">
-<h2>27. Changing the Mean</h2>
+<section id="changing-the-mean" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="changing-the-mean"><span class="header-section-number">11.3</span> Changing the Mean</h2>
 <p>If we change the mean while holding the standard deviation constant, the normal curve shifts left or right.</p>
 <p>For example, consider three normal distributions with the same standard deviation but different means:</p>
 <ul>
@@ -701,9 +886,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 </ul>
 <p>Each distribution has the same shape and spread, but each is centered at a different value.</p>
 <p>The mean determines location.</p>
+<hr>
 </section>
-<section id="changing-the-standard-deviation" class="slide level2">
-<h2>28. Changing the Standard Deviation</h2>
+<section id="changing-the-standard-deviation" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="changing-the-standard-deviation"><span class="header-section-number">11.4</span> Changing the Standard Deviation</h2>
 <p>If we hold the mean constant but change the standard deviation, the spread of the distribution changes.</p>
 <p>Suppose three normal distributions all have:</p>
 <p>[ = 70 ]</p>
@@ -716,9 +902,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>The distribution with (= 0.5) is tightly concentrated around 70.</p>
 <p>The distribution with (= 2) is much more spread out.</p>
 <p>The standard deviation determines dispersion.</p>
+<hr>
 </section>
-<section id="common-properties-of-all-normal-distributions" class="slide level2">
-<h2>29. Common Properties of All Normal Distributions</h2>
+<section id="common-properties-of-all-normal-distributions" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="common-properties-of-all-normal-distributions"><span class="header-section-number">11.5</span> Common Properties of All Normal Distributions</h2>
 <p>Every normal distribution has the same general area properties.</p>
 <p>Approximately:</p>
 <ul>
@@ -732,30 +919,27 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>[ P(- 3Y + 3) ]</p>
 <p>The number 1.96 is especially important because 95 percent of a normal distribution lies between -1.96 and +1.96 standard deviations from the mean.</p>
 <p>That number will appear repeatedly in confidence intervals and hypothesis tests.</p>
+<hr>
 </section>
-<section id="normal-distributions-and-inference" class="slide level2">
-<h2>30. Normal Distributions and Inference</h2>
+<section id="normal-distributions-and-inference" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="normal-distributions-and-inference"><span class="header-section-number">11.6</span> Normal Distributions and Inference</h2>
 <p>The normal distribution is useful for inference because sample statistics often have approximately normal sampling distributions.</p>
 <p>Suppose we hypothesize that the true population mean is 10. We collect a random sample and get a sample mean of 20. Is that plausible?</p>
 <p>The answer depends on how far 20 is from 10 in standard deviation units.</p>
 <p>If 20 is only one standard deviation above 10, that may not be surprising. If 20 is five standard deviations above 10, that would be extremely unlikely if the true mean were really 10.</p>
 <p>Statistical inference uses this logic.</p>
 <p>We ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>If the hypothesis were true, how likely would it be to get a sample statistic as extreme as the one we observed?</p>
 </blockquote>
 <p>To answer that, we need to know the probability distribution of the sample statistic.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-vi-the-standard-normal-distribution" class="title-slide slide level1 center">
-<h1>Part VI: The Standard Normal Distribution</h1>
-
 </section>
-<section id="why-standardize" class="slide level2">
-<h2>31. Why Standardize?</h2>
+<section id="part-vi-the-standard-normal-distribution" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Part VI: The Standard Normal Distribution</h1>
+<section id="why-standardize" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="why-standardize"><span class="header-section-number">12.1</span> Why Standardize?</h2>
 <p>There are infinitely many normal distributions because normal distributions can have different means and standard deviations.</p>
 <p>To make them easier to use, we convert any normal distribution into the <strong>standard normal distribution</strong>.</p>
 <p>The standard normal distribution has:</p>
@@ -764,9 +948,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 <p>[ = 1 ]</p>
 <p>A value on the standard normal distribution is called a <strong>Z-score</strong>.</p>
 <p>A Z-score tells us how many standard deviations a value is from the mean.</p>
+<hr>
 </section>
-<section id="calculating-a-z-score" class="slide level2">
-<h2>32. Calculating a Z-Score</h2>
+<section id="calculating-a-z-score" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="calculating-a-z-score"><span class="header-section-number">12.2</span> Calculating a Z-Score</h2>
 <p>To convert a value (Y) into a Z-score, use:</p>
 <p>[ Z = ]</p>
 <p>where:</p>
@@ -782,9 +967,10 @@ The outcome of one trial does not affect the outcome of another.</p></li>
 </ol>
 <p>Subtracting the mean centers the distribution at 0.<br>
 Dividing by the standard deviation rescales the distribution so that one unit equals one standard deviation.</p>
+<hr>
 </section>
-<section id="interpreting-z-scores" class="slide level2">
-<h2>33. Interpreting Z-Scores</h2>
+<section id="interpreting-z-scores" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="interpreting-z-scores"><span class="header-section-number">12.3</span> Interpreting Z-Scores</h2>
 <p>A Z-score of 0 means the value is exactly at the mean.</p>
 <p>A positive Z-score means the value is above the mean.</p>
 <p>A negative Z-score means the value is below the mean.</p>
@@ -800,9 +986,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>A test score of 80 may be good or bad depending on the distribution of scores. If the mean is 75 and the standard deviation is 5, then 80 is one standard deviation above the mean.</p>
 <p>If the mean is 90 and the standard deviation is 5, then 80 is two standard deviations below the mean.</p>
 <p>The raw score alone is not enough. The Z-score tells us where the score sits in the distribution.</p>
+<hr>
 </section>
-<section id="z-score-example-exam-scores" class="slide level2">
-<h2>34. Z-Score Example: Exam Scores</h2>
+<section id="z-score-example-exam-scores" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="z-score-example-exam-scores"><span class="header-section-number">12.4</span> Z-Score Example: Exam Scores</h2>
 <p>Suppose exam scores are normally distributed with:</p>
 <p>[ = 75 ]</p>
 <p>[ = 5 ]</p>
@@ -821,9 +1008,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>A score of 75 gives:</p>
 <p>[ Z = = 0 ]</p>
 <p>So 75 is exactly at the mean.</p>
+<hr>
 </section>
-<section id="converting-back-from-a-z-score" class="slide level2">
-<h2>35. Converting Back from a Z-Score</h2>
+<section id="converting-back-from-a-z-score" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="converting-back-from-a-z-score"><span class="header-section-number">12.5</span> Converting Back from a Z-Score</h2>
 <p>We can also convert a Z-score back to the original scale.</p>
 <p>Starting with:</p>
 <p>[ Z = ]</p>
@@ -837,20 +1025,16 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>[ Y = 2(5) + 75 ]</p>
 <p>[ Y = 85 ]</p>
 <p>A Z-score of 2 corresponds to an exam score of 85.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-vii-using-the-z-table" class="title-slide slide level1 center">
-<h1>Part VII: Using the Z-Table</h1>
-
 </section>
-<section id="area-under-the-standard-normal-curve" class="slide level2">
-<h2>36. Area Under the Standard Normal Curve</h2>
+<section id="part-vii-using-the-z-table" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Part VII: Using the Z-Table</h1>
+<section id="area-under-the-standard-normal-curve" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="area-under-the-standard-normal-curve"><span class="header-section-number">13.1</span> Area Under the Standard Normal Curve</h2>
 <p>The standard normal distribution lets us find probabilities by finding area under the curve.</p>
 <p>For example:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What is the probability that a normally distributed variable is more than two standard deviations above the mean?</p>
 </blockquote>
 <p>On the standard normal scale, two standard deviations above the mean is:</p>
@@ -860,9 +1044,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>Using a Z-table that reports upper-tail probabilities:</p>
 <p>[ P(Z &gt; 2.00) = 0.0228 ]</p>
 <p>That means there is a 2.28 percent chance that a normally distributed variable falls more than two standard deviations above the mean.</p>
+<hr>
 </section>
-<section id="symmetry" class="slide level2">
-<h2>37. Symmetry</h2>
+<section id="symmetry" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="symmetry"><span class="header-section-number">13.2</span> Symmetry</h2>
 <p>The standard normal distribution is symmetric.</p>
 <p>Therefore:</p>
 <p>[ P(Z &gt; 1.00) = P(Z &lt; -1.00) ]</p>
@@ -873,9 +1058,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>[ P(Z &gt; 1.00) = 0.1587 ]</p>
 <p>Therefore:</p>
 <p>[ P(Z &lt; -1.00) = 0.1587 ]</p>
+<hr>
 </section>
-<section id="complement-rule-with-the-z-table" class="slide level2">
-<h2>38. Complement Rule with the Z-Table</h2>
+<section id="complement-rule-with-the-z-table" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="complement-rule-with-the-z-table"><span class="header-section-number">13.3</span> Complement Rule with the Z-Table</h2>
 <p>If the table gives area above a Z-score, then area below that Z-score is found using the complement rule.</p>
 <p>For example:</p>
 <p>[ P(Z &gt; 1.00) = 0.1587 ]</p>
@@ -884,9 +1070,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>[ P(Z ) = 0.8413 ]</p>
 <p>The probability of being at exactly (Z = 1.00) is zero because the normal distribution is continuous. So we do not need to worry much about whether the inequality is (&lt;), (), (&gt;), or () in ordinary area calculations.</p>
 <p>In hypothesis testing, however, crossing a threshold can matter. We will return to that later.</p>
+<hr>
 </section>
-<section id="area-between-two-z-scores" class="slide level2">
-<h2>39. Area Between Two Z-Scores</h2>
+<section id="area-between-two-z-scores" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="area-between-two-z-scores"><span class="header-section-number">13.4</span> Area Between Two Z-Scores</h2>
 <p>Suppose we want the area between:</p>
 <p>[ Z = -1.00 ]</p>
 <p>and:</p>
@@ -902,33 +1089,30 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>Thus:</p>
 <p>[ P(-1.00 Z ) = 0.6826 ]</p>
 <p>This is the familiar 68.26 percent within one standard deviation of the mean.</p>
+<hr>
 </section>
-<section id="finding-a-z-score-from-an-area" class="slide level2">
-<h2>40. Finding a Z-Score from an Area</h2>
+<section id="finding-a-z-score-from-an-area" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="finding-a-z-score-from-an-area"><span class="header-section-number">13.5</span> Finding a Z-Score from an Area</h2>
 <p>Sometimes we work backward.</p>
 <p>Instead of asking, “What area corresponds to this Z-score?” we ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What Z-score corresponds to this area?</p>
 </blockquote>
 <p>For example:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What Z-score has an upper-tail area of approximately 0.40?</p>
 </blockquote>
 <p>Using a Z-table, we search for the table value closest to 0.40. The closest values may fall between two Z-scores, such as 0.25 and 0.26.</p>
 <p>In that case, we can say the Z-score is approximately between:</p>
 <p>[ 0.25 0.26 ]</p>
 <p>Tables are sometimes imprecise because they report only certain decimal places. Software can calculate more precise values, but tables are useful for understanding the logic.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-viii-connecting-probability-distributions-to-sampling-distributions" class="title-slide slide level1 center">
-<h1>Part VIII: Connecting Probability Distributions to Sampling Distributions</h1>
-
 </section>
-<section id="sample-statistics-are-random-variables" class="slide level2">
-<h2>41. Sample Statistics Are Random Variables</h2>
+<section id="part-viii-connecting-probability-distributions-to-sampling-distributions" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Part VIII: Connecting Probability Distributions to Sampling Distributions</h1>
+<section id="sample-statistics-are-random-variables" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="sample-statistics-are-random-variables"><span class="header-section-number">14.1</span> Sample Statistics Are Random Variables</h2>
 <p>A crucial idea is that sample statistics are random variables.</p>
 <p>Consider a sample mean.</p>
 <p>Once we have a sample, the sample mean is fixed. We can calculate it exactly. But before we draw the sample, the sample mean is uncertain because the sample itself is random.</p>
@@ -942,9 +1126,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <li>many other statistics</li>
 </ul>
 <p>The probability distribution of a sample statistic is called a <strong>sampling distribution</strong>.</p>
+<hr>
 </section>
-<section id="sampling-distribution-of-the-mean" class="slide level2">
-<h2>42. Sampling Distribution of the Mean</h2>
+<section id="sampling-distribution-of-the-mean" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="sampling-distribution-of-the-mean"><span class="header-section-number">14.2</span> Sampling Distribution of the Mean</h2>
 <p>Suppose we have a population of student debt values. The true population mean is:</p>
 <p>[ = 23{,}708 ]</p>
 <p>and the true population standard deviation is:</p>
@@ -961,9 +1146,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>If we repeatedly drew many samples of size 100 and plotted all the sample means, we would see a distribution of sample means.</p>
 <p>That distribution would be centered near the true population mean.</p>
 <p>This distribution is the sampling distribution of ({X}).</p>
+<hr>
 </section>
-<section id="standard-error" class="slide level2">
-<h2>43. Standard Error</h2>
+<section id="standard-error" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">14.3</span> Standard Error</h2>
 <p>The standard deviation of a sampling distribution has a special name:</p>
 <p>[ ]</p>
 <p>The standard error tells us how much a sample statistic typically varies from the population parameter.</p>
@@ -974,9 +1160,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <li>A standard error describes the typical distance of sample statistics from the population parameter.</li>
 </ul>
 <p>The standard error is central to confidence intervals and hypothesis tests.</p>
+<hr>
 </section>
-<section id="sample-size-and-the-sampling-distribution" class="slide level2">
-<h2>44. Sample Size and the Sampling Distribution</h2>
+<section id="sample-size-and-the-sampling-distribution" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="sample-size-and-the-sampling-distribution"><span class="header-section-number">14.4</span> Sample Size and the Sampling Distribution</h2>
 <p>Sample size affects the spread of the sampling distribution.</p>
 <p>If sample size is small, sample means vary more from sample to sample. The sampling distribution is wide.</p>
 <p>If sample size is large, sample means vary less from sample to sample. The sampling distribution is narrow.</p>
@@ -984,9 +1171,10 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>With a small sample, one extreme observation can strongly affect the sample mean. With a large sample, extreme observations are balanced by many other observations.</p>
 <p>Larger samples produce more precise estimates.</p>
 <p>This is why increasing sample size reduces random sampling error.</p>
+<hr>
 </section>
-<section id="the-central-limit-theorem-preview" class="slide level2">
-<h2>45. The Central Limit Theorem Preview</h2>
+<section id="the-central-limit-theorem-preview" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="the-central-limit-theorem-preview"><span class="header-section-number">14.5</span> The Central Limit Theorem Preview</h2>
 <p>The <strong>Central Limit Theorem</strong> is one of the most important results in statistics.</p>
 <p>It says that, under certain conditions, the sampling distribution of the sample mean becomes approximately normal as sample size increases.</p>
 <p>This can happen even when the population distribution itself is not normal.</p>
@@ -994,13 +1182,11 @@ Dividing by the standard deviation rescales the distribution so that one unit eq
 <p>If the population is skewed, small samples may produce a skewed sampling distribution. But as sample size increases, the sampling distribution becomes more normal.</p>
 <p>A common rule of thumb is that sample sizes above about 30 are often large enough for the sampling distribution of the mean to be approximately normal, though this depends on the severity of skewness and other features of the population.</p>
 <p>The Central Limit Theorem is the reason the normal distribution is so important in statistical inference.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-terms" class="title-slide slide level1 center">
-<h1>Key Terms</h1>
+</section>
+<section id="key-terms" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Key Terms</h1>
 <p><strong>Probability distribution</strong><br>
 A function or table that assigns probabilities to the possible values of a random variable.</p>
 <p><strong>Random variable</strong><br>
@@ -1041,12 +1227,10 @@ The probability distribution of a sample statistic across repeated random sample
 The standard deviation of a sampling distribution.</p>
 <p><strong>Central Limit Theorem</strong><br>
 The theorem stating that, under appropriate conditions, the sampling distribution of the sample mean becomes approximately normal as sample size increases.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section id="chapter-summary" class="title-slide slide level1 center">
-<h1>Chapter Summary</h1>
+<section id="chapter-summary" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Chapter Summary</h1>
 <p>Probability distributions describe how random variables behave. For discrete variables, probabilities are assigned to specific values. For continuous variables, probabilities are represented by area under a curve over intervals.</p>
 <p>The expected value of a probability distribution is its mean. It is the probability-weighted center of the distribution. The variance and standard deviation describe the distribution’s spread.</p>
 <p>The binomial distribution applies to repeated independent trials with two possible outcomes. It tells us the probability of getting exactly (x) successes in (n) trials. It is especially useful for understanding sample proportions.</p>
@@ -1056,389 +1240,423 @@ The theorem stating that, under appropriate conditions, the sampling distributio
 
 
 </section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
 
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': false,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return codeEl.innerText;
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter-4.html" class="pagination-link" aria-label="Chapter 4: Probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-6.html" class="pagination-link" aria-label="Chapter 6: Sampling Distributions">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
 
 </body></html>

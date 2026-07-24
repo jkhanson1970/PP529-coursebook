@@ -1,141 +1,325 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Chapter 4: Probability – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-5.html" rel="next">
+<link href="./chapter-3.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <title>PubPol 529: Coursebook – Chapter 4: Probability</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
-  <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-  </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
+
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Chapter 4: Probability</h1>
+<body class="nav-sidebar floating quarto-light">
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-probability-matters" id="toc-why-probability-matters" class="nav-link active" data-scroll-target="#why-probability-matters"><span class="header-section-number">5.1</span> Why Probability Matters</a></li>
+  <li><a href="#probability-as-long-run-frequency" id="toc-probability-as-long-run-frequency" class="nav-link" data-scroll-target="#probability-as-long-run-frequency"><span class="header-section-number">5.2</span> Probability as Long-Run Frequency</a></li>
+  <li><a href="#the-law-of-large-numbers" id="toc-the-law-of-large-numbers" class="nav-link" data-scroll-target="#the-law-of-large-numbers"><span class="header-section-number">5.3</span> The Law of Large Numbers</a></li>
+  <li><a href="#part-i-basic-elements-of-probability" id="toc-part-i-basic-elements-of-probability" class="nav-link" data-scroll-target="#part-i-basic-elements-of-probability"><span class="header-section-number">6</span> Part I: Basic Elements of Probability</a>
+  <ul class="collapse">
+  <li><a href="#sample-spaces" id="toc-sample-spaces" class="nav-link" data-scroll-target="#sample-spaces"><span class="header-section-number">6.1</span> Sample Spaces</a></li>
+  <li><a href="#outcomes" id="toc-outcomes" class="nav-link" data-scroll-target="#outcomes"><span class="header-section-number">6.2</span> Outcomes</a></li>
+  <li><a href="#probability-as-area" id="toc-probability-as-area" class="nav-link" data-scroll-target="#probability-as-area"><span class="header-section-number">6.3</span> Probability as Area</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">6.4</span> Events</a></li>
+  <li><a href="#probability-of-an-event" id="toc-probability-of-an-event" class="nav-link" data-scroll-target="#probability-of-an-event"><span class="header-section-number">6.5</span> Probability of an Event</a></li>
+  </ul></li>
+  <li><a href="#part-ii-unions-intersections-and-complements" id="toc-part-ii-unions-intersections-and-complements" class="nav-link" data-scroll-target="#part-ii-unions-intersections-and-complements"><span class="header-section-number">7</span> Part II: Unions, Intersections, and Complements</a>
+  <ul class="collapse">
+  <li><a href="#the-union-of-events-a-or-b" id="toc-the-union-of-events-a-or-b" class="nav-link" data-scroll-target="#the-union-of-events-a-or-b"><span class="header-section-number">7.1</span> The Union of Events: “A or B”</a></li>
+  <li><a href="#the-intersection-of-events-a-and-b" id="toc-the-intersection-of-events-a-and-b" class="nav-link" data-scroll-target="#the-intersection-of-events-a-and-b"><span class="header-section-number">7.2</span> The Intersection of Events: “A and B”</a></li>
+  <li><a href="#disjoint-events" id="toc-disjoint-events" class="nav-link" data-scroll-target="#disjoint-events"><span class="header-section-number">7.3</span> Disjoint Events</a></li>
+  <li><a href="#complements" id="toc-complements" class="nav-link" data-scroll-target="#complements"><span class="header-section-number">7.4</span> Complements</a></li>
+  </ul></li>
+  <li><a href="#part-iii-basic-rules-of-probability" id="toc-part-iii-basic-rules-of-probability" class="nav-link" data-scroll-target="#part-iii-basic-rules-of-probability"><span class="header-section-number">8</span> Part III: Basic Rules of Probability</a>
+  <ul class="collapse">
+  <li><a href="#probabilities-range-from-0-to-1" id="toc-probabilities-range-from-0-to-1" class="nav-link" data-scroll-target="#probabilities-range-from-0-to-1"><span class="header-section-number">8.1</span> Probabilities Range from 0 to 1</a></li>
+  <li><a href="#addition-rule-for-disjoint-events" id="toc-addition-rule-for-disjoint-events" class="nav-link" data-scroll-target="#addition-rule-for-disjoint-events"><span class="header-section-number">8.2</span> Addition Rule for Disjoint Events</a></li>
+  <li><a href="#general-addition-rule" id="toc-general-addition-rule" class="nav-link" data-scroll-target="#general-addition-rule"><span class="header-section-number">8.3</span> General Addition Rule</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">8.4</span> Expected Value</a></li>
+  </ul></li>
+  <li><a href="#part-iv-gamblers-fallacy" id="toc-part-iv-gamblers-fallacy" class="nav-link" data-scroll-target="#part-iv-gamblers-fallacy"><span class="header-section-number">9</span> Part IV: Gambler’s Fallacy</a>
+  <ul class="collapse">
+  <li><a href="#the-fallacy" id="toc-the-fallacy" class="nav-link" data-scroll-target="#the-fallacy"><span class="header-section-number">9.1</span> The Fallacy</a></li>
+  <li><a href="#independence-and-streaks" id="toc-independence-and-streaks" class="nav-link" data-scroll-target="#independence-and-streaks"><span class="header-section-number">9.2</span> Independence and Streaks</a></li>
+  <li><a href="#real-world-consequences-of-gamblers-fallacy" id="toc-real-world-consequences-of-gamblers-fallacy" class="nav-link" data-scroll-target="#real-world-consequences-of-gamblers-fallacy"><span class="header-section-number">9.3</span> Real-World Consequences of Gambler’s Fallacy</a></li>
+  </ul></li>
+  <li><a href="#part-v-joint-probabilities" id="toc-part-v-joint-probabilities" class="nav-link" data-scroll-target="#part-v-joint-probabilities"><span class="header-section-number">10</span> Part V: Joint Probabilities</a>
+  <ul class="collapse">
+  <li><a href="#joint-outcomes" id="toc-joint-outcomes" class="nav-link" data-scroll-target="#joint-outcomes"><span class="header-section-number">10.1</span> Joint Outcomes</a></li>
+  <li><a href="#rolling-two-dice" id="toc-rolling-two-dice" class="nav-link" data-scroll-target="#rolling-two-dice"><span class="header-section-number">10.2</span> Rolling Two Dice</a></li>
+  <li><a href="#joint-frequency-distributions" id="toc-joint-frequency-distributions" class="nav-link" data-scroll-target="#joint-frequency-distributions"><span class="header-section-number">10.3</span> Joint Frequency Distributions</a></li>
+  <li><a href="#joint-probability-distributions" id="toc-joint-probability-distributions" class="nav-link" data-scroll-target="#joint-probability-distributions"><span class="header-section-number">10.4</span> Joint Probability Distributions</a></li>
+  </ul></li>
+  <li><a href="#part-vi-conditional-probability-and-independence" id="toc-part-vi-conditional-probability-and-independence" class="nav-link" data-scroll-target="#part-vi-conditional-probability-and-independence"><span class="header-section-number">11</span> Part VI: Conditional Probability and Independence</a>
+  <ul class="collapse">
+  <li><a href="#conditional-probability" id="toc-conditional-probability" class="nav-link" data-scroll-target="#conditional-probability"><span class="header-section-number">11.1</span> Conditional Probability</a></li>
+  <li><a href="#conditional-probability-example-minimum-wage-and-party-id" id="toc-conditional-probability-example-minimum-wage-and-party-id" class="nav-link" data-scroll-target="#conditional-probability-example-minimum-wage-and-party-id"><span class="header-section-number">11.2</span> Conditional Probability Example: Minimum Wage and Party ID</a></li>
+  <li><a href="#another-conditional-probability-example" id="toc-another-conditional-probability-example" class="nav-link" data-scroll-target="#another-conditional-probability-example"><span class="header-section-number">11.3</span> Another Conditional Probability Example</a></li>
+  <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">11.4</span> Independence</a></li>
+  <li><a href="#independence-with-dice" id="toc-independence-with-dice" class="nav-link" data-scroll-target="#independence-with-dice"><span class="header-section-number">11.5</span> Independence with Dice</a></li>
+  <li><a href="#independence-with-cards" id="toc-independence-with-cards" class="nav-link" data-scroll-target="#independence-with-cards"><span class="header-section-number">11.6</span> Independence with Cards</a></li>
+  <li><a href="#testing-for-independence-in-tables" id="toc-testing-for-independence-in-tables" class="nav-link" data-scroll-target="#testing-for-independence-in-tables"><span class="header-section-number">11.7</span> Testing for Independence in Tables</a></li>
+  </ul></li>
+  <li><a href="#part-vii-multiplication-rules" id="toc-part-vii-multiplication-rules" class="nav-link" data-scroll-target="#part-vii-multiplication-rules"><span class="header-section-number">12</span> Part VII: Multiplication Rules</a>
+  <ul class="collapse">
+  <li><a href="#general-multiplication-rule" id="toc-general-multiplication-rule" class="nav-link" data-scroll-target="#general-multiplication-rule"><span class="header-section-number">12.1</span> General Multiplication Rule</a></li>
+  <li><a href="#multiplication-rule-for-independent-events" id="toc-multiplication-rule-for-independent-events" class="nav-link" data-scroll-target="#multiplication-rule-for-independent-events"><span class="header-section-number">12.2</span> Multiplication Rule for Independent Events</a></li>
+  <li><a href="#permutations-and-repeated-trials" id="toc-permutations-and-repeated-trials" class="nav-link" data-scroll-target="#permutations-and-repeated-trials"><span class="header-section-number">12.3</span> Permutations and Repeated Trials</a></li>
+  <li><a href="#summary-of-core-probability-rules" id="toc-summary-of-core-probability-rules" class="nav-link" data-scroll-target="#summary-of-core-probability-rules"><span class="header-section-number">12.4</span> Summary of Core Probability Rules</a>
+  <ul class="collapse">
+  <li><a href="#complement-rule" id="toc-complement-rule" class="nav-link" data-scroll-target="#complement-rule"><span class="header-section-number">12.4.1</span> Complement Rule</a></li>
+  <li><a href="#general-addition-rule-1" id="toc-general-addition-rule-1" class="nav-link" data-scroll-target="#general-addition-rule-1"><span class="header-section-number">12.4.2</span> General Addition Rule</a></li>
+  <li><a href="#multiplication-rule-for-dependent-events" id="toc-multiplication-rule-for-dependent-events" class="nav-link" data-scroll-target="#multiplication-rule-for-dependent-events"><span class="header-section-number">12.4.3</span> Multiplication Rule for Dependent Events</a></li>
+  <li><a href="#multiplication-rule-for-independent-events-1" id="toc-multiplication-rule-for-independent-events-1" class="nav-link" data-scroll-target="#multiplication-rule-for-independent-events-1"><span class="header-section-number">12.4.4</span> Multiplication Rule for Independent Events</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-viii-probability-trees" id="toc-part-viii-probability-trees" class="nav-link" data-scroll-target="#part-viii-probability-trees"><span class="header-section-number">13</span> Part VIII: Probability Trees</a>
+  <ul class="collapse">
+  <li><a href="#probability-tree-diagrams" id="toc-probability-tree-diagrams" class="nav-link" data-scroll-target="#probability-tree-diagrams"><span class="header-section-number">13.1</span> Probability Tree Diagrams</a></li>
+  <li><a href="#example-heads-exactly-once" id="toc-example-heads-exactly-once" class="nav-link" data-scroll-target="#example-heads-exactly-once"><span class="header-section-number">13.2</span> Example: Heads Exactly Once</a></li>
+  <li><a href="#example-heads-at-least-once" id="toc-example-heads-at-least-once" class="nav-link" data-scroll-target="#example-heads-at-least-once"><span class="header-section-number">13.3</span> Example: Heads At Least Once</a></li>
+  <li><a href="#probability-trees-with-unequal-probabilities" id="toc-probability-trees-with-unequal-probabilities" class="nav-link" data-scroll-target="#probability-trees-with-unequal-probabilities"><span class="header-section-number">13.4</span> Probability Trees with Unequal Probabilities</a></li>
+  <li><a href="#probability-trees-with-conditional-probabilities" id="toc-probability-trees-with-conditional-probabilities" class="nav-link" data-scroll-target="#probability-trees-with-conditional-probabilities"><span class="header-section-number">13.5</span> Probability Trees with Conditional Probabilities</a></li>
+  <li><a href="#probability-tree-example-coin-and-die" id="toc-probability-tree-example-coin-and-die" class="nav-link" data-scroll-target="#probability-tree-example-coin-and-die"><span class="header-section-number">13.6</span> Probability Tree Example: Coin and Die</a></li>
+  </ul></li>
+  <li><a href="#part-ix-contingency-tables" id="toc-part-ix-contingency-tables" class="nav-link" data-scroll-target="#part-ix-contingency-tables"><span class="header-section-number">14</span> Part IX: Contingency Tables</a>
+  <ul class="collapse">
+  <li><a href="#cross-tabulation" id="toc-cross-tabulation" class="nav-link" data-scroll-target="#cross-tabulation"><span class="header-section-number">14.1</span> Cross-Tabulation</a></li>
+  <li><a href="#dependent-and-independent-variables" id="toc-dependent-and-independent-variables" class="nav-link" data-scroll-target="#dependent-and-independent-variables"><span class="header-section-number">14.2</span> Dependent and Independent Variables</a></li>
+  <li><a href="#frequencies-row-percentages-column-percentages-and-cell-percentages" id="toc-frequencies-row-percentages-column-percentages-and-cell-percentages" class="nav-link" data-scroll-target="#frequencies-row-percentages-column-percentages-and-cell-percentages"><span class="header-section-number">14.3</span> Frequencies, Row Percentages, Column Percentages, and Cell Percentages</a>
+  <ul class="collapse">
+  <li><a href="#frequencies" id="toc-frequencies" class="nav-link" data-scroll-target="#frequencies"><span class="header-section-number">14.3.1</span> Frequencies</a></li>
+  <li><a href="#row-percentages" id="toc-row-percentages" class="nav-link" data-scroll-target="#row-percentages"><span class="header-section-number">14.3.2</span> Row Percentages</a></li>
+  <li><a href="#column-percentages" id="toc-column-percentages" class="nav-link" data-scroll-target="#column-percentages"><span class="header-section-number">14.3.3</span> Column Percentages</a></li>
+  <li><a href="#cell-percentages" id="toc-cell-percentages" class="nav-link" data-scroll-target="#cell-percentages"><span class="header-section-number">14.3.4</span> Cell Percentages</a></li>
+  </ul></li>
+  <li><a href="#example-religion-and-school-spending" id="toc-example-religion-and-school-spending" class="nav-link" data-scroll-target="#example-religion-and-school-spending"><span class="header-section-number">14.4</span> Example: Religion and School Spending</a></li>
+  <li><a href="#contingency-tables-and-conditional-probabilities" id="toc-contingency-tables-and-conditional-probabilities" class="nav-link" data-scroll-target="#contingency-tables-and-conditional-probabilities"><span class="header-section-number">14.5</span> Contingency Tables and Conditional Probabilities</a></li>
+  </ul></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">15</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">16</span> Chapter Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></h1>
 </div>
 
-</section>
-<section class="slide level2">
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
 
 <p>Probability is the language of statistical inference.</p>
 <p>So far, we have discussed measurement, sampling, and descriptive statistics. We have learned how to define concepts, collect data, describe variables, summarize distributions, and think critically about samples. Probability is the next step because it explains how sample data connect to population claims.</p>
@@ -144,9 +328,9 @@
 <p>It tells us how likely different outcomes are, how sample statistics behave when sampling is random, and how confident we can be when using sample data to estimate population values. Later topics such as confidence intervals, hypothesis tests, p-values, regression, and statistical significance all depend on probability.</p>
 <p>This chapter introduces the core ideas of probability. We begin with the big picture: why probability matters for inference. We then define basic probability concepts such as sample spaces, outcomes, events, unions, intersections, and complements. Next, we examine rules of probability, expected values, gambler’s fallacy, joint probabilities, conditional probabilities, independence, probability trees, and contingency tables.</p>
 <p>Some of the notation may feel unfamiliar at first. That is normal. Probability often feels abstract until the pieces start to connect. The good news is that the logic is systematic. Once you understand the structure, probability becomes one of the most powerful tools in statistics.</p>
-</section>
-<section id="why-probability-matters" class="slide level2">
-<h2>1. Why Probability Matters</h2>
+<hr>
+<section id="why-probability-matters" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="why-probability-matters"><span class="header-section-number">5.1</span> Why Probability Matters</h2>
 <p>Probability helps us understand randomness.</p>
 <p>In statistics, randomness is not chaos. Random processes have structure. We may not know what will happen in a single case, but we can often know the long-run pattern of outcomes.</p>
 <p>For example, if we flip a fair coin once, we do not know whether it will land heads or tails. But if we flip it many, many times, we expect about half the flips to be heads and half to be tails.</p>
@@ -155,9 +339,10 @@
 <p>Suppose 60 percent of voters in a population support Candidate A and 40 percent support Candidate B. If we randomly select one voter, the probability that the person supports Candidate A is 0.60. The probability that the person supports Candidate B is 0.40.</p>
 <p>If we select only a few voters, our sample may not match the population very well. We might, by chance, select more Candidate A supporters or more Candidate B supporters than expected. But as the sample size grows, the sample proportion should move closer to the true population proportion.</p>
 <p>That tendency is one of the foundations of statistical inference.</p>
+<hr>
 </section>
-<section id="probability-as-long-run-frequency" class="slide level2">
-<h2>2. Probability as Long-Run Frequency</h2>
+<section id="probability-as-long-run-frequency" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="probability-as-long-run-frequency"><span class="header-section-number">5.2</span> Probability as Long-Run Frequency</h2>
 <p>One useful way to think about probability is as a <strong>long-run frequency</strong>.</p>
 <p>The probability of an outcome is the proportion of times that outcome would occur if we repeated a random process indefinitely.</p>
 <p>For example:</p>
@@ -176,9 +361,10 @@
 <p>If 49 percent of people in our sample say “too little,” that sample percentage reflects an estimate of the underlying probability that a randomly selected person from the population would answer “too little.”</p>
 <p>The true population probability may not be exactly 0.49. But if the sample is large and randomly selected, it is unlikely to be wildly different.</p>
 <p>Probability theory gives us a way to say how unlikely.</p>
+<hr>
 </section>
-<section id="the-law-of-large-numbers" class="slide level2">
-<h2>3. The Law of Large Numbers</h2>
+<section id="the-law-of-large-numbers" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-law-of-large-numbers"><span class="header-section-number">5.3</span> The Law of Large Numbers</h2>
 <p>The <strong>law of large numbers</strong> states that, as the number of observations increases, sample statistics tend to converge toward the true population values.</p>
 <p>For proportions, we can write this idea as:</p>
 <p>[ n ]</p>
@@ -199,20 +385,15 @@
 </ul>
 <p>This does not mean every sample is perfectly accurate. Small samples can deviate substantially from the population. Even large samples can deviate somewhat. But probability theory tells us how those deviations behave.</p>
 <p>This is the basic logic of inference:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>We use sample statistics to estimate population parameters, and probability theory tells us how much random error to expect.</p>
 </blockquote>
+<hr>
 </section>
-<section class="slide level2">
-
-</section>
-<section>
-<section id="part-i-basic-elements-of-probability" class="title-slide slide level1 center">
-<h1>Part I: Basic Elements of Probability</h1>
-
-</section>
-<section id="sample-spaces" class="slide level2">
-<h2>4. Sample Spaces</h2>
+<section id="part-i-basic-elements-of-probability" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Part I: Basic Elements of Probability</h1>
+<section id="sample-spaces" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sample-spaces"><span class="header-section-number">6.1</span> Sample Spaces</h2>
 <p>A <strong>sample space</strong> is the set of all possible outcomes of a random process.</p>
 <p>We usually denote the sample space with (S).</p>
 <p>For a coin toss, the sample space is:</p>
@@ -225,9 +406,10 @@
 <p><strong>Mutually exclusive</strong> means that only one outcome can occur at a time. A single coin toss cannot be both heads and tails.</p>
 <p><strong>Exhaustive</strong> means that all possible outcomes are included. Something in the sample space must occur.</p>
 <p>If the sample space is properly defined, the probabilities of all outcomes must sum to 1.</p>
+<hr>
 </section>
-<section id="outcomes" class="slide level2">
-<h2>5. Outcomes</h2>
+<section id="outcomes" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="outcomes"><span class="header-section-number">6.2</span> Outcomes</h2>
 <p>An <strong>outcome</strong> is one possible result of a random process.</p>
 <p>For a coin toss, “heads” is an outcome and “tails” is an outcome.</p>
 <p>For a die roll, each number is an outcome:</p>
@@ -241,9 +423,10 @@
 <p>[ P(1) = P(2) = P(3) = P(4) = P(5) = P(6) = ]</p>
 <p>The probabilities sum to 1:</p>
 <p>[ +++++=1 ]</p>
+<hr>
 </section>
-<section id="probability-as-area" class="slide level2">
-<h2>6. Probability as Area</h2>
+<section id="probability-as-area" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="probability-as-area"><span class="header-section-number">6.3</span> Probability as Area</h2>
 <p>Because probabilities are proportions, we can visualize them as areas.</p>
 <p>Imagine the full sample space as a rectangle with total area 1. Each outcome occupies some portion of that rectangle. The area assigned to an outcome corresponds to its probability.</p>
 <p>For a fair coin, the rectangle is divided into two equal parts:</p>
@@ -261,9 +444,10 @@
 <li>6: area (1/6)</li>
 </ul>
 <p>This area-based view will be useful when we discuss unions, intersections, complements, and conditional probabilities.</p>
+<hr>
 </section>
-<section id="events" class="slide level2">
-<h2>7. Events</h2>
+<section id="events" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="events"><span class="header-section-number">6.4</span> Events</h2>
 <p>An <strong>event</strong> is a set of outcomes.</p>
 <p>Sometimes an event consists of only one outcome. This is called a <strong>simple event</strong>.</p>
 <p>For example, when rolling a die:</p>
@@ -281,9 +465,10 @@
 <p>we might define an event called “agreement”:</p>
 <p>[ A = {Agree, Strongly Agree} ]</p>
 <p>An event is simply a subset of the sample space.</p>
+<hr>
 </section>
-<section id="probability-of-an-event" class="slide level2">
-<h2>8. Probability of an Event</h2>
+<section id="probability-of-an-event" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="probability-of-an-event"><span class="header-section-number">6.5</span> Probability of an Event</h2>
 <p>The probability of an event is the sum of the probabilities of the outcomes included in that event.</p>
 <p>Suppose we roll a fair die and define:</p>
 <p>[ A = {2, 4, 6} ]</p>
@@ -293,17 +478,13 @@
 <p>[ P(A) = + + ]</p>
 <p>[ P(A) = = ]</p>
 <p>The event occurs if any one of its outcomes occurs.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-ii-unions-intersections-and-complements" class="title-slide slide level1 center">
-<h1>Part II: Unions, Intersections, and Complements</h1>
-
 </section>
-<section id="the-union-of-events-a-or-b" class="slide level2">
-<h2>9. The Union of Events: “A or B”</h2>
+<section id="part-ii-unions-intersections-and-complements" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Part II: Unions, Intersections, and Complements</h1>
+<section id="the-union-of-events-a-or-b" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="the-union-of-events-a-or-b"><span class="header-section-number">7.1</span> The Union of Events: “A or B”</h2>
 <p>The <strong>union</strong> of two events includes all outcomes that belong to either event.</p>
 <p>The union of (A) and (B) is written:</p>
 <p>[ A B ]</p>
@@ -321,9 +502,10 @@
 <p>So:</p>
 <p>[ P(A B) = ]</p>
 <p>The union expands the set of outcomes. It asks whether at least one of the events occurred.</p>
+<hr>
 </section>
-<section id="the-intersection-of-events-a-and-b" class="slide level2">
-<h2>10. The Intersection of Events: “A and B”</h2>
+<section id="the-intersection-of-events-a-and-b" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-intersection-of-events-a-and-b"><span class="header-section-number">7.2</span> The Intersection of Events: “A and B”</h2>
 <p>The <strong>intersection</strong> of two events includes only outcomes that belong to both events.</p>
 <p>The intersection of (A) and (B) is written:</p>
 <p>[ A B ]</p>
@@ -343,9 +525,10 @@
 <li>“And” restricts possibilities.</li>
 </ul>
 <p>This can feel counterintuitive at first. In everyday language, “and” may sound like adding more. In probability, “and” usually means applying an additional condition, so the event becomes narrower.</p>
+<hr>
 </section>
-<section id="disjoint-events" class="slide level2">
-<h2>11. Disjoint Events</h2>
+<section id="disjoint-events" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="disjoint-events"><span class="header-section-number">7.3</span> Disjoint Events</h2>
 <p>Two events are <strong>disjoint</strong> if they cannot occur at the same time.</p>
 <p>Disjoint events have no overlap. Their intersection is empty.</p>
 <p>For example, when rolling a die:</p>
@@ -359,9 +542,10 @@
 <p>and:</p>
 <p>[ P(A B) = 0 ]</p>
 <p>Heads and tails in a single coin toss are also disjoint. One coin toss cannot produce both heads and tails.</p>
+<hr>
 </section>
-<section id="complements" class="slide level2">
-<h2>12. Complements</h2>
+<section id="complements" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="complements"><span class="header-section-number">7.4</span> Complements</h2>
 <p>The <strong>complement</strong> of an event consists of all outcomes not in that event.</p>
 <p>If the event is (A), its complement can be written as:</p>
 <p>[ ]</p>
@@ -382,17 +566,13 @@
 <p>This is called the <strong>complement rule</strong>.</p>
 <p>For example, if the probability that a randomly selected person is eligible to vote is 0.75, then the probability that the person is not eligible to vote is:</p>
 <p>[ 1 - 0.75 = 0.25 ]</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-iii-basic-rules-of-probability" class="title-slide slide level1 center">
-<h1>Part III: Basic Rules of Probability</h1>
-
 </section>
-<section id="probabilities-range-from-0-to-1" class="slide level2">
-<h2>13. Probabilities Range from 0 to 1</h2>
+<section id="part-iii-basic-rules-of-probability" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Part III: Basic Rules of Probability</h1>
+<section id="probabilities-range-from-0-to-1" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="probabilities-range-from-0-to-1"><span class="header-section-number">8.1</span> Probabilities Range from 0 to 1</h2>
 <p>Every probability must fall between 0 and 1:</p>
 <p>[ 0 P(A) ]</p>
 <p>If:</p>
@@ -405,9 +585,10 @@
 <p>The probability of the entire sample space is always 1:</p>
 <p>[ P(S) = 1 ]</p>
 <p>The probability of something outside the sample space is 0.</p>
+<hr>
 </section>
-<section id="addition-rule-for-disjoint-events" class="slide level2">
-<h2>14. Addition Rule for Disjoint Events</h2>
+<section id="addition-rule-for-disjoint-events" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="addition-rule-for-disjoint-events"><span class="header-section-number">8.2</span> Addition Rule for Disjoint Events</h2>
 <p>If two events are disjoint, then the probability of either event occurring is the sum of their probabilities:</p>
 <p>[ P(A B) = P(A) + P(B) ]</p>
 <p>This only works when (A) and (B) do not overlap.</p>
@@ -418,9 +599,10 @@
 <p>So:</p>
 <p>[ P(A B) = P(A) + P(B) ]</p>
 <p>[ P(A B) = + = = ]</p>
+<hr>
 </section>
-<section id="general-addition-rule" class="slide level2">
-<h2>15. General Addition Rule</h2>
+<section id="general-addition-rule" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="general-addition-rule"><span class="header-section-number">8.3</span> General Addition Rule</h2>
 <p>If two events may overlap, we need the general addition rule:</p>
 <p>[ P(A B) = P(A) + P(B) - P(A B) ]</p>
 <p>Why subtract the intersection?</p>
@@ -429,15 +611,16 @@
 <p>[ P(A B) = 0 ]</p>
 <p>and the formula reduces to:</p>
 <p>[ P(A B) = P(A) + P(B) ]</p>
+<hr>
 </section>
-<section id="expected-value" class="slide level2">
-<h2>16. Expected Value</h2>
+<section id="expected-value" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">8.4</span> Expected Value</h2>
 <p>The <strong>expected value</strong> of a random variable is its probability-weighted average.</p>
 <p>If a variable (Y) can take values (y_1, y_2, , y_k), then:</p>
 <p>[ E(Y) = _i y_i P(Y = y_i) ]</p>
 <p>In words: multiply each possible value by its probability, then add the results.</p>
 <p>For example, suppose (Y) can take four values:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: right;">(Y)</th>
@@ -469,20 +652,16 @@
 <p>[ E(Y) = 1.8 ]</p>
 <p>The expected value is the mean of the probability distribution.</p>
 <p>It does not need to be a value that can actually occur. Just as the expected value of a die roll is 3.5, even though no one can roll a 3.5, the expected value here is 1.8 even though (Y) only takes whole-number values.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-iv-gamblers-fallacy" class="title-slide slide level1 center">
-<h1>Part IV: Gambler’s Fallacy</h1>
-
 </section>
-<section id="the-fallacy" class="slide level2">
-<h2>17. The Fallacy</h2>
+<section id="part-iv-gamblers-fallacy" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Part IV: Gambler’s Fallacy</h1>
+<section id="the-fallacy" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="the-fallacy"><span class="header-section-number">9.1</span> The Fallacy</h2>
 <p>The <strong>gambler’s fallacy</strong> is the mistaken belief that a random process is “due” to balance out in the short run.</p>
 <p>For example:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>I flipped a coin and got heads five times in a row. The next flip has to be tails.</p>
 </blockquote>
 <p>This intuition is understandable, but it is wrong.</p>
@@ -491,14 +670,15 @@
 <p>The previous flips do not affect the next one.</p>
 <p>The law of large numbers tells us that, in the long run, the proportion of heads will converge toward 0.5. But it does not say that short-run imbalances must immediately correct themselves.</p>
 <p>The opposite intuition is sometimes called the <strong>hot hand fallacy</strong>:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>I flipped heads five times in a row. I’m on a streak, so heads is more likely next time.</p>
 </blockquote>
 <p>For independent coin tosses, this is also wrong.</p>
 <p>Each flip is its own event.</p>
+<hr>
 </section>
-<section id="independence-and-streaks" class="slide level2">
-<h2>18. Independence and Streaks</h2>
+<section id="independence-and-streaks" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="independence-and-streaks"><span class="header-section-number">9.2</span> Independence and Streaks</h2>
 <p>The gambler’s fallacy depends on misunderstanding independence.</p>
 <p>If events are independent, then knowing what happened before does not change the probability of what happens next.</p>
 <p>For example, if we randomly survey voters and happen to select ten supporters of Candidate A in a row, that does not mean the next person is more likely to support Candidate B. The next person’s response is not affected by the previous respondents.</p>
@@ -512,9 +692,10 @@
 <p>Even though the two-point shot is made more often, the three-point shot has the higher expected value.</p>
 <p>The same logic appears in football decisions, such as whether to punt or go for it on fourth down. Teams can estimate the expected value of each choice based on field position, yards to go, time remaining, and historical outcomes.</p>
 <p>Probability is everywhere. Even when people are arguing about sports, they are often arguing about probability. Sometimes loudly. Very loudly.</p>
+<hr>
 </section>
-<section id="real-world-consequences-of-gamblers-fallacy" class="slide level2">
-<h2>19. Real-World Consequences of Gambler’s Fallacy</h2>
+<section id="real-world-consequences-of-gamblers-fallacy" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="real-world-consequences-of-gamblers-fallacy"><span class="header-section-number">9.3</span> Real-World Consequences of Gambler’s Fallacy</h2>
 <p>Gambler’s fallacy is not limited to casinos or sports. It can affect serious decisions.</p>
 <p>Researchers have found evidence that decision-makers sometimes behave as if independent cases should “balance out.”</p>
 <p>Examples include:</p>
@@ -525,17 +706,13 @@
 </ul>
 <p>In each case, the decision-maker may unconsciously try to balance previous decisions, even though the current case should be judged on its own merits.</p>
 <p>This is the practical danger of gambler’s fallacy: it can make independent events seem connected when they are not.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-v-joint-probabilities" class="title-slide slide level1 center">
-<h1>Part V: Joint Probabilities</h1>
-
 </section>
-<section id="joint-outcomes" class="slide level2">
-<h2>20. Joint Outcomes</h2>
+<section id="part-v-joint-probabilities" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Part V: Joint Probabilities</h1>
+<section id="joint-outcomes" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="joint-outcomes"><span class="header-section-number">10.1</span> Joint Outcomes</h2>
 <p>A <strong>joint probability</strong> is the probability that two or more events occur together.</p>
 <p>For example:</p>
 <ul>
@@ -547,9 +724,10 @@
 <p>Joint probabilities involve intersections:</p>
 <p>[ P(A B) ]</p>
 <p>This is the probability that both (A) and (B) occur.</p>
+<hr>
 </section>
-<section id="rolling-two-dice" class="slide level2">
-<h2>21. Rolling Two Dice</h2>
+<section id="rolling-two-dice" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="rolling-two-dice"><span class="header-section-number">10.2</span> Rolling Two Dice</h2>
 <p>Suppose we roll two dice: one orange and one white.</p>
 <p>Each die has six possible outcomes. Together, there are:</p>
 <p>[ 6 = 36 ]</p>
@@ -575,9 +753,10 @@
 <li>Identify which joint outcomes satisfy the event.</li>
 <li>Add their probabilities.</li>
 </ol>
+<hr>
 </section>
-<section id="joint-frequency-distributions" class="slide level2">
-<h2>22. Joint Frequency Distributions</h2>
+<section id="joint-frequency-distributions" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="joint-frequency-distributions"><span class="header-section-number">10.3</span> Joint Frequency Distributions</h2>
 <p>In data analysis, joint probabilities often begin as joint frequency distributions.</p>
 <p>Suppose we survey people and ask two questions:</p>
 <ol type="1">
@@ -594,7 +773,7 @@
 </ul></li>
 </ol>
 <p>A joint frequency table might look like this:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Minimum Wage Position</th>
@@ -634,11 +813,12 @@
 <p>[ P(Democrat Yes) = ]</p>
 <p>[ P(Democrat Yes) ]</p>
 <p>This is a joint probability because two things are true at once.</p>
+<hr>
 </section>
-<section id="joint-probability-distributions" class="slide level2">
-<h2>23. Joint Probability Distributions</h2>
+<section id="joint-probability-distributions" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="joint-probability-distributions"><span class="header-section-number">10.4</span> Joint Probability Distributions</h2>
 <p>We can convert the frequency table into a joint probability table by dividing every cell by the total sample size.</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Minimum Wage Position</th>
@@ -684,33 +864,30 @@
 <p>[ P(Independent) = 0.337 ]</p>
 <p>[ P(Republican) = 0.300 ]</p>
 <p>They are called marginal probabilities because they appear in the margins of the table. More importantly, they give the probability of one event without regard to the other variable.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-vi-conditional-probability-and-independence" class="title-slide slide level1 center">
-<h1>Part VI: Conditional Probability and Independence</h1>
-
 </section>
-<section id="conditional-probability" class="slide level2">
-<h2>24. Conditional Probability</h2>
+<section id="part-vi-conditional-probability-and-independence" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Part VI: Conditional Probability and Independence</h1>
+<section id="conditional-probability" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">11.1</span> Conditional Probability</h2>
 <p>A <strong>conditional probability</strong> is the probability of one event given that another event has occurred.</p>
 <p>The notation is:</p>
 <p>[ P(A B) ]</p>
 <p>This is read:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>The probability of A given B.</p>
 </blockquote>
 <p>The formula is:</p>
 <p>[ P(A B) = ]</p>
 <p>The denominator is the event we know has occurred. The numerator is the joint probability that both events occurred.</p>
 <p>Conceptually, conditional probability restricts the sample space. Once we know (B) happened, we focus only on the part of the sample space where (B) is true. Then we ask what fraction of that space also includes (A).</p>
+<hr>
 </section>
-<section id="conditional-probability-example-minimum-wage-and-party-id" class="slide level2">
-<h2>25. Conditional Probability Example: Minimum Wage and Party ID</h2>
+<section id="conditional-probability-example-minimum-wage-and-party-id" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="conditional-probability-example-minimum-wage-and-party-id"><span class="header-section-number">11.2</span> Conditional Probability Example: Minimum Wage and Party ID</h2>
 <p>Using the joint probability table:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Minimum Wage Position</th>
@@ -757,9 +934,10 @@
 <p>[ P(Yes) = 0.646 ]</p>
 <p>Knowing that a person is a Democrat changes our estimate of the probability that they support raising the minimum wage.</p>
 <p>That suggests party identification and minimum wage attitudes are not independent.</p>
+<hr>
 </section>
-<section id="another-conditional-probability-example" class="slide level2">
-<h2>26. Another Conditional Probability Example</h2>
+<section id="another-conditional-probability-example" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="another-conditional-probability-example"><span class="header-section-number">11.3</span> Another Conditional Probability Example</h2>
 <p>Now suppose we want:</p>
 <p>[ P(Independent No) ]</p>
 <p>That is, among those who oppose raising the minimum wage, what is the probability that a person is an independent?</p>
@@ -772,9 +950,10 @@
 <p>Notice that this is close to the unconditional probability of being an independent:</p>
 <p>[ P(Independent) = 0.337 ]</p>
 <p>That particular conditional probability does not change much. But that alone does not prove independence for the full relationship. Other categories may still differ substantially.</p>
+<hr>
 </section>
-<section id="independence" class="slide level2">
-<h2>27. Independence</h2>
+<section id="independence" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="independence"><span class="header-section-number">11.4</span> Independence</h2>
 <p>Two events are <strong>independent</strong> if knowing that one occurred does not change the probability that the other occurred.</p>
 <p>Events (A) and (B) are independent if:</p>
 <p>[ P(A B) = P(A) ]</p>
@@ -789,9 +968,10 @@
 <p>But if:</p>
 <p>[ P(Job High School Degree) &gt; 0.60 ]</p>
 <p>then employment and high school degree status are dependent. Knowing one changes the probability of the other.</p>
+<hr>
 </section>
-<section id="independence-with-dice" class="slide level2">
-<h2>28. Independence with Dice</h2>
+<section id="independence-with-dice" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="independence-with-dice"><span class="header-section-number">11.5</span> Independence with Dice</h2>
 <p>Suppose we roll two dice, one orange and one white.</p>
 <p>Let:</p>
 <p>[ A = ]</p>
@@ -808,9 +988,10 @@
 <p>[ P(A B) = ]</p>
 <p>This equals (P(A)). So the events are independent.</p>
 <p>Knowing the white die is 3 does not change the probability that the orange die is 1.</p>
+<hr>
 </section>
-<section id="independence-with-cards" class="slide level2">
-<h2>29. Independence with Cards</h2>
+<section id="independence-with-cards" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="independence-with-cards"><span class="header-section-number">11.6</span> Independence with Cards</h2>
 <p>Suppose we draw one card from a standard 52-card deck.</p>
 <p>There are 26 red cards, so:</p>
 <p>[ P(Red) = = ]</p>
@@ -824,9 +1005,10 @@
 <p>[ P(Red Ace) = ]</p>
 <p>This equals (P(Red)). So being told that the card is an ace does not change the probability that it is red.</p>
 <p>Redness and aceness are independent.</p>
+<hr>
 </section>
-<section id="testing-for-independence-in-tables" class="slide level2">
-<h2>30. Testing for Independence in Tables</h2>
+<section id="testing-for-independence-in-tables" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="testing-for-independence-in-tables"><span class="header-section-number">11.7</span> Testing for Independence in Tables</h2>
 <p>In a joint probability table, we can test for independence by comparing conditional and unconditional probabilities.</p>
 <p>Using the minimum wage table:</p>
 <p>[ P(Yes) = 0.646 ]</p>
@@ -838,17 +1020,13 @@
 <p>If two variables have multiple categories, checking one conditional probability may be enough to show dependence. If one conditional probability differs from the unconditional probability, independence fails.</p>
 <p>However, finding one category where the conditional probability matches the unconditional probability is not enough to prove independence. Other categories may differ and counterbalance one another.</p>
 <p>To establish independence across categorical variables, the relevant conditional probabilities must match across the categories.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-vii-multiplication-rules" class="title-slide slide level1 center">
-<h1>Part VII: Multiplication Rules</h1>
-
 </section>
-<section id="general-multiplication-rule" class="slide level2">
-<h2>31. General Multiplication Rule</h2>
+<section id="part-vii-multiplication-rules" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Part VII: Multiplication Rules</h1>
+<section id="general-multiplication-rule" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="general-multiplication-rule"><span class="header-section-number">12.1</span> General Multiplication Rule</h2>
 <p>The general multiplication rule gives the probability that two events both occur:</p>
 <p>[ P(A B) = P(A)P(B A) ]</p>
 <p>Equivalently:</p>
@@ -867,9 +1045,10 @@
 <p>[ P(Republican No) = P(Republican)P(No Republican) ]</p>
 <p>[ P(Republican No) = 0.300 () ]</p>
 <p>[ P(Republican No) = 0.181 ]</p>
+<hr>
 </section>
-<section id="multiplication-rule-for-independent-events" class="slide level2">
-<h2>32. Multiplication Rule for Independent Events</h2>
+<section id="multiplication-rule-for-independent-events" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="multiplication-rule-for-independent-events"><span class="header-section-number">12.2</span> Multiplication Rule for Independent Events</h2>
 <p>If two events are independent, then:</p>
 <p>[ P(B A) = P(B) ]</p>
 <p>So the general multiplication rule becomes:</p>
@@ -884,16 +1063,17 @@
 <p>That is:</p>
 <p>[ ]</p>
 <p>The probability is small, but not impossible.</p>
+<hr>
 </section>
-<section id="permutations-and-repeated-trials" class="slide level2">
-<h2>33. Permutations and Repeated Trials</h2>
+<section id="permutations-and-repeated-trials" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="permutations-and-repeated-trials"><span class="header-section-number">12.3</span> Permutations and Repeated Trials</h2>
 <p>Suppose we flip a fair coin eight times.</p>
 <p>The probability of one specific sequence, such as:</p>
 <p>[ T H H H H H H H ]</p>
 <p>is:</p>
 <p>[ 0.5^8 = ]</p>
 <p>But now suppose we ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What is the probability of getting exactly seven heads in eight flips?</p>
 </blockquote>
 <p>There are multiple sequences that produce exactly seven heads:</p>
@@ -907,33 +1087,38 @@
 <p>[ P(7 ) = = ]</p>
 <p>This is the beginning of the logic behind the <strong>binomial distribution</strong>, which describes the number of successes in a fixed number of independent trials where each trial has two possible outcomes.</p>
 <p>We will return to that idea later.</p>
+<hr>
 </section>
-<section id="summary-of-core-probability-rules" class="slide level2">
-<h2>34. Summary of Core Probability Rules</h2>
+<section id="summary-of-core-probability-rules" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="summary-of-core-probability-rules"><span class="header-section-number">12.4</span> Summary of Core Probability Rules</h2>
 <p>The major rules introduced so far are:</p>
-<h3 id="complement-rule">Complement Rule</h3>
+<section id="complement-rule" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="complement-rule"><span class="header-section-number">12.4.1</span> Complement Rule</h3>
 <p>[ P() = 1 - P(A) ]</p>
-<h3 id="general-addition-rule-1">General Addition Rule</h3>
+</section>
+<section id="general-addition-rule-1" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="general-addition-rule-1"><span class="header-section-number">12.4.2</span> General Addition Rule</h3>
 <p>[ P(A B) = P(A) + P(B) - P(A B) ]</p>
-<h3 id="multiplication-rule-for-dependent-events">Multiplication Rule for Dependent Events</h3>
+</section>
+<section id="multiplication-rule-for-dependent-events" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="multiplication-rule-for-dependent-events"><span class="header-section-number">12.4.3</span> Multiplication Rule for Dependent Events</h3>
 <p>[ P(A B) = P(A)P(B A) ]</p>
 <p>or:</p>
 <p>[ P(A B) = P(B)P(A B) ]</p>
-<h3 id="multiplication-rule-for-independent-events-1">Multiplication Rule for Independent Events</h3>
+</section>
+<section id="multiplication-rule-for-independent-events-1" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="multiplication-rule-for-independent-events-1"><span class="header-section-number">12.4.4</span> Multiplication Rule for Independent Events</h3>
 <p>[ P(A B) = P(A)P(B) ]</p>
 <p>Use the independent-events version only when you know the events are independent.</p>
 <p>When in doubt, use the general multiplication rule.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-viii-probability-trees" class="title-slide slide level1 center">
-<h1>Part VIII: Probability Trees</h1>
-
 </section>
-<section id="probability-tree-diagrams" class="slide level2">
-<h2>35. Probability Tree Diagrams</h2>
+</section>
+<section id="part-viii-probability-trees" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Part VIII: Probability Trees</h1>
+<section id="probability-tree-diagrams" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="probability-tree-diagrams"><span class="header-section-number">13.1</span> Probability Tree Diagrams</h2>
 <p>A <strong>probability tree</strong> is a visual tool for representing sequences of probabilistic events.</p>
 <p>A tree begins with a node. Branches extend from the node to represent possible outcomes. Each branch has a probability. The probabilities coming out of a node must sum to 1.</p>
 <p>For example, a coin toss has two branches:</p>
@@ -968,11 +1153,12 @@
 <p>[ 0.5 = 0.25 ]</p>
 <p>To find the probability of a path, multiply along the branches.</p>
 <p>To find the probability of an event that includes multiple paths, add the probabilities of those paths.</p>
+<hr>
 </section>
-<section id="example-heads-exactly-once" class="slide level2">
-<h2>36. Example: Heads Exactly Once</h2>
+<section id="example-heads-exactly-once" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="example-heads-exactly-once"><span class="header-section-number">13.2</span> Example: Heads Exactly Once</h2>
 <p>Suppose we toss a coin twice and ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What is the probability of getting heads exactly once?</p>
 </blockquote>
 <p>The favorable paths are:</p>
@@ -983,11 +1169,12 @@
 <p>Each has probability 0.25.</p>
 <p>So:</p>
 <p>[ P() = 0.25 + 0.25 = 0.50 ]</p>
+<hr>
 </section>
-<section id="example-heads-at-least-once" class="slide level2">
-<h2>37. Example: Heads At Least Once</h2>
+<section id="example-heads-at-least-once" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="example-heads-at-least-once"><span class="header-section-number">13.3</span> Example: Heads At Least Once</h2>
 <p>Now ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>What is the probability of getting heads at least once?</p>
 </blockquote>
 <p>The favorable paths are:</p>
@@ -1008,9 +1195,10 @@
 <p>[ P() = 1 - P() ]</p>
 <p>[ P() = 1 - 0.25 = 0.75 ]</p>
 <p>The complement rule is often faster when an event has many possible paths.</p>
+<hr>
 </section>
-<section id="probability-trees-with-unequal-probabilities" class="slide level2">
-<h2>38. Probability Trees with Unequal Probabilities</h2>
+<section id="probability-trees-with-unequal-probabilities" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="probability-trees-with-unequal-probabilities"><span class="header-section-number">13.4</span> Probability Trees with Unequal Probabilities</h2>
 <p>Suppose airport security randomly sends travelers to either a short screening line or a long screening line.</p>
 <p>Assume:</p>
 <p>[ P(Short) = 0.25 ]</p>
@@ -1027,7 +1215,7 @@
 <li>Long: 0.75</li>
 </ul>
 <p>The joint probabilities are:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>First Traveler</th>
@@ -1066,9 +1254,10 @@
 <p>The probability that at least one gets the short line is:</p>
 <p>[ 1 - P(Long, Long) ]</p>
 <p>[ 1 - 0.5625 = 0.4375 ]</p>
+<hr>
 </section>
-<section id="probability-trees-with-conditional-probabilities" class="slide level2">
-<h2>39. Probability Trees with Conditional Probabilities</h2>
+<section id="probability-trees-with-conditional-probabilities" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="probability-trees-with-conditional-probabilities"><span class="header-section-number">13.5</span> Probability Trees with Conditional Probabilities</h2>
 <p>Now suppose the process is not independent.</p>
 <p>Imagine that if the first traveler gets the short line, the system becomes less likely to send the next traveler to the short line.</p>
 <p>For the first traveler:</p>
@@ -1082,7 +1271,7 @@
 <p>[ P(Long First Long) = 0.75 ]</p>
 <p>Now the second-stage probabilities depend on what happened in the first stage.</p>
 <p>The joint probabilities are:</p>
-<table class="caption-top">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>First Traveler</th>
@@ -1120,9 +1309,10 @@
 <li>Final path probabilities are joint probabilities.</li>
 <li>Probabilities leaving each node must sum to 1.</li>
 </ul>
+<hr>
 </section>
-<section id="probability-tree-example-coin-and-die" class="slide level2">
-<h2>40. Probability Tree Example: Coin and Die</h2>
+<section id="probability-tree-example-coin-and-die" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="probability-tree-example-coin-and-die"><span class="header-section-number">13.6</span> Probability Tree Example: Coin and Die</h2>
 <p>Suppose we use the following strange procedure.</p>
 <p>First, flip a fair coin.</p>
 <ul>
@@ -1149,21 +1339,17 @@
 <p>[ P() = ]</p>
 <p>If you hear the number 2, you know the coin must have landed heads. It is impossible to hear 2 after tails.</p>
 <p>If you hear 3, the coin could have landed tails or heads. Probability trees help us keep track of these possibilities.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="part-ix-contingency-tables" class="title-slide slide level1 center">
-<h1>Part IX: Contingency Tables</h1>
-
 </section>
-<section id="cross-tabulation" class="slide level2">
-<h2>41. Cross-Tabulation</h2>
+<section id="part-ix-contingency-tables" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Part IX: Contingency Tables</h1>
+<section id="cross-tabulation" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="cross-tabulation"><span class="header-section-number">14.1</span> Cross-Tabulation</h2>
 <p>A <strong>contingency table</strong>, also called a <strong>cross-tabulation</strong> or <strong>cross-tab</strong>, displays the joint distribution of two categorical variables.</p>
 <p>Contingency tables are useful for asking whether the distribution of one variable changes across categories of another variable.</p>
 <p>For example, we might ask:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>Does religiosity affect support for federal spending on public schools?</p>
 </blockquote>
 <p>Suppose one survey question asks whether federal spending on public schools should:</p>
@@ -1178,9 +1364,10 @@
 <li>no</li>
 </ul>
 <p>A contingency table can show whether opinions about school spending differ between those who say religion is important and those who say it is not.</p>
+<hr>
 </section>
-<section id="dependent-and-independent-variables" class="slide level2">
-<h2>42. Dependent and Independent Variables</h2>
+<section id="dependent-and-independent-variables" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="dependent-and-independent-variables"><span class="header-section-number">14.2</span> Dependent and Independent Variables</h2>
 <p>When building a contingency table, it is often helpful to place the <strong>dependent variable</strong> in the rows and the <strong>independent variable</strong> in the columns.</p>
 <p>The <strong>dependent variable</strong> is the outcome we want to explain.</p>
 <p>The <strong>independent variable</strong> is the variable we think might affect the outcome.</p>
@@ -1190,27 +1377,37 @@
 <li>Independent variable: whether religion is important</li>
 </ul>
 <p>This arrangement makes it easier to compare column percentages side by side.</p>
+<hr>
 </section>
-<section id="frequencies-row-percentages-column-percentages-and-cell-percentages" class="slide level2">
-<h2>43. Frequencies, Row Percentages, Column Percentages, and Cell Percentages</h2>
+<section id="frequencies-row-percentages-column-percentages-and-cell-percentages" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="frequencies-row-percentages-column-percentages-and-cell-percentages"><span class="header-section-number">14.3</span> Frequencies, Row Percentages, Column Percentages, and Cell Percentages</h2>
 <p>A contingency table can display several kinds of information.</p>
-<h3 id="frequencies">Frequencies</h3>
+<section id="frequencies" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="frequencies"><span class="header-section-number">14.3.1</span> Frequencies</h3>
 <p>Raw counts show how many cases fall into each combination of categories.</p>
-<h3 id="row-percentages">Row Percentages</h3>
+</section>
+<section id="row-percentages" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="row-percentages"><span class="header-section-number">14.3.2</span> Row Percentages</h3>
 <p>Row percentages add across each row to 100 percent. They show how cases in a row are distributed across columns.</p>
-<h3 id="column-percentages">Column Percentages</h3>
+</section>
+<section id="column-percentages" class="level3" data-number="14.3.3">
+<h3 data-number="14.3.3" class="anchored" data-anchor-id="column-percentages"><span class="header-section-number">14.3.3</span> Column Percentages</h3>
 <p>Column percentages add down each column to 100 percent. They show how cases in a column are distributed across rows.</p>
-<h3 id="cell-percentages">Cell Percentages</h3>
+</section>
+<section id="cell-percentages" class="level3" data-number="14.3.4">
+<h3 data-number="14.3.4" class="anchored" data-anchor-id="cell-percentages"><span class="header-section-number">14.3.4</span> Cell Percentages</h3>
 <p>Cell percentages show the percentage of all cases that fall into each cell. These are similar to joint probabilities.</p>
 <p>For example, if 99 out of 4,230 respondents both say religion is not important and support decreasing school spending, then the cell percentage is:</p>
 <p>[ % ]</p>
 <p>The corresponding joint probability is:</p>
 <p>[ 0.0234 ]</p>
+<hr>
 </section>
-<section id="example-religion-and-school-spending" class="slide level2">
-<h2>44. Example: Religion and School Spending</h2>
+</section>
+<section id="example-religion-and-school-spending" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="example-religion-and-school-spending"><span class="header-section-number">14.4</span> Example: Religion and School Spending</h2>
 <p>Suppose we produce a contingency table with column percentages.</p>
-<table class="caption-top">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 27%">
 <col style="width: 36%">
@@ -1251,9 +1448,10 @@
 <p>Among people who say religion is important, 67.02 percent support increasing spending.</p>
 <p>The difference is about five percentage points. That suggests a modest relationship: people who say religion is important may be somewhat less likely to support increasing federal school spending.</p>
 <p>But this difference is not enormous. Later, we will learn statistical tests, such as the chi-square test, that help us evaluate whether differences like this are large enough to provide strong evidence of a relationship in the population.</p>
+<hr>
 </section>
-<section id="contingency-tables-and-conditional-probabilities" class="slide level2">
-<h2>45. Contingency Tables and Conditional Probabilities</h2>
+<section id="contingency-tables-and-conditional-probabilities" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="contingency-tables-and-conditional-probabilities"><span class="header-section-number">14.5</span> Contingency Tables and Conditional Probabilities</h2>
 <p>Column percentages are conditional probabilities.</p>
 <p>For example:</p>
 <p>[ P(Increase Religion&nbsp;Not&nbsp;Important) = 0.723 ]</p>
@@ -1261,13 +1459,11 @@
 <p>If the variables were perfectly independent, these conditional probabilities would be the same across columns.</p>
 <p>If they differ, the variables may be dependent.</p>
 <p>A contingency table is therefore a practical tool for studying whether two categorical variables are related.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="key-terms" class="title-slide slide level1 center">
-<h1>Key Terms</h1>
+</section>
+<section id="key-terms" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Key Terms</h1>
 <p><strong>Probability</strong><br>
 A number between 0 and 1 describing how likely an event is to occur.</p>
 <p><strong>Long-run frequency</strong><br>
@@ -1316,12 +1512,10 @@ A percentage calculated down a column; often interpretable as a conditional prob
 A percentage calculated across a row.</p>
 <p><strong>Cell percentage</strong><br>
 The percentage of all cases that fall into a particular cell; similar to a joint probability.</p>
+<hr>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section id="chapter-summary" class="title-slide slide level1 center">
-<h1>Chapter Summary</h1>
+<section id="chapter-summary" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Chapter Summary</h1>
 <p>Probability is essential for statistical inference because it connects samples to populations. Random samples do not perfectly reproduce population values, but probability theory tells us how random error behaves.</p>
 <p>A probability can be understood as a long-run frequency. The law of large numbers tells us that sample proportions and means converge toward population values as sample size increases.</p>
 <p>The basic building blocks of probability are sample spaces, outcomes, and events. Events can be combined using unions, intersections, and complements. The major rules of probability include the complement rule, the addition rule, and multiplication rules for dependent and independent events.</p>
@@ -1333,389 +1527,423 @@ The percentage of all cases that fall into a particular cell; similar to a joint
 
 
 </section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
 
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': false,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c/t',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
-            }
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return codeEl.innerText;
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter-3.html" class="pagination-link" aria-label="Chapter 3: Descriptive Statistics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-5.html" class="pagination-link" aria-label="Chapter 5: Probability Distributions">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
 
 </body></html>

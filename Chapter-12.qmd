@@ -1,6 +1,5 @@
 ---
 title: "Chapter 12: ANOVA"
-format: revealjs
 ---
 
 We now turn to a method called **ANOVA**, which stands for **analysis of variance**.
@@ -21,7 +20,7 @@ If between-group variation is large relative to within-group variation, then gro
 
 ---
 
-## 1. Comparing Several Means
+## Comparing Several Means
 
 Suppose we have an interval-level dependent variable \(Y\), such as:
 
@@ -51,7 +50,7 @@ This is precisely the kind of question ANOVA is designed to answer.
 
 ---
 
-## 2. What Does ANOVA Ask?
+## What Does ANOVA Ask?
 
 ANOVA asks whether the means of an interval-level variable differ across categories of one or more categorical variables.
 
@@ -80,7 +79,7 @@ If ANOVA rejects the null hypothesis, we know that at least one group mean diffe
 
 ---
 
-## 3. Example: Party Identification and Obama Thermometer Scores
+## Example: Party Identification and Obama Thermometer Scores
 
 Suppose respondents are asked to rate Barack Obama on a feeling thermometer from 0 to 100.
 
@@ -112,7 +111,7 @@ The question is not whether the sample means differ. They plainly do. The questi
 
 # Part I: The Logic of ANOVA
 
-## 4. Analysis of Variance
+## Analysis of Variance
 
 ANOVA stands for **analysis of variance**.
 
@@ -133,7 +132,7 @@ If the group means are close together or the groups overlap heavily, then group 
 
 ---
 
-## 5. Between-Group Variation
+## Between-Group Variation
 
 **Between-group variation** refers to variation in the group means.
 
@@ -161,7 +160,7 @@ So we examine how far each group mean is from 60.72, weighting by group size.
 
 ---
 
-## 6. Within-Group Variation
+## Within-Group Variation
 
 **Within-group variation** refers to variation among individuals inside the same group.
 
@@ -179,7 +178,7 @@ If within-group variation is large, then group membership may not explain much. 
 
 ---
 
-## 7. The F Statistic
+## The F Statistic
 
 ANOVA uses an **F statistic**.
 
@@ -203,7 +202,7 @@ Like chi-square tests, ANOVA uses a one-sided test. We reject the null hypothesi
 
 ---
 
-## 8. Visual Intuition
+## Visual Intuition
 
 Imagine three groups.
 
@@ -221,7 +220,7 @@ The F statistic formalizes this comparison:
 
 # Part II: Mathematical Details
 
-## 9. Notation
+## Notation
 
 Suppose we have:
 
@@ -236,7 +235,7 @@ ANOVA compares the group means \(\bar{Y}_g\) to the overall mean \(\bar{Y}\), wh
 
 ---
 
-## 10. Between Sum of Squares
+## Between Sum of Squares
 
 The **between sum of squares** measures how far group means are from the overall mean, weighted by group size.
 
@@ -273,7 +272,7 @@ MS_{between}
 
 ---
 
-## 11. Within Sum of Squares
+## Within Sum of Squares
 
 The **within sum of squares** measures variation of individuals around their own group means.
 
@@ -316,7 +315,7 @@ MS_{within}
 
 ---
 
-## 12. The F Statistic Formula
+## The F Statistic Formula
 
 The F statistic is:
 
@@ -347,7 +346,7 @@ Software will report both.
 
 ---
 
-## 13. Interpreting the F Statistic
+## Interpreting the F Statistic
 
 A large F statistic means that group means are far apart relative to within-group variation.
 
@@ -371,7 +370,7 @@ If the p-value associated with F is less than alpha, we reject the null hypothes
 
 # Part III: One-Way ANOVA Example
 
-## 14. Obama Thermometer Scores by Party
+## Obama Thermometer Scores by Party
 
 Return to the Obama thermometer example.
 
@@ -410,7 +409,7 @@ H_A: \text{At least one party mean differs.}
 
 ---
 
-## 15. Calculating Between-Group Variation
+## Calculating Between-Group Variation
 
 The between sum of squares is:
 
@@ -461,7 +460,7 @@ MS_{between}
 
 ---
 
-## 16. Calculating Within-Group Variation
+## Calculating Within-Group Variation
 
 Using group standard deviations:
 
@@ -511,7 +510,7 @@ MS_{within}
 
 ---
 
-## 17. Calculating the F Statistic
+## Calculating the F Statistic
 
 Now calculate:
 
@@ -541,7 +540,7 @@ Not exactly a plot twist worthy of prestige television, but statistically speaki
 
 ---
 
-## 18. ANOVA Output
+## ANOVA Output
 
 Statistical software usually reports an ANOVA table with columns such as:
 
@@ -575,7 +574,7 @@ The p-value tells us whether the group means differ with statistical significanc
 
 ---
 
-## 19. R-Squared in ANOVA
+## R-Squared in ANOVA
 
 Software may also report \(R^2\).
 
@@ -596,7 +595,7 @@ We will return to \(R^2\) in more detail when discussing regression.
 
 # Part IV: Another One-Way ANOVA Example
 
-## 20. Test Scores Across Schools
+## Test Scores Across Schools
 
 Suppose we have math test scores for students in an urban school district.
 
@@ -631,7 +630,7 @@ This does not tell us why schools differ. Differences may reflect school quality
 
 # Part V: Two-Way ANOVA
 
-## 21. Adding a Second Categorical Variable
+## Adding a Second Categorical Variable
 
 A **two-way ANOVA** uses two categorical independent variables to explain variation in an interval-level dependent variable.
 
@@ -664,7 +663,7 @@ Two-way ANOVA allows us to ask whether party matters after controlling for regio
 
 ---
 
-## 22. Example: Party ID, Region, and Obama Thermometer Scores
+## Example: Party ID, Region, and Obama Thermometer Scores
 
 Suppose the table looks roughly like this:
 
@@ -694,7 +693,7 @@ ANOVA can provide F tests for each question.
 
 ---
 
-## 23. Interpreting Two-Way ANOVA Output
+## Interpreting Two-Way ANOVA Output
 
 A two-way ANOVA output may include rows such as:
 
@@ -721,7 +720,7 @@ Statistical significance and substantive importance are not the same thing.
 
 ---
 
-## 24. Controlling for Variables in ANOVA
+## Controlling for Variables in ANOVA
 
 Two-way ANOVA introduces the idea of statistical control.
 
@@ -743,7 +742,7 @@ This is conceptually similar to controlled mean comparison tables. ANOVA gives u
 
 # Part VI: Democracy, Wealth, and Life Expectancy
 
-## 25. The Research Question
+## The Research Question
 
 Suppose we are interested in whether democracies have higher life expectancy than non-democracies.
 
@@ -767,7 +766,7 @@ A two-way ANOVA can help us ask:
 
 ---
 
-## 26. Mean Comparison Table
+## Mean Comparison Table
 
 Suppose the table is:
 
@@ -784,7 +783,7 @@ A two-way ANOVA allows us to attach statistical significance to these patterns.
 
 ---
 
-## 27. Two-Way ANOVA Interpretation
+## Two-Way ANOVA Interpretation
 
 Suppose ANOVA output shows:
 
@@ -812,7 +811,7 @@ Causality would require stronger design or additional controls.
 
 # Part VII: ANOVA and Regression
 
-## 28. ANOVA as a Special Case of Regression
+## ANOVA as a Special Case of Regression
 
 ANOVA can be understood as a special case of regression with categorical independent variables.
 
@@ -833,7 +832,7 @@ Still, ANOVA is conceptually useful because it teaches us how variation in an ou
 
 ---
 
-## 29. When Is ANOVA Useful?
+## When Is ANOVA Useful?
 
 ANOVA is useful when:
 
@@ -865,7 +864,7 @@ In those cases, regression is usually preferable.
 
 # Part VIII: Interpreting ANOVA Carefully
 
-## 30. ANOVA Tells Us Whether Means Differ
+## ANOVA Tells Us Whether Means Differ
 
 ANOVA tells us whether at least one group mean differs from the others.
 
@@ -880,7 +879,7 @@ If ANOVA rejects the null hypothesis, researchers may conduct follow-up comparis
 
 ---
 
-## 31. Statistical Versus Substantive Significance
+## Statistical Versus Substantive Significance
 
 As always, statistical significance is not the same as substantive importance.
 
@@ -896,7 +895,7 @@ ANOVA provides statistical evidence. Interpretation requires substantive judgmen
 
 ---
 
-## 32. Causality
+## Causality
 
 ANOVA does not establish causality by itself.
 

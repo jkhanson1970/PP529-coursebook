@@ -1,6 +1,5 @@
 ---
 title: "Chapter 8: Significance Tests"
-format: revealjs
 ---
 
 In the previous chapter, we introduced confidence intervals as a way to communicate the precision of a sample estimate. A confidence interval tells us how much uncertainty surrounds a point estimate, such as a sample mean or sample proportion.
@@ -25,7 +24,7 @@ The concepts in this chapter will recur throughout the rest of the course. Once 
 
 # Part I: The Logic of Significance Testing
 
-## 1. What Is a Significance Test?
+## What Is a Significance Test?
 
 A **significance test** is a procedure for evaluating whether sample evidence is strong enough to reject a hypothesis about a population parameter.
 
@@ -52,7 +51,7 @@ In each case, we use sample data to evaluate a claim about the population.
 
 ---
 
-## 2. The General Approach
+## The General Approach
 
 The general approach to significance testing is:
 
@@ -71,7 +70,7 @@ If the sample statistic is far from the hypothesized value, we may reject the hy
 
 ---
 
-## 3. Relationships Between Variables
+## Relationships Between Variables
 
 Significance tests become especially useful when we evaluate relationships between variables.
 
@@ -106,7 +105,7 @@ We discuss each in turn.
 
 ---
 
-## 4. The Null Hypothesis
+## The Null Hypothesis
 
 The **null hypothesis** is the baseline assumption we test against.
 
@@ -132,7 +131,7 @@ The null hypothesis is not necessarily what we believe. In fact, researchers oft
 
 ---
 
-## 5. The Alternative Hypothesis
+## The Alternative Hypothesis
 
 The **alternative hypothesis** is the hypothesis we consider if the null hypothesis is rejected.
 
@@ -166,7 +165,7 @@ This is a **two-sided** alternative because it allows for change in either direc
 
 ---
 
-## 6. Example: Vaccine Education Program
+## Example: Vaccine Education Program
 
 Suppose public health researchers want to evaluate a vaccine education program.
 
@@ -196,7 +195,7 @@ The alternative hypothesis says the program changes the vaccination rate.
 
 ---
 
-## 7. Significance Level
+## Significance Level
 
 The **significance level** is the threshold for rejecting the null hypothesis.
 
@@ -236,7 +235,7 @@ The choice of alpha depends on context. If the consequences of a false positive 
 
 ---
 
-## 8. Alpha and Critical Values
+## Alpha and Critical Values
 
 Alpha defines the **critical value** of the test statistic.
 
@@ -276,7 +275,7 @@ so we reject the null hypothesis at the 0.05 significance level.
 
 ---
 
-## 9. Test Statistics
+## Test Statistics
 
 A **test statistic** measures how far the sample statistic is from the null-hypothesized value in standard error units.
 
@@ -312,7 +311,7 @@ A large positive or negative test statistic means the sample statistic is far fr
 
 ---
 
-## 10. The p-Value
+## The p-Value
 
 The **p-value** is one of the most important and most commonly misunderstood concepts in statistics.
 
@@ -336,7 +335,7 @@ A large p-value means the observed result is plausible under the null hypothesis
 
 ---
 
-## 11. p-Values and Alpha
+## p-Values and Alpha
 
 The p-value is compared to alpha.
 
@@ -367,7 +366,7 @@ So these two decision rules are equivalent:
 
 ---
 
-## 12. p-Value Example
+## p-Value Example
 
 Suppose we conduct a two-tailed z-test and obtain:
 
@@ -421,7 +420,7 @@ So we reject the null hypothesis.
 
 # Part III: A Significance Test for a Proportion
 
-## 13. Vaccine Education Example
+## Vaccine Education Example
 
 Return to the vaccine education program.
 
@@ -459,7 +458,7 @@ We want to know whether 0.751 is far enough from 0.722 to reject the null hypoth
 
 ---
 
-## 14. Step 1: Choose Alpha
+## Step 1: Choose Alpha
 
 Use:
 
@@ -487,7 +486,7 @@ We will reject the null hypothesis if:
 
 ---
 
-## 15. Step 2: Calculate the Standard Error Under the Null
+## Step 2: Calculate the Standard Error Under the Null
 
 For a significance test involving a proportion, we calculate the standard error using the null-hypothesized proportion.
 
@@ -538,7 +537,7 @@ So the estimated standard error under the null is:
 
 ---
 
-## 16. Step 3: Calculate the z-Statistic
+## Step 3: Calculate the z-Statistic
 
 Use:
 
@@ -568,7 +567,7 @@ The sample proportion is 1.29 standard errors above the null-hypothesized value.
 
 ---
 
-## 17. Step 4: Compare to the Critical Value
+## Step 4: Compare to the Critical Value
 
 The critical value is:
 
@@ -594,7 +593,7 @@ The observed vaccination rate is higher than the baseline rate, but not far enou
 
 ---
 
-## 18. Step 5: Calculate the p-Value
+## Step 5: Calculate the p-Value
 
 Using a z-table, the upper-tail area beyond:
 
@@ -640,7 +639,7 @@ That probability is too large for us to reject the null hypothesis at the 0.05 l
 
 ---
 
-## 19. The Role of Sample Size
+## The Role of Sample Size
 
 Now suppose the sample size were:
 
@@ -692,7 +691,7 @@ Larger samples reduce the standard error, making it easier to detect smaller dif
 
 # Part IV: Steps in a Significance Test
 
-## 20. Standard Procedure
+## Standard Procedure
 
 When conducting a significance test, follow these steps.
 
@@ -789,7 +788,7 @@ Do not say “accept the null hypothesis.”
 
 # Part V: The t-Distribution
 
-## 21. Why We Need the t-Distribution
+## Why We Need the t-Distribution
 
 When testing hypotheses about means, we usually use the t-distribution.
 
@@ -810,7 +809,7 @@ The t-distribution accounts for that uncertainty.
 
 ---
 
-## 22. Sample Size and the t-Distribution
+## Sample Size and the t-Distribution
 
 The shape of the t-distribution depends on degrees of freedom.
 
@@ -828,7 +827,7 @@ For large samples, the t and z distributions are nearly identical.
 
 ---
 
-## 23. When to Use t Instead of z
+## When to Use t Instead of z
 
 For means, think t.
 
@@ -846,7 +845,7 @@ If the sample size is small and the population is skewed, the sampling distribut
 
 ---
 
-## 24. Reading the t-Table
+## Reading the t-Table
 
 A t-table differs from a z-table.
 
@@ -882,7 +881,7 @@ This is larger than 1.96 because the t-distribution has heavier tails.
 
 # Part VI: A Significance Test for a Mean
 
-## 25. Air Quality Example
+## Air Quality Example
 
 Suppose a city has historically had an average Air Quality Index of:
 
@@ -916,7 +915,7 @@ We want to test whether the average AQI has changed.
 
 ---
 
-## 26. Step 1: Check Assumptions
+## Step 1: Check Assumptions
 
 We are testing a mean, so we use a t-test.
 
@@ -936,7 +935,7 @@ If the population distribution is not normal and \(n < 30\), the t-test may not 
 
 ---
 
-## 27. Step 2: State the Hypotheses
+## Step 2: State the Hypotheses
 
 The null hypothesis is that the mean AQI is unchanged:
 
@@ -954,7 +953,7 @@ This is a two-tailed test.
 
 ---
 
-## 28. Step 3: Calculate the t-Statistic
+## Step 3: Calculate the t-Statistic
 
 The formula is:
 
@@ -993,7 +992,7 @@ The sample mean is 2.49 standard errors below the null-hypothesized mean.
 
 ---
 
-## 29. Step 4: Compare to the Critical Value
+## Step 4: Compare to the Critical Value
 
 Degrees of freedom are:
 
@@ -1035,7 +1034,7 @@ we reject the null hypothesis.
 
 ---
 
-## 30. Step 5: Calculate the p-Value
+## Step 5: Calculate the p-Value
 
 Using a t-table, we look along the row for:
 
@@ -1087,7 +1086,7 @@ we reject the null hypothesis.
 
 ---
 
-## 31. Step 6: State the Conclusion
+## Step 6: State the Conclusion
 
 We reject the null hypothesis at the 0.05 level.
 
@@ -1103,7 +1102,7 @@ A careful conclusion might be:
 
 # Part VII: One-Tailed Tests
 
-## 32. Two-Tailed Versus One-Tailed Tests
+## Two-Tailed Versus One-Tailed Tests
 
 Most significance tests are **two-tailed**.
 
@@ -1137,7 +1136,7 @@ Now we reject only if the sample mean is sufficiently below 175.
 
 ---
 
-## 33. Alpha in a One-Tailed Test
+## Alpha in a One-Tailed Test
 
 In a two-tailed test with:
 
@@ -1181,7 +1180,7 @@ Because of that, one-tailed tests should be used cautiously and only when the di
 
 ---
 
-## 34. When to Use a One-Tailed Test
+## When to Use a One-Tailed Test
 
 A one-tailed test may be appropriate when:
 
@@ -1205,7 +1204,7 @@ One-tailed tests can be tempting because they make it easier to find statistical
 
 # Part VIII: Another Proportion Test
 
-## 35. Environmental Spending Example
+## Environmental Spending Example
 
 Suppose a survey asks whether federal spending on the environment should be:
 
@@ -1247,7 +1246,7 @@ Use:
 
 ---
 
-## 36. Check Assumptions
+## Check Assumptions
 
 This is a proportion test, so we need enough cases in both categories.
 
@@ -1292,7 +1291,7 @@ This is far greater than 10, so the z-test is appropriate.
 
 ---
 
-## 37. Calculate the z-Statistic
+## Calculate the z-Statistic
 
 The standard error under the null is:
 
@@ -1344,7 +1343,7 @@ we fail to reject the null hypothesis.
 
 ---
 
-## 38. Calculate the p-Value
+## Calculate the p-Value
 
 Using a z-table:
 
@@ -1378,7 +1377,7 @@ Conclusion:
 
 # Part IX: Small-Sample Proportions and the Binomial Distribution
 
-## 39. Why z Does Not Always Work for Proportions
+## Why z Does Not Always Work for Proportions
 
 Proportions are based on counts.
 
@@ -1400,7 +1399,7 @@ In small-sample proportion tests, use the **binomial distribution**.
 
 ---
 
-## 40. Binomial Test Logic
+## Binomial Test Logic
 
 The binomial distribution gives the exact probability of observing \(x\) successes in \(n\) trials if the true probability of success is \(\pi\):
 
@@ -1418,7 +1417,7 @@ That probability is the p-value.
 
 ---
 
-## 41. Example: Hiring Discrimination
+## Example: Hiring Discrimination
 
 Suppose a workplace discrimination case concerns hiring decisions.
 
@@ -1460,7 +1459,7 @@ Even with a sample size of only 10, the result is unlikely under race-neutral hi
 
 ---
 
-## 42. Why the Binomial Is Exact
+## Why the Binomial Is Exact
 
 The binomial distribution is exact for dichotomous outcomes under the conditions of the binomial model.
 
@@ -1482,7 +1481,7 @@ Software can easily calculate exact binomial probabilities, even when hand calcu
 
 # Part X: Type I and Type II Errors
 
-## 43. Two Kinds of Error
+## Two Kinds of Error
 
 A significance test can lead to two types of error.
 
@@ -1512,7 +1511,7 @@ The probability of a type II error is:
 
 ---
 
-## 44. Error Table
+## Error Table
 
 | Reality | Reject \(H_0\) | Fail to Reject \(H_0\) |
 |---|---|---|
@@ -1535,7 +1534,7 @@ The story of “the boy who cried wolf” contains both:
 
 ---
 
-## 45. Reducing Type I Error
+## Reducing Type I Error
 
 To reduce the probability of a type I error, lower alpha.
 
@@ -1559,7 +1558,7 @@ There is a tradeoff.
 
 ---
 
-## 46. Reducing Type II Error
+## Reducing Type II Error
 
 To reduce the probability of a type II error, increase sample size.
 
@@ -1579,7 +1578,7 @@ Increasing sample size increases power.
 
 ---
 
-## 47. Sample Size and Type I Error
+## Sample Size and Type I Error
 
 Increasing sample size does not reduce the type I error rate.
 
@@ -1595,7 +1594,7 @@ Sample size affects type II error and power, not the type I error rate.
 
 # Part XI: Interpreting Significance Tests Carefully
 
-## 48. Statistical Significance Is Probabilistic
+## Statistical Significance Is Probabilistic
 
 A statistically significant result is not definitive proof.
 
@@ -1611,7 +1610,7 @@ Statistical significance is evidence, not certainty.
 
 ---
 
-## 49. Multiple Testing and False Positives
+## Multiple Testing and False Positives
 
 If researchers conduct many tests, some will be statistically significant by chance alone.
 
@@ -1637,7 +1636,7 @@ This is why researchers should be cautious when interpreting isolated significan
 
 ---
 
-## 50. Publication Bias
+## Publication Bias
 
 Statistically significant results are more likely to be published than null results.
 
@@ -1653,7 +1652,7 @@ This is a problem for science and public policy.
 
 ---
 
-## 51. Do Not Accept the Null Hypothesis
+## Do Not Accept the Null Hypothesis
 
 When a significance test does not reject the null hypothesis, we say:
 
