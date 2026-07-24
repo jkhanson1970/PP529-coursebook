@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Chapter 2: Sampling – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-3.html" rel="next">
+<link href="./chapter-1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#populations-and-samples" id="toc-populations-and-samples" class="nav-link active" data-scroll-target="#populations-and-samples"><span class="header-section-number">3.1</span> Populations and Samples</a></li>
+  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link" data-scroll-target="#parameters-and-statistics"><span class="header-section-number">3.2</span> Parameters and Statistics</a></li>
+  <li><a href="#why-sampling-creates-uncertainty" id="toc-why-sampling-creates-uncertainty" class="nav-link" data-scroll-target="#why-sampling-creates-uncertainty"><span class="header-section-number">3.3</span> Why Sampling Creates Uncertainty</a></li>
+  <li><a href="#populations-are-sometimes-hypothetical" id="toc-populations-are-sometimes-hypothetical" class="nav-link" data-scroll-target="#populations-are-sometimes-hypothetical"><span class="header-section-number">3.4</span> Populations Are Sometimes Hypothetical</a></li>
+  <li><a href="#why-sampling-method-matters" id="toc-why-sampling-method-matters" class="nav-link" data-scroll-target="#why-sampling-method-matters"><span class="header-section-number">3.5</span> Why Sampling Method Matters</a></li>
+  <li><a href="#part-i-methods-of-sampling" id="toc-part-i-methods-of-sampling" class="nav-link" data-scroll-target="#part-i-methods-of-sampling"><span class="header-section-number">4</span> Part I: Methods of Sampling</a>
+  <ul class="collapse">
+  <li><a href="#non-probability-sampling" id="toc-non-probability-sampling" class="nav-link" data-scroll-target="#non-probability-sampling"><span class="header-section-number">4.1</span> Non-Probability Sampling</a></li>
+  <li><a href="#convenience-sampling" id="toc-convenience-sampling" class="nav-link" data-scroll-target="#convenience-sampling"><span class="header-section-number">4.2</span> Convenience Sampling</a></li>
+  <li><a href="#purposive-sampling" id="toc-purposive-sampling" class="nav-link" data-scroll-target="#purposive-sampling"><span class="header-section-number">4.3</span> Purposive Sampling</a></li>
+  <li><a href="#snowball-sampling" id="toc-snowball-sampling" class="nav-link" data-scroll-target="#snowball-sampling"><span class="header-section-number">4.4</span> Snowball Sampling</a></li>
+  <li><a href="#quota-sampling" id="toc-quota-sampling" class="nav-link" data-scroll-target="#quota-sampling"><span class="header-section-number">4.5</span> Quota Sampling</a></li>
+  <li><a href="#probability-sampling" id="toc-probability-sampling" class="nav-link" data-scroll-target="#probability-sampling"><span class="header-section-number">4.6</span> Probability Sampling</a></li>
+  <li><a href="#simple-random-sampling" id="toc-simple-random-sampling" class="nav-link" data-scroll-target="#simple-random-sampling"><span class="header-section-number">4.7</span> Simple Random Sampling</a></li>
+  <li><a href="#systematic-random-sampling" id="toc-systematic-random-sampling" class="nav-link" data-scroll-target="#systematic-random-sampling"><span class="header-section-number">4.8</span> Systematic Random Sampling</a></li>
+  <li><a href="#stratified-random-sampling" id="toc-stratified-random-sampling" class="nav-link" data-scroll-target="#stratified-random-sampling"><span class="header-section-number">4.9</span> Stratified Random Sampling</a></li>
+  <li><a href="#cluster-sampling" id="toc-cluster-sampling" class="nav-link" data-scroll-target="#cluster-sampling"><span class="header-section-number">4.10</span> Cluster Sampling</a></li>
+  <li><a href="#theory-versus-reality-in-sampling" id="toc-theory-versus-reality-in-sampling" class="nav-link" data-scroll-target="#theory-versus-reality-in-sampling"><span class="header-section-number">4.11</span> Theory Versus Reality in Sampling</a></li>
+  </ul></li>
+  <li><a href="#part-ii-random-sampling-error-and-bias" id="toc-part-ii-random-sampling-error-and-bias" class="nav-link" data-scroll-target="#part-ii-random-sampling-error-and-bias"><span class="header-section-number">5</span> Part II: Random Sampling Error and Bias</a>
+  <ul class="collapse">
+  <li><a href="#random-sampling-error" id="toc-random-sampling-error" class="nav-link" data-scroll-target="#random-sampling-error"><span class="header-section-number">5.1</span> Random Sampling Error</a></li>
+  <li><a href="#bias" id="toc-bias" class="nav-link" data-scroll-target="#bias"><span class="header-section-number">5.2</span> Bias</a></li>
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias"><span class="header-section-number">5.3</span> Selection Bias</a></li>
+  <li><a href="#example-landlines-and-election-polling" id="toc-example-landlines-and-election-polling" class="nav-link" data-scroll-target="#example-landlines-and-election-polling"><span class="header-section-number">5.4</span> Example: Landlines and Election Polling</a></li>
+  <li><a href="#non-response-bias" id="toc-non-response-bias" class="nav-link" data-scroll-target="#non-response-bias"><span class="header-section-number">5.5</span> Non-Response Bias</a></li>
+  <li><a href="#low-response-rates-and-polling" id="toc-low-response-rates-and-polling" class="nav-link" data-scroll-target="#low-response-rates-and-polling"><span class="header-section-number">5.6</span> Low Response Rates and Polling</a>
+  <ul class="collapse">
+  <li><a href="#scenario-1-equal-response-rates" id="toc-scenario-1-equal-response-rates" class="nav-link" data-scroll-target="#scenario-1-equal-response-rates"><span class="header-section-number">5.6.1</span> Scenario 1: Equal Response Rates</a></li>
+  <li><a href="#scenario-2-slightly-unequal-response-rates" id="toc-scenario-2-slightly-unequal-response-rates" class="nav-link" data-scroll-target="#scenario-2-slightly-unequal-response-rates"><span class="header-section-number">5.6.2</span> Scenario 2: Slightly Unequal Response Rates</a></li>
+  </ul></li>
+  <li><a href="#when-is-non-response-a-problem" id="toc-when-is-non-response-a-problem" class="nav-link" data-scroll-target="#when-is-non-response-a-problem"><span class="header-section-number">5.7</span> When Is Non-Response a Problem?</a></li>
+  </ul></li>
+  <li><a href="#part-iii-survey-weighting" id="toc-part-iii-survey-weighting" class="nav-link" data-scroll-target="#part-iii-survey-weighting"><span class="header-section-number">6</span> Part III: Survey Weighting</a>
+  <ul class="collapse">
+  <li><a href="#why-weighting-is-necessary" id="toc-why-weighting-is-necessary" class="nav-link" data-scroll-target="#why-weighting-is-necessary"><span class="header-section-number">6.1</span> Why Weighting Is Necessary</a></li>
+  <li><a href="#a-simple-weighting-example" id="toc-a-simple-weighting-example" class="nav-link" data-scroll-target="#a-simple-weighting-example"><span class="header-section-number">6.2</span> A Simple Weighting Example</a></li>
+  <li><a href="#what-weighting-does" id="toc-what-weighting-does" class="nav-link" data-scroll-target="#what-weighting-does"><span class="header-section-number">6.3</span> What Weighting Does</a></li>
+  <li><a href="#oversampling-and-weighting" id="toc-oversampling-and-weighting" class="nav-link" data-scroll-target="#oversampling-and-weighting"><span class="header-section-number">6.4</span> Oversampling and Weighting</a></li>
+  <li><a href="#weighting-and-election-surveys" id="toc-weighting-and-election-surveys" class="nav-link" data-scroll-target="#weighting-and-election-surveys"><span class="header-section-number">6.5</span> Weighting and Election Surveys</a></li>
+  <li><a href="#weighting-is-not-magic" id="toc-weighting-is-not-magic" class="nav-link" data-scroll-target="#weighting-is-not-magic"><span class="header-section-number">6.6</span> Weighting Is Not Magic</a></li>
+  </ul></li>
+  <li><a href="#part-iv-bringing-it-together" id="toc-part-iv-bringing-it-together" class="nav-link" data-scroll-target="#part-iv-bringing-it-together"><span class="header-section-number">7</span> Part IV: Bringing It Together</a>
+  <ul class="collapse">
+  <li><a href="#sampling-error-versus-bias" id="toc-sampling-error-versus-bias" class="nav-link" data-scroll-target="#sampling-error-versus-bias"><span class="header-section-number">7.1</span> Sampling Error Versus Bias</a></li>
+  <li><a href="#the-central-lesson-samples-are-designed" id="toc-the-central-lesson-samples-are-designed" class="nav-link" data-scroll-target="#the-central-lesson-samples-are-designed"><span class="header-section-number">7.2</span> The Central Lesson: Samples Are Designed</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">7.3</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">7.4</span> Chapter Summary</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Statistics usually begins with a problem: we want to learn something about a large group, but we cannot observe every member of that group.</p>
+<p>We may want to know how American voters feel about an election, how school-aged children are performing academically, how businesses experience regulation, or how countries differ in their levels of democracy or economic development. In each case, we have a larger group in mind. That larger group is called the <strong>population</strong>.</p>
+<p>In practice, however, we usually do not collect data from the entire population. Instead, we collect data from a smaller subset of cases. That subset is called a <strong>sample</strong>. We then use information from the sample to make inferences about the population.</p>
+<p>Sampling is therefore central to statistical reasoning. It determines how much confidence we can have in our conclusions, what kinds of errors we might make, and whether our results are likely to represent the broader population we care about.</p>
+<p>This chapter introduces the logic of sampling. We begin with the relationship between populations, samples, parameters, and statistics. We then consider different methods of sampling, including both probability and non-probability approaches. After that, we examine random sampling error and several important sources of bias. Finally, we introduce the logic of survey weighting, which is one way researchers correct for known imbalances in a sample.</p>
+<hr>
+<section id="populations-and-samples" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="populations-and-samples"><span class="header-section-number">3.1</span> Populations and Samples</h2>
+<p>A <strong>population</strong> is the full set of cases we want to learn about. The population might consist of people, organizations, countries, schools, legislative districts, elections, policy programs, or almost anything else.</p>
+<p>Examples of populations include:</p>
+<ul>
+<li>all registered voters in the United States<br>
+</li>
+<li>all adults living in Michigan<br>
+</li>
+<li>all public schools in a state<br>
+</li>
+<li>all countries in the world<br>
+</li>
+<li>all members of a particular Congress<br>
+</li>
+<li>all students eligible for a new educational program<br>
+</li>
+<li>all households in a city</li>
+</ul>
+<p>The population is the group about which we want to draw conclusions.</p>
+<p>A <strong>sample</strong> is a subset of the population. Because we usually cannot collect data from every member of the population, we collect data from a sample and use it to estimate what is true of the population.</p>
+<p>For example, suppose we want to know the average age of students in a large lecture course. The population is all students in the course. If we randomly select ten students and calculate their average age, those ten students are our sample. Their average age is our estimate of the average age in the full class.</p>
+<p>The same logic applies at much larger scales. A national election poll may survey 1,000 adults in order to estimate the preferences of millions of voters.</p>
+<hr>
+</section>
+<section id="parameters-and-statistics" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="parameters-and-statistics"><span class="header-section-number">3.2</span> Parameters and Statistics</h2>
+<p>When we describe a population, we refer to <strong>parameters</strong>.</p>
+<p>A <strong>parameter</strong> is a true characteristic of a population. For example:</p>
+<ul>
+<li>the average income of all households in the United States<br>
+</li>
+<li>the percentage of voters who support a candidate<br>
+</li>
+<li>the median age of all residents in Michigan<br>
+</li>
+<li>the standard deviation of test scores among all students in a school district</li>
+</ul>
+<p>Parameters are usually unknown. They are the values we would observe if we could measure the entire population.</p>
+<p>When we describe a sample, we refer to <strong>statistics</strong>.</p>
+<p>A <strong>statistic</strong> is a characteristic calculated from a sample. For example:</p>
+<ul>
+<li>the average income among surveyed households<br>
+</li>
+<li>the percentage of respondents who support a candidate<br>
+</li>
+<li>the median age of people in a survey<br>
+</li>
+<li>the standard deviation of test scores in a sampled group of students</li>
+</ul>
+<p>The statistic is known, because we can calculate it directly from the sample. The parameter is usually unknown, because we do not observe the full population.</p>
+<p>The basic logic of statistical inference is this:</p>
+<blockquote class="blockquote">
+<p>We use sample statistics to estimate population parameters.</p>
+</blockquote>
+<p>This distinction is crucial. If we survey 1,000 voters and find that 52 percent support Candidate A, we know with certainty that 52 percent of the sample supports Candidate A. What we do not know with certainty is whether 52 percent of the entire population supports Candidate A.</p>
+<p>Much of statistics is about quantifying that uncertainty.</p>
+<hr>
+</section>
+<section id="why-sampling-creates-uncertainty" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="why-sampling-creates-uncertainty"><span class="header-section-number">3.3</span> Why Sampling Creates Uncertainty</h2>
+<p>A sample statistic is usually not exactly equal to the population parameter. If we drew a different sample, we would probably get a slightly different statistic.</p>
+<p>Suppose we want to estimate the average age of students in a class and randomly select ten students. We calculate the mean age of those ten students. If we randomly select another ten students, the mean will likely differ slightly. A third sample may differ again.</p>
+<p>This does not mean anything has gone wrong. It is simply the result of sampling.</p>
+<p>The sample statistic is known. The uncertainty comes from using that statistic to estimate the population parameter.</p>
+<p>For example:</p>
+<ul>
+<li>We know the sample mean.<br>
+</li>
+<li>We do not know the population mean.<br>
+</li>
+<li>We use the sample mean to estimate the population mean.<br>
+</li>
+<li>Because the sample is only part of the population, the estimate is uncertain.</li>
+</ul>
+<p>A major goal of statistics is to tell us how much uncertainty remains. Later statistical tools, such as confidence intervals and hypothesis tests, help us answer questions like:</p>
+<ul>
+<li>How close is our sample statistic likely to be to the population parameter?<br>
+</li>
+<li>How much random error should we expect?<br>
+</li>
+<li>How confident can we be in our estimate?<br>
+</li>
+<li>Is an observed difference likely to reflect a real difference in the population, or could it plausibly be due to random sampling error?</li>
+</ul>
+<hr>
+</section>
+<section id="populations-are-sometimes-hypothetical" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="populations-are-sometimes-hypothetical"><span class="header-section-number">3.4</span> Populations Are Sometimes Hypothetical</h2>
+<p>It is tempting to think of populations as always concrete and observable. Sometimes they are. If we define our population as “all students enrolled in this course,” that population exists in a straightforward way.</p>
+<p>But in social science and policy research, populations are often partly hypothetical.</p>
+<p>Consider a pilot policy program. Suppose a city wants to test a new job-training program. It recruits a group of participants and measures outcomes after completion. Those participants are the sample. But what is the population?</p>
+<p>The population is not simply “everyone currently in the pilot,” because those are the people in the sample. Instead, the population might be all people who would participate if the program were implemented more broadly. That population does not yet exist. It is hypothetical.</p>
+<p>The sample helps us estimate what might happen in that broader, future population.</p>
+<p>Something similar can happen even when we seem to have complete data. Suppose we study voting behavior in the 117th Congress. We might have data on every roll-call vote cast by every member. In one sense, that is population data for the 117th Congress. But if our goal is to understand how Congress works as an institution, the 117th Congress is only one instance of a broader process.</p>
+<p>We may want to understand how party, district characteristics, ideology, electoral competition, or constituent preferences shape legislative behavior more generally. The particular Congress we observe is only one possible version of Congress. Different electoral outcomes, redistricting decisions, retirements, scandals, national events, and close races could have produced a different set of members and a different pattern of votes.</p>
+<p>In that sense, our observed Congress is a sample from a broader set of possible Congresses.</p>
+<p>This idea can feel strange at first. But it captures an important feature of social research: we often use the specific world we observe to learn about broader processes that could operate across many possible worlds.</p>
+<p>The data in front of us are concrete. The population we care about may be broader, more abstract, or even hypothetical.</p>
+<hr>
+</section>
+<section id="why-sampling-method-matters" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="why-sampling-method-matters"><span class="header-section-number">3.5</span> Why Sampling Method Matters</h2>
+<p>The quality of a sample depends heavily on how it is collected.</p>
+<p>Ideally, a sample should be <strong>representative</strong> of the population. A representative sample resembles the population in the ways that matter for the research question.</p>
+<p>If we want to estimate national public opinion, our sample should reflect the national population. If we want to understand school performance across a state, our sample should reflect the schools in that state. If we want to evaluate a policy program, our sample should resemble the people who would actually experience that program.</p>
+<p>The gold standard is often the <strong>random sample</strong>, because random selection gives each member of the population a known chance of selection. Random sampling allows us to use probability theory to estimate sampling error.</p>
+<p>But true random sampling is often difficult, expensive, or impossible. As a result, researchers use many different sampling strategies. Some are probability-based and involve random selection. Others are non-probability approaches that do not rely on random selection.</p>
+<p>Both types are useful in different contexts, but they support different kinds of conclusions.</p>
+<hr>
+</section>
+<section id="part-i-methods-of-sampling" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Part I: Methods of Sampling</h1>
+<section id="non-probability-sampling" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="non-probability-sampling"><span class="header-section-number">4.1</span> Non-Probability Sampling</h2>
+<p>In <strong>non-probability sampling</strong>, cases are not selected through a random process. This means we generally cannot use standard probability theory to calculate sampling error in the usual way.</p>
+<p>Non-probability samples are common, especially in exploratory research, qualitative research, pilot studies, hard-to-reach populations, and situations where probability sampling is too expensive or impractical.</p>
+<p>Major types of non-probability sampling include:</p>
+<ol type="1">
+<li>Convenience sampling<br>
+</li>
+<li>Purposive sampling<br>
+</li>
+<li>Snowball sampling<br>
+</li>
+<li>Quota sampling</li>
+</ol>
+<hr>
+</section>
+<section id="convenience-sampling" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="convenience-sampling"><span class="header-section-number">4.2</span> Convenience Sampling</h2>
+<p>A <strong>convenience sample</strong> consists of cases that are easy to access.</p>
+<p>For example, a psychology professor may recruit undergraduate students to participate in an experiment. Students see a posting, sign up, complete the study, and perhaps receive course credit or payment. This is convenient for the researcher because students are nearby and available.</p>
+<p>Convenience sampling is inexpensive and practical, but it has obvious limitations. Undergraduate students at one university may not represent adults in general, young people in general, or even college students in general. They may differ in age, education, socioeconomic background, political attitudes, psychological traits, or willingness to participate in research.</p>
+<p>Convenience samples can be useful for some purposes, especially early-stage research or controlled experiments. But researchers must be cautious about generalizing from them to broader populations.</p>
+<hr>
+</section>
+<section id="purposive-sampling" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="purposive-sampling"><span class="header-section-number">4.3</span> Purposive Sampling</h2>
+<p>In <strong>purposive sampling</strong>, researchers deliberately select cases because they are especially relevant to the research question.</p>
+<p>For example, suppose a researcher wants to understand the experiences of community organizers working on housing policy. Rather than randomly sampling the general population, the researcher may intentionally seek out people who have direct experience with housing advocacy.</p>
+<p>Purposive sampling is common in qualitative research, case studies, elite interviews, and policy analysis. The goal is not always statistical representativeness. Instead, the goal may be to gather information-rich cases.</p>
+<p>For example, if we are studying how local governments respond to water contamination crises, we may intentionally select cities that experienced such crises. A random sample of all cities might include very few relevant cases.</p>
+<p>Purposive sampling can provide deep insight, but it does not support the same kind of statistical generalization as probability sampling.</p>
+<hr>
+</section>
+<section id="snowball-sampling" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="snowball-sampling"><span class="header-section-number">4.4</span> Snowball Sampling</h2>
+<p>In <strong>snowball sampling</strong>, researchers begin with one or more participants and then ask them to identify others who should be included.</p>
+<p>For example, after interviewing one activist, the researcher might ask:</p>
+<blockquote class="blockquote">
+<p>Who else should I talk to?</p>
+</blockquote>
+<p>That person recommends others, who recommend still others, and the sample expands outward like a snowball.</p>
+<p>Snowball sampling is especially useful when studying networks, hidden populations, marginalized groups, or communities where trust matters. It can help researchers reach people who would be difficult to identify through standard sampling methods.</p>
+<p>However, snowball samples can be biased toward connected individuals and networks. People are likely to recommend others they know, who may share similar views, experiences, or social positions.</p>
+<hr>
+</section>
+<section id="quota-sampling" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="quota-sampling"><span class="header-section-number">4.5</span> Quota Sampling</h2>
+<p>In <strong>quota sampling</strong>, researchers decide in advance how many cases they want from particular groups, then recruit participants until those quotas are filled.</p>
+<p>For example, a researcher may want a sample that is:</p>
+<ul>
+<li>50 percent women and 50 percent men<br>
+</li>
+<li>30 percent from one age group, 40 percent from another, and 30 percent from another<br>
+</li>
+<li>20 percent from each of five geographic regions</li>
+</ul>
+<p>Quota sampling can help ensure that important groups appear in the sample. However, the individuals within each quota are not necessarily randomly selected.</p>
+<p>For example, a survey firm might decide it needs 100 respondents aged 18–29, then recruit whoever is easiest to reach until it fills that quota. That sample may still be biased if the people easiest to reach differ from those who are harder to reach.</p>
+<p>Quota sampling can improve sample composition, but it does not eliminate the need to worry about representativeness.</p>
+<hr>
+</section>
+<section id="probability-sampling" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="probability-sampling"><span class="header-section-number">4.6</span> Probability Sampling</h2>
+<p>In <strong>probability sampling</strong>, random selection plays some role in determining which cases are included. Each case in the population has a known, nonzero probability of selection.</p>
+<p>Probability sampling is important because it allows researchers to use probability theory to estimate sampling error. In other words, it gives us a mathematical basis for saying how uncertain our estimates are.</p>
+<p>Common probability sampling methods include:</p>
+<ol type="1">
+<li>Simple random sampling<br>
+</li>
+<li>Systematic random sampling<br>
+</li>
+<li>Stratified random sampling<br>
+</li>
+<li>Cluster sampling</li>
+</ol>
+<hr>
+</section>
+<section id="simple-random-sampling" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="simple-random-sampling"><span class="header-section-number">4.7</span> Simple Random Sampling</h2>
+<p>A <strong>simple random sample</strong> is the most basic form of probability sample. Every member of the population has an equal probability of being selected.</p>
+<p>For example, suppose we have a list of all 10,000 students at a university and randomly select 500 names. If every student has the same chance of being selected, this is a simple random sample.</p>
+<p>Simple random sampling is the foundation of much statistical theory. Many formulas introduced in basic statistics assume that the data come from a simple random sample.</p>
+<p>In practice, however, true simple random samples are often difficult to obtain. We may not have a complete list of the population. Contacting randomly selected people may be expensive. Some people may refuse to participate. Others may be impossible to reach.</p>
+<p>This gap between theory and reality is important. Introductory statistics often begins with the assumption of simple random sampling, but real-world data frequently violate that assumption.</p>
+<hr>
+</section>
+<section id="systematic-random-sampling" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="systematic-random-sampling"><span class="header-section-number">4.8</span> Systematic Random Sampling</h2>
+<p>A <strong>systematic random sample</strong> selects cases using a fixed interval from a list.</p>
+<p>For example, suppose we have a list of union members and want to sample every fifth person. We might randomly choose a starting point among the first five names, then select every fifth name after that.</p>
+<p>Systematic sampling can be practical when working with long lists, especially if full randomization is inconvenient.</p>
+<p>However, systematic sampling can produce bias if the list has a hidden pattern. For example, if every fifth name on a list corresponds to a particular type of member because of how the list is organized, the sample may not be representative.</p>
+<p>Systematic sampling works best when the ordering of the list is unrelated to the variables we care about.</p>
+<hr>
+</section>
+<section id="stratified-random-sampling" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="stratified-random-sampling"><span class="header-section-number">4.9</span> Stratified Random Sampling</h2>
+<p>A <strong>stratified random sample</strong> divides the population into groups, called <strong>strata</strong>, and then randomly samples within each stratum.</p>
+<p>Strata are usually defined by characteristics that matter for the research question or for representativeness. Examples include:</p>
+<ul>
+<li>geographic region<br>
+</li>
+<li>race or ethnicity<br>
+</li>
+<li>gender<br>
+</li>
+<li>age group<br>
+</li>
+<li>income category<br>
+</li>
+<li>school type<br>
+</li>
+<li>urban, suburban, and rural areas</li>
+</ul>
+<p>For example, suppose we want a national survey that is representative by region. We could divide the country into regions and then randomly sample people within each region.</p>
+<p>Stratified sampling has several advantages.</p>
+<p>First, it can improve representativeness. By ensuring that each stratum is included, we reduce the risk that random chance will produce too many cases from one group and too few from another.</p>
+<p>Second, it can reduce sampling variability. If important groups are properly represented, sample statistics may fluctuate less across repeated samples.</p>
+<p>Third, it helps with subgroup analysis. If we want to compare groups, we need enough cases in each group. A simple random sample may include too few members of a small group to support meaningful analysis. Stratified sampling can intentionally collect enough cases from that group.</p>
+<p>For example, if a group makes up only 5 percent of the population, a simple random sample of 1,000 people would include about 50 members of that group on average. That may not be enough for detailed analysis. A stratified design could oversample that group to ensure a larger number of cases.</p>
+<p>The disadvantages are also important. To use stratified sampling, we need to know which cases belong to which strata. The strata should be mutually exclusive, meaning each case belongs to only one stratum. If our classification is inaccurate or incomplete, the sampling design may be flawed.</p>
+<hr>
+</section>
+<section id="cluster-sampling" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="cluster-sampling"><span class="header-section-number">4.10</span> Cluster Sampling</h2>
+<p><strong>Cluster sampling</strong> divides the population into clusters, randomly selects clusters, and then samples cases within those clusters.</p>
+<p>Clusters are often geographic. Examples include:</p>
+<ul>
+<li>counties<br>
+</li>
+<li>census tracts<br>
+</li>
+<li>neighborhoods<br>
+</li>
+<li>villages<br>
+</li>
+<li>schools<br>
+</li>
+<li>classrooms<br>
+</li>
+<li>city blocks</li>
+</ul>
+<p>Cluster sampling is common in large-scale surveys, especially when in-person data collection is required.</p>
+<p>Suppose we want to conduct a nationwide household survey. A simple random sample might require interviewers to travel to thousands of scattered addresses across the country. That would be extremely expensive. Instead, researchers can randomly select geographic clusters, send interviewers to those locations, and then randomly select households within each cluster.</p>
+<p>This preserves randomness while reducing cost.</p>
+<p>Cluster sampling is often a multi-stage process. For example:</p>
+<ol type="1">
+<li>Randomly select cities.<br>
+</li>
+<li>Within selected cities, randomly select neighborhoods.<br>
+</li>
+<li>Within selected neighborhoods, randomly select blocks.<br>
+</li>
+<li>Within selected blocks, randomly select households.<br>
+</li>
+<li>Within selected households, randomly select individuals.</li>
+</ol>
+<p>This design is far more practical than sending interviewers to randomly scattered individuals across an entire country.</p>
+<p>Cluster sampling differs from stratified sampling. In stratified sampling, strata are usually internally similar and analytically meaningful. In cluster sampling, clusters are often intended to be miniature versions of the broader population, or at least heterogeneous enough to contain variation.</p>
+<p>In practice, large surveys often combine stratification and clustering.</p>
+<p>For example, the Demographic and Health Surveys, often conducted in countries around the world, use cluster-based designs. Survey teams may select clusters such as villages or urban neighborhoods, then interview households within those areas. This allows researchers to produce nationally representative estimates while keeping fieldwork manageable.</p>
+<p>The major advantage of cluster sampling is cost. The major disadvantage is complexity. Standard statistical formulas often assume simple random sampling. Clustered designs violate that assumption because people within the same cluster may be more similar to one another than people in different clusters. As a result, specialized survey methods are often needed.</p>
+<hr>
+</section>
+<section id="theory-versus-reality-in-sampling" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="theory-versus-reality-in-sampling"><span class="header-section-number">4.11</span> Theory Versus Reality in Sampling</h2>
+<p>Much of introductory statistics assumes simple random sampling. This assumption makes the theory easier to learn and provides a foundation for understanding inference.</p>
+<p>But real surveys are rarely simple random samples.</p>
+<p>High-quality surveys often use complex designs involving stratification, clustering, oversampling, and weighting. These designs are not flaws. They are often intentional choices made to improve representativeness, reduce cost, or ensure adequate sample sizes for important subgroups.</p>
+<p>For example, the American National Election Studies is a rigorous survey of political attitudes and behavior in the United States. But it is not a simple random sample. It may intentionally oversample some groups so researchers can analyze those groups with sufficient precision.</p>
+<p>If we analyze such a survey naively, without applying the appropriate weights, our results may not match known population values. For example, a survey may appear to overrepresent supporters of one candidate or demographic group. That does not necessarily mean the survey is bad. It may mean we have not yet applied the weights that correct for the sampling design.</p>
+<p>The central point is this:</p>
+<blockquote class="blockquote">
+<p>Real-world samples often require real-world corrections.</p>
+</blockquote>
+<p>A good researcher asks not only what is in the data, but how the data were collected.</p>
+<hr>
+</section>
+</section>
+<section id="part-ii-random-sampling-error-and-bias" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Part II: Random Sampling Error and Bias</h1>
+<section id="random-sampling-error" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="random-sampling-error"><span class="header-section-number">5.1</span> Random Sampling Error</h2>
+<p>Even a perfectly random sample will usually differ from the population.</p>
+<p>This difference is called <strong>random sampling error</strong>.</p>
+<p>Random sampling error occurs because we observe only part of the population. By chance, the sample may include slightly more of one kind of case and slightly fewer of another. As a result, the sample statistic will usually differ from the population parameter.</p>
+<p>For example, suppose the true average age in a class is 20.4 years. If we randomly sample ten students, the average age in the sample might be 20.1, 20.7, or 19.9. These differences are not caused by bias or bad methods. They are simply the result of random selection.</p>
+<p>The good news is that random sampling error is the kind of error statistics is designed to handle. Probability theory allows us to estimate how large random sampling error is likely to be.</p>
+<p>Later, when we study confidence intervals, we will be able to make statements such as:</p>
+<blockquote class="blockquote">
+<p>We are 95 percent confident that the population value lies within this range.</p>
+</blockquote>
+<p>That does not mean our sample statistic is uncertain. The sample statistic is known. What is uncertain is how close it is to the population parameter.</p>
+<hr>
+</section>
+<section id="bias" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="bias"><span class="header-section-number">5.2</span> Bias</h2>
+<p>Random sampling error is expected and manageable. <strong>Bias</strong> is more dangerous.</p>
+<p>Bias occurs when the sample is systematically different from the population in a way that affects the results.</p>
+<p>With random sampling error, mistakes are due to chance. With bias, mistakes have a direction. The sample tends to overrepresent or underrepresent certain cases, views, behaviors, or characteristics.</p>
+<p>This is a serious problem because standard statistical methods assume that errors are random. If the sampling process is biased, larger sample sizes do not necessarily solve the problem. A biased sample can produce a very precise estimate of the wrong value.</p>
+<p>Two important forms of bias are:</p>
+<ol type="1">
+<li>Selection bias<br>
+</li>
+<li>Non-response bias</li>
+</ol>
+<hr>
+</section>
+<section id="selection-bias" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="selection-bias"><span class="header-section-number">5.3</span> Selection Bias</h2>
+<p><strong>Selection bias</strong> occurs when the sampling method systematically includes some kinds of cases and excludes others.</p>
+<p>For example, suppose a researcher conducts a telephone survey by calling landline phones during weekday afternoons. This sampling method is likely to reach people who are at home during the day and who still use landlines. It may overrepresent retirees, people who work from home, or people without full-time employment outside the home. It may underrepresent younger adults, people who rely only on cell phones, and people who work during the day.</p>
+<p>The problem is not simply that some people are missing. The problem is that the missing people differ systematically from those included.</p>
+<p>Selection bias was once less severe for landline telephone surveys than it is today. By the 1970s, most American households had landline telephones. A landline survey could reach a large share of the population, though not all of it.</p>
+<p>Today, many adults are cell-phone-only, and many people who still have landlines rarely answer them. A landline-only survey now excludes a large and systematically different portion of the population.</p>
+<p>This matters because people who are reachable by landline may differ politically, socially, and demographically from people who are not. If those differences are related to the survey topic, the results will be biased.</p>
+<hr>
+</section>
+<section id="example-landlines-and-election-polling" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="example-landlines-and-election-polling"><span class="header-section-number">5.4</span> Example: Landlines and Election Polling</h2>
+<p>Election polling provides a clear example of selection bias.</p>
+<p>In the 2012 U.S. presidential election, some polls used landline-only samples, while others included cell phones. Analysts noticed that landline-only polls tended to produce different estimates than polls that included cell-phone respondents.</p>
+<p>This mattered because cell-phone-only voters differed from landline respondents. They tended to be younger and demographically distinct in ways that were politically relevant.</p>
+<p>A landline-only poll might show one candidate leading by a small margin, while a poll including cell phones might show a different result. The issue was not random sampling error alone. It was that the landline-only sampling frame systematically missed part of the electorate.</p>
+<p>This illustrates a broader lesson:</p>
+<blockquote class="blockquote">
+<p>A sample can be large and still be biased if the sampling method systematically excludes relevant groups.</p>
+</blockquote>
+<p>The size of the sample does not fix a flawed sampling frame.</p>
+<hr>
+</section>
+<section id="non-response-bias" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="non-response-bias"><span class="header-section-number">5.5</span> Non-Response Bias</h2>
+<p><strong>Non-response bias</strong> occurs when people selected for a sample do not participate, and those who do participate differ systematically from those who do not.</p>
+<p>Non-response is extremely common. Many people refuse to answer surveys. Others cannot be reached. Some begin a survey but skip particular questions.</p>
+<p>Non-response alone is not necessarily bias. If the people who respond and the people who do not respond are similar with respect to the question we care about, then non-response may not distort the results.</p>
+<p>The problem arises when willingness to respond is related to the outcome being measured.</p>
+<p>For example, suppose we conduct an election survey. People who are highly interested in politics may be more willing to participate than people who are disengaged. If politically engaged people have different candidate preferences than disengaged people, the survey will be biased.</p>
+<p>Similarly, if a survey asks about income, people with very high or very low incomes may be less willing to answer. If missing income responses are not random, estimates of average income may be biased.</p>
+<p>The key question is:</p>
+<blockquote class="blockquote">
+<p>Are respondents systematically different from non-respondents in ways that matter for the research question?</p>
+</blockquote>
+<p>If yes, non-response bias is a problem.</p>
+<hr>
+</section>
+<section id="low-response-rates-and-polling" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="low-response-rates-and-polling"><span class="header-section-number">5.6</span> Low Response Rates and Polling</h2>
+<p>Modern survey research faces a major challenge: response rates are low.</p>
+<p>In many phone surveys, only a small percentage of calls result in a completed interview. If only 6 percent of people contacted complete a survey, the researcher must make many calls to obtain a sufficient sample size.</p>
+<p>Low response rates do not automatically mean a survey is biased. But they increase the risk of bias because the final sample depends heavily on who is willing to participate.</p>
+<p>Even small differences in willingness to respond can produce large changes in survey results.</p>
+<p>Imagine that the true electorate is evenly divided:</p>
+<ul>
+<li>Candidate A: 47 percent<br>
+</li>
+<li>Candidate B: 47 percent<br>
+</li>
+<li>Undecided: 6 percent</li>
+</ul>
+<p>Now consider two scenarios.</p>
+<section id="scenario-1-equal-response-rates" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="scenario-1-equal-response-rates"><span class="header-section-number">5.6.1</span> Scenario 1: Equal Response Rates</h3>
+<p>Supporters of both candidates are equally likely to respond to the survey. Suppose 10 percent of each group responds.</p>
+<p>In this case, the expected survey result remains 47 percent for Candidate A and 47 percent for Candidate B. Random sampling error may cause some variation, but there is no systematic bias.</p>
+</section>
+<section id="scenario-2-slightly-unequal-response-rates" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="scenario-2-slightly-unequal-response-rates"><span class="header-section-number">5.6.2</span> Scenario 2: Slightly Unequal Response Rates</h3>
+<p>Now suppose Candidate B’s supporters are just slightly more likely to respond. Candidate A’s supporters respond at 10 percent, while Candidate B’s supporters respond at 11 percent.</p>
+<p>That small difference can produce a noticeable shift in the poll. Candidate B may appear to lead, even though the true electorate remains tied.</p>
+<p>This can happen after major campaign events. Suppose a debate energizes one candidate’s supporters and discourages the other’s. The underlying electorate may not have changed much, but the willingness to answer a political survey may have shifted. Polls may then show movement that partly reflects response patterns rather than true persuasion.</p>
+<p>This is why survey researchers worry so much about non-response. When response rates are low, small differences in who answers can matter a great deal.</p>
+<hr>
+</section>
+</section>
+<section id="when-is-non-response-a-problem" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="when-is-non-response-a-problem"><span class="header-section-number">5.7</span> When Is Non-Response a Problem?</h2>
+<p>Non-response becomes problematic when it is systematic with respect to the variable we are trying to measure.</p>
+<p>If we ask about voting behavior, non-response is a problem if voters and non-voters respond at different rates.</p>
+<p>If we ask about candidate preference, non-response is a problem if supporters of one candidate respond at higher rates than supporters of another.</p>
+<p>If we ask about income, non-response is a problem if people at different income levels are more or less likely to answer.</p>
+<p>If non-response is random with respect to the research question, it mainly reduces sample size. If non-response is systematic, it biases the results.</p>
+<p>This distinction is crucial.</p>
+<p>A survey with a low response rate can still be useful if non-response is unrelated to the variables of interest. A survey with a high response rate can still be biased if the remaining non-response is systematic in an important way.</p>
+<hr>
+</section>
+</section>
+<section id="part-iii-survey-weighting" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Part III: Survey Weighting</h1>
+<section id="why-weighting-is-necessary" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="why-weighting-is-necessary"><span class="header-section-number">6.1</span> Why Weighting Is Necessary</h2>
+<p>Many surveys intentionally or unintentionally overrepresent some groups and underrepresent others.</p>
+<p>For example, suppose a survey sample is 20 percent age 65 or older. But census data tell us that only 16 percent of the relevant population is age 65 or older.</p>
+<p>Older adults are overrepresented in the sample. If older adults answer certain questions differently from younger adults, then the sample statistic will be distorted.</p>
+<p>The purpose of <strong>survey weighting</strong> is to correct known imbalances between the sample and the population.</p>
+<p>Survey weights adjust how much each respondent contributes to the final estimate. Cases from overrepresented groups are down-weighted. Cases from underrepresented groups are up-weighted.</p>
+<p>The goal is to make the weighted sample resemble the population.</p>
+<hr>
+</section>
+<section id="a-simple-weighting-example" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="a-simple-weighting-example"><span class="header-section-number">6.2</span> A Simple Weighting Example</h2>
+<p>Suppose we conduct a survey and find:</p>
+<ul>
+<li>20 percent of the sample is age 65 or older.<br>
+</li>
+<li>80 percent of the sample is under age 65.</li>
+</ul>
+<p>But from census data, we know:</p>
+<ul>
+<li>16 percent of the population is age 65 or older.<br>
+</li>
+<li>84 percent of the population is under age 65.</li>
+</ul>
+<p>Older adults are overrepresented. Younger adults are underrepresented.</p>
+<p>To correct this, we assign weights.</p>
+<p>For older adults:</p>
+<p>[ = ]</p>
+<p>[ = = 0.80 ]</p>
+<p>Each older respondent receives a weight of 0.80. That means each older respondent counts slightly less than one full respondent in weighted calculations.</p>
+<p>For younger adults:</p>
+<p>[ = = 1.05 ]</p>
+<p>Each younger respondent receives a weight of 1.05. That means each younger respondent counts slightly more than one full respondent.</p>
+<p>After weighting, the age composition of the sample better reflects the age composition of the population.</p>
+<hr>
+</section>
+<section id="what-weighting-does" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="what-weighting-does"><span class="header-section-number">6.3</span> What Weighting Does</h2>
+<p>Weighting changes how statistics are calculated.</p>
+<p>In an unweighted analysis, every case counts equally. If a survey has 1,000 respondents, each respondent contributes 1/1,000 of the total.</p>
+<p>In a weighted analysis, some cases count more and others count less.</p>
+<p>For example:</p>
+<ul>
+<li>A respondent with a weight of 0.80 counts as 0.80 of a case.<br>
+</li>
+<li>A respondent with a weight of 1.05 counts as 1.05 cases.<br>
+</li>
+<li>A respondent with a weight of 2.00 counts as two cases.</li>
+</ul>
+<p>This may sound strange, but the logic is straightforward. If a group is underrepresented in the sample, each member of that group in the sample must stand in for more people in the population. If a group is overrepresented, each member must stand in for fewer people.</p>
+<p>Weighting is especially important in surveys with complex sampling designs, including stratification, clustering, and oversampling.</p>
+<hr>
+</section>
+<section id="oversampling-and-weighting" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="oversampling-and-weighting"><span class="header-section-number">6.4</span> Oversampling and Weighting</h2>
+<p>Researchers sometimes intentionally oversample small groups.</p>
+<p>Suppose a group makes up only 5 percent of the population. In a simple random sample of 1,000 people, we would expect only about 50 respondents from that group. That may be too few for meaningful subgroup analysis.</p>
+<p>A researcher may intentionally sample 200 people from that group. This allows for more precise analysis within the group.</p>
+<p>But if we want to estimate population-level statistics, we cannot allow that group to count as 20 percent of the sample when it is only 5 percent of the population. We must apply weights to bring the group back into its proper population proportion.</p>
+<p>This is common in high-quality surveys. Oversampling improves our ability to study smaller groups, while weighting restores population representativeness for overall estimates.</p>
+<hr>
+</section>
+<section id="weighting-and-election-surveys" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="weighting-and-election-surveys"><span class="header-section-number">6.5</span> Weighting and Election Surveys</h2>
+<p>Election surveys provide a useful example.</p>
+<p>Suppose a survey appears to show that 53 percent of respondents voted for one candidate, even though the actual election result was lower. This does not necessarily mean the survey is poor. It may mean the raw, unweighted sample overrepresents groups that favored that candidate.</p>
+<p>Once survey weights are applied, the estimate may move closer to the known population value.</p>
+<p>This is why analysts must be careful when using survey data. If a survey includes weights, those weights are usually there for a reason. Ignoring them may produce misleading estimates.</p>
+<p>In introductory exercises, researchers and students sometimes work with unweighted data for simplicity. But in applied survey analysis, weights are often essential.</p>
+<hr>
+</section>
+<section id="weighting-is-not-magic" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="weighting-is-not-magic"><span class="header-section-number">6.6</span> Weighting Is Not Magic</h2>
+<p>Survey weighting is powerful, but it does not solve every problem.</p>
+<p>Weighting can correct for known differences between the sample and the population. For example, if we know the population distribution of age, gender, race, education, region, or party registration, we can weight the sample to match those distributions.</p>
+<p>But weighting cannot easily correct for unknown differences.</p>
+<p>Suppose people who are highly politically engaged are more likely to answer a survey. If we do not know exactly how political engagement is distributed in the population, or how it relates to response probability, weighting may not fully solve the problem.</p>
+<p>Similarly, if people who distrust institutions are less likely to answer surveys, and that distrust is related to the outcome we care about, standard weights may not fully correct the bias.</p>
+<p>Weighting also increases complexity. Weighted data require appropriate statistical methods, especially when combined with clustering and stratification. Standard formulas may underestimate uncertainty if they ignore the survey design.</p>
+<p>The practical lesson is:</p>
+<blockquote class="blockquote">
+<p>Weighting can improve representativeness, but it depends on knowing how the sample differs from the population.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="part-iv-bringing-it-together" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Part IV: Bringing It Together</h1>
+<section id="sampling-error-versus-bias" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sampling-error-versus-bias"><span class="header-section-number">7.1</span> Sampling Error Versus Bias</h2>
+<p>It is useful to distinguish clearly between random sampling error and bias.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>What It Means</th>
+<th>Can Standard Statistics Handle It?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Random sampling error</td>
+<td>The sample differs from the population by chance</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Selection bias</td>
+<td>The sampling method systematically excludes or includes certain cases</td>
+<td>Not automatically</td>
+</tr>
+<tr class="odd">
+<td>Non-response bias</td>
+<td>Respondents differ systematically from non-respondents</td>
+<td>Not automatically</td>
+</tr>
+<tr class="even">
+<td>Measurement bias</td>
+<td>The variable itself is measured in a systematically inaccurate way</td>
+<td>Not automatically</td>
+</tr>
+</tbody>
+</table>
+<p>Random sampling error is expected. It is built into statistical inference. Bias is more dangerous because it can systematically push estimates away from the truth.</p>
+<p>A larger sample reduces random sampling error. But a larger sample does not necessarily reduce bias. If the sampling method is biased, collecting more data through the same biased method may simply produce a more precise wrong answer.</p>
+<p>For example, a landline-only poll with 100,000 respondents may still be biased if landline users differ from the population in politically relevant ways.</p>
+<hr>
+</section>
+<section id="the-central-lesson-samples-are-designed" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-central-lesson-samples-are-designed"><span class="header-section-number">7.2</span> The Central Lesson: Samples Are Designed</h2>
+<p>Samples do not simply appear. They are designed, collected, filtered, and sometimes adjusted.</p>
+<p>When evaluating a sample, we should ask:</p>
+<ul>
+<li>What is the population of interest?<br>
+</li>
+<li>What is the sampling frame?<br>
+</li>
+<li>Who had a chance of being selected?<br>
+</li>
+<li>Who was excluded from the start?<br>
+</li>
+<li>Was selection random?<br>
+</li>
+<li>Were some groups intentionally oversampled?<br>
+</li>
+<li>Who refused to participate?<br>
+</li>
+<li>Are respondents different from non-respondents?<br>
+</li>
+<li>Are weights needed?<br>
+</li>
+<li>Were weights applied?<br>
+</li>
+<li>Does the final sample support the conclusions being drawn?</li>
+</ul>
+<p>Sampling is not just a technical detail. It determines what kind of claims we can make.</p>
+<p>A study based on a convenience sample may produce useful insights, but we should be careful about generalizing to a broad population. A probability sample supports stronger inference, but only if the sampling design is understood and properly analyzed. A complex survey may be excellent, but only if we use the weights and design information correctly.</p>
+<p>The sample is the bridge between the data we have and the population we care about. If that bridge is weak, our conclusions may not hold.</p>
+<hr>
+</section>
+<section id="key-terms" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="key-terms"><span class="header-section-number">7.3</span> Key Terms</h2>
+<p><strong>Population</strong><br>
+The full set of cases the researcher wants to study or draw conclusions about.</p>
+<p><strong>Sample</strong><br>
+A subset of the population used to estimate characteristics of the population.</p>
+<p><strong>Parameter</strong><br>
+A true characteristic of a population, such as a population mean or proportion.</p>
+<p><strong>Statistic</strong><br>
+A characteristic calculated from a sample, such as a sample mean or sample proportion.</p>
+<p><strong>Representative sample</strong><br>
+A sample that resembles the population in the ways that matter for the research question.</p>
+<p><strong>Non-probability sampling</strong><br>
+Sampling methods that do not use random selection.</p>
+<p><strong>Convenience sample</strong><br>
+A sample made up of cases that are easy to access.</p>
+<p><strong>Purposive sample</strong><br>
+A sample in which cases are deliberately selected because they are especially relevant.</p>
+<p><strong>Snowball sample</strong><br>
+A sample built by asking participants to recommend other participants.</p>
+<p><strong>Quota sample</strong><br>
+A sample designed to include predetermined numbers of cases from specific groups.</p>
+<p><strong>Probability sampling</strong><br>
+Sampling methods in which cases have a known, nonzero probability of selection.</p>
+<p><strong>Simple random sample</strong><br>
+A sample in which every member of the population has an equal probability of selection.</p>
+<p><strong>Systematic random sample</strong><br>
+A sample selected by choosing every kth case from a list, usually after a random starting point.</p>
+<p><strong>Stratified random sample</strong><br>
+A sample created by dividing the population into strata and randomly sampling within each stratum.</p>
+<p><strong>Cluster sample</strong><br>
+A sample created by dividing the population into clusters, randomly selecting clusters, and then sampling cases within selected clusters.</p>
+<p><strong>Random sampling error</strong><br>
+The difference between a sample statistic and a population parameter caused by random chance.</p>
+<p><strong>Selection bias</strong><br>
+Bias that occurs when the sampling method systematically includes or excludes certain types of cases.</p>
+<p><strong>Non-response bias</strong><br>
+Bias that occurs when those who respond differ systematically from those who do not.</p>
+<p><strong>Survey weighting</strong><br>
+A statistical adjustment that changes how much each case contributes to estimates so the sample better reflects the population.</p>
+<p><strong>Oversampling</strong><br>
+Intentionally sampling some groups at higher rates than their population share, often to allow subgroup analysis.</p>
+<hr>
+</section>
+<section id="chapter-summary" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="chapter-summary"><span class="header-section-number">7.4</span> Chapter Summary</h2>
+<p>Sampling allows researchers to use data from a subset of cases to learn about a larger population. The population is the full group of interest, while the sample is the group actually observed. Population characteristics are parameters; sample characteristics are statistics.</p>
+<p>Sampling creates uncertainty because sample statistics usually differ from population parameters. Random sampling error is expected and can be quantified using probability theory. Bias is more serious because it occurs when a sample systematically differs from the population in ways related to the research question.</p>
+<p>Researchers use many sampling methods. Non-probability approaches, such as convenience, purposive, snowball, and quota sampling, can be useful but generally do not support the same kind of statistical inference as probability samples. Probability methods, such as simple random, systematic, stratified, and cluster sampling, use random selection and provide a stronger basis for inference.</p>
+<p>Real-world surveys often use complex sampling designs. They may stratify, cluster, or oversample certain groups. These designs can improve data quality or reduce costs, but they also require careful analysis. Survey weights are often needed to correct for differences between the sample and the population.</p>
+<p>The most important lesson is that sampling shapes inference. Before trusting a statistical result, we need to understand how the sample was collected, who was included, who was excluded, who responded, and whether the final data can support the conclusions being drawn.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter-1.html" class="pagination-link" aria-label="Chapter 1: Measurement">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-3.html" class="pagination-link" aria-label="Chapter 3: Descriptive Statistics">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

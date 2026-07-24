@@ -1,0 +1,1846 @@
+---
+title: "Chapter 4: Probability"
+---
+
+Probability is the language of statistical inference.
+
+So far, we have discussed measurement, sampling, and descriptive statistics. We have learned how to define concepts, collect data, describe variables, summarize distributions, and think critically about samples. Probability is the next step because it explains how sample data connect to population claims.
+
+When we collect a random sample, we know that our sample will probably not perfectly match the population. The sample proportion will not be exactly equal to the population proportion. The sample mean will not be exactly equal to the population mean. There will be random error.
+
+Probability theory allows us to understand that error.
+
+It tells us how likely different outcomes are, how sample statistics behave when sampling is random, and how confident we can be when using sample data to estimate population values. Later topics such as confidence intervals, hypothesis tests, p-values, regression, and statistical significance all depend on probability.
+
+This chapter introduces the core ideas of probability. We begin with the big picture: why probability matters for inference. We then define basic probability concepts such as sample spaces, outcomes, events, unions, intersections, and complements. Next, we examine rules of probability, expected values, gambler’s fallacy, joint probabilities, conditional probabilities, independence, probability trees, and contingency tables.
+
+Some of the notation may feel unfamiliar at first. That is normal. Probability often feels abstract until the pieces start to connect. The good news is that the logic is systematic. Once you understand the structure, probability becomes one of the most powerful tools in statistics.
+
+---
+
+## Why Probability Matters
+
+Probability helps us understand randomness.
+
+In statistics, randomness is not chaos. Random processes have structure. We may not know what will happen in a single case, but we can often know the long-run pattern of outcomes.
+
+For example, if we flip a fair coin once, we do not know whether it will land heads or tails. But if we flip it many, many times, we expect about half the flips to be heads and half to be tails.
+
+Similarly, if we randomly select one voter from a population, we do not know which candidate that person supports. But if we randomly select many voters, the proportions in our sample should begin to resemble the true proportions in the population.
+
+This is the connection between probability and sampling.
+
+Suppose 60 percent of voters in a population support Candidate A and 40 percent support Candidate B. If we randomly select one voter, the probability that the person supports Candidate A is 0.60. The probability that the person supports Candidate B is 0.40.
+
+If we select only a few voters, our sample may not match the population very well. We might, by chance, select more Candidate A supporters or more Candidate B supporters than expected. But as the sample size grows, the sample proportion should move closer to the true population proportion.
+
+That tendency is one of the foundations of statistical inference.
+
+---
+
+## Probability as Long-Run Frequency
+
+One useful way to think about probability is as a **long-run frequency**.
+
+The probability of an outcome is the proportion of times that outcome would occur if we repeated a random process indefinitely.
+
+For example:
+
+- The probability of heads in a fair coin toss is 0.5 because, in the long run, about half of coin tosses will land heads.
+- The probability of rolling a 3 on a fair six-sided die is \(1/6\) because, in the long run, about one-sixth of rolls will be 3.
+- If 75 percent of people in a population have at least six years of schooling, then the probability that a randomly selected person has at least six years of schooling is 0.75.
+
+This long-run interpretation is crucial for understanding sample data.
+
+Suppose we ask a survey question about federal child care spending. Respondents can answer:
+
+- We spend too little.
+- We spend about the right amount.
+- We spend too much.
+
+If 49 percent of people in our sample say “too little,” that sample percentage reflects an estimate of the underlying probability that a randomly selected person from the population would answer “too little.”
+
+The true population probability may not be exactly 0.49. But if the sample is large and randomly selected, it is unlikely to be wildly different.
+
+Probability theory gives us a way to say how unlikely.
+
+---
+
+## The Law of Large Numbers
+
+The **law of large numbers** states that, as the number of observations increases, sample statistics tend to converge toward the true population values.
+
+For proportions, we can write this idea as:
+
+\[
+\hat{\pi} \rightarrow \pi \quad \text{as} \quad n \rightarrow \infty
+\]
+
+where:
+
+- \(\pi\) is the true population proportion.
+- \(\hat{\pi}\), pronounced “pi-hat,” is the sample proportion.
+- \(n\) is the sample size.
+- The hat indicates that \(\hat{\pi}\) is an estimator of \(\pi\).
+
+If we flip a fair coin repeatedly, the sample proportion of heads, \(\hat{\pi}\), will converge toward the true probability of heads, \(\pi = 0.5\), as the number of flips grows.
+
+The same logic applies to means:
+
+\[
+\bar{X} \rightarrow \mu_X \quad \text{as} \quad n \rightarrow \infty
+\]
+
+where:
+
+- \(\bar{X}\) is the sample mean.
+- \(\mu_X\) is the population mean.
+
+This does not mean every sample is perfectly accurate. Small samples can deviate substantially from the population. Even large samples can deviate somewhat. But probability theory tells us how those deviations behave.
+
+This is the basic logic of inference:
+
+> We use sample statistics to estimate population parameters, and probability theory tells us how much random error to expect.
+
+---
+
+# Part I: Basic Elements of Probability
+
+## Sample Spaces
+
+A **sample space** is the set of all possible outcomes of a random process.
+
+We usually denote the sample space with \(S\).
+
+For a coin toss, the sample space is:
+
+\[
+S = \{Heads, Tails\}
+\]
+
+For a six-sided die roll, the sample space is:
+
+\[
+S = \{1, 2, 3, 4, 5, 6\}
+\]
+
+For a survey question with three possible responses, the sample space might be:
+
+\[
+S = \{Agree, Disagree, Don’t Know\}
+\]
+
+A valid sample space must be both **mutually exclusive** and **exhaustive**.
+
+**Mutually exclusive** means that only one outcome can occur at a time. A single coin toss cannot be both heads and tails.
+
+**Exhaustive** means that all possible outcomes are included. Something in the sample space must occur.
+
+If the sample space is properly defined, the probabilities of all outcomes must sum to 1.
+
+---
+
+## Outcomes
+
+An **outcome** is one possible result of a random process.
+
+For a coin toss, “heads” is an outcome and “tails” is an outcome.
+
+For a die roll, each number is an outcome:
+
+\[
+1, 2, 3, 4, 5, 6
+\]
+
+For a survey question, each possible response is an outcome.
+
+Each outcome has a probability. If all outcomes are equally likely, calculating probabilities is straightforward.
+
+For a fair coin:
+
+\[
+P(Heads) = \frac{1}{2}
+\]
+
+\[
+P(Tails) = \frac{1}{2}
+\]
+
+For a fair six-sided die:
+
+\[
+P(1) = P(2) = P(3) = P(4) = P(5) = P(6) = \frac{1}{6}
+\]
+
+The probabilities sum to 1:
+
+\[
+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=1
+\]
+
+---
+
+## Probability as Area
+
+Because probabilities are proportions, we can visualize them as areas.
+
+Imagine the full sample space as a rectangle with total area 1. Each outcome occupies some portion of that rectangle. The area assigned to an outcome corresponds to its probability.
+
+For a fair coin, the rectangle is divided into two equal parts:
+
+- Heads: area 0.5
+- Tails: area 0.5
+
+For a fair die, the rectangle is divided into six equal parts:
+
+- 1: area \(1/6\)
+- 2: area \(1/6\)
+- 3: area \(1/6\)
+- 4: area \(1/6\)
+- 5: area \(1/6\)
+- 6: area \(1/6\)
+
+This area-based view will be useful when we discuss unions, intersections, complements, and conditional probabilities.
+
+---
+
+## Events
+
+An **event** is a set of outcomes.
+
+Sometimes an event consists of only one outcome. This is called a **simple event**.
+
+For example, when rolling a die:
+
+\[
+A = \{3\}
+\]
+
+The event is “rolling a 3.”
+
+Other events consist of multiple outcomes. These are called **compound events**.
+
+For example:
+
+\[
+B = \{2, 4, 6\}
+\]
+
+The event is “rolling an even number.”
+
+Another example:
+
+\[
+C = \{1, 2, 3, 4\}
+\]
+
+The event is “rolling a number less than 5.”
+
+In a survey with responses:
+
+\[
+S = \{Strongly Disagree, Disagree, Neutral, Agree, Strongly Agree\}
+\]
+
+we might define an event called “agreement”:
+
+\[
+A = \{Agree, Strongly Agree\}
+\]
+
+An event is simply a subset of the sample space.
+
+---
+
+## Probability of an Event
+
+The probability of an event is the sum of the probabilities of the outcomes included in that event.
+
+Suppose we roll a fair die and define:
+
+\[
+A = \{2, 4, 6\}
+\]
+
+This is the event “rolling an even number.”
+
+Each outcome has probability \(1/6\), so:
+
+\[
+P(A) = P(2) + P(4) + P(6)
+\]
+
+\[
+P(A) = \frac{1}{6} + \frac{1}{6} + \frac{1}{6}
+\]
+
+\[
+P(A) = \frac{3}{6} = \frac{1}{2}
+\]
+
+The event occurs if any one of its outcomes occurs.
+
+---
+
+# Part II: Unions, Intersections, and Complements
+
+## The Union of Events: “A or B”
+
+The **union** of two events includes all outcomes that belong to either event.
+
+The union of \(A\) and \(B\) is written:
+
+\[
+A \cup B
+\]
+
+This means:
+
+\[
+A \text{ or } B
+\]
+
+Importantly, “or” is inclusive. It means A, or B, or both.
+
+Suppose we roll a die and define:
+
+\[
+A = \{2, 4, 6\}
+\]
+
+the event “rolling an even number,” and:
+
+\[
+B = \{1, 2, 3, 4\}
+\]
+
+the event “rolling a number less than 5.”
+
+Then:
+
+\[
+A \cup B = \{1, 2, 3, 4, 6\}
+\]
+
+The only die roll not included is 5.
+
+So:
+
+\[
+P(A \cup B) = \frac{5}{6}
+\]
+
+The union expands the set of outcomes. It asks whether at least one of the events occurred.
+
+---
+
+## The Intersection of Events: “A and B”
+
+The **intersection** of two events includes only outcomes that belong to both events.
+
+The intersection of \(A\) and \(B\) is written:
+
+\[
+A \cap B
+\]
+
+This means:
+
+\[
+A \text{ and } B
+\]
+
+This is more restrictive than a union. Both events must occur.
+
+Using the same example:
+
+\[
+A = \{2, 4, 6\}
+\]
+
+\[
+B = \{1, 2, 3, 4\}
+\]
+
+The outcomes common to both are:
+
+\[
+A \cap B = \{2, 4\}
+\]
+
+So:
+
+\[
+P(A \cap B) = \frac{2}{6} = \frac{1}{3}
+\]
+
+A useful reminder:
+
+- “Or” expands possibilities.
+- “And” restricts possibilities.
+
+This can feel counterintuitive at first. In everyday language, “and” may sound like adding more. In probability, “and” usually means applying an additional condition, so the event becomes narrower.
+
+---
+
+## Disjoint Events
+
+Two events are **disjoint** if they cannot occur at the same time.
+
+Disjoint events have no overlap. Their intersection is empty.
+
+For example, when rolling a die:
+
+\[
+A = \{1, 3, 5\}
+\]
+
+is the event “rolling an odd number,” and:
+
+\[
+B = \{4\}
+\]
+
+is the event “rolling a 4.”
+
+These events cannot both occur. A die roll cannot be both odd and 4.
+
+So:
+
+\[
+A \cap B = \emptyset
+\]
+
+and:
+
+\[
+P(A \cap B) = 0
+\]
+
+Heads and tails in a single coin toss are also disjoint. One coin toss cannot produce both heads and tails.
+
+---
+
+## Complements
+
+The **complement** of an event consists of all outcomes not in that event.
+
+If the event is \(A\), its complement can be written as:
+
+\[
+\tilde{A}
+\]
+
+or sometimes:
+
+\[
+A^c
+\]
+
+Both mean “not A.”
+
+Suppose:
+
+\[
+A = \{2, 4, 6\}
+\]
+
+the event “rolling an even number.”
+
+Then the complement is:
+
+\[
+\tilde{A} = \{1, 3, 5\}
+\]
+
+the event “not rolling an even number,” or rolling an odd number.
+
+An event and its complement always exhaust the sample space. Either \(A\) happens or it does not.
+
+Therefore:
+
+\[
+P(A) + P(\tilde{A}) = 1
+\]
+
+So:
+
+\[
+P(\tilde{A}) = 1 - P(A)
+\]
+
+This is called the **complement rule**.
+
+For example, if the probability that a randomly selected person is eligible to vote is 0.75, then the probability that the person is not eligible to vote is:
+
+\[
+1 - 0.75 = 0.25
+\]
+
+---
+
+# Part III: Basic Rules of Probability
+
+## Probabilities Range from 0 to 1
+
+Every probability must fall between 0 and 1:
+
+\[
+0 \leq P(A) \leq 1
+\]
+
+If:
+
+\[
+P(A) = 0
+\]
+
+then event \(A\) is impossible.
+
+If:
+
+\[
+P(A) = 1
+\]
+
+then event \(A\) is certain.
+
+If you calculate a probability and get something like 1.6 or -0.2, something has gone wrong. A probability cannot exceed 1 and cannot be negative.
+
+The probability of the entire sample space is always 1:
+
+\[
+P(S) = 1
+\]
+
+The probability of something outside the sample space is 0.
+
+---
+
+## Addition Rule for Disjoint Events
+
+If two events are disjoint, then the probability of either event occurring is the sum of their probabilities:
+
+\[
+P(A \cup B) = P(A) + P(B)
+\]
+
+This only works when \(A\) and \(B\) do not overlap.
+
+For example, when rolling a die, let:
+
+\[
+A = \{1\}
+\]
+
+\[
+B = \{6\}
+\]
+
+Since a die roll cannot be both 1 and 6, the events are disjoint.
+
+So:
+
+\[
+P(A \cup B) = P(A) + P(B)
+\]
+
+\[
+P(A \cup B) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3}
+\]
+
+---
+
+## General Addition Rule
+
+If two events may overlap, we need the general addition rule:
+
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]
+
+Why subtract the intersection?
+
+Because when we add \(P(A)\) and \(P(B)\), the overlapping part gets counted twice. Subtracting \(P(A \cap B)\) removes the double-counting.
+
+This formula always works. If the events are disjoint, then:
+
+\[
+P(A \cap B) = 0
+\]
+
+and the formula reduces to:
+
+\[
+P(A \cup B) = P(A) + P(B)
+\]
+
+---
+
+## Expected Value
+
+The **expected value** of a random variable is its probability-weighted average.
+
+If a variable \(Y\) can take values \(y_1, y_2, \ldots, y_k\), then:
+
+\[
+E(Y) = \sum_i y_i P(Y = y_i)
+\]
+
+In words: multiply each possible value by its probability, then add the results.
+
+For example, suppose \(Y\) can take four values:
+
+| \(Y\) | Probability |
+|---:|---:|
+| 1 | 0.5 |
+| 2 | 0.3 |
+| 3 | 0.1 |
+| 4 | 0.1 |
+
+The expected value is:
+
+\[
+E(Y) = 1(0.5) + 2(0.3) + 3(0.1) + 4(0.1)
+\]
+
+\[
+E(Y) = 0.5 + 0.6 + 0.3 + 0.4
+\]
+
+\[
+E(Y) = 1.8
+\]
+
+The expected value is the mean of the probability distribution.
+
+It does not need to be a value that can actually occur. Just as the expected value of a die roll is 3.5, even though no one can roll a 3.5, the expected value here is 1.8 even though \(Y\) only takes whole-number values.
+
+---
+
+# Part IV: Gambler’s Fallacy
+
+## The Fallacy
+
+The **gambler’s fallacy** is the mistaken belief that a random process is “due” to balance out in the short run.
+
+For example:
+
+> I flipped a coin and got heads five times in a row. The next flip has to be tails.
+
+This intuition is understandable, but it is wrong.
+
+If the coin is fair, each flip is independent. The probability of tails on the next flip is still:
+
+\[
+0.5
+\]
+
+The previous flips do not affect the next one.
+
+The law of large numbers tells us that, in the long run, the proportion of heads will converge toward 0.5. But it does not say that short-run imbalances must immediately correct themselves.
+
+The opposite intuition is sometimes called the **hot hand fallacy**:
+
+> I flipped heads five times in a row. I’m on a streak, so heads is more likely next time.
+
+For independent coin tosses, this is also wrong.
+
+Each flip is its own event.
+
+---
+
+## Independence and Streaks
+
+The gambler’s fallacy depends on misunderstanding independence.
+
+If events are independent, then knowing what happened before does not change the probability of what happens next.
+
+For example, if we randomly survey voters and happen to select ten supporters of Candidate A in a row, that does not mean the next person is more likely to support Candidate B. The next person’s response is not affected by the previous respondents.
+
+However, not all real-world events are independent.
+
+Consider basketball. If a player makes several three-point shots in a row, fans may say the player is “hot.” Is that real? Maybe. Unlike coin tosses, basketball shots are not identical independent trials. The player’s confidence, fatigue, defensive pressure, shot location, and rhythm may all matter. A shot from the corner with no defender nearby is not the same as a contested shot from several feet behind the line.
+
+Sports analytics often relies on expected value. A three-point shot may be worth attempting even if it is made less often than a two-point shot because the payoff is larger.
+
+For example, if a player makes 40 percent of three-point shots, the expected value of the shot is:
+
+\[
+3(0.40) = 1.20
+\]
+
+If a player makes 55 percent of two-point shots, the expected value is:
+
+\[
+2(0.55) = 1.10
+\]
+
+Even though the two-point shot is made more often, the three-point shot has the higher expected value.
+
+The same logic appears in football decisions, such as whether to punt or go for it on fourth down. Teams can estimate the expected value of each choice based on field position, yards to go, time remaining, and historical outcomes.
+
+Probability is everywhere. Even when people are arguing about sports, they are often arguing about probability. Sometimes loudly. Very loudly.
+
+---
+
+## Real-World Consequences of Gambler’s Fallacy
+
+Gambler’s fallacy is not limited to casinos or sports. It can affect serious decisions.
+
+Researchers have found evidence that decision-makers sometimes behave as if independent cases should “balance out.”
+
+Examples include:
+
+- **Asylum judges**: A judge who granted asylum in the previous case may be slightly less likely to grant asylum in the next case, even if the cases are independent.
+- **Loan officers**: A loan officer who approved the previous loan may be slightly less likely to approve the next one, holding applicant characteristics constant.
+- **Baseball umpires**: An umpire who called the previous pitch a strike may be slightly less likely to call the next pitch a strike, even after accounting for pitch location.
+
+In each case, the decision-maker may unconsciously try to balance previous decisions, even though the current case should be judged on its own merits.
+
+This is the practical danger of gambler’s fallacy: it can make independent events seem connected when they are not.
+
+---
+
+# Part V: Joint Probabilities
+
+## Joint Outcomes
+
+A **joint probability** is the probability that two or more events occur together.
+
+For example:
+
+- The probability that a person is a Democrat and supports raising the minimum wage.
+- The probability that a die roll is even and less than 5.
+- The probability that two coin tosses both land heads.
+- The probability that one die shows 3 and another die shows 4.
+
+Joint probabilities involve intersections:
+
+\[
+P(A \cap B)
+\]
+
+This is the probability that both \(A\) and \(B\) occur.
+
+---
+
+## Rolling Two Dice
+
+Suppose we roll two dice: one orange and one white.
+
+Each die has six possible outcomes. Together, there are:
+
+\[
+6 \times 6 = 36
+\]
+
+possible joint outcomes.
+
+For example:
+
+- Orange = 1, White = 1
+- Orange = 1, White = 2
+- Orange = 3, White = 4
+- Orange = 6, White = 6
+
+If both dice are fair, each joint outcome has probability:
+
+\[
+\frac{1}{36}
+\]
+
+Now suppose we want the probability that the sum of the two dice is less than or equal to 4.
+
+The favorable outcomes are:
+
+\[
+(1,1), (1,2), (2,1), (1,3), (2,2), (3,1)
+\]
+
+There are 6 favorable outcomes.
+
+So:
+
+\[
+P(\text{sum} \leq 4) = \frac{6}{36} = \frac{1}{6}
+\]
+
+This illustrates the basic strategy for joint probabilities:
+
+1. Identify all joint outcomes.
+2. Identify which joint outcomes satisfy the event.
+3. Add their probabilities.
+
+---
+
+## Joint Frequency Distributions
+
+In data analysis, joint probabilities often begin as joint frequency distributions.
+
+Suppose we survey people and ask two questions:
+
+1. What is your party identification?
+   - Democrat
+   - Independent
+   - Republican
+
+2. Do you support raising the minimum wage?
+   - Yes
+   - No
+
+A joint frequency table might look like this:
+
+| Minimum Wage Position | Democrat | Independent | Republican | Total |
+|---|---:|---:|---:|---:|
+| Yes | 1,050 | 763 | 407 | 2,220 |
+| No | 199 | 396 | 623 | 1,218 |
+| **Total** | 1,249 | 1,159 | 1,030 | 3,438 |
+
+The internal cells show combinations of answers.
+
+For example, 1,050 respondents are Democrats who support raising the minimum wage.
+
+The joint probability of being a Democrat and supporting the minimum wage increase is:
+
+\[
+P(Democrat \cap Yes) = \frac{1050}{3438}
+\]
+
+\[
+P(Democrat \cap Yes) \approx 0.305
+\]
+
+This is a joint probability because two things are true at once.
+
+---
+
+## Joint Probability Distributions
+
+We can convert the frequency table into a joint probability table by dividing every cell by the total sample size.
+
+| Minimum Wage Position | Democrat | Independent | Republican | Total |
+|---|---:|---:|---:|---:|
+| Yes | 0.305 | 0.222 | 0.119 | 0.646 |
+| No | 0.058 | 0.115 | 0.181 | 0.354 |
+| **Total** | 0.363 | 0.337 | 0.300 | 1.000 |
+
+The internal cells are joint probabilities.
+
+For example:
+
+\[
+P(Yes \cap Democrat) = 0.305
+\]
+
+\[
+P(No \cap Republican) = 0.181
+\]
+
+The row and column totals are called **marginal probabilities**.
+
+For example:
+
+\[
+P(Yes) = 0.646
+\]
+
+\[
+P(No) = 0.354
+\]
+
+\[
+P(Democrat) = 0.363
+\]
+
+\[
+P(Independent) = 0.337
+\]
+
+\[
+P(Republican) = 0.300
+\]
+
+They are called marginal probabilities because they appear in the margins of the table. More importantly, they give the probability of one event without regard to the other variable.
+
+---
+
+# Part VI: Conditional Probability and Independence
+
+## Conditional Probability
+
+A **conditional probability** is the probability of one event given that another event has occurred.
+
+The notation is:
+
+\[
+P(A \mid B)
+\]
+
+This is read:
+
+> The probability of A given B.
+
+The formula is:
+
+\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]
+
+The denominator is the event we know has occurred. The numerator is the joint probability that both events occurred.
+
+Conceptually, conditional probability restricts the sample space. Once we know \(B\) happened, we focus only on the part of the sample space where \(B\) is true. Then we ask what fraction of that space also includes \(A\).
+
+---
+
+## Conditional Probability Example: Minimum Wage and Party ID
+
+Using the joint probability table:
+
+| Minimum Wage Position | Democrat | Independent | Republican | Total |
+|---|---:|---:|---:|---:|
+| Yes | 0.305 | 0.222 | 0.119 | 0.646 |
+| No | 0.058 | 0.115 | 0.181 | 0.354 |
+| **Total** | 0.363 | 0.337 | 0.300 | 1.000 |
+
+Suppose we want:
+
+\[
+P(Yes \mid Democrat)
+\]
+
+That is, among Democrats, what is the probability of supporting a minimum wage increase?
+
+Use the formula:
+
+\[
+P(Yes \mid Democrat) = \frac{P(Yes \cap Democrat)}{P(Democrat)}
+\]
+
+Substitute values:
+
+\[
+P(Yes \mid Democrat) = \frac{0.305}{0.363}
+\]
+
+\[
+P(Yes \mid Democrat) \approx 0.840
+\]
+
+So, given that a respondent is a Democrat, the probability that they support raising the minimum wage is about 0.84.
+
+Compare that to the unconditional probability:
+
+\[
+P(Yes) = 0.646
+\]
+
+Knowing that a person is a Democrat changes our estimate of the probability that they support raising the minimum wage.
+
+That suggests party identification and minimum wage attitudes are not independent.
+
+---
+
+## Another Conditional Probability Example
+
+Now suppose we want:
+
+\[
+P(Independent \mid No)
+\]
+
+That is, among those who oppose raising the minimum wage, what is the probability that a person is an independent?
+
+Use the formula:
+
+\[
+P(Independent \mid No) = \frac{P(Independent \cap No)}{P(No)}
+\]
+
+Substitute values:
+
+\[
+P(Independent \mid No) = \frac{0.115}{0.354}
+\]
+
+\[
+P(Independent \mid No) \approx 0.325
+\]
+
+So among people who oppose raising the minimum wage, about 32.5 percent are independents.
+
+Notice that this is close to the unconditional probability of being an independent:
+
+\[
+P(Independent) = 0.337
+\]
+
+That particular conditional probability does not change much. But that alone does not prove independence for the full relationship. Other categories may still differ substantially.
+
+---
+
+## Independence
+
+Two events are **independent** if knowing that one occurred does not change the probability that the other occurred.
+
+Events \(A\) and \(B\) are independent if:
+
+\[
+P(A \mid B) = P(A)
+\]
+
+Equivalently:
+
+\[
+P(B \mid A) = P(B)
+\]
+
+If the conditional probability equals the unconditional probability, then the condition did not matter.
+
+For example, suppose the probability that a randomly selected person has a job is:
+
+\[
+P(Job) = 0.60
+\]
+
+Now suppose we condition on having a high school degree. If:
+
+\[
+P(Job \mid High School Degree) = 0.60
+\]
+
+then having a high school degree provides no information about whether someone has a job. The two events are independent.
+
+But if:
+
+\[
+P(Job \mid High School Degree) > 0.60
+\]
+
+then employment and high school degree status are dependent. Knowing one changes the probability of the other.
+
+---
+
+## Independence with Dice
+
+Suppose we roll two dice, one orange and one white.
+
+Let:
+
+\[
+A = \text{orange die is 1}
+\]
+
+\[
+B = \text{white die is 3}
+\]
+
+The probability that the orange die is 1 is:
+
+\[
+P(A) = \frac{1}{6}
+\]
+
+The probability that both happen is:
+
+\[
+P(A \cap B) = \frac{1}{36}
+\]
+
+The probability that the white die is 3 is:
+
+\[
+P(B) = \frac{1}{6}
+\]
+
+Now calculate:
+
+\[
+P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+\]
+
+\[
+P(A \mid B) = \frac{1/36}{1/6}
+\]
+
+\[
+P(A \mid B) = \frac{1}{6}
+\]
+
+This equals \(P(A)\). So the events are independent.
+
+Knowing the white die is 3 does not change the probability that the orange die is 1.
+
+---
+
+## Independence with Cards
+
+Suppose we draw one card from a standard 52-card deck.
+
+There are 26 red cards, so:
+
+\[
+P(Red) = \frac{26}{52} = \frac{1}{2}
+\]
+
+There are 4 aces, so:
+
+\[
+P(Ace) = \frac{4}{52} = \frac{1}{13}
+\]
+
+There are 2 red aces, so:
+
+\[
+P(Red \cap Ace) = \frac{2}{52}
+\]
+
+Now calculate:
+
+\[
+P(Red \mid Ace) = \frac{P(Red \cap Ace)}{P(Ace)}
+\]
+
+\[
+P(Red \mid Ace) = \frac{2/52}{4/52}
+\]
+
+\[
+P(Red \mid Ace) = \frac{1}{2}
+\]
+
+This equals \(P(Red)\). So being told that the card is an ace does not change the probability that it is red.
+
+Redness and aceness are independent.
+
+---
+
+## Testing for Independence in Tables
+
+In a joint probability table, we can test for independence by comparing conditional and unconditional probabilities.
+
+Using the minimum wage table:
+
+\[
+P(Yes) = 0.646
+\]
+
+But:
+
+\[
+P(Yes \mid Democrat) = 0.840
+\]
+
+Since:
+
+\[
+0.840 \neq 0.646
+\]
+
+party identification and support for raising the minimum wage are not independent.
+
+If two variables have multiple categories, checking one conditional probability may be enough to show dependence. If one conditional probability differs from the unconditional probability, independence fails.
+
+However, finding one category where the conditional probability matches the unconditional probability is not enough to prove independence. Other categories may differ and counterbalance one another.
+
+To establish independence across categorical variables, the relevant conditional probabilities must match across the categories.
+
+---
+
+# Part VII: Multiplication Rules
+
+## General Multiplication Rule
+
+The general multiplication rule gives the probability that two events both occur:
+
+\[
+P(A \cap B) = P(A)P(B \mid A)
+\]
+
+Equivalently:
+
+\[
+P(A \cap B) = P(B)P(A \mid B)
+\]
+
+This formula always works.
+
+It follows directly from the conditional probability formula:
+
+\[
+P(B \mid A) = \frac{P(A \cap B)}{P(A)}
+\]
+
+Rearranging gives:
+
+\[
+P(A \cap B) = P(A)P(B \mid A)
+\]
+
+This rule is especially useful when events are dependent.
+
+For example, suppose:
+
+\[
+P(Republican) = 0.300
+\]
+
+and:
+
+\[
+P(No \mid Republican) = \frac{0.181}{0.300}
+\]
+
+Then:
+
+\[
+P(Republican \cap No) = P(Republican)P(No \mid Republican)
+\]
+
+\[
+P(Republican \cap No) = 0.300 \left(\frac{0.181}{0.300}\right)
+\]
+
+\[
+P(Republican \cap No) = 0.181
+\]
+
+---
+
+## Multiplication Rule for Independent Events
+
+If two events are independent, then:
+
+\[
+P(B \mid A) = P(B)
+\]
+
+So the general multiplication rule becomes:
+
+\[
+P(A \cap B) = P(A)P(B)
+\]
+
+This formula should only be used when the events are independent.
+
+For example, if we flip a fair coin twice, the probability of heads on the first flip is 0.5, and the probability of heads on the second flip is also 0.5.
+
+Because the flips are independent:
+
+\[
+P(Heads \cap Heads) = 0.5 \times 0.5 = 0.25
+\]
+
+For eight heads in a row:
+
+\[
+P(8 \text{ heads}) = 0.5^8
+\]
+
+\[
+P(8 \text{ heads}) = 0.0039
+\]
+
+That is:
+
+\[
+\frac{1}{256}
+\]
+
+The probability is small, but not impossible.
+
+---
+
+## Permutations and Repeated Trials
+
+Suppose we flip a fair coin eight times.
+
+The probability of one specific sequence, such as:
+
+\[
+T H H H H H H H
+\]
+
+is:
+
+\[
+0.5^8 = \frac{1}{256}
+\]
+
+But now suppose we ask:
+
+> What is the probability of getting exactly seven heads in eight flips?
+
+There are multiple sequences that produce exactly seven heads:
+
+\[
+T H H H H H H H
+\]
+
+\[
+H T H H H H H H
+\]
+
+\[
+H H T H H H H H
+\]
+
+and so on.
+
+There are eight possible positions for the one tail. Each sequence has probability \(1/256\).
+
+So:
+
+\[
+P(7 \text{ heads in 8 flips}) = 8 \times \frac{1}{256}
+\]
+
+\[
+P(7 \text{ heads in 8 flips}) = \frac{8}{256} = \frac{1}{32}
+\]
+
+This is the beginning of the logic behind the **binomial distribution**, which describes the number of successes in a fixed number of independent trials where each trial has two possible outcomes.
+
+We will return to that idea later.
+
+---
+
+## Summary of Core Probability Rules
+
+The major rules introduced so far are:
+
+### Complement Rule
+
+\[
+P(\tilde{A}) = 1 - P(A)
+\]
+
+### General Addition Rule
+
+\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]
+
+### Multiplication Rule for Dependent Events
+
+\[
+P(A \cap B) = P(A)P(B \mid A)
+\]
+
+or:
+
+\[
+P(A \cap B) = P(B)P(A \mid B)
+\]
+
+### Multiplication Rule for Independent Events
+
+\[
+P(A \cap B) = P(A)P(B)
+\]
+
+Use the independent-events version only when you know the events are independent.
+
+When in doubt, use the general multiplication rule.
+
+---
+
+# Part VIII: Probability Trees
+
+## Probability Tree Diagrams
+
+A **probability tree** is a visual tool for representing sequences of probabilistic events.
+
+A tree begins with a node. Branches extend from the node to represent possible outcomes. Each branch has a probability. The probabilities coming out of a node must sum to 1.
+
+For example, a coin toss has two branches:
+
+- Heads: 0.5
+- Tails: 0.5
+
+If we toss a coin twice, the tree has two stages.
+
+First toss:
+
+- Heads: 0.5
+- Tails: 0.5
+
+Second toss after heads:
+
+- Heads: 0.5
+- Tails: 0.5
+
+Second toss after tails:
+
+- Heads: 0.5
+- Tails: 0.5
+
+The possible sequences are:
+
+- HH
+- HT
+- TH
+- TT
+
+Each sequence has probability:
+
+\[
+0.5 \times 0.5 = 0.25
+\]
+
+To find the probability of a path, multiply along the branches.
+
+To find the probability of an event that includes multiple paths, add the probabilities of those paths.
+
+---
+
+## Example: Heads Exactly Once
+
+Suppose we toss a coin twice and ask:
+
+> What is the probability of getting heads exactly once?
+
+The favorable paths are:
+
+- HT
+- TH
+
+Each has probability 0.25.
+
+So:
+
+\[
+P(\text{heads exactly once}) = 0.25 + 0.25 = 0.50
+\]
+
+---
+
+## Example: Heads At Least Once
+
+Now ask:
+
+> What is the probability of getting heads at least once?
+
+The favorable paths are:
+
+- HH
+- HT
+- TH
+
+So:
+
+\[
+P(\text{heads at least once}) = 0.25 + 0.25 + 0.25 = 0.75
+\]
+
+We can also use the complement rule.
+
+The only way not to get heads at least once is to get no heads:
+
+- TT
+
+That has probability 0.25.
+
+So:
+
+\[
+P(\text{heads at least once}) = 1 - P(\text{no heads})
+\]
+
+\[
+P(\text{heads at least once}) = 1 - 0.25 = 0.75
+\]
+
+The complement rule is often faster when an event has many possible paths.
+
+---
+
+## Probability Trees with Unequal Probabilities
+
+Suppose airport security randomly sends travelers to either a short screening line or a long screening line.
+
+Assume:
+
+\[
+P(Short) = 0.25
+\]
+
+\[
+P(Long) = 0.75
+\]
+
+Now consider two travelers, one after the other, and assume their assignments are independent.
+
+For the first traveler:
+
+- Short: 0.25
+- Long: 0.75
+
+For the second traveler, regardless of what happened to the first:
+
+- Short: 0.25
+- Long: 0.75
+
+The joint probabilities are:
+
+| First Traveler | Second Traveler | Probability |
+|---|---|---:|
+| Short | Short | \(0.25 \times 0.25 = 0.0625\) |
+| Short | Long | \(0.25 \times 0.75 = 0.1875\) |
+| Long | Short | \(0.75 \times 0.25 = 0.1875\) |
+| Long | Long | \(0.75 \times 0.75 = 0.5625\) |
+
+The probabilities sum to 1.
+
+The probability that both get the short line is:
+
+\[
+0.0625
+\]
+
+The probability that exactly one gets the short line is:
+
+\[
+0.1875 + 0.1875 = 0.375
+\]
+
+The probability that at least one gets the short line is:
+
+\[
+1 - P(Long, Long)
+\]
+
+\[
+1 - 0.5625 = 0.4375
+\]
+
+---
+
+## Probability Trees with Conditional Probabilities
+
+Now suppose the process is not independent.
+
+Imagine that if the first traveler gets the short line, the system becomes less likely to send the next traveler to the short line.
+
+For the first traveler:
+
+\[
+P(Short) = 0.25
+\]
+
+\[
+P(Long) = 0.75
+\]
+
+If the first traveler gets the short line:
+
+\[
+P(Short \mid First Short) = 0.10
+\]
+
+\[
+P(Long \mid First Short) = 0.90
+\]
+
+If the first traveler gets the long line:
+
+\[
+P(Short \mid First Long) = 0.25
+\]
+
+\[
+P(Long \mid First Long) = 0.75
+\]
+
+Now the second-stage probabilities depend on what happened in the first stage.
+
+The joint probabilities are:
+
+| First Traveler | Second Traveler | Probability |
+|---|---|---:|
+| Short | Short | \(0.25 \times 0.10 = 0.025\) |
+| Short | Long | \(0.25 \times 0.90 = 0.225\) |
+| Long | Short | \(0.75 \times 0.25 = 0.1875\) |
+| Long | Long | \(0.75 \times 0.75 = 0.5625\) |
+
+This tree shows dependence. The probabilities facing the second traveler change depending on what happened to the first traveler.
+
+In a probability tree:
+
+- Branch probabilities are conditional probabilities when they depend on previous outcomes.
+- Final path probabilities are joint probabilities.
+- Probabilities leaving each node must sum to 1.
+
+---
+
+## Probability Tree Example: Coin and Die
+
+Suppose we use the following strange procedure.
+
+First, flip a fair coin.
+
+- If the coin lands tails, report the number 3.
+- If the coin lands heads, roll a fair die and report the die result.
+
+What is the probability of hearing each number?
+
+If the coin lands tails, which happens with probability \(1/2\), you hear 3.
+
+If the coin lands heads, which happens with probability \(1/2\), then each die result occurs with probability \(1/6\).
+
+So for numbers 1, 2, 4, 5, and 6:
+
+\[
+P(\text{hear number}) = \frac{1}{2} \times \frac{1}{6} = \frac{1}{12}
+\]
+
+For 3, there are two paths:
+
+1. Tails, then report 3:
+
+\[
+\frac{1}{2}
+\]
+
+2. Heads, then roll 3:
+
+\[
+\frac{1}{2} \times \frac{1}{6} = \frac{1}{12}
+\]
+
+So:
+
+\[
+P(\text{hear 3}) = \frac{1}{2} + \frac{1}{12}
+\]
+
+\[
+P(\text{hear 3}) = \frac{6}{12} + \frac{1}{12}
+\]
+
+\[
+P(\text{hear 3}) = \frac{7}{12}
+\]
+
+If you hear the number 2, you know the coin must have landed heads. It is impossible to hear 2 after tails.
+
+If you hear 3, the coin could have landed tails or heads. Probability trees help us keep track of these possibilities.
+
+---
+
+# Part IX: Contingency Tables
+
+## Cross-Tabulation
+
+A **contingency table**, also called a **cross-tabulation** or **cross-tab**, displays the joint distribution of two categorical variables.
+
+Contingency tables are useful for asking whether the distribution of one variable changes across categories of another variable.
+
+For example, we might ask:
+
+> Does religiosity affect support for federal spending on public schools?
+
+Suppose one survey question asks whether federal spending on public schools should:
+
+- decrease
+- stay the same
+- increase
+
+Another question asks whether religion is an important part of the respondent’s life:
+
+- yes
+- no
+
+A contingency table can show whether opinions about school spending differ between those who say religion is important and those who say it is not.
+
+---
+
+## Dependent and Independent Variables
+
+When building a contingency table, it is often helpful to place the **dependent variable** in the rows and the **independent variable** in the columns.
+
+The **dependent variable** is the outcome we want to explain.
+
+The **independent variable** is the variable we think might affect the outcome.
+
+For example:
+
+- Dependent variable: opinion about federal school spending
+- Independent variable: whether religion is important
+
+This arrangement makes it easier to compare column percentages side by side.
+
+---
+
+## Frequencies, Row Percentages, Column Percentages, and Cell Percentages
+
+A contingency table can display several kinds of information.
+
+### Frequencies
+
+Raw counts show how many cases fall into each combination of categories.
+
+### Row Percentages
+
+Row percentages add across each row to 100 percent. They show how cases in a row are distributed across columns.
+
+### Column Percentages
+
+Column percentages add down each column to 100 percent. They show how cases in a column are distributed across rows.
+
+### Cell Percentages
+
+Cell percentages show the percentage of all cases that fall into each cell. These are similar to joint probabilities.
+
+For example, if 99 out of 4,230 respondents both say religion is not important and support decreasing school spending, then the cell percentage is:
+
+\[
+\frac{99}{4230} \times 100 \approx 2.34\%
+\]
+
+The corresponding joint probability is:
+
+\[
+0.0234
+\]
+
+---
+
+## Example: Religion and School Spending
+
+Suppose we produce a contingency table with column percentages.
+
+| Federal Spending on Public Schools | Religion Not Important | Religion Important |
+|---|---:|---:|
+| Decrease | 6.77% | 8.09% |
+| Keep the same | 20.93% | 24.89% |
+| Increase | 72.30% | 67.02% |
+| **Total** | **100.00%** | **100.00%** |
+
+Because the percentages add down each column, we can compare the two groups side by side.
+
+Among people who say religion is not important, 72.30 percent support increasing federal spending on public schools.
+
+Among people who say religion is important, 67.02 percent support increasing spending.
+
+The difference is about five percentage points. That suggests a modest relationship: people who say religion is important may be somewhat less likely to support increasing federal school spending.
+
+But this difference is not enormous. Later, we will learn statistical tests, such as the chi-square test, that help us evaluate whether differences like this are large enough to provide strong evidence of a relationship in the population.
+
+---
+
+## Contingency Tables and Conditional Probabilities
+
+Column percentages are conditional probabilities.
+
+For example:
+
+\[
+P(Increase \mid Religion\ Not\ Important) = 0.723
+\]
+
+\[
+P(Increase \mid Religion\ Important) = 0.670
+\]
+
+If the variables were perfectly independent, these conditional probabilities would be the same across columns.
+
+If they differ, the variables may be dependent.
+
+A contingency table is therefore a practical tool for studying whether two categorical variables are related.
+
+---
+
+# Key Terms
+
+**Probability**  
+A number between 0 and 1 describing how likely an event is to occur.
+
+**Long-run frequency**  
+The proportion of times an outcome occurs over many repetitions of a random process.
+
+**Law of large numbers**  
+The principle that sample statistics converge toward population values as sample size increases.
+
+**Sample space**  
+The set of all possible outcomes of a random process.
+
+**Outcome**  
+One possible result of a random process.
+
+**Event**  
+A set of one or more outcomes.
+
+**Simple event**  
+An event consisting of one outcome.
+
+**Compound event**  
+An event consisting of multiple outcomes.
+
+**Union**  
+The event that A or B occurs, written \(A \cup B\).
+
+**Intersection**  
+The event that A and B both occur, written \(A \cap B\).
+
+**Disjoint events**  
+Events that cannot occur at the same time.
+
+**Complement**  
+All outcomes not in an event.
+
+**Expected value**  
+The probability-weighted average of a random variable.
+
+**Gambler’s fallacy**  
+The mistaken belief that random outcomes are “due” to balance out in the short run.
+
+**Joint probability**  
+The probability that two or more events occur together.
+
+**Marginal probability**  
+The probability of one event without regard to another variable, often shown in the margins of a table.
+
+**Conditional probability**  
+The probability of one event given that another event has occurred.
+
+**Independence**  
+A relationship in which knowing one event occurred does not change the probability of another event.
+
+**Probability tree**  
+A visual representation of sequential probabilistic events.
+
+**Contingency table**  
+A table showing the joint distribution of two categorical variables.
+
+**Cross-tabulation**  
+Another term for a contingency table.
+
+**Column percentage**  
+A percentage calculated down a column; often interpretable as a conditional probability.
+
+**Row percentage**  
+A percentage calculated across a row.
+
+**Cell percentage**  
+The percentage of all cases that fall into a particular cell; similar to a joint probability.
+
+---
+
+# Chapter Summary
+
+Probability is essential for statistical inference because it connects samples to populations. Random samples do not perfectly reproduce population values, but probability theory tells us how random error behaves.
+
+A probability can be understood as a long-run frequency. The law of large numbers tells us that sample proportions and means converge toward population values as sample size increases.
+
+The basic building blocks of probability are sample spaces, outcomes, and events. Events can be combined using unions, intersections, and complements. The major rules of probability include the complement rule, the addition rule, and multiplication rules for dependent and independent events.
+
+Expected value is the probability-weighted average of a random variable. It provides the mathematical center of a probability distribution and appears in many areas of statistics and decision-making.
+
+Gambler’s fallacy occurs when people mistakenly believe that independent random events must balance out in the short run. This mistake can affect gambling, sports interpretation, judicial decisions, loan approvals, and other repeated judgments.
+
+Joint probabilities describe the probability that two or more events occur together. Conditional probabilities describe the probability of one event given another. These ideas allow us to define and test independence.
+
+Probability trees and contingency tables provide practical tools for organizing probability problems. Trees are especially useful for sequential processes, while contingency tables are useful for analyzing relationships between categorical variables.
+
+The central lesson is that probability gives structure to uncertainty. We may not know what will happen in a single case, but probability helps us understand what should happen in the long run—and that is the foundation of statistical inference.

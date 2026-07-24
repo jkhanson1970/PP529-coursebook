@@ -1,0 +1,739 @@
+---
+title: "Chapter 1: Measurement"
+---
+
+Before we can do statistics, we need data. Before we can have data, we need to measure something.
+
+That sounds simple enough, but measurement is often the hardest part of research. The mathematical tools of statistics can certainly be challenging, but they are systematic and learnable. Measurement, by contrast, requires us to make careful judgments about how abstract ideas become concrete data. If we measure poorly, even the most sophisticated statistical analysis will produce results we cannot trust.
+
+This chapter introduces the logic of measurement. We begin with **concepts**, the ideas we want to study. We then examine **operationalization**, the process of turning concepts into variables. After that, we consider how to assess the quality of measurement using the ideas of **reliability** and **validity**. Finally, we turn to the properties of variables themselves, including their levels of measurement and the implications those properties have for statistical analysis.
+
+By the end of the chapter, you should understand that every data set is the result of choices. Those choices shape what we can learn from the data, what we cannot learn, and how cautious we need to be when interpreting results.
+
+---
+
+## Concepts
+
+A **concept** is an idea, label, or category that we use to describe something in the world. Concepts are the building blocks of research. They allow us to identify, describe, compare, and eventually explain social and political phenomena.
+
+In everyday life, we use concepts constantly. We talk about things like:
+
+- ideology  
+- intelligence  
+- poverty  
+- education  
+- tolerance  
+- democracy  
+- corruption  
+- religiosity  
+- state capacity  
+
+These words refer to things we generally believe are real in some meaningful sense, even if they are not directly visible or easy to measure. For example, we may believe that “intelligence” exists, but we cannot simply point to it in the world in the same way we can point to a chair. We may believe that “poverty” exists, but deciding exactly who counts as poor requires choices. We may speak of someone as “educated,” but that could mean many different things: years of schooling, degrees earned, skills acquired, knowledge gained, or some combination of these.
+
+In this sense, scientific inquiry begins much like language learning. A child learning language points to objects and asks, in effect, “What is that?” Learning about the social world begins similarly: we label and describe. But scientific understanding requires more than naming things. It requires us to study relationships between the things we name.
+
+For example, suppose we have a theory that education is related to tolerance. Perhaps we believe that people with more education tend to be more tolerant of people who are different from them. That is a theoretical claim. To test it, however, we need to measure both education and tolerance. And that is where the difficulty begins.
+
+Measuring education may sound easy at first. We could count years of schooling. But does a person who spent six years completing college necessarily have more education than someone who completed it in four? Does formal schooling capture trade skills, informal learning, or knowledge acquired outside institutions? What about differences in educational quality across schools or countries?
+
+Measuring tolerance may be even harder. Do we ask people whether they consider themselves tolerant? Do we observe their behavior? Do we ask about attitudes toward specific groups? Each option captures something slightly different.
+
+The point is not that measurement is impossible. The point is that measurement always requires choices, and those choices have consequences.
+
+---
+
+## What Makes a Concept Useful?
+
+Researchers often create new concepts. This is one reason academic fields sometimes develop so much jargon. Not all concepts are equally useful, however. A useful concept should have several qualities.
+
+First, it should **resonate** with others. When we use the term, other people should have at least a reasonably shared understanding of what we mean.
+
+Second, it should have an **empirical domain**. That is, it should refer to things that can, at least in principle, be observed, identified, or measured.
+
+Third, it should be **fruitful**. A good concept helps us ask interesting questions, develop explanations, and understand relationships in the world.
+
+Fourth, it should be **distinct** from related concepts. If two concepts overlap too much, it becomes difficult to know what exactly we are studying.
+
+Consider the concept of **state capacity**. In political science, state capacity refers to the ability of a state, or government, to do what it sets out to do. A high-capacity state can implement policies, collect taxes, enforce laws, provide services, and maintain order.
+
+This concept is related to, but distinct from, **governance**. Governance often has a normative component. A well-governed country is usually understood as one in which the state acts effectively and in ways that serve citizens’ interests. State capacity, by contrast, is more neutral. A state may have high capacity and use that capacity for harmful or repressive purposes. It may be effective without being just.
+
+That distinction matters. If we want to study state capacity, we need to measure the government’s ability to act, not whether we approve of what the government does.
+
+---
+
+## From Concepts to Variables: Operationalization
+
+Once we identify a concept, we need to turn it into something we can record as data. This process is called **operationalization**.
+
+Operationalization is the process of taking an abstract concept and developing a concrete measurement strategy that produces a variable.
+
+The process usually involves several steps:
+
+1. **Identify the concept.**  
+   What do we want to study?
+
+2. **Develop a conceptual definition.**  
+   What exactly do we mean by the concept?
+
+3. **Create a measurement strategy.**  
+   What procedure will we use to measure it?
+
+4. **Record the result as a variable.**  
+   What values will appear in our data set?
+
+A **variable** is the recorded result of measurement. It must have at least two possible values. If every case has the same value, then it is not really a variable; it is a constant.
+
+For example, if we conduct a survey of people and ask, “Are you human?” we will presumably get the same answer from everyone. That would not be a useful variable. If we ask, “What is your age?” or “What is your highest level of education?” we expect answers to vary across people.
+
+---
+
+## Example: Measuring Political Ideology
+
+To see operationalization in practice, consider the concept of **political ideology**.
+
+At the conceptual level, ideology refers to a structured set of political beliefs. But that definition is still abstract. To measure ideology, we need to decide what kind of structure we think ideology has.
+
+One common strategy is to imagine ideology as a single dimension running from liberal to conservative, or left to right. This imposes a particular structure on the concept. It assumes that people can be located somewhere along one ideological spectrum.
+
+That may be useful, but it is not the only way to think about ideology. Political beliefs may have multiple dimensions. For example, someone may be economically conservative but socially liberal, or economically progressive but socially conservative. A single left-right scale may not capture that complexity.
+
+Still, the one-dimensional liberal-conservative scale has been widely used, especially in survey research. One of the most important examples comes from the **American National Election Studies**. The ANES is a long-running study of political opinion in the United States, conducted during presidential election years. Much of the foundational work behind this study was developed at the University of Michigan’s Institute for Social Research.
+
+The ANES asks respondents a question similar to the following:
+
+> We hear a lot of talk these days about liberals and conservatives. Here is a seven-point scale on which the political views that people may hold are arranged from extremely liberal to extremely conservative. Where would you place yourself on this scale?
+
+The scale is usually arranged as follows:
+
+1. Extremely liberal  
+2. Liberal  
+3. Slightly liberal  
+4. Moderate or middle of the road  
+5. Slightly conservative  
+6. Conservative  
+7. Extremely conservative  
+
+This measurement strategy produces a variable with seven possible values.
+
+Notice how many choices are embedded in this measure. The researchers have decided that ideology can be represented as a single dimension. They have decided that “liberal” and “conservative” are meaningful endpoints. They have decided that respondents can place themselves on the scale. They have also attached numbers to the categories.
+
+Those numbers are useful, but we need to be careful. This is an **ordinal** scale, meaning the categories have an order. A score of 6 is more conservative than a score of 5, and a score of 5 is more conservative than a score of 4. But we cannot be certain that the distance between 4 and 5 is the same as the distance between 6 and 7.
+
+That matters because, strictly speaking, we should be cautious about calculating averages from ordinal scales. In practice, social scientists often do calculate means of ordinal variables like ideology. This is not necessarily disastrous, especially when the scale behaves approximately like a numeric scale. But it is important to understand the assumption being made.
+
+There are formal rules, and then there is what researchers often do. The two do not always match perfectly.
+
+---
+
+## Example: Measuring Education
+
+Education is another concept that initially seems easy to measure but becomes complicated quickly.
+
+One common strategy is to measure education by **years of schooling**. This has several advantages. It is simple, easy to ask in a survey, and widely understood. If someone says they completed twelve years of schooling, we generally understand what that means. It also allows for straightforward comparisons across individuals.
+
+But years of schooling may not capture what we really mean by education. Two people may spend the same number of years in school and learn very different things. Educational quality varies dramatically across schools and countries. Some people acquire substantial knowledge or skills outside formal schooling. Others attend school without gaining the skills we might associate with being educated.
+
+Another strategy is to measure education by **highest degree completed**. This is also common. A survey might ask whether a person has completed high school, some college, a bachelor’s degree, a master’s degree, a professional degree, or a doctorate.
+
+This measure captures formal credentials, which can be important for employment, income, and social status. But it also has limitations. A bachelor’s degree in one field may not be directly comparable to a bachelor’s degree in another. A professional degree, a master’s degree, and a PhD are not always easily ranked along a single dimension. The content, duration, and meaning of degrees differ across contexts.
+
+A third strategy might focus on **skills**, such as literacy, numeracy, writing ability, or technical competency. This may come closer to what some people mean by education, but it is harder to measure. Asking people to report how much they know is unreliable. Testing people may be expensive, time-consuming, or culturally biased.
+
+Each measurement strategy captures part of the concept and misses part of it. There is no perfect measure. The researcher’s task is to choose a strategy that is appropriate for the research question and to be honest about its limitations.
+
+---
+
+## Measurement Choices in Existing Data
+
+Researchers often do not collect their own data. Instead, they use data collected by governments, organizations, schools, agencies, or previous researchers. In these cases, the measurement strategy has already been chosen.
+
+For example, education researchers may use administrative data from a state department of education. Those data may include variables such as race and ethnicity, eligibility for free or reduced-price lunch, standardized test scores, school attendance, and graduation status. The researcher does not get to redesign how those variables were measured. Instead, the researcher must understand the choices that were already made.
+
+Census data provide a powerful example. The U.S. Census has measured race and ethnicity in different ways over time. The categories have changed repeatedly, reflecting political, social, and scientific assumptions of different eras.
+
+Historically, race was not always self-identified by respondents. Enumerators often assigned racial categories based on their own observation. Earlier censuses also used a much smaller number of categories, forcing many people into classifications that did not reflect their identities. People of mixed racial background often had to select one category or were assigned one.
+
+By 2000, respondents could choose more than one racial category. The number of available categories has expanded, and write-in options have become more common. This allows for richer self-identification, but it also creates complications for analysis.
+
+The 2020 Census, for example, separated questions about Hispanic, Latino, or Spanish origin from questions about race. Respondents could indicate whether they were of Hispanic, Latino, or Spanish origin and then separately select one or more racial categories. They could also provide more specific origins, such as Mexican, Puerto Rican, Cuban, or another identity.
+
+This structure reflects an important distinction: Hispanic or Latino origin is treated as an ethnicity, not a race. But identities are complex. “Hispanic” often refers to Spanish-speaking heritage, while “Latino” often refers to Latin American geographic origin. These categories do not always map neatly onto how people understand themselves.
+
+The race question includes categories such as White, Black or African American, American Indian or Alaska Native, Asian origin categories, Native Hawaiian and Pacific Islander categories, and other write-in options. Some options refer to racial categories, some to national origins, and some to broader geographic or ethnic groupings.
+
+This flexibility can better reflect how people identify. But it also creates analytical challenges. If researchers download millions of records, they must decide how to group responses. Should someone who selects multiple categories be counted in each? Should they be coded as multiracial? How should write-in responses be treated? What happens when categories have different meanings across cultural contexts?
+
+These are not merely technical questions. They are political and social questions as well. Census categories can shape identity. When a state repeatedly offers certain categories, families and communities may come to understand themselves through those categories. Measurement does not merely reflect the world; sometimes it helps construct the world.
+
+Measurement choices also have material consequences. Census data influence political representation, federal funding, civil rights enforcement, and public policy. Groups may lobby to be included in official categories because recognition affects visibility and resources.
+
+The lesson is simple but important: whenever we see a table, graph, or statistical result, we should ask how the variables were measured. We should not lose our critical instincts. Every data set reflects measurement decisions, and those decisions affect interpretation.
+
+---
+
+## Assessing Measurement Quality
+
+A good measurement strategy should be both **reliable** and **valid**.
+
+These are two of the most important concepts in research methods.
+
+---
+
+### Reliability
+
+A measurement strategy is **reliable** if it produces consistent results.
+
+If the same measurement strategy is applied multiple times to the same object, person, place, or thing, it should produce the same result, assuming the thing being measured has not changed.
+
+For example, suppose you step on a bathroom scale and it reports your weight. You step off, step back on, and it gives a different number. You move the scale to another part of the room and it gives yet another number. That scale is unreliable.
+
+Reliability is about reproducibility. If I use the measure, you use the measure, and another researcher uses the measure, we should all get the same answer when measuring the same thing under the same conditions.
+
+However, reliability does not require accuracy. A scale that always reports your weight as five pounds heavier than it really is may be perfectly reliable. It is consistently wrong. Reliability means consistency, not correctness.
+
+---
+
+### Validity
+
+A measurement strategy is **valid** if it measures the concept it is intended to measure.
+
+Validity has two components. First, the measure must be pointed at the right concept. Second, it must measure that concept accurately.
+
+Suppose we want to measure education and decide to use years of schooling. Is that valid? It depends on what we mean by education. If we mean time spent in formal educational institutions, then years of schooling is valid. If we mean knowledge, skills, or intellectual development, then years of schooling may be only partially valid.
+
+Validity asks: Are we actually measuring what we think we are measuring?
+
+Reliability and validity are related but distinct. A measure can be reliable without being valid. For example, a biased scale may give the same wrong answer every time. It is reliable but invalid.
+
+A measure that is highly unreliable cannot be fully valid, because validity requires accuracy. If a measure produces wildly inconsistent results, it cannot accurately capture the intended concept.
+
+One common way to visualize reliability and validity is with a target:
+
+- A reliable but invalid measure produces results clustered together but away from the bullseye.  
+- An unreliable measure produces results scattered widely.  
+- A valid and reliable measure produces results clustered near the bullseye.  
+
+Reliability is about consistency. Validity is about truthfulness to the concept.
+
+---
+
+## Change Does Not Necessarily Mean Unreliability
+
+One point often causes confusion: if the thing being measured changes, then the measurement should change.
+
+Suppose we ask students how many times they engaged in binge drinking during the past month. If we ask at the beginning of the semester, the answer may differ from the answer during midterms. That does not necessarily mean the measure is unreliable. It may simply mean behavior changed.
+
+But suppose our real goal is to measure a more stable trait, such as a person’s general drinking habits. Asking only about last week may not be reliable for that broader concept. Last week could have been unusual.
+
+This distinction matters. A question can be reliable for a narrow concept but unreliable for a broader one.
+
+For example:
+
+> How many times did you attend religious services last week?
+
+This may reliably measure whether someone attended services last week. But it may not reliably measure religiosity as a broader personal characteristic.
+
+---
+
+## Response Bias
+
+A common threat to measurement quality is **response bias**.
+
+Response bias occurs when the way a question is asked, or the context in which it is asked, leads respondents to give answers that do not accurately reflect their true beliefs, behaviors, or experiences.
+
+This often happens when respondents feel social pressure.
+
+For example, surveys frequently ask:
+
+> Did you vote in the last election?
+
+In the United States, the percentage of people who say yes is usually higher than actual turnout. Some respondents may misremember. Some may generally think of themselves as voters and answer accordingly. Others may know that voting is socially approved and feel pressure to say yes.
+
+Response bias can also occur when questions ask about illegal or sensitive behavior. Suppose researchers want to study corruption and ask business owners:
+
+> Did you pay a bribe to receive a permit?
+
+Respondents may be reluctant to admit participating in an illegal transaction. A less threatening question might ask:
+
+> How common is it for businesses in your industry to be asked for unofficial payments when applying for permits?
+
+This does not eliminate the problem, but it may reduce the pressure on respondents.
+
+Similarly, if researchers want to study racial prejudice, directly asking people whether race influenced their vote may not produce truthful answers. Respondents may not want to admit prejudice, or they may not be fully aware of how race shaped their behavior. Researchers may therefore use indirect methods, such as experiments that vary candidate race while holding policy positions constant.
+
+Good measurement requires anticipating how people interpret questions and how social pressures shape responses.
+
+---
+
+## Example: Measuring Religiosity
+
+Religiosity is a useful example because it is difficult to define and measure.
+
+Suppose we want to know how religious a person is. We might ask:
+
+> Did you attend religious services last week?  
+> Yes or no.
+
+This question is simple and may be reliable for measuring attendance last week. But is it valid as a measure of religiosity?
+
+There are several problems. A person may attend services for family or social reasons without feeling religious. Another person may be deeply religious but unable to attend services because of illness, disability, transportation barriers, or because their religious practice does not center on formal services. Religious holidays may also affect attendance in particular weeks.
+
+A broader question might be:
+
+> How frequently do you attend religious services?  
+> Every week, almost every week, once or twice a month, a few times a year, or never.
+
+This improves on the previous question by capturing usual behavior rather than one week. But it still assumes that religious service attendance is closely related to religiosity.
+
+Another possibility is:
+
+> Is religion an important part of your life?  
+> Yes or no.
+
+This gets closer to internal belief, but it forces a complex matter into a binary answer. Someone might feel that religion is somewhat important, occasionally important, culturally important, spiritually important, or important in some contexts but not others.
+
+A more scaled question might be:
+
+> On a scale from 1 to 10, how much have you internalized a religious belief system and made its practice a regular part of your life?
+
+This appears more nuanced, but it has its own problems. The wording is complex. “Internalized a religious belief system” may mean different things to different people. The question also asks two things at once: whether someone has internalized beliefs and whether they practice them regularly. A person may have strong beliefs but little practice, or regular practice but weaker belief.
+
+The scale itself is also ambiguous. What does a 7 mean? How is it different from a 6 or an 8? Different respondents may interpret the numbers very differently.
+
+This example illustrates a general rule: the hardest part of data analysis is often not the statistical analysis itself. It is creating measures that actually capture the concepts we care about.
+
+---
+
+## Variables
+
+A measurement strategy produces a **variable**. A variable is a recorded feature that can take on different values across cases.
+
+Variables have properties. These properties determine what we can do with the data. They affect whether we can calculate means, create certain types of graphs, use particular statistical tests, or interpret results in specific ways.
+
+Three important ways to classify variables are:
+
+1. **Categorical versus quantitative**  
+2. **Level of measurement: nominal, ordinal, interval, or ratio**  
+3. **Discrete versus continuous**
+
+These classifications overlap, but each gives us useful information.
+
+---
+
+## Categorical and Quantitative Variables
+
+The most basic distinction is between **categorical** and **quantitative** variables.
+
+A **quantitative variable** uses numbers in a mathematically meaningful way. The values represent amounts.
+
+Examples include:
+
+- income  
+- age  
+- temperature  
+- number of siblings  
+- years of education  
+- distance  
+- time  
+
+With quantitative variables, the numbers have mathematical meaning. If one person earns $40,000 and another earns $80,000, the second person earns twice as much. If one object is 10 centimeters long and another is 20 centimeters long, the second is twice as long.
+
+A **categorical variable** places cases into categories. The categories may be named with words or represented by numbers, but the numbers do not necessarily have mathematical meaning.
+
+Examples include:
+
+- political party  
+- region  
+- gender  
+- religious affiliation  
+- employment status  
+- agreement or disagreement with a statement  
+
+For example, a data set might code Democrats as 1, Republicans as 2, and Independents as 3. But that does not mean Republicans are “twice” Democrats or that Independents are “three times” Democrats. The numbers are just labels.
+
+This distinction is crucial because statistical software will often calculate things whether or not they make conceptual sense. The software may compute a mean for party identification coded as 1, 2, and 3. But that mean is meaningless unless the numbers represent real quantities.
+
+---
+
+## Levels of Measurement
+
+The second classification concerns the **level of measurement**. The three most important levels are:
+
+1. Nominal  
+2. Ordinal  
+3. Interval  
+
+A fourth, ratio, is often treated separately, though for many practical purposes it can be understood as a special kind of interval variable.
+
+---
+
+### Nominal Variables
+
+A **nominal variable** is a categorical variable whose categories have no inherent order.
+
+The word “nominal” comes from the idea of naming. Nominal variables name categories.
+
+Examples include:
+
+- religious affiliation  
+- gender  
+- occupation  
+- region  
+- political party  
+- race or ethnicity categories  
+
+With nominal variables, one category is not naturally higher or lower than another. The categories are simply different.
+
+Because there is no order, the only measure of central tendency available for a nominal variable is the **mode**, or most common category. There is no median and no meaningful mean.
+
+---
+
+### Ordinal Variables
+
+An **ordinal variable** is a categorical variable whose categories have a meaningful order.
+
+Examples include:
+
+- strongly disagree, disagree, neutral, agree, strongly agree  
+- extremely liberal to extremely conservative  
+- low, medium, high  
+- less than high school, high school diploma, some college, bachelor’s degree, graduate degree  
+
+Ordinal variables tell us order, but not exact distance. We know that “strongly agree” is more agreement than “agree,” but we do not know whether the distance between “agree” and “strongly agree” is the same as the distance between “neutral” and “agree.”
+
+A common ordinal scale is the **Likert scale**, often used in survey research. A typical Likert-type item asks respondents whether they strongly disagree, disagree, neither agree nor disagree, agree, or strongly agree with a statement.
+
+A small pronunciation note: Rensis Likert, who developed the approach, pronounced his name “Lick-ert,” not “Lie-kert.” The latter pronunciation is common, but the former is historically correct.
+
+For ordinal variables, we can identify a **mode** and a **median**. The median is the category containing the middle case when all cases are ordered. It is not necessarily the category that appears in the middle of the list of possible categories.
+
+Strictly speaking, ordinal variables do not have true means, because the distances between categories are not known to be equal. In practice, researchers sometimes calculate means for ordinal scales when the categories seem to approximate equal intervals.
+
+---
+
+### Interval Variables
+
+An **interval variable** is a quantitative variable with meaningful numeric distances between values.
+
+Examples include:
+
+- temperature in Fahrenheit or Celsius  
+- years  
+- test scores on certain scales  
+- distance  
+- time  
+
+The key feature is that one-unit differences have consistent meaning. The difference between 10 and 11 degrees is the same size as the difference between 20 and 21 degrees.
+
+Interval variables allow us to calculate means, medians, and modes, though the mode may be less informative when there are many possible values.
+
+---
+
+### Ratio Variables
+
+A **ratio variable** is an interval variable with a true zero.
+
+A true zero means the complete absence of whatever is being measured. This allows ratio comparisons.
+
+Examples include:
+
+- income  
+- age  
+- number of children  
+- number of siblings  
+- distance  
+- weight  
+
+If one person has $20,000 and another has $10,000, the first has twice as much income. If one person has four siblings and another has two, the first has twice as many siblings.
+
+Temperature in Fahrenheit or Celsius is not a ratio variable because zero degrees does not mean “no temperature.” Sixty degrees Fahrenheit is not twice as hot as thirty degrees Fahrenheit.
+
+For many purposes in introductory statistics, the key distinction is whether the variable is categorical, ordinal, or quantitative. But understanding ratio variables helps clarify what kinds of mathematical statements are meaningful.
+
+---
+
+## Discrete and Continuous Variables
+
+The third classification concerns whether a variable is **discrete** or **continuous**.
+
+A **discrete variable** has a well-defined set of possible values. Count variables are discrete.
+
+Examples include:
+
+- number of children  
+- number of siblings  
+- number of schools in a district  
+- number of votes  
+- number of arrests  
+
+You can have 2 children or 3 children, but not 2.47 children.
+
+Categorical variables are also discrete because cases fall into distinct categories.
+
+A **continuous variable** can, in principle, take on infinitely many values within a range.
+
+Examples include:
+
+- distance  
+- time  
+- height  
+- weight  
+- temperature  
+
+A distance can be measured in meters, centimeters, millimeters, or smaller units. In principle, we can always divide the scale more finely.
+
+In practice, continuous variables are often recorded in rounded form. Age is technically continuous, but surveys usually record age in whole years. A three-year-old may proudly say they are “three and a half,” but most data sets do not record age that precisely.
+
+Likewise, income may seem continuous in principle, but in practice it is often recorded in dollars or categories. Measurement always involves practical choices.
+
+---
+
+## Why Variable Type Matters
+
+The properties of variables determine what we can do with them.
+
+For example, the type of graph we use depends on the variable. A continuous variable is often displayed using a **histogram**, where bars touch because the underlying scale is continuous. A discrete categorical variable is often displayed using a **bar chart**, where bars are separated because the categories are distinct.
+
+Variable type also affects what summary statistics are meaningful.
+
+The three common measures of central tendency are:
+
+- **Mode**: the most common value or category  
+- **Median**: the middle value when cases are ordered  
+- **Mean**: the arithmetic average  
+
+Which measures can we use?
+
+| Level of Measurement | Mode | Median | Mean |
+|---|---:|---:|---:|
+| Nominal | Yes | No | No |
+| Ordinal | Yes | Yes | Usually no, though sometimes approximated |
+| Interval/Ratio | Yes | Yes | Yes |
+
+For nominal variables, only the mode makes sense. If religious affiliation is coded as Protestant = 1, Catholic = 2, Jewish = 3, Muslim = 4, Hindu = 5, and no religion = 6, calculating the average would not produce a meaningful result.
+
+For ordinal variables, the median and mode are meaningful because the categories can be ordered. But the mean is questionable unless we are willing to assume that the distances between categories are approximately equal.
+
+For interval and ratio variables, the mean, median, and mode are all possible, though the mode is often less useful when there are many unique values.
+
+---
+
+## Dichotomous Variables
+
+A **dichotomous variable** has exactly two categories.
+
+Examples include:
+
+- yes/no  
+- employed/not employed  
+- voted/did not vote  
+- Democrat/not Democrat  
+- treatment/control  
+- heads/tails  
+
+Dichotomous variables are technically nominal because they consist of categories. However, they have special properties when coded as 0 and 1.
+
+For example:
+
+- Employed = 1  
+- Not employed = 0  
+
+If we calculate the mean of this variable, the result is the proportion of cases coded 1.
+
+Suppose we have ten people. Seven are employed and three are not. The variable contains seven 1s and three 0s. The mean is:
+
+\[
+\frac{1+1+1+1+1+1+1+0+0+0}{10} = 0.7
+\]
+
+That means 70 percent of the sample is employed.
+
+This is a special case where taking the mean of a nominal variable makes sense because of the 0/1 coding. Dichotomous variables are also important in regression analysis, where they can be used as indicators or “dummy variables.”
+
+The term **dummy variable** simply means that the variable stands in for membership in a category. It is not a judgment about the variable or the people in the category.
+
+---
+
+## Practical Flexibility in Measurement
+
+The rules about measurement levels are important, but researchers sometimes bend them for practical reasons.
+
+For example, researchers often calculate means for ordinal scales. Grade point averages are a familiar example. Letter grades are ordinal: A is higher than B, B is higher than C, and so on. Yet schools often convert them into numbers and calculate averages.
+
+Similarly, political scientists often calculate mean ideology scores using seven-point ideology scales. This is not strictly ideal, but if the scale behaves approximately like an interval variable, the mean may still be useful.
+
+Researchers also sometimes convert interval or ratio variables into ordinal categories. Income is a common example. Instead of asking people to report exact income, a survey might ask them to choose a range:
+
+- Less than $10,000  
+- $10,000 to $24,999  
+- $25,000 to $49,999  
+- $50,000 to $99,999  
+- $100,000 or more  
+
+This loses information, but it has advantages. People may be more willing to report a category than an exact income. They may also know their approximate income range more easily than their precise income. In policy research, income categories may correspond to eligibility thresholds for public programs.
+
+Sometimes researchers treat discrete variables as continuous when there are many possible values. For example, the number of students in a school is technically discrete. A school can have 423 students or 424 students, but not 423.6 students. Yet if we are analyzing hundreds of schools with enrollments ranging from 50 to 3,000, we might graph enrollment using a histogram and treat it as approximately continuous.
+
+The key is not to memorize rules mechanically. The key is to understand what assumptions we are making and whether those assumptions are reasonable for the analysis at hand.
+
+---
+
+## Indexes and Scales
+
+Researchers often combine multiple items into a single measure. Two common terms for such measures are **index** and **scale**. These terms are sometimes used loosely, but they have distinct meanings.
+
+---
+
+### Indexes
+
+An **index** is a measure constructed by combining multiple indicators, usually by adding them together.
+
+The items in an index are generally treated as equivalent contributors to the overall measure.
+
+For example, suppose we want to measure environmental protection across countries. We might create a list of environmental policy areas:
+
+- air quality regulation  
+- water quality regulation  
+- endangered species protection  
+- carbon emissions policy  
+- waste disposal regulation  
+- forest conservation policy  
+
+For each country, we record whether it has a law in each area. If a country has a law, it receives 1 point. If not, it receives 0. We then add the points to create an environmental protection index.
+
+A country with laws in five areas scores higher than a country with laws in two areas.
+
+This is a simple example, and real indexes are often more complicated. Researchers may weight some items more heavily than others, assess enforcement rather than legal existence, or use expert ratings. But the basic logic is the same: combine multiple indicators into one measure.
+
+---
+
+### Scales
+
+A **scale** is also composed of multiple items, but the items are usually arranged to capture position along an underlying dimension.
+
+Scales are often used to measure attitudes, beliefs, or intensity.
+
+A familiar example is the Likert-type scale. Respondents are given statements and asked how strongly they agree or disagree. For example:
+
+> Government should do more to reduce income inequality.
+
+Response options might be:
+
+0. Strongly disagree  
+1. Disagree  
+2. Neither agree nor disagree  
+3. Agree  
+4. Strongly agree  
+
+Strictly speaking, Likert’s original idea involved using multiple such items and aggregating responses to measure an underlying attitude. Today, people often refer to a single agree-disagree item as a Likert scale, even though that is a simplified use of the term.
+
+Another type of scale is a **Guttman scale**, which measures intensity by arranging statements in a cumulative order.
+
+For example, suppose we want to measure attitudes about abortion rights. A Guttman-style scale might arrange positions from most restrictive to least restrictive:
+
+1. Abortion should never be permitted under any circumstance.  
+2. Abortion should be permitted only when the life of the pregnant person is at risk.  
+3. Abortion should be permitted in cases of rape or incest.  
+4. Abortion should be permitted for serious health or fetal concerns.  
+5. Abortion should be permitted for broader personal or social reasons.  
+6. Abortion should be permitted whenever the pregnant person chooses.  
+
+The logic is that someone who endorses a more permissive statement may also endorse the narrower exceptions listed before it. In practice, people’s views are often more complex than a perfect scale allows, but the approach illustrates how researchers can try to measure intensity along a dimension.
+
+---
+
+## The Central Lesson: Data Are Produced by Methods
+
+The most important lesson of this chapter is that data are not simply “out there” waiting to be collected. Data are produced through methods.
+
+Every variable reflects choices:
+
+- What concept are we trying to measure?  
+- How do we define it?  
+- What procedure do we use?  
+- What categories or scale do we provide?  
+- Who reports the information?  
+- What incentives or pressures affect the response?  
+- How are answers coded?  
+- What information is lost when we simplify?  
+
+These choices matter. They affect what we can conclude from our analysis.
+
+A classic illustration is the fishing net. If a net has large holes, small fish pass through. After pulling up the net, we might conclude that there are no small fish in the ocean. But that conclusion would be wrong. The problem is not the ocean; it is the measurement strategy.
+
+The same is true in social research. If our survey, administrative data, or coding strategy cannot capture certain people, behaviors, identities, or experiences, we may mistakenly conclude that they do not exist or do not matter.
+
+Good researchers remain humble about measurement. They ask not only, “What do the data show?” but also, “How were these data created?”
+
+---
+
+## Key Terms
+
+**Concept**  
+An abstract idea or label used to describe something in the world.
+
+**Operationalization**  
+The process of turning a concept into a measurable variable.
+
+**Variable**  
+A recorded characteristic that can take on different values.
+
+**Measurement strategy**  
+The procedure used to measure a concept and record it as data.
+
+**Reliability**  
+The consistency or reproducibility of a measure.
+
+**Validity**  
+The extent to which a measure captures the concept it is intended to measure.
+
+**Response bias**  
+A measurement problem that occurs when respondents give answers that do not accurately reflect their true beliefs, behaviors, or experiences.
+
+**Categorical variable**  
+A variable that places cases into categories.
+
+**Quantitative variable**  
+A variable whose values are numbers with mathematical meaning.
+
+**Nominal variable**  
+A categorical variable with no inherent ordering among categories.
+
+**Ordinal variable**  
+A categorical variable whose categories have a meaningful order.
+
+**Interval variable**  
+A quantitative variable with equal distances between values.
+
+**Ratio variable**  
+An interval variable with a true zero.
+
+**Discrete variable**  
+A variable with distinct, separate possible values.
+
+**Continuous variable**  
+A variable that can, in principle, take on infinitely many values within a range.
+
+**Dichotomous variable**  
+A variable with exactly two categories, often coded 0 and 1.
+
+**Index**  
+A measure created by combining multiple indicators, often by adding them together.
+
+**Scale**  
+A measure designed to locate cases along an underlying dimension, often using ordered response options.
+
+---
+
+## Chapter Summary
+
+Measurement is the foundation of statistical analysis. Before we can analyze data, we must decide how to turn abstract concepts into concrete variables. This process requires conceptual clarity, practical judgment, and awareness of trade-offs.
+
+No measure is perfect. A measure may be easy to collect but only loosely connected to the concept. Another may be conceptually strong but difficult to administer. Existing data may be convenient but built on measurement choices we would not have made ourselves.
+
+Reliable measures produce consistent results. Valid measures capture the intended concept. The best measures are both reliable and valid, but many real-world measures fall short in some way.
+
+Finally, variables have properties that shape statistical analysis. Whether a variable is nominal, ordinal, interval, ratio, discrete, continuous, categorical, quantitative, or dichotomous affects what summaries, graphs, and statistical procedures are appropriate.
+
+Measurement is not a preliminary nuisance before the “real” analysis begins. Measurement is part of the analysis. If we do not understand how the data were produced, we cannot responsibly interpret what the data seem to show.

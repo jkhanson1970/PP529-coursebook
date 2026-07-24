@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Chapter 3: Descriptive Statistics – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-4.html" rel="next">
+<link href="./chapter-2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link active" data-scroll-target="#distributions"><span class="header-section-number">4.1</span> Distributions</a></li>
+  <li><a href="#distributions-of-categorical-and-discrete-variables" id="toc-distributions-of-categorical-and-discrete-variables" class="nav-link" data-scroll-target="#distributions-of-categorical-and-discrete-variables"><span class="header-section-number">4.2</span> Distributions of Categorical and Discrete Variables</a></li>
+  <li><a href="#distributions-of-continuous-variables" id="toc-distributions-of-continuous-variables" class="nav-link" data-scroll-target="#distributions-of-continuous-variables"><span class="header-section-number">4.3</span> Distributions of Continuous Variables</a></li>
+  <li><a href="#describing-distributions" id="toc-describing-distributions" class="nav-link" data-scroll-target="#describing-distributions"><span class="header-section-number">4.4</span> Describing Distributions</a></li>
+  <li><a href="#part-i-measures-of-central-tendency" id="toc-part-i-measures-of-central-tendency" class="nav-link" data-scroll-target="#part-i-measures-of-central-tendency"><span class="header-section-number">5</span> Part I: Measures of Central Tendency</a>
+  <ul class="collapse">
+  <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link" data-scroll-target="#central-tendency"><span class="header-section-number">5.1</span> Central Tendency</a></li>
+  <li><a href="#the-mean" id="toc-the-mean" class="nav-link" data-scroll-target="#the-mean"><span class="header-section-number">5.2</span> The Mean</a></li>
+  <li><a href="#summation-notation" id="toc-summation-notation" class="nav-link" data-scroll-target="#summation-notation"><span class="header-section-number">5.3</span> Summation Notation</a></li>
+  <li><a href="#the-population-mean" id="toc-the-population-mean" class="nav-link" data-scroll-target="#the-population-mean"><span class="header-section-number">5.4</span> The Population Mean</a></li>
+  <li><a href="#the-sample-mean" id="toc-the-sample-mean" class="nav-link" data-scroll-target="#the-sample-mean"><span class="header-section-number">5.5</span> The Sample Mean</a></li>
+  <li><a href="#the-median" id="toc-the-median" class="nav-link" data-scroll-target="#the-median"><span class="header-section-number">5.6</span> The Median</a></li>
+  <li><a href="#finding-the-median" id="toc-finding-the-median" class="nav-link" data-scroll-target="#finding-the-median"><span class="header-section-number">5.7</span> Finding the Median</a>
+  <ul class="collapse">
+  <li><a href="#example-odd-sample-size" id="toc-example-odd-sample-size" class="nav-link" data-scroll-target="#example-odd-sample-size"><span class="header-section-number">5.7.1</span> Example: Odd Sample Size</a></li>
+  <li><a href="#example-even-sample-size" id="toc-example-even-sample-size" class="nav-link" data-scroll-target="#example-even-sample-size"><span class="header-section-number">5.7.2</span> Example: Even Sample Size</a></li>
+  </ul></li>
+  <li><a href="#the-mode" id="toc-the-mode" class="nav-link" data-scroll-target="#the-mode"><span class="header-section-number">5.8</span> The Mode</a></li>
+  <li><a href="#which-measures-of-central-tendency-are-available" id="toc-which-measures-of-central-tendency-are-available" class="nav-link" data-scroll-target="#which-measures-of-central-tendency-are-available"><span class="header-section-number">5.9</span> Which Measures of Central Tendency Are Available?</a></li>
+  <li><a href="#comparing-the-mean-median-and-mode" id="toc-comparing-the-mean-median-and-mode" class="nav-link" data-scroll-target="#comparing-the-mean-median-and-mode"><span class="header-section-number">5.10</span> Comparing the Mean, Median, and Mode</a></li>
+  </ul></li>
+  <li><a href="#part-ii-measures-of-dispersion" id="toc-part-ii-measures-of-dispersion" class="nav-link" data-scroll-target="#part-ii-measures-of-dispersion"><span class="header-section-number">6</span> Part II: Measures of Dispersion</a>
+  <ul class="collapse">
+  <li><a href="#dispersion" id="toc-dispersion" class="nav-link" data-scroll-target="#dispersion"><span class="header-section-number">6.1</span> Dispersion</a></li>
+  <li><a href="#dispersion-for-nominal-variables" id="toc-dispersion-for-nominal-variables" class="nav-link" data-scroll-target="#dispersion-for-nominal-variables"><span class="header-section-number">6.2</span> Dispersion for Nominal Variables</a></li>
+  <li><a href="#the-range" id="toc-the-range" class="nav-link" data-scroll-target="#the-range"><span class="header-section-number">6.3</span> The Range</a></li>
+  <li><a href="#percentiles-and-quantiles" id="toc-percentiles-and-quantiles" class="nav-link" data-scroll-target="#percentiles-and-quantiles"><span class="header-section-number">6.4</span> Percentiles and Quantiles</a></li>
+  <li><a href="#the-interquartile-range" id="toc-the-interquartile-range" class="nav-link" data-scroll-target="#the-interquartile-range"><span class="header-section-number">6.5</span> The Interquartile Range</a></li>
+  <li><a href="#finding-the-interquartile-range" id="toc-finding-the-interquartile-range" class="nav-link" data-scroll-target="#finding-the-interquartile-range"><span class="header-section-number">6.6</span> Finding the Interquartile Range</a>
+  <ul class="collapse">
+  <li><a href="#example-iqr-for-age" id="toc-example-iqr-for-age" class="nav-link" data-scroll-target="#example-iqr-for-age"><span class="header-section-number">6.6.1</span> Example: IQR for Age</a></li>
+  </ul></li>
+  <li><a href="#iqr-for-ordinal-variables" id="toc-iqr-for-ordinal-variables" class="nav-link" data-scroll-target="#iqr-for-ordinal-variables"><span class="header-section-number">6.7</span> IQR for Ordinal Variables</a></li>
+  <li><a href="#box-and-whisker-plots" id="toc-box-and-whisker-plots" class="nav-link" data-scroll-target="#box-and-whisker-plots"><span class="header-section-number">6.8</span> Box-and-Whisker Plots</a></li>
+  </ul></li>
+  <li><a href="#part-iii-variance-and-standard-deviation" id="toc-part-iii-variance-and-standard-deviation" class="nav-link" data-scroll-target="#part-iii-variance-and-standard-deviation"><span class="header-section-number">7</span> Part III: Variance and Standard Deviation</a>
+  <ul class="collapse">
+  <li><a href="#variability-around-the-mean" id="toc-variability-around-the-mean" class="nav-link" data-scroll-target="#variability-around-the-mean"><span class="header-section-number">7.1</span> Variability Around the Mean</a></li>
+  <li><a href="#deviations-from-the-mean" id="toc-deviations-from-the-mean" class="nav-link" data-scroll-target="#deviations-from-the-mean"><span class="header-section-number">7.2</span> Deviations from the Mean</a></li>
+  <li><a href="#sum-of-squares" id="toc-sum-of-squares" class="nav-link" data-scroll-target="#sum-of-squares"><span class="header-section-number">7.3</span> Sum of Squares</a></li>
+  <li><a href="#population-variance" id="toc-population-variance" class="nav-link" data-scroll-target="#population-variance"><span class="header-section-number">7.4</span> Population Variance</a></li>
+  <li><a href="#population-standard-deviation" id="toc-population-standard-deviation" class="nav-link" data-scroll-target="#population-standard-deviation"><span class="header-section-number">7.5</span> Population Standard Deviation</a></li>
+  <li><a href="#sample-variance-and-sample-standard-deviation" id="toc-sample-variance-and-sample-standard-deviation" class="nav-link" data-scroll-target="#sample-variance-and-sample-standard-deviation"><span class="header-section-number">7.6</span> Sample Variance and Sample Standard Deviation</a></li>
+  <li><a href="#why-do-we-divide-by-n---1" id="toc-why-do-we-divide-by-n---1" class="nav-link" data-scroll-target="#why-do-we-divide-by-n---1"><span class="header-section-number">7.7</span> Why Do We Divide by (n - 1)?</a></li>
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"><span class="header-section-number">7.8</span> Degrees of Freedom</a></li>
+  <li><a href="#the-correction-matters-most-in-small-samples" id="toc-the-correction-matters-most-in-small-samples" class="nav-link" data-scroll-target="#the-correction-matters-most-in-small-samples"><span class="header-section-number">7.9</span> The Correction Matters Most in Small Samples</a></li>
+  <li><a href="#summary-of-variance-and-standard-deviation-formulas" id="toc-summary-of-variance-and-standard-deviation-formulas" class="nav-link" data-scroll-target="#summary-of-variance-and-standard-deviation-formulas"><span class="header-section-number">7.10</span> Summary of Variance and Standard Deviation Formulas</a></li>
+  </ul></li>
+  <li><a href="#part-iv-skewness" id="toc-part-iv-skewness" class="nav-link" data-scroll-target="#part-iv-skewness"><span class="header-section-number">8</span> Part IV: Skewness</a>
+  <ul class="collapse">
+  <li><a href="#skewness" id="toc-skewness" class="nav-link" data-scroll-target="#skewness"><span class="header-section-number">8.1</span> Skewness</a></li>
+  <li><a href="#positive-skew" id="toc-positive-skew" class="nav-link" data-scroll-target="#positive-skew"><span class="header-section-number">8.2</span> Positive Skew</a></li>
+  <li><a href="#negative-skew" id="toc-negative-skew" class="nav-link" data-scroll-target="#negative-skew"><span class="header-section-number">8.3</span> Negative Skew</a></li>
+  <li><a href="#skewness-and-choice-of-summary-statistic" id="toc-skewness-and-choice-of-summary-statistic" class="nav-link" data-scroll-target="#skewness-and-choice-of-summary-statistic"><span class="header-section-number">8.4</span> Skewness and Choice of Summary Statistic</a></li>
+  <li><a href="#reading-a-skewed-distribution" id="toc-reading-a-skewed-distribution" class="nav-link" data-scroll-target="#reading-a-skewed-distribution"><span class="header-section-number">8.5</span> Reading a Skewed Distribution</a></li>
+  </ul></li>
+  <li><a href="#part-v-choosing-appropriate-descriptive-statistics" id="toc-part-v-choosing-appropriate-descriptive-statistics" class="nav-link" data-scroll-target="#part-v-choosing-appropriate-descriptive-statistics"><span class="header-section-number">9</span> Part V: Choosing Appropriate Descriptive Statistics</a>
+  <ul class="collapse">
+  <li><a href="#matching-statistics-to-measurement-level" id="toc-matching-statistics-to-measurement-level" class="nav-link" data-scroll-target="#matching-statistics-to-measurement-level"><span class="header-section-number">9.1</span> Matching Statistics to Measurement Level</a></li>
+  <li><a href="#descriptive-statistics-as-interpretation" id="toc-descriptive-statistics-as-interpretation" class="nav-link" data-scroll-target="#descriptive-statistics-as-interpretation"><span class="header-section-number">9.2</span> Descriptive Statistics as Interpretation</a></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">9.3</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">9.4</span> Chapter Summary</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Once we have collected data, the first task is to describe what we have. Before we test hypotheses, estimate models, or make claims about relationships between variables, we need to understand the basic shape and structure of the data.</p>
+<p>This is the purpose of <strong>descriptive statistics</strong>.</p>
+<p>Descriptive statistics summarize data. They help us answer basic but essential questions:</p>
+<ul>
+<li>What values appear in the data?</li>
+<li>Which values are most common?</li>
+<li>What is typical?</li>
+<li>How spread out are the data?</li>
+<li>Are there extreme values?</li>
+<li>Is the distribution symmetric, or is it skewed?</li>
+<li>Which summary statistics are appropriate for this variable?</li>
+</ul>
+<p>This chapter introduces the core tools of descriptive statistics. We begin with <strong>distributions</strong>, which show how values of a variable appear across a sample. We then discuss measures of <strong>central tendency</strong>, including the mean, median, and mode. After that, we turn to measures of <strong>dispersion</strong>, including the range, interquartile range, variance, and standard deviation. Finally, we consider <strong>skewness</strong>, which describes asymmetry in a distribution.</p>
+<p>Throughout the chapter, one principle remains central: the appropriate descriptive statistic depends on the measurement level of the variable. Nominal, ordinal, and interval-level variables cannot always be summarized in the same ways.</p>
+<hr>
+<section id="distributions" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="distributions"><span class="header-section-number">4.1</span> Distributions</h2>
+<p>A <strong>distribution</strong> describes how the values of a variable appear in a sample or population.</p>
+<p>More specifically, a distribution tells us the relative frequency with which different values of a variable occur. Some values may appear often, while others may appear rarely. Describing that pattern is one of the first steps in understanding data.</p>
+<p>For example, suppose we have survey data on party identification. We may want to know how many respondents identify as Democrats, Republicans, Independents, or members of another party. The distribution of party identification tells us how the sample is divided across those categories.</p>
+<p>Or suppose we have data on age. Some ages may be more common than others. A sample of undergraduate students will likely have many people between 18 and 22, while a sample of registered voters will likely have a much wider age distribution.</p>
+<p>Distributions can be described in tables, graphs, and summary statistics.</p>
+<p>Two broad features of distributions are especially important:</p>
+<ol type="1">
+<li><p><strong>Central tendency</strong><br>
+Where is the “typical” value?</p></li>
+<li><p><strong>Dispersion</strong><br>
+How spread out are the values?</p></li>
+</ol>
+<p>Before we can summarize a distribution, however, we need to think about the type of variable we are describing.</p>
+<hr>
+</section>
+<section id="distributions-of-categorical-and-discrete-variables" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="distributions-of-categorical-and-discrete-variables"><span class="header-section-number">4.2</span> Distributions of Categorical and Discrete Variables</h2>
+<p>For categorical or discrete variables, we often begin with a <strong>frequency distribution</strong>.</p>
+<p>A <strong>frequency distribution</strong> shows how many cases fall into each value or category of a variable.</p>
+<p>For example, consider a survey question about religious service attendance. Respondents may be categorized as follows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Religious Service Attendance</th>
+<th style="text-align: right;">Frequency</th>
+<th style="text-align: right;">Percent</th>
+<th style="text-align: right;">Cumulative Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Never</td>
+<td style="text-align: right;">2,377</td>
+<td style="text-align: right;">40.4%</td>
+<td style="text-align: right;">40.4%</td>
+</tr>
+<tr class="even">
+<td>A few times a year</td>
+<td style="text-align: right;">880</td>
+<td style="text-align: right;">15.0%</td>
+<td style="text-align: right;">55.4%</td>
+</tr>
+<tr class="odd">
+<td>Once or twice a month</td>
+<td style="text-align: right;">749</td>
+<td style="text-align: right;">12.7%</td>
+<td style="text-align: right;">68.1%</td>
+</tr>
+<tr class="even">
+<td>Almost every week</td>
+<td style="text-align: right;">559</td>
+<td style="text-align: right;">9.5%</td>
+<td style="text-align: right;">77.6%</td>
+</tr>
+<tr class="odd">
+<td>Every week</td>
+<td style="text-align: right;">964</td>
+<td style="text-align: right;">16.4%</td>
+<td style="text-align: right;">94.0%</td>
+</tr>
+<tr class="even">
+<td>More than once a week</td>
+<td style="text-align: right;">353</td>
+<td style="text-align: right;">6.0%</td>
+<td style="text-align: right;">100.0%</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>5,882</strong></td>
+<td style="text-align: right;"><strong>100.0%</strong></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>frequency</strong> column gives the number of respondents in each category.</p>
+<p>The <strong>percent</strong> column gives the relative frequency of each category. For example, 40.4 percent of respondents said they never attend religious services.</p>
+<p>The <strong>cumulative percent</strong> column adds categories as we move down the table. After the first row, we have accounted for 40.4 percent of the sample. After the second row, we have accounted for 55.4 percent. By the final row, we have accounted for 100 percent of the sample.</p>
+<p>Frequency tables are especially useful for categorical variables because they show which categories are common and which are rare.</p>
+<p>The same information can also be displayed visually using a <strong>bar chart</strong>.</p>
+<p>A bar chart is appropriate for categorical or discrete data because the values are distinct from one another. The bars should be separated to indicate that the categories are separate.</p>
+<p>For example, a bar chart of religious service attendance would have one bar for “Never,” another for “A few times a year,” another for “Once or twice a month,” and so on. The height of each bar could represent either the frequency or the percentage of respondents in that category.</p>
+<p>The tallest bar identifies the most common category. In this example, “Never” is the most common response.</p>
+<hr>
+</section>
+<section id="distributions-of-continuous-variables" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="distributions-of-continuous-variables"><span class="header-section-number">4.3</span> Distributions of Continuous Variables</h2>
+<p>For continuous variables, the logic is slightly different.</p>
+<p>A <strong>continuous variable</strong> can, in principle, take on infinitely many values within a range. Examples include:</p>
+<ul>
+<li>age</li>
+<li>income</li>
+<li>height</li>
+<li>weight</li>
+<li>temperature</li>
+<li>time</li>
+<li>distance</li>
+</ul>
+<p>Because continuous variables can take so many possible values, we usually do not list every individual value in a frequency table. Instead, we group values into ranges called <strong>bins</strong>.</p>
+<p>For example, if we are describing age in a survey of adults, we might use bins such as:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Age Range</th>
+<th style="text-align: right;">Frequency</th>
+<th style="text-align: right;">Percent</th>
+<th style="text-align: right;">Cumulative Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>18–29</td>
+<td style="text-align: right;">451</td>
+<td style="text-align: right;">21.5%</td>
+<td style="text-align: right;">21.5%</td>
+</tr>
+<tr class="even">
+<td>30–39</td>
+<td style="text-align: right;">386</td>
+<td style="text-align: right;">18.4%</td>
+<td style="text-align: right;">39.9%</td>
+</tr>
+<tr class="odd">
+<td>40–49</td>
+<td style="text-align: right;">359</td>
+<td style="text-align: right;">17.1%</td>
+<td style="text-align: right;">57.0%</td>
+</tr>
+<tr class="even">
+<td>50–59</td>
+<td style="text-align: right;">402</td>
+<td style="text-align: right;">19.2%</td>
+<td style="text-align: right;">76.2%</td>
+</tr>
+<tr class="odd">
+<td>60–69</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">14.4%</td>
+<td style="text-align: right;">90.6%</td>
+</tr>
+<tr class="even">
+<td>70+</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">9.4%</td>
+<td style="text-align: right;">100.0%</td>
+</tr>
+</tbody>
+</table>
+<p>The exact bins depend on the data and the purpose of the analysis. Often, bins are equal in width. For age, we might use ten-year intervals. But sometimes we use wider bins at the high or low end if there are fewer cases in those ranges.</p>
+<p>The key rule is that bins should not overlap. A person should fit into one and only one bin.</p>
+<p>For continuous variables, the standard visual display is a <strong>histogram</strong>.</p>
+<p>A histogram resembles a bar chart, but the bars touch. The touching bars indicate that the underlying variable is continuous. The boundaries between bins are artificial divisions imposed for display purposes.</p>
+<p>For example, someone who is 39 years and 11 months old is very close to someone who is 40 years old. A histogram visually reflects that continuity by placing the bars next to one another.</p>
+<p>The choice of bin width matters. If bins are too wide, we may hide important variation. If bins are too narrow, the graph may become noisy and difficult to interpret.</p>
+<hr>
+</section>
+<section id="describing-distributions" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="describing-distributions"><span class="header-section-number">4.4</span> Describing Distributions</h2>
+<p>Once we have examined a distribution, we usually want to summarize it.</p>
+<p>Descriptive statistics generally fall into two main categories:</p>
+<ol type="1">
+<li><strong>Measures of central tendency</strong></li>
+<li><strong>Measures of dispersion</strong></li>
+</ol>
+<p>A <strong>measure of central tendency</strong> describes what is typical, central, or common in a distribution.</p>
+<p>The three most common measures of central tendency are:</p>
+<ul>
+<li>mean</li>
+<li>median</li>
+<li>mode</li>
+</ul>
+<p>A <strong>measure of dispersion</strong> describes how spread out the data are.</p>
+<p>Common measures of dispersion include:</p>
+<ul>
+<li>range</li>
+<li>interquartile range</li>
+<li>variance</li>
+<li>standard deviation</li>
+</ul>
+<p>Not every measure is appropriate for every variable. The measurement level of the variable determines what summaries make sense.</p>
+<p>For example, the mean of income is meaningful. The mean of political party identification, if party is coded as Democrat = 1, Republican = 2, Independent = 3, is not meaningful. Statistical software may calculate it anyway, but the result does not make conceptual sense.</p>
+<p>Software will often do what you ask, even when you should not have asked. The responsibility remains with the researcher.</p>
+<hr>
+</section>
+<section id="part-i-measures-of-central-tendency" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Part I: Measures of Central Tendency</h1>
+<section id="central-tendency" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="central-tendency"><span class="header-section-number">5.1</span> Central Tendency</h2>
+<p>A measure of central tendency describes what is typical in a distribution.</p>
+<p>In everyday language, people often use the word “average” loosely. In statistics, we should be more precise. The word “average” can refer to different ideas, so it is better to specify whether we mean the <strong>mean</strong>, <strong>median</strong>, or <strong>mode</strong>.</p>
+<p>These three measures capture different aspects of typicality:</p>
+<ul>
+<li>The <strong>mean</strong> is the arithmetic center.</li>
+<li>The <strong>median</strong> is the middle value in a rank ordering.</li>
+<li>The <strong>mode</strong> is the most common value.</li>
+</ul>
+<p>Sometimes these three measures are the same. Often, they are not.</p>
+<hr>
+</section>
+<section id="the-mean" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-mean"><span class="header-section-number">5.2</span> The Mean</h2>
+<p>The <strong>mean</strong> is the arithmetic center of a distribution.</p>
+<p>It is the value we get by adding up all observations and dividing by the number of observations.</p>
+<p>For a population, the mean is represented by the Greek letter mu:</p>
+<p>[ ]</p>
+<p>For a sample, the mean is usually represented by placing a bar over the variable name:</p>
+<p>[ {Y} ]</p>
+<p>The mean is appropriate for interval- or ratio-level variables. It is not appropriate for nominal variables, and it is only sometimes used for ordinal variables when researchers are willing to treat the ordinal scale as approximately interval-level.</p>
+<hr>
+</section>
+<section id="summation-notation" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="summation-notation"><span class="header-section-number">5.3</span> Summation Notation</h2>
+<p>To express the formula for the mean, we need summation notation.</p>
+<p>Suppose we have a variable (Y), and each case has a value of that variable:</p>
+<p>[ Y_1, Y_2, Y_3, , Y_N ]</p>
+<p>The subscript identifies the case. (Y_1) is the value of (Y) for the first case, (Y_2) for the second case, and so on.</p>
+<p>The Greek capital letter sigma,</p>
+<p>[ ]</p>
+<p>means “sum” or “add up.”</p>
+<p>So this expression:</p>
+<p>[ _{i=1}^{N} Y_i ]</p>
+<p>means:</p>
+<p>[ Y_1 + Y_2 + Y_3 + + Y_N ]</p>
+<p>In words: add up all the values of (Y) from the first case through the final case.</p>
+<hr>
+</section>
+<section id="the-population-mean" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="the-population-mean"><span class="header-section-number">5.4</span> The Population Mean</h2>
+<p>If we have data for the full population, the population mean is:</p>
+<p>[ <em>Y = </em>{i=1}^{N} Y_i ]</p>
+<p>Equivalently:</p>
+<p>[ _Y = ]</p>
+<p>where:</p>
+<ul>
+<li>(Y_i) is the value of (Y) for case (i)</li>
+<li>(N) is the size of the population</li>
+<li>(_Y) is the population mean of (Y)</li>
+</ul>
+<p>The mean can also be understood as an <strong>expected value</strong>.</p>
+<p>The expected value of (Y), written (E(Y)), is the value we would expect on average if we randomly selected a case from the population.</p>
+<p>For a finite population where each case is equally likely to be selected:</p>
+<p>[ E(Y) = _{i=1}^{N} Y_i ]</p>
+<p>Because each case has probability (1/N), this simplifies to the familiar formula for the mean:</p>
+<p>[ E(Y) = _{i=1}^{N} Y_i ]</p>
+<p>Thus:</p>
+<p>[ E(Y) = _Y ]</p>
+<p>The mean is the probability-weighted center of the distribution.</p>
+<p>This idea will become important later. For example, if we roll a fair six-sided die, the possible values are 1, 2, 3, 4, 5, and 6. Each has probability (1/6). The expected value is:</p>
+<p>[ E(Y) = 1() + 2() + 3() + 4() + 5() + 6() ]</p>
+<p>[ E(Y) = 3.5 ]</p>
+<p>Notice that 3.5 is not a possible die roll. We cannot roll a 3.5. But 3.5 is still the expected value, because it is the mathematical center of the probability distribution.</p>
+<hr>
+</section>
+<section id="the-sample-mean" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="the-sample-mean"><span class="header-section-number">5.5</span> The Sample Mean</h2>
+<p>Usually, we do not observe the full population. Instead, we have a sample.</p>
+<p>For a sample of size (n), the sample mean is:</p>
+<p>[ {Y} = _{i=1}^{n} Y_i ]</p>
+<p>Equivalently:</p>
+<p>[ {Y} = ]</p>
+<p>The sample mean ({Y}) is a statistic. It estimates the population mean (_Y), which is a parameter.</p>
+<p>This distinction is important:</p>
+<ul>
+<li>(_Y) is the true mean in the population.</li>
+<li>({Y}) is the mean in the sample.</li>
+<li>We usually use ({Y}) to estimate (_Y).</li>
+</ul>
+<hr>
+</section>
+<section id="the-median" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="the-median"><span class="header-section-number">5.6</span> The Median</h2>
+<p>The <strong>median</strong> is the middle value in an ordered distribution.</p>
+<p>To find the median, we rank the data from lowest to highest and identify the value that divides the data in half. Fifty percent of the observations lie at or below the median, and fifty percent lie at or above it.</p>
+<p>The median is the <strong>50th percentile</strong>.</p>
+<p>A <strong>percentile</strong> is a position in a distribution below which a certain percentage of observations fall. For example:</p>
+<ul>
+<li>The 25th percentile is the point below which 25 percent of the data fall.</li>
+<li>The 50th percentile is the point below which 50 percent of the data fall.</li>
+<li>The 75th percentile is the point below which 75 percent of the data fall.</li>
+</ul>
+<p>The median can be used for ordinal, interval, and ratio variables. It cannot be used for nominal variables because nominal categories have no inherent order.</p>
+<hr>
+</section>
+<section id="finding-the-median" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="finding-the-median"><span class="header-section-number">5.7</span> Finding the Median</h2>
+<p>To find the median:</p>
+<ol type="1">
+<li>Sort the observations from lowest to highest.</li>
+<li>Identify the middle position.</li>
+<li>Find the value associated with that position.</li>
+</ol>
+<p>If the sample size is odd, there is one middle observation.</p>
+<p>If the sample size is even, the median lies halfway between the two middle observations.</p>
+<p>A useful formula for finding the median position is:</p>
+<p>[ ]</p>
+<p>where (n) is the sample size.</p>
+<hr>
+<section id="example-odd-sample-size" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="example-odd-sample-size"><span class="header-section-number">5.7.1</span> Example: Odd Sample Size</h3>
+<p>Suppose we have the following ages for 11 people:</p>
+<p>[ 18,&nbsp;19,&nbsp;20,&nbsp;21,&nbsp;22,&nbsp;23,&nbsp;24,&nbsp;25,&nbsp;28,&nbsp;31,&nbsp;35 ]</p>
+<p>The sample size is:</p>
+<p>[ n = 11 ]</p>
+<p>The median position is:</p>
+<p>[ = 6 ]</p>
+<p>The sixth observation is 23.</p>
+<p>So the median age is:</p>
+<p>[ 23 ]</p>
+<p>Be careful: the median is not the position number itself. The sixth position tells us where to look. The median is the value found at that position.</p>
+<hr>
+</section>
+<section id="example-even-sample-size" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="example-even-sample-size"><span class="header-section-number">5.7.2</span> Example: Even Sample Size</h3>
+<p>Now suppose we remove the final observation and have 10 ages:</p>
+<p>[ 18,&nbsp;19,&nbsp;20,&nbsp;21,&nbsp;22,&nbsp;23,&nbsp;24,&nbsp;25,&nbsp;28,&nbsp;31 ]</p>
+<p>The sample size is:</p>
+<p>[ n = 10 ]</p>
+<p>The median position is:</p>
+<p>[ = 5.5 ]</p>
+<p>So the median lies halfway between the fifth and sixth observations.</p>
+<p>The fifth observation is 22.<br>
+The sixth observation is 23.</p>
+<p>The median is:</p>
+<p>[ = 22.5 ]</p>
+<p>So the median age is:</p>
+<p>[ 22.5 ]</p>
+<hr>
+</section>
+</section>
+<section id="the-mode" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="the-mode"><span class="header-section-number">5.8</span> The Mode</h2>
+<p>The <strong>mode</strong> is the most common value in a distribution.</p>
+<p>For example, if the most common response to a survey question is “Never,” then “Never” is the mode.</p>
+<p>The mode is the only measure of central tendency that can be used with nominal variables. It can also be used with ordinal and interval-level variables.</p>
+<p>The mode captures a different idea of typicality than the mean or median. It tells us what value appears most often, not where the mathematical center or rank-order middle lies.</p>
+<p>A distribution can have:</p>
+<ul>
+<li>one mode</li>
+<li>more than one mode</li>
+<li>no meaningful mode</li>
+</ul>
+<p>For continuous variables, the mode can be less useful. If values are measured very precisely, many observations may have unique values. In that case, the “most common” value may be arbitrary or nonexistent.</p>
+<hr>
+</section>
+<section id="which-measures-of-central-tendency-are-available" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="which-measures-of-central-tendency-are-available"><span class="header-section-number">5.9</span> Which Measures of Central Tendency Are Available?</h2>
+<p>The measurement level of the variable determines which measures of central tendency make sense.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Measurement Level</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal</td>
+<td style="text-align: right;">No</td>
+<td style="text-align: right;">No</td>
+<td style="text-align: right;">Yes</td>
+</tr>
+<tr class="even">
+<td>Ordinal</td>
+<td style="text-align: right;">Usually no</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+</tr>
+<tr class="odd">
+<td>Interval/Ratio</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+<td style="text-align: right;">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>For nominal variables, only the mode is meaningful.</p>
+<p>For ordinal variables, the median and mode are meaningful. The mean is usually not appropriate unless we are willing to treat the ordinal scale as approximately interval-level.</p>
+<p>For interval and ratio variables, all three are available, though the mode may be less informative for continuous variables.</p>
+<hr>
+</section>
+<section id="comparing-the-mean-median-and-mode" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="comparing-the-mean-median-and-mode"><span class="header-section-number">5.10</span> Comparing the Mean, Median, and Mode</h2>
+<p>The mean, median, and mode often tell different stories about the same distribution.</p>
+<p>The <strong>mean</strong> is sensitive to extreme values. If a distribution contains very large or very small outliers, the mean can be pulled toward those outliers.</p>
+<p>For example, imagine calculating the average wealth of people in a classroom. If everyone in the room has modest wealth, the mean may give a reasonable sense of typical wealth. But if Elon Musk walks into the room, the mean wealth skyrockets. The mean would no longer describe the typical person very well.</p>
+<p>The <strong>median</strong> is less sensitive to extreme values. Adding one extremely wealthy person does not dramatically change the middle position in the rank ordering.</p>
+<p>This is why income is often described using the median rather than the mean. Income distributions are usually positively skewed, with a small number of very high-income households pulling the mean upward. Median household income often gives a better sense of the typical household.</p>
+<p>The <strong>mode</strong> identifies the most common value. For categorical variables, this may be the most useful summary. For example, if the most common religious service attendance category is “Never,” that tells us something important about the sample, even though it is not a mathematical center.</p>
+<p>The best measure depends on the variable and the purpose of the description.</p>
+<hr>
+</section>
+</section>
+<section id="part-ii-measures-of-dispersion" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Part II: Measures of Dispersion</h1>
+<section id="dispersion" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="dispersion"><span class="header-section-number">6.1</span> Dispersion</h2>
+<p>Measures of central tendency tell us what is typical. Measures of <strong>dispersion</strong> tell us how spread out the data are.</p>
+<p>Two distributions can have the same mean but very different levels of dispersion.</p>
+<p>For example, consider two classes with the same average exam score of 80.</p>
+<p>In Class A, most students scored between 78 and 82.<br>
+In Class B, some students scored near 50 and others near 100.</p>
+<p>Both classes have the same mean, but Class B has much more dispersion.</p>
+<p>Common measures of dispersion include:</p>
+<ul>
+<li>range</li>
+<li>interquartile range</li>
+<li>variance</li>
+<li>standard deviation</li>
+</ul>
+<p>As with central tendency, the appropriate measure depends on the measurement level of the variable.</p>
+<hr>
+</section>
+<section id="dispersion-for-nominal-variables" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="dispersion-for-nominal-variables"><span class="header-section-number">6.2</span> Dispersion for Nominal Variables</h2>
+<p>For nominal variables, most formal measures of dispersion do not apply.</p>
+<p>Nominal categories have no inherent order and no meaningful distance between categories. Therefore, we cannot calculate a range, interquartile range, variance, or standard deviation.</p>
+<p>Instead, we describe the distribution qualitatively.</p>
+<p>For example, we might say:</p>
+<ul>
+<li>The data are concentrated in one category.</li>
+<li>The data are evenly distributed across categories.</li>
+<li>Two categories dominate the distribution.</li>
+<li>Several categories are rare.</li>
+</ul>
+<p>Suppose a religious affiliation variable has 70 percent of respondents in one category and very few in the others. We would say the distribution is highly concentrated. If each category has roughly the same percentage, we would say the distribution is more evenly dispersed.</p>
+<p>This is still a description of dispersion, but it is not based on mathematical distance.</p>
+<hr>
+</section>
+<section id="the-range" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="the-range"><span class="header-section-number">6.3</span> The Range</h2>
+<p>The <strong>range</strong> is the distance between the highest and lowest observed values in the data.</p>
+<p>For interval or ratio variables:</p>
+<p>[ = - ]</p>
+<p>For example, if the youngest person in a sample is 18 and the oldest is 74, the range is:</p>
+<p>[ 74 - 18 = 56 ]</p>
+<p>The range is simple and easy to understand, but it is crude. It depends entirely on the two most extreme values.</p>
+<p>If we add one very old person to an age distribution, the range may increase dramatically. If we remove one extreme observation, the range may shrink dramatically. Because of this, the range can be highly sensitive to outliers.</p>
+<p>For ordinal variables, the range can be described qualitatively rather than numerically. For example, responses might range from “Strongly disagree” to “Strongly agree.” We generally should not treat that as a numeric distance unless the ordinal scale is being treated as approximately interval-level.</p>
+<p>Also note that the range refers to the observed data, not the full possible range of the variable. Human age can theoretically extend beyond 100, but if the oldest person in our sample is 83, then 83 is the maximum observed value.</p>
+<hr>
+</section>
+<section id="percentiles-and-quantiles" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="percentiles-and-quantiles"><span class="header-section-number">6.4</span> Percentiles and Quantiles</h2>
+<p>To understand the interquartile range, we need to return to percentiles.</p>
+<p>A <strong>percentile</strong> identifies a position in a distribution. The 30th percentile is the value below which 30 percent of the data fall. The 80th percentile is the value below which 80 percent of the data fall.</p>
+<p>Some percentiles are especially important.</p>
+<p>The <strong>25th percentile</strong> is called the first quartile, or (Q_1).</p>
+<p>The <strong>50th percentile</strong> is the median, or (Q_2).</p>
+<p>The <strong>75th percentile</strong> is called the third quartile, or (Q_3).</p>
+<p>A quartile is a position, not a range. (Q_1) is the point that separates the lowest 25 percent of the data from the upper 75 percent. (Q_3) is the point that separates the lowest 75 percent from the upper 25 percent.</p>
+<p>More generally, when we divide data into equal-sized parts, we are creating <strong>quantiles</strong>.</p>
+<p>Examples include:</p>
+<ul>
+<li><strong>quartiles</strong>: four equal parts</li>
+<li><strong>quintiles</strong>: five equal parts</li>
+<li><strong>deciles</strong>: ten equal parts</li>
+<li><strong>percentiles</strong>: one hundred equal parts</li>
+</ul>
+<p>Quantiles help us describe where observations fall in a distribution.</p>
+<hr>
+</section>
+<section id="the-interquartile-range" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="the-interquartile-range"><span class="header-section-number">6.5</span> The Interquartile Range</h2>
+<p>The <strong>interquartile range</strong>, or <strong>IQR</strong>, measures the spread of the middle 50 percent of the data.</p>
+<p>It is the distance between the 75th percentile and the 25th percentile:</p>
+<p>[ IQR = Q_3 - Q_1 ]</p>
+<p>The IQR tells us how far we must go on the variable’s scale to cover the middle half of the distribution.</p>
+<p>If the IQR is small, the middle 50 percent of the data are tightly clustered. If the IQR is large, the middle 50 percent are more spread out.</p>
+<p>The IQR is less sensitive to extreme values than the range. Adding a very large or very small outlier may greatly affect the range, but it usually has little effect on the IQR.</p>
+<p>This makes the IQR especially useful for skewed distributions or distributions with outliers.</p>
+<hr>
+</section>
+<section id="finding-the-interquartile-range" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="finding-the-interquartile-range"><span class="header-section-number">6.6</span> Finding the Interquartile Range</h2>
+<p>To find the IQR:</p>
+<ol type="1">
+<li>Sort the data from lowest to highest.</li>
+<li>Find the median.</li>
+<li>Split the data into a lower half and an upper half.</li>
+<li>Find the median of the lower half. This is (Q_1).</li>
+<li>Find the median of the upper half. This is (Q_3).</li>
+<li>Subtract:</li>
+</ol>
+<p>[ IQR = Q_3 - Q_1 ]</p>
+<p>There are slightly different conventions for how to handle the middle observation when the sample size is odd. Some methods include the median in both halves; others exclude it from both halves. With small samples, this can produce slightly different answers. With large samples, the difference is usually negligible.</p>
+<hr>
+<section id="example-iqr-for-age" class="level3" data-number="6.6.1">
+<h3 data-number="6.6.1" class="anchored" data-anchor-id="example-iqr-for-age"><span class="header-section-number">6.6.1</span> Example: IQR for Age</h3>
+<p>Suppose we have the ages of 13 graduates:</p>
+<p>[ 24,&nbsp;24,&nbsp;25,&nbsp;25,&nbsp;26,&nbsp;26,&nbsp;27,&nbsp;28,&nbsp;28,&nbsp;29,&nbsp;31,&nbsp;34,&nbsp;37 ]</p>
+<p>First, find the median.</p>
+<p>There are 13 observations, so the median position is:</p>
+<p>[ = 7 ]</p>
+<p>The seventh observation is 27, so the median is 27.</p>
+<p>Now split the data into lower and upper halves, including the median in both halves:</p>
+<p>Lower half:</p>
+<p>[ 24,&nbsp;24,&nbsp;25,&nbsp;25,&nbsp;26,&nbsp;26,&nbsp;27 ]</p>
+<p>Upper half:</p>
+<p>[ 27,&nbsp;28,&nbsp;28,&nbsp;29,&nbsp;31,&nbsp;34,&nbsp;37 ]</p>
+<p>Now find the median of each half.</p>
+<p>The median of the lower half is 25, so:</p>
+<p>[ Q_1 = 25 ]</p>
+<p>The median of the upper half is 29, so:</p>
+<p>[ Q_3 = 29 ]</p>
+<p>Therefore:</p>
+<p>[ IQR = 29 - 25 = 4 ]</p>
+<p>The middle 50 percent of the age distribution spans four years.</p>
+<hr>
+</section>
+</section>
+<section id="iqr-for-ordinal-variables" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="iqr-for-ordinal-variables"><span class="header-section-number">6.7</span> IQR for Ordinal Variables</h2>
+<p>For ordinal variables, the IQR can still be useful, but we should interpret it qualitatively rather than as a precise numeric distance.</p>
+<p>Suppose we return to religious service attendance:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Religious Service Attendance</th>
+<th style="text-align: right;">Percent</th>
+<th style="text-align: right;">Cumulative Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Never</td>
+<td style="text-align: right;">40.4%</td>
+<td style="text-align: right;">40.4%</td>
+</tr>
+<tr class="even">
+<td>A few times a year</td>
+<td style="text-align: right;">15.0%</td>
+<td style="text-align: right;">55.4%</td>
+</tr>
+<tr class="odd">
+<td>Once or twice a month</td>
+<td style="text-align: right;">12.7%</td>
+<td style="text-align: right;">68.1%</td>
+</tr>
+<tr class="even">
+<td>Almost every week</td>
+<td style="text-align: right;">9.5%</td>
+<td style="text-align: right;">77.6%</td>
+</tr>
+<tr class="odd">
+<td>Every week</td>
+<td style="text-align: right;">16.4%</td>
+<td style="text-align: right;">94.0%</td>
+</tr>
+<tr class="even">
+<td>More than once a week</td>
+<td style="text-align: right;">6.0%</td>
+<td style="text-align: right;">100.0%</td>
+</tr>
+</tbody>
+</table>
+<p>To find (Q_1), we locate the category containing the 25th percentile.</p>
+<p>The first category, “Never,” already brings us to 40.4 percent. Therefore, the 25th percentile falls within “Never.”</p>
+<p>So:</p>
+<p>[ Q_1 = ]</p>
+<p>To find (Q_3), we locate the category containing the 75th percentile.</p>
+<p>The cumulative percentage reaches 77.6 percent at “Almost every week.” Therefore:</p>
+<p>[ Q_3 = ]</p>
+<p>So the middle 50 percent of the distribution ranges from “Never” to “Almost every week.”</p>
+<p>This is not a numeric distance. It is a description of which ordered categories contain the middle half of the data.</p>
+<p>Also notice that the median is not the middle category in the list. The median is the category containing the middle person. In this example, the cumulative percentage passes 50 percent at “A few times a year,” so the median category is “A few times a year.”</p>
+<hr>
+</section>
+<section id="box-and-whisker-plots" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="box-and-whisker-plots"><span class="header-section-number">6.8</span> Box-and-Whisker Plots</h2>
+<p>The interquartile range often appears in a graph called a <strong>box-and-whisker plot</strong>, or simply a <strong>box plot</strong>.</p>
+<p>A box plot usually displays:</p>
+<ul>
+<li>the median</li>
+<li>(Q_1)</li>
+<li>(Q_3)</li>
+<li>the interquartile range</li>
+<li>whiskers showing additional spread</li>
+<li>sometimes individual outliers</li>
+</ul>
+<p>The box itself represents the middle 50 percent of the data. The line inside the box marks the median.</p>
+<p>The whiskers may be defined in different ways. In some graphs, they extend to the minimum and maximum values. In others, they extend to values within 1.5 times the IQR, with points beyond that shown as outliers.</p>
+<p>Box plots are useful for comparing distributions across groups.</p>
+<p>For example, suppose we compare the heights of soccer players by position. Goalkeepers may have a higher median height and a smaller IQR, meaning they are generally tall and relatively clustered in height. Defenders may show a wider IQR, indicating more variation. A box plot allows us to see these differences quickly.</p>
+<hr>
+</section>
+</section>
+<section id="part-iii-variance-and-standard-deviation" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Part III: Variance and Standard Deviation</h1>
+<section id="variability-around-the-mean" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="variability-around-the-mean"><span class="header-section-number">7.1</span> Variability Around the Mean</h2>
+<p>The range and IQR describe spread using positions in the distribution. Variance and standard deviation describe spread around the mean.</p>
+<p>These measures apply to interval- and ratio-level variables. They are not appropriate for nominal variables. They are also generally not appropriate for ordinal variables unless the researcher is treating the ordinal scale as approximately interval-level.</p>
+<p>The central question is:</p>
+<blockquote class="blockquote">
+<p>How far are observations, typically, from the mean?</p>
+</blockquote>
+<p>If most observations are close to the mean, dispersion is low. If many observations are far from the mean, dispersion is high.</p>
+<hr>
+</section>
+<section id="deviations-from-the-mean" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="deviations-from-the-mean"><span class="header-section-number">7.2</span> Deviations from the Mean</h2>
+<p>For each observation, we can calculate its <strong>deviation from the mean</strong>:</p>
+<p>[ Y_i - ]</p>
+<p>for a population, or:</p>
+<p>[ Y_i - {Y} ]</p>
+<p>for a sample.</p>
+<p>A deviation tells us how far an observation is from the mean and in which direction.</p>
+<p>If the deviation is positive, the observation is above the mean.<br>
+If the deviation is negative, the observation is below the mean.</p>
+<p>For example, suppose we have a population of five values:</p>
+<p>[ 5,&nbsp;12,&nbsp;6,&nbsp;9,&nbsp;3 ]</p>
+<p>The mean is:</p>
+<p>[ = = = 7 ]</p>
+<p>Now calculate each deviation from the mean:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Value (Y_i)</th>
+<th style="text-align: right;">Mean ()</th>
+<th style="text-align: right;">Deviation (Y_i - )</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-4</td>
+</tr>
+</tbody>
+</table>
+<p>If we add the deviations, we get:</p>
+<p>[ -2 + 5 - 1 + 2 - 4 = 0 ]</p>
+<p>This always happens. The sum of deviations from the mean is always zero.</p>
+<p>That creates a problem. If we try to calculate the average deviation from the mean, the positive and negative deviations cancel out.</p>
+<p>So we need a way to make deviations positive before averaging them.</p>
+<p>One option would be to take absolute values. That produces a statistic called the <strong>mean absolute deviation</strong>. But for reasons that become important in more advanced statistics, squared deviations have better mathematical properties.</p>
+<p>So instead of taking absolute values, we square the deviations.</p>
+<hr>
+</section>
+<section id="sum-of-squares" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sum-of-squares"><span class="header-section-number">7.3</span> Sum of Squares</h2>
+<p>A <strong>squared deviation</strong> is:</p>
+<p>[ (Y_i - )^2 ]</p>
+<p>for a population, or:</p>
+<p>[ (Y_i - {Y})^2 ]</p>
+<p>for a sample.</p>
+<p>Using the same data:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Value (Y_i)</th>
+<th style="text-align: right;">Mean ()</th>
+<th style="text-align: right;">Deviation (Y_i - )</th>
+<th style="text-align: right;">Squared Deviation ((Y_i - )^2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">-4</td>
+<td style="text-align: right;">16</td>
+</tr>
+</tbody>
+</table>
+<p>Now add the squared deviations:</p>
+<p>[ 4 + 25 + 1 + 4 + 16 = 50 ]</p>
+<p>This total is called the <strong>sum of squares</strong>.</p>
+<p>For a population:</p>
+<p>[ SS = _{i=1}^{N} (Y_i - )^2 ]</p>
+<p>For a sample:</p>
+<p>[ SS = _{i=1}^{n} (Y_i - {Y})^2 ]</p>
+<p>The more spread out the data are around the mean, the larger the sum of squares will be.</p>
+<p>If every observation is exactly equal to the mean, every deviation is zero, and the sum of squares is zero.</p>
+<hr>
+</section>
+<section id="population-variance" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="population-variance"><span class="header-section-number">7.4</span> Population Variance</h2>
+<p>The <strong>variance</strong> is the mean squared deviation from the mean.</p>
+<p>For a population, variance is represented by:</p>
+<p>[ ^2 ]</p>
+<p>The formula is:</p>
+<p>[ ^2 = _{i=1}^{N} (Y_i - )^2 ]</p>
+<p>Equivalently:</p>
+<p>[ ^2 = ]</p>
+<p>Using our example, the sum of squares is 50 and the population size is 5:</p>
+<p>[ ^2 = = 10 ]</p>
+<p>So the population variance is 10.</p>
+<p>The variance is the expected squared distance between an observation and the mean.</p>
+<p>However, variance is difficult to interpret because it is expressed in squared units. If the variable is age, the variance is in “years squared.” If the variable is income, the variance is in “dollars squared.” These units are not intuitive.</p>
+<p>To return to the original units of the variable, we take the square root. That gives us the standard deviation.</p>
+<hr>
+</section>
+<section id="population-standard-deviation" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="population-standard-deviation"><span class="header-section-number">7.5</span> Population Standard Deviation</h2>
+<p>The <strong>standard deviation</strong> is the square root of the variance.</p>
+<p>For a population, standard deviation is represented by:</p>
+<p>[ ]</p>
+<p>The formula is:</p>
+<p>[ = ]</p>
+<p>Equivalently:</p>
+<p>[ = ]</p>
+<p>Using our example:</p>
+<p>[ ^2 = 10 ]</p>
+<p>So:</p>
+<p>[ = ]</p>
+<p>The standard deviation can be interpreted as the typical distance of observations from the mean, in a root-mean-square sense.</p>
+<p>A small standard deviation means observations tend to be close to the mean.<br>
+A large standard deviation means observations tend to be spread farther from the mean.</p>
+<p>The standard deviation cannot be negative. Its smallest possible value is zero, which occurs only when every observation has the same value.</p>
+<hr>
+</section>
+<section id="sample-variance-and-sample-standard-deviation" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="sample-variance-and-sample-standard-deviation"><span class="header-section-number">7.6</span> Sample Variance and Sample Standard Deviation</h2>
+<p>In practice, we usually do not have population data. We have sample data.</p>
+<p>The sample standard deviation is represented by:</p>
+<p>[ s ]</p>
+<p>The sample variance is:</p>
+<p>[ s^2 ]</p>
+<p>The formula for the sample variance is:</p>
+<p>[ s^2 = _{i=1}^{n} (Y_i - {Y})^2 ]</p>
+<p>The formula for the sample standard deviation is:</p>
+<p>[ s = ]</p>
+<p>Notice the denominator:</p>
+<p>[ n - 1 ]</p>
+<p>not:</p>
+<p>[ n ]</p>
+<p>This difference is important.</p>
+<hr>
+</section>
+<section id="why-do-we-divide-by-n---1" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="why-do-we-divide-by-n---1"><span class="header-section-number">7.7</span> Why Do We Divide by (n - 1)?</h2>
+<p>When calculating the population variance, we divide by (N). When calculating the sample variance, we divide by (n - 1).</p>
+<p>Why?</p>
+<p>Because the sample variance is used to estimate the population variance. We do not know the population mean (), so we use the sample mean ({Y}) instead.</p>
+<p>But ({Y}) is itself estimated from the same sample data. Once we use the data to estimate the mean, we lose one independent piece of information for estimating variability around that mean.</p>
+<p>This is the idea of <strong>degrees of freedom</strong>.</p>
+<p>The sample has (n) observations, but after estimating the sample mean, only (n - 1) observations are free to vary independently around that mean.</p>
+<hr>
+</section>
+<section id="degrees-of-freedom" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="degrees-of-freedom"><span class="header-section-number">7.8</span> Degrees of Freedom</h2>
+<p>Degrees of freedom can be difficult at first, so consider a simple example.</p>
+<p>Suppose we have two observations:</p>
+<p>[ 2,&nbsp;4 ]</p>
+<p>The mean is:</p>
+<p>[ {Y} = 3 ]</p>
+<p>Now suppose you know the mean is 3 and I tell you that one observation is 2. What must the other observation be?</p>
+<p>It must be 4.</p>
+<p>It is not free to be anything else, because the two values must average to 3.</p>
+<p>With two observations and a known sample mean, only one observation is free to vary. The other is determined.</p>
+<p>That is why, when estimating variance around a sample mean, we have:</p>
+<p>[ n - 1 ]</p>
+<p>degrees of freedom.</p>
+<p>The same logic applies to larger samples. If we have 100 observations and we know the sample mean, then once 99 values are known, the final value is fixed. It must be whatever value makes the mean come out correctly.</p>
+<p>So when calculating sample variance, we divide by (n - 1) to account for the fact that we already used the data to estimate the mean.</p>
+<hr>
+</section>
+<section id="the-correction-matters-most-in-small-samples" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="the-correction-matters-most-in-small-samples"><span class="header-section-number">7.9</span> The Correction Matters Most in Small Samples</h2>
+<p>Dividing by (n - 1) rather than (n) makes the estimate of variance slightly larger.</p>
+<p>This corrects a tendency for samples to underestimate population variability. A sample is unlikely to capture the full spread of the population, especially when the sample is small. It may miss extreme values in the tails of the distribution.</p>
+<p>Using (n - 1) inflates the estimate slightly, making it a better estimator of the population variance.</p>
+<p>The correction matters more when the sample is small.</p>
+<p>For example, dividing by 6 instead of 7 makes a noticeable difference. But dividing by 1,499 instead of 1,500 makes almost no difference.</p>
+<p>As sample size increases, the distinction between (n) and (n - 1) becomes less important.</p>
+<hr>
+</section>
+<section id="summary-of-variance-and-standard-deviation-formulas" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="summary-of-variance-and-standard-deviation-formulas"><span class="header-section-number">7.10</span> Summary of Variance and Standard Deviation Formulas</h2>
+<p>For a population:</p>
+<p>[ = _{i=1}^{N} Y_i ]</p>
+<p>[ ^2 = _{i=1}^{N} (Y_i - )^2 ]</p>
+<p>[ = ]</p>
+<p>For a sample:</p>
+<p>[ {Y} = _{i=1}^{n} Y_i ]</p>
+<p>[ s^2 = _{i=1}^{n} (Y_i - {Y})^2 ]</p>
+<p>[ s = ]</p>
+<p>The sample statistics ({Y}), (s^2), and (s) estimate the population parameters (), (^2), and ().</p>
+<hr>
+</section>
+</section>
+<section id="part-iv-skewness" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Part IV: Skewness</h1>
+<section id="skewness" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="skewness"><span class="header-section-number">8.1</span> Skewness</h2>
+<p>A distribution is <strong>skewed</strong> if it is asymmetric.</p>
+<p>A symmetric distribution has the same general shape on both sides. A classic example is the normal distribution, or bell curve. In a perfectly symmetric normal distribution, the mean, median, and mode all line up.</p>
+<p>A skewed distribution has a longer tail on one side than the other.</p>
+<p>There are two main types of skewness:</p>
+<ol type="1">
+<li><strong>Positive skew</strong>, also called right skew</li>
+<li><strong>Negative skew</strong>, also called left skew</li>
+</ol>
+<hr>
+</section>
+<section id="positive-skew" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="positive-skew"><span class="header-section-number">8.2</span> Positive Skew</h2>
+<p>A distribution has <strong>positive skew</strong> if it has a long tail extending toward higher values.</p>
+<p>In a positively skewed distribution, most observations are concentrated toward the lower end, while a smaller number of observations stretch far to the right.</p>
+<p>Income is a common example. Most households earn relatively moderate incomes, while a smaller number earn extremely high incomes. Those high-income observations create a long right tail.</p>
+<p>In positively skewed distributions, the mean is often greater than the median because the high values pull the mean upward.</p>
+<p>Typically:</p>
+<p>[ &gt; ]</p>
+<p>However, this is a rule of thumb, not a law. The best way to assess skewness is to look at the distribution itself.</p>
+<hr>
+</section>
+<section id="negative-skew" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="negative-skew"><span class="header-section-number">8.3</span> Negative Skew</h2>
+<p>A distribution has <strong>negative skew</strong> if it has a long tail extending toward lower values.</p>
+<p>In a negatively skewed distribution, most observations are concentrated toward the higher end, while a smaller number stretch far to the left.</p>
+<p>For example, an easy exam might produce a negatively skewed distribution if most students score high but a few score much lower.</p>
+<p>In negatively skewed distributions, the mean is often less than the median because the low values pull the mean downward.</p>
+<p>Typically:</p>
+<p>[ &lt; ]</p>
+<p>Again, this is only a rule of thumb. Some discrete distributions may violate this pattern.</p>
+<hr>
+</section>
+<section id="skewness-and-choice-of-summary-statistic" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="skewness-and-choice-of-summary-statistic"><span class="header-section-number">8.4</span> Skewness and Choice of Summary Statistic</h2>
+<p>Skewness matters because it affects how we describe what is typical.</p>
+<p>When a distribution is symmetric, the mean and median may be similar. In that case, either may provide a reasonable summary of central tendency.</p>
+<p>When a distribution is skewed, the mean and median can differ substantially.</p>
+<p>Consider household income. Suppose the median household income is:</p>
+<p>[ $56,516 ]</p>
+<p>while the mean household income is:</p>
+<p>[ $79,263 ]</p>
+<p>These numbers tell different stories.</p>
+<p>The mean is higher because high-income households pull it upward. The median tells us the income of the household in the middle of the distribution. Half of households earn less than the median, and half earn more.</p>
+<p>If we want to describe the typical household, the median is usually more informative. If we want to calculate total income divided equally across households, the mean may be appropriate.</p>
+<p>Neither statistic is inherently wrong. They answer different questions.</p>
+<hr>
+</section>
+<section id="reading-a-skewed-distribution" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="reading-a-skewed-distribution"><span class="header-section-number">8.5</span> Reading a Skewed Distribution</h2>
+<p>When examining a distribution, ask:</p>
+<ol type="1">
+<li>Is the distribution symmetric?</li>
+<li>Is there a long tail?</li>
+<li>If so, does the tail extend toward higher or lower values?</li>
+<li>Are there outliers?</li>
+<li>How different are the mean and median?</li>
+<li>Which measure of central tendency best communicates what is typical?</li>
+</ol>
+<p>A positively skewed distribution has a long right tail.<br>
+A negatively skewed distribution has a long left tail.</p>
+<p>The name of the skew refers to the direction of the tail.</p>
+<p>This is easy to mix up. Remember: the skew points toward the tail, not toward where most of the data are concentrated.</p>
+<hr>
+</section>
+</section>
+<section id="part-v-choosing-appropriate-descriptive-statistics" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Part V: Choosing Appropriate Descriptive Statistics</h1>
+<section id="matching-statistics-to-measurement-level" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="matching-statistics-to-measurement-level"><span class="header-section-number">9.1</span> Matching Statistics to Measurement Level</h2>
+<p>The most important practical rule is that descriptive statistics must match the measurement level of the variable.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Type</th>
+<th>Useful Displays</th>
+<th>Central Tendency</th>
+<th>Dispersion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal</td>
+<td>Frequency table, bar chart</td>
+<td>Mode</td>
+<td>Qualitative description</td>
+</tr>
+<tr class="even">
+<td>Ordinal</td>
+<td>Frequency table, bar chart</td>
+<td>Median, mode</td>
+<td>Range, IQR by category</td>
+</tr>
+<tr class="odd">
+<td>Interval/Ratio, discrete</td>
+<td>Frequency table, bar chart, histogram if many values</td>
+<td>Mean, median, mode</td>
+<td>Range, IQR, variance, standard deviation</td>
+</tr>
+<tr class="even">
+<td>Interval/Ratio, continuous</td>
+<td>Histogram, box plot</td>
+<td>Mean, median, sometimes mode</td>
+<td>Range, IQR, variance, standard deviation</td>
+</tr>
+</tbody>
+</table>
+<p>Software may compute statistics that are not meaningful. A researcher must know when a statistic is appropriate.</p>
+<p>For example:</p>
+<ul>
+<li>A mean of income is meaningful.</li>
+<li>A mean of religious affiliation is not meaningful.</li>
+<li>A median of ideology may be meaningful if ideology is ordered.</li>
+<li>A standard deviation of party identification is not meaningful if party categories are just labels.</li>
+<li>A mode can be used for almost any variable, but may be unhelpful for continuous data.</li>
+</ul>
+<hr>
+</section>
+<section id="descriptive-statistics-as-interpretation" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="descriptive-statistics-as-interpretation"><span class="header-section-number">9.2</span> Descriptive Statistics as Interpretation</h2>
+<p>Descriptive statistics are not just mechanical calculations. They are choices about how to represent data.</p>
+<p>Suppose we describe income using the mean. We emphasize total income divided across households. Suppose we describe it using the median. We emphasize the household in the middle. Suppose we describe it using a histogram. We show the entire shape of the distribution, including skewness and outliers.</p>
+<p>Each description is true in a narrow sense, but each highlights different features.</p>
+<p>Good descriptive analysis often uses multiple tools:</p>
+<ul>
+<li>a graph to show the shape of the distribution</li>
+<li>a measure of central tendency to identify what is typical</li>
+<li>a measure of dispersion to show spread</li>
+<li>attention to skewness and outliers</li>
+<li>careful interpretation based on the measurement level of the variable</li>
+</ul>
+<p>Descriptive statistics are the foundation for later statistical analysis. If we do not understand the basic structure of the data, we are not ready to model relationships or test hypotheses.</p>
+<hr>
+</section>
+<section id="key-terms" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="key-terms"><span class="header-section-number">9.3</span> Key Terms</h2>
+<p><strong>Distribution</strong><br>
+The pattern of values of a variable in a sample or population.</p>
+<p><strong>Frequency distribution</strong><br>
+A table showing how many cases fall into each value or category.</p>
+<p><strong>Relative frequency</strong><br>
+The proportion or percentage of cases in a category.</p>
+<p><strong>Cumulative frequency</strong><br>
+The running total of frequencies as one moves through ordered categories.</p>
+<p><strong>Bar chart</strong><br>
+A graph used to display categorical or discrete data.</p>
+<p><strong>Histogram</strong><br>
+A graph used to display continuous data grouped into bins.</p>
+<p><strong>Central tendency</strong><br>
+A summary of what is typical or central in a distribution.</p>
+<p><strong>Mean</strong><br>
+The arithmetic center of a distribution.</p>
+<p><strong>Expected value</strong><br>
+The probability-weighted average value of a variable.</p>
+<p><strong>Median</strong><br>
+The middle value in an ordered distribution; the 50th percentile.</p>
+<p><strong>Mode</strong><br>
+The most common value or category.</p>
+<p><strong>Dispersion</strong><br>
+The spread of values in a distribution.</p>
+<p><strong>Range</strong><br>
+The distance between the highest and lowest observed values.</p>
+<p><strong>Percentile</strong><br>
+A position below which a given percentage of the data fall.</p>
+<p><strong>Quartile</strong><br>
+A position dividing the data into quarters. (Q_1) is the 25th percentile, (Q_2) is the median, and (Q_3) is the 75th percentile.</p>
+<p><strong>Interquartile range</strong><br>
+The distance between (Q_3) and (Q_1), covering the middle 50 percent of the data.</p>
+<p><strong>Sum of squares</strong><br>
+The sum of squared deviations from the mean.</p>
+<p><strong>Variance</strong><br>
+The mean squared deviation from the mean.</p>
+<p><strong>Standard deviation</strong><br>
+The square root of the variance; a measure of typical spread around the mean.</p>
+<p><strong>Degrees of freedom</strong><br>
+The number of independent pieces of information available for estimating a statistic.</p>
+<p><strong>Skewness</strong><br>
+Asymmetry in a distribution.</p>
+<p><strong>Positive skew</strong><br>
+A distribution with a long tail extending toward higher values.</p>
+<p><strong>Negative skew</strong><br>
+A distribution with a long tail extending toward lower values.</p>
+<hr>
+</section>
+<section id="chapter-summary" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="chapter-summary"><span class="header-section-number">9.4</span> Chapter Summary</h2>
+<p>Descriptive statistics allow us to summarize and understand data before moving to more advanced analysis. The first step is to examine a variable’s distribution: the pattern of values in the sample or population.</p>
+<p>Categorical and discrete variables are often summarized using frequency tables and bar charts. Continuous variables are often summarized using histograms, where values are grouped into bins.</p>
+<p>Measures of central tendency describe what is typical. The mean is the arithmetic center, the median is the middle value in a rank ordering, and the mode is the most common value. Which measure is appropriate depends on the measurement level of the variable and the shape of the distribution.</p>
+<p>Measures of dispersion describe how spread out the data are. The range captures the distance between the minimum and maximum observed values. The interquartile range captures the spread of the middle 50 percent. Variance and standard deviation measure spread around the mean.</p>
+<p>The standard deviation is especially important because it appears throughout statistical analysis. It is based on squared deviations from the mean and, for sample data, is calculated using (n - 1) degrees of freedom.</p>
+<p>Finally, skewness describes asymmetry. Positively skewed distributions have long right tails; negatively skewed distributions have long left tails. Skewness affects how we interpret the mean, median, and mode. In skewed distributions, the median often gives a better sense of what is typical than the mean.</p>
+<p>The central lesson is that descriptive statistics are not merely calculations. They are tools for representing data accurately. Good analysis begins by choosing the right summaries for the right variables.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter-2.html" class="pagination-link" aria-label="Chapter 2: Sampling">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-4.html" class="pagination-link" aria-label="Chapter 4: Probability">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

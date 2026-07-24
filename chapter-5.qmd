@@ -1,0 +1,1573 @@
+---
+title: "Chapter 5: Probability Distributions"
+---
+
+Probability theory gives us the language of uncertainty. Probability distributions give us the structure of that uncertainty.
+
+In the previous chapter, we introduced basic probability concepts: outcomes, events, sample spaces, complements, unions, intersections, joint probabilities, conditional probabilities, and independence. We also saw that probability can be understood as a long-run frequency. If a random process is repeated many times, the proportion of times an outcome occurs converges toward its probability.
+
+In this chapter, we extend that logic by studying **probability distributions**. A probability distribution describes the probabilities associated with the possible values of a random variable.
+
+This chapter is a bridge between basic probability and statistical inference. The ideas here prepare us for sampling distributions, confidence intervals, hypothesis tests, and statistical significance. Those later tools all depend on understanding how random variables behave across repeated random processes.
+
+We begin by thinking of probability as **area under a curve**. We then discuss how to describe probability distributions using means and variances. Next, we introduce the **binomial distribution**, which describes the number of successes in repeated independent trials with two possible outcomes. Finally, we turn to the **normal distribution**, the **standard normal distribution**, and the logic of **Z-scores**.
+
+The central idea is this: sample statistics, such as sample means and sample proportions, are themselves random variables. Because they are random variables, they have probability distributions. Understanding those distributions is what allows us to make statistical inferences.
+
+---
+
+## Probability as Area
+
+A probability distribution assigns probabilities to the possible values of a random variable.
+
+A **random variable** is a variable whose value is determined by a random process. For example:
+
+- the result of a die roll
+- the result of a coin toss
+- whether a randomly selected voter supports a candidate
+- the number of heads in ten coin tosses
+- the age of a randomly selected person
+- the sample mean from a randomly selected sample
+
+A probability distribution tells us how likely different values of the random variable are.
+
+One useful way to think about probability is as **area**.
+
+The entire sample space has total probability 1. If we represent that sample space visually, the entire area is 1. Each outcome or range of outcomes occupies some fraction of the total area. That fraction is the probability of the outcome or range.
+
+For example, if an outcome has probability 0.20, then it occupies 20 percent of the total probability space. If an outcome has probability 0.50, it occupies half of the probability space.
+
+When working with probability, it is usually best to write probabilities as decimals between 0 and 1. For example:
+
+- 0.05, not 5 percent
+- 0.25, not 25 percent
+- 0.80, not 80 percent
+
+Percentages communicate the same information, but strictly speaking, probabilities are numbers between 0 and 1.
+
+---
+
+# Part I: Discrete Probability Distributions
+
+## Discrete Random Variables
+
+A **discrete random variable** takes on specific, separate values.
+
+Examples include:
+
+- the result of a die roll: 1, 2, 3, 4, 5, or 6
+- the number of children in a household
+- the number of heads in ten coin tosses
+- whether a person voted: yes or no
+- the number of students in a classroom
+
+Discrete variables are countable. They take on distinct values, not an infinite continuum of possibilities.
+
+Suppose a random variable \(Y\) can take five possible values:
+
+\[
+Y = 1, 2, 3, 4, 5
+\]
+
+and suppose the probabilities are:
+
+| \(Y\) | \(P(Y)\) |
+|---:|---:|
+| 1 | 0.20 |
+| 2 | 0.25 |
+| 3 | 0.30 |
+| 4 | 0.15 |
+| 5 | 0.10 |
+| **Total** | **1.00** |
+
+This is a discrete probability distribution.
+
+The probabilities must sum to 1:
+
+\[
+0.20 + 0.25 + 0.30 + 0.15 + 0.10 = 1.00
+\]
+
+That is because the table includes all possible outcomes.
+
+---
+
+## Probabilities for Discrete Variables
+
+With a discrete probability distribution, we can answer probability questions by adding the probabilities of the relevant values.
+
+For example:
+
+\[
+P(Y = 2) = 0.25
+\]
+
+That value is read directly from the table.
+
+Now suppose we ask:
+
+\[
+P(Y < 3)
+\]
+
+The values less than 3 are 1 and 2. So:
+
+\[
+P(Y < 3) = P(Y = 1) + P(Y = 2)
+\]
+
+\[
+P(Y < 3) = 0.20 + 0.25 = 0.45
+\]
+
+Now suppose we ask:
+
+\[
+P(Y \geq 4)
+\]
+
+The values greater than or equal to 4 are 4 and 5. So:
+
+\[
+P(Y \geq 4) = P(Y = 4) + P(Y = 5)
+\]
+
+\[
+P(Y \geq 4) = 0.15 + 0.10 = 0.25
+\]
+
+Finally, suppose we ask:
+
+\[
+P(2 \leq Y \leq 4)
+\]
+
+The values in that range are 2, 3, and 4. So:
+
+\[
+P(2 \leq Y \leq 4) = P(Y = 2) + P(Y = 3) + P(Y = 4)
+\]
+
+\[
+P(2 \leq Y \leq 4) = 0.25 + 0.30 + 0.15 = 0.70
+\]
+
+The rule is simple: identify the values that satisfy the condition, then sum their probabilities.
+
+---
+
+## Summation Notation for Discrete Probabilities
+
+We can write this process using summation notation.
+
+For example:
+
+\[
+P(Y < 3) = \sum_{y < 3} P(Y = y)
+\]
+
+This means: add the probabilities for all values of \(y\) that are less than 3.
+
+In this example:
+
+\[
+P(Y < 3) = P(Y = 1) + P(Y = 2)
+\]
+
+Similarly:
+
+\[
+P(Y \geq 4) = \sum_{y \geq 4} P(Y = y)
+\]
+
+and:
+
+\[
+P(2 \leq Y \leq 4) = \sum_{y=2}^{4} P(Y = y)
+\]
+
+Summation notation may look intimidating, but the idea is straightforward. We are adding probabilities across the values that meet the condition.
+
+This notation is useful because it prepares us for continuous probability distributions, where we cannot simply add up discrete probabilities. Instead, we use integration.
+
+Do not panic. We will not do calculus by hand. But understanding the concept matters.
+
+---
+
+# Part II: Continuous Probability Distributions
+
+## Continuous Random Variables
+
+A **continuous random variable** can take on infinitely many values within a range.
+
+Examples include:
+
+- distance
+- weight
+- height
+- temperature
+- time
+- age, if measured precisely
+
+In practice, we often record continuous variables in rounded units. For example, we usually report age in whole years. But age itself is continuous: each second, millisecond, or nanosecond, a person becomes slightly older.
+
+Continuous variables create an important conceptual difference.
+
+For a continuous variable, the probability of any exact value is zero.
+
+That may sound strange. But consider age. What is the probability that a randomly selected person is exactly:
+
+\[
+32.679732491\ldots
+\]
+
+years old?
+
+Since age can be subdivided infinitely, no single exact point has positive probability. Instead, we ask about ranges:
+
+- What is the probability someone is younger than 38?
+- What is the probability someone is between 40 and 60?
+- What is the probability someone is older than 72?
+
+For continuous variables, probability is assigned to intervals, not exact points.
+
+---
+
+## Probability Density
+
+For continuous distributions, we describe probability using a **probability density function**, or PDF.
+
+A probability density function gives the height of the probability curve at each value of the variable.
+
+The height of the curve is called **density**.
+
+Density is not itself probability. Probability is area.
+
+For a continuous distribution:
+
+\[
+\text{Probability} = \text{Area under the curve over an interval}
+\]
+
+For example, suppose we have a distribution of age. If the curve is high around age 30, that means there is relatively high probability density in that region. If the curve is low around age 90, there is relatively low probability density there.
+
+But the probability of being exactly 30 is still zero. The probability of being between 30 and 35, however, can be positive because that interval has width.
+
+The total area under a probability density curve must equal 1.
+
+---
+
+## Probability as Area Under the Curve
+
+For a continuous variable, we find probabilities by identifying the area under the curve within a range.
+
+For example:
+
+\[
+P(Y \leq 38)
+\]
+
+is the area under the curve from the lowest possible value up to 38.
+
+\[
+P(40 \leq Y \leq 60)
+\]
+
+is the area under the curve between 40 and 60.
+
+\[
+P(Y \geq 72)
+\]
+
+is the area under the curve from 72 upward.
+
+If the area under the curve between 40 and 60 is 0.36, then:
+
+\[
+P(40 \leq Y \leq 60) = 0.36
+\]
+
+That means there is a 36 percent chance that a randomly selected case falls in that range.
+
+Again, probability is the area under the curve.
+
+---
+
+## Integration and Area
+
+How do we find area under a curve?
+
+For a rectangle, area is easy:
+
+\[
+\text{Area} = \text{width} \times \text{height}
+\]
+
+But probability curves are usually not flat across the top. They are curved. To find the area under a curved function, calculus uses **integration**.
+
+For a continuous random variable \(Y\), the probability that \(Y\) falls between two values \(a\) and \(b\) is written:
+
+\[
+P(a \leq Y \leq b) = \int_a^b f(y)\,dy
+\]
+
+where:
+
+- \(f(y)\) is the probability density function
+- \(dy\) represents a tiny increment of \(y\)
+- the integral adds up all the tiny slices of area between \(a\) and \(b\)
+
+Conceptually, integration divides the interval into many tiny rectangles. Each rectangle has:
+
+- a tiny width, \(dy\)
+- a height, \(f(y)\)
+
+The area of each tiny rectangle is approximately:
+
+\[
+f(y)dy
+\]
+
+Adding all those tiny areas gives the total area under the curve.
+
+In this course, we will not calculate integrals by hand. Instead, we will use tables and software. But the concept matters because tables such as the Z-table and T-table are essentially precomputed areas under probability curves.
+
+Some mathematically generous soul did the integration for us. We should be grateful. Quietly, perhaps, but grateful.
+
+---
+
+## Probability Density Functions and Cumulative Distribution Functions
+
+Two functions are especially important when working with continuous probability distributions.
+
+### Probability Density Function
+
+A **probability density function**, or PDF, gives the height of the curve at a particular value.
+
+We often write a generic density function as:
+
+\[
+f(y)
+\]
+
+This means: the function \(f\) takes \(y\) as input and returns the height of the curve at that value of \(y\).
+
+The input is a value of the variable.  
+The output is density.
+
+### Cumulative Distribution Function
+
+A **cumulative distribution function**, or CDF, gives the total area under the curve up to a particular value.
+
+For a value \(y\), the CDF tells us:
+
+\[
+P(Y \leq y)
+\]
+
+In words: the probability that the random variable is less than or equal to \(y\).
+
+The PDF gives height.  
+The CDF gives accumulated area.
+
+---
+
+# Part III: Describing Probability Distributions
+
+## Parameters of Probability Distributions
+
+Probability distributions can be described using parameters, just as sample distributions can be described using statistics.
+
+The most important parameters describe:
+
+1. **Center**
+2. **Dispersion**
+
+For many probability distributions, the center is the **mean**, represented by:
+
+\[
+\mu
+\]
+
+The dispersion is often represented by the **variance**:
+
+\[
+\sigma^2
+\]
+
+or the **standard deviation**:
+
+\[
+\sigma
+\]
+
+These are population-level or distribution-level quantities. They describe the long-run behavior of the random variable.
+
+---
+
+## Expected Value
+
+The mean of a probability distribution is also called the **expected value**.
+
+The expected value of \(Y\) is written:
+
+\[
+E(Y)
+\]
+
+For a discrete random variable, the expected value is:
+
+\[
+E(Y) = \sum_y yP(Y=y)
+\]
+
+In words: multiply each possible value of \(Y\) by its probability, then add the results.
+
+The expected value is the probability-weighted center of the distribution.
+
+---
+
+## Expected Value Example: A Die Roll
+
+Suppose we roll a fair six-sided die.
+
+The possible values are:
+
+\[
+1, 2, 3, 4, 5, 6
+\]
+
+Each has probability:
+
+\[
+\frac{1}{6}
+\]
+
+The expected value is:
+
+\[
+E(Y) = 1\left(\frac{1}{6}\right) + 2\left(\frac{1}{6}\right) + 3\left(\frac{1}{6}\right) + 4\left(\frac{1}{6}\right) + 5\left(\frac{1}{6}\right) + 6\left(\frac{1}{6}\right)
+\]
+
+\[
+E(Y) = \frac{1+2+3+4+5+6}{6}
+\]
+
+\[
+E(Y) = \frac{21}{6} = 3.5
+\]
+
+The expected value of a die roll is 3.5.
+
+Notice that 3.5 is not a possible die roll. We cannot roll a 3.5. But 3.5 is still the mean of the probability distribution.
+
+This is an important lesson: an expected value does not have to be an outcome that can actually occur.
+
+---
+
+## Expected Value Example: A Discrete Distribution
+
+Return to the earlier probability distribution:
+
+| \(Y\) | \(P(Y)\) |
+|---:|---:|
+| 1 | 0.20 |
+| 2 | 0.25 |
+| 3 | 0.30 |
+| 4 | 0.15 |
+| 5 | 0.10 |
+
+The expected value is:
+
+\[
+E(Y) = 1(0.20) + 2(0.25) + 3(0.30) + 4(0.15) + 5(0.10)
+\]
+
+\[
+E(Y) = 0.20 + 0.50 + 0.90 + 0.60 + 0.50
+\]
+
+\[
+E(Y) = 2.70
+\]
+
+So the mean of this probability distribution is:
+
+\[
+\mu = 2.70
+\]
+
+If we repeatedly draw values from this distribution, the sample mean will converge toward 2.70 as the number of draws increases.
+
+That is the law of large numbers at work.
+
+---
+
+## Expected Value for Continuous Variables
+
+For a continuous random variable, the logic is the same, but the notation changes.
+
+Instead of summing over discrete values, we integrate across the continuous range of \(Y\):
+
+\[
+E(Y) = \int_{-\infty}^{\infty} y f(y)\,dy
+\]
+
+This expression means: multiply each value of \(y\) by its density, then add across the entire range of the distribution.
+
+Again, you do not need to calculate this by hand. The important point is conceptual.
+
+For discrete variables:
+
+\[
+E(Y) = \sum_y yP(Y=y)
+\]
+
+For continuous variables:
+
+\[
+E(Y) = \int y f(y)\,dy
+\]
+
+Both formulas express the same idea: the expected value is the probability-weighted center of the distribution.
+
+---
+
+## Variance of a Probability Distribution
+
+The **variance** of a probability distribution describes its spread around the mean.
+
+For a random variable \(Y\), the variance is:
+
+\[
+Var(Y) = E[(Y-\mu)^2]
+\]
+
+This means the variance is the expected squared deviation from the mean.
+
+In words:
+
+1. Take each possible value of \(Y\).
+2. Measure how far it is from the mean.
+3. Square that distance.
+4. Weight by the probability of that value.
+5. Add across all values.
+
+For a discrete variable:
+
+\[
+Var(Y) = \sum_y (y-\mu)^2P(Y=y)
+\]
+
+For a continuous variable:
+
+\[
+Var(Y) = \int_{-\infty}^{\infty} (y-\mu)^2 f(y)\,dy
+\]
+
+The standard deviation is the square root of the variance:
+
+\[
+\sigma = \sqrt{Var(Y)}
+\]
+
+The main idea is that probability distributions have centers and spreads. Their center is the expected value. Their spread is described by variance and standard deviation.
+
+---
+
+# Part IV: The Binomial Distribution
+
+## Why the Binomial Distribution Matters
+
+The **binomial distribution** is a discrete probability distribution that describes the number of successes in a fixed number of independent trials when each trial has two possible outcomes.
+
+Examples include:
+
+- heads or tails
+- success or failure
+- yes or no
+- voted or did not vote
+- supports Candidate A or does not support Candidate A
+- employed or not employed
+
+The binomial distribution is important because many variables in social science and policy analysis are dichotomous. A person either belongs to a category or does not. A respondent either supports a policy or does not. A household either receives a benefit or does not.
+
+The binomial distribution helps us calculate the probability of getting a certain number of cases in the category of interest.
+
+---
+
+## Conditions for the Binomial Distribution
+
+The binomial distribution applies when three conditions are met:
+
+1. **There are two possible outcomes.**  
+   Each trial results in either success or failure, heads or tails, yes or no.
+
+2. **The probability of success is constant.**  
+   The probability of being in the category of interest is the same for each trial. We represent this probability as \(\pi\).
+
+3. **The trials are independent.**  
+   The outcome of one trial does not affect the outcome of another.
+
+If these conditions do not hold, the binomial distribution may not be appropriate.
+
+---
+
+## Coin Toss Example
+
+Suppose we toss a fair coin 10 times.
+
+Let heads be the outcome of interest.
+
+For each toss:
+
+\[
+P(Heads) = 0.5
+\]
+
+\[
+P(Tails) = 1 - 0.5 = 0.5
+\]
+
+The tosses are independent.
+
+What is the probability of getting 10 heads?
+
+Because the tosses are independent, we multiply the probabilities:
+
+\[
+P(10 \text{ heads}) = 0.5^{10}
+\]
+
+\[
+P(10 \text{ heads}) = 0.00098
+\]
+
+This is a very unlikely outcome.
+
+Now imagine a political survey. Suppose exactly half the electorate supports Candidate A and half supports Candidate B. If we randomly select 10 voters, the probability that all 10 support Candidate A is also:
+
+\[
+0.5^{10} = 0.00098
+\]
+
+So if a random sample of 10 voters all support Candidate A, we might begin to doubt the claim that the electorate is evenly split.
+
+This is the intuition behind statistical inference: we compare what we observe to what would be likely under a hypothesized truth.
+
+---
+
+## Permutations: Nine Heads in Ten Tosses
+
+Now suppose we ask:
+
+> What is the probability of getting exactly nine heads in ten tosses?
+
+First, consider one specific ordering:
+
+\[
+H,H,H,H,H,H,H,H,H,T
+\]
+
+The probability of that exact sequence is:
+
+\[
+0.5^9(1-0.5)^1
+\]
+
+\[
+= 0.5^9(0.5)^1
+\]
+
+\[
+= 0.5^{10}
+\]
+
+\[
+= 0.00098
+\]
+
+But that is only one possible ordering. The single tail could appear in any of the ten positions.
+
+There are 10 ways to get exactly nine heads and one tail.
+
+So:
+
+\[
+P(9 \text{ heads in 10 tosses}) = 10(0.00098)
+\]
+
+\[
+= 0.0098
+\]
+
+The binomial formula generalizes this logic.
+
+---
+
+## The Binomial Formula
+
+The binomial distribution gives the probability of getting exactly \(x\) successes in \(n\) trials:
+
+\[
+P(X=x) = \frac{n!}{x!(n-x)!}\pi^x(1-\pi)^{n-x}
+\]
+
+where:
+
+- \(n\) is the number of trials
+- \(x\) is the number of successes
+- \(\pi\) is the probability of success on each trial
+- \(1-\pi\) is the probability of failure
+- \(n!\) means \(n\) factorial
+
+The formula has two main parts.
+
+### Part 1: Number of Possible Arrangements
+
+\[
+\frac{n!}{x!(n-x)!}
+\]
+
+This counts how many different ways we can arrange \(x\) successes among \(n\) trials.
+
+### Part 2: Probability of One Arrangement
+
+\[
+\pi^x(1-\pi)^{n-x}
+\]
+
+This gives the probability of any one specific arrangement with \(x\) successes and \(n-x\) failures.
+
+Multiplying these parts gives the total probability of getting exactly \(x\) successes in any order.
+
+---
+
+## Factorials
+
+A **factorial** is the product of a positive integer and all positive integers below it.
+
+For example:
+
+\[
+5! = 5 \times 4 \times 3 \times 2 \times 1
+\]
+
+\[
+3! = 3 \times 2 \times 1
+\]
+
+By definition:
+
+\[
+0! = 1
+\]
+
+This matters in binomial calculations. For example, if \(x=n\), then \(n-x=0\), and the formula includes \(0!\). That value is 1.
+
+---
+
+## Binomial Example: Nine Heads in Ten Tosses
+
+Let:
+
+\[
+n = 10
+\]
+
+\[
+x = 9
+\]
+
+\[
+\pi = 0.5
+\]
+
+The binomial formula is:
+
+\[
+P(X=9) = \frac{10!}{9!(10-9)!}(0.5)^9(1-0.5)^{10-9}
+\]
+
+Simplify:
+
+\[
+P(X=9) = \frac{10!}{9!1!}(0.5)^9(0.5)^1
+\]
+
+The arrangement part is:
+
+\[
+\frac{10!}{9!1!} = 10
+\]
+
+The probability of one arrangement is:
+
+\[
+(0.5)^9(0.5)^1 = 0.00098
+\]
+
+So:
+
+\[
+P(X=9) = 10(0.00098)
+\]
+
+\[
+P(X=9) = 0.0098
+\]
+
+This matches the intuitive result from earlier.
+
+---
+
+## The Binomial as a Probability Distribution
+
+The binomial formula can be used to calculate the probability of every possible number of successes.
+
+If we toss a coin 10 times, the number of heads can be:
+
+\[
+0,1,2,3,4,5,6,7,8,9,10
+\]
+
+For each value of \(x\), the binomial formula gives:
+
+\[
+P(X=x)
+\]
+
+Together, these probabilities form a binomial probability distribution.
+
+For a fair coin tossed 10 times, the distribution is centered at 5 heads, or a sample proportion of 0.5. Getting 5 heads is more likely than getting 0, 1, 9, or 10 heads.
+
+The distribution is symmetric because heads and tails are equally likely.
+
+If we toss the coin many more times, say 500 times, the binomial distribution becomes smoother and begins to resemble a normal distribution. It remains centered at the true probability of heads, 0.5, but the distribution of sample proportions becomes increasingly concentrated near that value.
+
+This is one of the first hints of a major idea: as sample size grows, sample statistics tend to have predictable probability distributions.
+
+---
+
+## The Binomial and Sample Proportions
+
+The binomial distribution can also be understood as a distribution of sample proportions.
+
+Suppose the probability of being in a category is:
+
+\[
+\pi = 0.6
+\]
+
+and we randomly sample:
+
+\[
+n = 1000
+\]
+
+cases.
+
+The expected number of cases in the category is:
+
+\[
+n\pi = 1000(0.6) = 600
+\]
+
+So the expected sample proportion is:
+
+\[
+\hat{\pi} = 0.6
+\]
+
+But we will not always get exactly 600 out of 1000. We might get 590, 604, 612, or 581. The binomial distribution tells us the probability of each possible count, and therefore the probability of each possible sample proportion.
+
+As \(n\) becomes large, the distribution of sample proportions becomes approximately normal. It is centered at the true population proportion \(\pi\).
+
+This matters because in real surveys, we do not know \(\pi\). We observe \(\hat{\pi}\), the sample proportion, and use probability theory to assess how close it is likely to be to the true population proportion.
+
+---
+
+# Part V: The Normal Distribution
+
+## Why the Normal Distribution Matters
+
+The **normal distribution** is one of the most important probability distributions in statistics.
+
+It is useful because many variables are approximately normally distributed, and, even more importantly, many sample statistics have sampling distributions that are approximately normal under the right conditions.
+
+The normal distribution is:
+
+- symmetric
+- bell-shaped
+- centered at its mean
+- highest at the mean
+- decreasing as we move away from the mean
+- defined by its mean and standard deviation
+
+The normal distribution is central to confidence intervals, hypothesis tests, Z-scores, T-scores, and many regression models.
+
+---
+
+## The Normal Density Function
+
+The probability density function for a normal distribution is:
+
+\[
+f(y) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{y-\mu}{\sigma}\right)^2}
+\]
+
+You do not need to memorize this formula.
+
+But it is useful to recognize its components:
+
+- \(\mu\) is the mean
+- \(\sigma\) is the standard deviation
+- \(\pi\) is the mathematical constant 3.14159...
+- \(e\) is the base of the natural exponential function
+
+This function draws the bell-shaped normal curve.
+
+A specific normal distribution is determined by choosing values for \(\mu\) and \(\sigma\).
+
+---
+
+## Changing the Mean
+
+If we change the mean while holding the standard deviation constant, the normal curve shifts left or right.
+
+For example, consider three normal distributions with the same standard deviation but different means:
+
+- \(\mu = 68\)
+- \(\mu = 70\)
+- \(\mu = 72\)
+
+Each distribution has the same shape and spread, but each is centered at a different value.
+
+The mean determines location.
+
+---
+
+## Changing the Standard Deviation
+
+If we hold the mean constant but change the standard deviation, the spread of the distribution changes.
+
+Suppose three normal distributions all have:
+
+\[
+\mu = 70
+\]
+
+but different standard deviations:
+
+- \(\sigma = 0.5\)
+- \(\sigma = 1\)
+- \(\sigma = 2\)
+
+The distribution with \(\sigma = 0.5\) is tightly concentrated around 70.
+
+The distribution with \(\sigma = 2\) is much more spread out.
+
+The standard deviation determines dispersion.
+
+---
+
+## Common Properties of All Normal Distributions
+
+Every normal distribution has the same general area properties.
+
+Approximately:
+
+- 68 percent of the area lies within 1 standard deviation of the mean.
+- 95 percent of the area lies within about 2 standard deviations of the mean.
+- 99.7 percent of the area lies within about 3 standard deviations of the mean.
+
+More precisely:
+
+\[
+P(\mu - \sigma \leq Y \leq \mu + \sigma) \approx 0.6826
+\]
+
+\[
+P(\mu - 1.96\sigma \leq Y \leq \mu + 1.96\sigma) \approx 0.95
+\]
+
+\[
+P(\mu - 3\sigma \leq Y \leq \mu + 3\sigma) \approx 0.997
+\]
+
+The number 1.96 is especially important because 95 percent of a normal distribution lies between -1.96 and +1.96 standard deviations from the mean.
+
+That number will appear repeatedly in confidence intervals and hypothesis tests.
+
+---
+
+## Normal Distributions and Inference
+
+The normal distribution is useful for inference because sample statistics often have approximately normal sampling distributions.
+
+Suppose we hypothesize that the true population mean is 10. We collect a random sample and get a sample mean of 20. Is that plausible?
+
+The answer depends on how far 20 is from 10 in standard deviation units.
+
+If 20 is only one standard deviation above 10, that may not be surprising. If 20 is five standard deviations above 10, that would be extremely unlikely if the true mean were really 10.
+
+Statistical inference uses this logic.
+
+We ask:
+
+> If the hypothesis were true, how likely would it be to get a sample statistic as extreme as the one we observed?
+
+To answer that, we need to know the probability distribution of the sample statistic.
+
+---
+
+# Part VI: The Standard Normal Distribution
+
+## Why Standardize?
+
+There are infinitely many normal distributions because normal distributions can have different means and standard deviations.
+
+To make them easier to use, we convert any normal distribution into the **standard normal distribution**.
+
+The standard normal distribution has:
+
+\[
+\mu = 0
+\]
+
+and:
+
+\[
+\sigma = 1
+\]
+
+A value on the standard normal distribution is called a **Z-score**.
+
+A Z-score tells us how many standard deviations a value is from the mean.
+
+---
+
+## Calculating a Z-Score
+
+To convert a value \(Y\) into a Z-score, use:
+
+\[
+Z = \frac{Y-\mu}{\sigma}
+\]
+
+where:
+
+- \(Y\) is the original value
+- \(\mu\) is the mean
+- \(\sigma\) is the standard deviation
+
+The process has two steps:
+
+1. Subtract the mean.
+2. Divide by the standard deviation.
+
+Subtracting the mean centers the distribution at 0.  
+Dividing by the standard deviation rescales the distribution so that one unit equals one standard deviation.
+
+---
+
+## Interpreting Z-Scores
+
+A Z-score of 0 means the value is exactly at the mean.
+
+A positive Z-score means the value is above the mean.
+
+A negative Z-score means the value is below the mean.
+
+The magnitude tells us how far the value is from the mean in standard deviation units.
+
+For example:
+
+- \(Z = 1.00\): one standard deviation above the mean
+- \(Z = -1.00\): one standard deviation below the mean
+- \(Z = 2.00\): two standard deviations above the mean
+- \(Z = -2.00\): two standard deviations below the mean
+
+Z-scores are useful because they provide context.
+
+A test score of 80 may be good or bad depending on the distribution of scores. If the mean is 75 and the standard deviation is 5, then 80 is one standard deviation above the mean.
+
+If the mean is 90 and the standard deviation is 5, then 80 is two standard deviations below the mean.
+
+The raw score alone is not enough. The Z-score tells us where the score sits in the distribution.
+
+---
+
+## Z-Score Example: Exam Scores
+
+Suppose exam scores are normally distributed with:
+
+\[
+\mu = 75
+\]
+
+\[
+\sigma = 5
+\]
+
+A student scores:
+
+\[
+Y = 80
+\]
+
+The Z-score is:
+
+\[
+Z = \frac{80-75}{5}
+\]
+
+\[
+Z = \frac{5}{5}
+\]
+
+\[
+Z = 1.00
+\]
+
+So a score of 80 is one standard deviation above the mean.
+
+Now consider a score of 65:
+
+\[
+Z = \frac{65-75}{5}
+\]
+
+\[
+Z = \frac{-10}{5}
+\]
+
+\[
+Z = -2.00
+\]
+
+So a score of 65 is two standard deviations below the mean.
+
+A score of 75 gives:
+
+\[
+Z = \frac{75-75}{5} = 0
+\]
+
+So 75 is exactly at the mean.
+
+---
+
+## Converting Back from a Z-Score
+
+We can also convert a Z-score back to the original scale.
+
+Starting with:
+
+\[
+Z = \frac{Y-\mu}{\sigma}
+\]
+
+solve for \(Y\):
+
+\[
+Y = Z\sigma + \mu
+\]
+
+For example, suppose:
+
+\[
+Z = 2
+\]
+
+\[
+\mu = 75
+\]
+
+\[
+\sigma = 5
+\]
+
+Then:
+
+\[
+Y = 2(5) + 75
+\]
+
+\[
+Y = 85
+\]
+
+A Z-score of 2 corresponds to an exam score of 85.
+
+---
+
+# Part VII: Using the Z-Table
+
+## Area Under the Standard Normal Curve
+
+The standard normal distribution lets us find probabilities by finding area under the curve.
+
+For example:
+
+> What is the probability that a normally distributed variable is more than two standard deviations above the mean?
+
+On the standard normal scale, two standard deviations above the mean is:
+
+\[
+Z = 2.00
+\]
+
+So we want:
+
+\[
+P(Z > 2.00)
+\]
+
+Using a Z-table that reports upper-tail probabilities:
+
+\[
+P(Z > 2.00) = 0.0228
+\]
+
+That means there is a 2.28 percent chance that a normally distributed variable falls more than two standard deviations above the mean.
+
+---
+
+## Symmetry
+
+The standard normal distribution is symmetric.
+
+Therefore:
+
+\[
+P(Z > 1.00) = P(Z < -1.00)
+\]
+
+and:
+
+\[
+P(Z > 2.00) = P(Z < -2.00)
+\]
+
+If a table gives area above positive Z-scores, we can use symmetry to find areas below negative Z-scores.
+
+For example:
+
+\[
+P(Z > 1.00) = 0.1587
+\]
+
+Therefore:
+
+\[
+P(Z < -1.00) = 0.1587
+\]
+
+---
+
+## Complement Rule with the Z-Table
+
+If the table gives area above a Z-score, then area below that Z-score is found using the complement rule.
+
+For example:
+
+\[
+P(Z > 1.00) = 0.1587
+\]
+
+So:
+
+\[
+P(Z \leq 1.00) = 1 - 0.1587
+\]
+
+\[
+P(Z \leq 1.00) = 0.8413
+\]
+
+The probability of being at exactly \(Z = 1.00\) is zero because the normal distribution is continuous. So we do not need to worry much about whether the inequality is \(<\), \(\leq\), \(>\), or \(\geq\) in ordinary area calculations.
+
+In hypothesis testing, however, crossing a threshold can matter. We will return to that later.
+
+---
+
+## Area Between Two Z-Scores
+
+Suppose we want the area between:
+
+\[
+Z = -1.00
+\]
+
+and:
+
+\[
+Z = 1.00
+\]
+
+We know:
+
+\[
+P(Z < -1.00) = 0.1587
+\]
+
+and:
+
+\[
+P(Z > 1.00) = 0.1587
+\]
+
+The total area outside the interval is:
+
+\[
+0.1587 + 0.1587 = 0.3174
+\]
+
+So the area inside the interval is:
+
+\[
+1 - 0.3174 = 0.6826
+\]
+
+Thus:
+
+\[
+P(-1.00 \leq Z \leq 1.00) = 0.6826
+\]
+
+This is the familiar 68.26 percent within one standard deviation of the mean.
+
+---
+
+## Finding a Z-Score from an Area
+
+Sometimes we work backward.
+
+Instead of asking, “What area corresponds to this Z-score?” we ask:
+
+> What Z-score corresponds to this area?
+
+For example:
+
+> What Z-score has an upper-tail area of approximately 0.40?
+
+Using a Z-table, we search for the table value closest to 0.40. The closest values may fall between two Z-scores, such as 0.25 and 0.26.
+
+In that case, we can say the Z-score is approximately between:
+
+\[
+0.25 \text{ and } 0.26
+\]
+
+Tables are sometimes imprecise because they report only certain decimal places. Software can calculate more precise values, but tables are useful for understanding the logic.
+
+---
+
+# Part VIII: Connecting Probability Distributions to Sampling Distributions
+
+## Sample Statistics Are Random Variables
+
+A crucial idea is that sample statistics are random variables.
+
+Consider a sample mean.
+
+Once we have a sample, the sample mean is fixed. We can calculate it exactly. But before we draw the sample, the sample mean is uncertain because the sample itself is random.
+
+Different random samples would produce different sample means.
+
+Therefore, the sample mean has a probability distribution.
+
+The same is true for:
+
+- sample proportions
+- sample differences in means
+- sample regression coefficients
+- many other statistics
+
+The probability distribution of a sample statistic is called a **sampling distribution**.
+
+---
+
+## Sampling Distribution of the Mean
+
+Suppose we have a population of student debt values. The true population mean is:
+
+\[
+\mu = 23{,}708
+\]
+
+and the true population standard deviation is:
+
+\[
+\sigma = 5{,}918
+\]
+
+Now imagine drawing a random sample of 100 students and calculating the sample mean:
+
+\[
+\bar{X}
+\]
+
+One sample might produce:
+
+\[
+\bar{X} = 22{,}705
+\]
+
+Another sample might produce:
+
+\[
+\bar{X} = 24{,}100
+\]
+
+Another might produce:
+
+\[
+\bar{X} = 23{,}690
+\]
+
+Each sample gives a different sample mean.
+
+If we repeatedly drew many samples of size 100 and plotted all the sample means, we would see a distribution of sample means.
+
+That distribution would be centered near the true population mean.
+
+This distribution is the sampling distribution of \(\bar{X}\).
+
+---
+
+## Standard Error
+
+The standard deviation of a sampling distribution has a special name:
+
+\[
+\text{standard error}
+\]
+
+The standard error tells us how much a sample statistic typically varies from the population parameter.
+
+For a sample mean, the standard error describes the typical distance between a sample mean and the true population mean.
+
+This connects directly to the logic of standard deviation:
+
+- A standard deviation describes the typical distance of observations from their mean.
+- A standard error describes the typical distance of sample statistics from the population parameter.
+
+The standard error is central to confidence intervals and hypothesis tests.
+
+---
+
+## Sample Size and the Sampling Distribution
+
+Sample size affects the spread of the sampling distribution.
+
+If sample size is small, sample means vary more from sample to sample. The sampling distribution is wide.
+
+If sample size is large, sample means vary less from sample to sample. The sampling distribution is narrow.
+
+Why?
+
+With a small sample, one extreme observation can strongly affect the sample mean. With a large sample, extreme observations are balanced by many other observations.
+
+Larger samples produce more precise estimates.
+
+This is why increasing sample size reduces random sampling error.
+
+---
+
+## The Central Limit Theorem Preview
+
+The **Central Limit Theorem** is one of the most important results in statistics.
+
+It says that, under certain conditions, the sampling distribution of the sample mean becomes approximately normal as sample size increases.
+
+This can happen even when the population distribution itself is not normal.
+
+If the population is normal, the sampling distribution of the mean is normal even for small samples.
+
+If the population is skewed, small samples may produce a skewed sampling distribution. But as sample size increases, the sampling distribution becomes more normal.
+
+A common rule of thumb is that sample sizes above about 30 are often large enough for the sampling distribution of the mean to be approximately normal, though this depends on the severity of skewness and other features of the population.
+
+The Central Limit Theorem is the reason the normal distribution is so important in statistical inference.
+
+---
+
+# Key Terms
+
+**Probability distribution**  
+A function or table that assigns probabilities to the possible values of a random variable.
+
+**Random variable**  
+A variable whose value is determined by a random process.
+
+**Discrete random variable**  
+A random variable with specific, countable possible values.
+
+**Continuous random variable**  
+A random variable that can take on infinitely many values within a range.
+
+**Probability density**  
+The height of a probability curve at a given value.
+
+**Probability density function, PDF**  
+A function that gives the density of a continuous random variable at each value.
+
+**Cumulative distribution function, CDF**  
+A function that gives the probability that a random variable is less than or equal to a given value.
+
+**Area under the curve**  
+The probability that a continuous random variable falls within a specified range.
+
+**Expected value**  
+The probability-weighted mean of a random variable.
+
+**Variance**  
+The expected squared deviation from the mean.
+
+**Standard deviation**  
+The square root of the variance.
+
+**Binomial distribution**  
+A discrete probability distribution describing the number of successes in a fixed number of independent trials with two possible outcomes.
+
+**Factorial**  
+The product of a positive integer and all positive integers below it; for example, \(5! = 5 \times 4 \times 3 \times 2 \times 1\).
+
+**Normal distribution**  
+A symmetric, bell-shaped probability distribution defined by its mean and standard deviation.
+
+**Standard normal distribution**  
+A normal distribution with mean 0 and standard deviation 1.
+
+**Z-score**  
+A standardized value showing how many standard deviations an observation is from the mean.
+
+**Z-table**  
+A table that gives areas under the standard normal curve.
+
+**Sampling distribution**  
+The probability distribution of a sample statistic across repeated random samples.
+
+**Standard error**  
+The standard deviation of a sampling distribution.
+
+**Central Limit Theorem**  
+The theorem stating that, under appropriate conditions, the sampling distribution of the sample mean becomes approximately normal as sample size increases.
+
+---
+
+# Chapter Summary
+
+Probability distributions describe how random variables behave. For discrete variables, probabilities are assigned to specific values. For continuous variables, probabilities are represented by area under a curve over intervals.
+
+The expected value of a probability distribution is its mean. It is the probability-weighted center of the distribution. The variance and standard deviation describe the distribution’s spread.
+
+The binomial distribution applies to repeated independent trials with two possible outcomes. It tells us the probability of getting exactly \(x\) successes in \(n\) trials. It is especially useful for understanding sample proportions.
+
+The normal distribution is a symmetric, bell-shaped distribution defined by its mean and standard deviation. All normal distributions share common area properties: about 68 percent of the area lies within one standard deviation of the mean, about 95 percent within 1.96 standard deviations, and almost all within three standard deviations.
+
+The standard normal distribution converts any normal variable into Z-scores, which measure distance from the mean in standard deviation units. Z-tables allow us to find probabilities by identifying area under the standard normal curve.
+
+The most important connection is to sampling distributions. Sample statistics are random variables because they depend on random samples. Their probability distributions allow us to assess how much random error to expect. This is the foundation for confidence intervals, hypothesis testing, and statistical inference.

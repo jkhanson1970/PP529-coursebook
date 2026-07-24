@@ -1,0 +1,1017 @@
+---
+title: "Chapter 9: Experiments and Causality"
+---
+
+We now move from one-sample inference to comparisons between groups.
+
+So far, we have learned how to estimate and test claims about a single mean or a single proportion. We have built the foundations: sampling, probability, sampling distributions, standard errors, confidence intervals, and significance tests. Those tools now carry forward into new settings.
+
+Many of the most important questions in policy analysis, social science, public health, and program evaluation are comparative:
+
+- Did a job training program increase employment?
+- Did a vaccine education program raise vaccination rates?
+- Did a new gasoline blend reduce air pollution?
+- Did a school intervention improve test scores?
+- Do people in one group have different outcomes than people in another group?
+
+These questions usually require comparing outcomes across groups. We may compare the mean outcome for people who received a treatment to the mean outcome for people who did not. Or we may compare the proportion of people with a particular outcome in one group to the proportion in another group.
+
+This chapter introduces the logic behind those comparisons by focusing on **causality** and **experiments**. Before we can test whether two means or two proportions differ, we need to understand what it would mean for one variable to cause another.
+
+The key lesson is that association is not enough. Two variables may move together, but that does not automatically mean one causes the other. Experiments, especially randomized controlled trials, provide the strongest design for identifying causal relationships. When experiments are not possible, researchers rely on observational data and must work harder to address alternative explanations.
+
+---
+
+## Causality
+
+A causal relationship exists when changes in one variable produce changes in another variable.
+
+Suppose we have two variables:
+
+\[
+X \rightarrow Y
+\]
+
+The arrow indicates that \(X\) causes \(Y\), or that changes in \(X\) lead to changes in \(Y\).
+
+In this framework, \(Y\) is the **dependent variable**. It is the outcome we care about. Its value depends, at least in part, on another variable.
+
+\(X\) is the **independent variable**. It is the variable we think may be doing the causing. It is the predictor, treatment, intervention, or explanatory variable.
+
+For example:
+
+- A job training program may affect employment.
+- A vaccine education program may affect vaccination rates.
+- A new gasoline blend may affect air quality.
+- Class size may affect student test scores.
+- Exposure to lead may affect child development.
+
+In each case, we are interested in whether changes in \(X\) produce changes in \(Y\).
+
+Researchers often ask:
+
+> What is your dependent variable?
+
+This means:
+
+> What outcome are you trying to explain?
+
+They may also ask:
+
+> What is your independent variable?
+
+This means:
+
+> What factor do you think affects that outcome?
+
+---
+
+## Conditions for Causality
+
+For a causal relationship to exist, three basic conditions must hold.
+
+### 1. Covariation
+
+The independent variable and dependent variable must move together.
+
+If \(X\) changes but \(Y\) never changes, then \(X\) cannot be causing \(Y\).
+
+For example, if a new education program is introduced but test scores remain exactly the same for everyone, there is no evidence that the program affected test scores.
+
+Covariation does not prove causation, but causation requires covariation.
+
+### 2. Temporal Ordering
+
+The cause must come before the effect.
+
+If \(X\) causes \(Y\), then \(X\) must occur or change before \(Y\) changes.
+
+For example, if we argue that a vaccine education program affects later vaccination behavior, the education program must occur before the vaccination decision.
+
+If \(Y\) changes before \(X\), then \(X\) cannot be the cause of that change in \(Y\).
+
+### 3. Elimination of Alternative Explanations
+
+There must not be another variable that explains the relationship between \(X\) and \(Y\).
+
+This is often the hardest condition to satisfy.
+
+Suppose we observe that students in smaller classes have lower test scores. It might be tempting to conclude that smaller classes cause worse performance. But perhaps struggling students are intentionally assigned to smaller classes so that they can receive more attention. In that case, the apparent relationship between class size and test scores reflects the assignment process, not the causal effect of class size.
+
+To make a causal claim, we must rule out plausible alternative explanations.
+
+---
+
+## Correlation Is Not Causation
+
+A correlation between two variables does not necessarily imply a causal relationship.
+
+Two variables may be associated for many reasons. One may cause the other, but other possibilities exist.
+
+There may be:
+
+- a third variable causing both
+- reverse causality
+- simultaneity
+- selection effects
+- measurement problems
+- random coincidence
+- omitted variables
+- confounding factors
+
+The challenge of causal inference is to determine whether an observed association reflects a real causal relationship.
+
+---
+
+## Spurious Relationships
+
+A relationship is **spurious** when two variables appear to be related, but the relationship is actually caused by some third factor.
+
+Consider a simple example.
+
+A child notices that balloons with strings float, while balloons without strings do not. The child asks:
+
+> Why do balloons with strings float?
+
+The string seems associated with floating. But the string is not causing the balloon to float. The real cause is helium. Balloons filled with helium float, and people attach strings to helium balloons so they can hold on to them.
+
+The relationship between strings and floating is spurious. Helium causes both:
+
+- the balloon floating
+- the need for a string
+
+The child observed a real association but misunderstood the causal mechanism.
+
+This is a simple example, but the same logic appears constantly in social science and policy analysis. We may observe a relationship between \(X\) and \(Y\), but a third factor \(Z\) may be responsible for the apparent association.
+
+---
+
+## Reverse Causality and Simultaneity
+
+Sometimes the causal direction may be reversed.
+
+We may think:
+
+\[
+X \rightarrow Y
+\]
+
+but in reality:
+
+\[
+Y \rightarrow X
+\]
+
+For example, suppose we observe that people who visit doctors more often are less healthy. Does visiting the doctor make people sick? Probably not. More likely, being sick causes people to visit doctors more often.
+
+That is reverse causality.
+
+Another possibility is **simultaneity**, where two variables move together as part of a broader process, rather than one clearly causing the other.
+
+Economic indicators provide an example. During an economic expansion, employment rises, consumer confidence increases, incomes grow, and spending increases. These variables move together, but that does not mean any one of them alone is causing all the others. They may be jointly shaped by broader economic conditions.
+
+As the saying goes, a rising tide lifts all boats. The boats are not causing each other to rise; the tide is.
+
+---
+
+## Example: Class Size and Test Scores
+
+Research sometimes finds that children in smaller classrooms perform worse on standardized tests, even after controlling for demographic factors.
+
+At first, this seems surprising. Many people expect smaller classes to improve learning.
+
+But there may be a selection process at work. Students who are already struggling may be placed into smaller classes to receive more support. If so, smaller classes are not causing lower test scores. Instead, lower-performing students are being assigned to smaller classes.
+
+The assignment process confounds the relationship between class size and test scores.
+
+This example illustrates why causal inference is difficult. We cannot simply compare outcomes across groups and assume the group difference is caused by the variable that defines the groups.
+
+---
+
+## Controlling for Confounding Factors
+
+A **confounding factor** is a variable that affects the outcome and is also related to the independent variable.
+
+Confounders make it difficult to isolate the causal effect of \(X\) on \(Y\).
+
+To address confounding, researchers try to **control for** other factors.
+
+To control for a variable means to compare cases that are similar on that variable. If we hold a third factor constant and still observe a relationship between \(X\) and \(Y\), then that third factor cannot fully explain the relationship.
+
+For example, suppose we want to know whether education affects income. Age may be a confounder because older people tend to have more education and also more work experience. If we compare people with different levels of education but similar ages, we are controlling for age.
+
+In practice, controlling for confounders can be difficult. We may not have data on the relevant variables. Worse, we may not even know what all the relevant confounders are.
+
+This is one reason experiments are so powerful.
+
+---
+
+## Theory and Causal Mechanisms
+
+Statistical evidence is more persuasive when paired with a strong theory.
+
+A **causal mechanism** explains how or why \(X\) affects \(Y\).
+
+For example, if we claim that a vaccine education program increases vaccination rates, we should be able to explain the mechanism:
+
+- Parents receive accurate information.
+- The information reduces uncertainty or misinformation.
+- Parents become more confident in vaccine safety.
+- Parents are more likely to vaccinate their children.
+
+If we observe a statistical relationship but cannot explain why it should exist, we should be cautious. The relationship may be spurious or accidental.
+
+This is especially important when interpreting studies reported in the media. A study may find an association between a food, behavior, or lifestyle factor and some health outcome. But if researchers cannot explain a plausible biological or social mechanism, we should not leap too quickly to causal conclusions.
+
+A statistically significant association is not enough. Causal claims require theory, design, and evidence.
+
+---
+
+# Part I: Experiments
+
+## Experiments as the Gold Standard
+
+Experiments are often considered the strongest design for identifying causal effects.
+
+In an experiment, researchers control the assignment of the independent variable. Some cases receive the treatment, while others remain in a control condition.
+
+A common experimental design is the **randomized controlled trial**, or **RCT**.
+
+In an RCT:
+
+1. Researchers identify a sample.
+2. Cases are randomly assigned to treatment or control.
+3. The treatment group receives the intervention.
+4. The control group does not.
+5. Outcomes are compared across groups.
+
+The key feature is random assignment.
+
+Random assignment helps ensure that the treatment and control groups are similar in all respects except for the treatment itself.
+
+---
+
+## Why Experiments Help Identify Causality
+
+Experiments help satisfy the three conditions for causality.
+
+### Covariation
+
+We can compare outcomes between treated and untreated groups to see whether \(Y\) differs when \(X\) differs.
+
+### Temporal Ordering
+
+The researcher controls when the treatment is administered, so the treatment occurs before the outcome is measured.
+
+### Elimination of Alternative Explanations
+
+Random assignment distributes confounding factors across treatment and control groups. On average, the groups should be similar in both observed and unobserved characteristics.
+
+This is the major advantage of randomization. It can balance even factors the researcher does not know about or cannot measure.
+
+---
+
+## Treatment and Control Groups
+
+An experiment divides cases into groups.
+
+The **treatment group** receives the intervention.
+
+The **control group** does not receive the intervention or receives a baseline condition, such as a placebo.
+
+For example, in a drug trial:
+
+- The treatment group receives the medication.
+- The control group receives a placebo.
+
+In a policy evaluation:
+
+- The treatment group receives the program.
+- The control group does not.
+
+The goal is for the control group to represent what would have happened to the treatment group if it had not received the treatment.
+
+Likewise, the treatment group represents what would have happened to the control group if it had received the treatment.
+
+Randomization makes this comparison credible.
+
+---
+
+## Randomization
+
+**Randomization** means assigning cases to treatment or control by chance.
+
+If randomization works, the treatment and control groups should be similar on average.
+
+They should have similar distributions of:
+
+- age
+- gender
+- income
+- prior achievement
+- health status
+- motivation
+- family background
+- political attitudes
+- any other factor that might matter
+
+Some differences may still occur by random chance, especially in small samples. But randomization prevents systematic selection into treatment.
+
+This is crucial because selection can otherwise bias causal estimates.
+
+For example, suppose people who choose to participate in a job training program are more motivated than those who do not. If we compare participants to nonparticipants, differences in employment may reflect motivation rather than the program. Random assignment avoids this problem by assigning participation independently of motivation.
+
+---
+
+## Balance
+
+After random assignment, researchers often check whether the treatment and control groups are **balanced**.
+
+A balance check compares the groups on characteristics measured before treatment.
+
+For example, researchers may compare average age, income, prior test scores, or baseline health across treatment and control groups.
+
+If randomization worked well, the groups should look similar.
+
+Perfect balance is not guaranteed, especially in small samples. Randomization can fail by chance. If researchers notice serious imbalance before the experiment begins, they may be able to re-randomize.
+
+Once the experiment has already occurred, imbalance becomes harder to fix. Researchers may then use statistical controls, regression, or matching methods to adjust for differences.
+
+---
+
+# Part II: The Potential Outcomes Framework
+
+## Potential Outcomes
+
+The **potential outcomes framework** provides a formal way to think about causal effects.
+
+For each person or case \(i\), there are two potential outcomes:
+
+\[
+Y_i(1)
+\]
+
+and:
+
+\[
+Y_i(0)
+\]
+
+where:
+
+- \(Y_i(1)\) is the outcome for case \(i\) if treated.
+- \(Y_i(0)\) is the outcome for case \(i\) if not treated.
+
+For example, suppose the outcome is employment after a job training program.
+
+For each person:
+
+- \(Y_i(1)\): employment outcome if the person receives training
+- \(Y_i(0)\): employment outcome if the person does not receive training
+
+The individual treatment effect is:
+
+\[
+Y_i(1) - Y_i(0)
+\]
+
+This is the causal effect of treatment for that individual.
+
+---
+
+## The Fundamental Problem of Causal Inference
+
+The problem is that we can never observe both potential outcomes for the same person at the same time.
+
+A person either receives the treatment or does not.
+
+If a person receives treatment, we observe:
+
+\[
+Y_i(1)
+\]
+
+but we do not observe:
+
+\[
+Y_i(0)
+\]
+
+If a person does not receive treatment, we observe:
+
+\[
+Y_i(0)
+\]
+
+but we do not observe:
+
+\[
+Y_i(1)
+\]
+
+The missing potential outcome is the **counterfactual**.
+
+This is called the **fundamental problem of causal inference**.
+
+To know the exact treatment effect for one individual, we would need to observe what happened to that person under treatment and what would have happened to that same person without treatment. But we cannot observe both.
+
+---
+
+## Average Treatment Effects
+
+Because we cannot observe individual treatment effects directly, we often estimate average treatment effects.
+
+The **average treatment effect**, or ATE, is:
+
+\[
+ATE = E[Y(1) - Y(0)]
+\]
+
+This is the expected difference between outcomes under treatment and outcomes under control.
+
+Equivalently, under random assignment:
+
+\[
+ATE = E[Y(1)] - E[Y(0)]
+\]
+
+Randomization allows us to estimate this using observed group means:
+
+\[
+\widehat{ATE} = \bar{Y}_{treatment} - \bar{Y}_{control}
+\]
+
+That is, we compare the mean outcome in the treatment group to the mean outcome in the control group.
+
+Randomization makes this comparison valid because the groups are similar on average except for treatment status.
+
+---
+
+## Why Randomization Solves the Problem
+
+Randomization does not allow us to observe both potential outcomes for the same person.
+
+But it does allow us to compare groups that are equivalent on average.
+
+The control group provides an estimate of what would have happened to the treatment group if it had not been treated.
+
+The treatment group provides an estimate of what would have happened to the control group if it had been treated.
+
+Thus, while individual treatment effects remain unobservable, the average treatment effect can be estimated.
+
+This is the logic behind experimental causal inference.
+
+---
+
+## Difference of Means
+
+The simplest way to estimate an experimental treatment effect is a difference of means:
+
+\[
+\bar{Y}_T - \bar{Y}_C
+\]
+
+where:
+
+- \(\bar{Y}_T\) is the mean outcome in the treatment group
+- \(\bar{Y}_C\) is the mean outcome in the control group
+
+The null hypothesis is usually:
+
+\[
+H_0: \mu_T - \mu_C = 0
+\]
+
+That is, the treatment has no effect.
+
+The alternative hypothesis is:
+
+\[
+H_A: \mu_T - \mu_C \neq 0
+\]
+
+or, in a directional test:
+
+\[
+H_A: \mu_T - \mu_C > 0
+\]
+
+or:
+
+\[
+H_A: \mu_T - \mu_C < 0
+\]
+
+The statistical question becomes:
+
+> Is the observed difference between the two group means large enough, relative to its standard error, to reject the null hypothesis?
+
+We will develop the formal difference-of-means test next.
+
+---
+
+# Part III: Experimental Validity
+
+Experiments can be evaluated in terms of two major kinds of validity:
+
+1. Internal validity
+2. External validity
+
+These are different from measurement validity. Here, we are evaluating the validity of the experimental design and conclusions.
+
+---
+
+## Internal Validity
+
+**Internal validity** refers to whether the experiment successfully identifies the causal effect within the study.
+
+An experiment has strong internal validity if differences in outcomes between the treatment and control groups can be attributed to the treatment.
+
+In other words:
+
+> Did the experiment rule out alternative explanations?
+
+Strong internal validity requires that:
+
+- treatment assignment is random
+- treatment and control groups are comparable
+- the treatment is implemented as intended
+- outcomes are measured consistently
+- there is no contamination between groups
+- attrition does not differ systematically across groups
+- participants do not change behavior simply because they know they are being studied, unless that is part of the treatment
+
+If internal validity is weak, then the estimated treatment effect may be biased.
+
+---
+
+## External Validity
+
+**External validity** refers to whether the results generalize beyond the study setting.
+
+An experiment may have strong internal validity but weak external validity.
+
+For example, suppose a chemical is tested on mice in a laboratory. The experiment may be carefully controlled, with strong internal validity. But the results may not generalize perfectly to humans exposed to lower levels of the chemical in real-world conditions.
+
+External validity asks:
+
+- Does this result apply to other populations?
+- Does it apply in other places?
+- Does it apply at other times?
+- Does it apply under real-world conditions?
+- Would the effect remain if the program were scaled up?
+
+Policy researchers care deeply about external validity because policy decisions are usually made for broader populations than the experimental sample.
+
+---
+
+## Internal and External Validity Tradeoffs
+
+Sometimes internal and external validity are in tension.
+
+A tightly controlled laboratory experiment may have strong internal validity because the researcher controls almost everything. But it may have weaker external validity because the setting is artificial.
+
+A real-world field experiment may have stronger external validity because it occurs in natural conditions. But it may face more threats to internal validity because the researcher has less control.
+
+Good research design tries to maximize both, but tradeoffs are common.
+
+---
+
+# Part IV: Example: Teacher Absenteeism in India
+
+## The Study
+
+Consider an experiment on teacher absenteeism in rural India.
+
+Public sector absenteeism can be a major problem in some contexts. Teachers may not show up for work, which can reduce instructional time and student learning.
+
+Researchers studied whether incentives could reduce teacher absenteeism.
+
+The study took place in rural villages near Udaipur, in Rajasthan, India. Researchers worked with a local NGO and identified 120 schools.
+
+The schools were randomly assigned:
+
+- 60 schools to the treatment group
+- 60 schools to the control group
+
+Teachers in treatment schools received digital cameras and were asked to document their attendance. They took photos when they arrived and when they left. They could also take photos during the school day.
+
+Teachers were paid bonuses based on verified attendance. If they were present for at least five hours, they received additional pay.
+
+The control schools did not receive this intervention.
+
+---
+
+## Results
+
+The study found that absenteeism was lower in treatment schools.
+
+- Treatment schools: 22 percent absenteeism
+- Control schools: 42 percent absenteeism
+
+The researchers also examined student outcomes. Students in treatment schools scored approximately 0.15 to 0.17 standard deviations higher on language and math tests.
+
+The study therefore suggested that attendance incentives, combined with monitoring, reduced absenteeism and improved student learning.
+
+---
+
+## Internal Validity Questions
+
+The study has important strengths for internal validity.
+
+Schools were randomly assigned to treatment and control groups. This helps ensure that treatment and control schools were similar on average before the intervention.
+
+However, several internal validity questions remain.
+
+### Did Randomization Work?
+
+Even with random assignment, groups may differ by chance. Researchers should check whether treatment and control schools were balanced on pre-treatment characteristics.
+
+### Was There Spillover?
+
+Teachers in control schools may have learned about the treatment and changed their behavior. If so, the control group may no longer represent the no-treatment condition.
+
+### Was the Treatment Actually the Incentive?
+
+The intervention included both monitoring and financial incentives. If absenteeism declined, was it because of the bonus, because teachers knew they were being watched, or because of both?
+
+### Did Awareness of Being Studied Matter?
+
+Teachers in the treatment group knew they were being monitored. They may have changed behavior because they were part of a study. This is related to the **Hawthorne effect**, where people alter behavior because they know they are being observed.
+
+### Were Outcomes Measured Consistently?
+
+If student test scores were measured differently across schools, or if treatment schools had stronger incentives to present better outcomes, that could threaten internal validity.
+
+These concerns do not necessarily invalidate the study, but they illustrate the kinds of questions researchers must ask.
+
+---
+
+## External Validity Questions
+
+External validity asks whether the findings generalize beyond the study.
+
+Several questions arise.
+
+### Would the Program Work Elsewhere?
+
+The study was conducted in one region of India. Would the same incentive system work in urban schools, other Indian states, or other countries?
+
+### Would It Work Where Salaries Are Higher?
+
+If teachers are already well paid, financial incentives may have a weaker effect.
+
+### Would It Work at Scale?
+
+A pilot program may work under close supervision by researchers and an NGO. A statewide or national program may be harder to monitor and implement.
+
+### Would Teachers Adapt?
+
+Over time, teachers may learn ways to comply superficially without improving instruction. The short-term effect may differ from the long-term effect.
+
+### Are the Schools Representative?
+
+If the schools in the study differ from other schools, the results may not generalize.
+
+These are external validity questions. They concern whether the result applies beyond the specific experimental setting.
+
+---
+
+# Part V: Observational Studies
+
+## When Experiments Are Not Possible
+
+Experiments are powerful, but they are not always possible.
+
+Sometimes experiments are unethical.
+
+For example, we cannot randomly assign children to drink lead-contaminated water to study the effect of lead exposure.
+
+Sometimes experiments are impractical.
+
+We cannot randomly assign people to different childhood family backgrounds, neighborhoods, political systems, or natural disasters.
+
+Sometimes experiments are too expensive or politically impossible.
+
+In these cases, researchers rely on **observational data**.
+
+---
+
+## Observational Data
+
+In an **observational study**, researchers observe data generated by the world rather than assigning treatment themselves.
+
+For example, researchers may compare:
+
+- children exposed to lead versus children not exposed to lead
+- students in small classes versus large classes
+- workers who joined a training program versus those who did not
+- counties that adopted a policy versus counties that did not
+- people with more education versus less education
+
+The problem is that treatment status is not randomly assigned.
+
+People or places in one group may differ systematically from those in another group.
+
+Those differences may explain the outcome.
+
+---
+
+## The Goal in Observational Studies
+
+Even without randomization, the goal remains the same:
+
+> Compare groups that are as similar as possible except for the independent variable of interest.
+
+If we want to estimate the effect of a savings program, we want treatment and comparison groups that are similar in income, age, gender, education, prior savings behavior, and other relevant factors.
+
+If we want to estimate the effect of lead exposure, we want exposed and unexposed children who are otherwise similar in family background, neighborhood, school quality, health status, and other factors.
+
+The challenge is that without random assignment, similarity is not guaranteed.
+
+Researchers must try to construct credible comparisons using statistical methods and research design.
+
+---
+
+## Threats in Observational Studies
+
+Observational studies face several threats.
+
+### Selection Bias
+
+People who receive a treatment may differ from those who do not.
+
+For example, people who enroll in a job training program may be more motivated than those who do not.
+
+### Confounding
+
+A third variable may affect both treatment and outcome.
+
+For example, family income may affect both neighborhood lead exposure and child development outcomes.
+
+### Reverse Causality
+
+The assumed outcome may actually influence the treatment.
+
+For example, poor health may cause more doctor visits, not the reverse.
+
+### Omitted Variables
+
+Important variables may be missing from the data.
+
+For example, motivation, family support, stress, or teacher quality may be difficult to measure.
+
+### Unobserved Heterogeneity
+
+Groups may differ in ways researchers cannot observe.
+
+This is one of the hardest problems in causal inference.
+
+---
+
+## Statistical Controls
+
+One strategy in observational studies is to use statistical controls.
+
+For example, suppose we compare savings outcomes between people who participated in a savings program and those who did not. If the treatment group has higher income on average, income may confound the analysis.
+
+We can control for income using regression or matching.
+
+The goal is to compare people with similar income levels but different treatment status.
+
+Statistical controls help, but they only work for variables we observe and measure well.
+
+They cannot control for variables that are missing, unknown, or poorly measured.
+
+---
+
+## Matching
+
+Another strategy is **matching**.
+
+Matching pairs treated cases with similar untreated cases.
+
+For example, a woman who participated in a savings program might be matched with a woman of similar age, income, education, family status, and prior savings behavior who did not participate.
+
+The goal is to approximate an experimental comparison by making the treated and comparison groups as similar as possible.
+
+Matching can improve causal inference, but it still depends on observed variables. If treated and untreated cases differ on unobserved factors, bias may remain.
+
+---
+
+## Quasi-Experiments
+
+A **quasi-experiment** is a research design that attempts to approximate an experiment without random assignment.
+
+Examples include:
+
+- natural experiments
+- regression discontinuity designs
+- difference-in-differences designs
+- instrumental variables
+- matching designs
+
+These methods are designed to create or exploit comparison groups that approximate random assignment.
+
+Quasi-experiments are especially important in policy research because true experiments are often unavailable.
+
+You will encounter many of these designs in future program evaluation and econometrics courses.
+
+---
+
+# Part VI: From Causality to Difference-of-Means Tests
+
+## Comparing Means Across Groups
+
+To evaluate causal effects, we often compare mean outcomes across groups.
+
+For example:
+
+\[
+\bar{Y}_T - \bar{Y}_C
+\]
+
+where:
+
+- \(\bar{Y}_T\) is the mean outcome in the treatment group
+- \(\bar{Y}_C\) is the mean outcome in the control group
+
+If the treatment has no effect, we expect:
+
+\[
+\mu_T - \mu_C = 0
+\]
+
+So the null hypothesis is:
+
+\[
+H_0: \mu_T - \mu_C = 0
+\]
+
+If the observed difference in sample means is large relative to its standard error, we may reject the null hypothesis.
+
+This is the basis of the **difference-of-means test**.
+
+---
+
+## Comparing Proportions Across Groups
+
+Sometimes the outcome is binary.
+
+For example:
+
+- vaccinated or not vaccinated
+- employed or not employed
+- graduated or did not graduate
+- voted or did not vote
+
+Then we compare proportions:
+
+\[
+\hat{\pi}_T - \hat{\pi}_C
+\]
+
+The null hypothesis is:
+
+\[
+H_0: \pi_T - \pi_C = 0
+\]
+
+or:
+
+\[
+H_0: \pi_T = \pi_C
+\]
+
+If the difference in sample proportions is large relative to its standard error, we may reject the null hypothesis.
+
+This is the basis of the **difference-of-proportions test**.
+
+---
+
+## Mean Comparison Tables
+
+A simple way to begin comparing groups is with a mean comparison table.
+
+For example:
+
+| Group | Mean Outcome |
+|---|---:|
+| Treatment | 82.4 |
+| Control | 76.1 |
+| Difference | 6.3 |
+
+This table shows that the treatment group has a higher mean outcome than the control group.
+
+But the table alone does not tell us whether the difference is statistically significant.
+
+To answer that, we need a standard error and a significance test.
+
+The next step is to ask:
+
+> Is the observed difference large enough relative to sampling variability that we can reject the null hypothesis of no difference?
+
+That is where two-sample inference begins.
+
+---
+
+# Key Terms
+
+**Causality**  
+A relationship in which changes in one variable produce changes in another variable.
+
+**Dependent variable**  
+The outcome variable; the variable being explained.
+
+**Independent variable**  
+The explanatory, causal, treatment, or predictor variable.
+
+**Covariation**  
+The condition that two variables move together.
+
+**Temporal ordering**  
+The requirement that the cause occur before the effect.
+
+**Confounding factor**  
+A variable that affects the outcome and is related to the independent variable.
+
+**Spurious relationship**  
+An apparent relationship between two variables that is actually caused by another factor.
+
+**Reverse causality**  
+A situation in which the assumed outcome actually causes the assumed cause.
+
+**Simultaneity**  
+A situation in which variables move together as part of a larger process rather than one clearly causing the other.
+
+**Experiment**  
+A research design in which the researcher controls assignment to treatment and control conditions.
+
+**Randomized controlled trial, RCT**  
+An experiment in which cases are randomly assigned to treatment and control groups.
+
+**Treatment group**  
+The group that receives the intervention.
+
+**Control group**  
+The group that does not receive the intervention or receives a baseline condition.
+
+**Randomization**  
+Assignment to treatment or control by chance.
+
+**Balance**  
+Similarity between treatment and control groups on pre-treatment characteristics.
+
+**Potential outcomes framework**  
+A framework that defines causal effects in terms of outcomes under treatment and control conditions.
+
+**Counterfactual**  
+The unobserved outcome that would have occurred under the alternative treatment condition.
+
+**Fundamental problem of causal inference**  
+The problem that we cannot observe both treatment and control outcomes for the same case at the same time.
+
+**Average treatment effect, ATE**  
+The average difference between treatment and control potential outcomes.
+
+**Internal validity**  
+The degree to which a study identifies the causal effect within the study setting.
+
+**External validity**  
+The degree to which a study’s findings generalize beyond the study setting.
+
+**Observational study**  
+A study in which researchers observe data without assigning treatment.
+
+**Quasi-experiment**  
+A design that approximates experimental conditions without random assignment.
+
+**Statistical control**  
+A method for holding other variables constant in analysis.
+
+**Matching**  
+A method that pairs treated and untreated cases with similar observed characteristics.
+
+**Difference of means**  
+The difference between the average outcome in two groups.
+
+**Difference of proportions**  
+The difference between the proportion with an outcome in two groups.
+
+---
+
+# Chapter Summary
+
+Causal inference asks whether changes in one variable produce changes in another. To establish causality, three conditions must hold: the variables must covary, the cause must precede the effect, and alternative explanations must be ruled out.
+
+Correlation alone is not causation. Associations can be spurious, reversed, simultaneous, or confounded by other factors. Strong causal claims require theory, appropriate research design, and careful analysis.
+
+Experiments, especially randomized controlled trials, are the strongest design for identifying causal effects. Random assignment creates treatment and control groups that are similar on average, allowing researchers to estimate treatment effects by comparing group outcomes.
+
+The potential outcomes framework clarifies the fundamental problem of causal inference: each case has a potential outcome under treatment and under control, but we observe only one. Randomization solves this problem at the group level by allowing the control group to stand in for what would have happened to the treatment group without treatment.
+
+Experiments must be evaluated for internal validity and external validity. Internal validity concerns whether the experiment identifies the causal effect in the study. External validity concerns whether the results generalize to other settings, populations, and contexts.
+
+When experiments are not possible, researchers use observational studies. These are more challenging because treatment is not randomly assigned. Researchers must address selection bias, confounding, reverse causality, and omitted variables using theory, design, and statistical methods.
+
+This chapter sets up the next stage of inference: comparing means and proportions across groups. Difference-of-means and difference-of-proportions tests allow us to evaluate whether observed group differences are statistically meaningful and, under the right research design, whether they support causal claims.

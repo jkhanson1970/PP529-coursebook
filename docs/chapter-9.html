@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Chapter 9: Experiments and Causality – PubPol 529: Coursebook</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter-10.html" rel="next">
+<link href="./chapter-8.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e944e0e12dd6c2e1651c888e836d9b4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter-9.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">PubPol 529: Coursebook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">PubPol 529: Coursebook</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Measurement</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Chapter 2: Sampling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Chapter 3: Descriptive Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4: Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Chapter 5: Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Chapter 6: Sampling Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Chapter 7: Statistical Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-9.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Chapter 11: Association Between Categorical Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Chapter 12: ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Chapter 13: Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter-14.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Chapter 14: Linear Regression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#causality" id="toc-causality" class="nav-link active" data-scroll-target="#causality"><span class="header-section-number">10.1</span> Causality</a></li>
+  <li><a href="#conditions-for-causality" id="toc-conditions-for-causality" class="nav-link" data-scroll-target="#conditions-for-causality"><span class="header-section-number">10.2</span> Conditions for Causality</a>
+  <ul class="collapse">
+  <li><a href="#covariation" id="toc-covariation" class="nav-link" data-scroll-target="#covariation"><span class="header-section-number">10.2.1</span> 1. Covariation</a></li>
+  <li><a href="#temporal-ordering" id="toc-temporal-ordering" class="nav-link" data-scroll-target="#temporal-ordering"><span class="header-section-number">10.2.2</span> 2. Temporal Ordering</a></li>
+  <li><a href="#elimination-of-alternative-explanations" id="toc-elimination-of-alternative-explanations" class="nav-link" data-scroll-target="#elimination-of-alternative-explanations"><span class="header-section-number">10.2.3</span> 3. Elimination of Alternative Explanations</a></li>
+  </ul></li>
+  <li><a href="#correlation-is-not-causation" id="toc-correlation-is-not-causation" class="nav-link" data-scroll-target="#correlation-is-not-causation"><span class="header-section-number">10.3</span> Correlation Is Not Causation</a></li>
+  <li><a href="#spurious-relationships" id="toc-spurious-relationships" class="nav-link" data-scroll-target="#spurious-relationships"><span class="header-section-number">10.4</span> Spurious Relationships</a></li>
+  <li><a href="#reverse-causality-and-simultaneity" id="toc-reverse-causality-and-simultaneity" class="nav-link" data-scroll-target="#reverse-causality-and-simultaneity"><span class="header-section-number">10.5</span> Reverse Causality and Simultaneity</a></li>
+  <li><a href="#example-class-size-and-test-scores" id="toc-example-class-size-and-test-scores" class="nav-link" data-scroll-target="#example-class-size-and-test-scores"><span class="header-section-number">10.6</span> Example: Class Size and Test Scores</a></li>
+  <li><a href="#controlling-for-confounding-factors" id="toc-controlling-for-confounding-factors" class="nav-link" data-scroll-target="#controlling-for-confounding-factors"><span class="header-section-number">10.7</span> Controlling for Confounding Factors</a></li>
+  <li><a href="#theory-and-causal-mechanisms" id="toc-theory-and-causal-mechanisms" class="nav-link" data-scroll-target="#theory-and-causal-mechanisms"><span class="header-section-number">10.8</span> Theory and Causal Mechanisms</a></li>
+  <li><a href="#part-i-experiments" id="toc-part-i-experiments" class="nav-link" data-scroll-target="#part-i-experiments"><span class="header-section-number">11</span> Part I: Experiments</a>
+  <ul class="collapse">
+  <li><a href="#experiments-as-the-gold-standard" id="toc-experiments-as-the-gold-standard" class="nav-link" data-scroll-target="#experiments-as-the-gold-standard"><span class="header-section-number">11.1</span> Experiments as the Gold Standard</a></li>
+  <li><a href="#why-experiments-help-identify-causality" id="toc-why-experiments-help-identify-causality" class="nav-link" data-scroll-target="#why-experiments-help-identify-causality"><span class="header-section-number">11.2</span> Why Experiments Help Identify Causality</a>
+  <ul class="collapse">
+  <li><a href="#covariation-1" id="toc-covariation-1" class="nav-link" data-scroll-target="#covariation-1"><span class="header-section-number">11.2.1</span> Covariation</a></li>
+  <li><a href="#temporal-ordering-1" id="toc-temporal-ordering-1" class="nav-link" data-scroll-target="#temporal-ordering-1"><span class="header-section-number">11.2.2</span> Temporal Ordering</a></li>
+  <li><a href="#elimination-of-alternative-explanations-1" id="toc-elimination-of-alternative-explanations-1" class="nav-link" data-scroll-target="#elimination-of-alternative-explanations-1"><span class="header-section-number">11.2.3</span> Elimination of Alternative Explanations</a></li>
+  </ul></li>
+  <li><a href="#treatment-and-control-groups" id="toc-treatment-and-control-groups" class="nav-link" data-scroll-target="#treatment-and-control-groups"><span class="header-section-number">11.3</span> Treatment and Control Groups</a></li>
+  <li><a href="#randomization" id="toc-randomization" class="nav-link" data-scroll-target="#randomization"><span class="header-section-number">11.4</span> Randomization</a></li>
+  <li><a href="#balance" id="toc-balance" class="nav-link" data-scroll-target="#balance"><span class="header-section-number">11.5</span> Balance</a></li>
+  </ul></li>
+  <li><a href="#part-ii-the-potential-outcomes-framework" id="toc-part-ii-the-potential-outcomes-framework" class="nav-link" data-scroll-target="#part-ii-the-potential-outcomes-framework"><span class="header-section-number">12</span> Part II: The Potential Outcomes Framework</a>
+  <ul class="collapse">
+  <li><a href="#potential-outcomes" id="toc-potential-outcomes" class="nav-link" data-scroll-target="#potential-outcomes"><span class="header-section-number">12.1</span> Potential Outcomes</a></li>
+  <li><a href="#the-fundamental-problem-of-causal-inference" id="toc-the-fundamental-problem-of-causal-inference" class="nav-link" data-scroll-target="#the-fundamental-problem-of-causal-inference"><span class="header-section-number">12.2</span> The Fundamental Problem of Causal Inference</a></li>
+  <li><a href="#average-treatment-effects" id="toc-average-treatment-effects" class="nav-link" data-scroll-target="#average-treatment-effects"><span class="header-section-number">12.3</span> Average Treatment Effects</a></li>
+  <li><a href="#why-randomization-solves-the-problem" id="toc-why-randomization-solves-the-problem" class="nav-link" data-scroll-target="#why-randomization-solves-the-problem"><span class="header-section-number">12.4</span> Why Randomization Solves the Problem</a></li>
+  <li><a href="#difference-of-means" id="toc-difference-of-means" class="nav-link" data-scroll-target="#difference-of-means"><span class="header-section-number">12.5</span> Difference of Means</a></li>
+  </ul></li>
+  <li><a href="#part-iii-experimental-validity" id="toc-part-iii-experimental-validity" class="nav-link" data-scroll-target="#part-iii-experimental-validity"><span class="header-section-number">13</span> Part III: Experimental Validity</a>
+  <ul class="collapse">
+  <li><a href="#internal-validity" id="toc-internal-validity" class="nav-link" data-scroll-target="#internal-validity"><span class="header-section-number">13.1</span> Internal Validity</a></li>
+  <li><a href="#external-validity" id="toc-external-validity" class="nav-link" data-scroll-target="#external-validity"><span class="header-section-number">13.2</span> External Validity</a></li>
+  <li><a href="#internal-and-external-validity-tradeoffs" id="toc-internal-and-external-validity-tradeoffs" class="nav-link" data-scroll-target="#internal-and-external-validity-tradeoffs"><span class="header-section-number">13.3</span> Internal and External Validity Tradeoffs</a></li>
+  </ul></li>
+  <li><a href="#part-iv-example-teacher-absenteeism-in-india" id="toc-part-iv-example-teacher-absenteeism-in-india" class="nav-link" data-scroll-target="#part-iv-example-teacher-absenteeism-in-india"><span class="header-section-number">14</span> Part IV: Example: Teacher Absenteeism in India</a>
+  <ul class="collapse">
+  <li><a href="#the-study" id="toc-the-study" class="nav-link" data-scroll-target="#the-study"><span class="header-section-number">14.1</span> The Study</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">14.2</span> Results</a></li>
+  <li><a href="#internal-validity-questions" id="toc-internal-validity-questions" class="nav-link" data-scroll-target="#internal-validity-questions"><span class="header-section-number">14.3</span> Internal Validity Questions</a>
+  <ul class="collapse">
+  <li><a href="#did-randomization-work" id="toc-did-randomization-work" class="nav-link" data-scroll-target="#did-randomization-work"><span class="header-section-number">14.3.1</span> Did Randomization Work?</a></li>
+  <li><a href="#was-there-spillover" id="toc-was-there-spillover" class="nav-link" data-scroll-target="#was-there-spillover"><span class="header-section-number">14.3.2</span> Was There Spillover?</a></li>
+  <li><a href="#was-the-treatment-actually-the-incentive" id="toc-was-the-treatment-actually-the-incentive" class="nav-link" data-scroll-target="#was-the-treatment-actually-the-incentive"><span class="header-section-number">14.3.3</span> Was the Treatment Actually the Incentive?</a></li>
+  <li><a href="#did-awareness-of-being-studied-matter" id="toc-did-awareness-of-being-studied-matter" class="nav-link" data-scroll-target="#did-awareness-of-being-studied-matter"><span class="header-section-number">14.3.4</span> Did Awareness of Being Studied Matter?</a></li>
+  <li><a href="#were-outcomes-measured-consistently" id="toc-were-outcomes-measured-consistently" class="nav-link" data-scroll-target="#were-outcomes-measured-consistently"><span class="header-section-number">14.3.5</span> Were Outcomes Measured Consistently?</a></li>
+  </ul></li>
+  <li><a href="#external-validity-questions" id="toc-external-validity-questions" class="nav-link" data-scroll-target="#external-validity-questions"><span class="header-section-number">14.4</span> External Validity Questions</a>
+  <ul class="collapse">
+  <li><a href="#would-the-program-work-elsewhere" id="toc-would-the-program-work-elsewhere" class="nav-link" data-scroll-target="#would-the-program-work-elsewhere"><span class="header-section-number">14.4.1</span> Would the Program Work Elsewhere?</a></li>
+  <li><a href="#would-it-work-where-salaries-are-higher" id="toc-would-it-work-where-salaries-are-higher" class="nav-link" data-scroll-target="#would-it-work-where-salaries-are-higher"><span class="header-section-number">14.4.2</span> Would It Work Where Salaries Are Higher?</a></li>
+  <li><a href="#would-it-work-at-scale" id="toc-would-it-work-at-scale" class="nav-link" data-scroll-target="#would-it-work-at-scale"><span class="header-section-number">14.4.3</span> Would It Work at Scale?</a></li>
+  <li><a href="#would-teachers-adapt" id="toc-would-teachers-adapt" class="nav-link" data-scroll-target="#would-teachers-adapt"><span class="header-section-number">14.4.4</span> Would Teachers Adapt?</a></li>
+  <li><a href="#are-the-schools-representative" id="toc-are-the-schools-representative" class="nav-link" data-scroll-target="#are-the-schools-representative"><span class="header-section-number">14.4.5</span> Are the Schools Representative?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-v-observational-studies" id="toc-part-v-observational-studies" class="nav-link" data-scroll-target="#part-v-observational-studies"><span class="header-section-number">15</span> Part V: Observational Studies</a>
+  <ul class="collapse">
+  <li><a href="#when-experiments-are-not-possible" id="toc-when-experiments-are-not-possible" class="nav-link" data-scroll-target="#when-experiments-are-not-possible"><span class="header-section-number">15.1</span> When Experiments Are Not Possible</a></li>
+  <li><a href="#observational-data" id="toc-observational-data" class="nav-link" data-scroll-target="#observational-data"><span class="header-section-number">15.2</span> Observational Data</a></li>
+  <li><a href="#the-goal-in-observational-studies" id="toc-the-goal-in-observational-studies" class="nav-link" data-scroll-target="#the-goal-in-observational-studies"><span class="header-section-number">15.3</span> The Goal in Observational Studies</a></li>
+  <li><a href="#threats-in-observational-studies" id="toc-threats-in-observational-studies" class="nav-link" data-scroll-target="#threats-in-observational-studies"><span class="header-section-number">15.4</span> Threats in Observational Studies</a>
+  <ul class="collapse">
+  <li><a href="#selection-bias" id="toc-selection-bias" class="nav-link" data-scroll-target="#selection-bias"><span class="header-section-number">15.4.1</span> Selection Bias</a></li>
+  <li><a href="#confounding" id="toc-confounding" class="nav-link" data-scroll-target="#confounding"><span class="header-section-number">15.4.2</span> Confounding</a></li>
+  <li><a href="#reverse-causality" id="toc-reverse-causality" class="nav-link" data-scroll-target="#reverse-causality"><span class="header-section-number">15.4.3</span> Reverse Causality</a></li>
+  <li><a href="#omitted-variables" id="toc-omitted-variables" class="nav-link" data-scroll-target="#omitted-variables"><span class="header-section-number">15.4.4</span> Omitted Variables</a></li>
+  <li><a href="#unobserved-heterogeneity" id="toc-unobserved-heterogeneity" class="nav-link" data-scroll-target="#unobserved-heterogeneity"><span class="header-section-number">15.4.5</span> Unobserved Heterogeneity</a></li>
+  </ul></li>
+  <li><a href="#statistical-controls" id="toc-statistical-controls" class="nav-link" data-scroll-target="#statistical-controls"><span class="header-section-number">15.5</span> Statistical Controls</a></li>
+  <li><a href="#matching" id="toc-matching" class="nav-link" data-scroll-target="#matching"><span class="header-section-number">15.6</span> Matching</a></li>
+  <li><a href="#quasi-experiments" id="toc-quasi-experiments" class="nav-link" data-scroll-target="#quasi-experiments"><span class="header-section-number">15.7</span> Quasi-Experiments</a></li>
+  </ul></li>
+  <li><a href="#part-vi-from-causality-to-difference-of-means-tests" id="toc-part-vi-from-causality-to-difference-of-means-tests" class="nav-link" data-scroll-target="#part-vi-from-causality-to-difference-of-means-tests"><span class="header-section-number">16</span> Part VI: From Causality to Difference-of-Means Tests</a>
+  <ul class="collapse">
+  <li><a href="#comparing-means-across-groups" id="toc-comparing-means-across-groups" class="nav-link" data-scroll-target="#comparing-means-across-groups"><span class="header-section-number">16.1</span> Comparing Means Across Groups</a></li>
+  <li><a href="#comparing-proportions-across-groups" id="toc-comparing-proportions-across-groups" class="nav-link" data-scroll-target="#comparing-proportions-across-groups"><span class="header-section-number">16.2</span> Comparing Proportions Across Groups</a></li>
+  <li><a href="#mean-comparison-tables" id="toc-mean-comparison-tables" class="nav-link" data-scroll-target="#mean-comparison-tables"><span class="header-section-number">16.3</span> Mean Comparison Tables</a></li>
+  </ul></li>
+  <li><a href="#key-terms" id="toc-key-terms" class="nav-link" data-scroll-target="#key-terms"><span class="header-section-number">17</span> Key Terms</a></li>
+  <li><a href="#chapter-summary" id="toc-chapter-summary" class="nav-link" data-scroll-target="#chapter-summary"><span class="header-section-number">18</span> Chapter Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chapter 9: Experiments and Causality</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>We now move from one-sample inference to comparisons between groups.</p>
+<p>So far, we have learned how to estimate and test claims about a single mean or a single proportion. We have built the foundations: sampling, probability, sampling distributions, standard errors, confidence intervals, and significance tests. Those tools now carry forward into new settings.</p>
+<p>Many of the most important questions in policy analysis, social science, public health, and program evaluation are comparative:</p>
+<ul>
+<li>Did a job training program increase employment?</li>
+<li>Did a vaccine education program raise vaccination rates?</li>
+<li>Did a new gasoline blend reduce air pollution?</li>
+<li>Did a school intervention improve test scores?</li>
+<li>Do people in one group have different outcomes than people in another group?</li>
+</ul>
+<p>These questions usually require comparing outcomes across groups. We may compare the mean outcome for people who received a treatment to the mean outcome for people who did not. Or we may compare the proportion of people with a particular outcome in one group to the proportion in another group.</p>
+<p>This chapter introduces the logic behind those comparisons by focusing on <strong>causality</strong> and <strong>experiments</strong>. Before we can test whether two means or two proportions differ, we need to understand what it would mean for one variable to cause another.</p>
+<p>The key lesson is that association is not enough. Two variables may move together, but that does not automatically mean one causes the other. Experiments, especially randomized controlled trials, provide the strongest design for identifying causal relationships. When experiments are not possible, researchers rely on observational data and must work harder to address alternative explanations.</p>
+<hr>
+<section id="causality" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="causality"><span class="header-section-number">10.1</span> Causality</h2>
+<p>A causal relationship exists when changes in one variable produce changes in another variable.</p>
+<p>Suppose we have two variables:</p>
+<p>[ X Y ]</p>
+<p>The arrow indicates that (X) causes (Y), or that changes in (X) lead to changes in (Y).</p>
+<p>In this framework, (Y) is the <strong>dependent variable</strong>. It is the outcome we care about. Its value depends, at least in part, on another variable.</p>
+<p>(X) is the <strong>independent variable</strong>. It is the variable we think may be doing the causing. It is the predictor, treatment, intervention, or explanatory variable.</p>
+<p>For example:</p>
+<ul>
+<li>A job training program may affect employment.</li>
+<li>A vaccine education program may affect vaccination rates.</li>
+<li>A new gasoline blend may affect air quality.</li>
+<li>Class size may affect student test scores.</li>
+<li>Exposure to lead may affect child development.</li>
+</ul>
+<p>In each case, we are interested in whether changes in (X) produce changes in (Y).</p>
+<p>Researchers often ask:</p>
+<blockquote class="blockquote">
+<p>What is your dependent variable?</p>
+</blockquote>
+<p>This means:</p>
+<blockquote class="blockquote">
+<p>What outcome are you trying to explain?</p>
+</blockquote>
+<p>They may also ask:</p>
+<blockquote class="blockquote">
+<p>What is your independent variable?</p>
+</blockquote>
+<p>This means:</p>
+<blockquote class="blockquote">
+<p>What factor do you think affects that outcome?</p>
+</blockquote>
+<hr>
+</section>
+<section id="conditions-for-causality" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="conditions-for-causality"><span class="header-section-number">10.2</span> Conditions for Causality</h2>
+<p>For a causal relationship to exist, three basic conditions must hold.</p>
+<section id="covariation" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="covariation"><span class="header-section-number">10.2.1</span> 1. Covariation</h3>
+<p>The independent variable and dependent variable must move together.</p>
+<p>If (X) changes but (Y) never changes, then (X) cannot be causing (Y).</p>
+<p>For example, if a new education program is introduced but test scores remain exactly the same for everyone, there is no evidence that the program affected test scores.</p>
+<p>Covariation does not prove causation, but causation requires covariation.</p>
+</section>
+<section id="temporal-ordering" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="temporal-ordering"><span class="header-section-number">10.2.2</span> 2. Temporal Ordering</h3>
+<p>The cause must come before the effect.</p>
+<p>If (X) causes (Y), then (X) must occur or change before (Y) changes.</p>
+<p>For example, if we argue that a vaccine education program affects later vaccination behavior, the education program must occur before the vaccination decision.</p>
+<p>If (Y) changes before (X), then (X) cannot be the cause of that change in (Y).</p>
+</section>
+<section id="elimination-of-alternative-explanations" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="elimination-of-alternative-explanations"><span class="header-section-number">10.2.3</span> 3. Elimination of Alternative Explanations</h3>
+<p>There must not be another variable that explains the relationship between (X) and (Y).</p>
+<p>This is often the hardest condition to satisfy.</p>
+<p>Suppose we observe that students in smaller classes have lower test scores. It might be tempting to conclude that smaller classes cause worse performance. But perhaps struggling students are intentionally assigned to smaller classes so that they can receive more attention. In that case, the apparent relationship between class size and test scores reflects the assignment process, not the causal effect of class size.</p>
+<p>To make a causal claim, we must rule out plausible alternative explanations.</p>
+<hr>
+</section>
+</section>
+<section id="correlation-is-not-causation" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="correlation-is-not-causation"><span class="header-section-number">10.3</span> Correlation Is Not Causation</h2>
+<p>A correlation between two variables does not necessarily imply a causal relationship.</p>
+<p>Two variables may be associated for many reasons. One may cause the other, but other possibilities exist.</p>
+<p>There may be:</p>
+<ul>
+<li>a third variable causing both</li>
+<li>reverse causality</li>
+<li>simultaneity</li>
+<li>selection effects</li>
+<li>measurement problems</li>
+<li>random coincidence</li>
+<li>omitted variables</li>
+<li>confounding factors</li>
+</ul>
+<p>The challenge of causal inference is to determine whether an observed association reflects a real causal relationship.</p>
+<hr>
+</section>
+<section id="spurious-relationships" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="spurious-relationships"><span class="header-section-number">10.4</span> Spurious Relationships</h2>
+<p>A relationship is <strong>spurious</strong> when two variables appear to be related, but the relationship is actually caused by some third factor.</p>
+<p>Consider a simple example.</p>
+<p>A child notices that balloons with strings float, while balloons without strings do not. The child asks:</p>
+<blockquote class="blockquote">
+<p>Why do balloons with strings float?</p>
+</blockquote>
+<p>The string seems associated with floating. But the string is not causing the balloon to float. The real cause is helium. Balloons filled with helium float, and people attach strings to helium balloons so they can hold on to them.</p>
+<p>The relationship between strings and floating is spurious. Helium causes both:</p>
+<ul>
+<li>the balloon floating</li>
+<li>the need for a string</li>
+</ul>
+<p>The child observed a real association but misunderstood the causal mechanism.</p>
+<p>This is a simple example, but the same logic appears constantly in social science and policy analysis. We may observe a relationship between (X) and (Y), but a third factor (Z) may be responsible for the apparent association.</p>
+<hr>
+</section>
+<section id="reverse-causality-and-simultaneity" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="reverse-causality-and-simultaneity"><span class="header-section-number">10.5</span> Reverse Causality and Simultaneity</h2>
+<p>Sometimes the causal direction may be reversed.</p>
+<p>We may think:</p>
+<p>[ X Y ]</p>
+<p>but in reality:</p>
+<p>[ Y X ]</p>
+<p>For example, suppose we observe that people who visit doctors more often are less healthy. Does visiting the doctor make people sick? Probably not. More likely, being sick causes people to visit doctors more often.</p>
+<p>That is reverse causality.</p>
+<p>Another possibility is <strong>simultaneity</strong>, where two variables move together as part of a broader process, rather than one clearly causing the other.</p>
+<p>Economic indicators provide an example. During an economic expansion, employment rises, consumer confidence increases, incomes grow, and spending increases. These variables move together, but that does not mean any one of them alone is causing all the others. They may be jointly shaped by broader economic conditions.</p>
+<p>As the saying goes, a rising tide lifts all boats. The boats are not causing each other to rise; the tide is.</p>
+<hr>
+</section>
+<section id="example-class-size-and-test-scores" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="example-class-size-and-test-scores"><span class="header-section-number">10.6</span> Example: Class Size and Test Scores</h2>
+<p>Research sometimes finds that children in smaller classrooms perform worse on standardized tests, even after controlling for demographic factors.</p>
+<p>At first, this seems surprising. Many people expect smaller classes to improve learning.</p>
+<p>But there may be a selection process at work. Students who are already struggling may be placed into smaller classes to receive more support. If so, smaller classes are not causing lower test scores. Instead, lower-performing students are being assigned to smaller classes.</p>
+<p>The assignment process confounds the relationship between class size and test scores.</p>
+<p>This example illustrates why causal inference is difficult. We cannot simply compare outcomes across groups and assume the group difference is caused by the variable that defines the groups.</p>
+<hr>
+</section>
+<section id="controlling-for-confounding-factors" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="controlling-for-confounding-factors"><span class="header-section-number">10.7</span> Controlling for Confounding Factors</h2>
+<p>A <strong>confounding factor</strong> is a variable that affects the outcome and is also related to the independent variable.</p>
+<p>Confounders make it difficult to isolate the causal effect of (X) on (Y).</p>
+<p>To address confounding, researchers try to <strong>control for</strong> other factors.</p>
+<p>To control for a variable means to compare cases that are similar on that variable. If we hold a third factor constant and still observe a relationship between (X) and (Y), then that third factor cannot fully explain the relationship.</p>
+<p>For example, suppose we want to know whether education affects income. Age may be a confounder because older people tend to have more education and also more work experience. If we compare people with different levels of education but similar ages, we are controlling for age.</p>
+<p>In practice, controlling for confounders can be difficult. We may not have data on the relevant variables. Worse, we may not even know what all the relevant confounders are.</p>
+<p>This is one reason experiments are so powerful.</p>
+<hr>
+</section>
+<section id="theory-and-causal-mechanisms" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="theory-and-causal-mechanisms"><span class="header-section-number">10.8</span> Theory and Causal Mechanisms</h2>
+<p>Statistical evidence is more persuasive when paired with a strong theory.</p>
+<p>A <strong>causal mechanism</strong> explains how or why (X) affects (Y).</p>
+<p>For example, if we claim that a vaccine education program increases vaccination rates, we should be able to explain the mechanism:</p>
+<ul>
+<li>Parents receive accurate information.</li>
+<li>The information reduces uncertainty or misinformation.</li>
+<li>Parents become more confident in vaccine safety.</li>
+<li>Parents are more likely to vaccinate their children.</li>
+</ul>
+<p>If we observe a statistical relationship but cannot explain why it should exist, we should be cautious. The relationship may be spurious or accidental.</p>
+<p>This is especially important when interpreting studies reported in the media. A study may find an association between a food, behavior, or lifestyle factor and some health outcome. But if researchers cannot explain a plausible biological or social mechanism, we should not leap too quickly to causal conclusions.</p>
+<p>A statistically significant association is not enough. Causal claims require theory, design, and evidence.</p>
+<hr>
+</section>
+<section id="part-i-experiments" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Part I: Experiments</h1>
+<section id="experiments-as-the-gold-standard" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="experiments-as-the-gold-standard"><span class="header-section-number">11.1</span> Experiments as the Gold Standard</h2>
+<p>Experiments are often considered the strongest design for identifying causal effects.</p>
+<p>In an experiment, researchers control the assignment of the independent variable. Some cases receive the treatment, while others remain in a control condition.</p>
+<p>A common experimental design is the <strong>randomized controlled trial</strong>, or <strong>RCT</strong>.</p>
+<p>In an RCT:</p>
+<ol type="1">
+<li>Researchers identify a sample.</li>
+<li>Cases are randomly assigned to treatment or control.</li>
+<li>The treatment group receives the intervention.</li>
+<li>The control group does not.</li>
+<li>Outcomes are compared across groups.</li>
+</ol>
+<p>The key feature is random assignment.</p>
+<p>Random assignment helps ensure that the treatment and control groups are similar in all respects except for the treatment itself.</p>
+<hr>
+</section>
+<section id="why-experiments-help-identify-causality" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="why-experiments-help-identify-causality"><span class="header-section-number">11.2</span> Why Experiments Help Identify Causality</h2>
+<p>Experiments help satisfy the three conditions for causality.</p>
+<section id="covariation-1" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="covariation-1"><span class="header-section-number">11.2.1</span> Covariation</h3>
+<p>We can compare outcomes between treated and untreated groups to see whether (Y) differs when (X) differs.</p>
+</section>
+<section id="temporal-ordering-1" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="temporal-ordering-1"><span class="header-section-number">11.2.2</span> Temporal Ordering</h3>
+<p>The researcher controls when the treatment is administered, so the treatment occurs before the outcome is measured.</p>
+</section>
+<section id="elimination-of-alternative-explanations-1" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="elimination-of-alternative-explanations-1"><span class="header-section-number">11.2.3</span> Elimination of Alternative Explanations</h3>
+<p>Random assignment distributes confounding factors across treatment and control groups. On average, the groups should be similar in both observed and unobserved characteristics.</p>
+<p>This is the major advantage of randomization. It can balance even factors the researcher does not know about or cannot measure.</p>
+<hr>
+</section>
+</section>
+<section id="treatment-and-control-groups" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="treatment-and-control-groups"><span class="header-section-number">11.3</span> Treatment and Control Groups</h2>
+<p>An experiment divides cases into groups.</p>
+<p>The <strong>treatment group</strong> receives the intervention.</p>
+<p>The <strong>control group</strong> does not receive the intervention or receives a baseline condition, such as a placebo.</p>
+<p>For example, in a drug trial:</p>
+<ul>
+<li>The treatment group receives the medication.</li>
+<li>The control group receives a placebo.</li>
+</ul>
+<p>In a policy evaluation:</p>
+<ul>
+<li>The treatment group receives the program.</li>
+<li>The control group does not.</li>
+</ul>
+<p>The goal is for the control group to represent what would have happened to the treatment group if it had not received the treatment.</p>
+<p>Likewise, the treatment group represents what would have happened to the control group if it had received the treatment.</p>
+<p>Randomization makes this comparison credible.</p>
+<hr>
+</section>
+<section id="randomization" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="randomization"><span class="header-section-number">11.4</span> Randomization</h2>
+<p><strong>Randomization</strong> means assigning cases to treatment or control by chance.</p>
+<p>If randomization works, the treatment and control groups should be similar on average.</p>
+<p>They should have similar distributions of:</p>
+<ul>
+<li>age</li>
+<li>gender</li>
+<li>income</li>
+<li>prior achievement</li>
+<li>health status</li>
+<li>motivation</li>
+<li>family background</li>
+<li>political attitudes</li>
+<li>any other factor that might matter</li>
+</ul>
+<p>Some differences may still occur by random chance, especially in small samples. But randomization prevents systematic selection into treatment.</p>
+<p>This is crucial because selection can otherwise bias causal estimates.</p>
+<p>For example, suppose people who choose to participate in a job training program are more motivated than those who do not. If we compare participants to nonparticipants, differences in employment may reflect motivation rather than the program. Random assignment avoids this problem by assigning participation independently of motivation.</p>
+<hr>
+</section>
+<section id="balance" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="balance"><span class="header-section-number">11.5</span> Balance</h2>
+<p>After random assignment, researchers often check whether the treatment and control groups are <strong>balanced</strong>.</p>
+<p>A balance check compares the groups on characteristics measured before treatment.</p>
+<p>For example, researchers may compare average age, income, prior test scores, or baseline health across treatment and control groups.</p>
+<p>If randomization worked well, the groups should look similar.</p>
+<p>Perfect balance is not guaranteed, especially in small samples. Randomization can fail by chance. If researchers notice serious imbalance before the experiment begins, they may be able to re-randomize.</p>
+<p>Once the experiment has already occurred, imbalance becomes harder to fix. Researchers may then use statistical controls, regression, or matching methods to adjust for differences.</p>
+<hr>
+</section>
+</section>
+<section id="part-ii-the-potential-outcomes-framework" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Part II: The Potential Outcomes Framework</h1>
+<section id="potential-outcomes" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="potential-outcomes"><span class="header-section-number">12.1</span> Potential Outcomes</h2>
+<p>The <strong>potential outcomes framework</strong> provides a formal way to think about causal effects.</p>
+<p>For each person or case (i), there are two potential outcomes:</p>
+<p>[ Y_i(1) ]</p>
+<p>and:</p>
+<p>[ Y_i(0) ]</p>
+<p>where:</p>
+<ul>
+<li>(Y_i(1)) is the outcome for case (i) if treated.</li>
+<li>(Y_i(0)) is the outcome for case (i) if not treated.</li>
+</ul>
+<p>For example, suppose the outcome is employment after a job training program.</p>
+<p>For each person:</p>
+<ul>
+<li>(Y_i(1)): employment outcome if the person receives training</li>
+<li>(Y_i(0)): employment outcome if the person does not receive training</li>
+</ul>
+<p>The individual treatment effect is:</p>
+<p>[ Y_i(1) - Y_i(0) ]</p>
+<p>This is the causal effect of treatment for that individual.</p>
+<hr>
+</section>
+<section id="the-fundamental-problem-of-causal-inference" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="the-fundamental-problem-of-causal-inference"><span class="header-section-number">12.2</span> The Fundamental Problem of Causal Inference</h2>
+<p>The problem is that we can never observe both potential outcomes for the same person at the same time.</p>
+<p>A person either receives the treatment or does not.</p>
+<p>If a person receives treatment, we observe:</p>
+<p>[ Y_i(1) ]</p>
+<p>but we do not observe:</p>
+<p>[ Y_i(0) ]</p>
+<p>If a person does not receive treatment, we observe:</p>
+<p>[ Y_i(0) ]</p>
+<p>but we do not observe:</p>
+<p>[ Y_i(1) ]</p>
+<p>The missing potential outcome is the <strong>counterfactual</strong>.</p>
+<p>This is called the <strong>fundamental problem of causal inference</strong>.</p>
+<p>To know the exact treatment effect for one individual, we would need to observe what happened to that person under treatment and what would have happened to that same person without treatment. But we cannot observe both.</p>
+<hr>
+</section>
+<section id="average-treatment-effects" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="average-treatment-effects"><span class="header-section-number">12.3</span> Average Treatment Effects</h2>
+<p>Because we cannot observe individual treatment effects directly, we often estimate average treatment effects.</p>
+<p>The <strong>average treatment effect</strong>, or ATE, is:</p>
+<p>[ ATE = E[Y(1) - Y(0)] ]</p>
+<p>This is the expected difference between outcomes under treatment and outcomes under control.</p>
+<p>Equivalently, under random assignment:</p>
+<p>[ ATE = E[Y(1)] - E[Y(0)] ]</p>
+<p>Randomization allows us to estimate this using observed group means:</p>
+<p>[ = {Y}<em>{treatment} - {Y}</em>{control} ]</p>
+<p>That is, we compare the mean outcome in the treatment group to the mean outcome in the control group.</p>
+<p>Randomization makes this comparison valid because the groups are similar on average except for treatment status.</p>
+<hr>
+</section>
+<section id="why-randomization-solves-the-problem" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="why-randomization-solves-the-problem"><span class="header-section-number">12.4</span> Why Randomization Solves the Problem</h2>
+<p>Randomization does not allow us to observe both potential outcomes for the same person.</p>
+<p>But it does allow us to compare groups that are equivalent on average.</p>
+<p>The control group provides an estimate of what would have happened to the treatment group if it had not been treated.</p>
+<p>The treatment group provides an estimate of what would have happened to the control group if it had been treated.</p>
+<p>Thus, while individual treatment effects remain unobservable, the average treatment effect can be estimated.</p>
+<p>This is the logic behind experimental causal inference.</p>
+<hr>
+</section>
+<section id="difference-of-means" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="difference-of-means"><span class="header-section-number">12.5</span> Difference of Means</h2>
+<p>The simplest way to estimate an experimental treatment effect is a difference of means:</p>
+<p>[ {Y}_T - {Y}_C ]</p>
+<p>where:</p>
+<ul>
+<li>({Y}_T) is the mean outcome in the treatment group</li>
+<li>({Y}_C) is the mean outcome in the control group</li>
+</ul>
+<p>The null hypothesis is usually:</p>
+<p>[ H_0: _T - _C = 0 ]</p>
+<p>That is, the treatment has no effect.</p>
+<p>The alternative hypothesis is:</p>
+<p>[ H_A: _T - _C ]</p>
+<p>or, in a directional test:</p>
+<p>[ H_A: _T - _C &gt; 0 ]</p>
+<p>or:</p>
+<p>[ H_A: _T - _C &lt; 0 ]</p>
+<p>The statistical question becomes:</p>
+<blockquote class="blockquote">
+<p>Is the observed difference between the two group means large enough, relative to its standard error, to reject the null hypothesis?</p>
+</blockquote>
+<p>We will develop the formal difference-of-means test next.</p>
+<hr>
+</section>
+</section>
+<section id="part-iii-experimental-validity" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Part III: Experimental Validity</h1>
+<p>Experiments can be evaluated in terms of two major kinds of validity:</p>
+<ol type="1">
+<li>Internal validity</li>
+<li>External validity</li>
+</ol>
+<p>These are different from measurement validity. Here, we are evaluating the validity of the experimental design and conclusions.</p>
+<hr>
+<section id="internal-validity" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="internal-validity"><span class="header-section-number">13.1</span> Internal Validity</h2>
+<p><strong>Internal validity</strong> refers to whether the experiment successfully identifies the causal effect within the study.</p>
+<p>An experiment has strong internal validity if differences in outcomes between the treatment and control groups can be attributed to the treatment.</p>
+<p>In other words:</p>
+<blockquote class="blockquote">
+<p>Did the experiment rule out alternative explanations?</p>
+</blockquote>
+<p>Strong internal validity requires that:</p>
+<ul>
+<li>treatment assignment is random</li>
+<li>treatment and control groups are comparable</li>
+<li>the treatment is implemented as intended</li>
+<li>outcomes are measured consistently</li>
+<li>there is no contamination between groups</li>
+<li>attrition does not differ systematically across groups</li>
+<li>participants do not change behavior simply because they know they are being studied, unless that is part of the treatment</li>
+</ul>
+<p>If internal validity is weak, then the estimated treatment effect may be biased.</p>
+<hr>
+</section>
+<section id="external-validity" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="external-validity"><span class="header-section-number">13.2</span> External Validity</h2>
+<p><strong>External validity</strong> refers to whether the results generalize beyond the study setting.</p>
+<p>An experiment may have strong internal validity but weak external validity.</p>
+<p>For example, suppose a chemical is tested on mice in a laboratory. The experiment may be carefully controlled, with strong internal validity. But the results may not generalize perfectly to humans exposed to lower levels of the chemical in real-world conditions.</p>
+<p>External validity asks:</p>
+<ul>
+<li>Does this result apply to other populations?</li>
+<li>Does it apply in other places?</li>
+<li>Does it apply at other times?</li>
+<li>Does it apply under real-world conditions?</li>
+<li>Would the effect remain if the program were scaled up?</li>
+</ul>
+<p>Policy researchers care deeply about external validity because policy decisions are usually made for broader populations than the experimental sample.</p>
+<hr>
+</section>
+<section id="internal-and-external-validity-tradeoffs" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="internal-and-external-validity-tradeoffs"><span class="header-section-number">13.3</span> Internal and External Validity Tradeoffs</h2>
+<p>Sometimes internal and external validity are in tension.</p>
+<p>A tightly controlled laboratory experiment may have strong internal validity because the researcher controls almost everything. But it may have weaker external validity because the setting is artificial.</p>
+<p>A real-world field experiment may have stronger external validity because it occurs in natural conditions. But it may face more threats to internal validity because the researcher has less control.</p>
+<p>Good research design tries to maximize both, but tradeoffs are common.</p>
+<hr>
+</section>
+</section>
+<section id="part-iv-example-teacher-absenteeism-in-india" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Part IV: Example: Teacher Absenteeism in India</h1>
+<section id="the-study" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="the-study"><span class="header-section-number">14.1</span> The Study</h2>
+<p>Consider an experiment on teacher absenteeism in rural India.</p>
+<p>Public sector absenteeism can be a major problem in some contexts. Teachers may not show up for work, which can reduce instructional time and student learning.</p>
+<p>Researchers studied whether incentives could reduce teacher absenteeism.</p>
+<p>The study took place in rural villages near Udaipur, in Rajasthan, India. Researchers worked with a local NGO and identified 120 schools.</p>
+<p>The schools were randomly assigned:</p>
+<ul>
+<li>60 schools to the treatment group</li>
+<li>60 schools to the control group</li>
+</ul>
+<p>Teachers in treatment schools received digital cameras and were asked to document their attendance. They took photos when they arrived and when they left. They could also take photos during the school day.</p>
+<p>Teachers were paid bonuses based on verified attendance. If they were present for at least five hours, they received additional pay.</p>
+<p>The control schools did not receive this intervention.</p>
+<hr>
+</section>
+<section id="results" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="results"><span class="header-section-number">14.2</span> Results</h2>
+<p>The study found that absenteeism was lower in treatment schools.</p>
+<ul>
+<li>Treatment schools: 22 percent absenteeism</li>
+<li>Control schools: 42 percent absenteeism</li>
+</ul>
+<p>The researchers also examined student outcomes. Students in treatment schools scored approximately 0.15 to 0.17 standard deviations higher on language and math tests.</p>
+<p>The study therefore suggested that attendance incentives, combined with monitoring, reduced absenteeism and improved student learning.</p>
+<hr>
+</section>
+<section id="internal-validity-questions" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="internal-validity-questions"><span class="header-section-number">14.3</span> Internal Validity Questions</h2>
+<p>The study has important strengths for internal validity.</p>
+<p>Schools were randomly assigned to treatment and control groups. This helps ensure that treatment and control schools were similar on average before the intervention.</p>
+<p>However, several internal validity questions remain.</p>
+<section id="did-randomization-work" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="did-randomization-work"><span class="header-section-number">14.3.1</span> Did Randomization Work?</h3>
+<p>Even with random assignment, groups may differ by chance. Researchers should check whether treatment and control schools were balanced on pre-treatment characteristics.</p>
+</section>
+<section id="was-there-spillover" class="level3" data-number="14.3.2">
+<h3 data-number="14.3.2" class="anchored" data-anchor-id="was-there-spillover"><span class="header-section-number">14.3.2</span> Was There Spillover?</h3>
+<p>Teachers in control schools may have learned about the treatment and changed their behavior. If so, the control group may no longer represent the no-treatment condition.</p>
+</section>
+<section id="was-the-treatment-actually-the-incentive" class="level3" data-number="14.3.3">
+<h3 data-number="14.3.3" class="anchored" data-anchor-id="was-the-treatment-actually-the-incentive"><span class="header-section-number">14.3.3</span> Was the Treatment Actually the Incentive?</h3>
+<p>The intervention included both monitoring and financial incentives. If absenteeism declined, was it because of the bonus, because teachers knew they were being watched, or because of both?</p>
+</section>
+<section id="did-awareness-of-being-studied-matter" class="level3" data-number="14.3.4">
+<h3 data-number="14.3.4" class="anchored" data-anchor-id="did-awareness-of-being-studied-matter"><span class="header-section-number">14.3.4</span> Did Awareness of Being Studied Matter?</h3>
+<p>Teachers in the treatment group knew they were being monitored. They may have changed behavior because they were part of a study. This is related to the <strong>Hawthorne effect</strong>, where people alter behavior because they know they are being observed.</p>
+</section>
+<section id="were-outcomes-measured-consistently" class="level3" data-number="14.3.5">
+<h3 data-number="14.3.5" class="anchored" data-anchor-id="were-outcomes-measured-consistently"><span class="header-section-number">14.3.5</span> Were Outcomes Measured Consistently?</h3>
+<p>If student test scores were measured differently across schools, or if treatment schools had stronger incentives to present better outcomes, that could threaten internal validity.</p>
+<p>These concerns do not necessarily invalidate the study, but they illustrate the kinds of questions researchers must ask.</p>
+<hr>
+</section>
+</section>
+<section id="external-validity-questions" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="external-validity-questions"><span class="header-section-number">14.4</span> External Validity Questions</h2>
+<p>External validity asks whether the findings generalize beyond the study.</p>
+<p>Several questions arise.</p>
+<section id="would-the-program-work-elsewhere" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="would-the-program-work-elsewhere"><span class="header-section-number">14.4.1</span> Would the Program Work Elsewhere?</h3>
+<p>The study was conducted in one region of India. Would the same incentive system work in urban schools, other Indian states, or other countries?</p>
+</section>
+<section id="would-it-work-where-salaries-are-higher" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="would-it-work-where-salaries-are-higher"><span class="header-section-number">14.4.2</span> Would It Work Where Salaries Are Higher?</h3>
+<p>If teachers are already well paid, financial incentives may have a weaker effect.</p>
+</section>
+<section id="would-it-work-at-scale" class="level3" data-number="14.4.3">
+<h3 data-number="14.4.3" class="anchored" data-anchor-id="would-it-work-at-scale"><span class="header-section-number">14.4.3</span> Would It Work at Scale?</h3>
+<p>A pilot program may work under close supervision by researchers and an NGO. A statewide or national program may be harder to monitor and implement.</p>
+</section>
+<section id="would-teachers-adapt" class="level3" data-number="14.4.4">
+<h3 data-number="14.4.4" class="anchored" data-anchor-id="would-teachers-adapt"><span class="header-section-number">14.4.4</span> Would Teachers Adapt?</h3>
+<p>Over time, teachers may learn ways to comply superficially without improving instruction. The short-term effect may differ from the long-term effect.</p>
+</section>
+<section id="are-the-schools-representative" class="level3" data-number="14.4.5">
+<h3 data-number="14.4.5" class="anchored" data-anchor-id="are-the-schools-representative"><span class="header-section-number">14.4.5</span> Are the Schools Representative?</h3>
+<p>If the schools in the study differ from other schools, the results may not generalize.</p>
+<p>These are external validity questions. They concern whether the result applies beyond the specific experimental setting.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="part-v-observational-studies" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Part V: Observational Studies</h1>
+<section id="when-experiments-are-not-possible" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="when-experiments-are-not-possible"><span class="header-section-number">15.1</span> When Experiments Are Not Possible</h2>
+<p>Experiments are powerful, but they are not always possible.</p>
+<p>Sometimes experiments are unethical.</p>
+<p>For example, we cannot randomly assign children to drink lead-contaminated water to study the effect of lead exposure.</p>
+<p>Sometimes experiments are impractical.</p>
+<p>We cannot randomly assign people to different childhood family backgrounds, neighborhoods, political systems, or natural disasters.</p>
+<p>Sometimes experiments are too expensive or politically impossible.</p>
+<p>In these cases, researchers rely on <strong>observational data</strong>.</p>
+<hr>
+</section>
+<section id="observational-data" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="observational-data"><span class="header-section-number">15.2</span> Observational Data</h2>
+<p>In an <strong>observational study</strong>, researchers observe data generated by the world rather than assigning treatment themselves.</p>
+<p>For example, researchers may compare:</p>
+<ul>
+<li>children exposed to lead versus children not exposed to lead</li>
+<li>students in small classes versus large classes</li>
+<li>workers who joined a training program versus those who did not</li>
+<li>counties that adopted a policy versus counties that did not</li>
+<li>people with more education versus less education</li>
+</ul>
+<p>The problem is that treatment status is not randomly assigned.</p>
+<p>People or places in one group may differ systematically from those in another group.</p>
+<p>Those differences may explain the outcome.</p>
+<hr>
+</section>
+<section id="the-goal-in-observational-studies" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="the-goal-in-observational-studies"><span class="header-section-number">15.3</span> The Goal in Observational Studies</h2>
+<p>Even without randomization, the goal remains the same:</p>
+<blockquote class="blockquote">
+<p>Compare groups that are as similar as possible except for the independent variable of interest.</p>
+</blockquote>
+<p>If we want to estimate the effect of a savings program, we want treatment and comparison groups that are similar in income, age, gender, education, prior savings behavior, and other relevant factors.</p>
+<p>If we want to estimate the effect of lead exposure, we want exposed and unexposed children who are otherwise similar in family background, neighborhood, school quality, health status, and other factors.</p>
+<p>The challenge is that without random assignment, similarity is not guaranteed.</p>
+<p>Researchers must try to construct credible comparisons using statistical methods and research design.</p>
+<hr>
+</section>
+<section id="threats-in-observational-studies" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="threats-in-observational-studies"><span class="header-section-number">15.4</span> Threats in Observational Studies</h2>
+<p>Observational studies face several threats.</p>
+<section id="selection-bias" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="selection-bias"><span class="header-section-number">15.4.1</span> Selection Bias</h3>
+<p>People who receive a treatment may differ from those who do not.</p>
+<p>For example, people who enroll in a job training program may be more motivated than those who do not.</p>
+</section>
+<section id="confounding" class="level3" data-number="15.4.2">
+<h3 data-number="15.4.2" class="anchored" data-anchor-id="confounding"><span class="header-section-number">15.4.2</span> Confounding</h3>
+<p>A third variable may affect both treatment and outcome.</p>
+<p>For example, family income may affect both neighborhood lead exposure and child development outcomes.</p>
+</section>
+<section id="reverse-causality" class="level3" data-number="15.4.3">
+<h3 data-number="15.4.3" class="anchored" data-anchor-id="reverse-causality"><span class="header-section-number">15.4.3</span> Reverse Causality</h3>
+<p>The assumed outcome may actually influence the treatment.</p>
+<p>For example, poor health may cause more doctor visits, not the reverse.</p>
+</section>
+<section id="omitted-variables" class="level3" data-number="15.4.4">
+<h3 data-number="15.4.4" class="anchored" data-anchor-id="omitted-variables"><span class="header-section-number">15.4.4</span> Omitted Variables</h3>
+<p>Important variables may be missing from the data.</p>
+<p>For example, motivation, family support, stress, or teacher quality may be difficult to measure.</p>
+</section>
+<section id="unobserved-heterogeneity" class="level3" data-number="15.4.5">
+<h3 data-number="15.4.5" class="anchored" data-anchor-id="unobserved-heterogeneity"><span class="header-section-number">15.4.5</span> Unobserved Heterogeneity</h3>
+<p>Groups may differ in ways researchers cannot observe.</p>
+<p>This is one of the hardest problems in causal inference.</p>
+<hr>
+</section>
+</section>
+<section id="statistical-controls" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="statistical-controls"><span class="header-section-number">15.5</span> Statistical Controls</h2>
+<p>One strategy in observational studies is to use statistical controls.</p>
+<p>For example, suppose we compare savings outcomes between people who participated in a savings program and those who did not. If the treatment group has higher income on average, income may confound the analysis.</p>
+<p>We can control for income using regression or matching.</p>
+<p>The goal is to compare people with similar income levels but different treatment status.</p>
+<p>Statistical controls help, but they only work for variables we observe and measure well.</p>
+<p>They cannot control for variables that are missing, unknown, or poorly measured.</p>
+<hr>
+</section>
+<section id="matching" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="matching"><span class="header-section-number">15.6</span> Matching</h2>
+<p>Another strategy is <strong>matching</strong>.</p>
+<p>Matching pairs treated cases with similar untreated cases.</p>
+<p>For example, a woman who participated in a savings program might be matched with a woman of similar age, income, education, family status, and prior savings behavior who did not participate.</p>
+<p>The goal is to approximate an experimental comparison by making the treated and comparison groups as similar as possible.</p>
+<p>Matching can improve causal inference, but it still depends on observed variables. If treated and untreated cases differ on unobserved factors, bias may remain.</p>
+<hr>
+</section>
+<section id="quasi-experiments" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="quasi-experiments"><span class="header-section-number">15.7</span> Quasi-Experiments</h2>
+<p>A <strong>quasi-experiment</strong> is a research design that attempts to approximate an experiment without random assignment.</p>
+<p>Examples include:</p>
+<ul>
+<li>natural experiments</li>
+<li>regression discontinuity designs</li>
+<li>difference-in-differences designs</li>
+<li>instrumental variables</li>
+<li>matching designs</li>
+</ul>
+<p>These methods are designed to create or exploit comparison groups that approximate random assignment.</p>
+<p>Quasi-experiments are especially important in policy research because true experiments are often unavailable.</p>
+<p>You will encounter many of these designs in future program evaluation and econometrics courses.</p>
+<hr>
+</section>
+</section>
+<section id="part-vi-from-causality-to-difference-of-means-tests" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Part VI: From Causality to Difference-of-Means Tests</h1>
+<section id="comparing-means-across-groups" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="comparing-means-across-groups"><span class="header-section-number">16.1</span> Comparing Means Across Groups</h2>
+<p>To evaluate causal effects, we often compare mean outcomes across groups.</p>
+<p>For example:</p>
+<p>[ {Y}_T - {Y}_C ]</p>
+<p>where:</p>
+<ul>
+<li>({Y}_T) is the mean outcome in the treatment group</li>
+<li>({Y}_C) is the mean outcome in the control group</li>
+</ul>
+<p>If the treatment has no effect, we expect:</p>
+<p>[ _T - _C = 0 ]</p>
+<p>So the null hypothesis is:</p>
+<p>[ H_0: _T - _C = 0 ]</p>
+<p>If the observed difference in sample means is large relative to its standard error, we may reject the null hypothesis.</p>
+<p>This is the basis of the <strong>difference-of-means test</strong>.</p>
+<hr>
+</section>
+<section id="comparing-proportions-across-groups" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="comparing-proportions-across-groups"><span class="header-section-number">16.2</span> Comparing Proportions Across Groups</h2>
+<p>Sometimes the outcome is binary.</p>
+<p>For example:</p>
+<ul>
+<li>vaccinated or not vaccinated</li>
+<li>employed or not employed</li>
+<li>graduated or did not graduate</li>
+<li>voted or did not vote</li>
+</ul>
+<p>Then we compare proportions:</p>
+<p>[ _T - _C ]</p>
+<p>The null hypothesis is:</p>
+<p>[ H_0: _T - _C = 0 ]</p>
+<p>or:</p>
+<p>[ H_0: _T = _C ]</p>
+<p>If the difference in sample proportions is large relative to its standard error, we may reject the null hypothesis.</p>
+<p>This is the basis of the <strong>difference-of-proportions test</strong>.</p>
+<hr>
+</section>
+<section id="mean-comparison-tables" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="mean-comparison-tables"><span class="header-section-number">16.3</span> Mean Comparison Tables</h2>
+<p>A simple way to begin comparing groups is with a mean comparison table.</p>
+<p>For example:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Group</th>
+<th style="text-align: right;">Mean Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Treatment</td>
+<td style="text-align: right;">82.4</td>
+</tr>
+<tr class="even">
+<td>Control</td>
+<td style="text-align: right;">76.1</td>
+</tr>
+<tr class="odd">
+<td>Difference</td>
+<td style="text-align: right;">6.3</td>
+</tr>
+</tbody>
+</table>
+<p>This table shows that the treatment group has a higher mean outcome than the control group.</p>
+<p>But the table alone does not tell us whether the difference is statistically significant.</p>
+<p>To answer that, we need a standard error and a significance test.</p>
+<p>The next step is to ask:</p>
+<blockquote class="blockquote">
+<p>Is the observed difference large enough relative to sampling variability that we can reject the null hypothesis of no difference?</p>
+</blockquote>
+<p>That is where two-sample inference begins.</p>
+<hr>
+</section>
+</section>
+<section id="key-terms" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> Key Terms</h1>
+<p><strong>Causality</strong><br>
+A relationship in which changes in one variable produce changes in another variable.</p>
+<p><strong>Dependent variable</strong><br>
+The outcome variable; the variable being explained.</p>
+<p><strong>Independent variable</strong><br>
+The explanatory, causal, treatment, or predictor variable.</p>
+<p><strong>Covariation</strong><br>
+The condition that two variables move together.</p>
+<p><strong>Temporal ordering</strong><br>
+The requirement that the cause occur before the effect.</p>
+<p><strong>Confounding factor</strong><br>
+A variable that affects the outcome and is related to the independent variable.</p>
+<p><strong>Spurious relationship</strong><br>
+An apparent relationship between two variables that is actually caused by another factor.</p>
+<p><strong>Reverse causality</strong><br>
+A situation in which the assumed outcome actually causes the assumed cause.</p>
+<p><strong>Simultaneity</strong><br>
+A situation in which variables move together as part of a larger process rather than one clearly causing the other.</p>
+<p><strong>Experiment</strong><br>
+A research design in which the researcher controls assignment to treatment and control conditions.</p>
+<p><strong>Randomized controlled trial, RCT</strong><br>
+An experiment in which cases are randomly assigned to treatment and control groups.</p>
+<p><strong>Treatment group</strong><br>
+The group that receives the intervention.</p>
+<p><strong>Control group</strong><br>
+The group that does not receive the intervention or receives a baseline condition.</p>
+<p><strong>Randomization</strong><br>
+Assignment to treatment or control by chance.</p>
+<p><strong>Balance</strong><br>
+Similarity between treatment and control groups on pre-treatment characteristics.</p>
+<p><strong>Potential outcomes framework</strong><br>
+A framework that defines causal effects in terms of outcomes under treatment and control conditions.</p>
+<p><strong>Counterfactual</strong><br>
+The unobserved outcome that would have occurred under the alternative treatment condition.</p>
+<p><strong>Fundamental problem of causal inference</strong><br>
+The problem that we cannot observe both treatment and control outcomes for the same case at the same time.</p>
+<p><strong>Average treatment effect, ATE</strong><br>
+The average difference between treatment and control potential outcomes.</p>
+<p><strong>Internal validity</strong><br>
+The degree to which a study identifies the causal effect within the study setting.</p>
+<p><strong>External validity</strong><br>
+The degree to which a study’s findings generalize beyond the study setting.</p>
+<p><strong>Observational study</strong><br>
+A study in which researchers observe data without assigning treatment.</p>
+<p><strong>Quasi-experiment</strong><br>
+A design that approximates experimental conditions without random assignment.</p>
+<p><strong>Statistical control</strong><br>
+A method for holding other variables constant in analysis.</p>
+<p><strong>Matching</strong><br>
+A method that pairs treated and untreated cases with similar observed characteristics.</p>
+<p><strong>Difference of means</strong><br>
+The difference between the average outcome in two groups.</p>
+<p><strong>Difference of proportions</strong><br>
+The difference between the proportion with an outcome in two groups.</p>
+<hr>
+</section>
+<section id="chapter-summary" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Chapter Summary</h1>
+<p>Causal inference asks whether changes in one variable produce changes in another. To establish causality, three conditions must hold: the variables must covary, the cause must precede the effect, and alternative explanations must be ruled out.</p>
+<p>Correlation alone is not causation. Associations can be spurious, reversed, simultaneous, or confounded by other factors. Strong causal claims require theory, appropriate research design, and careful analysis.</p>
+<p>Experiments, especially randomized controlled trials, are the strongest design for identifying causal effects. Random assignment creates treatment and control groups that are similar on average, allowing researchers to estimate treatment effects by comparing group outcomes.</p>
+<p>The potential outcomes framework clarifies the fundamental problem of causal inference: each case has a potential outcome under treatment and under control, but we observe only one. Randomization solves this problem at the group level by allowing the control group to stand in for what would have happened to the treatment group without treatment.</p>
+<p>Experiments must be evaluated for internal validity and external validity. Internal validity concerns whether the experiment identifies the causal effect in the study. External validity concerns whether the results generalize to other settings, populations, and contexts.</p>
+<p>When experiments are not possible, researchers use observational studies. These are more challenging because treatment is not randomly assigned. Researchers must address selection bias, confounding, reverse causality, and omitted variables using theory, design, and statistical methods.</p>
+<p>This chapter sets up the next stage of inference: comparing means and proportions across groups. Difference-of-means and difference-of-proportions tests allow us to evaluate whether observed group differences are statistically meaningful and, under the right research design, whether they support causal claims.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter-8.html" class="pagination-link" aria-label="Chapter 8: Significance Tests">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chapter 8: Significance Tests</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter-10.html" class="pagination-link" aria-label="Chapter 10: Comparison of Two Groups">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chapter 10: Comparison of Two Groups</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
